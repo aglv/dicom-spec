@@ -1,0 +1,1 @@
+The purpose of this repository is to host different versions of the DICOM spec for comparison purposes.
