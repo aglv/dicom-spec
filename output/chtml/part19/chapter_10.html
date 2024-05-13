@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10 Data Exchange Model Conventions</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="PS3.19.html" title="PS3.19" />
+      <link rel="prev" href="sect_9.15.html" title="9.15 XPathNodeType" />
+      <link rel="next" href="sect_10.2.html" title="10.2 Person Name Components" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10 Data Exchange Model Conventions <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/chapter_10.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.15.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-node">Data Exchange Model Conventions</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_10" shape="rect"></a>10 Data Exchange Model Conventions</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_8ad752ab-a6b7-4fbf-974b-a2742b4c53b2" shape="rect"></a>Models that can be used by the model-based DataExchange interface methods are defined in <a class="xref" href="chapter_A.html" title="A Data Exchange Models" shape="rect">Annex A</a>. These models are defined in the form of XML Schemas written in Relax NG Compact form of DSDL as specified by <a class="xref" href="chapter_2.html#biblio_ISOIEC19757-2" title="Information technology — Document Schema Definition Language (DSDL) — Part 2: Regular-grammar-based validation — RELAX NG" shape="rect">[<abbr class="abbrev">ISO/IEC 19757-2</abbr>]</a>.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_c8ffb849-e867-4381-af7c-9f2db7abcfab" shape="rect"></a>An implementer may translate the Relax NG Compact form to other forms for use within their implementation as long as the exchanged XML Infosets will validate against the schema specified by the Standard.
+          For example, a particular implementation may internally utilize a schema with stronger validation rules (e.g., using Schematron rules as specified in <a class="xref" href="chapter_2.html#biblio_ISOIEC19757-3" title="Information technology — Document Schema Definition Languages (DSDL) — Part 3: Rule-based validation — Schematron" shape="rect">[<abbr class="abbrev">ISO/IEC 19757-3</abbr>]</a>, or using W3C XML Scheme Definition (XSDL) Language <a class="xref" href="chapter_2.html#biblio_XSD1" title="XML Schema Part 1: Structures Second Edition. W3C Recommendation" shape="rect">[<abbr class="abbrev">XSD1</abbr>]</a> with assertion rules) as long as the XML produced for exchange over the interface can be parsed with the schema specified in the Standard,
+          and that XML from well-formed DICOM objects produced by the schema specified in the Standard can still be utilized by the implementation's internal schema.</p>
+         </div>
+         <p>
+            <a id="para_1382fb35-5962-46c9-9c5f-267e35d87ff1" shape="rect"></a>Actual instances of the models are XML Infosets. <a class="xref" href="chapter_A.html" title="A Data Exchange Models" shape="rect">Annex A</a> follows the following conventions in describing models.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e6395e49-2d19-4f86-a427-009d213edfa7" shape="rect"></a>The models are defined via XML schemas to allow the use of commonly available tools to manipulate and navigate the model. For example, an XPath statement can be used to identify portions of interest within the model such as a particular DICOM Attribute and extract it.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_64ac38be-ec73-424b-ae97-9c4605921149" shape="rect"></a>Some implementations may parse directly from the incoming object, which may not be in XML form, into an internal representation, such as the domain object model (DOM) without ever having converted the object to XML.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_b77edfbb-abe1-4e8e-a726-f36c0801fd87" shape="rect"></a>Within each model description is a table of XML Elements and XML Attributes used to describe an XML Infoset of that model. These tables utilize the following conventions:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="1">
+               <li class="listitem">
+                  <p>
+                     <a id="para_d7ac3663-aeb5-42e5-868a-6b9f1bde5906" shape="rect"></a>XML Element names (listed in the first column) are in CamelCase, with the first letter capitalized.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9487ed40-b145-4dbd-a755-6e92fc999209" shape="rect"></a>XML Attribute names (listed in the first column) are in camelCase with the first letter in lower case.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_97a42e5d-0c53-42f3-a94e-f82002bb4957" shape="rect"></a>XML Element and XML Attribute names with a set of "&gt;" characters in front of them are nested within the first preceding XML Element with one fewer "&gt;" characters in front of its name. A nested XML Attribute is associated with the immediately enclosing XML Element.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5d307500-046b-47c5-89d3-7b9cd11740cf" shape="rect"></a>The entries in the "Optionality" column have the following interpretations:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_50c6d285-1e90-4124-9242-c8fd80f48057" shape="rect"></a>"R" indicates that the XML Element or XML Attribute is required in all models.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_84bffc26-1ddc-4f69-986d-38d72f6a2514" shape="rect"></a>"C" indicates that the XML Element or XML Attribute is required in all models if the condition stated in the Description is met.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_433f09ba-0718-4ea5-a569-3225b985244d" shape="rect"></a>"O" indicates that the XML Element or XML Attribute is optional.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_99c87ed0-bd2a-47cd-9b18-a0e7adcc2e86" shape="rect"></a>If the XML Element or XML Attribute is nested inside another XML Element, and that enclosing XML Element is not present (i.e., it is defined with an Optionality of "O" and is not present in the XML Infoset, or it is defined with an Optionality of "RC" and is not included in the XML Infoset because the condition was not met), then the nested XML Element or XML Attribute shall not be present in the XML Infoset irrespective of its optionality.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1420919d-44b3-4db3-a69d-dc8fa0ed2bcd" shape="rect"></a>The entries in the "Cardinality" column have the following interpretations:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a7e32366-2cf8-4a40-a37a-9e308ccb594c" shape="rect"></a>"A" indicates that this is represented as an XML Attribute instead of an XML Element, hence has a cardinality of 1 by definition.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_0933d179-01fa-4f80-920c-ef241ab57cd0" shape="rect"></a>"1" indicates that only a single instance of this XML Element is included inside the immediately enclosing XML Element, or at the top level if this XML Element is not nested inside another XML Element.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e8840f59-2a67-492c-8e25-0aebfa3b8d09" shape="rect"></a>"0-n" indicates that zero to n instances of this XML Element are included inside the immediately enclosing XML Element, or at the top level if this XML Element is not nested inside another XML Element.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_9aed43a4-6900-4156-a344-bb1994a3cb88" shape="rect"></a>"1-n" indicates that one to n instances of this XML Element are included inside the immediately enclosing XML Element, or at the top level if this XML Element is not nested inside another XML Element.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d5f1485a-d7cc-4847-a4b4-71f2eb15e55b" shape="rect"></a>Sets of XML Elements and XML Attributes that are often repeated within models may be defined as macros. Macros that may have general applicability are defined in this section. Macros that are unique to a particular model may be defined in the Annex specific that model. When a macro is included within a table, it is as if the contents of the Macro's table were inserted within the table referencing the macro. Any set of "&gt;" characters in front of the directive to include a Macro in the table are prepended to the XML Element and XML Attribute names listed in the Macro's table.</p>
+               </li>
+            </ol>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_10.1" shape="rect"></a>10.1 Coded Terminology</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_9785058b-0e31-400c-8b13-4ea2fba6ed49" shape="rect"></a>Models may make use of coded terminology. The representation of coded terminology in DICOM is described in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Specific terminology of interest, organized in Context Groups in <a href="../part16/PS3.16.html" class="olink" shape="rect">PS3.16</a>, can be referenced using the following macro.</p>
+            <div class="table">
+               <a id="table_10.1-1a" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 10.1-1a. Basic Coded Terminology Macro</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f1ef9dc9-d10a-4367-a285-6bb965d3bb52" shape="rect"></a>Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d81925a5-7754-42e0-baec-af409000b16e" shape="rect"></a>Optionality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_577eb8ca-fcf6-4f81-a874-2d7ebed3d3b0" shape="rect"></a>Cardinality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_868ffae2-3e62-4551-84b8-cf7dd599da5c" shape="rect"></a>Description</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_074ea902-02df-4fa5-b6da-494b899f8023" shape="rect"></a>CodeValue</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aa711c1e-f8f9-4fcb-8426-6ecb1950c395" shape="rect"></a>R</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_499ec1e8-2aa7-4eda-9de8-de68da32ec23" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8c663cff-5279-46b5-ba62-d3fd6cf97df1" shape="rect"></a>The particular code value identifying the referenced term or concept. See <a href="../part03/chapter_8.html#sect_8.1" class="olink" shape="rect">Section 8.1 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                              <p>
+                                 <a id="para_73c570b0-96f4-4b50-b375-957e6551a8d7" shape="rect"></a>The same XML Element CodeValue is used regardless of the length or encoding of the code value. I.e., separate XML elements are not used when the value is obtained from Long Code Value (0008,0119) or URN Code Value (0008,0120) rather than Code Value (0008,0100).</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fdb4d799-cc81-4b3b-adea-3f1a8faf4cda" shape="rect"></a>CodingSchemeDesignator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_267c2dd8-ff3d-4978-94ef-d95ef3c7b739" shape="rect"></a>R</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_07948428-41fb-4db6-beca-e4a42c15bccc" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_15e192cb-d3c9-4c5f-8d5b-c8d6da5a2513" shape="rect"></a>Designates the coding scheme in which the CodeValue is defined. See <a href="../part03/sect_8.2.html" class="olink" shape="rect">Section 8.2 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7db32274-13ff-4e95-a9b7-fabab1560927" shape="rect"></a>CodingSchemeVersion</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a4d8f13-e31a-4961-a032-e49e4f6a5cb9" shape="rect"></a>C</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f385d955-580f-48a1-87da-941583162f5d" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cd99db1e-e6ea-4430-b5d2-dfecf41c8ea7" shape="rect"></a>See <a href="../part03/sect_8.2.html" class="olink" shape="rect">Section 8.2 in <span class="olinkdocname">PS3.3</span>
+                                 </a>. Required if the CodingSchemeDesignator is not sufficient to identify the CodeValue unambiguously. May be present otherwise.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e91e0947-5e7f-4623-8eba-5231a950e913" shape="rect"></a>CodeMeaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eeea049c-8bb4-4254-ab21-d4eff39af424" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0bf41d38-a003-4bcc-91f0-aac8d8646339" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2c7a07d7-65f2-4bc3-b5d1-994fc5c25733" shape="rect"></a>A brief human readable description of what the coded value means. See <a href="../part03/sect_8.3.html" class="olink" shape="rect">Section 8.3 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="table">
+               <a id="table_10.1-1b" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 10.1-1b. Enhanced Coded Terminology Macro</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3649e480-f99f-4069-b0a9-14ba19645ac9" shape="rect"></a>Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_85d47e72-e16b-4536-87cc-b8fc08853570" shape="rect"></a>Optionality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b2907bc6-a6d0-4f41-953c-6887c824ae1b" shape="rect"></a>Cardinality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7d53170e-a753-4fd0-a91c-369f2bc591e6" shape="rect"></a>Description</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ca06f0d5-c2a9-4f90-a9ad-a2899d54a47f" shape="rect"></a>ContextIdentifier</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3ff6fea8-5130-4ed0-8408-402131947151" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ea4768d8-ba30-4ee2-ba0b-c12ba53b228f" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_484323f4-791a-4bae-a2e4-581eb5f1e6c4" shape="rect"></a>Identifies a Context Group defined within a Mapping Resource from which the values of CodeValue and CodeMeaning were selected or have been added as a Private Context Group extension. See <a href="../part03/sect_8.6.html" class="olink" shape="rect">Section 8.6 in <span class="olinkdocname">PS3.3</span>
+                                 </a> and <a href="../part03/sect_8.7.html" class="olink" shape="rect">Section 8.7 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_af8a0873-b7eb-457f-ab1f-900714bbe3c9" shape="rect"></a>ContextUID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7f6c9955-7b0b-4918-b09e-cba927a0932e" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bbea5ba1-faeb-4143-98ab-6953d284f151" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eb10228a-1cca-48b7-adb5-5c26939b9bef" shape="rect"></a>Uniquely identifies the Context Group. See <a href="../part03/sect_8.6.html" class="olink" shape="rect">Section 8.6 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a358d39-a749-4d92-a761-90af8dc13c19" shape="rect"></a>MappingResource</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a363b19-dc18-4c37-a03c-6f1f71703b53" shape="rect"></a>C</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8ebe1785-9f36-4bbd-a186-b177337d82b7" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1b2a2774-18d5-4112-aee8-c487b735e534" shape="rect"></a>See <a href="../part03/sect_8.4.html" class="olink" shape="rect">Section 8.4 in <span class="olinkdocname">PS3.3</span>
+                                 </a>. Required if ContextIdentifier is present.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c573d71e-c334-49e5-8568-c6922e294a72" shape="rect"></a>MappingResourceUID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8f6f4cd9-6157-4ead-8107-ba88787a69f4" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_df504b47-1e2c-407c-a6d1-6c19ce81fd79" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_01b330a6-1eff-4f03-86a1-7d577ab87240" shape="rect"></a>Uniquely identifies the Mapping Resource that defines the Context Group.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9df0fdb8-b299-458f-b56c-42bca2e220c2" shape="rect"></a>MappingResourceName</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b856239b-74a1-44e9-b393-6381cd049e8e" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1ce544f3-04a5-496b-9a96-bf8ac135c057" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_be217ca6-b108-4263-ab29-25a6619d11c0" shape="rect"></a>Name of Mapping Resource like name of an Institution or Organization.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23743bf8-0692-4062-92db-7854644f0d0e" shape="rect"></a>ContextGroupVersion</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fdc89174-df9a-4954-b741-22114ce2e7e0" shape="rect"></a>C</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c77d2c8e-f34f-4570-85d0-ba85c01b1108" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_82f12656-7c0a-4718-95de-cd4a15300fe9" shape="rect"></a>See <a href="../part03/sect_8.5.html" class="olink" shape="rect">Section 8.5 in <span class="olinkdocname">PS3.3</span>
+                                 </a>. Required if ContextIdentifier is present.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b74e0011-a3fa-4f4d-8e04-c41d199a0742" shape="rect"></a>ContextGroupExtensionFlag</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e029c45e-814e-42cb-be41-13e832591075" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_11a4c63b-237c-4e3b-aaff-048ad9604ef3" shape="rect"></a>0-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4a2ab442-aec1-4b8e-8d48-dd540f9e2ecd" shape="rect"></a>Indicates whether the Coded Term is selected from a private extension of the Context Group identified in the ContextIdentifier. See <a href="../part03/sect_8.7.html" class="olink" shape="rect">Section 8.7 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                              <p>
+                                 <a id="para_6e37185b-e03e-41ef-9fca-42ac3666ee59" shape="rect"></a>Enumerated Values:</p>
+                              <p>
+                                 <a id="para_4279c8a2-a6bc-4f9f-8661-d10d95cef8eb" shape="rect"></a>"Y"</p>
+                              <p>
+                                 <a id="para_1e9baf7c-de84-4ba6-ae24-968ccad1daf8" shape="rect"></a>"N"</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2fcd52f3-6431-48c3-aa6b-b01cfb1e953a" shape="rect"></a>ContextGroupLocalVersion</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_21cdf24a-06a6-461e-93d9-7d99036a69fb" shape="rect"></a>C</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_96905295-f223-4cd0-9eec-cccdae3de5c9" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_97282976-433a-4448-902b-18789dd9841c" shape="rect"></a>See <a href="../part03/sect_8.7.html" class="olink" shape="rect">Section 8.7 in <span class="olinkdocname">PS3.3</span>
+                                 </a>. Required if the value of ContextGroupExtensionFlag is "Y".</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_340e00e2-a846-4070-8bc2-73ab0ded51bb" shape="rect"></a>ContextGroupExtensionCreatorUID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_81937289-650d-4aab-b136-aa61a2122b7c" shape="rect"></a>C</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_247c410e-ef70-4311-ab9e-238bb9ebb133" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13b7a0d6-bfac-49f0-b97e-625ca9d15505" shape="rect"></a>Identifies the person or organization who created an extension to the Context Group. See <a href="../part03/sect_8.7.html" class="olink" shape="rect">Section 8.7 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                              <p>
+                                 <a id="para_6ec925d7-0d84-429e-99cc-385285fc739b" shape="rect"></a>Required if the value of contextGroupExtensionFlag is "Y".</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="table">
+               <a id="table_10.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 10.1-1. Coded Terminology Macro</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_153779d4-ecba-4546-a739-e74f5859fd2e" shape="rect"></a>Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ae91176c-776e-42a7-832b-f4806270bc56" shape="rect"></a>Optionality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_274b141a-0bf2-4601-a880-aaf184655744" shape="rect"></a>Cardinality</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e4e6e2c3-89ef-4aa3-912f-5b76375930e3" shape="rect"></a>Description</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <p>
+                                 <a id="para_032a2da8-b98a-4f1e-a446-abe370c17cdd" shape="rect"></a>
+                                 <span class="italic">BASIC CODED ENTRY ATTRIBUTES</span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <span class="italic">Include <a class="xref" href="chapter_10.html#table_10.1-1a" title="Table 10.1-1a. Basic Coded Terminology Macro" shape="rect">Table 10.1-1a</a>
+                              </span>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4bfed16e-6208-4732-93c6-fa936437aa73" shape="rect"></a>DicomAttribute that encodes EquivalentCodeSequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e8777da7-23d2-44b3-8ce4-852fdc433849" shape="rect"></a>O</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4d45e044-3f0b-43b8-96c9-71aba88ce3ae" shape="rect"></a>0-1 with 1-n Item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6b590eae-0d19-46d2-b00c-34fa3053fe74" shape="rect"></a>Codes that are considered equivalent by the creating system.</p>
+                              <p>
+                                 <a id="para_52b10eba-9912-4415-a818-9c0fb2c723c2" shape="rect"></a>See <a href="../part03/sect_8.9.html" class="olink" shape="rect">Section 8.9 in <span class="olinkdocname">PS3.3</span>
+                                 </a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <span class="italic">&gt;Include <a class="xref" href="chapter_10.html#table_10.1-1a" title="Table 10.1-1a. Basic Coded Terminology Macro" shape="rect">Table 10.1-1a</a>
+                              </span>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <span class="italic">&gt;Include <a class="xref" href="chapter_10.html#table_10.1-1b" title="Table 10.1-1b. Enhanced Coded Terminology Macro" shape="rect">Table 10.1-1b</a>
+                              </span>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <p>
+                                 <a id="para_fe3b2ef5-7e56-4fe8-81f3-0a3450ff9cae" shape="rect"></a>
+                                 <span class="italic">ENHANCED ENCODING MODE</span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <span class="italic">Include <a class="xref" href="chapter_10.html#table_10.1-1b" title="Table 10.1-1b. Enhanced Coded Terminology Macro" shape="rect">Table 10.1-1b</a>
+                              </span>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.15.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.15 XPathNodeType </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.2 Person Name Components</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A.5.2 General Message Format Conventions</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.15.html" title="PS3.15" />
+      <link rel="up" href="sect_A.5.html" title="A.5 Audit Trail Message Format Profile" />
+      <link rel="prev" href="sect_A.5.html" title="A.5 Audit Trail Message Format Profile" />
+      <link rel="next" href="sect_A.5.2.2.html" title="A.5.2.2 AlternativeUserID" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024a - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A.5.2 General Message Format Conventions <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A.5 Audit Trail Message Format Profile</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.5.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.15.html" shape="rect">PS3.15</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Secure Use Profiles (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_A.5.html" shape="rect">Audit Trail Message Format Profile</a>
+         </span> &gt; <span class="breadcrumb-node">General Message Format Conventions</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_A.5.2" shape="rect"></a>A.5.2 General Message Format Conventions</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4764a4fc-01bc-48ba-921b-fd7eb84abf41" shape="rect"></a>The following table lists the primary fields from the message schema specified in A.5.1, with additional instructions, conventions, and restrictions on how DICOM applications shall fill in the field values.
+    The field names are leaf elements and attributes that are in the DICOM Audit Message Schema (see <a class="xref" href="sect_A.5.html#sect_A.5.1" title="A.5.1 DICOM Audit Message Schema" shape="rect">Section A.5.1</a>).
+    Note that these fields may be enclosed in other XML elements, as specified by the schema.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_4139839c-db23-401d-a650-9fd7d94615d0" shape="rect"></a>This schema, codes, and content were originally derived from <a class="xref" href="chapter_2.html#biblio_RFC_3881" title="Security Audit and Access Accountability Message - XML Data Definitions for Healthcare Applications" shape="rect">[<abbr class="abbrev">RFC 3881</abbr>]</a>.
+      <a class="xref" href="chapter_2.html#biblio_RFC_3881" title="Security Audit and Access Accountability Message - XML Data Definitions for Healthcare Applications" shape="rect">[<abbr class="abbrev">RFC 3881</abbr>]</a> is not being maintained or updated by the IETF, and has gradually diverged from the DICOM schema and codes.
+      Other documents exist that refer to <a class="xref" href="chapter_2.html#biblio_RFC_3881" title="Security Audit and Access Accountability Message - XML Data Definitions for Healthcare Applications" shape="rect">[<abbr class="abbrev">RFC 3881</abbr>]</a> as the underlying standard.
+      <a class="xref" href="chapter_2.html#biblio_RFC_3881" title="Security Audit and Access Accountability Message - XML Data Definitions for Healthcare Applications" shape="rect">[<abbr class="abbrev">RFC 3881</abbr>]</a> does not include corrections and additions to the audit schema made in DICOM since 2004.</p>
+         </div>
+         <p>
+            <a id="para_dd19b47b-01e3-47ad-ad33-49e992412a89" shape="rect"></a>In subsequent tables the following notation Is used for optionality:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">M</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_634e71c9-2490-40e8-882e-c7bbebd1e445" shape="rect"></a>This element or attribute is mandatory</p>
+               </dd>
+               <dt>
+                  <span class="term">U</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_31308398-8253-40fc-82dd-d4bea3944ed2" shape="rect"></a>This element or attribute is user optional. The creator may include it or omit it.</p>
+               </dd>
+               <dt>
+                  <span class="term">MC</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_19b93d19-6b06-4073-af48-73afc82f1440" shape="rect"></a>This element or attribute is mandatory if a specified condition is true.</p>
+               </dd>
+               <dt>
+                  <span class="term">UC</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_0f45c097-3333-4047-b471-79d9cc45c27f" shape="rect"></a>This element or attribute may be present only if a specified condition is true, if the user chooses to include it.</p>
+               </dd>
+            </dl>
+         </div>
+         <div class="table">
+            <a id="table_A.5.2-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.5.2-1. General Message Format</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1"></th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f50cd26e-e929-4bd8-bf03-c6859e6e3965" shape="rect"></a>Field Name</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7b784edc-c9ff-4321-a2fd-3dc819196755" shape="rect"></a>Opt.</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0a3d7c06-c980-4040-b2cf-3fb4a82d1b19" shape="rect"></a>Description</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_84ced2d9-55b1-4047-b30f-d18bd104c3d5" shape="rect"></a>Additional Conditions on Field Format/Value</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="5" colspan="1">
+                           <p>
+                              <a id="para_7f7eec29-3077-4ce0-b779-ff2058231bbe" shape="rect"></a>Event</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_db3ad5e7-734a-49b7-b101-a4d6017d1b09" shape="rect"></a>EventID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c88dcaf9-23cd-49fa-b735-4f7e85edc173" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_527c2e77-f638-46de-8e9b-5ed253cd7c5c" shape="rect"></a>Identifier for a specific audited event.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e4e57964-8ff2-48f2-ba57-da144e409a89" shape="rect"></a>The identifier for the family of event. E.g., "User Authentication".</p>
+                           <p>
+                              <a id="para_b3073941-834e-404e-94fa-f8036e10f924" shape="rect"></a>D<a href="../part16/sect_CID_400.html" class="olink" shape="rect">CID 400 “Audit Event ID”</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_00da466f-ebf2-4e7d-ae49-a63ba62d4bee" shape="rect"></a>EventActionCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ef8e53d3-599f-4ab2-ab2a-e1c168d56ed3" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70b3b9bf-15f3-4ca7-b6b6-841d5320d345" shape="rect"></a>Indicator for type of action performed during the event that generated the audit.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <div class="variablelist">
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">C</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a57bb73c-bca7-4309-8580-19d6e7d5d14c" shape="rect"></a>Create a new database object, such as Placing an Order</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">R</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_190046a1-7333-4dbf-8c19-fac5f1afe41f" shape="rect"></a>Read/View/Print/Query Display or print data, such as a Doctor Census</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">U</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_e210e59b-97d8-4015-b68c-5189617f9501" shape="rect"></a>Update data, such as Revise Patient Information</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">D</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_8f60eb06-67da-428e-9c93-92afc64a6547" shape="rect"></a>Delete items, such as a master file record</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">E</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_96832d09-563c-4680-9a84-d465059cd82d" shape="rect"></a>Execute a system or application function such as log-on, program execution, or use of an object's method</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8702b14c-f50f-45f0-b134-518d674a7e33" shape="rect"></a>EventDateTime</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_abfbae00-1eb8-45cc-9e5f-d7b6bf293bb6" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ca12292-2392-4549-865b-d29f5ca6295a" shape="rect"></a>Universal coordinated time (UTC), i.e., a date/time specification that is unambiguous as to local time zones.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1e60b9c1-b572-4cbf-8998-e25a63e751ec" shape="rect"></a>The time at which the audited event occurred.See <a class="xref" href="sect_A.5.2.5.html" title="A.5.2.5 EventDateTime" shape="rect">Section A.5.2.5</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_da3ce126-ed75-4577-8fa0-8bc58efab0bd" shape="rect"></a>EventOutcomeIndicator</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c3707a09-45c1-4b17-bdb0-345b5dbc0032" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_297f815e-7db6-4960-8999-2ecaf6eb2a98" shape="rect"></a>Indicates whether the event succeeded or failed.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <div class="variablelist">
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">0</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_c3a60334-b7f6-490f-932a-3c00f8f1efa3" shape="rect"></a>Success</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">4</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_8265ed6e-85dd-4547-8562-df3a9a78114a" shape="rect"></a>Minor failure; action restarted, e.g., invalid password with first retry</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">8</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_720aacd7-41f5-4be3-85e5-0be51dc7a344" shape="rect"></a>Serious failure; action terminated, e.g., invalid password with excess retries</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">12</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_2c73f1e8-82b4-4085-a300-1a2355534a23" shape="rect"></a>Major failure; action made unavailable, e.g., user account disabled due to excessive invalid log-on attempts</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                           <p>
+                              <a id="para_479d1fb0-68fe-49e5-9760-615a4f16b278" shape="rect"></a>When a particular event has some aspects that succeeded and some that failed, then one message shall be generated for successful actions and one message for the failed actions (i.e., not a single message with mixed results).</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4bad9146-33bc-490e-a883-2aa1238f692c" shape="rect"></a>EventTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1214b70b-ac4b-4e05-8625-014f0875092e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a3dec6f8-1af5-44db-b74c-70c23a17e942" shape="rect"></a>Identifier for the category of event.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4ff51559-4e5a-4861-b539-74f0f77cf8d0" shape="rect"></a>The specific type(s) within the family applicable to the event, e.g., "User Login".</p>
+                           <p>
+                              <a id="para_c8fd2466-a658-49e8-956e-4bdb112ed6cf" shape="rect"></a>D<a href="../part16/sect_CID_401.html" class="olink" shape="rect">CID 401 “Audit Event Type Code”</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="7" colspan="1">
+                           <p>
+                              <a id="para_4c2d9d6c-f55f-4488-b5ea-c784777ff6b4" shape="rect"></a>Active Participant (multi-valued)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_532d783e-996b-46f5-ab84-dc0a0d21db33" shape="rect"></a>UserID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59f311c6-84c6-49ec-9ca3-f70f93813c72" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_220b51c9-60a0-47cc-a7ed-edb810ae00c7" shape="rect"></a>Unique identifier for the user actively participating in the event.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_44aab9fe-4214-4685-bcba-f0e5e75a3529" shape="rect"></a>See <a class="xref" href="sect_A.5.2.html#sect_A.5.2.1" title="A.5.2.1 UserID" shape="rect">Section A.5.2.1</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_688d5798-b223-4ccd-834d-809d07331e66" shape="rect"></a>AlternativeUserID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6f793c6a-68b9-4057-a4b4-3fbc39588928" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_949ba071-1644-4f93-9055-886809d13c3c" shape="rect"></a>Alternative unique identifier for the user.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8bbf337c-6f6d-4306-b167-74aebe669334" shape="rect"></a>See <a class="xref" href="sect_A.5.2.2.html" title="A.5.2.2 AlternativeUserID" shape="rect">Section A.5.2.2</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f86fdfdc-0ad1-4b25-b414-c40cdbc9de97" shape="rect"></a>UserName</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b1ce24d1-493c-4969-baee-a6a60ad39f33" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9cbb4fd1-93ff-40b8-8712-e53ec0f82f15" shape="rect"></a>The human-meaningful name for the user.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dd3c2805-f165-4976-9484-cbf0a8572466" shape="rect"></a>See <a class="xref" href="sect_A.5.2.3.html" title="A.5.2.3 UserName" shape="rect">Section A.5.2.3</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_96670693-7129-489a-9618-c2bac09fe63e" shape="rect"></a>UserIsRequestor</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_54eeeb40-60a1-4a1c-9750-7c9f0d77f7d5" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5e99d13e-3ad6-4898-a441-241ca87cae95" shape="rect"></a>Indicator that the user is or is not the requestor, or initiator, for the event being audited.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59f78965-ac13-48eb-b895-3c88b0a26581" shape="rect"></a>Used to identify which of the participants initiated the transaction being audited. If the audit source cannot determine which of the participants is the requestor, then the field shall be present with the value FALSE in all participants.</p>
+                           <p>
+                              <a id="para_ef80cded-b032-4ffa-86c9-f241f7328740" shape="rect"></a>The system shall not identify multiple participants as UserIsRequestor. If there are several known requestors, the reporting system shall pick only one as UserIsRequestor.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0ca0ce87-5be0-4a38-b5fb-c7443662bb1f" shape="rect"></a>RoleIDCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_95c4ca2f-8cad-4cb3-ba22-6703363405db" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c49195d4-04ca-4e4e-95ce-d421be2abecb" shape="rect"></a>Specification of the role(s) the user plays when performing the event, as assigned in role-based access control security.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1985aff5-244e-4590-92d7-c75a1a973ca1" shape="rect"></a>D<a href="../part16/sect_CID_402.html" class="olink" shape="rect">CID 402 “Audit Active Participant Role ID Code”</a>
+                           </p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_92cee170-01e2-4db0-b1fd-8f14bd54edb6" shape="rect"></a>Usage of this field is refined in the individual message descriptions below. Other additional roles may also be present, since this is a multi-valued field.</p>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_416158ba-d94d-4af1-a25e-2b5a18e6f235" shape="rect"></a>NetworkAccessPointTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e002d700-67ab-49ee-af2e-cb38b4dc80f1" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3f3c64f5-d3ce-40a1-bac5-61afdd84e245" shape="rect"></a>An identifier for the type of network access point.</p>
+                        </td>
+                        <td align="left" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_9032548b-51dc-4ce9-b0f9-543669b6b167" shape="rect"></a>See <a class="xref" href="sect_A.5.2.4.html" title="A.5.2.4 NetworkAccessPointTypeCode, NetworkAccessPointID" shape="rect">Section A.5.2.4</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_30cf6dc2-49d1-4792-b03b-30222700060b" shape="rect"></a>NetworkAccessPointID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e921a06b-e7c3-42a8-b0d1-cf63115a574e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c58a5044-8be1-48ba-a17d-571954a58f42" shape="rect"></a>An identifier for the network access point of the user device This could be a device id, IP address, or some other identifier associated with a device.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_2086c72a-ea92-433a-8f35-1e1ad5624229" shape="rect"></a>Audit Source</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a56cc657-5a3c-401f-a1a4-93352433faf7" shape="rect"></a>AuditEnterpriseSiteID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d4813d4-75d5-4de0-9762-f1884d38ec7e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8c3af334-6433-45b1-b441-34f1c9ce2a1a" shape="rect"></a>Logical source location within the healthcare enterprise network, e.g., a hospital or other provider location within a multi-entity provider group.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9bb86700-1e78-467a-a8cd-1582f434115e" shape="rect"></a>Serves to further qualify the Audit Source ID, since Audit Source ID is not required to be globally unique.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_22dd2c94-e388-4008-82d7-bfa567eb9160" shape="rect"></a>AuditSourceID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b3c922b6-116a-435b-8e66-cb3444a36469" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f978c2e6-bcba-4666-b459-63ede2f54577" shape="rect"></a>Identifier of the source.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_44145990-6299-471a-98d4-ac03ff73f9af" shape="rect"></a>The identification of the system that detected the auditable event and created this audit message. Although often the audit source is one of the participants, it could also be an external system that is monitoring the activities of the participants (e.g., an add-on audit-generating device).</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9499d699-2d76-4147-9d67-f5036939f202" shape="rect"></a>AuditSourceTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_47d13ea7-06d4-4fe9-8943-e830a3fe4ddd" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3af1282e-57c5-47c8-a6b6-6825fb5dbe80" shape="rect"></a>Code specifying the type of source.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1c9733d9-8d2b-4ca6-8e68-aa9be47e2866" shape="rect"></a>See <a class="xref" href="sect_A.5.html#sect_A.5.1.2.1" title="A.5.1.2.1 Audit Source Type Code" shape="rect">Section A.5.1.2.1</a>.</p>
+                           <p>
+                              <a id="para_2531abb4-bd0a-4350-bfd4-f6e82c1c1ccf" shape="rect"></a>E.g., an acquisition device might use "2" (data acquisition device), a PACS/RIS system might use "4 "(application server process).</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="17" colspan="1">
+                           <p>
+                              <a id="para_6b158fa4-7268-4a2c-b643-7ff652c493e5" shape="rect"></a>Participant Object (multi-valued)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_46a30de3-a00b-4507-8920-f59d1da08105" shape="rect"></a>ParticipantObjectTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ef5b8bff-9ba6-4e38-bf5e-d498de96d596" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_453d51b5-f6f2-4d08-a97a-f152e9694f50" shape="rect"></a>Code for the participant object type being audited. This value is distinct from the user's role or any user relationship to the participant object.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <div class="variablelist">
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">1</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_b6913d57-7b79-4909-abd6-9ab58480aa8b" shape="rect"></a>Person</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">2</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_dcb2f459-2c6e-43d5-8dd2-eb89e593fad8" shape="rect"></a>System Object</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">3</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ca428a79-2893-4731-9db4-6241f6a2cc27" shape="rect"></a>Organization</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">4</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6fa8a030-bcbf-4b36-b8cb-41c344ffecd3" shape="rect"></a>Other</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dc2f8dbb-5643-492f-ace7-1f186b88c389" shape="rect"></a>ParticipantObjectTypeCodeRole</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cc62814b-dd02-4e2d-b63f-9df701740d5e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_36cd0006-1dd5-4380-9bea-6f62a8757134" shape="rect"></a>Code representing the functional application role of Participant Object being audited.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a0de1edf-ad90-444e-b5df-26331e013397" shape="rect"></a>See <a class="xref" href="sect_A.5.html#sect_A.5.1.2.2" title="A.5.1.2.2 Participant Object Type Code Role" shape="rect">Section A.5.1.2.2</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_542bf07b-238d-4261-bc49-8a7468f4be12" shape="rect"></a>ParticipantObjectDataLifeCycle</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f91e6d39-b30f-44c7-9704-7cb4edc311fe" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5330b033-3791-4ad1-a449-daf348c2e1f1" shape="rect"></a>Identifier for the data life-cycle stage for the participant object. This can be used to provide an audit trail for data, over time, as it passes through the system.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3116a5d7-6ad1-4639-b205-59608a8f9ed1" shape="rect"></a>See <a class="xref" href="sect_A.5.html#sect_A.5.1.2.3" title="A.5.1.2.3 Participant Object Data Life Cycle" shape="rect">Section A.5.1.2.3</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d43d73e0-8118-46f8-8339-753b4f9fef42" shape="rect"></a>ParticipantObjectIDTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e650982c-d8ad-48c1-b19c-08b076090c0c" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_29d33046-fed7-44a6-bb40-acb07a3ff8da" shape="rect"></a>Describes the identifier that is contained in Participant Object ID.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3084b452-694e-4830-b803-1e22f4b7704f" shape="rect"></a>See <a class="xref" href="sect_A.5.html#sect_A.5.1.2.4" title="A.5.1.2.4 Participant Object ID Type Code" shape="rect">Section A.5.1.2.4</a> and <a href="../part16/sect_CID_404.html" class="olink" shape="rect">CID 404 “Audit Participant Object ID Type Code”</a>
+                           </p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_58abe1ba-2824-452f-85a8-c831c67168c9" shape="rect"></a>Usage of this field is refined in the individual message descriptions below. Multiple roles may also be present, since this is a multi-valued field.</p>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_76146d6d-e283-4e99-885a-683d7fb434d5" shape="rect"></a>ParticipantObjectSensitivity</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c6bcf165-6ed1-4a5d-8c2b-f3aab8a5a7da" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e5a40829-24e6-4064-9026-2d88eb8a503c" shape="rect"></a>Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status, or similar topics.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e36acc7d-1062-42f7-a1d0-5cafa1898f07" shape="rect"></a>Locally defined terms.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c312a956-498b-4a22-8a43-2307856c14bb" shape="rect"></a>ParticipantObjectID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b0ed094-f199-4923-8c77-3acd9e212480" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8411c7ca-0109-44d7-834f-f88436aeaace" shape="rect"></a>Identifies a specific instance of the participant object.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_441b3106-b9fe-4259-bd37-fe6044809f7c" shape="rect"></a>Usage refined by individual message descriptions</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49b88e9e-2ac7-4860-8cce-60678e5d9805" shape="rect"></a>ParticipantObjectName</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d2fb1e23-47d0-4938-b84b-5b8fa327667e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b3990fcd-d954-4345-88c5-913618d45892" shape="rect"></a>An instance-specific descriptor of the Participant Object ID audited, such as a person's name.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f3581154-84cc-4db1-9f29-d643c9c99f93" shape="rect"></a>Usage refined by individual message descriptions</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_08917a5c-3a97-4465-b13a-a9acd611dbf4" shape="rect"></a>ParticipantObjectQuery</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b17c5038-65e7-4187-addc-df30e6ea8440" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d30f4aab-1f78-4598-82f0-853c76d6d0e6" shape="rect"></a>The actual query for a query-type participant object.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c531cc2e-b8a2-4208-8406-8a0fe79aef43" shape="rect"></a>Usage refined by individual message descriptions</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8a3b63b5-fd3e-42f1-812c-fb9a9dbc1b83" shape="rect"></a>ParticipantObjectDetail</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8762e31a-4ce8-4e1e-bf3a-a20ae904f5ad" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a5ee031c-014a-41e8-83d0-cb2e32c218a6" shape="rect"></a>Implementation-defined data about specific details of the object accessed or used.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fd2ecc89-3bf7-47ef-8479-43e18d375ca8" shape="rect"></a>
+                           </p>
+                           <p>
+                              <a id="para_41e8307b-f970-4e0b-9821-a76559d28c42" shape="rect"></a>This element is a Type-value pair. The "type" attribute is an implementation-defined text string. The "value" attribute is base 64 encoded data. The value is suitable for conveying binary data.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a69c211-2c13-4416-86a8-f97e8d5d1304" shape="rect"></a>SOPClass</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_735dfdc8-065e-4189-baea-c8eee94c07e0" shape="rect"></a>MC</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2c055e43-efbf-4ea5-86d9-92b0bedca859" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e90d1cee-0915-4868-a69e-98cb49b2dfb9" shape="rect"></a>The UIDs of SOP classes referred to in this participant object.</p>
+                           <p>
+                              <a id="para_e6b380c3-3ff7-470d-8c99-5fecee51fe2d" shape="rect"></a>Required if ParticipantObjectIDTypeCode is <a href="../part16/chapter_D.html#DCM_110180" class="olink" shape="rect">(110180, DCM, "Study Instance UID")</a> and any of the optional fields (AccessionNumber, ContainsMPPS, NumberOfInstances, ContainsSOPInstances,Encrypted,Anonymized) are present in this Participant Object. May be present if ParticipantObjectIDTypeCode is <a href="../part16/chapter_D.html#DCM_110180" class="olink" shape="rect">(110180, DCM, "Study Instance UID")</a> even though none of the optional fields are present.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7dec2a2b-fd91-4d4e-b7ab-6b9120d10d55" shape="rect"></a>Accession</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6aeaf8e9-4423-47e5-a195-8b2263c7baf2" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e45ca9bd-2df1-441a-bb7c-3b9398a4e1d1" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_12b11f80-7ff2-430f-89a4-7dc46c5b5f59" shape="rect"></a>An Accession Number(s) associated with this participant object.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_588fc1d9-c8b3-42da-8799-4c29275edd89" shape="rect"></a>MPPS</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_384e4ab4-2331-4b1a-8a86-2414b26172c1" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8d4e77ca-482b-44d4-80ee-c39c74496ccf" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3c4a6c3e-317c-40c2-864a-03280946affc" shape="rect"></a>An MPPS Instance UID(s) associated with this participant object.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b1367d36-fbd3-498f-9fb8-6387a5449019" shape="rect"></a>NumberOfInstances</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_db4eb9bb-c8f5-414e-9cd9-7e9f0df91ca4" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fee41b78-d1e5-428a-887e-5e27187bf40c" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dccfe881-a71b-44dd-8512-ee53a31a67ab" shape="rect"></a>The number of SOP Instances referred to by this participant object.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7cc2d323-d3e8-4a18-b90d-7b13533d62ca" shape="rect"></a>Instance</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_52f782e1-1120-488d-9823-3d37b201eea8" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_044979e4-0085-412f-8eb2-8c2e3ffe8a5e" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7d365512-5c81-4713-becf-8bf253d00848" shape="rect"></a>SOP Instance UID value(s)</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_18bd5f0b-7f2f-4dd6-8a31-d7ffdbe73365" shape="rect"></a>Including the list of SOP Instances can create a fairly large audit message. Under most circumstances, the list of SOP Instance UIDs is not needed for audit purposes.</p>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2be7a081-6c87-4abe-b7fa-6584722f2af1" shape="rect"></a>Encrypted</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8fbe630a-baf2-45d8-af57-28cc6a961afe" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_18e22efd-24ae-44d5-874f-6033c731dd01" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_790b6ac7-2db5-4bec-b9e9-294b6d58e69a" shape="rect"></a>A single value of True or False indicating whether or not the data was encrypted.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_2a0009c5-ddf4-458d-becb-7e35fceea373" shape="rect"></a>If there was a mix of encrypted and non-encrypted data, then create two event reports.</p>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_963a59c5-e10e-4909-902a-722c2f631182" shape="rect"></a>Anonymized</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_32c90e85-5f5b-4ef5-9d20-a1d21c822684" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ce7b1ea-6ec9-4a77-991c-938969027a7d" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dda76d79-3497-4245-b5d1-3fd9a4fde535" shape="rect"></a>A single value of True or False indicating whether or not all patient identifying information was removed from the data</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7c5b2f40-ffd7-44a3-8546-32df0ba9c6c5" shape="rect"></a>ParticipantObjectContainsStudy</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9808065e-55b6-4fc7-996a-a84a05f23ea1" shape="rect"></a>U</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f588619d-610d-4ae5-893f-c38ef0b55e46" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f9fabd86-00df-4871-9e0d-721bd62f990e" shape="rect"></a>A Study Instance UID, which may be used when the ParticipantObjectIDTypeCode is not <a href="../part16/chapter_D.html#DCM_110180" class="olink" shape="rect">(110180, DCM, "Study Instance UID")</a>.</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_A.5.2.1" shape="rect"></a>A.5.2.1 UserID</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_66a88433-eb1c-4f61-ba45-ec52c4251afb" shape="rect"></a>If the participant is a person, then the User ID shall be the identifier used for that person on this particular system, in the form of loginName@domain-name.</p>
+            <p>
+               <a id="para_a9854eb8-a3a1-4583-9094-358f899d4ef2" shape="rect"></a>If the participant is an identifiable process, the UserID selected shall be one of the identifiers used in the internal system logs. For example, the User ID may be the process ID as used within the local operating system in the local system logs. If the participant is a node, then User ID may be the node name assigned by the system administrator. Other participants such as threads, relocatable processes, web service end-points, web server dispatchable threads, etc. will have an appropriate identifier. The implementation shall document in the conformance statement the identifiers used, see <a class="xref" href="sect_A.6.html" title="A.6 Audit Trail Message Transmission Profile - SYSLOG-TLS" shape="rect">Section A.6</a>. The purpose of this requirement is to allow matching of the audit log identifiers with internal system logs on the reporting systems. .</p>
+            <p>
+               <a id="para_f79205fb-3c37-4814-935f-5aa129274796" shape="rect"></a>When importing or exporting data, e.g., by means of media, the UserID field is used both to identify people and to identify the media itself. When the Role ID Code is EV<a href="../part16/chapter_D.html#DCM_110154" class="olink" shape="rect">(110154, DCM, "Destination Media")</a> or EV<a href="../part16/chapter_D.html#DCM_110155" class="olink" shape="rect">(110155, DCM, "Source Media")</a>, the UserID may be:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="a">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3132cdfd-616a-40cc-bdaa-5a8164fee101" shape="rect"></a>a URI (the preferred form) identifying the source or destination,</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e64ca8e5-35d3-4261-bb58-ccf407aaf2c5" shape="rect"></a>an email address of the form "mailto:user@address"</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_efcb2388-dd8c-40a8-aa10-227e4fbc5212" shape="rect"></a>a description of the media type (e.g., DVD) together with a description of its identifying label, as a free text field,</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_925e1c29-00ba-4581-9d61-d447f42bb8ca" shape="rect"></a>a description of the media type (e.g., paper, film) together with a description of the location of the media creator (i.e., the printer).</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_f52fa99f-0778-4d89-af02-4e5762df8959" shape="rect"></a>The UserID field for Media needs to be highly flexible given the large variety of media and transports that might be used.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_A.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.5.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">A.5 Audit Trail Message Format Profile </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.15.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.5.2.2 AlternativeUserID</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024a - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

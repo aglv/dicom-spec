@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3.4.4 Response Pagination</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.3.4.html" title="8.3.4 Search Query Parameters" />
+      <link rel="prev" href="sect_8.3.4.3.html" title="8.3.4.3 Attributes Included in the Response" />
+      <link rel="next" href="sect_8.3.4.5.html" title="8.3.4.5 Empty Value Matching" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3.4.4 Response Pagination <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.4.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.4.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.3.4 Search Query Parameters</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.4.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.3.html" shape="rect">Query Parameters</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.3.4.html" shape="rect">Search Query Parameters</a>
+         </span> &gt; <span class="breadcrumb-node">Response Pagination</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_8.3.4.4" shape="rect"></a>8.3.4.4 Response Pagination</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_5e08265b-56eb-4142-81be-0afd8b408620" shape="rect"></a>The following two parameters can be used to paginate a search response that might contain more matches than can readily be handled.</p>
+         <pre class="programlisting" xml:space="preserve">offset = "offset" "=" uint</pre>
+         <p>
+            <a id="para_13300589-9be5-4cb6-a559-2fb1062703bd" shape="rect"></a>A single parameter specifies the number of matches the origin server shall skip before the first returned match. The "offset" parameter value is an unsigned integer (uint). If this Query Parameter is not present, its value defaults to 0.</p>
+         <pre class="programlisting" xml:space="preserve">limit = "limit" "=" uint</pre>
+         <p>
+            <a id="para_1256fe54-be78-422c-93c6-0b7d797838eb" shape="rect"></a>A single parameter specifies the maximum number of matches the origin server shall return in a single response. The "limit" parameter value is an unsigned integer. If this parameter is not present, its value is determined as specified in <a class="xref" href="sect_8.3.4.4.html#sect_8.3.4.4.1" title="8.3.4.4.1 Paging Behavior" shape="rect">8.3.4.4.1</a>.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_8.3.4.4.1" shape="rect"></a>8.3.4.4.1 Paging Behavior</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_027877dd-7e8e-4bc4-8239-b1161c3ba2f6" shape="rect"></a>The search requests shall be idempotent, that is, two separate search requests with the same Target Resource, Query Parameters, and header fields shall return the same ordered list of matches, if the set of matches on the origin server has not changed.</p>
+            <p>
+               <a id="para_08358468-7558-42eb-b501-e1ea195c6ccb" shape="rect"></a>Given the following definitions:</p>
+            <div class="informaltable">
+               <table frame="void" rules="none">
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">offset</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_68b54ebe-3e42-4abe-9532-79bebcfdb190" shape="rect"></a>the value of the "offset" query parameter.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">limit</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4e0a126c-dc59-404b-8ea8-90e1528b4d67" shape="rect"></a>the value of the "limit" query parameter. For a Repository Query, this is the value of Maximum Number of Records (0008,0429).</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">maxResults</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_00ca7d3f-6b77-4a84-866d-10116b18526c" shape="rect"></a>the maximum number of results the origin server allows in a single response (i.e., system limit).</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">matches</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4b0a3af4-5390-4a99-bde8-96005494434e" shape="rect"></a>the number of matches resulting from the search. If Prior Record Key (0008,041C) is provided in the query, then the value will be the number of matches after the record identified by the attribute value.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">results</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2e918892-9564-49b9-bfd1-a45abd86ebf5" shape="rect"></a>the number of results returned in the response. It is equal to the minimum of:</p>
+                                        <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: disc; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_837537e9-005f-4503-a83f-fd7ae7e9931d" shape="rect"></a>The maximum of zero and the value of matches - offset</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_1896a2e1-0b60-483b-93e7-3bdad3918e7b" shape="rect"></a>The value of maxResults</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_988d2fa0-bd48-4468-ace2-3978989d5f5a" shape="rect"></a>The value of limit</p>
+                                 </li>
+                              </ul>
+                           </div>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">remaining</pre>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_5f8400a6-f272-4fe8-8f60-2671d91aae6c" shape="rect"></a>the number of matches that were not yet returned.</p>
+                                    </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_48b6ce91-b6d7-4a09-8328-fd9b01adb07a" shape="rect"></a>The results returned in the response are determined as follows:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3c040ce6-8f90-4c23-920b-ec8654c0a169" shape="rect"></a>If (results &lt;= 0) then there are no matches, and a 204 (No Content) response shall be returned with an empty payload.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6ee5b6bd-9fe6-470a-85cc-a98d735233a3" shape="rect"></a>Otherwise, a 200 (OK) response shall be returned with a payload containing the results.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c110adae-c52c-4c58-8637-35e56449f411" shape="rect"></a>If (remaining &gt; 0) the response shall include a Warning header field (see <a class="xref" href="chapter_2.html#biblio_RFC_7234" title="Hypertext Transfer Protocol (HTTP/1.1): Caching" shape="rect">[<abbr class="abbrev">RFC7234</abbr>]</a>
+                                    <a class="link" href="http://tools.ietf.org/html/rfc7234#section-5.5" target="_top" shape="rect">Section 5.5</a>) containing the following:</p>
+                     <pre class="programlisting" xml:space="preserve">Warning: 299 &lt;service&gt;: There are &lt;remaining&gt; additional results that can be requested</pre>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_bb6183a5-4dd9-4095-add5-e8e60d1d48e5" shape="rect"></a>The response may include a payload containing an appropriate Status Report.</p>
+            <p>
+               <a id="para_468854d3-96c5-4bac-895f-ed4ab544e097" shape="rect"></a>If the set of matching results has changed due to changes in the origin server contents, then the ordered list of results may be different for subsequent transactions with identical requests, and the results of using the "offset" and "limit" parameters may be inconsistent.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.4.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.3.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.4.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.3.4.3 Attributes Included in the Response </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3.4.5 Empty Value Matching</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.34.17 Performed XA Acquisition Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.34.html" title="C.34 Procedure Protocol Modules" />
+      <link rel="prev" href="sect_C.34.16.html" title="C.34.16 XA Protocol Series Module" />
+      <link rel="next" href="sect_C.34.17.2.html" title="C.34.17.2 XA Acquisition Phase Details Sequence" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.34.17 Performed XA Acquisition Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.34.17.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.34.16.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.34 Procedure Protocol Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.34.17.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.34.html" shape="rect">Procedure Protocol Modules</a>
+         </span> &gt; <span class="breadcrumb-node">Performed XA Acquisition Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.34.17" shape="rect"></a>C.34.17 Performed XA Acquisition Module</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_c72aeddc-fe50-43bd-b51c-196f1ca20693" shape="rect"></a>
+                    <a class="xref" href="sect_C.34.17.html#table_C.34.17-1" title="Table C.34.17-1. Performed XA Acquisition Module Attributes" shape="rect">Table C.34.17-1</a> specifies the Attributes of the <a class="xref" href="sect_C.34.17.html" title="C.34.17 Performed XA Acquisition Module" shape="rect">Performed XA Acquisition Module</a>, which contain acquisition parameter values for a performed XA imaging procedure. The purpose of this Module is to record all relevant parameters, not just to record the values that were constrained in the executed Defined Protocol (if any).</p>
+         <p>
+            <a id="para_aefaa82e-408e-412c-b6b2-4e931122688c" shape="rect"></a>This Module contains Attributes that are "set" on the machine, e.g., to affect its behavior, but not those that describe the results. The latter may be found in the acquired images.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_425d6fe6-ec84-46b6-b2a7-32d88cb63e47" shape="rect"></a>The acquisition parameters for an XA imaging system are those involved in the creation of the 2D ORIGINAL pixel data. They include two different activities: the control of the X-Ray generation and beam formation to obtain the output signal from the X-Ray detector (so-called raw data), and the linear and image-independent corrections of the raw data.</p>
+         </div>
+         <p>
+            <a id="para_8a9ee499-5dad-4f7b-8ffd-244c89721ca3" shape="rect"></a>The XA Defined Acquisition Protocol is typically selected manually from the device console, although rules may exist on the device to pre-select a default protocol based on procedure type and patient characteristics. Each Protocol Element contains the parameters of one acquisition mode. For a biplane system, the parameters for both planes are contained in the same protocol element. The operator may choose which Protocol Elements are performed during the procedure.</p>
+         <div class="table">
+            <a id="table_C.34.17-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.34.17-1. Performed XA Acquisition Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_01f51e68-09aa-445f-b501-a07378381da7" shape="rect"></a>Attribute Name</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2d058119-67e5-40f5-b04d-ef2d07bf2c61" shape="rect"></a>Tag</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0855e868-f0f7-4c0f-861f-6f957b6986dc" shape="rect"></a>Type</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_771b307d-cfc6-4bed-baf1-f6951f781d46" shape="rect"></a>Attribute Description</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c800da66-2618-4307-b36b-24124083e5ac" shape="rect"></a>Acquisition Protocol Element Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1242132d-fa47-471b-9412-7655b268f634" shape="rect"></a>(0018,9920)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fc37eb37-b3f2-4eb5-896b-a0f12bf2af94" shape="rect"></a>2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d96414f4-9296-43fb-bd55-203f1cc08bbc" shape="rect"></a>Parameter values for each Protocol Element in the acquisition protocol. Each item in the sequence describes one Element. Elements are performed in the order of their Protocol Element Number (0018,9921).</p>
+                                <p>
+                              <a id="para_96516f32-91b2-4572-aa14-5d9eac79669a" shape="rect"></a>See <a class="xref" href="sect_C.34.9.html#sect_C.34.9.1" title="C.34.9.1 Acquisition Protocol Elements" shape="rect">Section C.34.9.1</a>.</p>
+                                <p>
+                              <a id="para_8cab6771-9e3d-4232-afe8-85381982338b" shape="rect"></a>Zero or more Items shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                <p>
+                              <a id="para_e3085fc6-f83b-449f-a05e-4d08837dd591" shape="rect"></a>
+                                    <span class="italic">&gt;Include <a class="xref" href="sect_10.28.html#table_10.28-1" title="Table 10.28-1. Protocol Element Identification Macro Attributes" shape="rect">Table 10.28-1 “Protocol Element Identification Macro Attributes”</a>
+                                    </span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                <p>
+                              <a id="para_9cf01aab-4e50-4805-833d-2b837e909a28" shape="rect"></a>
+                                    <span class="italic">&gt;Include <a class="xref" href="sect_10.41.html#table_10.41-1" title="Table 10.41-1. General Procedure Protocol Reference Macro Attributes" shape="rect">Table 10.41-1 “General Procedure Protocol Reference Macro Attributes”</a>
+                                    </span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_12fcc712-17c8-4115-9ad2-c6f5149b4232" shape="rect"></a>&gt;Radiation Setting</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0c2ba4ad-e218-4914-ae34-b6488572e12b" shape="rect"></a>(0018,1155)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a8c2a1ae-cca1-4c4c-956e-3cb7d11ad585" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b1f5af7a-2c6e-4c05-828c-0fd5bbd8af62" shape="rect"></a>Identify the general level of X-Ray dose exposure.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">SC</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7e33c774-2949-4c9b-bcf2-d8c3a69f157d" shape="rect"></a>Low dose exposure generally corresponding to fluoroscopic settings (e.g., preparation for diagnostic quality image acquisition)</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">GR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_233221d8-9bdd-4bab-b664-6dfdeb91813b" shape="rect"></a>High dose for diagnostic quality image acquisition (also called digital spot or cine)</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e66c5ace-0184-4f78-8730-0a4c447bb6ab" shape="rect"></a>&gt;Acquisition Mode</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ccbcbdf0-73d6-42f0-8255-b77ac5e57040" shape="rect"></a>(0018,11B0)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_abfa361a-1c1d-4d58-9579-766440ca4d4d" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a3ec606f-3e5c-444b-9aaa-76908ab652a7" shape="rect"></a>Manufacturer-defined name of the acquisition mode described by this Protocol Element.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_14592dfd-0ff0-47a3-ab85-388702d80953" shape="rect"></a>&gt;Scan Options</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8dc70fa1-735b-4f33-ba4d-fd3414303002" shape="rect"></a>(0018,0022)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8859bccd-df6c-464e-8910-b28125cd93b1" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3051599d-e8cd-431c-9130-e2f9ae68498d" shape="rect"></a>Identifies the acquisition technique of this Protocol Element.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">TOMO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9ddeb335-4f3e-42b3-b927-1a70ed012786" shape="rect"></a>Tomography</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CHASE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_4f2ee46d-2115-41b9-9d67-aa12843787da" shape="rect"></a>Bolus Chasing</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">STEP</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ac95aa6d-5b7e-4c21-aad7-dd60108b8eb9" shape="rect"></a>Stepping</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ROTA</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_1e97dd0b-795c-484d-a550-40c33c8654fd" shape="rect"></a>Rotation</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b4583abc-9760-4af1-b537-a03f8a64ae0b" shape="rect"></a>&gt;Dose Mode Name</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_168146ff-79a6-4619-959d-a4a7b0b58da4" shape="rect"></a>(0018,11B1)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b0448e4f-7363-49a0-b8f7-e521d09ead4f" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a5140bbf-8f32-4b3e-adf6-d37dba6c91fd" shape="rect"></a>Manufacturer-defined name of the dose level program (e.g. High, Medium, Low).</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_678e58e5-17a5-4538-9397-cf9d35b68620" shape="rect"></a>&gt;Acquired Subtraction Mask Flag</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_84963fff-f957-4313-bfcc-22926821fe1b" shape="rect"></a>(0018,11B2)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5a340482-1edf-4edc-ad07-205fca7e0087" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_92483c10-18e6-45cd-864b-57922b5ac39e" shape="rect"></a>Identifies that the device acquired mask images for subtraction.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_84d879d5-f939-474e-9ea6-bcab586cb38d" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_94435a27-ad9f-4766-8dd8-0d360fa5b759" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6e24a9a4-83a1-4f2e-9142-3686fae195da" shape="rect"></a>&gt;Fluoroscopy Persistence Flag</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_41867cd4-15fd-462c-9e36-e35bf5a9963b" shape="rect"></a>(0018,11B3)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ddb27c9e-a471-4702-a860-145b1c5674d0" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e27fbe58-e917-47fd-8e55-b23b49169cf1" shape="rect"></a>Identifies that the device has persistently kept a block of continuously acquired fluoroscopy data. Applicable if the equipment supports local storage of fluoroscopy data.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_43feeff3-3d3f-44c3-99e2-c206b49b1ee3" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_3d4944f0-3cf5-4524-b751-d6e8ae13a758" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                <p>
+                              <a id="para_f8899039-2ec1-4b51-abf0-92035f90a997" shape="rect"></a>See <a class="xref" href="sect_C.34.17.html#sect_C.34.17.1" title="C.34.17.1 Fluoroscopy Persistence" shape="rect">Section C.34.17.1</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8f65fc67-142d-4e50-a2c4-89ab260fce57" shape="rect"></a>&gt;Fluoroscopy Last Image Hold Persistence Flag</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b12277f-4fdf-4546-914d-47186bdc8b65" shape="rect"></a>(0018,11B4)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c03ea472-5235-4461-a08f-fc2045b2407e" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5e3ede6a-c463-47e2-8324-e6b25540dde2" shape="rect"></a>Identifies that the device has persistently kept the last image of the acquired fluoroscopy data. Applicable if the equipment supports local storage of Fluoro Last Image Hold data.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d674a5b3-666b-4212-824e-caabfa914732" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_fe6e40cf-ee56-4a52-be66-4b4109d99a1f" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                <p>
+                              <a id="para_174c787f-1e9a-4bfa-9ff6-d6cf316a0c85" shape="rect"></a>See <a class="xref" href="sect_C.34.17.html#sect_C.34.17.1" title="C.34.17.1 Fluoroscopy Persistence" shape="rect">Section C.34.17.1</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_97c23a66-cbf9-4326-afdd-3629875724f9" shape="rect"></a>&gt;Upper Limit Number Of Persistent Fluoroscopy Frames</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_adc2f0bb-45e6-4468-b08f-c3bd61b258bc" shape="rect"></a>(0018,11B5)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_80cffc74-76ef-43da-b5d7-7706181c6ddc" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_09ade816-8736-4945-a6a8-753ff3a42b51" shape="rect"></a>Upper limit of the number of fluoroscopy frames to be persistently kept.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ce7b34c5-84b3-4f41-9c8e-9c957c33ff9a" shape="rect"></a>&gt; Contrast/Bolus Auto Injection Trigger Flag</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_29ff9ba1-f1b9-4045-b714-767633b4dca0" shape="rect"></a>(0018,11B6)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c01816df-92eb-48b9-bcc9-1aa1c53e12ac" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e64f4138-0fa3-42c8-8e4e-06ecc7f3855e" shape="rect"></a>Identifies that the contrast/bolus injection was automatically controlled.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7793702a-722e-40ca-b1d6-60dea49741eb" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_bb90ca32-06c2-449f-ae33-ed7f04072fbf" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0505793c-88cb-416e-9197-3b90849097c3" shape="rect"></a>&gt;Contrast/Bolus Injection Delay</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c85b828-8120-4b40-90a1-9fd93e6a2f18" shape="rect"></a>(0018,11B7)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a16140b7-97be-4442-ac4d-ec5326e1ef68" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3b279b81-fb24-4409-83ea-8a09519f5003" shape="rect"></a>Time delay in seconds of the injection of contrast/bolus with respect to the X-Ray start. Negative values mean that injection starts before X-Ray start.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4f151d07-3f4c-4538-b16a-a883eee3920e" shape="rect"></a>&gt;Contrast/Bolus Ingredient Opaque</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f4a83e51-78d8-40cf-9918-93220fc24fef" shape="rect"></a>(0018,9425)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c9ae210d-2fec-450e-bb3d-18d38390f3d1" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c3723fc1-6ac9-4b10-b13a-c498b2d972aa" shape="rect"></a>Whether the absorption of the contrast/bolus ingredient was greater than the absorption of water (tissue).</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_bf712ede-d0c0-4658-b054-bdb18e3fceae" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_187440dc-3263-4006-956a-c87289cb2a33" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_284b7e8b-2b1f-4cce-8b89-6db9a1939395" shape="rect"></a>&gt;XA Acquisition Phase Details Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2316f9da-1914-4132-b46e-63824cd3229c" shape="rect"></a>(0018,11B8)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_21be0a6a-f408-4f24-9f19-6e047f0770a4" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7f8cf9bd-5567-48d8-9a84-ec621975b3a4" shape="rect"></a>Parameter values for each of the phases. Each item in the sequence describes one phase.</p>
+                                <p>
+                              <a id="para_47b693fb-e1ef-48fc-b165-6bae0d564bb1" shape="rect"></a>One or more Items are permitted in this sequence.</p>
+                                <p>
+                              <a id="para_e39cfee4-bd5c-47f0-910d-a531fad000de" shape="rect"></a>See <a class="xref" href="sect_C.34.17.2.html" title="C.34.17.2 XA Acquisition Phase Details Sequence" shape="rect">Section C.34.17.2</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5f42fc5e-09ec-45ba-bcf4-9ad5bfdf45f6" shape="rect"></a>&gt;&gt;XA Acquisition Duration</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c0573385-5a8a-435d-8dc5-9d3282c3f70a" shape="rect"></a>(0018,11BD)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_778ad2d7-55ba-4af0-8436-d1a87f267e0f" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ef22fa68-3fe9-494c-a841-aaf459e10ab1" shape="rect"></a>The time in seconds used for the acquisition of this phase.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5994fbba-1dea-4649-9e86-63845e3b002e" shape="rect"></a>&gt;&gt;XA Acquisition Frame Rate</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8ac3ae3f-8126-4e0f-8785-e48d08681f88" shape="rect"></a>(0018,11B9)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_62b1421e-ab07-4a31-8b15-58589b2b359f" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_167f9737-de29-4fba-baa7-8a2954e7d24a" shape="rect"></a>The frame rate in frames per second used for this phase.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_837c2c2c-c70c-4f0e-af17-7c90a378f149" shape="rect"></a>&gt;Planes in Acquisition</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d8df8fdc-a178-48d9-b115-5fc0401b5cad" shape="rect"></a>(0018,9410)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_56f716de-a917-4813-ace2-dda11dc62879" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4504c2d8-e2f2-4c4c-9dd6-74ebcef61b84" shape="rect"></a>The multiplicity of planes that could be used simultaneously during the acquisition.</p>
+                                <p>
+                              <a id="para_f1fb2fd1-2fd8-4bfe-9f92-5408855ab715" shape="rect"></a>See <a class="xref" href="sect_C.8.19.2.html#sect_C.8.19.2.1.3" title="C.8.19.2.1.3 Planes in Acquisition" shape="rect">Section C.8.19.2.1.3</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9994bef8-65fe-4f16-a3dd-d7cff5583518" shape="rect"></a>&gt;XA Plane Details Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_88805e19-05d8-4596-b375-fe4c8904bde8" shape="rect"></a>(0018,11BA)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bacd7b0e-8167-4735-be51-81a6e46dea7d" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1e174162-b487-4a15-ac81-96f08c183a28" shape="rect"></a>Parameter values for each of the planes (or X-Ray beams) operating simultaneously in the Acquisition Protocol Element. Each item in the sequence describes one plane.</p>
+                                <p>
+                              <a id="para_3665500f-336a-4e41-9f7c-8d91db0994a8" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_33437f83-e7cf-4b72-99c0-c05276e0d94b" shape="rect"></a>A Biplane system is recommended to create two items, one for each plane, even if the parameters of both planes are the same.</p>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7fc1a04a-5d7e-41db-92b5-2f3a29649374" shape="rect"></a>&gt;&gt;Plane Identification</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_24403743-778d-41dc-add0-a6ffd2e30dea" shape="rect"></a>(0018,9457)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c07624a6-024f-4d72-ae3d-a7091e8fbf94" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c13bc8c7-80a1-4111-a7be-1950e898f747" shape="rect"></a>Identification of the plane to which the parameters of this sequence item applies.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">MONOPLANE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_dc9022cd-b18b-4bac-aeee-685dfe8f5eaf" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PLANE A</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_cf09477b-dd84-4344-916f-b041d43ea227" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PLANE B</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_eae5bef3-a2f9-4d96-88e2-179cf8b6df84" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_69865ebd-fa80-43d2-89d7-a0b4495dfdcd" shape="rect"></a>&gt;&gt;Beam Number</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d1c1842a-4f69-42e2-ae82-6e1d54c2e9ea" shape="rect"></a>(300A,00C0)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_82a6361a-c181-42e6-a1dd-88d37a92367a" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3d3c3ce3-82c9-4939-8296-1e92fabc5a0f" shape="rect"></a>Identification number of the beam.</p>
+                                <p>
+                              <a id="para_86c1ef2b-2a25-4c25-b736-1f7f17714c2a" shape="rect"></a>The value shall be 1 if Plane Identification (0018,9457) equals MONOPLANE or PLANE A, and shall be 2 if Plane Identification (0018,9457) equals PLANE B.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1f3f2736-0a20-4684-96eb-6806e45ea002" shape="rect"></a>&gt;&gt;KVP</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_db30b672-8685-49fa-a3d4-2d83f388d0c9" shape="rect"></a>(0018,0060)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_48a21513-322a-4b72-bb0e-43a314f83e28" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_730aa4e6-0d8d-43ca-b81a-6dcf22a71891" shape="rect"></a>Peak kilo voltage output of the x-ray generator.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6025b7c4-dc99-47f8-81f9-1fa4eb72630e" shape="rect"></a>&gt;&gt;X-Ray Tube Current in mA</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bf81ebfe-a94e-4f44-84f1-da53afc3b01f" shape="rect"></a>(0018,9330)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fd9c18b3-ea5b-4c18-ad79-39d6d02f6679" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4ce48ac1-dd3e-4c99-a8bf-9c9b2a59fbaf" shape="rect"></a>Nominal X-ray tube current in milliamperes.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5a6834e3-d314-4ae2-ac16-b4f64622b5e9" shape="rect"></a>&gt;&gt;Exposure Time in ms</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7e251278-2f60-41c8-98e2-106e10384cd1" shape="rect"></a>(0018,9328)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_879318d5-cd7f-4961-82f4-7e33387823ee" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_46ffa04f-5d32-4e30-986d-d8e677c38328" shape="rect"></a>Duration of exposure for this Acquisition Protocol Element in milliseconds.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ce936570-e0ed-4911-98c3-d8125c2a82ce" shape="rect"></a>&gt;&gt;Exposure in mAs</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4e313d04-0ba4-44f9-9ae6-9ac32af8a477" shape="rect"></a>(0018,9332)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_29143f0b-ebbc-4292-b802-a80415203e09" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a0594f42-d4b5-475a-b61f-90ff6504c83f" shape="rect"></a>The exposure expressed in milliampere seconds, for example calculated from Exposure Time and X-Ray Tube Current.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0b0d207c-f0a3-43bf-8d11-e8bb07388377" shape="rect"></a>&gt;&gt;Average Pulse Width</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aa6966f3-055f-4caa-9737-27d06da9bc75" shape="rect"></a>(0018,1154)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bbaa24b2-0ec6-4494-8077-9db0b54ebaf6" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_90195828-55cb-4603-8e7a-60f988649209" shape="rect"></a>Average width of X-Ray pulse in msec.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_312f2cab-37e9-4db3-9eac-cd12783ab222" shape="rect"></a>&gt;&gt;Focal Spot(s)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aac5f621-3aaf-40a6-b046-6af5ac7f34c5" shape="rect"></a>(0018,1190)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c56530a8-1991-48bb-a66d-4562b622112c" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ac1fdf19-314c-40a6-b0fa-5e84c40f61ef" shape="rect"></a>Used nominal size of the focal spot in mm. The Attribute may only have one or two values, for devices with variable focal spot, small dimension followed by large dimension.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b611c112-3a8b-483b-8907-d7b92dde6204" shape="rect"></a>&gt;&gt;Acquisition Field Of View Label</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a894692f-9b93-4787-9ba7-156dc631c784" shape="rect"></a>(0018,11BB)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3c3b9cbe-acf9-4cae-a1f1-92a2d8766ff5" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_24e3a496-1ac1-4079-aa3e-0b92fabb0b66" shape="rect"></a>Manufacturer-defined name of the Field of View label displayed on the acquisition console. Each label corresponds to a FOV dimension applied during the acquisition.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f50ba90a-492b-4b09-aef7-5625eac36858" shape="rect"></a>&gt;&gt;Field of View Dimension(s) in Float</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8737a82f-b86e-4a82-97cd-5a49a93a2e37" shape="rect"></a>(0018,9461)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3705b69d-fdf5-4f96-a56e-e19a46845b96" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b6e0ebe8-09fd-4933-8514-886f1cae60a1" shape="rect"></a>Dimensions in mm of the Field of View, that is the image pixels stored in Pixel Data (7FE0,0010). If Field of View Shape (0018,1147) is:</p>
+                                <p>
+                              <a id="para_acdaafff-8c98-4ab3-84a3-0ffcd2217e70" shape="rect"></a>RECTANGLE: row dimension followed by column.</p>
+                                <p>
+                              <a id="para_4ffd0cfa-576b-463a-b8e9-cff55ff03c77" shape="rect"></a>ROUND: diameter.</p>
+                                <p>
+                              <a id="para_986a6d1d-db4b-48d3-b75a-8d000594a7f7" shape="rect"></a>HEXAGONAL: diameter of the circle circumscribing the hexagon.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5d8b00ec-e773-4b19-8540-6cbfaa18ddd5" shape="rect"></a>&gt;&gt;X-Ray Filter Details Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_984506a7-8dd7-431c-8571-279fa1d92ffc" shape="rect"></a>(0018,11BC)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_523dba2b-0126-4f8f-bd48-905070f01022" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f3a15702-4968-46b5-89d4-18ad35a3ebe9" shape="rect"></a>Parameter values for each of the filters inserted simultaneously into the X-Ray beam. Each item in the sequence describes one filter.</p>
+                                <p>
+                              <a id="para_8d6bebed-cd65-43eb-9911-86795efb5caf" shape="rect"></a>One or more Items shall be included in this sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_671f9bce-4bea-42d9-a971-70489d6ac692" shape="rect"></a>&gt;&gt;&gt;Filter Thickness Minimum</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_80324ae9-a3f2-4606-9763-64efd3a8ef5d" shape="rect"></a>(0018,7052)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_deff7ba6-8f94-49dc-8cf1-9e2e7777c773" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f8798622-32c0-4e9c-a429-ef52817b7f63" shape="rect"></a>The minimum thickness in mm of the X-Ray absorbing material used in the filters. May be multi-valued, with values corresponding to the respective values in Filter Material (0018,7050).</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9ae641e6-362d-483f-9147-208cc92d4a85" shape="rect"></a>&gt;&gt;&gt;Filter Thickness Maximum</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_095ab65f-60e4-4a7e-b4a7-e274317fcb02" shape="rect"></a>(0018,7054)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b02c1fa7-8e60-4ff5-8ddc-1f0783676a62" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f68376f1-c044-4591-bf94-ecf12ea30148" shape="rect"></a>The maximum thickness in mm of the X-Ray absorbing material used in the filters. May be multi-valued, with values corresponding to the respective values in Filter Material (0018,7050).</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5242a4a4-ce63-496b-9766-ea43086d3a20" shape="rect"></a>&gt;&gt;&gt;Filter Type</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4648727b-6854-4306-8756-46bb0ee0d53b" shape="rect"></a>(0018,1160)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ac13b2bf-a838-4f26-be13-b845fa3ba63b" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_07a71d02-a12f-4ee1-989c-8c0af46a9323" shape="rect"></a>Type of filter(s) inserted into the X-Ray beam (e.g., wedges).</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">STRIP</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_07e15b0f-28b9-4f6b-a2c1-7d695e047048" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">WEDGE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5e785b42-c15c-4cae-b762-93f36176dca1" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BUTTERFLY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6910c8b7-9261-4c68-9cee-f454b5add752" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MULTIPLE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_827f36f0-c22d-4c44-9106-b062bf52fbf1" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">FLAT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7dd690b6-6462-4f6c-a0af-8ac8078e9e05" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NONE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6088feb8-98d8-4fd8-95ba-698be2a69b35" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc5101b5-6b83-471c-8c23-77243f0a5cc8" shape="rect"></a>&gt;&gt;&gt;Filter Material</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a7e140cf-cc61-4957-84c8-cfa642126ab5" shape="rect"></a>(0018,7050) </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_05c9cc4b-6066-4fb1-b2aa-3b1803f554d1" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_15c7ae2e-3a59-41a3-acd6-ab6e1881d196" shape="rect"></a>The X-Ray absorbing material used in the filter.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">MOLYBDENUM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_dde3ab08-1111-465a-b4d5-93965812bc96" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ALUMINUM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d6abb419-599a-4f9a-be96-70309d8310db" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">COPPER</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5413e519-4d7a-4caf-9c86-807ba45fb88c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RHODIUM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_fafc483c-f16d-4f6b-bd70-00c3569d0c67" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NIOBIUM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5369f410-e067-45a4-848f-18a56b410e7a" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">EUROPIUM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d195b6f8-333b-4f54-b17f-adc2f36da797" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">LEAD</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7fd18770-92c6-4d2a-9fe9-5184e6577e29" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ab0c9eb0-0e0d-4d56-a815-9e0575307ab5" shape="rect"></a>&gt;&gt;Detector Binning</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ff7baa46-8055-4b54-a499-8edfdca2639a" shape="rect"></a>(0018,701A) </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a941d774-91fc-4b96-a992-3472fa7ab1d9" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fa0307d9-97ce-4696-a9f3-39f4b8cace8d" shape="rect"></a>Number of active detectors used to generate a single pixel. Specified as number of row detectors per pixel then column.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6c18fcaa-b9f4-434f-8521-aadffafa9ced" shape="rect"></a>&gt;&gt;Bits Stored</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_148b80f3-1334-4da1-a005-d1eb7a111218" shape="rect"></a>(0028,0101)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cfdafc8c-d62f-415e-80dd-528968781b78" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c05593b7-d2ba-4520-a02d-77130dfd0ecb" shape="rect"></a>Number of bits stored for each pixel sample in the acquired images.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b6842451-8860-47fc-b841-855fc164e42b" shape="rect"></a>&gt;&gt;Rows</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b2eca084-f77e-468e-8a04-d9c406badc2a" shape="rect"></a>(0028,0010)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_05b67b08-d49d-4085-ac40-8485b290a7d4" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d9af637a-e772-4ff9-aa4d-1ecc00296549" shape="rect"></a>Number of rows in the acquired images.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7d746417-0979-47c3-971f-ae3c299e7271" shape="rect"></a>&gt;&gt;Columns</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_19919387-400d-452a-a237-863804afbf6f" shape="rect"></a>(0028,0011)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5a891a35-db35-43de-9463-d464afdc7c04" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc089918-cf0b-464d-930a-dafddfba8bcf" shape="rect"></a>Number of columns in the acquired images.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2b010606-4729-451c-9650-e48443a6d910" shape="rect"></a>&gt;&gt;Primary Positioner Scan Start Angle</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_17608d1b-9a29-446c-8aab-a0e29374cf17" shape="rect"></a>(0018,9510) </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_374e009d-3b25-4a10-9e54-cb70d90ca83f" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4ec45fef-2081-42b0-9e4e-0200b6519202" shape="rect"></a>Start position of the primary positioner in degrees.</p>
+                                <p>
+                              <a id="para_b85d3856-5f1b-4589-8a33-a3f4bdf9172b" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bbec7865-880e-49b4-88c5-9a72bd805d83" shape="rect"></a>&gt;&gt;Secondary Positioner Scan Start Angle</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a5b159b6-060a-46a2-a79d-ee2d79a20f06" shape="rect"></a>(0018,9511) </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9eadefeb-b9c4-4e43-bc83-374074e40cb1" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9056a8dd-212c-4ec0-8cfa-27c64b90ba7c" shape="rect"></a>Start position of the secondary positioner in degrees.</p>
+                                <p>
+                              <a id="para_26912094-7f0b-4ef4-a998-2a4627522c0d" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0942f61d-dd27-4cfc-8443-dae55505415c" shape="rect"></a>&gt;&gt;Primary Positioner Scan Arc</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9813220c-3c1d-4555-94c6-05803f42b46d" shape="rect"></a>(0018,9508)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e1eca4e8-265d-4f1a-92b9-d72f92fff57a" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a1aad97a-1b06-414a-b5eb-1cc813f1aff1" shape="rect"></a>Total amount of rotation of the primary positioner in degrees.</p>
+                                <p>
+                              <a id="para_79f0af24-7955-4389-a378-1521aaf9c6f2" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e. Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8eb3db9e-ef53-448c-806c-0b8613cc1f68" shape="rect"></a>&gt;&gt;Secondary Positioner Scan Arc</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c9c18f8a-e24f-4864-901d-84b3905709f5" shape="rect"></a>(0018,9509)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c01b77b7-2573-474d-93ec-c5c5910961c3" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c50eb44c-6b64-4ca0-a6b8-4d17e7c35fb4" shape="rect"></a>Total amount of rotation of the secondary positioner in degrees.</p>
+                                <p>
+                              <a id="para_13434902-0921-4538-8dfe-4edbb06b0bd8" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_688846ef-d232-46fa-9b40-edf4f1e1c547" shape="rect"></a>&gt;&gt;Primary Positioner Increment</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a2162a9a-32c3-4d9e-bc9a-3572a1f26e06" shape="rect"></a>(0018,9514)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bd683f55-1ef5-4e5a-8d43-82895c157bdc" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dc973f4c-7437-48e9-b696-8c49877ae91b" shape="rect"></a>Constant increment of the primary positioner angle in degrees. Positive increment indicates an increasing value of the primary positioner angle.</p>
+                                <p>
+                              <a id="para_add67178-08e6-4083-abb6-9484497c4883" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_26e52f6a-c8b0-4982-a725-69d682345c63" shape="rect"></a>&gt;&gt;Secondary Positioner Increment</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cfbe123f-1843-4fbc-b813-461bccd4b513" shape="rect"></a>(0018,9515)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c846e7dc-b792-49ac-8174-ee73aa13db38" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d20d6a5c-7168-4dfc-8944-22b7b2cce88f" shape="rect"></a>Constant increment of the secondary positioner angle in degrees. Positive increment indicates an increasing value of the secondary positioner angle.</p>
+                                <p>
+                              <a id="para_1c414bbd-5ff2-4160-95c7-61e3f792998d" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_681153e3-b464-4db9-ad36-891871c32176" shape="rect"></a>&gt;&gt;Distance Source to Detector</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0934b05d-52ec-4770-a82e-7f0086ccb5bd" shape="rect"></a>(0018,1110)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_eb0de2f9-885e-4612-bec1-4cf47ff07de8" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5c679c44-5889-4db5-a64a-680a9558200b" shape="rect"></a>Distance from source to receptor plane perpendicular to the receptor plane in mm.</p>
+                                <p>
+                              <a id="para_7a6c8186-0866-4b47-8229-fe9131ec8cb3" shape="rect"></a>Applicable only to protocol elements for rotational acquisitions, i.e., Scan Options (0018,0022) equals ROTA.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2f9ce014-eeec-425c-a3fa-84f61c7bd546" shape="rect"></a>&gt;Requested Series Description</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0f33ba2d-8940-4c9b-9fa0-ba62d9bda8a3" shape="rect"></a>(0018,9937)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6cfd3add-e36a-4867-8c89-63a3ec6cc264" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e44f8612-5af5-4e41-b07f-82931db4dc6b" shape="rect"></a>Text that is intended to be copied into the Series Description (0008,103E) of the images resulting from this Acquisition Protocol Element.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7c3b60f0-b77d-49e4-80f5-04849c7c8224" shape="rect"></a>&gt;Requested Series Description Code Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1616b63f-dbcf-4db6-a648-ddffc4bd1cf2" shape="rect"></a>(0018,11C1)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3bfd945d-5b6f-44f6-9f69-a29ab384006a" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fe691a7f-d940-4983-a3a6-9ed4c4865121" shape="rect"></a>A code that is intended to be copied into the Series Description Code Sequence (0008,103F) of the images resulting from this Acquisition Protocol Element.</p>
+                                <p>
+                              <a id="para_3e6cd3fd-e9d8-4fe2-a318-e61c096e9dfe" shape="rect"></a>Only a single Item is permitted in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                <p>
+                              <a id="para_84546864-7a17-4f20-acac-0fcf1a9da1d1" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                    </span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_681afb29-a218-47f6-a642-8953cc5eabf7" shape="rect"></a>
+                              <span class="italic">No Baseline CID is defined.</span>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c7ab6731-f4ae-41c6-8463-be4a23ca6a95" shape="rect"></a>&gt;Content Qualification</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ea2706f4-67fd-4b99-897a-40722d70e4c9" shape="rect"></a>(0018,9004)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c24f060a-e835-481e-9838-d5007416e441" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cf4986cc-08ae-44c5-b115-909a7d439f2f" shape="rect"></a>Content Qualification Indicator of instances resulting from this Acquisition Protocol Element.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">PRODUCT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_891a8021-3867-4ca0-9c14-25c7b01fd46c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RESEARCH</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_1cee6983-69a0-42a1-856d-470515c6c217" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">SERVICE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_16b002dd-dbe1-494f-b692-10e566dd04da" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                <p>
+                              <a id="para_c7d30675-1de2-4af5-b1a7-40a4573bc626" shape="rect"></a>See <a class="xref" href="sect_C.34.18.2.html" title="C.34.18.2 Content Qualification" shape="rect">Section C.34.18.2</a>.</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_C.34.17.1" shape="rect"></a>C.34.17.1 Fluoroscopy Persistence</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_2a074914-90d3-41e0-84b2-d74eaa7d7f06" shape="rect"></a>An XA device acquires fluoroscopy to be primarily displayed in real time during image-guided procedures.</p>
+            <p>
+               <a id="para_208ddb58-99d6-42cd-9df4-84fad3683d10" shape="rect"></a>Fluoroscopy Persistence means that the fluoroscopy pixel data is not discarded immetiately after the acquisition, but rather it is kept locally on the acquisition device for further use, either to be reviewed, processed, stored on media and/or transmitted as DICOM instances to another DICOM device.</p>
+            <p>
+               <a id="para_2ede79f7-0f4f-47dd-a471-145f3219d097" shape="rect"></a>The Attributes Fluoroscopy Persistence Flag (0018,11B3) and Fluoroscopy Last Image Hold Persistence Flag (0018,11B4) do not suggest or assume any further use of the data other than the local storage on the acquisition device. The workflows related to the presentation, processing or transmission of Fluoroscopy data is handled outside the Acquisition Protocols.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.34.16.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.34.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.34.17.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.34.16 XA Protocol Series Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.34.17.2 XA Acquisition Phase Details Sequence</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

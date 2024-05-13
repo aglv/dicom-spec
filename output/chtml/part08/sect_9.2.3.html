@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9.2.3 DICOM Upper Layer Protocol for TCP/IP State Transition Table</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.8.html" title="PS3.8" />
+      <link rel="up" href="sect_9.2.html" title="9.2 DICOM Upper Layer Protocol for TCP/IP State Machine" />
+      <link rel="prev" href="sect_9.2.2.html" title="9.2.2 State Machine Actions Definition" />
+      <link rel="next" href="sect_9.3.html" title="9.3 DICOM Upper Layer Protocol for TCP/IP Data Units Structure" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024a - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9.2.3 DICOM Upper Layer Protocol for TCP/IP State Transition Table <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part08/sect_9.2.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">9.2 DICOM Upper Layer Protocol for TCP/IP State Machine</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.8.html" shape="rect">PS3.8</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_9.html" shape="rect">DICOM Upper Layer Protocol for TCP/IP</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.2.html" shape="rect">DICOM Upper Layer Protocol for TCP/IP State Machine</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM Upper Layer Protocol for TCP/IP State Transition Table</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_9.2.3" shape="rect"></a>9.2.3 DICOM Upper Layer Protocol for TCP/IP State Transition Table</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_66930625-bdf2-4f92-9ab6-4e53bcaf1277" shape="rect"></a>The DICOM Upper Layer Protocol State transitions are specified in <a class="xref" href="sect_9.2.3.html#table_9-10" title="Table 9-10. DICOM Upper Layer Protocol State Transition Table" shape="rect">Table 9-10</a>. This table addresses both the normal and error cases for the protocol operation. Both the called and the calling aspects of an association are described in this table.</p>
+         <div class="table">
+            <a id="table_9-10" shape="rect"></a>
+            <p class="title">
+               <strong>Table 9-10. DICOM Upper Layer Protocol State Transition Table</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_17bb8afa-7e2a-471e-9f59-72bb6e95406f" shape="rect"></a>STATES</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_78edabd9-2f78-4a03-9747-69fbde3f049d" shape="rect"></a>No assoc<sup>n</sup>
+                           </p>
+                        </th>
+                        <th align="center" colspan="4" rowspan="1">
+                           <p>
+                              <a id="para_a3244615-c658-423d-9938-671275909632" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Association establishment</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_55e00583-b2e0-4f25-ad69-a35b8f9b6327" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data transfer</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" colspan="6" rowspan="1">
+                           <p>
+                              <a id="para_7ad96184-e17e-433a-81a1-8fda2082de86" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Association release (normal &amp; collision)</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cd88e31f-4796-47d7-82e2-93153d9c7d4d" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Wait for Tp Close</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_19a1cfd6-65ee-4d3b-907d-a8a8ca6bfcdc" shape="rect"></a>EVENTS</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aedade08-4205-4e9f-a6ca-ea9d550ba8f4" shape="rect"></a>Sta1</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_eb4d3868-b633-43ef-b6d0-8e43621d4fa1" shape="rect"></a>Sta2</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49796575-0d85-4450-8bdc-95d80ebc7038" shape="rect"></a>Sta3</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a0d90da0-d131-4152-a16f-680b24389641" shape="rect"></a>Sta4</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba0d5219-9e74-4696-96a8-26da8630ff6e" shape="rect"></a>Sta5</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a71aeeff-dcc7-4578-9fd2-7cc902426dd7" shape="rect"></a>Sta6</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a9fd4254-10de-4665-b16b-8e2eab178eaf" shape="rect"></a>Sta7</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1f3ad82a-3a7d-4907-93c6-119b7c21ad04" shape="rect"></a>Sta8</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2b913ca0-0d9d-4ed6-b8f3-50b775087334" shape="rect"></a>Sta9</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d28724c-c7a8-4aeb-8342-c7e70b3c7740" shape="rect"></a>Sta10</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68ad13be-91e6-45fe-959b-d048df9c27e8" shape="rect"></a>Sta11</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ce5bc2f-8f4f-489d-a05c-402cbbbe2825" shape="rect"></a>Sta12</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b5a26f34-3602-415f-aa41-9d54d44041d0" shape="rect"></a>Sta13</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa3ca941-dc20-46ec-bf90-c374a0dd7171" shape="rect"></a>A-ASSOCIATE Request (local user)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7928a616-28e5-4c09-bf15-03ee18e865a2" shape="rect"></a>AE-1</p>
+                           <p>
+                              <a id="para_c81856d0-e6ec-42b5-8fa1-306123b7aecd" shape="rect"></a>Sta4</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1d9f8a4b-9f17-4e42-8466-aaf84ea084f2" shape="rect"></a>Transport Conn. Confirm<sup>n</sup> (local transport service)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3bdfbeb9-2f76-44db-8817-526e1cdd3979" shape="rect"></a>AE-2</p>
+                           <p>
+                              <a id="para_a906da5a-2625-46d0-bd7b-9553e2b66351" shape="rect"></a>Sta5</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f098d31-a5ed-41ab-8a2e-4ddea17d2683" shape="rect"></a>A-ASSOCIATE-AC PDU (received on transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dd089774-d2ad-45dd-9e79-65226a7e8890" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_d0177080-dd27-4447-b9a8-6ae8ded0ba8e" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7e89e9da-ee14-438c-84fe-04639262748d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_7c4147d1-06e2-46c6-a38b-1a19d7af33b3" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a451d6ed-9feb-49bf-8845-44bc332b881d" shape="rect"></a>AE-3</p>
+                           <p>
+                              <a id="para_8f537d1c-5599-4b98-ab68-9eacddf79e38" shape="rect"></a>Sta6</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49c2d938-df53-45fd-b064-86bef857eccd" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_14f36fc2-7b82-48c1-b2f2-788e1e8c413a" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1a23be58-17a8-4258-82db-38baa5c1b020" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_a3dcdd8b-cc8a-4872-9d39-fd0d0761ad05" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ee06faa7-1a3a-4115-9441-371c7522b8ef" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_af5653ee-5e1e-4cc7-b9f3-45f15f25c7dc" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_afa49ead-e6ed-4dcd-b8dc-75dc207cc10d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_133d06f9-75c7-4792-b244-a4736830131f" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aaa83a4c-6f64-4bbd-9dc9-a38f202a53f8" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_d5ad3451-8b33-41e3-80ee-984727bd0213" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a5b34cd-afce-4cde-ab0e-04b014249500" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_b885b32d-8d71-4891-8a1e-a235d61a6b83" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14ed33db-3bb8-45cf-8856-84f26fc28042" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_46de23cd-08be-41b9-985e-51797f009a48" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b6c4a656-fa4b-48c7-97f2-a8804747e28b" shape="rect"></a>AA-6</p>
+                           <p>
+                              <a id="para_373ded4c-c2a5-465f-8bcd-476fcb017880" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_af1d5bb0-7968-44c8-98e3-75b6cec939b0" shape="rect"></a>A-ASSOCIATE-RJ PDU (received on transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_00064ee6-2539-4a59-bc87-357b0d907aa8" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_9e8c6caf-371e-43b4-9f50-afebeee9abf8" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_de681375-6b7c-4f18-8390-70d73be07cfb" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_feb2ac6e-c2e8-4ae6-94f4-2d21b44ac81c" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_546946a5-a268-4a75-8f43-d30cd9060463" shape="rect"></a>AE-4</p>
+                           <p>
+                              <a id="para_c607e32d-ec9a-43a1-b7aa-bcd970ba12da" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad879b61-23de-4e88-8a5e-b770eea2d82e" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_43ec3bea-e334-413b-9840-fcc2f09a9d12" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6b42b4e1-a2a3-4c6f-9839-ebd003e5bf3a" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_9fac25fa-ab4f-4c2b-bd41-eb892b816d4a" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7c37a737-320d-4a75-9d8d-077d5bffae35" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_6697a498-9324-4d24-a8eb-7bf97aabea51" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_85fd3843-6d8e-434f-9a6c-6d0806e39d6f" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_7a0f3cec-f853-43e9-8edf-8b6a21368a5e" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d675bbfd-430b-4412-ba1a-d5d94f958be0" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_a0a613f4-7789-4cbf-904c-e1a04340c82d" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3acf8885-f989-4f68-925e-0d48524f9ee8" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_6942b835-66c2-401a-b98a-0bb34ee3756b" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a79a24f-7a35-448b-a6c3-4ba5aaafc186" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_5fd51131-093c-4e0c-bba4-7e658275669b" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_18bcfcfe-88f6-4692-9f68-8d9e54f953f3" shape="rect"></a>AA-6</p>
+                           <p>
+                              <a id="para_d6911942-1e24-489a-9714-6ea4928d2c93" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fe1da075-72b8-44c7-bb21-d0c6a27aec9e" shape="rect"></a>Transport Connection Indication (local transport service)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e33e3c54-ec16-4ce3-8c97-181ce993db1f" shape="rect"></a>AE-5</p>
+                           <p>
+                              <a id="para_1408907e-e264-4f7e-bfd0-ebfc2345620c" shape="rect"></a>Sta2</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_34ad904f-37b9-4f47-9e88-5327fa9f6b82" shape="rect"></a>A-ASSOCIATE-RQ PDU (received on transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6726feee-2cb6-4636-819a-d117967f98e4" shape="rect"></a>AE-6</p>
+                           <p>
+                              <a id="para_30e9f2b7-becf-40de-a083-5d747d400fa6" shape="rect"></a>Sta3 or 13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d4f19aff-0ea8-4500-8a17-5c5e392a61a0" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_516acb65-513e-48ad-9a54-eabf6a67a1f4" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3aeca7cf-3475-46fe-ab7f-3e5bc50b46f9" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_92178d56-f0fc-402d-b9f3-c6293a8b087f" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acf3f76f-ed20-4448-8567-0a3f64e4ee04" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_d36f7bd0-3cf4-4cc0-9c3d-b9684d35d4e1" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0e435833-b98f-4242-a166-e99ab07334e5" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_2dbb39ff-51da-49e5-a895-9a57801fbeba" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_52151797-1d66-4576-884b-878d8b818447" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_973d061c-199f-4cc7-b10c-a424825c422f" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_51cabe70-b845-4622-a3da-9e225eb2465c" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_1be9fb01-25ae-46d0-ab09-f367d9f5ed26" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fc4fcfe1-0151-46d4-a433-42ca3209113a" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_556f8c91-8235-479c-bea9-e568ae5f66e1" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_437da161-7693-4930-b311-f84418d4286d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_6856de7b-93e1-4727-8051-2e3f4576c019" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_154bd505-12e0-48cd-823d-06de41e6b621" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_bfaafaf3-65a4-4d11-bfea-d1b5d2a919bd" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa3122f3-da02-431c-b4c5-ded2d3a64b81" shape="rect"></a>AA-7</p>
+                           <p>
+                              <a id="para_755d6406-3b6e-49a4-98f9-ef9a75dda17d" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_499c71d8-a0c5-45ed-af7d-5ea1ea20a606" shape="rect"></a>A-ASSOCIATE response primitive (accept)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba566d3e-cf39-44dc-bef6-1953001711ba" shape="rect"></a>AE-7</p>
+                           <p>
+                              <a id="para_9d19d32e-3c55-493b-83e7-59ad526b4bc6" shape="rect"></a>Sta6</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2bf2b0c0-3b13-47a7-a867-8ba341bb33fa" shape="rect"></a>A-ASSOCIATE response primitive (reject)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_986ee295-bee0-4e6e-8ecb-c276464ebe9a" shape="rect"></a>AE-8</p>
+                           <p>
+                              <a id="para_4b9d6ba2-be45-4856-a395-264159554ffa" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2686efde-8283-4272-bd79-eadacb086c1a" shape="rect"></a>P-DATA request primitive</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bb8a5de6-57fb-402e-a975-ef54a06fe5df" shape="rect"></a>DT-1</p>
+                           <p>
+                              <a id="para_7aa72d08-a296-4872-a336-3cea656b0bdf" shape="rect"></a>Sta6</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c272999c-61f7-4f1d-8a90-3e03be4a2139" shape="rect"></a>AR-7</p>
+                           <p>
+                              <a id="para_e40b7013-a2d1-4a0f-873d-c52ea39d9d5a" shape="rect"></a>Sta8</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c7927f2d-74ca-40aa-8544-e4f709651ec1" shape="rect"></a>P-DATA-TF PDU</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a38b91dc-91ca-41cd-949b-68b09b0d7149" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_a60d2f25-7bdc-4331-9ee2-7d75777ff0a4" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ce5135d7-c98a-421c-8d33-ae6dfb0baa79" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_ab2d653f-2375-4818-b95b-12b2fb223816" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b31a91f-5dac-4ebc-b0f6-bbac156e8f29" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_fc7edd2c-c6e6-4e03-91fc-8b7598ec1b98" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0bdcb772-5ec6-463c-97ba-cf51a463cdb1" shape="rect"></a>DT-2</p>
+                           <p>
+                              <a id="para_95f8967b-4bd2-459d-9ae5-262209e44d01" shape="rect"></a>Sta6</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c931e65d-3bcf-4d46-b643-b557612a1bf8" shape="rect"></a>AR-6</p>
+                           <p>
+                              <a id="para_ec665f6b-d91e-45a3-8973-959eabd0cba2" shape="rect"></a>Sta7</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b7acb282-90f4-4285-8b52-14191730e567" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_c8613979-c145-4a84-9ffe-3c7104919731" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ed9e67bf-e864-449f-bee3-c1b5771655e6" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_54410be4-c3af-4547-8e9a-daa2c6043232" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_575917b0-a1e4-471b-8956-78d92f1720f7" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_791534f6-b94e-4996-9472-1662215571b2" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fd0618c0-9fd5-4738-8c4a-ed09dcab9dac" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_c25b0cb1-df9f-4166-85c8-1ae6ea96967f" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_51bf0317-a90a-4f51-8ac9-fd989665fde2" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_8ac3a55a-f17c-4e85-94c7-56bd4fb8c817" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1c17b068-ced7-4202-8ade-147969e50f41" shape="rect"></a>AA-6</p>
+                           <p>
+                              <a id="para_374fc8ca-d0c4-4a76-b121-3402b2306c7e" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_35a1854c-5a72-40e1-be36-d7e80d8bd484" shape="rect"></a>A-RELEASE Request primitive</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_215e9b85-883d-4475-bd07-0f5ecd25ecf9" shape="rect"></a>AR-1</p>
+                           <p>
+                              <a id="para_4506e1e9-3e4e-4173-abd0-36ba98824346" shape="rect"></a>Sta7</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d6a37146-f388-4594-8e38-7f3324da214e" shape="rect"></a>A-RELEASE-RQ PDU (received on open transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_62595375-cc5d-47d0-a5a5-2ca5785d14f2" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_096f5567-5bd5-4915-8918-b37773ac10b6" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_58217d79-57b5-4ac0-9929-bc773ea2bfd3" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_c78cd64c-6695-4343-90bd-b12a38449061" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_36ff94c2-e5e9-461f-aad8-850eb45b7e8d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_074d4e99-992d-4b25-8c7e-1e4e545d310d" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5b6005cf-8c4f-4faa-b655-9d37ac459d38" shape="rect"></a>AR-2</p>
+                           <p>
+                              <a id="para_fd9f1896-54fb-4d9f-bde8-814ecd1516d3" shape="rect"></a>Sta8</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9fdffa29-688c-4dd8-a55f-6effc9c7ebb6" shape="rect"></a>AR-8</p>
+                           <p>
+                              <a id="para_754c8686-88a2-4632-a640-7f72529b1b0c" shape="rect"></a>Sta9 or 10</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_855e26b2-bc5e-4ea7-be1c-c49db9aa268d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_fff4fa62-13ad-4654-bf86-6832f29b30a7" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3cb9f9a1-5bd4-4616-b396-fedb7bc249a6" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_063e4dad-be0a-4e00-8fe2-81fc3d63fa5e" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8bdb788d-5df1-4d26-bace-17d2cacc1ef5" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_72e761f4-433e-4f55-bb68-668e20b8752e" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d4a02fd7-1e25-4c15-821f-54818f617a2b" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_a613675f-02c7-4b94-a7b0-fdfea73fd3f2" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f23109d4-4310-4c55-97c7-d81b9c38eecb" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_33431fbd-a8b2-4182-b38a-2c7a0b661090" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b92d761c-a1e9-460b-87d5-662de39546c0" shape="rect"></a>AA-6</p>
+                           <p>
+                              <a id="para_f56da9c7-cd06-4aa0-a84b-bfc095dbaa97" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_307beda7-7f45-4037-a5d7-6388a364a685" shape="rect"></a>A-RELEASE-RP PDU (received on transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8b2448f1-2e8a-4680-83e9-f49d51a898c0" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_dcc2d976-0625-4bdb-a7a7-19ba809f9c5e" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_88ae481b-0cf8-4d30-92eb-2851ccba9364" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_ab2013ab-7119-4647-bb56-35666ad1a3a7" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b6674c52-4704-40d5-a605-818fd30e2e89" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_94461e5d-a7b9-41bf-bf25-a520023bd30a" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_de9e8af7-44b8-4194-9d36-bca59d09f7cb" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_e846a796-5e0a-41eb-bf35-047a7ac17572" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b9e4491d-f631-4ebb-bf19-9b535d25c42c" shape="rect"></a>AR-3</p>
+                           <p>
+                              <a id="para_2e3c5317-1e73-4a24-9d10-cc3cbf57c2e6" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_22fc4cbb-d0df-4a65-aa01-99b0e137e81d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_3ac4eb50-a84a-43e6-b046-5ec857f625d5" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59f1c2f3-adc2-469a-8848-219b8a987f87" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_99134ae6-1ffd-4fa9-b2bc-eb5d5988da24" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_40f5ac78-514d-43b9-b464-fd32c489ff4b" shape="rect"></a>AR-10</p>
+                           <p>
+                              <a id="para_30d955e4-1c06-4853-bd93-02cba69add54" shape="rect"></a>Sta12</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_94e49859-0fcb-414e-a56a-7c823e310470" shape="rect"></a>AR-3</p>
+                           <p>
+                              <a id="para_bf09571b-faa2-40fc-ac93-5489d55d1910" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bc27269c-8bd9-4176-8b76-d59279a2d71e" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_fc3faded-34a2-4c95-bc5f-978408148d23" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_be09fe1f-1827-48bd-8b5d-046d9e2d362b" shape="rect"></a>AA-6</p>
+                           <p>
+                              <a id="para_256f05b3-0b69-42ec-9afe-e697c5ab2dc7" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b3d1f7ca-016a-46d9-8d70-2a9579925d4b" shape="rect"></a>A-RELEASE Response primitive</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16273588-8c9d-4c79-a466-4f4c18564ec0" shape="rect"></a>AR-4</p>
+                           <p>
+                              <a id="para_3aba85a6-1f05-45ba-be86-fdc352abacce" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f2023c60-7c87-41b5-812e-5c1bf12bd86a" shape="rect"></a>AR-9</p>
+                           <p>
+                              <a id="para_99aec99e-dae3-414e-8a59-8eaede102377" shape="rect"></a>Sta11</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_785be19f-8f84-44db-8841-6b3e58f6f5c5" shape="rect"></a>AR-4</p>
+                           <p>
+                              <a id="para_bc9297df-3c01-4fe1-bd16-72f0ab4c25af" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ef6224c9-3819-48f3-bc2c-8b252bd0ac18" shape="rect"></a>A-ABORT Request primitive</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ace5aa07-0599-45a1-9d1e-0461065bef82" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_c32dadcf-4970-4acc-a892-86987c5214a8" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_35868060-964d-476e-ab5f-be76b2ed0fb3" shape="rect"></a>AA-2</p>
+                           <p>
+                              <a id="para_dcbd52e5-f68e-45d2-8c11-a2c741b8870b" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68a83a65-66db-4e5e-ac18-fbabc2a55096" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_90c2bcaf-72d9-4bc0-9074-a8676918415b" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b630b16e-67e0-486d-8e6c-d18468964d83" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_615d12a8-212c-414f-b354-03bda9e7d914" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8028c8d0-9dbb-4056-a9d1-fc5d353f5f8a" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_58737f87-6009-4425-8c8c-aded1b24e360" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b30d4bc4-5421-4cb6-b5c6-a460bd5245e6" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_38dea80b-1914-4de8-b605-1f2a37e0f6a7" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5d5c27eb-3e5a-4df7-b11c-7dd3ee32cac2" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_94164ee6-3319-4ce9-92f3-7b737f08e898" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a99332b6-ee54-44c1-83b7-5ebd379bc291" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_e1d71ce7-bdad-4154-9927-bebc3b6d82d8" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1d0df4e1-6159-49b1-999e-d2e20f110932" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_c0866363-bd5e-4184-8b79-fc5618253eef" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_29e9887f-782e-4ca0-a61a-196ca5743c82" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_2c514204-0ab7-41c5-bf10-0fc6704700d7" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68a7f8ed-8a09-42d7-a18d-53c7fc826466" shape="rect"></a>A-ABORT PDU (received on open transport connection)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9ff10b26-a5ce-40ff-967b-61ee041121ed" shape="rect"></a>AA-2</p>
+                           <p>
+                              <a id="para_bd8d18cd-06dd-4415-991d-8c06fd319541" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e5cae597-cf56-4f19-a750-056c844d2372" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_d5644659-478a-4852-b8c9-a3d92f736b78" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a7c01cf5-75e4-424a-89e5-c5eb3170b46c" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_d20e80a3-9a25-4e89-b141-52c242f51d21" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d1594b3a-73c7-44b5-9378-9224892c63f6" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_d2a5b6b8-89cf-4914-a272-f939e2568498" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_da063652-dbcd-41ce-85e6-9113a2ce80bf" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_3e557bd8-6dbe-4589-8873-7e3ea4f353cb" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_67ab1051-ef65-4058-9af6-10fc321f8a64" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_43f3e9d5-8c6e-48e6-902a-431c7127becd" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fcecc56f-7cec-4827-b505-4dc5b2cd182a" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_f7010a96-5cb3-4567-8821-d5984898d316" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9c68c559-ea02-4662-bd2d-d8fd905fc13c" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_56762859-5ded-4532-bb74-b7f59f5628db" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6a560991-8bf6-4f43-8c0b-d85ca514d4d7" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_ffa4ac4f-e811-438c-8fd1-44972f12bb7a" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_082ad35e-36bf-4c66-9823-6416184fe4ec" shape="rect"></a>AA-3</p>
+                           <p>
+                              <a id="para_b6fa7409-c635-4ab0-bdf5-0079f941dd3a" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f5a77060-a8e0-40cb-9527-87c3d7eeb350" shape="rect"></a>AA-2</p>
+                           <p>
+                              <a id="para_b8084dd9-c12c-49a9-acdf-59e7d700e0ab" shape="rect"></a>Sta1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b4a1f29f-00c2-488a-a5f3-ba4fa95247ed" shape="rect"></a>Transport connection closed indication (local transport service)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b6aee3fe-8680-419a-9d3d-25ded9be9f28" shape="rect"></a>AA-5</p>
+                           <p>
+                              <a id="para_5ad0e24d-e56a-49ac-9850-55a9c381814e" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_06bea885-d6fa-40f2-91f9-137380f396f7" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_a43dbd98-76d9-4044-9767-14f649de2e0b" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3106eb06-b657-4330-a9ef-3979d180f4e2" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_7a02fee4-9074-489e-bc21-b048bbb1e454" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9c86828d-b3e7-4376-a9df-da0e14efa6aa" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_eadbf7e1-2a55-4130-b5b9-74e95d3e5e86" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_be878cce-edbc-48a6-93b8-e644b2f65a06" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_92429e72-155e-4c91-8a0b-afde9565df0e" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d2b021f2-d82d-4ed3-b354-ae32ddfe6491" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_f3fab250-583c-4b7a-bb49-c944243eed05" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a570e1d-5379-4b08-81af-9a719948c271" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_33742cd6-f703-4fdc-9818-c804a66d6d5d" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2e4cce20-5518-4819-84f7-f2702d1efea4" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_5954497a-15e0-422b-9900-55f33a8e3ac2" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f360e0e1-ea97-4d71-a1e0-3fcff8d71ed8" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_f90bd158-5aa1-45bd-966f-370392aa0c68" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7c7f4ccb-736c-4204-9f80-0cd9be8e2850" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_9bd8be7f-f178-402e-a7a3-41d9a24c076b" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8846d8ba-c202-4dc8-9807-e4c211531df6" shape="rect"></a>AA-4</p>
+                           <p>
+                              <a id="para_de40f6af-d180-4906-8c41-f1594baef7fe" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9e9926cf-9774-45c3-8f87-8996a3e2f2ea" shape="rect"></a>AR-5</p>
+                           <p>
+                              <a id="para_edd38d56-aa26-4970-b1fa-fb753b3e8e35" shape="rect"></a>Sta1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5e6dd482-0801-475c-9c7f-fb08f8cd784d" shape="rect"></a>ARTIM timer expired (Association reject/release timer)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d622346-1e74-4523-bd33-b2fc9f8e96b7" shape="rect"></a>AA-2</p>
+                           <p>
+                              <a id="para_315d1138-f410-4a01-b5ff-6fb42204e10d" shape="rect"></a>Sta1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3bc0875c-9c7f-4c33-97f6-33c49b7ad515" shape="rect"></a>AA-2</p>
+                           <p>
+                              <a id="para_829f14e4-8c5f-4019-8a4a-3ce94001b42d" shape="rect"></a>Sta1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7e8e3f54-720a-4621-8a00-c51b4b5bea80" shape="rect"></a>Unrecognized or invalid PDU received</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_edff825b-f043-4f08-adfb-7f842c456b7f" shape="rect"></a>AA-1</p>
+                           <p>
+                              <a id="para_cee971b2-fcb3-41eb-a2e1-2d1b5e489371" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f1bcb01c-b721-4f6c-9f04-19eea73691e3" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_2500e808-7900-448f-b917-22c15d79c815" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_541686a2-1be7-4f3e-864b-5a3e6d83fc59" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_ede41f0b-1901-4087-bbae-ceb8972a2259" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_af2cd214-bd41-4fb4-b823-b227b3a87bcf" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_3932e4b5-a2c0-4f57-b6d5-dda92bfbfd28" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_24a49ded-5cb7-4c3e-af61-2cfaaedd15fe" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_066a9da9-18ce-4a3e-8c76-c1cd4e326962" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8d3f7ec1-c9f2-48ed-83a6-3f84c7c7098d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_f131e1ec-ecf8-4266-8be3-13b033ab2461" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e2528e54-dd10-430b-9baf-732bd962a61a" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_8a36b735-fe31-4315-8e31-ca7b8c202510" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_214b010f-881d-4f18-86f0-18f9766cb52d" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_09cb6be6-f993-45e0-a97f-312ce4a50c59" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_99cb0bb1-1967-418e-8e96-3bb24e009ccb" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_f4dc0a6a-d333-4367-a1a9-59710a5b449a" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3d9b540f-ddf8-4bb4-ac19-036fe757ec85" shape="rect"></a>AA-8</p>
+                           <p>
+                              <a id="para_2f53c10d-6a79-482c-9764-426a37e512f2" shape="rect"></a>Sta13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f69af9ea-22d0-40e4-b480-f30b176485e1" shape="rect"></a>AA-7</p>
+                           <p>
+                              <a id="para_ebd8c0f6-1fa2-4fe6-94af-db590d5596a9" shape="rect"></a>Sta13</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_9.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.2.2 State Machine Actions Definition </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.8.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.3 DICOM Upper Layer Protocol for TCP/IP Data Units Structure</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024a - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

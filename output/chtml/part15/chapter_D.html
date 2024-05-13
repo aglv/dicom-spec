@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>D Media Storage Security Profiles (Normative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.15.html" title="PS3.15" />
+      <link rel="up" href="PS3.15.html" title="PS3.15" />
+      <link rel="prev" href="sect_C.4.html" title="C.4 Structured Report RSA Digital Signature Profile" />
+      <link rel="next" href="chapter_E.html" title="E Attribute Confidentiality Profiles (Normative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024a - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">D Media Storage Security Profiles (Normative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part15/chapter_D.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_E.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.15.html" shape="rect">PS3.15</a>
+         </span> &gt; <span class="breadcrumb-node">Media Storage Security Profiles (Normative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_D" shape="rect"></a>D Media Storage Security Profiles (Normative)</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_D.1" shape="rect"></a>D.1 Basic DICOM Media Security Profile</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_4c4e3d70-14bf-4e49-8fce-02969078f2d4" shape="rect"></a>The Basic DICOM Media Security Profile allows encapsulation of a DICOM File into a Secure DICOM File such that the following aspects of security are addressed:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b2d3099c-e87d-4939-a719-d927d2021db6" shape="rect"></a>confidentiality,</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e35602fe-e51b-4051-ab42-c9584d289aeb" shape="rect"></a>integrity,</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6012692c-a23d-4c78-9414-4ea16a529fd8" shape="rect"></a>data origin authentication (optional).</p>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_6c470a5e-4878-4ae9-9b47-a5737dcdee38" shape="rect"></a>This profile specifies the use of either AES or Triple-DES for content encryption and RSA, or password-based encryption and AES or Triple-DES, for the key transport of the content-encryption keys. The encrypted content is a DICOM File that can either</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e38391c2-5e3d-4e87-8139-d780f7925b14" shape="rect"></a>be signed with one or more digital signatures, using SHA-1, SHA256, SHA384, or SHA512 as the digest algorithm and RSA as the signature algorithm, or</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a3cfffae-85ba-4753-9bf5-2f3d8fab9160" shape="rect"></a>be digested with SHA-1, SHA256, SHA384, or SHA512 as digest algorithm, without application of digital signatures.</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_ee2ba1f3-c131-473e-9f61-53d4df8a6069" shape="rect"></a>The digest algorithm requirements will evolve as the threats evolve. As the digest requirements have changed, this profile has changed to include additional requirements.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_D.1.1" shape="rect"></a>D.1.1 Encapsulation of A DICOM File in a Secure DICOM File</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_cb472c66-70ca-45fd-9a45-4889f167ed7e" shape="rect"></a>A Secure DICOM File conforming to this security profile shall contain an Enveloped-data content type of the Cryptographic Message Syntax defined in IETF STD 70 <a class="xref" href="chapter_2.html#biblio_RFC_5652" title="Cryptographic Message Syntax" shape="rect">[<abbr class="abbrev">RFC 5652</abbr>]</a>, <a class="xref" href="chapter_2.html#biblio_RFC_3370" title="Cryptographic Message Syntax (CMS) Algorithms" shape="rect">[<abbr class="abbrev">RFC 3370</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_RFC_3565" title="Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)" shape="rect">[<abbr class="abbrev">RFC 3565</abbr>]</a>. The enveloped data shall use RSA <a class="xref" href="chapter_2.html#biblio_RFC_3447" title="PKCS #1 RSA Cryptography Specifications Version 2.1" shape="rect">[<abbr class="abbrev">RFC 3447</abbr>]</a>, or password-based encryption using PBKDF2 <a class="xref" href="chapter_2.html#biblio_RFC_2898" title="PKCS #5: Password-Based Cryptography Specification Version 2.0" shape="rect">[<abbr class="abbrev">RFC 2898</abbr>]</a> for the key derivation algorithm and either AES or Triple-DES <a class="xref" href="chapter_2.html#biblio_RFC_3211" title="Password-based Encryption for CMS" shape="rect">[<abbr class="abbrev">RFC 3211</abbr>]</a>, for the key transport of the content-encryption keys. Creators of a Secure DICOM File conforming to this security profile may use either AES or Triple-DES for content-encryption. Readers claiming conformance to this profile shall be capable of decrypting Secure DICOM Files using either AES or Triple-DES. The AES key length may be any length allowed by the RFCs. The Triple-DES key length is 168 bits as defined by <a class="xref" href="chapter_2.html#biblio_ANSIX9.52" title="Triple Data Encryption Algorithm Modes of Operation" shape="rect">[<abbr class="abbrev">ANSI X9.52</abbr>]</a>. Encoding shall be performed according to the specifications for RSA Key Transport and Triple DES Content Encryption in <a class="xref" href="chapter_2.html#biblio_RFC_3370" title="Cryptographic Message Syntax (CMS) Algorithms" shape="rect">[<abbr class="abbrev">RFC 3370</abbr>]</a>, and for AES Content Encryption in <a class="xref" href="chapter_2.html#biblio_RFC_3565" title="Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)" shape="rect">[<abbr class="abbrev">RFC 3565</abbr>]</a>.</p>
+               <p>
+                  <a id="para_53d860aa-cd3d-4599-8f5a-054c01596339" shape="rect"></a>The encrypted content of the Enveloped-data content type shall be of the following choices:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_089ee38f-971c-4c23-bb30-0b2abf636296" shape="rect"></a>Signed-data content type;</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_957e38f9-56d3-457a-a641-987f80ecd8d3" shape="rect"></a>Digested-data content type.</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_7cc1bbb8-fcb0-4e52-aac1-7f0c14c323d5" shape="rect"></a>In both cases, SHA-1 <a class="xref" href="chapter_2.html#biblio_FIPS_180-1" title="SHA-1: Secure Hash Standard" shape="rect">[<abbr class="abbrev">FIPS 180-1</abbr>]</a>, SHA256, SHA384, or SHA512 <a class="xref" href="chapter_2.html#biblio_FIPS_180-2" title="SHA-2: Secure Hash Standard" shape="rect">[<abbr class="abbrev">FIPS 180-2</abbr>]</a> shall be used as the digest algorithm. In case of the Signed-data content type, RSA <a class="xref" href="chapter_2.html#biblio_RFC_2313" title="PKCS #1: RSA Encryption, Version 1.5" shape="rect">[<abbr class="abbrev">RFC 2313</abbr>]</a> shall be used as the signature algorithm.</p>
+               <p>
+                  <a id="para_ecf84ba0-c931-42e0-b377-47629228e291" shape="rect"></a>In the case of password-based encryption using PBKDF2, the octet string that contains the password used to generate the key shall be limited to the encoding and the graphic character representation defined by the Default Character Repertoire.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_293df03f-4f50-4eca-9612-9eadf1b16cf3" shape="rect"></a>RSA key transport of the content-encryption keys is specified as a requirement in the European Prestandard ENV 13608-2: Health Informatics - Security for healthcare communication - Part 2: Secure data objects.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_452e37e1-f3e4-4e59-96e0-241f0473234c" shape="rect"></a>No requirements on the size of the asymmetric key pairs used for RSA key transport are defined in this profile.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_17adc060-ae93-47e4-a98c-ab2c72286ec6" shape="rect"></a>No requirements or restrictions on the use of the SignedAttributes element of the Signed-data content type's SignerInfo structure are defined in this profile. SignedAttributes might for example be used to specify the signing time or SMIME capabilities, as required by ENV 13608-2.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fc6e1360-6f44-40f3-8f86-3e3232275d79" shape="rect"></a>The use of password-based encryption for key transport of content encryption keys is potentially less secure than certificate-based encryption, but may be useful when the list of recipients is not known a priori or when there is no public key infrastructure deployed. The security depends on the entropy of the password, which if user-selected can be quite low. <a class="xref" href="chapter_2.html#biblio_RFC_3211" title="Password-based Encryption for CMS" shape="rect">[<abbr class="abbrev">RFC 3211</abbr>]</a> strongly recommends the use of a pass "phrase" rather than a single word, and <a class="xref" href="chapter_2.html#biblio_RFC_2898" title="PKCS #5: Password-Based Cryptography Specification Version 2.0" shape="rect">[<abbr class="abbrev">RFC 2898</abbr>]</a> does not impose any practical length limit. Also, the method used to exchange the password or pass phrase also could have a significant impact on the level of security.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_19ec7036-7683-41df-8d08-740b9fc8c014" shape="rect"></a>PBKDF2 as defined in <a class="xref" href="chapter_2.html#biblio_RFC_2898" title="PKCS #5: Password-Based Cryptography Specification Version 2.0" shape="rect">[<abbr class="abbrev">RFC 2898</abbr>]</a> specifies the password to be "an octet string of arbitrary length whose interpretation as a text string is unspecified". For interoperability between the sender and recipient, both a character encoding scheme and a graphic character representation needs to be defined. ISO IR6 (US-ASCII), being the Default Character Repertoire for DICOM (see <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>), is specified in order to avoid any potential ambiguity caused by the use of other character sets (such as UTF-8) that do not necessarily result in the same binary values for particular graphic character representation.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_355cc32b-295d-47b0-b33f-2c0add1db0ec" shape="rect"></a>The graphic character representation of certain symbols in ISO IR6 is explicitly defined, even though the same binary representation may have a different graphic character representation in other 7-bit schemes. For example, in the version of ISO 646 used in Japan (ISO-IR 14 Romaji), 05/12 is represented as "¥" rather than backslash "\". It is the responsibility of the application to assure that the input method and display of such symbols to the user is mapped to the correct encoding, regardless of locale. I.e., if the password is "123\$", then it should be encoded as 03/01 03/02 03/03 05/12 02/04, regardless of whether the user types the backslash "\"(U+005C) on a Japanese or US keyboard; they should not be expected to type the "¥" (U+00A5) key on a Japanese keyboard, nor should 05/12 be displayed as "¥" if the password is displayed as text.</p>
+               <p>
+                  <a id="para_81db47ea-256d-41da-bdf3-065f4e9f3c4e" shape="rect"></a>The restriction to the ISO IR 6 encoding and graphic character representation (rather than, for example, the minimal encoding of UTF-8) also eliminates the ambiguity introduced by homographs (characters that look the same but encode differently), and alternative encodings with the same meaning, such as the single German character "ß" (U+00DF) as opposed to the two-character "ss" (U+0073 U+0073), and the use of phonetic as opposed to ideographic representation of the same meaning, such as Japanese hiragana "ぞう" (U+305E U+3046) versus kanji "像" (U+50CF).</p>
+               <p>
+                  <a id="para_f21cb947-6327-49f8-9191-f297190b6b94" shape="rect"></a>It is the responsibility of the application to prevent the user from creating passwords using characters that cannot be represented; e.g., on a Western European keyboard, the user should not be permitted to enter an accented character such as "é" (U+00E9) or "ö" (U+00F6), since there is no defined mapping of such characters to IS IR 6 characters (such as "e" or "o").</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_E.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.4 Structured Report RSA Digital Signature Profile </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.15.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> E Attribute Confidentiality Profiles (Normative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024a - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

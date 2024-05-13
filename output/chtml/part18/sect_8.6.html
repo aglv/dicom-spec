@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.6 Payloads</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_8.html" title="8 Common Aspects of DICOM Web Services" />
+      <link rel="prev" href="sect_8.5.html" title="8.5 Status Codes" />
+      <link rel="next" href="sect_8.6.2.html" title="8.6.2 DICOM Representations" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.6 Payloads <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 Common Aspects of DICOM Web Services</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-node">Payloads</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.6" shape="rect"></a>8.6 Payloads</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d1462ee4-3013-446c-80e3-48273d048817" shape="rect"></a>Both request and response messages may have message bodies. The message body (if any) of an HTTP message is used to carry the payload of the message. The message body is identical to the payload unless a content coding has been applied, as described in <a class="xref" href="chapter_2.html#biblio_RFC_7230" title="Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing" shape="rect">[<abbr class="abbrev">RFC7230</abbr>]</a>
+                <a class="link" href="http://tools.ietf.org/html/rfc7230#section-3.3.1" target="_top" shape="rect">Section 3.3.1</a>. This Part of the Standard uses the term "payload" to denote the message body before any content coding has been applied to it.</p>
+         <p>
+            <a id="para_a033f3a5-7074-41d1-acab-15d7c245fcab" shape="rect"></a>A message may or may not have a payload. A payload may be empty; that is, its length is zero. If a message has no payload, then the message shall have neither Transfer-Encoding nor Content-Length header fields. If a message has a payload to which a transfer-coding has been applied, then the message shall have a Transfer-Encoding header field. If a message has a payload that has not had a transfer-coding applied, then the message shall have a Content-Length header field.</p>
+         <p>
+            <a id="para_2bd90584-4e6b-44d7-9b15-7f025d2f0020" shape="rect"></a>Any message containing a payload shall have appropriate Content Representation <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>
+                <a class="link" href="http://tools.ietf.org/html/rfc7231#section-3.1" target="_top" shape="rect">Section 3.1</a> and Payload Header Fields <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>
+                <a class="link" href="http://tools.ietf.org/html/rfc7231#section-3.3" target="_top" shape="rect">Section 3.3</a>.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_8.6.1" shape="rect"></a>8.6.1 Payload Structure</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_a469c6ef-5402-4395-a5c2-ea59b1732bfc" shape="rect"></a>Payloads contain representations. Payloads may be single part or multipart.</p>
+            <p>
+               <a id="para_cc350004-aa98-41c3-b968-ca13c6717baf" shape="rect"></a>The message Content-Type header field contains a media type that includes multipart/related when the payload is multipart, otherwise the payload is single part.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_8.6.1.1" shape="rect"></a>8.6.1.1 Single Part Payload</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4af86f39-f12e-41c7-96e1-aea1a368833d" shape="rect"></a>A message with a single part payload contains one representation that is described by the Content Representation Header Fields (see <a class="xref" href="sect_8.4.3.html" title="8.4.3 Payload Header Fields" shape="rect">Section 8.4.3</a>) contained in the message header.</p>
+               <p>
+                  <a id="para_5e9e97a3-e5a6-4d22-bfbc-c147c4e81199" shape="rect"></a>A message with a single part payload shall have a Content-Type header field with a single part media-type (see <a class="xref" href="sect_8.7.3.html" title="8.7.3 DICOM Media Type Sets" shape="rect">Section 8.7.3</a>).</p>
+               <p>
+                  <a id="para_19c22e5d-c0f3-4346-9e6f-a3975405a3f4" shape="rect"></a>Single part payloads may be requested with an HTTP Range <a class="xref" href="chapter_2.html#biblio_RFC_7233" title="Hypertext Transfer Protocol (HTTP/1.1): Range Requests" shape="rect">[<abbr class="abbrev">RFC7233</abbr>]</a> request. If supported by the server, the response shall be according to the standard HTTP Range <a class="xref" href="chapter_2.html#biblio_RFC_7233" title="Hypertext Transfer Protocol (HTTP/1.1): Range Requests" shape="rect">[<abbr class="abbrev">RFC7233</abbr>]</a> response.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_e9f022b3-2ef7-4031-a667-1aebb0c64d99" shape="rect"></a>A single part payload is only applicable for requests that return exactly one item. Such responses may also be encoded as a multipart payload with a single item in them, as determined by <a class="xref" href="sect_10.4.4.html#table_10.4.4-1" title="Table 10.4.4-1. Default, Required, and Optional Media Types" shape="rect">Table 10.4.4-1</a>.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_8.6.1.2" shape="rect"></a>8.6.1.2 Multipart Payload</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4333d8be-6d43-43b8-b180-14d5475cc9c7" shape="rect"></a>A message with a multipart payload contains zero or more representations. Each representation goes in a separate part.</p>
+               <p>
+                  <a id="para_c263a51f-e5b4-4870-8f2c-57d78b0de4d3" shape="rect"></a>A message with a multipart payload shall have a Content-Type header field with a multipart media-type.</p>
+               <p>
+                  <a id="para_9ada159a-0803-443f-8ec5-d233aefce867" shape="rect"></a>The media type of the root representation (see <a class="xref" href="chapter_2.html#biblio_RFC_2387" title="The MIME Multipart/Related Content-type" shape="rect">[<abbr class="abbrev">RFC2387</abbr>]</a>) may be specified by the Content-Type header field of the message. If no root parameter is specified, then the root representation is the first representation in the payload.</p>
+               <p>
+                  <a id="para_7b365951-c8ea-442d-b36a-22e7889e4ef0" shape="rect"></a>Each part in a multipart payload shall start with a boundary string, followed by a Content-Type header field with a single part media type (see <a class="xref" href="sect_8.7.3.html" title="8.7.3 DICOM Media Type Sets" shape="rect">Section 8.7.3</a>), followed by other fields as specified in <a class="xref" href="sect_8.6.html#table_8.6.1-1" title="Table 8.6.1-1. Multipart Header Fields" shape="rect">Table 8.6.1-1</a>. See also <a class="xref" href="sect_8.6.html#figure_8.6-1" title="Figure 8.6-1. Mapping between IOD and HTTP message parts" shape="rect">Figure 8.6-1</a>. Other header fields may be included.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_de06acf4-77f8-42d1-b7dc-f42c7cb4d24e" shape="rect"></a>Understanding the nature of an encoded Bulkdata resource may depend on the corresponding Metadata reference to the bulkdataURI and is not necessarily implicit in the Content-Type header field.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_98a3938d-4200-49d1-95f6-ddb433b7ddad" shape="rect"></a>An HTTP Range <a class="xref" href="chapter_2.html#biblio_RFC_7233" title="Hypertext Transfer Protocol (HTTP/1.1): Range Requests" shape="rect">[<abbr class="abbrev">RFC7233</abbr>]</a> request may be used with Multipart payloads, but the range applies to the entire response, including the multipart markers. In order for the response to be valid across requests, the ordering of items and the choice of multipart separator must remain the same.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_617b9e19-de3f-4bb3-aae1-fb0544687a3b" shape="rect"></a>The Content-Location is used to identify the specific resource (e.g. down to the level of a specific frame or instance or bulkdataURI) represented in this part. This allows the payload recipient to distinguish the parts, for example when each part contains a different frame of a requested multi-frame instance.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7ad929dd-e756-484a-a48e-db7d25a02daa" shape="rect"></a>The metadata in the response of a Search Transaction is not considered a representation of a resource, so a Content-Location is not required.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_860dbf7d-4586-455c-a67d-225dcaf73989" shape="rect"></a>In the case of a rendered resource, the Content-Location will identify the resource from which the rendering was generated.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <div class="table">
+                  <a id="table_8.6.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 8.6.1-1. Multipart Header Fields</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f6fe820d-9f2e-4b4b-a5a4-2c0432f2b747" shape="rect"></a>Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cd7fdc90-a79b-4555-af17-3f4b9a10864b" shape="rect"></a>Value</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a785a9be-5bd6-406c-a586-b94350929ca0" shape="rect"></a>Usage</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f802d900-a2ac-4d54-8e2d-c1dcc95c6c11" shape="rect"></a>Description</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_52e25536-63e3-48a9-8f73-06989f141f62" shape="rect"></a>Content-Type</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_00d1c49f-f173-4a2d-8760-b2053e08b56c" shape="rect"></a>media-type</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_59d252d9-6ff4-4e66-9d2a-5490d0e4dea3" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6f89490d-6898-4f3a-bfd2-3318bb274560" shape="rect"></a>Content-Length</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_db00cc3e-060a-4ee5-80a1-fee7736e758b" shape="rect"></a>uint</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9db7dc0c-c522-43ac-9bdb-793847b3e424" shape="rect"></a>C</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_27c1530e-fc69-453a-8349-66d3355d76af" shape="rect"></a>Shall be present if the response payload does not have a transfer encoding</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_661d3ad9-038f-4718-81d6-d16fd99d6c0c" shape="rect"></a>Content-Location</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_da67358f-75b1-4d22-ab2d-9ff223135c93" shape="rect"></a>url</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_efa046ce-d531-40a0-bf91-7026ce6a97cb" shape="rect"></a>C</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1ae18228-3ee2-4f85-8126-306af64911a5" shape="rect"></a>Shall be present if the response payload contains a representation of a resource. See <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>
+                                        <a class="link" href="http://tools.ietf.org/html/rfc7231#section-3.1.4.2" target="_top" shape="rect">Section 3.1.4.2</a>.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_280f986c-29ec-4075-ad71-72f89c63ea74" shape="rect"></a>Location</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_da05fbac-f08c-4745-8310-d6ddf1f85292" shape="rect"></a>url</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8031eeb6-6601-43c0-aeb3-f2976a9367f9" shape="rect"></a>C</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_77529650-a73e-4fc2-a047-ddc39958e4c5" shape="rect"></a>See <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>
+                                        <a class="link" href="http://tools.ietf.org/html/rfc7231#section-7.1.2" target="_top" shape="rect">Section 7.1.2</a>.</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_19fa9969-7f2e-41a7-8fb4-507829875477" shape="rect"></a>See <a class="xref" href="sect_8.7.html#sect_8.7.1" title="8.7.1 Multipart Media Types" shape="rect">Section 8.7.1</a> and <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>.</p>
+               <p>
+                  <a id="para_2e61459f-79a8-429c-9737-0aec09c25254" shape="rect"></a>The following is an example template of a multipart request or response message that has a multipart payload:</p>
+               <pre class="programlisting" xml:space="preserve">request-line / response-line</pre>
+               <pre class="programlisting" xml:space="preserve">Content-Type: multipart-media-type CRLF</pre>
+               <pre class="programlisting" xml:space="preserve">Content-Location: "/" {/url} CRLF</pre>
+               <pre class="programlisting" xml:space="preserve">*(header-field CRLF)</pre>
+               <pre class="programlisting" xml:space="preserve">CRLF</pre>
+               <pre class="programlisting" xml:space="preserve">multipart-payload</pre>
+               <p>
+                  <a id="para_2bc0b517-3b82-470b-8673-798c2a257810" shape="rect"></a>The Content-Type header field shall have a multipart media-type. For example:</p>
+               <pre class="programlisting" xml:space="preserve">Content-Type: multipart/related; type=DQUOTE root-media-type DQUOTE; boundary="---boundary---"</pre>
+               <p>
+                  <a id="para_4ad2c2c8-74e8-441a-bc1f-7b292f272734" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">multipart-media-type</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1f568400-993e-4371-85cd-86e51a82f9c6" shape="rect"></a>is a media type defined by <a class="xref" href="chapter_2.html#biblio_RFC_2387" title="The MIME Multipart/Related Content-type" shape="rect">[<abbr class="abbrev">RFC2387</abbr>]</a>.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">root-media-type</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e58e92c0-4414-4267-988d-3180667f241f" shape="rect"></a> is a single part media type that specifies the media type of the root, typically the first part, in the payload. If the value of the type parameter and the root body part's content-type differ then the user agent's behavior is undefined.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">boundary</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_457e61b4-8f41-41ad-b8b1-5f21f5091d83" shape="rect"></a> specifies a string that acts as a boundary between message parts.</p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_95a50441-296b-44dd-9091-0fc7df97c97f" shape="rect"></a>If a multipart payload contains representations of Metadata (see <a class="xref" href="sect_8.7.3.3.html#sect_8.7.3.3.1" title="8.7.3.3.1 Uncompressed Bulkdata Media Types" shape="rect">Section 8.7.3.3.1</a>), and Bulkdata (see <a class="xref" href="sect_8.7.3.3.2.html" title="8.7.3.3.2 Compressed Bulkdata Media Types" shape="rect">Section 8.7.3.3.2</a>), then all Metadata message parts that reference a Bulkdata part shall precede the referenced Bulkdata part. The Content-Location of the Bulkdata part shall contain the corresponding BulkDataURI used in the referencing Metadata.</p>
+               <p>
+                  <a id="para_a0ce10fb-3c65-4375-850b-e9a10a686650" shape="rect"></a>
+                        <a class="xref" href="sect_8.6.html#figure_8.6-1" title="Figure 8.6-1. Mapping between IOD and HTTP message parts" shape="rect">Figure 8.6-1</a> shows the correspondence between the IOD representation and a multipart payload.</p>
+               <p>
+                  <a id="para_3c36de3f-5ea3-4aa8-8d0d-c884db3b6ac7" shape="rect"></a>
+                        </p>
+               <div class="figure">
+                  <a id="figure_8.6-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.18_8.6-1.svg" alt="Mapping between IOD and HTTP message parts" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure 8.6-1. Mapping between IOD and HTTP message parts</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                    </p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_8.6.1.2.1" shape="rect"></a>8.6.1.2.1 Multipart Payload Syntax</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_6d004484-1bf2-4ab9-873f-f906b09b7efb" shape="rect"></a>The syntax of a multipart payload is:</p>
+                  <pre class="programlisting" xml:space="preserve">multipart-payload = 1*(DASH boundary CRLF part CRLF) DASH boundary DASH</pre>
+                  <p>
+                     <a id="para_15dd9954-1b8e-4af1-bdf6-0ed1a83425d3" shape="rect"></a>Where</p>
+                  <pre class="programlisting" xml:space="preserve">
+DASH         = "--"
+boundary     = 0*69(bchar / SP) bchar
+bchar        = DIGIT / ALPHA / "'" / "(" / ")" / "+" / "_"   ; The legal boundary characters
+             / "," / "-" / "." / "/" / ":" / "=" / "?"
+part         = Content-Type: media-type CRLF
+               Content-Location: url CRLF
+               (Content-Length: uint CRLF / Transfer-Encoding: encoding CRLF)
+               [Content-Description: text CRLF]
+               *(header-field CRLF)
+               CRLF
+               part-payload
+part-payload = *OCTET
+</pre>
+                  <p>
+                     <a id="para_cc8eb7eb-0e60-448b-bd2d-366a6d8e94bc" shape="rect"></a>For example, if the boundary is "++++", then a message payload containing three parts would be structured as follows:</p>
+                  <pre class="programlisting" xml:space="preserve">--++++CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">Content-Type: media-type CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">Content-Location: url CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">(Content-Length: uint CRLF / Transfer-Encoding: encoding CRLF)</pre>
+                  <pre class="programlisting" xml:space="preserve">[Content-Description: {description} CRLF]</pre>
+                  <pre class="programlisting" xml:space="preserve">CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">payload CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">--++++CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">Content-Type: media-type CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">. . .</pre>
+                  <pre class="programlisting" xml:space="preserve">payload CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">--++++CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">Content-Type: media-type CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">. . .</pre>
+                  <pre class="programlisting" xml:space="preserve">payload CRLF</pre>
+                  <pre class="programlisting" xml:space="preserve">--++++--</pre>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.5 Status Codes </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.6.2 DICOM Representations</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TTT X-Ray 3D Angiographic Image Encoding Examples (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="chapter_SSS.html" title="SSS Use of Image Libraries in SR Documents (Informative)" />
+      <link rel="next" href="sect_TTT.2.html" title="TTT.2 Application Cases" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TTT X-Ray 3D Angiographic Image Encoding Examples (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_TTT.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_SSS.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">X-Ray 3D Angiographic Image Encoding Examples (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_TTT" shape="rect"></a>TTT X-Ray 3D Angiographic Image Encoding Examples (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_TTT.1" shape="rect"></a>TTT.1 General Concepts of X-Ray 3D Angiography</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d20ea9cb-5ed8-4676-9480-e8534aef5072" shape="rect"></a>This chapter describes the general concepts of the X-Ray 3D Angiography: the acquisition of the projection images, the 3D reconstruction, and the encoding of the X-Ray 3D Angiographic Image SOP instances. They provide better understanding of the different application cases in the rest of this Annex.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_TTT.1.1" shape="rect"></a>TTT.1.1 Process of Creating An X-Ray 3D Angiography</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_28e4ece5-2bfd-4e4d-99f8-d96194d58d5c" shape="rect"></a>Two main steps are involved in the process of creating an X-Ray 3D Angiographic Instance: The acquisition of 2D projections and the 3D reconstruction of the volume.</p>
+               <p>
+                  <a id="para_ccdc6be9-eba8-459b-9d69-5c96703c4a28" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_TTT.1.1-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_TTT.1.1-1.svg" alt="Process flow of the X-Ray 3D Angiographic Volume Creation" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure TTT.1.1-1. Process flow of the X-Ray 3D Angiographic Volume Creation</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_TTT.1.1.1" shape="rect"></a>TTT.1.1.1 Acquisition of 2D Projections</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a84b99a2-9c26-4ec4-a155-828fedf9a081" shape="rect"></a>The X-Ray equipment acquires 2D projections at different angles. The Acquisition Context describes the technical parameters of a set of 2D projection acquisitions that are used to perform a 3D reconstruction. In the scope of the X-Ray 3D Angiographic SOP Class, all the projections of an Acquisition Context share common parameter values, such as:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_21ba0ba6-0878-4a72-8d62-9169958d3d38" shape="rect"></a>Detector settings, anti-scatter grid, field of view characteristics</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3e3c1675-2d04-4d2f-b637-9200c37b2784" shape="rect"></a>Distances from the X-Ray source to the Isocenter and to the detector, table position and table angles</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2060b1bf-86b5-4f96-b47b-0ee5d61907e7" shape="rect"></a>Focal spot, spectral filters</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a198e05c-ef5f-4884-b918-7a39abcad095" shape="rect"></a>Contrast injection details</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_7ea4e14f-b236-496d-93c2-8594de3eb476" shape="rect"></a>If one value of such common parameters changes during the acquisition of the projections, then more than one Acquisition Context will be defined.</p>
+                  <p>
+                     <a id="para_d95e8eb5-c0e7-4f83-bc24-d6f6610d7f01" shape="rect"></a>Typically the projections of an Acquisition Context are the result of a rotational acquisition where the X-Ray positioner follows a circular trajectory. However, it is possible to define an Acquisition Context as the set of multiple projections at different X-Ray incidences without a particular spatial trajectory.</p>
+                  <p>
+                     <a id="para_523eb5e0-44f5-4af5-95d4-e8ad3175d214" shape="rect"></a>An Acquisition Context is characterized by a period of time in which all the projections are acquired. Some other parameters are used to describe the Acquisition Context: start and end DateTime, average exposure techniques (mA, kVp, exposure duration, etc.), positioner start, end and increment angles.</p>
+                  <p>
+                     <a id="para_2fd7b50a-9fc5-47b3-802a-7fe1d4cf1086" shape="rect"></a>Additionally, other technical parameters that change at each projection can be documented in the X-Ray 3D Angiographic SOP Class on a per-projection basis:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6b61455b-4e19-4bf7-b114-6f92a0723c4a" shape="rect"></a>kVp, mA, exposure duration</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a86697db-82b2-418c-b161-1d8dc1c48a1d" shape="rect"></a>Collimator shape and dimensions</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2fa78311-336e-42f0-8d1d-15bca02a352c" shape="rect"></a>X-Ray positioner angles</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_TTT.1.1.2" shape="rect"></a>TTT.1.1.2 3D Reconstruction</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_2f0fc2c8-efe9-4f79-86ab-10b61772ea66" shape="rect"></a>The 3D Reconstruction Application performing the 3D Reconstruction can be located in the same X-Ray equipment or in another workstation.</p>
+                  <p>
+                     <a id="para_4b697e4a-bd3b-45b2-b726-59e2bc472e4e" shape="rect"></a>A 3D Reconstruction in the scope of the X-Ray 3D Angiographic SOP Class is the creation of one X-Ray 3D Angiographic volume from a set of projections from one or more Acquisition Context(s). Therefore, one 3D Reconstruction in this scope refers to the resulting volume, and not to the application logic to process the projections. This application logic is out of the scope of this SOP Class, the same encoding will result whether several 3D Reconstructions are performed in a single or in multiple application steps to create several volumes (e.g., low and high resolution volumes) from the same set of projections.</p>
+                  <p>
+                     <a id="para_ff22f3db-3bb7-4714-975b-65fdbae15fbb" shape="rect"></a>One 3D Reconstruction is characterized by some parameters like name, version, manufacturer, description and the type of algorithm used to process the projections.</p>
+                  <p>
+                     <a id="para_d2229dcf-b4d9-4b26-ad1a-751eecefb4df" shape="rect"></a>The 3D Reconstruction can use one or more Acquisition Contexts to generate one single X-Ray 3D Angiographic Volume. Several 3D Reconstructions can be encoded in one single X-Ray 3D Angiographic Instance.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_TTT.1.2" shape="rect"></a>TTT.1.2 X-Ray 3D Angiographic Real World Entities Relationships</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3be98731-8f54-45c3-8a1d-42f95ed520b5" shape="rect"></a>This section describes the relationships between the real world entities involved in X-Ray 3D Angiography.</p>
+               <p>
+                  <a id="para_e2400fb1-209d-4f87-8c11-debadfbe2cce" shape="rect"></a>The X-Ray equipment creates one or more acquisition contexts (i.e., one or more rotational acquisitions with different technical parameters). The projections can be kept internal to the equipment (i.e., not exported outside the equipment) or can be encoded as DICOM instances. In the scope of the X-Ray 3D Angiographic SOP Class, the projections can be encoded either as X-Ray Angiography SOP Class or Enhanced XA SOP Class.</p>
+               <p>
+                  <a id="para_ee78e086-29e2-458c-9b71-f8ffae5aea66" shape="rect"></a>If the projections are encoded as DICOM Instances, they can be referenced in the X-Ray 3D Angiographic image as Contributing Sources. Each Acquisition Context refers to all the DICOM instances involved in that context. If the projections are kept internal to the equipment, the X-Ray 3D Angiographic image can still describe the technical parameters of each acquisition context without referencing any DICOM instance.</p>
+               <p>
+                  <a id="para_dbfff413-e369-4f85-aa47-e843daa6b571" shape="rect"></a>The 3D Reconstruction Application creates one or more 3D Reconstructions, each 3D Reconstruction uses one or more Acquisition Contexts. One or more 3D Reconstructions can be encoded in one single X-Ray 3D Angiographic Instance.</p>
+               <p>
+                  <a id="para_913cabc5-2e31-4d21-80a4-893d5cd38ea8" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_TTT.1.2-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_TTT.1.2-1.svg" alt="Relationship between the creation of 2D and 3D Instances" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure TTT.1.2-1. Relationship between the creation of 2D and 3D Instances</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_TTT.1.3" shape="rect"></a>TTT.1.3 X-Ray 3D Angiographic Pixel Data Characterization</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_d3e109d1-3631-45fc-8b1e-2ea03141907e" shape="rect"></a>Similarly to other 3D modalities like CT or MR, the X-Ray 3D Angiographic image is generated from original source data (i.e., original projections) which can be kept internal to the equipment. In this sense, the 3D data resulting from the reconstruction of the original projections is considered as original (i.e., the Value 1 of the Attributes Image Type (0008,0008) and Frame Type (0008,9007) equals ORIGINAL).</p>
+               <p>
+                  <a id="para_17a50f67-a050-457b-81cf-512e902b1f16" shape="rect"></a>Note that the original 2D projections can be stored as DICOM instances, and the X-Ray 3D Angiographic image can be created from a later reconstruction on a different equipment. In this case, since the source data is the same original set of projections, the 3D data is still considered as original.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_SSS.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">SSS Use of Image Libraries in SR Documents (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TTT.2 Application Cases</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

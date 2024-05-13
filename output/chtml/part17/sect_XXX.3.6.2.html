@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>XXX.3.6.2 Encoding Outline</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_XXX.3.6.html" title="XXX.3.6 Highlighting Areas of Interest in MPR View" />
+      <link rel="prev" href="sect_XXX.3.6.html" title="XXX.3.6 Highlighting Areas of Interest in MPR View" />
+      <link rel="next" href="sect_XXX.3.6.3.html" title="XXX.3.6.3 Encoding Details" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">XXX.3.6.2 Encoding Outline <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_XXX.3.6.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_XXX.3.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">XXX.3.6 Highlighting Areas of Interest in MPR View</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_XXX.3.6.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_XXX.html" shape="rect">Volumetric Presentation States (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_XXX.3.html" shape="rect">Use Cases</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_XXX.3.6.html" shape="rect">Highlighting Areas of Interest in MPR View</a>
+         </span> &gt; <span class="breadcrumb-node">Encoding Outline</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_XXX.3.6.2" shape="rect"></a>XXX.3.6.2 Encoding Outline</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_9f20a3c5-956b-4308-9050-1f496364c5f0" shape="rect"></a>The classification of the lung nodules is stored in one or multiple Segmentation IOD instances. For each lung nodule category one Segmentation marks the corresponding areas in the volume.</p>
+         <p>
+            <a id="para_dc9b4194-3f98-4132-8265-ad522b63f9a8" shape="rect"></a>For example, to create a Planar MPR view which shows 3 lung nodule categories in different colors the Planar MPR VPS IOD instance defines via the Volumetric Presentation State Display Module a volumetric pipeline with 4 inputs.</p>
+         <p>
+            <a id="para_922f17df-35ab-4167-9453-25f0c13ee562" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_XXX.3.6-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_XXX.3.6-2.svg" alt="Planar MPR VPS Pipeline for Colorizing the Lung Nodule Categories" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure XXX.3.6-2. Planar MPR VPS Pipeline for Colorizing the Lung Nodule Categories</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_5a77d97a-7561-45a1-8b10-c6c49f9558be" shape="rect"></a>The same volume data of the lung is used as input for all sub pipelines:</p>
+         <p>
+            <a id="para_d16524b8-5066-4080-8066-c3bd0b8dadb8" shape="rect"></a>The first input to the Volumetric Presentation State (VPS) Display Module provides the full (uncropped) MPR view of the anatomy in the display, which will be left as grayscale in the VPS Display Module. This will provide the backdrop to the colorized segmented inputs to be subsequently overlaid by compositor components of the Volumetric Presentation State Display pipeline.</p>
+         <p>
+            <a id="para_03b67210-d5fb-44d8-8d32-7c52fddb5e4e" shape="rect"></a>The same input data and a single set of MPR geometry parameters defined in the Multi-Planar Reconstruction Geometry Module are used to generate each VPS Display Module input; only the cropping is different. The Volume Cropping Module for each of the other inputs specifies the included segments used to crop away all parts of the volume which do not belong to a nodule of the corresponding nodule category.</p>
+         <p>
+            <a id="para_43cc3a36-3327-453f-a995-50f8d6ed4df6" shape="rect"></a>From these cropped volumes Planar MPR views are generated, which are then colorized and overlaid on the grayscale background within the Volume Presentation State Display Module (see <a href="../part04/sect_FF.2.3.2.html#sect_FF.2.3.2.1" class="olink" shape="rect">Section FF.2.3.2.1 “Classification Component Components” in PS3.4</a>).</p>
+         <p>
+            <a id="para_81606400-33ce-4e4c-951b-4a04ce7787ce" shape="rect"></a>In the Volumetric Presentation State Display Module the Presentation State Classification Component Sequence (0070,1801) defines scalar-to-RGB transformations for mapping each MPR view to RGBA. The first MPR (anatomy) view is mapped to grayscale RGB by a RGB LUT Transfer Function (0028,140F) value of EQUAL_RGB. Alpha LUT Transfer Function (0028,1410) is set to NONE; i.e., the anatomy will be rendered as completely opaque background.</p>
+         <p>
+            <a id="para_a11f2cbf-ee92-49ba-9158-8566cc812a8b" shape="rect"></a>For each of the three lung nodule MPR views an RGB transfer function maps the view to the color corresponding the respective nodule category. Alpha is set to 0 for black pixels, making them completely transparent. Alpha for all other pixels is set to 1 (or a value between 0 and 1, if some of the underlying anatomy shall be visible through the nodule segmentation).</p>
+         <p>
+            <a id="para_053e64e2-2ec1-4a80-a943-06d8ca377b80" shape="rect"></a>Presentation State Compositor Component Sequence (0070,1805) in the Volumetric Presentation State Display Module then creates a chain of three RGB Compositor Components which composite the four MPR views into one. The first RGB Compositor performs "Partially Transparent A over B" compositing as described in <a class="xref" href="sect_XXX.5.2.html" title="XXX.5.2 Partially Transparent A Over B Compositing" shape="rect">Section XXX.5.2</a> by passing through the Alpha of input 2 as Weight-2 and 1-Alpha of input 2 as Weight-1.</p>
+         <p>
+            <a id="para_d82f19cd-365d-4874-b0d5-5f359ca21de2" shape="rect"></a>The remaining two Compositor Components then perform "Pass Through" compositing as described by <a class="xref" href="sect_XXX.5.3.html" title="XXX.5.3 Pass-through Compositing" shape="rect">Section XXX.5.3</a> by using Weighting LUTs which simply pass through Alpha-1 as Weight-1 and Alpha-2 as Weight-2, since the output of the previous Compositor Components contains no Alpha, and therefore Alpha-1 will automatically be set to one minus Alpha-2 by the Compositor.</p>
+         <p>
+            <a id="para_b4f3e10a-2a15-430a-8ea4-5caf58c16027" shape="rect"></a>
+                        <a class="xref" href="sect_XXX.3.6.2.html#figure_XXX.3.6-3" title="Figure XXX.3.6-3. Lung nodule example pipeline" shape="rect">Figure XXX.3.6-3</a> shows the complete pipeline for the lung nodule example:</p>
+         <p>
+            <a id="para_1f54d8fc-1691-4557-b006-67a899ed842c" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_XXX.3.6-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_XXX.3.6-3.svg" alt="Lung nodule example pipeline" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure XXX.3.6-3. Lung nodule example pipeline</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_bef1dd6c-ae03-40b7-b7f4-21b59d5b103d" shape="rect"></a>It is envisioned that display applications provide user interfaces for manipulating the Alpha LUT Transfer Functions for each input of the pipeline, allowing the user to control the visibility of the highlighting of each lung nodule category.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_XXX.3.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_XXX.3.6.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_XXX.3.6.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">XXX.3.6 Highlighting Areas of Interest in MPR View </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> XXX.3.6.3 Encoding Details</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

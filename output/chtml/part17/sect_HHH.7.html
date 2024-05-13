@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>HHH.7 Uses for Server Options Services</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_HHH.html" title="HHH Transition from WADO to RESTful Services (Informative)" />
+      <link rel="prev" href="sect_HHH.6.html" title="HHH.6 Retired" />
+      <link rel="next" href="chapter_III.html" title="III Ophthalmic Thickness Map Use Cases (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">HHH.7 Uses for Server Options Services <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_HHH.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_HHH.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">HHH Transition from WADO to RESTful Services (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_III.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_HHH.html" shape="rect">Transition from WADO to RESTful Services (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Uses for Server Options Services</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_HHH.7" shape="rect"></a>HHH.7 Uses for Server Options Services</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_8ba88fdb-56de-4b7d-a010-00c3d1d4d6b1" shape="rect"></a>Clients would like to be able to discover a list of devices that support DICOM RESTful services and query a DICOM RESTful service to determine which options are supported, such as:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_e4e2b90c-6e07-460c-8e72-8080069e3b29" shape="rect"></a>Supported services and transactions</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a85d0918-6401-4414-8986-97cc0bd89937" shape="rect"></a>Supported Transfer Syntaxes and Media Types</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_440bd195-ef4c-46af-9756-98deb8b14f0f" shape="rect"></a>Supported Accept header values</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5e119b46-c9a2-4267-990b-7c0543c0027f" shape="rect"></a>Supported query parameters</p>
+               </li>
+            </ul>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_HHH.7.1" shape="rect"></a>HHH.7.1 WADL Example (XML)</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d48f9c43-3c12-4df4-8c10-10d45f01aac0" shape="rect"></a>The following WADL XML example contains all the required elements for an origin-server that supports WADO-RS, QIDO-RS and STOW-RS with all required services and parameters.</p>
+            <pre class="programlisting" xml:space="preserve">&lt;application xsi:schemaLocation="http://wadl.dev.java.net/2009/02 wadl.xsd"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://wadl.dev.java.net/2009/02"&gt;
+ &lt;resources base="http://medical.examplehospital.org/dicomweb"&gt;
+  &lt;resource path="studies"&gt;
+   &lt;method name="GET" id="SearchForStudies"&gt;
+    &lt;request&gt;
+     &lt;param name="Accept" style="header"
+            default="type=application/dicom+json"&gt;
+      &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+      &lt;option value="application/dicom+json" /&gt;
+     &lt;/param&gt;
+     &lt;param name="Cache-control" style="header"&gt;
+      &lt;option value="no-cache" /&gt;
+     &lt;/param&gt;
+     &lt;param name="limit" style="query" /&gt;
+     &lt;param name="offset" style="query" /&gt;
+     &lt;param name="StudyDate" style="query" /&gt;
+     &lt;param name="00080020" style="query" /&gt;
+     &lt;param name="StudyTime" style="query" /&gt;
+     &lt;param name="00080030" style="query" /&gt;
+     &lt;param name="AccessionNumber" style="query" /&gt;
+     &lt;param name="00080050" style="query" /&gt;
+     &lt;param name="ModalitiesInStudy" style="query" /&gt;
+     &lt;param name="00080061" style="query" /&gt;
+     &lt;param name="ReferringPhysicianName" style="query" /&gt;
+     &lt;param name="00080090" style="query" /&gt;
+     &lt;param name="PatientName" style="query" /&gt;
+     &lt;param name="00100010" style="query" /&gt;
+     &lt;param name="PatientID" style="query" /&gt;
+     &lt;param name="00100020" style="query" /&gt;
+     &lt;param name="StudyInstanceUID" style="query" repeating="true" /&gt;
+     &lt;param name="0020000D" style="query" repeating="true" /&gt;
+     &lt;param name="StudyID" style="query" /&gt;
+     &lt;param name="00200010" style="query" /&gt;
+     &lt;param name="includefield" style="query" repeating="true"&gt;
+      &lt;option value="all" /&gt;
+     &lt;/param&gt;
+    &lt;/request&gt;
+    &lt;response status="200"&gt;
+     &lt;param name="Warning" style="header"
+            fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+            Only literal matching has been performed." /&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+     &lt;representation mediaType="application/dicom+json" /&gt;
+    &lt;/response&gt;
+    &lt;response status="400 401 403 413 503" /&gt;
+   &lt;/method&gt;
+   &lt;method name="POST" id="StoreInstances"&gt;
+    &lt;request&gt;
+     &lt;param name="Accept" style="header" default="application/dicom+xml"&gt;
+      &lt;option value="application/dicom+xml" /&gt;
+     &lt;/param&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom" /&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+    &lt;/request&gt;
+    &lt;response status="202 409"&gt;
+     &lt;representation mediaType="application/dicom+xml" /&gt;
+    &lt;/response&gt;
+    &lt;response status="400 401 403 503" /&gt;
+   &lt;/method&gt;
+   &lt;resource path="{StudyInstanceUID}"&gt;
+    &lt;method name="GET" id="RetrieveStudy"&gt;
+     &lt;request&gt;
+      &lt;param name="Accept" style="header"
+                 default="multipart/related; type=application/dicom"&gt;
+       &lt;option value="multipart/related; type=application/dicom" /&gt;
+       &lt;option value="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+       &lt;option value="multipart/related; type=application/octet-stream" /&gt;
+      &lt;/param&gt;
+     &lt;/request&gt;
+     &lt;response status="200 206"&gt;
+      &lt;representation mediaType="multipart/related; type=application/dicom" /&gt;
+      &lt;representation mediaType="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+      &lt;representation mediaType="multipart/related; type=application/octet-stream" /&gt;
+     &lt;/response&gt;
+     &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+    &lt;/method&gt;
+    &lt;method name="POST" id="StoreStudyInstances"&gt;
+     &lt;request&gt;
+      &lt;param name="Accept" style="header" default="application/dicom+xml"&gt;
+       &lt;option value="application/dicom+xml" /&gt;
+      &lt;/param&gt;
+      &lt;representation mediaType="multipart/related; type=application/dicom" /&gt;
+      &lt;representation mediaType="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+      &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+     &lt;/request&gt;
+     &lt;response status="202 409"&gt;
+      &lt;representation mediaType="application/dicom+xml" /&gt;
+     &lt;/response&gt;
+     &lt;response status="400 401 403 503" /&gt;
+    &lt;/method&gt;
+    &lt;resource path="series"&gt;
+     &lt;method name="GET" id="SearchForStudySeries"&gt;
+      &lt;request&gt;
+       &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+        &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+        &lt;option value="application/dicom+json" /&gt;
+       &lt;/param&gt;
+       &lt;param name="Cache-control" style="header"&gt;
+        &lt;option value="no-cache" /&gt;
+       &lt;/param&gt;
+       &lt;param name="limit" style="query" /&gt;
+       &lt;param name="offset" style="query" /&gt;
+       &lt;param name="Modality" style="query" /&gt;
+       &lt;param name="00080060" style="query" /&gt;
+       &lt;param name="SeriesInstanceUID" style="query" repeating="true" /&gt;
+       &lt;param name="0020000E" style="query" repeating="true" /&gt;
+       &lt;param name="SeriesNumber" style="query" /&gt;
+       &lt;param name="00200011" style="query" /&gt;
+       &lt;param name="PerformedProcedureStepStartDate" style="query" /&gt;
+       &lt;param name="00400244" style="query" /&gt;
+       &lt;param name="PerformedProcedureStepStartTime" style="query" /&gt;
+       &lt;param name="00400245" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence" style="query" /&gt;
+       &lt;param name="00400275" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence.ScheduledProcedureStepID" style="query" /&gt;
+       &lt;param name="00400275.00400009" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence.RequestedProcedureID" style="query" /&gt;
+       &lt;param name="00400275.00401001" style="query" /&gt;
+       &lt;param name="includefield" style="query" repeating="true"&gt;
+        &lt;option value="all" /&gt;
+       &lt;/param&gt;
+      &lt;/request&gt;
+      &lt;response status="200"&gt;
+       &lt;param name="Warning" style="header"
+              fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+              Only literal matching has been performed." /&gt;
+       &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+       &lt;representation mediaType="application/dicom+json" /&gt;
+      &lt;/response&gt;
+      &lt;response status="400 401 403 413 503" /&gt;
+     &lt;/method&gt;
+     &lt;resource path="{SeriesInstanceUID}"&gt;
+      &lt;method name="GET" id="RetrieveSeries"&gt;
+       &lt;request&gt;
+        &lt;param name="Accept" style="header"
+                 default="multipart/related; type=application/dicom"&gt;
+         &lt;option value="multipart/related; type=application/dicom" /&gt;
+         &lt;option value="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+         &lt;option value="multipart/related; type=application/octet-stream" /&gt;
+        &lt;/param&gt;
+       &lt;/request&gt;
+       &lt;response status="200 206"&gt;
+        &lt;representation mediaType="multipart/related; type=application/dicom" /&gt;
+        &lt;representation mediaType="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+        &lt;representation mediaType="multipart/related; type=application/octet-stream" /&gt;
+       &lt;/response&gt;
+       &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+      &lt;/method&gt;
+      &lt;resource path="instances"&gt;
+       &lt;method name="GET" id="SearchForStudySeriesInstances"&gt;
+        &lt;request&gt;
+         &lt;param name="Accept" style="header"
+                default="type=application/dicom+json"&gt;
+          &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+          &lt;option value="application/dicom+json" /&gt;
+         &lt;/param&gt;
+         &lt;param name="Cache-control" style="header"&gt;
+          &lt;option value="no-cache" /&gt;
+         &lt;/param&gt;
+         &lt;param name="limit" style="query" /&gt;
+         &lt;param name="offset" style="query" /&gt;
+         &lt;param name="SOPClassUID" style="query" repeating="true" /&gt;
+         &lt;param name="00080016" style="query" repeating="true" /&gt;
+         &lt;param name="SOPInstanceUID" style="query" repeating="true" /&gt;
+         &lt;param name="00080018" style="query" repeating="true" /&gt;
+         &lt;param name="InstanceNumber" style="query" /&gt;
+         &lt;param name="00200013" style="query" /&gt;
+         &lt;param name="includefield" style="query" repeating="true"&gt;
+          &lt;option value="all" /&gt;
+         &lt;/param&gt;
+        &lt;/request&gt;
+        &lt;response status="200"&gt;
+         &lt;param name="Warning" style="header"
+                fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+                Only literal matching has been performed." /&gt;
+         &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+         &lt;representation mediaType="application/dicom+json" /&gt;
+        &lt;/response&gt;
+        &lt;response status="400 401 403 413 503" /&gt;
+       &lt;/method&gt;
+       &lt;resource path="{SOPInstanceUID}"&gt;
+        &lt;method name="GET" id="RetrieveInstance"&gt;
+         &lt;request&gt;
+          &lt;param name="Accept" style="header"
+                 default="multipart/related; type=application/dicom"&gt;
+           &lt;option value="multipart/related; type=application/dicom" /&gt;
+           &lt;option value="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+           &lt;option value="multipart/related; type=application/octet-stream" /&gt;
+          &lt;/param&gt;
+         &lt;/request&gt;
+         &lt;response status="200 206"&gt;
+          &lt;representation mediaType="multipart/related; type=application/dicom" /&gt;
+          &lt;representation mediaType="multipart/related; type=application/dicom;
+                                          transfer-syntax=1.2.840.10008.1.2.1" /&gt;
+          &lt;representation mediaType="multipart/related; type=application/octet-stream" /&gt;
+         &lt;/response&gt;
+         &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+        &lt;/method&gt;
+        &lt;resource path="frames"&gt;
+         &lt;resource path="{framelist}"&gt;
+          &lt;method name="GET" id="RetrieveFrames"&gt;
+           &lt;request&gt;
+            &lt;param name="Accept" style="header"
+                   default="multipart/related; type=application/octet-stream"&gt;
+             &lt;option value="multipart/related; type=application/octet-stream" /&gt;
+            &lt;/param&gt;
+           &lt;/request&gt;
+           &lt;response status="200"&gt;
+            &lt;representation mediaType="multipart/related; type=application/octet-stream" /&gt;
+           &lt;/response&gt;
+           &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+          &lt;/method&gt;
+         &lt;/resource&gt;
+        &lt;/resource&gt;
+        &lt;resource path="metadata"&gt;
+         &lt;method name="GET" id="RetrieveInstanceMetadata"&gt;
+          &lt;request&gt;
+           &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+            &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+            &lt;option value="application/dicom+json" /&gt;
+           &lt;/param&gt;
+          &lt;/request&gt;
+          &lt;response status="200"&gt;
+           &lt;representation mediaType=" multipart/related; type=application/dicom+xml" /&gt;
+          &lt;/response&gt;
+          &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+         &lt;/method&gt;
+        &lt;/resource&gt;
+       &lt;/resource&gt;
+      &lt;/resource&gt;
+      &lt;resource path="metadata"&gt;
+       &lt;method name="GET" id="RetrieveSeriesMetadata"&gt;
+        &lt;request&gt;
+         &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+          &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+          &lt;option value="application/dicom+json" /&gt;
+         &lt;/param&gt;
+        &lt;/request&gt;
+        &lt;response status="200"&gt;
+         &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+        &lt;/response&gt;
+        &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+       &lt;/method&gt;
+      &lt;/resource&gt;
+     &lt;/resource&gt;
+    &lt;/resource&gt;
+    &lt;resource path="instances"&gt;
+     &lt;method name="GET" id="SearchForStudyInstances"&gt;
+      &lt;request&gt;
+       &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+        &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+        &lt;option value="application/dicom+json" /&gt;
+       &lt;/param&gt;
+       &lt;param name="Cache-control" style="header"&gt;
+        &lt;option value="no-cache" /&gt;
+       &lt;/param&gt;
+       &lt;param name="limit" style="query" /&gt;
+       &lt;param name="offset" style="query" /&gt;
+       &lt;param name="SOPClassUID" style="query" /&gt;
+       &lt;param name="00080016" style="query" /&gt;
+       &lt;param name="SOPInstanceUID" style="query" repeating="true" /&gt;
+       &lt;param name="00080018" style="query" repeating="true" /&gt;
+       &lt;param name="Modality" style="query" /&gt;
+       &lt;param name="00080060" style="query" /&gt;
+       &lt;param name="SeriesInstanceUID" style="query" repeating="true" /&gt;
+       &lt;param name="0020000E" style="query" repeating="true" /&gt;
+       &lt;param name="SeriesNumber" style="query" /&gt;
+       &lt;param name="00200011" style="query" /&gt;
+       &lt;param name="InstanceNumber" style="query" /&gt;
+       &lt;param name="00200013" style="query" /&gt;
+       &lt;param name="PerformedProcedureStepStartDate" style="query" /&gt;
+       &lt;param name="00400244" style="query" /&gt;
+       &lt;param name="PerformedProcedureStepStartTime" style="query" /&gt;
+       &lt;param name="00400245" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence" style="query" /&gt;
+       &lt;param name="00400275" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence.ScheduledProcedureStepID" style="query" /&gt;
+       &lt;param name="00400275.00400009" style="query" /&gt;
+       &lt;param name="RequestAttributeSequence.RequestedProcedureID" style="query" /&gt;
+       &lt;param name="00400275.00401001" style="query" /&gt;
+       &lt;param name="includefield" style="query" repeating="true"&gt;
+        &lt;option value="all" /&gt;
+       &lt;/param&gt;
+      &lt;/request&gt;
+      &lt;response status="200"&gt;
+       &lt;param name="Warning" style="header"
+              fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+              Only literal matching has been performed." /&gt;
+       &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+       &lt;representation mediaType="application/dicom+json" /&gt;
+      &lt;/response&gt;
+      &lt;response status="400 401 403 413 503" /&gt;
+     &lt;/method&gt;
+    &lt;/resource&gt;
+    &lt;resource path="metadata"&gt;
+     &lt;method name="GET" id="RetrieveStudyMetadata"&gt;
+      &lt;request&gt;
+       &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+        &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+        &lt;option value="application/dicom+json" /&gt;
+       &lt;/param&gt;
+      &lt;/request&gt;
+      &lt;response status="200"&gt;
+       &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+      &lt;/response&gt;
+      &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+     &lt;/method&gt;
+    &lt;/resource&gt;
+   &lt;/resource&gt;
+  &lt;/resource&gt;
+  &lt;resource path="series"&gt;
+   &lt;method name="GET" id="SearchForSeries"&gt;
+    &lt;request&gt;
+     &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+      &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+      &lt;option value="application/dicom+json" /&gt;
+     &lt;/param&gt;
+     &lt;param name="Cache-control" style="header"&gt;
+      &lt;option value="no-cache" /&gt;
+     &lt;/param&gt;
+     &lt;param name="limit" style="query" /&gt;
+     &lt;param name="offset" style="query" /&gt;
+     &lt;param name="StudyDate" style="query" /&gt;
+     &lt;param name="00080020" style="query" /&gt;
+     &lt;param name="StudyTime" style="query" /&gt;
+     &lt;param name="00080030" style="query" /&gt;
+     &lt;param name="AccessionNumber" style="query" /&gt;
+     &lt;param name="00080050" style="query" /&gt;
+     &lt;param name="Modality" style="query" /&gt;
+     &lt;param name="00080060" style="query" /&gt;
+     &lt;param name="ModalitiesInStudy" style="query" /&gt;
+     &lt;param name="00080061" style="query" /&gt;
+     &lt;param name="ReferringPhysicianName" style="query" /&gt;
+     &lt;param name="00080090" style="query" /&gt;
+     &lt;param name="PatientName" style="query" /&gt;
+     &lt;param name="00100010" style="query" /&gt;
+     &lt;param name="PatientID" style="query" /&gt;
+     &lt;param name="00100020" style="query" /&gt;
+     &lt;param name="StudyInstanceUID" style="query" repeating="true" /&gt;
+     &lt;param name="0020000D" style="query" repeating="true" /&gt;
+     &lt;param name="SeriesInstanceUID" style="query" /&gt;
+     &lt;param name="0020000E" style="query" /&gt;
+     &lt;param name="StudyID" style="query" /&gt;
+     &lt;param name="00200010" style="query" /&gt;
+     &lt;param name="SeriesNumber" style="query" /&gt;
+     &lt;param name="00200011" style="query" /&gt;
+     &lt;param name="PerformedProcedureStepStartDate" style="query" /&gt;
+     &lt;param name="00400244" style="query" /&gt;
+     &lt;param name="PerformedProcedureStepStartTime" style="query" /&gt;
+     &lt;param name="00400245" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence" style="query" /&gt;
+     &lt;param name="00400275" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence.ScheduledProcedureStepID" style="query" /&gt;
+     &lt;param name="00400275.00400009" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence.RequestedProcedureID" style="query" /&gt;
+     &lt;param name="00400275.00401001" style="query" /&gt;
+     &lt;param name="includefield" style="query" repeating="true"&gt;
+      &lt;option value="all" /&gt;
+     &lt;/param&gt;
+    &lt;/request&gt;
+    &lt;response status="200"&gt;
+     &lt;param name="Warning" style="header"
+            fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+            Only literal matching has been performed." /&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+     &lt;representation mediaType="application/dicom+json" /&gt;
+    &lt;/response&gt;
+    &lt;response status="400 401 403 413 503" /&gt;
+   &lt;/method&gt;
+   &lt;resource path="{SeriesInstanceUID}"&gt;
+    &lt;resource path="instances"&gt;
+     &lt;method name="GET" id="SearchForSeriesInstances"&gt;
+      &lt;request&gt;
+       &lt;param name="Accept" style="header"
+                  default="type=application/dicom+json"&gt;
+        &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+        &lt;option value="application/dicom+json" /&gt;
+       &lt;/param&gt;
+       &lt;param name="Cache-control" style="header"&gt;
+        &lt;option value="no-cache" /&gt;
+       &lt;/param&gt;
+       &lt;param name="limit" style="query" /&gt;
+       &lt;param name="offset" style="query" /&gt;
+       &lt;param name="SOPClassUID" style="query" repeating="true" /&gt;
+       &lt;param name="00080016" style="query" repeating="true" /&gt;
+       &lt;param name="SOPInstanceUID" style="query" repeating="true" /&gt;
+       &lt;param name="00080018" style="query" repeating="true" /&gt;
+       &lt;param name="InstanceNumber" style="query" /&gt;
+       &lt;param name="00200013" style="query" /&gt;
+       &lt;param name="includefield" style="query" repeating="true"&gt;
+        &lt;option value="all" /&gt;
+       &lt;/param&gt;
+      &lt;/request&gt;
+      &lt;response status="200"&gt;
+       &lt;param name="Warning" style="header"
+              fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+              Only literal matching has been performed." /&gt;
+       &lt;representation mediaType="application/dicom+json" /&gt;
+       &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+      &lt;/response&gt;
+      &lt;response status="400 401 403 413 503" /&gt;
+     &lt;/method&gt;
+    &lt;/resource&gt;
+   &lt;/resource&gt;
+  &lt;/resource&gt;
+  &lt;resource path="instances"&gt;
+   &lt;method name="GET" id="SearchForInstances"&gt;
+    &lt;request&gt;
+     &lt;param name="Accept" style="header"
+                  application/dicom+json"&gt;
+      &lt;option value="multipart/related; type=application/dicom+xml" /&gt;
+      &lt;option value="application/dicom+json" /&gt;
+     &lt;/param&gt;
+     &lt;param name="Cache-control" style="header"&gt;
+      &lt;option value="no-cache" /&gt;
+     &lt;/param&gt;
+     &lt;param name="limit" style="query" /&gt;
+     &lt;param name="offset" style="query" /&gt;
+     &lt;param name="SOPClassUID" style="query" repeating="true" /&gt;
+     &lt;param name="00080016" style="query" repeating="true" /&gt;
+     &lt;param name="SOPInstanceUID" style="query" repeating="true" /&gt;
+     &lt;param name="00080018" style="query" repeating="true" /&gt;
+     &lt;param name="StudyDate" style="query" /&gt;
+     &lt;param name="00080020" style="query" /&gt;
+     &lt;param name="StudyTime" style="query" /&gt;
+     &lt;param name="00080030" style="query" /&gt;
+     &lt;param name="AccessionNumber" style="query" /&gt;
+     &lt;param name="00080050" style="query" /&gt;
+     &lt;param name="Modality" style="query" /&gt;
+     &lt;param name="00080060" style="query" /&gt;
+     &lt;param name="ModalitiesInStudy" style="query" /&gt;
+     &lt;param name="00080061" style="query" /&gt;
+     &lt;param name="ReferringPhysicianName" style="query" /&gt;
+     &lt;param name="00080090" style="query" /&gt;
+     &lt;param name="PatientName" style="query" /&gt;
+     &lt;param name="00100010" style="query" /&gt;
+     &lt;param name="PatientID" style="query" /&gt;
+     &lt;param name="00100020" style="query" /&gt;
+     &lt;param name="StudyInstanceUID" style="query" repeating="true" /&gt;
+     &lt;param name="0020000D" style="query" repeating="true" /&gt;
+     &lt;param name="SeriesInstanceUID" style="query" repeating="true" /&gt;
+     &lt;param name="0020000E" style="query" repeating="true" /&gt;
+     &lt;param name="SeriesNumber" style="query" /&gt;
+     &lt;param name="00200011" style="query" /&gt;
+     &lt;param name="InstanceNumber" style="query" /&gt;
+     &lt;param name="00200013" style="query" /&gt;
+     &lt;param name="PerformedProcedureStepStartDate" style="query" /&gt;
+     &lt;param name="00400244" style="query" /&gt;
+     &lt;param name="PerformedProcedureStepStartTime" style="query" /&gt;
+     &lt;param name="00400245" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence" style="query" /&gt;
+     &lt;param name="00400275" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence.ScheduledProcedureStepID" style="query" /&gt;
+     &lt;param name="00400275.00400009" style="query" /&gt;
+     &lt;param name="RequestAttributeSequence.RequestedProcedureID" style="query" /&gt;
+     &lt;param name="00400275.00401001" style="query" /&gt;
+     &lt;param name="includefield" style="query" repeating="true"&gt;
+      &lt;option value="all" /&gt;
+     &lt;/param&gt;
+    &lt;/request&gt;
+    &lt;response status="200"&gt;
+     &lt;param name="Warning" style="header"
+            fixed="299 {SERVICE}: The fuzzymatching parameter is not supported.
+            Only literal matching has been performed." /&gt;
+     &lt;representation mediaType="multipart/related; type=application/dicom+xml" /&gt;
+     &lt;representation mediaType="application/dicom+json" /&gt;
+    &lt;/response&gt;
+    &lt;response status="400 401 403 413 503" /&gt;
+   &lt;/method&gt;
+  &lt;/resource&gt;
+  &lt;resource path="{BulkDataURL}"&gt;
+   &lt;method name="GET" id="RetrieveBulkData"&gt;
+    &lt;request&gt;
+     &lt;param name="Accept" style="header"
+            default="multipart/related; type=application/octet-stream"&gt;
+      &lt;option value="multipart/related; type=application/octet-stream" /&gt;
+     &lt;/param&gt;
+    &lt;/request&gt;
+    &lt;response status="200"&gt;
+     &lt;representation mediaType="multipart/related; type=application/octet-stream" /&gt;
+    &lt;/response&gt;
+    &lt;response status="400 404 406 410 503"&gt;&lt;/response&gt;
+   &lt;/method&gt;
+  &lt;/resource&gt;
+ &lt;/resources&gt;
+&lt;/application&gt;
+</pre>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_HHH.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_HHH.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_III.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">HHH.6 Retired </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> III Ophthalmic Thickness Map Use Cases (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

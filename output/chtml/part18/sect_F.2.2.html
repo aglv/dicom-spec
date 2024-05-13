@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>F.2.2 DICOM JSON Model Object Structure</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_F.2.html" title="F.2 DICOM JSON Model" />
+      <link rel="prev" href="sect_F.2.html" title="F.2 DICOM JSON Model" />
+      <link rel="next" href="sect_F.2.3.html" title="F.2.3 DICOM JSON Value Representation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">F.2.2 DICOM JSON Model Object Structure <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_F.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">F.2 DICOM JSON Model</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_F.html" shape="rect">DICOM JSON Model</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_F.2.html" shape="rect">DICOM JSON Model</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM JSON Model Object Structure</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_F.2.2" shape="rect"></a>F.2.2 DICOM JSON Model Object Structure</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_fdec5594-2b78-412e-9647-285212110ce3" shape="rect"></a>The DICOM JSON Model object is a representation of a DICOM Data Set.</p>
+         <p>
+            <a id="para_81894cbe-9261-4a17-9c31-8da5c40314e9" shape="rect"></a>The internal structure of the DICOM JSON Model object is a sequence of objects representing attributes within the DICOM Data Set.</p>
+         <p>
+            <a id="para_6563ec5e-25d3-4e09-962c-e8454ac6ba9b" shape="rect"></a>Attribute objects within a DICOM JSON Model object must be ordered by their property name in ascending order.</p>
+         <p>
+            <a id="para_45314867-e497-437d-acf1-636865ba96f7" shape="rect"></a>Group Length (gggg,0000) attributes shall not be included in a DICOM JSON Model object.</p>
+         <p>
+            <a id="para_2d4d28a7-b779-4b6b-9a60-8638295dd4fc" shape="rect"></a>The name of each attribute object is:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_34e3d09b-ebef-485f-adb6-0739e2a58ac0" shape="rect"></a>The eight character uppercase hexadecimal representation of a DICOM Tag</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_fe283707-346f-4738-8f28-8675768530ec" shape="rect"></a>Each attribute object contains the following named child objects:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_8c61e20e-3cdd-4b38-b996-89c97592e585" shape="rect"></a>vr: A string encoding the DICOM Value Representation. The mapping between DICOM Value Representations and JSON Value Representations is described in <a class="xref" href="sect_F.2.3.html" title="F.2.3 DICOM JSON Value Representation" shape="rect">Section F.2.3</a>.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c862781a-7102-49a4-b827-e7f92d6adc7b" shape="rect"></a>At most one of:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e053047a-bbc3-47f8-8ac1-ce4169fd76e5" shape="rect"></a>Value: An array containing one of:</p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: square; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_949c513c-d191-41f2-a2b4-6bf4c8baaddf" shape="rect"></a>The Value Field elements of a DICOM attribute with a VR other than PN, SQ, OB, OD, OF, OL, OV, OW, or UN (described in <a class="xref" href="sect_F.2.4.html" title="F.2.4 DICOM JSON Value Multiplicity" shape="rect">Section F.2.4</a>)</p>
+                                    <p>
+                                       <a id="para_d93ae819-585f-4912-b04b-fa0d802b28f4" shape="rect"></a>The encoding of empty Value Field elements is described in <a class="xref" href="sect_F.2.5.html" title="F.2.5 DICOM JSON Model Null Values" shape="rect">Section F.2.5</a>
+                                        </p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_50b7b81a-d115-4964-ac03-8dc33ba7f741" shape="rect"></a>The Value Field elements of a DICOM attribute with a VR of PN. The non-empty name components of each element are encoded as a JSON strings with the following names:</p>
+                                    <div class="itemizedlist">
+                                       <ul class="itemizedlist" style="list-style-type: disc; ">
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_c6180b65-4eef-45a2-88b7-d4d14103435b" shape="rect"></a>Alphabetic</p>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_b135bedf-043f-4093-a787-fd6278832d32" shape="rect"></a>Ideographic</p>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_205f6c48-3a32-4129-8f50-d2adef35fb9d" shape="rect"></a>Phonetic</p>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_d7f0d6fc-9b7e-4d2a-858c-4e6ba04b6a09" shape="rect"></a>JSON DICOM Model objects corresponding to the sequence items of an attribute with a VR of SQ</p>
+                                    <p>
+                                       <a id="para_7f0523e5-dc87-4227-bfea-a3ba83c48b61" shape="rect"></a>Empty sequence items are represented by empty objects</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fc52cacc-bb58-4dd7-99c9-b739319c7f8b" shape="rect"></a>BulkDataURI: A string encoding the WADO-RS URL of a bulk data item describing the Value Field of an enclosing Attribute with a VR of DS, FL, FD, IS, LT, OB, OD, OF, OL, OV, OW, SL, SS, ST, SV, UC, UL, UN, US, UT or UV (described in <a class="xref" href="sect_F.2.6.html" title="F.2.6 BulkDataURI" shape="rect">Section F.2.6</a>)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e451c65f-31b9-4f15-bd19-04f483f5cd6e" shape="rect"></a>InlineBinary: A base64 string encoding the Value Field of an enclosing Attribute with a VR of OB, OD, OF, OL, OV, OW, or UN (described in <a class="xref" href="sect_F.2.7.html" title="F.2.7 InlineBinary" shape="rect">Section F.2.7</a>)</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7fe0ade2-1fc2-4b98-946a-938a20b50b54" shape="rect"></a>For Private Data Elements, the group and element numbers will follow the rules specified in <a href="../part05/sect_7.8.html#sect_7.8.1" class="olink" shape="rect">Section 7.8.1 in <span class="olinkdocname">PS3.5</span>
+                        </a>
+                            </p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7d1d3ebe-aff7-4def-967d-2d55205833f6" shape="rect"></a>The person name representation is more closely aligned with the DICOM Data Element representation than the DICOM <a href="../part19/PS3.19.html" class="olink" shape="rect">PS3.19</a> XML representation.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_F.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">F.2 DICOM JSON Model </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> F.2.3 DICOM JSON Value Representation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

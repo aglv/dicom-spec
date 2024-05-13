@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.7.9 Metadata Updates</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.7.html" title="YYYY.7 Operational Considerations" />
+      <link rel="prev" href="sect_YYYY.7.8.html" title="YYYY.7.8 Multiple Patient IDs" />
+      <link rel="next" href="sect_YYYY.7.10.html" title="YYYY.7.10 Study Record Reconciliation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.7.9 Metadata Updates <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.7.9.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.8.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.7 Operational Considerations</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.10.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.7.html" shape="rect">Operational Considerations</a>
+         </span> &gt; <span class="breadcrumb-node">Metadata Updates</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.7.9" shape="rect"></a>YYYY.7.9 Metadata Updates</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_89d40351-1c26-443a-b47d-f94686c7a39c" shape="rect"></a>To maintain synchronization between the image repository and other electronic medical record systems, the PACS may support updates to patient, order, and procedure data that correspond to data managed by those other EMR systems. The PACS may also update Series and Instance level information as part of quality control processes. Examples of metadata updates include correction of patient name, change of patient ID, update of procedure descriptions or codes to a standard format, or correction of body part laterality. Such updates are managed by processes outside the scope of the DICOM Standard.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_5995da54-7300-421d-a06f-243cb3f9b7c1" shape="rect"></a>See, for example, the <a class="xref" href="chapter_2.html#biblio_IHE_RAD_TF_1" title="Integrating the Healthcare Enterprise Radiology Technical Framework Volume 1 Integration Profiles" shape="rect">[<abbr class="abbrev">IHE RAD TF-1</abbr>]</a> Patient Information Reconciliation (PIR) Integration Profile.</p>
+         </div>
+         <p>
+            <a id="para_01b618fe-e179-40cf-b914-c2be63f6b4d5" shape="rect"></a>A common PACS implementation stores received SOP Instances to disk in the DICOM File Format, but any metadata updates are retained in its database and not propagated to the stored instances. Applications that use non-DICOM protocols to access the files of stored SOP Instances must therefore also have access to current metadata.</p>
+         <p>
+            <a id="para_5ecf438a-387f-4087-8e31-3eb3c71d10ff" shape="rect"></a>The Inventory SOP Instance provides the current metadata for the stored instances, and the values in the Attributes of the Inventory are considered authoritative. Therefore, the producer of the Inventory should ensure that it is created with current values, and the Item Inventory DateTime (0008,0404) records the time at which those values were extracted from the PACS database and were correct. Note, however, that the values in the Inventory may become outdated due to updates subsequent to Item Inventory DateTime (0008,0404).</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_YYYY.7.9.1" shape="rect"></a>YYYY.7.9.1 Original Attributes Sequence</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_4bf3b4dc-4b2c-4f67-aeb0-2e41cfbb4c45" shape="rect"></a>An optional additional capability is for the Inventory to record the provenance of metadata updates in the Original Attributes Sequence (0400,0561). While the current correct values are in the Attributes of the Inventoried Studies Sequence (0008,0423), the Original Attributes Sequence (0400,0561) records the prior (replaced) values, the DateTime of the change, and the identity of the modifying system.</p>
+            <p>
+               <a id="para_bc2e4563-c20e-49ee-970e-994e7ac532a3" shape="rect"></a>In Composite IODs, Attributes of the Study, Series, and Instance levels are all encoded in the top level Data Set. The Original Attributes Sequence is defined in the SOP Common Module, and it aggregates all changes at any level of the information model. However, in the Inventory IOD the Original Attributes Sequence (0400,0561) is defined separately at the Study, Series, and Instance levels, so that it can record updates at the higher levels without needing to replicate into the records for each referenced Instance.</p>
+            <p>
+               <a id="para_71b95d04-101b-45ae-b848-703d7c0c3496" shape="rect"></a>As an example, <a class="xref" href="sect_YYYY.7.9.html#table_YYYY.7-2c" title="Table YYYY.7-2c. Example Updated Study Record with Original Attributes Sequences" shape="rect">Table YYYY.7-2c</a> shows what would be a portion of an Inventory SOP Instance for a study where the Patient's Name (0010,0010) was updated based on a master patient index, and one series was updated with a Body Part Examined (0018,0015) that had been missing in the data received from the modality.</p>
+            <div class="table">
+               <a id="table_YYYY.7-2c" shape="rect"></a>
+               <p class="title">
+                  <strong>Table YYYY.7-2c. Example Updated Study Record with Original Attributes Sequences</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b3f4c1c7-a1b0-414e-b716-9cbccdd553c3" shape="rect"></a>Attribute</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_aba1b34f-a770-408d-b219-e081acd1992d" shape="rect"></a>Tag</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7ee783af-8153-4ea8-8905-4f9d37ff7c9a" shape="rect"></a>VR</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e3d9d1d6-771d-482d-a2d1-6accf45c084a" shape="rect"></a>Value</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0a71772c-937b-4f83-ac25-cd7b95e38d3b" shape="rect"></a>Comment</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5f4ba07f-4037-47bc-9182-9e826cd2b45e" shape="rect"></a>...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b519ef6c-3dfb-4436-ab8a-ed16f2b7701e" shape="rect"></a>Inventoried Studies Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c84e0173-085a-4b5b-aad4-09139379603b" shape="rect"></a>(0008,0423)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_085f1bc6-5e80-41fc-b6b9-cb72e8c3736c" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4302d526-db53-4bd8-bb79-b138d1ada3ba" shape="rect"></a>&gt;Study Date</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b20b1d05-0868-4b7c-95b4-4e5dd4e4c9ec" shape="rect"></a>(0008,0020)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_76603a7d-3194-49fd-aff0-35f1caf9f5e7" shape="rect"></a>DA</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f9a0211d-4f8d-426b-a583-919b8ffaaf0c" shape="rect"></a>20190506</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c3543c3f-488a-4bd0-b6c8-cc8cfac053c8" shape="rect"></a>&gt;...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1cc91a6a-fc1d-489b-b44b-d9e9aa691846" shape="rect"></a>&gt;Patient's Name</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_43993fc6-cd06-4ca3-8456-23a220e31cdf" shape="rect"></a>(0010,0010)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_92251795-4019-4949-b87c-95b87e4c3a23" shape="rect"></a>PN</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_545186d3-22c8-4ecf-98c3-f5fc3d7ad8ab" shape="rect"></a>Smith^Jane</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_75e4d8c7-3b16-4a89-b7d9-a51f91da390a" shape="rect"></a>current name</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f5c5a050-0fac-47d6-a7c4-88d4e0b27d40" shape="rect"></a>&gt;...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_30dc7342-e348-43e7-af13-917982f615bd" shape="rect"></a>&gt;Item Inventory DateTime</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_58386810-8794-41ad-b8e7-124b2462d706" shape="rect"></a>(0008,0404)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_af9bcc32-9a43-484e-9199-180b04898a5f" shape="rect"></a>DT</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d84234f0-432b-46a5-a3ad-dc9afa36a72f" shape="rect"></a>20221103000450</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_cc93a8c6-d29f-43d6-829d-8c83b552e4dc" shape="rect"></a>&gt;Original Attributes Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0608e92a-956b-4f57-a525-78694b8ec74d" shape="rect"></a>(0400,0561)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_93b008a1-255e-4bb4-ac07-c37ec9f53b82" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b26302e5-fcb6-491b-a893-eaeb788ff719" shape="rect"></a>&gt;&gt;Source of Previous Values</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_17e92a76-7c8e-43a3-812f-987ea4b22cc1" shape="rect"></a>(0400,0564)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_53543e42-6268-4e21-b225-a1c9071380be" shape="rect"></a>LO</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0df094d0-f581-4789-b2c8-9ae246b58f73" shape="rect"></a>unknown</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_dc07e2a4-f39c-4555-8c55-dfd590925837" shape="rect"></a>&gt;&gt;Attribute Modification DateTime</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_38624c51-805d-48d1-b9f4-b3d70ec2a4d1" shape="rect"></a>(0400,0562)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_15a225dd-147c-4594-a1a7-9fc8bd0d4ccc" shape="rect"></a>DT</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_37e7a41e-9746-4d46-8f21-03a7802050be" shape="rect"></a>20190508110956</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d7b70adb-7ab8-4571-9e61-e758a9b89d23" shape="rect"></a>&gt;&gt;Modifying System</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_83417d93-1750-4fd2-9826-a9fa0a1c35af" shape="rect"></a>(0400,0563)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_baba78f1-a415-47e9-8aaa-7603686c4841" shape="rect"></a>LO</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_49173dbd-a4ce-463e-b5fe-cd09c3f8b663" shape="rect"></a>GinHealthSystem PACS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f5c72734-947d-43e3-9441-10e93a2ad7a5" shape="rect"></a>&gt;&gt;Reason for the Attribute Modification</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a7175dfd-0fd9-4d02-9f93-d7092f80db10" shape="rect"></a>(0400,0565)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c651ced1-6029-41e0-b861-724135947886" shape="rect"></a>CS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_be2e23cd-d6d2-4014-8c84-ba4d41fa49f7" shape="rect"></a>COERCE</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b0444dbb-070f-4bf7-8522-35a8b5577307" shape="rect"></a>&gt;&gt;Modified Attributes Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7088fe90-8b4b-4ccd-8837-7b1f86832a7e" shape="rect"></a>(0400,0550)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4f65dda6-4d21-49d0-a615-4b3b034c0c57" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6ca39fdc-80de-44cb-a9e8-6f6744d9f57d" shape="rect"></a>&gt;&gt;&gt;Patient's Name</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_46c99e4c-9a2a-4d15-bef7-f1a5889fc035" shape="rect"></a>(0010,0010)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_089f0242-3a88-4467-aa3e-90eb41db0bbe" shape="rect"></a>PN</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0a5f3176-70ba-4cf6-895d-268d6a8a5d6f" shape="rect"></a>Doe^Jane</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4dae8e3f-38d9-4a6c-bab8-6225ffec0b3b" shape="rect"></a>prior name</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a0bf85e8-4314-48e7-bdd2-1257ef87c242" shape="rect"></a>...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a4688ddf-d908-4eec-bace-ce9b85cd4038" shape="rect"></a>&gt;Inventoried Series Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5f837ef2-eab1-434b-afa3-0f96e5fabd36" shape="rect"></a>(0008,0424)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a14957c0-9a2c-4cf7-8353-71472715ccc8" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_25cfb0fc-193a-4a77-ab10-a43af4fdd03a" shape="rect"></a>&gt;&gt;Series Date</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e5c731f3-ecf6-4433-ba99-b7f7b10d385b" shape="rect"></a>(0008,0021)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_52cef375-e902-4ab8-8a75-4db4826643fa" shape="rect"></a>DA</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8c044951-62c6-42e0-b19b-c8909d6fb1e3" shape="rect"></a>20190506</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7da3a4f1-e6f2-4612-bdf5-9d2e1a996e24" shape="rect"></a>...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_bcb692cf-0f53-4592-b429-a832a4d165ad" shape="rect"></a>&gt;&gt;Body Part Examined</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_33f6a73d-a6d7-421f-95e6-d0b6bc8f0543" shape="rect"></a>(0018,0015)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7a60c1aa-f643-4a7b-b37c-e74f45f0ad3c" shape="rect"></a>CS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e5b9d1b8-a190-48de-aa8c-05742016e0ff" shape="rect"></a>LIVER</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8a177aa8-ed3b-4ec4-8410-075502f4fc83" shape="rect"></a>current value</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5e4fb67c-7426-4384-8d47-6b3cc54a84ac" shape="rect"></a>...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5b05e9d5-cd4b-44bb-9b3a-899417f369ca" shape="rect"></a>&gt;&gt;Original Attributes Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0e7b132b-622f-4e87-a956-49962f88d603" shape="rect"></a>(0400,0561)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0847570f-9dda-48e6-91f5-748b27115710" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5ea661e4-62a3-4366-8a5c-4d3900a44ce1" shape="rect"></a>&gt;&gt;&gt;Source of Previous Values</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c1f2f9a9-8b7c-48b7-befb-b3d9e3e60ec8" shape="rect"></a>(0400,0564)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_66d06bfe-8a12-4dac-9962-d181a7a141b9" shape="rect"></a>LO</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_39416646-06db-4a83-b699-d18e633e5a85" shape="rect"></a>unknown</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b48cec26-993f-4556-8544-577678527deb" shape="rect"></a>&gt;&gt;&gt;Attribute Modification DateTime</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_855b9ba7-e41f-464b-b95a-6e9944b9316a" shape="rect"></a>(0400,0562)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d85cb284-0fdf-4f9f-8e68-ebb9655df8d0" shape="rect"></a>DT</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2febcc78-3949-447a-95f1-5b38f2e49a06" shape="rect"></a>20190508152157</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_785a7b14-df3c-4fb8-ac96-b144211d4016" shape="rect"></a>&gt;&gt;&gt;Modifying System</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7d7a6119-b6ce-419c-b604-40c222ac6325" shape="rect"></a>(0400,0563)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_88e36fc1-9c52-42ca-95a1-df8611c3de05" shape="rect"></a>LO</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c8cd40da-fb79-45d1-b9b0-33d6d1fd049e" shape="rect"></a>GinHealthSystem PACS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_cc5b9163-740c-4157-b729-e2980b4fe111" shape="rect"></a>&gt;&gt;&gt;Reason for the Attribute Modification</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e54a1410-e8fc-4bba-876c-bbfb1ffcc4c5" shape="rect"></a>(0400,0565)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_463326b6-178d-4fe1-8714-78044a97414d" shape="rect"></a>CS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_93185450-605d-46a4-8cdb-c8e4b740ebb3" shape="rect"></a>ADD</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e4fc1df2-d542-4f60-96d5-0da28850f9b0" shape="rect"></a>&gt;&gt;&gt;Modified Attributes Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_20d69f55-9eec-45d5-9611-2e6436bd6dcf" shape="rect"></a>(0400,0550)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3c3792d3-063f-4962-adf7-ac3eacbe29b2" shape="rect"></a>SQ</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_42880843-52b0-4571-924c-4ecdef024fca" shape="rect"></a>&gt;&gt;&gt;Body Part Examined</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8814725e-8cad-4c69-986a-6132ed4b6ba1" shape="rect"></a>(0018,0015)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2aace680-18f7-4e4e-82fe-982a281a8c2f" shape="rect"></a>CS</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_40ac47e7-a29b-42d2-bc35-0b6a7b1b3bdd" shape="rect"></a>prior value missing</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_01ee242a-ae5f-47bb-ae9f-a3c0178d8e05" shape="rect"></a>...</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_c737d698-8898-4297-bdb7-2a89caed5cbb" shape="rect"></a>When updating the stored SOP Instance with the metadata values from the Inventory, the items of the Original Attributes Sequences at the Study, Series, and Instance levels from the Inventory are added to the items (if any) already in the Original Attributes Sequence of the stored SOP Instance. While there may be duplication, duplicate Items are not an issue for the audit purposes of the Original Attributes Sequence.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.8.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.10.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.7.8 Multiple Patient IDs </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.7.10 Study Record Reconciliation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

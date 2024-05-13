@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.2.2.2.4 Wild Card Matching</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_C.2.2.2.html" title="C.2.2.2 Attribute Matching" />
+      <link rel="prev" href="sect_C.2.2.2.3.html" title="C.2.2.2.3 Universal Matching" />
+      <link rel="next" href="sect_C.2.2.2.5.html" title="C.2.2.2.5 Range Matching" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.2.2.2.4 Wild Card Matching <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.2.2.2.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.2.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.2.2.2 Attribute Matching</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.2.2.2.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.html" shape="rect">Query/Retrieve Information Model Definition</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.2.html" shape="rect">Attributes Definition</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.2.2.html" shape="rect">Attribute Matching</a>
+         </span> &gt; <span class="breadcrumb-node">Wild Card Matching</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.2.2.2.4" shape="rect"></a>C.2.2.2.4 Wild Card Matching</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_b13e6046-8894-4068-a8e7-e11b97ecfdac" shape="rect"></a>If the Attribute is of VR of AE, CS, LO, LT, PN, SH, ST, UC, UR, UT and the value specified in the request contains any occurrence of an "*" or a "?", then "*" shall match any sequence of characters (including a zero length value) and "?" shall match any single character. This matching is case sensitive, except for Attributes with a PN VR (e.g., Patient Name (0010,0010)).</p>
+         <p>
+            <a id="para_46e6bdd8-87c6-477a-82c3-ecf5734eef86" shape="rect"></a>For Attributes with a PN VR, including the case of Extended Negotiation of fuzzy semantic matching, Wild Card Matching is implementation dependent and shall be specified in the conformance statement.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1ea9fb01-8b83-4705-aa7d-4610f77e92c3" shape="rect"></a>Wild Card Matching on a value of "*" is equivalent to Universal Matching.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_887a7304-d288-44b5-8a74-6bf023b0aa25" shape="rect"></a>The Wild Card Matching method specified by DICOM might not be supported by some non-DICOM multi-byte character text processors.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_255d8119-72eb-4841-9c8f-dafef36ca526" shape="rect"></a>For multi-component group names, the component group delimiter "=" (3DH) may be present in the Key Attribute Value, but may give unexpected results if the SCP does not support matching on separate components but interprets the entire value literally. E.g., "*=*" or "*=*=*" may or may not return all strings, and hence is not equivalent to "*", nor to Universal Matching.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a9c4bf58-43d2-4380-b6d0-06dbacfd0904" shape="rect"></a>Attributes with VR of AE, LO, PN, SH and UC may contain wild card characters "*" and "?". Attempts to match on a string explicitly containing "*" or "?" will be treated as Wild Card Matching and thus may return multiple results rather than a single one. There is no mechanism for Single Value Matching on values that contain characters "*" and "?" for these VRs - such queries will always be treated as queries with Wild Card Matching.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2f439270-4a78-4d27-87d9-dcfeec0ca3e4" shape="rect"></a>Attributes with VR of ST, LT and UT are intended for conveying narrative text and may contain wild card characters "*" and "?". Attempts to match on a string explicitly containing "*" or "?" will be treated as Wild Card Matching and thus may return multiple results rather than a single one. There is no mechanism for Single Value Matching on values that contain characters "*" and "?" for these VRs - such queries will always be treated as queries with Wild Card Matching.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d90fbf38-91bb-419f-acb6-01ac94630001" shape="rect"></a>Attributes with VR of UR may contain wild card characters "*" and "?" as delimiters. These characters are reserved according to <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> Section 2. Attempts to match on a string explicitly containing "*" or "?" will be treated as Wild Card Matching and thus may return multiple results rather than a single one. There is no mechanism for Single Value Matching on values that contain characters "*" and "?" for these VRs - such queries will always be treated as queries with Wild Card Matching.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.2.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.2.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.2.2.2.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.2.2.2.3 Universal Matching </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.2.2.2.5 Range Matching</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

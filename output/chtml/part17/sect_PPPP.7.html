@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>PPPP.7 Example of DICOM Real-Time Video Implementation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_PPPP.html" title="PPPP Real-Time Video Use Cases (Informative)" />
+      <link rel="prev" href="sect_PPPP.6.html" title="PPPP.6 Use Case: Robotic Aided Surgery" />
+      <link rel="next" href="sect_PPPP.8.html" title="PPPP.8 Storage Considerationa" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">PPPP.7 Example of DICOM Real-Time Video Implementation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_PPPP.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_PPPP.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">PPPP Real-Time Video Use Cases (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_PPPP.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_PPPP.html" shape="rect">Real-Time Video Use Cases (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Example of DICOM Real-Time Video Implementation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_PPPP.7" shape="rect"></a>PPPP.7 Example of DICOM Real-Time Video Implementation</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f58575fb-67b5-46b0-98e9-c55cd1c714b1" shape="rect"></a>The following example illustrates a specific implementation of the Generic Use Case 4: Augmented Reality described above.</p>
+         <div class="figure">
+            <a id="figure_PPPP.7-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%">
+                     <tr>
+                        <td rowspan="1" colspan="1">
+                           <img src="part17_fromword_files/image008_sup202.png" width="100%" alt="Example of implementation for Augmented reality based on optical image" />
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure PPPP.7-1. Example of implementation for Augmented reality based on optical image</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <p>
+            <a id="para_5b986a9e-a7be-4952-a5f5-470265b5d4f9" shape="rect"></a>The described use case is the replacement of the lens in cataract surgery (capsulorhexis). The lenses are manufactured individually, taking into account the patient's astigmatism. The best places for the incision, the position where the capsule bag should be torn and the optimal alignment for the new lens are calculated and a graphical plane is overlaid onto the optical path of the microscope to assist the surgeon, as shown in <a class="xref" href="sect_PPPP.7.html#figure_PPPP.7-1" title="Figure PPPP.7-1. Example of implementation for Augmented reality based on optical image" shape="rect">Figure PPPP.7-1</a>.</p>
+         <p>
+            <a id="para_6c8d47c0-e325-4c00-92c3-4c6948a664fc" shape="rect"></a>Some solutions consist of a frame grabber in ophthalmology microscopes which grab video frames at 50 / 60 Hz. These frames are analyzed to identify the position and orientation of the eye and then a series of graphical objects are superimposed as a graphical plane onto the optical path to show the surgeon the best place to perform the incisions and how to orient the new lens to compensate the astigmatism.</p>
+         <p>
+            <a id="para_de9d8f0d-c2c1-49bf-b00b-a4edf6938de9" shape="rect"></a>Practically, the video frame grabbing takes 3 frames to be accessible to the image processor computing the series of graphical objects to be drawn as overlays on the optical image. It results in a delay between the frame used to create the objects and the one on which these objects are drawn. For safety reasons, it is important to record what the surgeon has seen. Due to the latency of the frame grabbing and the calculation of the positions of these graphical objects, the digital images are delayed in memory to also blend these objects onto the right digital image for the recording made in parallel.</p>
+         <p>
+            <a id="para_2ccc00db-aef0-4966-a541-f5ffda4d55c0" shape="rect"></a>DICOM Real-Time Video enables the storage of the recorded video and the frame by frame positions of these graphical objects separately. It might also be used to store other values associated with the streams such as the microscope's zoom, focus and light intensity values or the phaco's various settings, pressure, in the DICOM-RTV Metadata Flow. These separately stored flows could be later mixed together to aid in post-operative analysis or for teaching purposes. It would be possible to re-play the overlay either on the later image where the surgeon saw it, or on the image it was calculated from, to improve the algorithm. It would also reduce the workload of the machine during the operation because the blending of the video together with the display aids would be performed later during the post-operative analysis phase, and also maintain the original images.</p>
+         <p>
+            <a id="para_9cc8f9cb-4e33-4474-bdb5-75207daf7e49" shape="rect"></a>The RTP Timestamp (RTS) of both video and DICOM-RTV Metadata Flows must match. Frame Origin Timestamp (FOTS) contained in DICOM-RTV Metadata must be consistent with RTP Timestamp, enabling the proper synchronization between flows. As shown in <a class="xref" href="sect_PPPP.7.html#figure_PPPP.7-2" title="Figure PPPP.7-2. Example of implementation for Augmented reality based on optical image" shape="rect">Figure PPPP.7-2</a>, it is expected that the Frame Origin Timestamp relative of both the digital image and the overlays are set to T6 when the Image Datetime is T3 and the Referenced Image Datetime of the Mask is T0, represented as the T0 MASK.</p>
+         <div class="figure">
+            <a id="figure_PPPP.7-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%">
+                     <tr>
+                        <td rowspan="1" colspan="1">
+                           <img src="part17_fromword_files/image009_sup202.png" width="100%" alt="Example of implementation for Augmented reality based on optical image" />
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure PPPP.7-2. Example of implementation for Augmented reality based on optical image</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_922274c4-ed05-45fb-a21a-e3b0d7d46e93" shape="rect"></a>In the case the surgeon is viewing the digital image and not the optical image, the approach could be different, as shown in <a class="xref" href="sect_PPPP.7.html#figure_PPPP.7-3" title="Figure PPPP.7-3. Example of implementation for Augmented reality based on digital image" shape="rect">Figure PPPP.7-3</a>.</p>
+         </div>
+         <div class="figure">
+            <a id="figure_PPPP.7-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%">
+                     <tr>
+                        <td rowspan="1" colspan="1">
+                           <img src="part17_fromword_files/image010_sup202.png" width="100%" alt="Example of implementation for Augmented reality based on digital image" />
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure PPPP.7-3. Example of implementation for Augmented reality based on digital image</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_PPPP.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_PPPP.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_PPPP.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">PPPP.6 Use Case: Robotic Aided Surgery </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> PPPP.8 Storage Considerationa</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

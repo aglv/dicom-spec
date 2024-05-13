@@ -1,0 +1,3321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>E.3.2 Example 2: Calcification and Mass Detection With Findings</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_E.3.html" title="E.3 Mammography CAD SR Examples" />
+      <link rel="prev" href="sect_E.3.html" title="E.3 Mammography CAD SR Examples" />
+      <link rel="next" href="sect_E.3.3.html" title="E.3.3 Example 3: Calcification and Mass Detection, Temporal Differencing With Findings" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">E.3.2 Example 2: Calcification and Mass Detection With Findings <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_E.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_E.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">E.3 Mammography CAD SR Examples</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_E.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_E.html" shape="rect">Mammography CAD (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_E.3.html" shape="rect">Mammography CAD SR Examples</a>
+         </span> &gt; <span class="breadcrumb-node">Example 2: Calcification and Mass Detection With Findings</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_E.3.2" shape="rect"></a>E.3.2 Example 2: Calcification and Mass Detection With Findings</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ea6ec7a6-b01f-4e17-a8eb-ab2dc6f87f39" shape="rect"></a>A mammography CAD device processes a screening mammography case with four films and a mass in the left breast. Mammography CAD runs both density and calcification detection successfully. It finds two densities in the LCC, one density in the LMLO, a cluster of two calcifications in the RCC and a cluster of 20 calcifications in the RMLO. It performs two clustering algorithms. One identifies individual calcifications and then clusters them, and the second simply detects calcification clusters. It performs mass correlation and combines one of the LCC densities and the LMLO density into a mass; the other LCC density is flagged Not for Presentation, therefore not intended for display to the end-user. The mammograms resemble:</p>
+         <p>
+            <a id="para_afbe28e7-059d-40b3-ac23-88a74d3cb584" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-2.svg" alt="Mammograms as Described in Example 2" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-2. Mammograms as Described in Example 2</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <p>
+            <a id="para_b815dd8c-58b6-4c70-8a9a-bc0c017b1932" shape="rect"></a>The content tree structure in this example is complex. Structural illustrations of portions of the content tree are placed within the content tree table to show the relationships of data within the tree. Some content items are duplicated (and shown in boldface) to facilitate use of the diagrams.</p>
+         <p>
+            <a id="para_51faca90-f4e0-4ebf-a91f-6136e14f9390" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-3.svg" alt="Content Tree Root of Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-3. Content Tree Root of Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9c3e7b17-fbd1-42c0-a940-132d08b59535" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c33e7195-c1e5-4ed2-990c-41d24d42899d" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8804e6a7-0588-4553-9a7e-cea4be6b0481" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bf250ddd-76fe-4a9f-a716-d775cf0c119f" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6e753b6b-5a9a-4d2c-8fb9-c60de718e1cb" shape="rect"></a>1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9ceb3691-f5d3-4c80-b46a-ca0c39b71d23" shape="rect"></a>Mammography CAD Report</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_04a18ab5-7d3e-4fe6-a984-253a348a9a8e" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_44b6b875-5633-4bf6-831f-2aa89c896015" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.1</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ff048721-3671-4e0a-8bc2-7dc8324a3394" shape="rect"></a>Image Library</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f625d983-ab0c-452d-a4b8-621fae833694" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4a5bcd7a-21b3-4352-a96e-fe3e9fef5adc" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.2</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_80f1d2c1-1f38-4afb-96cd-de5edc62edfc" shape="rect"></a>CAD Processing and Findings Summary</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_354d4966-ad9d-422a-8e8d-5f6b46d04f8d" shape="rect"></a>All algorithms succeeded; with findings</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d293249d-4d80-4506-b035-31a3e47278e7" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4001.html" class="olink" shape="rect">TID 4001</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_60194b82-c0d4-48eb-9a01-1cc34d541d4f" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.3</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_25a4944c-e60f-4f9c-826b-54029b322705" shape="rect"></a>Summary of Detections</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_dba47adb-728a-4958-9d15-c91958e617ae" shape="rect"></a>Succeeded</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bf394dde-3aae-452d-9f0c-a0d8190a32c8" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3b29fbd5-f8da-4e16-bd4f-8700b462511e" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.4</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6c3f67be-d318-41bb-97b3-da9478ac7e42" shape="rect"></a>Summary of Analyses</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_df64bf05-44d4-4f5c-b7f3-24d3b7429096" shape="rect"></a>Succeeded</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f53f58e1-c157-4fc8-9fcc-efc6bd60c9c9" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_f8204554-1adc-4b6f-a051-6d02c01a2f62" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-4" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-4.svg" alt="Image Library Branch of Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-4. Image Library Branch of Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b14100ba-ff49-45fc-a6c4-6fb50d709d15" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f41a5c8c-dcef-4740-a53d-163f7ce2138f" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_fb7adbdc-da8c-436f-a974-4f9668448dbb" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_94bf92c9-eb08-4995-b6f4-071356e11fc5" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_300e394c-8891-45eb-bfc4-98f88f7bb52c" shape="rect"></a>1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5312d169-3e86-4641-8fcd-ef1723c0fe9b" shape="rect"></a>Image Library</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_678d048d-a300-419b-955a-b2bb58e24e13" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_28c6bd1e-e6ee-47f9-a951-7dad78199172" shape="rect"></a>1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b4e7133e-d47e-4ece-bc98-81afc53e7d93" shape="rect"></a>IMAGE 1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5ddbe97f-a2c7-4061-ba97-72b9917a5c48" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7724cd78-97cb-45a0-91c6-f53643ad48ef" shape="rect"></a>1.1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_56d7f6e0-1b9c-4232-a38e-f9aab1b06e0a" shape="rect"></a>Image Laterality</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7ccd554b-f077-46d7-9316-e49900680822" shape="rect"></a>Right</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_04d42352-739a-4d92-a7d0-89d99b808de1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_015efff1-797b-4eb0-a01a-b1644482dfb1" shape="rect"></a>1.1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9202c65e-8724-4e01-b6c0-362083d87ab1" shape="rect"></a>Image View</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_63564219-afe5-424a-953c-d122baf899f4" shape="rect"></a>Cranio-caudal</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_663e8ed1-9461-45b2-8228-2126f59fb238" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6ddd6830-68ea-4201-93d6-2368b0257155" shape="rect"></a>1.1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b7f5f52c-c4e2-43cc-b0b2-fa04782192c0" shape="rect"></a>Study Date</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_521882ef-0532-4f61-95fd-79d11043c3bc" shape="rect"></a>19990101</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c6c15220-bb65-4132-bd25-b753aadffd08" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_711c5f65-9fe7-4f03-8d37-b4d7a3c0536a" shape="rect"></a>1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4cabb0aa-a67c-428d-b2cb-e81e3156ba9e" shape="rect"></a>IMAGE 2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8b3491d0-62f7-4e42-8600-23a044516c38" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3db638de-964d-4565-a991-b958ada42ac7" shape="rect"></a>1.1.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_490b6915-2ca9-4912-9687-7c3393ae44d2" shape="rect"></a>Image Laterality</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_91343249-bc60-4be2-92bd-0b61636acca3" shape="rect"></a>Left</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9835eb3e-2f73-4598-b63d-e90b148dc01a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_74749244-9710-46f3-bfcd-716d7c434a87" shape="rect"></a>1.1.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e7122f13-bbca-4e20-8247-70142c8e7b74" shape="rect"></a>Image View</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5b493dcb-84d6-4351-91d1-0c914324a529" shape="rect"></a>Cranio-caudal</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d504435f-7eb3-4396-b5fa-443fd5776409" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8394bebb-ecd4-470c-a2cd-faa0aff2a61f" shape="rect"></a>1.1.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f6df9055-45b3-4f07-afdf-5771ff1ef978" shape="rect"></a>Study Date</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_10ca368f-3912-483c-a056-440839c6115b" shape="rect"></a>19990101</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f930adb0-4fa6-4cde-a84d-324fb57edf9a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0d6602a1-a2bf-43ce-b1dd-6efe7f68f586" shape="rect"></a>1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f692e688-223d-4c1f-b3ba-20b825a91611" shape="rect"></a>IMAGE 3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_61f6161f-4d9a-4324-b37a-70582d1fc2a5" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2ab88304-f4ce-4915-bbdf-32288d011839" shape="rect"></a>1.1.3.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c1bed703-971c-45f8-99ae-d2bea0f666c9" shape="rect"></a>Image Laterality</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f3c900c2-454a-4342-8f5c-3dfe2c3cc798" shape="rect"></a>Right</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bc17529f-31c7-4b5d-b7f5-3db3edbf283a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_06fdb0d3-d381-4958-834d-fdb7da6af457" shape="rect"></a>1.1.3.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f3ce961e-5748-43b8-bf6e-fdda2a056697" shape="rect"></a>Image View</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f6eb8c39-0a69-4300-aa13-fe3c0c26b9e4" shape="rect"></a>Medio-lateral oblique</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_31d819c5-99a5-420a-a98a-75702f6a40ca" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_035bb1fe-1497-410a-906c-0b4c6f88e36c" shape="rect"></a>1.1.3.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_338e3327-05ce-45f1-a685-14d00ceeda77" shape="rect"></a>Study Date</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_65c55ee4-bd85-4a7e-a36a-f5e15afc1352" shape="rect"></a>19990101</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_98dbee1f-7547-4445-bc3b-e041ff4bc452" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1635ce03-ec6a-428c-9053-6eadffa16c6b" shape="rect"></a>1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a4970638-c940-4d00-b8f4-33755b80a580" shape="rect"></a>IMAGE 4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_29fc075b-c0f4-4f8d-9a1b-b227c90e15e5" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e2b23e96-e4b7-4ae2-a945-7535ad88669b" shape="rect"></a>1.1.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2b104476-39d9-4ce5-ae95-25dc37a04f5b" shape="rect"></a>Image Laterality</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_213bf224-4587-4718-a2b1-4d85fe5b33d7" shape="rect"></a>Left</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ed8da4a8-c488-43e7-91c1-3fb1ad1e3868" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4354d426-4fda-4756-a70b-a2e05c81cd0e" shape="rect"></a>1.1.4.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8d0f7e55-7e6e-4728-a570-30d907eb1592" shape="rect"></a>Image View</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_034e12b3-5416-44be-ae16-ef9fbe1ac265" shape="rect"></a>Medio-lateral oblique</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e39f2704-1aa4-40d8-bde8-4d0d1556a6b1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8d94106e-2ba4-4a14-b5fd-5a8abf2c0527" shape="rect"></a>1.1.4.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0b78ca10-de64-4cb7-bbad-86aaf4a4b16e" shape="rect"></a>Study Date</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_61cb4d12-3df9-4a3d-91e9-78b9264e3498" shape="rect"></a>19990101</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_53faa405-bea3-4264-bb9c-9400a0fa5489" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4020.html" class="olink" shape="rect">TID 4020</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_cdc987b7-7ca5-4d6b-b33b-28e26da0e258" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-5" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-5.svg" alt="CAD Processing and Findings Summary Bifurcation of Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-5. CAD Processing and Findings Summary Bifurcation of Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_95165eb8-b672-4a4d-b541-3701b30f0119" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_70db49d1-cacc-4412-9c19-6a1fb84dc406" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_969f84f9-e1c8-4a98-8569-f1e117ab52ab" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4833aadc-9589-401b-9487-29a9bb7b0299" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_418d1805-932f-42b9-8d6f-3eaa0fbac9cc" shape="rect"></a>1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_fc5407d7-df8a-4b7a-914f-efe87e438d6a" shape="rect"></a>CAD Processing and Findings Summary</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e6807596-95c1-4894-8b01-f216037d8c9f" shape="rect"></a>All algorithms succeeded; with findings</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2b25136d-8ff8-4e87-bee9-05589a6f802e" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4001.html" class="olink" shape="rect">TID 4001</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_eeecbd95-7088-46ba-b4bf-f40a17c57076" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.2.1</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4b016310-3986-40a2-a22c-19104c4db9d8" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_740f8197-bb6b-4087-b056-58dde1a2239b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2881ed3f-8523-4b6c-a886-b11d2deec2c1" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.2.2</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8ff22bb8-53ea-4648-99f5-89ed6a92f5e8" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c64ed9aa-8818-488c-9a01-64fcb73bad34" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_86d64c79-3313-4668-b199-702709e61d7c" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.2.3</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_40565d5f-12be-472d-9bb2-fa1a5ffe9f7b" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_024160d6-9410-4f8d-ae29-c340dd375016" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f5aa51d8-67f8-42e1-8e3c-d3cc8ebd7eb4" shape="rect"></a>
+                                    <span class="bold">
+                              <strong>1.2.4</strong>
+                           </span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_22db1d8d-f7fa-48b2-b5f7-d94968de609f" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1a369250-045d-4ede-8e1d-5840b601ce0a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_a8ce9349-2ee7-4053-b282-a375441e5ca5" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-6" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-6.svg" alt="Individual Impression/Recommendation 1.2.1 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-6. Individual Impression/Recommendation 1.2.1 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_fff31480-9111-4448-89a9-6378e8d918a4" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_641c6635-253b-4f57-87ba-5c2dcc87704c" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e38c38cc-df80-46a7-81fc-5b2fd3f7a754" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0c18956b-89b0-479c-837f-bf8d0c886df4" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a1d7f387-12f5-473f-8190-8fde88034694" shape="rect"></a>1.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_72197af1-67fe-4843-a923-bdfddc7f4a92" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ee588a2f-7a61-4aa9-90ec-99503afdb959" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_50dd6efd-c2e7-44e4-aa87-8c32d1fe6fe3" shape="rect"></a>1.2.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7c0afb3b-19de-4c52-b493-22e054c8607f" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_14061ee1-8404-4ff0-8644-d94d973e073f" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_da1b861b-d4dc-40ac-8a67-5edbe3d078eb" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d708972d-cb1d-4ebc-bbfb-0ef9862ef20b" shape="rect"></a>1.2.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9ca98655-5ae6-4401-a38d-005109e5a2e0" shape="rect"></a>Composite Feature</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6e392701-d161-40c8-a104-6b98ad956cfb" shape="rect"></a>Mass</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_625753e7-3683-4b79-9a64-e1f880c8ebdc" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4004.html" class="olink" shape="rect">TID 4004</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_edee4a33-33db-4101-aa81-ca1f73295e5d" shape="rect"></a>1.2.1.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4356e03e-c4e7-4195-835a-76ef698aff18" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6f0f9ac2-89e4-4502-9df7-a82dafc8d276" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5d755dd0-53c8-46b8-93b7-1f0d0eb28c69" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4004.html" class="olink" shape="rect">TID 4004</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a5d2aaa3-9b2a-414b-87ae-dbe5c54f074d" shape="rect"></a>1.2.1.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_55d4f9bf-86c6-4c26-8a2b-16fac2541c5f" shape="rect"></a>Composite type</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_35853e47-44e8-47ed-92b0-de2319093ecf" shape="rect"></a>Target content items are related spatially</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_444da807-012d-45fb-9308-44adefee91cf" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4005.html" class="olink" shape="rect">TID 4005</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_96a89842-93d4-4eaf-b6a5-4d7f9d56839b" shape="rect"></a>1.2.1.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_beb507f9-59c9-4673-9772-ddad86ba5f1b" shape="rect"></a>Scope of Feature</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_632d4db5-7208-44a9-87bd-bbdd34a34174" shape="rect"></a>Feature was detected on multiple images</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f2e9bea2-c01c-416e-a5e1-4040d3c129fb" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4005.html" class="olink" shape="rect">TID 4005</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8917597b-e59e-42ca-804c-8e601b972a4f" shape="rect"></a>1.2.1.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bfeee52f-0bf2-4276-ae6e-0d56497f9669" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ee29e419-c14b-42a9-8caf-371739a7ef09" shape="rect"></a>"Mass Maker"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_974e23d4-1fe7-4497-9cd7-0e297192ad54" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_19995785-4b61-47d3-889a-5c3ac2ec599d" shape="rect"></a>1.2.1.2.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_64d5bc96-5f4b-4878-b3c7-930d99d8c344" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9549501c-0cb8-4a9c-9398-4b3f4aaac545" shape="rect"></a>"V1.9"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3b2f8046-4b65-49df-b538-15202f390b5b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_51a2e315-82b4-4978-9376-9b1f3413146d" shape="rect"></a>1.2.1.2.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b13e5056-3020-4eb3-8792-3dd6f2178ed9" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8b3fa3e6-8caa-4ca3-995c-c766651feee0" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a19ec831-9c11-4147-8bdc-17463484c28b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cab0733b-5b5f-4459-903d-d202f39a8597" shape="rect"></a>1.2.1.2.7</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1c9e5139-02d6-4b3b-8084-214a3e547cc7" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e0d51841-b504-4127-a34f-b202bef64afa" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cf443972-d202-405a-b5dd-7dce747af0ab" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_6e5c6c99-1004-486c-9b8d-c89457c61ffd" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-7" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-7.svg" alt="Single Image Finding Density 1.2.1.2.6 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-7. Single Image Finding Density 1.2.1.2.6 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cf3a3771-2b1a-400b-8d99-8c9e2314b3d5" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3069ac3e-e22d-437b-8442-2d2554aa5e00" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6661ea25-1d9f-4cfc-8cfa-16c9e185117b" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_04173cc0-daf3-412b-8f7d-c138783d929a" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7b5109e6-1aba-4bf9-9562-7a5bb297ab14" shape="rect"></a>1.2.1.2.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d82f2f57-5db4-4c93-bfab-9378d0a80d2e" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_07832686-5f03-45c2-87b8-fdea89453c96" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9043498e-28ef-46c6-8723-b3c649ebe18f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e5e4b472-bd4e-433d-bb08-dd379781f0e1" shape="rect"></a>1.2.1.2.6.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a3da8152-3df8-40c1-9d82-59b544bc2a9f" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ddf0272f-d38a-4927-be1c-c582030a4e10" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6ba4e96e-5ee9-4084-b31b-00e2f7e83905" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9560a458-e046-480a-98fe-c30333312183" shape="rect"></a>1.2.1.2.6.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d6d16297-bf9a-450d-8f14-a9fdbc4a4c7d" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1c6bd119-e8fa-4f88-ac6b-43fcec9639a1" shape="rect"></a>"Density Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4fb27693-af2e-40c2-9ebc-1ee3fa60e77a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e99c0d89-68cc-44bc-92cf-d03fc2a1a595" shape="rect"></a>1.2.1.2.6.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8e734be5-c936-412b-be7a-90aa9862befd" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0798abaf-d8d1-443e-a78f-018cb7be45ca" shape="rect"></a>"V3.7"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_196bb56d-f53c-4b2e-9b0d-9b470e6b38db" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5d0292a9-fd7b-4b78-9c38-6829f10c2efa" shape="rect"></a>1.2.1.2.6.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8e334032-f450-4aa3-b200-779773b38bfe" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_71755677-752d-4040-8145-aee79934588c" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_40505ff6-118d-4b0b-b61c-67a82ec0ae0e" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2798d7fd-f1ab-460e-bf57-b36eedabacad" shape="rect"></a>1.2.1.2.6.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ddb30335-d60e-4ecc-b8ca-16d71f83a0df" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a5a0c1c2-640f-43d4-8c8d-6cc3208a992a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_898b2741-37ec-48d0-ab25-69b3ada978a1" shape="rect"></a>1.2.1.2.6.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3ec2b63e-3c46-40c2-93aa-7eb14397aa4a" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5912e35a-faef-482c-813d-675ee27beaa7" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_92545dae-25c5-4e3c-bd06-b0360fa1d3da" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b1457e7d-95aa-4f86-aedc-ae009a726347" shape="rect"></a>1.2.1.2.6.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3a7fbd7c-f7ed-47cb-9ffd-8aa6d74802dc" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a5f28c94-379d-48d7-9655-6c66edb656ea" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_b2c9d988-fba1-401f-80d4-5b813f632469" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-8" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-8.svg" alt="Single Image Finding Density 1.2.1.2.7 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-8. Single Image Finding Density 1.2.1.2.7 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_807b4ba4-a69b-4f3c-814a-c9580e6db628" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d546d62e-266a-4e0c-8c53-442f77ae3723" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1ae2f4c3-6fd1-4228-9cd4-437d1e0ff0d2" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a6d552e5-f9d8-4244-9d07-1ebcc9f47c16" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_aec7951b-e8f3-4da0-abb3-62ac85d0a9a4" shape="rect"></a>1.2.1.2.7</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_051532bd-6368-4bb5-ae1a-08e4660970ff" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d2568621-601d-45e3-9529-64c81d45ba19" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6ead6aba-8b5e-4565-ac76-22ca8e349654" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_935d0d4c-25ce-4c02-8d87-35611bd2310f" shape="rect"></a>1.2.1.2.7.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f7dbcba8-79a4-47af-a3df-6259d8b3dc67" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_05b747a6-f978-4920-a2b2-fe268bd14ef5" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cfbedfe1-a4a5-407c-8f8f-8ee56a9b30f6" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1a277a59-a223-465b-b2ca-df68a5b950c7" shape="rect"></a>1.2.1.2.7.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c7e1b956-c4e3-4f39-a777-9c30131d5931" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8ea8505f-2ea7-4535-b799-36849e05e2c7" shape="rect"></a>"Density Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_794863ff-825a-484a-ab9b-d050189c722f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e5251aea-3896-4d7f-bcf5-9c692d9a2eec" shape="rect"></a>1.2.1.2.7.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_46127f08-72d9-4820-854e-baa849db57f6" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0d33bc8a-e514-42fa-9302-41b29a5b1491" shape="rect"></a>"V3.7"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c4d2d641-f048-4b68-ace4-9c694c56139f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_73cb72db-1e66-4224-b9b6-f8b147acbd1e" shape="rect"></a>1.2.1.2.7.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_78a85335-a1bd-4079-adb2-6ce3cbbfab28" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_777e546d-fcb9-499a-8d02-1fdf5f31c09a" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5bf594a9-8dc1-450a-a0e4-a101426fbb8b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e60695d7-a6b0-42a6-8485-c1b770b54aab" shape="rect"></a>1.2.1.2.7.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6218d11d-c657-4fa4-8380-68ada696d7e9" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_be46a741-835c-4007-9720-eb3b77e69779" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9ddaba47-17ea-491c-98fc-13e427282dd7" shape="rect"></a>1.2.1.2.7.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7f00aa71-2fd5-43e4-b343-7b1393f21d5a" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a6c4f0b8-78c0-49b5-a939-de89f585da6e" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_51e2a87c-b73f-4810-860b-317f0d97f647" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a030ffd5-fa64-48c8-bb75-b0f50f94c116" shape="rect"></a>1.2.1.2.7.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_097abd7b-dcd1-4f49-9268-6674168e494d" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5bea8e07-d272-49b0-a37d-50fc2e99daa6" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5685269c-7f2c-4fa2-aacd-209aeb4ee9cf" shape="rect"></a>1.2.1.2.7.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9e16a599-38bc-450a-bfa7-c192cd2a1e5e" shape="rect"></a>Area of Defined Region</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_730928f5-0395-4230-8877-76431fcc3458" shape="rect"></a>1 cm<sup>2</sup>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e14150f8-7649-4f70-af78-0a88debd92ad" shape="rect"></a>
+                                    <a href="../part16/chapter_A.html#sect_TID_1401" class="olink" shape="rect">TID 1401</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c6c2f49a-0912-4d72-99a4-8f1875e450d9" shape="rect"></a>1.2.1.2.7.6.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_01a45462-6487-47c7-9d27-e79fe25b0ae9" shape="rect"></a>Area Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e32dd71e-d84b-4a02-9964-14da5ab00fa1" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c6a34d95-4a9d-4343-985f-21fc889f5dfc" shape="rect"></a>
+                                    <a href="../part16/chapter_A.html#sect_TID_1401" class="olink" shape="rect">TID 1401</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e3c58677-a441-422f-a68f-892ccfa8aef7" shape="rect"></a>1.2.1.2.7.6.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_83eaf406-6ace-4fb9-a9a9-db0a79d68093" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_19b136ef-3903-4445-aaa8-629e1e0f9f83" shape="rect"></a>
+                                    <a href="../part16/chapter_A.html#sect_TID_1401" class="olink" shape="rect">TID 1401</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_b6230528-f643-47f7-b83d-9f45d6b3640e" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-9" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-9.svg" alt="Individual Impression/Recommendation 1.2.2 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-9. Individual Impression/Recommendation 1.2.2 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bdf9eb05-5dc6-4396-b3ec-ea01cbd3ee06" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a9f17e07-a8d7-4296-b35a-f4f23558b104" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5bf478b7-7b82-4bf3-9b5b-fd011e6b288d" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7dbb5fcb-85e0-46f0-9a5c-53e483dc9dd9" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_dc32a87d-913b-417b-a5a4-476552a702e2" shape="rect"></a>1.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4bbd0a6d-e17c-471c-8d0a-21d00729f817" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e43ad22d-6d40-4b63-bcf1-6ce5f158ca20" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e226f4f6-89e4-4820-9f4c-f795de53a727" shape="rect"></a>1.2.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c3809cf0-89f4-4c35-8190-cdb8220e4bda" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0c39a148-7e4c-421d-b455-86f5044ecf55" shape="rect"></a>Not for Presentation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bd61e869-ac89-4af1-8782-19da315af49a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4d09f923-bd06-49d0-a21c-a2c2d2d42666" shape="rect"></a>1.2.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bba2d46b-30c5-499c-84dd-d20b86b43b07" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_37bcc5d0-a9b7-401f-a1bd-8005329f67ab" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bac067c1-a91d-4bd6-a7a1-4a11272b85c5" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3c053a95-c2cb-49ad-8a11-4594ec2d41f4" shape="rect"></a>1.2.2.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4011f6b0-6904-47be-91ae-421e117947bb" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1a886a31-2501-4b02-8765-d20785029ab4" shape="rect"></a>Not for Presentation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d5d35488-421b-48bf-8dc8-ce737d6aa9ab" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e7bd9c27-9d8e-448a-8ad2-d6a06bc1dd1f" shape="rect"></a>1.2.2.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5163ea0b-d68a-4ee6-ad22-301c7d5bcd4a" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_560e4b88-bbe1-415e-b092-0f27d90f813b" shape="rect"></a>"Density Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f3968f37-863b-443c-8a8b-e528859373b3" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c20ec144-2e87-4eda-9062-dfe0e40d24f9" shape="rect"></a>1.2.2.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_39ca466b-95a3-40f1-8092-a9a631156d97" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_391e1947-9be3-45ff-ad2c-f5a44d887780" shape="rect"></a>"V3.7"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_db366ae4-637e-4bdd-b0ba-5171174c0034" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_356768b6-7221-4f0b-b1af-483f18fb13c4" shape="rect"></a>1.2.2.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_889855ce-c50b-4b85-b19e-938f4d9b812e" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ceda3a3c-adb5-4a31-977a-8f14b75569fe" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_97aefcc4-abff-49ed-83b0-796ee46212c5" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cce42f56-c941-4124-887b-2ea60d82fa44" shape="rect"></a>1.2.2.2.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_45083f40-c405-4d3f-bbfb-cd16bc04bfb8" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_78cc6156-267e-4e00-991b-e40f044610e1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_56d3f139-75cf-4e94-b7e7-ce1bd0282a46" shape="rect"></a>1.2.2.2.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3040dc20-374d-4f52-9ba5-2e66a2ddc594" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d7121738-c4b2-4704-872f-5b3a975c91bf" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e82fa24c-1d08-41b0-96a1-02ec62cef946" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_76ed0660-e381-4a1f-a75c-ea09681e4c96" shape="rect"></a>1.2.2.2.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e82b1d6e-1123-407b-a889-559fcad8cb8f" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_22ef05ed-d47f-46ac-ac63-0a95589b9f10" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_60148fef-9c08-4d73-84c2-4684fcbc1647" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-10" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-10.svg" alt="Individual Impression/Recommendation 1.2.3 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-10. Individual Impression/Recommendation 1.2.3 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_10246d28-5e93-4233-87ac-945bdf2a4b42" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_56951727-bcfb-42c4-8cc7-09a1c0c31055" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ce46cf6a-d791-4162-9168-cb7d17f83247" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e6884c31-ddf1-4ad7-b766-bb55d0c9ebfb" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b2382722-d949-4e3e-9561-c7172f79b70f" shape="rect"></a>1.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_08d0bd37-61c0-4a67-86c9-b69caa5d728e" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_825df4b5-547b-40e6-981e-b1c793dadc54" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bd4faacf-a791-40e0-ac1c-52deb8b12c90" shape="rect"></a>1.2.3.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c49708c7-78dc-4f01-aece-91b15c49f8f4" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7775ba95-5f8f-46f4-9e9f-c4a37e5a4a53" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8eefa732-134d-4272-8280-0ed7afed44de" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bff1e655-2c07-43ba-9fb6-2e137ab4e31c" shape="rect"></a>1.2.3.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9c08854e-c590-4720-b8dc-e0b39954fe11" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bdb2f20d-b9e3-46eb-a71d-cf0af7d86f19" shape="rect"></a>Calcification Cluster</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_882bcaee-d661-4d2f-a70f-c530b4e057cd" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_69be3600-2359-4efe-95ea-e447f4697c0e" shape="rect"></a>1.2.3.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a6557567-580b-49ef-b564-3ad4a2a129e0" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0c1231ad-ab7f-4c5a-af82-08ed440de32d" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7910c0fc-ee1a-46bb-ad20-d4349012c4f7" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4d909770-65ed-40f2-aa6a-acdb62931485" shape="rect"></a>1.2.3.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_75d5b558-fe51-4dfb-9c7d-e5b9cc7351f0" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bdd2a1db-46f3-44b9-80d4-a6f1d0c9aff6" shape="rect"></a>"Calc Cluster Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5e7ab5f2-9550-4476-a423-6b80e50a7e36" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_56ad0ead-c5dc-46dc-a938-8035f1536bbb" shape="rect"></a>1.2.3.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_08456a3b-b841-42e7-a2f7-1a4cbc41f354" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7a99c4ff-530b-4bfe-b8ea-449a638c3f70" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8710ca97-1a00-410b-b986-060cdbce1204" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bd792c7f-7817-4762-b6fe-b2584cb9b3b7" shape="rect"></a>1.2.3.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_30f60381-6ee2-494c-bc06-35e13e9bcaab" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_27439d81-207b-44e2-9174-ec5c443319f6" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_358240f8-589e-4b42-a5e4-9f84b17937e2" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ed576998-447f-4e80-9a27-09c92833963d" shape="rect"></a>1.2.3.2.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b83ecbf5-ee72-4639-9890-bd1381ed4eb3" shape="rect"></a>Reference to node 1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8a2e0201-8637-42ab-a596-a6f0e4413f70" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d7c7256e-bbed-4d56-8af7-67432d2d2f25" shape="rect"></a>1.2.3.2.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_21b08b57-f4c8-48d6-bf86-5332c3f3100e" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8f6638e2-cfa4-4b17-8ce5-f432c3810a68" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_19885a32-5c24-4ee3-9384-f7cfa6c1dec0" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a281f83e-42c9-470d-81f1-5940fa47ae46" shape="rect"></a>1.2.3.2.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_85b1c2cc-548e-480f-84d1-94975f6c8e2a" shape="rect"></a>Reference to node 1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9d631cfd-69be-4c8f-b717-6a44630d333f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a90c9166-a8d4-4ac2-8de2-788f8768a1b0" shape="rect"></a>1.2.3.2.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9d64dc15-156f-4d12-a682-7d3c7b12c701" shape="rect"></a>Number of Calcifications</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_97259da8-50ac-4441-a560-43386d90f9c9" shape="rect"></a>20</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2054f2d1-1c01-4bac-a927-d387222427c8" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4010.html" class="olink" shape="rect">TID 4010</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_4d8b2f36-36dc-45a7-b441-3b32420769d4" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-11" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-11.svg" alt="Individual Impression/Recommendation 1.2.4 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-11. Individual Impression/Recommendation 1.2.4 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_176b6d79-7493-4f00-b747-138e39f4e9b1" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7a4ee270-31bf-4c10-b7c5-4139277de758" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bc8cac90-ded3-4f29-9bb3-3072596bf76d" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_78255488-0170-4f49-a266-a71297e1103f" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f4a8841c-8e0c-4b96-acf7-880b78f6d48a" shape="rect"></a>1.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_432fc693-ea8d-4d00-ba6f-beaf1e2abc3c" shape="rect"></a>Individual Impression/Recommendation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_edd2c559-a404-4112-871a-6f054128cbd9" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2056c351-e825-4301-95eb-ff573d73c259" shape="rect"></a>1.2.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_22f631d4-35b0-43bd-97f9-b87478186b6f" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a9efc194-0d21-4007-9235-404cad360200" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_20b06b69-9b3b-4e98-ac84-2b4028a92e6a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4003.html" class="olink" shape="rect">TID 4003</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_df2520a9-c97f-4afb-8e80-d33ad1742fb1" shape="rect"></a>1.2.4.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b85967a9-7fd3-4bb5-927c-cf3bfadc0174" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5d9f30e2-10a3-4d02-ad0b-2e4c0998bcce" shape="rect"></a>Calcification Cluster</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_752de6cd-543a-4f7e-96db-b1965c6ff8fd" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ddd570a9-4abc-4cc5-bb16-2d707da3e11d" shape="rect"></a>1.2.4.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_75432ba7-81e0-434e-851b-a66770fa9e88" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3b0858cd-85cb-40d5-b2e7-2e2f54712d53" shape="rect"></a>Presentation Required</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_857f5b77-28b9-4050-a594-091ed713ca3f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_45e73c1c-4a08-4593-a8bd-02bf27926497" shape="rect"></a>1.2.4.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8577efc4-b694-4da9-a21e-d91050331f79" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a0fe3298-f837-4ec3-bdb1-02cbf3eb714b" shape="rect"></a>"Calc Clustering"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_04e0e793-0d1c-4893-afd4-e0b095953bd7" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3f2324ab-e632-4bff-b9e0-8d78f9b1001b" shape="rect"></a>1.2.4.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_eb97541d-49ce-412a-843a-b365a2c12b32" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1478e5b5-459b-42f6-b9e3-7a6cd7cd685d" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_00fca165-fbe9-469d-93f3-1bb0caf489c5" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_62b5d1de-06d7-471f-b586-b87b4b99306b" shape="rect"></a>1.2.4.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_70478ff1-45d7-4556-8c3a-4b74f59e2ea4" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7bee28af-e867-4750-88ef-30ac4a6ce4a2" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6856965e-c673-45eb-99b2-167e57fbaeaa" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_84c81365-2b25-4963-b4eb-6fb93b460bf2" shape="rect"></a>1.2.4.2.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_37b206e4-25dd-4122-baac-a2b8fc21edcf" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ca59a597-bd73-434d-86e6-feab31b2ca03" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cd5a2057-0481-4fc3-9fc6-3835221782bc" shape="rect"></a>1.2.4.2.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d5733e89-2815-4fb4-bb54-6031d4c1c47e" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_23c849cd-f914-486c-be2a-6929967fa176" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9fdb0cdf-4f98-4ccd-bc94-7917b5838a8d" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0abc05ae-553f-407a-9bb9-3dd2e6e8f919" shape="rect"></a>1.2.4.2.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c15daa7e-4d66-42a1-91b6-f6d454894bf4" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ba44358f-8c46-41d0-ae5f-c1a5ffc12d41" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_35099196-041c-4548-93b5-0e5979a23231" shape="rect"></a>1.2.4.2.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ab42b610-e1cb-4bd9-aae4-a6bcf032ce57" shape="rect"></a>Number of Calcifications</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_33ecd2ba-9711-48db-8b5c-d7e1f96aaaa3" shape="rect"></a>2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d5854131-97a6-4e6c-99b6-50d3143cbb20" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4010.html" class="olink" shape="rect">TID 4010</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_b0f2c6c4-9666-4d00-b5d5-fb2b577d70e9" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-12" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-12.svg" alt="Single Image Finding 1.2.4.2.7 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-12. Single Image Finding 1.2.4.2.7 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_86d4cff6-2bc8-4f43-aecf-0cce5af5dc84" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_316fe580-f11f-4925-9723-998aca6d49c8" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9cd474ae-8008-4d76-aff3-aa0101975c1f" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_53a5aa52-286f-4427-bcaa-2c5e7602978d" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0694f972-e639-4cf5-be54-77c18d0fdd63" shape="rect"></a>1.2.4.2.7</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f69f9dbe-14a1-4c76-84f4-c6d9a4ef6c7e" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3a3d51df-67d4-4510-a346-5939bfa39724" shape="rect"></a>Individual Calcification</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8ac60781-400e-468c-a2e7-b4015d797b66" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a62dc0fb-f279-4518-b6b3-4e4997f43c2c" shape="rect"></a>1.2.4.2.7.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b92eaaa4-540e-4039-b1a1-5dc3181c98ca" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8e70400e-83a3-46e0-95db-650d35d4c5dd" shape="rect"></a>Presentation Optional</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_082da58b-376e-40db-a3f3-d91b4129c359" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_da72ce76-7ec5-4fbd-8db6-b402f17ac57a" shape="rect"></a>1.2.4.2.7.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e3648d0f-d5b3-451e-a61c-3a33dbfdf5e4" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4e122e30-55c3-431b-a144-f05b2748842b" shape="rect"></a>"Calc Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4031b941-6b42-4c00-812f-b5b6778d18b3" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4450aaf5-0631-434d-ae70-a9b7627fda69" shape="rect"></a>1.2.4.2.7.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_854ee5c4-b246-47f8-aee7-00e8739c32f4" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c7897def-2943-4a81-bc04-fce07784dcd1" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_07986a50-4519-47fc-b183-a57be940c650" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_453140ed-4806-4a3e-856a-d928a7308369" shape="rect"></a>1.2.4.2.7.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c240d93d-b99d-4355-8905-93516834495e" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_66785e82-8c90-4271-aedb-d19f2aabd1bd" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2c2d9316-92a9-43a0-8a64-669920877eda" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_18ad36e8-a384-4f87-aa02-12ff2ab1737d" shape="rect"></a>1.2.4.2.7.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f9078383-6105-492c-b306-f2fbbe7ee6fa" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_097dd011-7503-48fb-8f72-64502e85085e" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_222d1b54-03e4-4bc6-b6b2-faf77454f595" shape="rect"></a>1.2.4.2.7.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9079361e-c611-4b4d-a8c3-064e57f18278" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_55b3386e-83a8-4904-b368-a920c381d423" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a7a57093-2464-4aa7-a52f-d949ba8a81e3" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b809ae3e-64d0-446b-af4f-fee9731bfca8" shape="rect"></a>1.2.4.2.7.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6ad7bb97-a748-4c37-ae53-bd1939f1e4c2" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ef288ab3-b1f2-4285-8bf5-46748255ea5c" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_06e867ed-e89e-44e2-a81a-fc43a034f2c3" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-13" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-13.svg" alt="Single Image Finding 1.2.4.2.8 from Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-13. Single Image Finding 1.2.4.2.8 from Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_db366d38-7ac5-43c5-9dae-484275daa076" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e9bc0efa-1227-4d1b-9099-aa4501d6f519" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b9e45667-e2f3-4c37-a55a-e917d546b4b0" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_10363fa1-b14f-4409-9397-f2fa59b2ca15" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a17cc667-2e0a-4e48-a331-1efabfd99272" shape="rect"></a>1.2.4.2.8</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cb960e7b-0d96-4dbf-a074-368c043e233d" shape="rect"></a>Single Image Finding</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1c296b6c-7d1f-4683-93f8-da3a3edeedeb" shape="rect"></a>Individual Calcification</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ac9fbb99-8f7a-4d4d-88b0-61aff622b30d" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c34997d7-0ea0-46e2-9a50-82a6bb23c1e7" shape="rect"></a>1.2.4.2.8.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_41cf4a1d-ab6b-4a53-98ce-52a9fd9463c3" shape="rect"></a>Rendering Intent</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5450f1b7-b168-495a-a529-0a56250ba97e" shape="rect"></a>Presentation Optional</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f19080b7-975c-4607-b504-1f38a10275bd" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4006.html" class="olink" shape="rect">TID 4006</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3957e522-9a0c-4ce1-93d2-194e5249fcea" shape="rect"></a>1.2.4.2.8.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1e1f7f02-cb52-4ea6-af3a-750a98e1bd68" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7a32f5b4-40f3-4603-8d52-077399605898" shape="rect"></a>"Calc Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d8495a9b-67a3-4d05-9219-211e3f6971d1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_31e6026a-4f5b-4500-ba7e-3d6f00e9e9a1" shape="rect"></a>1.2.4.2.8.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1ec6f3ca-d4e0-4ddc-a506-56be1a659894" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b505ec37-447e-4bdf-8ae1-4a881c6b11e9" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_40ceee15-065f-4f09-a0f0-8a64e4f07e1d" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_aa0d95e8-cd03-446b-a1e3-623ff67c5e64" shape="rect"></a>1.2.4.2.8.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_87aab34e-b9f6-4cd4-8c07-6634413fe8eb" shape="rect"></a>Center</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3d4aa19b-1d10-4c77-b7ca-0678df68970a" shape="rect"></a>POINT</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b728b37e-b8e7-4625-a7d7-f76fc3eddf2b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_789c9140-f089-40ea-94e8-524734c042be" shape="rect"></a>1.2.4.2.8.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bf7ce3c7-ea6c-4c6c-bc86-589c4b88647c" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_95669fb5-1756-4e76-a330-362f9fa8f437" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_36e4f5f3-6830-462c-a693-4e64ba3e7975" shape="rect"></a>1.2.4.2.8.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_81de72bf-9534-4860-996e-975bf2ce8f33" shape="rect"></a>Outline</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_36726d7b-e606-4208-8fae-784fde1eaf2c" shape="rect"></a>SCOORD</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b4743984-3b15-45ba-a963-517721a4e812" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ac8427c0-6942-45b2-b65a-304e6bf8434c" shape="rect"></a>1.2.4.2.8.5.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0eb988d2-e4af-44e8-ab55-381cca87793f" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1811659e-c23f-42df-a8ba-0208223e5c07" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4021.html" class="olink" shape="rect">TID 4021</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_b583cd07-f1cf-48b2-8a23-545c0a0d1970" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-14" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-14.svg" alt="Summary of Detections Branch of Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-14. Summary of Detections Branch of Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_cabd3c9c-6562-4cb7-a0bf-5ba459e3a9a7" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_45dcc22f-06a5-4cac-915d-19543edb2b26" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d2682278-6df1-4d14-95ed-c67dc66f3acb" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d3128229-cf4e-40eb-8f14-856886367edf" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2446232e-7e62-449e-8118-f1f4eacd16a7" shape="rect"></a>1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0ad4586a-b72b-4ddd-8345-6b799ff4ca7a" shape="rect"></a>Summary of Detections</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3ef03ead-b998-491a-b124-525bb41b137d" shape="rect"></a>Succeeded</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_60bd2201-76b2-416f-881d-b3c2355d08cb" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f669ae1d-2eaf-4973-83ed-075bcfd64878" shape="rect"></a>1.3.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1c550e22-1bc0-4bf8-bd08-ac1da14ec32a" shape="rect"></a>Successful Detections</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_30b6aa5c-6f0e-4da8-b1de-e7eb90fed114" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4015.html" class="olink" shape="rect">TID 4015</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ada63754-91ee-4835-8933-1598538f94e9" shape="rect"></a>1.3.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0908961f-8aa9-4bad-85e9-cdb5488d4a37" shape="rect"></a>Detection Performed</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0fed55ad-c225-438b-977c-52c208bfb522" shape="rect"></a>Mammography breast density</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_92948399-2cba-4628-9d3d-951536a73d4a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_90bc95b0-f01f-439b-be53-88ed4a15382b" shape="rect"></a>1.3.1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a5481688-e6ef-4e8c-abb7-73d677bbcd77" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_660c6ada-9e42-4b52-936b-858506de7f8e" shape="rect"></a>"Density Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1887ff1e-3e2b-495a-9b54-ec245e9684bc" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2904dd52-dba9-4670-a9f7-4ed9102f2762" shape="rect"></a>1.3.1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b1243e38-0909-4bd8-a2da-6457c324badd" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5a009eca-49fe-408d-9ea6-98a4b4ecf370" shape="rect"></a>"V3.7"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1f9f1f58-c2f5-4dc7-bc72-833cb9d8e285" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c7d29f2f-05e0-4fe1-b105-08e287d986dd" shape="rect"></a>1.3.1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bb7428cd-685c-4435-8173-67d1788ae331" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6d0f9bb8-0ef3-40a4-a2f5-461362771278" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9808b136-b54c-45e0-ab40-36604cbe062c" shape="rect"></a>1.3.1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f4f24d10-72cb-4080-94be-e0778d5e8d2c" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8a2f90bc-82bb-4e71-8722-9f3bfb8cdbb1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_35d9529d-af97-40d3-b707-3646b41d1fdf" shape="rect"></a>1.3.1.1.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0d686b8a-7f91-43ce-9efb-dc8dd1cc39b6" shape="rect"></a>Reference to node 1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_105b7453-27b0-44d9-a363-f301d30784c8" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_92d61e83-464c-41db-9e39-d39274238f37" shape="rect"></a>1.3.1.1.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_843b1786-f9e6-4b16-9409-0dca81f22945" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6ee23c87-9dbf-417b-a47f-aae82359208d" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b7863bd5-e8ee-4af2-9d66-2be1f6a662eb" shape="rect"></a>1.3.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c0933666-ab10-4cf9-a534-1a9f8b8d2279" shape="rect"></a>Detection Performed</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3570c1a3-1ab9-4574-9af3-603b843882f1" shape="rect"></a>Individual Calcification</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9341483b-1643-4613-b146-2e1c3d571a63" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_551945fa-4f06-4e5c-a987-a57420fec475" shape="rect"></a>1.3.1.2.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_813a112a-1a58-4502-8668-7014346fcb50" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7637d73f-593a-41f2-a292-c33267f6bf19" shape="rect"></a>"Calc Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a895eb6c-d99a-412a-a304-1279a9833f8c" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_165dacd5-32c5-45e6-ab91-0d308fd9e013" shape="rect"></a>1.3.1.2.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f0716dc3-4c91-42cb-a88e-7919ea14da62" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f20acadb-bdd3-46d5-b960-90b77976dbbf" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_588ce24e-3919-4eba-a063-37221ddb41f0" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2c8afdf9-9cf0-4260-a890-e19f7d513723" shape="rect"></a>1.3.1.2.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6325f968-9229-4d20-b5c9-9eb7686cfc1e" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6e78cddf-e0a7-4141-9687-3b5b0dc47dbf" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f4d832bd-5628-4e0f-a087-32c0376b42b9" shape="rect"></a>1.3.1.2.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1147719a-aea8-4cdb-a949-6f9c5ab65f74" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_11ad5f98-c0a9-49db-be3e-fa4bc0940861" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9ca35cce-4676-4407-89f3-cf7b753fa871" shape="rect"></a>1.3.1.2.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3c517acc-0c79-4e9d-9c29-2c041dc8a923" shape="rect"></a>Reference to node 1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7184440e-4f28-4cb8-82ff-4cb356788e88" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_62275423-d403-41a5-aa8f-b38ea5c6822c" shape="rect"></a>1.3.1.2.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3bd9e5ec-70ac-412d-b6c0-ff3b89b63696" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6cfe280d-0c07-4fba-a5d4-807546efbfa6" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_62b72bca-c384-43d6-905a-12489b890849" shape="rect"></a>1.3.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_510f11e6-6802-4389-8525-2a0d126929e3" shape="rect"></a>Detection Performed</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_743c8289-6cf2-487b-bd26-1b0ba31758f4" shape="rect"></a>Calcification Cluster</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_fde6f600-35b8-4730-9623-93553c66e34a" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_66abcaf2-5f3a-4fde-a268-6b5397d88f31" shape="rect"></a>1.3.1.3.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e32ba02b-a28d-42fe-b738-8493ae4b2e03" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_084dbe02-8cf4-4871-b3a7-b4484cd4dc1c" shape="rect"></a>"Calc Clustering"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_71fe6e74-a47b-4efa-9334-937596a2872f" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f2a15bcd-727e-4e5b-aaf5-1ffc9909dd9f" shape="rect"></a>1.3.1.3.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b3db6e9f-a724-4440-b621-5469bbfe089e" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d8cfb9e9-a864-41d4-99f8-30a683ac3388" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_dfec204e-1533-4ca8-b699-b061de478659" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5a466fa6-cde5-4644-b4d6-9e06462b3c9c" shape="rect"></a>1.3.1.3.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4e5ec8cf-6da0-46d8-99d3-420838389175" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c37534b9-dd27-4182-ba7e-b4047a65ced1" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_00acb6bc-3a83-4298-9e5b-c668f034d4ef" shape="rect"></a>1.3.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3878594b-60f2-4408-a5f8-864ef41fe237" shape="rect"></a>Detection Performed</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6eecd49c-6ac9-4a67-b29d-f7e7ef4c1850" shape="rect"></a>Calcification Cluster</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_90f7eea3-7107-4121-9e80-96bd31323e49" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a9cb4eaa-cd70-4179-ac8c-d94f9fda16f2" shape="rect"></a>1.3.1.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_38b2bae4-12bb-4d1f-b87c-c2990893f187" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d7647c5e-f519-4b19-a163-a40d153ceb9b" shape="rect"></a>"Calc Cluster Detector"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_fbaf2771-0fc0-4949-acca-b02951d3d8b9" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_bd79094a-02a8-456e-94a9-3573d2577cd0" shape="rect"></a>1.3.1.4.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9a89ee05-a8cd-4f43-affd-abcc1720141f" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_c7923c03-87d0-41ec-a940-dcbec59400ec" shape="rect"></a>"V2.4"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_54c131f1-74a1-4440-8937-e5e48fce0b07" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_08769d64-bef5-4608-a676-4ddf111a29eb" shape="rect"></a>1.3.1.4.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f2f8e445-deb8-42e7-96a2-18f3de1b6545" shape="rect"></a>Reference to node 1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4201aa27-b3db-4097-bdbd-72a174645df3" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ee30bd51-9b68-45ce-a721-1db026d2198f" shape="rect"></a>1.3.1.4.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_83adb7ea-b33e-4d67-ab58-f8b404069af7" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2100324a-ae33-4d81-a50e-59f3d80c4f8c" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e68e3001-075d-4aa4-830e-97852c605f3f" shape="rect"></a>1.3.1.4.5</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b32aa014-8bbc-4663-ac2e-d11dd9b6c437" shape="rect"></a>Reference to node 1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_93525acc-cea5-4d8d-87b0-7a9db188f124" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e601c4ec-e400-42ee-a36d-b698b0305472" shape="rect"></a>1.3.1.4.6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a098e566-4bbd-41ce-b7ae-ac7bbf8879a0" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_97502a20-ef12-46e2-85b2-099ef755dd68" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4017.html" class="olink" shape="rect">TID 4017</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_1cda88af-7586-4483-bdba-2a45a522e4e0" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_E.3-15" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_E.3-15.svg" alt="Summary of Analyses Branch of Example 2 Content Tree" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure E.3-15. Summary of Analyses Branch of Example 2 Content Tree</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8d710418-7c82-4bed-9923-e3bccd983d58" shape="rect"></a>Node</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a9a005b4-5fca-4219-8ad2-cb747bc5f3a1" shape="rect"></a>Code Meaning of Concept Name</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d1d48ba2-21d5-4172-a990-279cd466c426" shape="rect"></a>Code Meaning or Example Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b82d1216-19f8-4036-b517-b6dd5c6a2970" shape="rect"></a>TID</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6010a238-6e89-433d-902a-16e0c9de5e3d" shape="rect"></a>1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0b3b20ea-93b0-44f5-8d39-000658493231" shape="rect"></a>Summary of Analyses</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_315d01c2-2f7b-4e97-b0ae-2636cb824c6c" shape="rect"></a>Succeeded</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1990691a-f846-4807-914e-81baa6cdf65b" shape="rect"></a>
+                                    <a href="../part16/sect_MammographyCADSRIODTemplates.html#sect_TID_4000" class="olink" shape="rect">TID 4000</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_69fb7687-0906-4432-ba83-4ac5392a3716" shape="rect"></a>1.4.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_adcd8e16-6d73-4b89-84e7-4d32e2056dcb" shape="rect"></a>Successful Analyses</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_3de9013f-f696-4237-b5eb-d4bb1b41854e" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4016.html" class="olink" shape="rect">TID 4016</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_12ccb9d8-5da9-49d2-a417-cb6777765a41" shape="rect"></a>1.4.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_82d8b9cc-135d-4350-9b80-6cbc52139110" shape="rect"></a>Analysis Performed</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b9bfc62a-5c2e-4f85-9de3-fd53245660ca" shape="rect"></a>Mass Correlation</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ed5b65a4-1096-4fbd-8953-5fa21cc822a3" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4018.html" class="olink" shape="rect">TID 4018</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ceb8eb9c-8feb-4687-9318-1204fa505253" shape="rect"></a>1.4.1.1.1</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_54ec79b3-6d9c-47ec-bb1d-8226102c47fc" shape="rect"></a>Algorithm Name</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7a88dbde-4ed2-4f21-bd4d-613ae75f84e1" shape="rect"></a>"Mass Maker"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_9c2d3a12-74bb-431d-b70e-af6d287b0b85" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5a574a94-98a4-47d0-b044-5ea75825bf8e" shape="rect"></a>1.4.1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_54e9ac6a-8477-40c8-aa45-965c078c053f" shape="rect"></a>Algorithm Version</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7a74934d-96a5-4000-9f04-25b93e47b1b1" shape="rect"></a>"V1.9"</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f3b2b6bf-00ea-4d37-8513-1790f871ac40" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4019.html" class="olink" shape="rect">TID 4019</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_11bdb489-7c8a-4a9d-b8ed-508c1f2ac11d" shape="rect"></a>1.4.1.1.3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1d512b9b-7044-4d3f-92a9-96bf5b549990" shape="rect"></a>Reference to node 1.1.2</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7db5d04e-74e9-492d-9009-f530894b85ba" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4018.html" class="olink" shape="rect">TID 4018</a>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_21a2388d-b0fd-4396-8b4f-e669a07a60a0" shape="rect"></a>1.4.1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8ef71ea1-8d6f-4a53-b892-35040778981b" shape="rect"></a>Reference to node 1.1.4</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0cd3450a-223e-4c52-a2a5-4e485fd5df8b" shape="rect"></a>
+                                    <a href="../part16/sect_TID_4018.html" class="olink" shape="rect">TID 4018</a>
+                                </p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_E.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_E.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_E.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">E.3 Mammography CAD SR Examples </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> E.3.3 Example 3: Calcification and Mass Detection, Temporal Differencing With Findings</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

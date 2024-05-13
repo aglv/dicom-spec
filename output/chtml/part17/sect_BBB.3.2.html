@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>BBB.3.2 Treatment Delivery Normal Flow - External Verification</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_BBB.3.html" title="BBB.3 Use Cases" />
+      <link rel="prev" href="sect_BBB.3.html" title="BBB.3 Use Cases" />
+      <link rel="next" href="sect_BBB.3.2.2.html" title="BBB.3.2.2 Transactions and Message Flow" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">BBB.3.2 Treatment Delivery Normal Flow - External Verification <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_BBB.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_BBB.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">BBB.3 Use Cases</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_BBB.3.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_BBB.html" shape="rect">Unified Procedure Step in Radiotherapy (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_BBB.3.html" shape="rect">Use Cases</a>
+         </span> &gt; <span class="breadcrumb-node">Treatment Delivery Normal Flow - External Verification</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_BBB.3.2" shape="rect"></a>BBB.3.2 Treatment Delivery Normal Flow - External Verification</h3>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_BBB.3.2.1" shape="rect"></a>BBB.3.2.1 Message Sequencing</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_1c1d68a9-8440-4049-a845-23dbe61dc430" shape="rect"></a>
+                        <a class="xref" href="sect_BBB.3.2.2.html#figure_BBB.3.2.1-1" title="Figure BBB.3.2.1-1. Treatment Delivery Normal Flow - External Verification Message Sequence" shape="rect">Figure BBB.3.2.1-1</a> illustrates a message sequence example in the case where a treatment procedure delivery is requested and performed by a conventional delivery device requiring an <span class="underline">external</span> verification capability.</p>
+            <p>
+               <a id="para_690056f6-1ccc-40dc-bd20-27bd28bc7f78" shape="rect"></a>In the case where external verification is requested (i.e., where the UPS Requested Procedure Code Sequence item has a value of "RT Treatment With External Verification"), the information contained in the UPS and potentially other required delivery data must be communicated to the Machine Parameter Verifier (MPV). In many real-world situations the Oncology Information System fulfills both the role of the TMS and the MPV, hence this communication is internal to the device and not standardized. If separate physical devices perform the two roles, the communication may also be non-standard, since these two devices must be very closely coupled.</p>
+            <p>
+               <a id="para_62d0f60f-90e5-4235-bdb4-7b5d5b9bfb07" shape="rect"></a>Elements in bold indicate the additional messages required when the Machine Parameter Verifier is charged with validating the beam parameters for each beam, prior to radiation being administered. These checks can be initiated by the User on a beam-by-beam basis ('manual sequencing', shown with the optional 'Deliver Beam x' messages), or can be performed by the Machine Parameter Verifier without intervention ('automatic sequencing'). The TDS would typically store an RT Treatment Record SOP Instance after each beam.</p>
+            <p>
+               <a id="para_f30d1b3b-6e0f-4b2f-85a0-a57461896f4a" shape="rect"></a>This example illustrates the case where photon or electron beams are being delivered. If ion beams are to be delivered, instances of the RT Conventional Machine Verification IOD will be replaced with instances of the RT Ion Machine Verification IOD.</p>
+            <p>
+               <a id="para_87b4f6f5-a5d8-4e2a-88a1-5dcea4a6f56d" shape="rect"></a>Delivery of individual beams can be explicitly requested by the User (as shown in this example), or sequenced automatically by the TDS.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_BBB.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_BBB.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_BBB.3.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">BBB.3 Use Cases </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> BBB.3.2.2 Transactions and Message Flow</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

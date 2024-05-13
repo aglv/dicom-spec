@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9.2.2 Patient</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="sect_9.2.html" title="9.2 AvailableData" />
+      <link rel="prev" href="sect_9.2.html" title="9.2 AvailableData" />
+      <link rel="next" href="sect_9.2.3.html" title="9.2.3 Study" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9.2.2 Patient <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/sect_9.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">9.2 AvailableData</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_9.html" shape="rect">Data Types and Structures</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.2.html" shape="rect">AvailableData</a>
+         </span> &gt; <span class="breadcrumb-node">Patient</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_9.2.2" shape="rect"></a>9.2.2 Patient</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3189c1d6-357d-4a09-bda3-b576b875342d" shape="rect"></a>A data structure that communicates data for a particular patient. The fields in the data structure are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_192b2783-f8f1-4cde-afd1-c59ecb283e18" shape="rect"></a>Name : String - The name of the patient, formatted as described for the PN VR in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. For DICOM SOP Instances this is the value of the Patient's Name (0010,0010) Attribute.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_bbd9f4b3-b031-441c-b826-58d235511a15" shape="rect"></a>ID : String - A string used as the identifier for a particular patient, formatted as described for the LO VR in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. For DICOM SOP Instances this is the value of the Patient ID (0010,0020) Attribute.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_440c91b8-0330-4e5f-8450-928b0b451736" shape="rect"></a>AssigningAuthority : String - The organization who assigned the id to the patient, formatted as described for the LO VR in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. For DICOM SOP Instances this is the value of the Issuer of Patient ID (0010,0021) Attribute.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6cbf80d5-b529-4509-a5d4-1c73353d9ea7" shape="rect"></a>Sex : String - The sex of the patient. For DICOM SOP Instances this is the value of the Patient's Sex (0010,0040) Attribute. In all other cases it shall take on the values permissible for the DICOM Sex (0010,0040) Attribute.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6899ce73-8d68-4ab3-ad13-33d87439daec" shape="rect"></a>BirthDate: String The birth date of the patient, formatted as described for the DA VR in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. For DICOM SOP Instances this is the value of the Patient's Birth Date (0010,0030) Attribute.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4349935e-c92e-41e7-8931-4f6d9841353c" shape="rect"></a>ObjectDescriptors : ObjectDescriptor[] - An array of ObjectDescriptor data structures listing data that applies to this patient, but that do not apply to any particular study of this patient.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_636a44db-1bca-4433-8181-3d6b08c73f0d" shape="rect"></a>Studies : Study[] - An array of Study data structures.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_118474fb-b980-4cdf-9e44-848eeab262f1" shape="rect"></a>At least one of objectDescriptors or studies shall be present.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_9.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.2 AvailableData </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.2.3 Study</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

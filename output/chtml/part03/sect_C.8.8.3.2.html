@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.3.2 Grid Frame Offset Vector</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.3.html" title="C.8.8.3 RT Dose Module" />
+      <link rel="prev" href="sect_C.8.8.3.html" title="C.8.8.3 RT Dose Module" />
+      <link rel="next" href="sect_C.8.8.3.3.html" title="C.8.8.3.3 Dose Units" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.3.2 Grid Frame Offset Vector <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8.3 RT Dose Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.3.html" shape="rect">RT Dose Module</a>
+         </span> &gt; <span class="breadcrumb-node">Grid Frame Offset Vector</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.8.8.3.2" shape="rect"></a>C.8.8.3.2 Grid Frame Offset Vector</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7cfc65bf-de96-4a12-9468-2b1c805f9286" shape="rect"></a>Grid Frame Offset Vector (3004,000C) shall be provided if a dose distribution is encoded as a multi-frame image. Values of the Grid Frame Offset Vector (3004,000C) shall vary monotonically and are to be interpreted as follows:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_4eac2880-2eda-4557-83ee-82ec0e6e897a" shape="rect"></a>If Grid Frame Offset Vector (3004,000C) is present and its first element is zero, this Attribute contains an array of n elements indicating the plane location of the data in the right-handed image coordinate system, relative to the position of the first dose plane transmitted, i.e., the point at which Image Position (patient) (0020,0032) is defined, with positive offsets in the direction of the cross product of the row and column directions.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9ce42759-bb35-414a-9d31-ea935b41c407" shape="rect"></a>If Grid Frame Offset Vector (3004,000C) is present, its first element is equal to the third element of Image Position (patient) (0020,0032), and Image Orientation (patient) (0020,0037) has the value (1,0,0,0,1,0), then Grid Frame Offset Vector contains an array of n elements indicating the plane location (patient z coordinate) of the data in the Patient-Based Coordinate System.</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_e755ed9b-8200-414f-ac51-defcaaad60ec" shape="rect"></a>In future implementations, use of option a) is strongly recommended.</p>
+         <p>
+            <a id="para_c2386781-7ab8-49ce-8d3c-503954098700" shape="rect"></a>This Attribute is conditional since the <a class="xref" href="sect_C.8.8.3.html" title="C.8.8.3 RT Dose Module" shape="rect">RT Dose Module</a> may be included even if pixel doses are not being transmitted, or the image may be a single-frame image. If the <a class="xref" href="sect_C.7.6.6.html" title="C.7.6.6 Multi-frame Module" shape="rect">Multi-frame Module</a> is present, Frame Increment Pointer (0028,0009) shall have the Enumerated Value of 3004000C (Grid Frame Offset Vector).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_13d795ab-e5d3-4cb0-b656-30a7a23c54d1" shape="rect"></a>Option (a) can represent a rectangular-parallelepiped dose grid with any orientation with respect to the patient, while option (b) can only represent a rectangular-parallelepiped dose grid whose planes are in the transverse patient dimension and whose x- and y-axes are parallel to the patient x- and y-axes.</p>
+            <p>
+               <a id="para_05559ab3-c580-4887-9b40-1ad95aec9a19" shape="rect"></a>Example: <a class="xref" href="sect_C.8.8.3.2.html#figure_C.8.8.3-1" title="Figure C.8.8.3-1. Dose Grid Frame Example" shape="rect">Figure C.8.8.3-1</a> shows an example of plane positions for a dose grid with transverse planes.</p>
+            <p>
+               <a id="para_a67acf24-5935-44a7-8732-c0c6402e9355" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_C.8.8.3-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.3_C.8.8.3-1.svg" alt="Dose Grid Frame Example" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure C.8.8.3-1. Dose Grid Frame Example</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+            <p>
+               <a id="para_e56513f1-572b-4d02-9741-92e530c792db" shape="rect"></a>For this example, <a class="xref" href="sect_C.8.8.3.2.html#table_C.8-39b" title="Table C.8-39b. Values of Dose Grid Frame Offset Vector Under Relative (A) and Absolute (B) Interpretations" shape="rect">Table C.8-39b</a> gives the values of elements in the Grid Frame Offset Vector (3004,000C) for both relative (option (a)) and absolute (option (b)) interpretations, under the following conditions:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_606ceffc-16f3-421a-acc2-1b7c76270c61" shape="rect"></a>The value of Image Orientation (Patient) (0020,0037) is (1,0,0,0,1,0). I.e., the dose grid is transverse with x- and y-axes parallel to the patient x- and y-axes;</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_941564c7-3012-49f1-a957-7e21bee13921" shape="rect"></a>The value of Image Position (Patient) (0020,0032), i.e., the position of the first element of the dose grid, is (4, 5, 6); and</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c354cad2-aea3-43b2-bcfe-541458b6b8b3" shape="rect"></a>The spacing between adjacent dose grid planes is 2mm (uniform).</p>
+                  </li>
+               </ol>
+            </div>
+            <div class="table">
+               <a id="table_C.8-39b" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.8-39b. Values of Dose Grid Frame Offset Vector Under Relative (A) and Absolute (B) Interpretations</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_ca85a7fb-46a6-4b2c-8601-bb3297bb5885" shape="rect"></a>Grid Frame Offset Vector Element</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_76e9c3d2-e1c8-4b2c-8690-764a96447194" shape="rect"></a>Option (a) Relative Coordinates</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_e8068771-75f8-4266-853d-bafc04b9b622" shape="rect"></a>Option (b) Absolute Coordinates</p>
+                                        </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_2b2d8591-1c36-4c93-97e9-95b616cc27c5" shape="rect"></a>Z1</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_c8ab59ae-da80-4246-ac5e-e25d53e3db8c" shape="rect"></a>0</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_1be0bb52-a2b1-4c97-be6a-00fb0b0e48fa" shape="rect"></a>6</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_ceb771ab-f467-4b92-a7a8-9660131668f0" shape="rect"></a>Z2</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_4863205b-ca4e-4024-bf54-38aecaa21853" shape="rect"></a>2</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_33699e47-62ac-432d-9bbf-506165a0f819" shape="rect"></a>8</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_bab59a60-63dc-485e-b05a-3b59b3991e4b" shape="rect"></a>Z3</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_a22628d5-5cf2-4a20-b288-2d620c450a71" shape="rect"></a>4</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_c78d6479-0dc0-4fe8-9ca6-4753c9184842" shape="rect"></a>10</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_d4360ea9-346a-4f85-aa23-6ec9c0f71d8a" shape="rect"></a>ZN</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_2ffd34be-434d-49ae-a170-4e728ff5e766" shape="rect"></a>2(N-1)</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_c9f3c7b1-313c-4606-a59e-3f4c4afe64c8" shape="rect"></a>6 + 2(N-1)</p>
+                                        </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.3 RT Dose Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.3.3 Dose Units</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

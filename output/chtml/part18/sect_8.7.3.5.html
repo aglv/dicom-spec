@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.7.3.5 Media Type Syntax</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.7.3.html" title="8.7.3 DICOM Media Type Sets" />
+      <link rel="prev" href="sect_8.7.3.4.html" title="8.7.3.4 Transfer Syntax" />
+      <link rel="next" href="sect_8.7.3.5.2.html" title="8.7.3.5.2 Transfer Syntax Parameter" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.7.3.5 Media Type Syntax <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.7.3.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.7.3.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.7.3 DICOM Media Type Sets</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.7.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.7.html" shape="rect">Media Types</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.7.3.html" shape="rect">DICOM Media Type Sets</a>
+         </span> &gt; <span class="breadcrumb-node">Media Type Syntax</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_8.7.3.5" shape="rect"></a>8.7.3.5 Media Type Syntax</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4c5827d2-a564-46a2-9b18-9192353cb21c" shape="rect"></a>The syntax of Media Type usage in DICOM is:</p>
+         <pre class="programlisting" xml:space="preserve">dicom-media-type = (dcm-singlepart / dcm-multipart) [dcm-parameters]</pre>
+         <p>
+            <a id="para_b242e33b-0637-4a0c-909f-b9c3808e1a7b" shape="rect"></a>Where</p>
+         <pre class="programlisting" xml:space="preserve">dcm-singlepart = dcm-mt-name</pre>
+         <pre class="programlisting" xml:space="preserve">dcm-multipart  ;see <a class="xref" href="sect_8.7.3.5.html#sect_8.7.3.5.1" title="8.7.3.5.1 Multipart Media Types" shape="rect">Section 8.7.3.5.1</a>
+</pre>
+         <pre class="programlisting" xml:space="preserve">dcm-parameters = transfer-syntax-mtp ;see <a class="xref" href="sect_8.7.3.5.2.html" title="8.7.3.5.2 Transfer Syntax Parameter" shape="rect">Section 8.7.3.5.2</a>
+</pre>
+         <pre class="programlisting" xml:space="preserve">               / charset-mtp;see <a class="xref" href="sect_8.7.3.5.3.html" title="8.7.3.5.3 Character Set Parameter" shape="rect">Section 8.7.3.5.3</a>
+</pre>
+         <pre class="programlisting" xml:space="preserve">dcm-mt-name    = dicom / dicom-metadata / bulkdata / pixeldata ;DICOM Media Type name</pre>
+         <pre class="programlisting" xml:space="preserve">dicom          = "application/dicom"</pre>
+         <pre class="programlisting" xml:space="preserve">dicom-metadata = dicom-xml / dicom-json</pre>
+         <pre class="programlisting" xml:space="preserve">dicom-xml      = "application/dicom+xml"</pre>
+         <pre class="programlisting" xml:space="preserve">dicom-json     = "application/dicom+json"</pre>
+         <pre class="programlisting" xml:space="preserve">bulkdata       = octet-stream / pixeldata</pre>
+         <pre class="programlisting" xml:space="preserve">octet-stream   = "application/octet-stream"</pre>
+         <pre class="programlisting" xml:space="preserve">pixeldata      = image-pixel / video-pixel</pre>
+         <pre class="programlisting" xml:space="preserve">rendered       = image-pixel / video-pixel</pre>
+         <pre class="programlisting" xml:space="preserve">image-pixel    = "image/jpeg" / "image/dicom-rle" / "image/jls" / "image/jp2" / "image/jpx" / "image/jphc"</pre>
+         <pre class="programlisting" xml:space="preserve">video-pixel    = "video/mpeg" / "video/mp4" / "video/H265"</pre>
+         <p>
+            <a id="para_75ec51cc-e8c0-4d32-aeb0-09b7d308e6b9" shape="rect"></a>All Media Types used in DICOM may have a Transfer Syntax parameter, but its usage may be constrained by the service for which they are used.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_3df875db-5df3-4a8d-beab-65fba0a9a35f" shape="rect"></a>The application/dicom+xml and application/dicom+json Media Types may have a Transfer Syntax parameter in order to specify the encoding of base64 data.</p>
+         </div>
+         <p>
+            <a id="para_28f8bbd0-49ca-4ef2-a857-80bc31d9f145" shape="rect"></a>All Media Types used in DICOM may have a character set parameter, but its usage may be constrained by the service for which they are used.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_8.7.3.5.1" shape="rect"></a>8.7.3.5.1 Multipart Media Types</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_4bc8f31f-f7fe-4d1b-b691-2ff76d60ddd7" shape="rect"></a>The syntax of multipart media types is:</p>
+            <pre class="programlisting" xml:space="preserve">dcm-multipart = "multipart/related"</pre>
+            <pre class="programlisting" xml:space="preserve">                OWS ";" OWS "type" "=" dcm-mp-mt-name</pre>
+            <pre class="programlisting" xml:space="preserve">                OWS ";" OWS "boundary=" boundary</pre>
+            <pre class="programlisting" xml:space="preserve">                [dcm-parameters]</pre>
+            <pre class="programlisting" xml:space="preserve">                [related-parameters]</pre>
+            <p>
+               <a id="para_2f086724-b82d-4f81-b1c9-69ca88412029" shape="rect"></a>Where</p>
+            <pre class="programlisting" xml:space="preserve">dcm-mp-mt-name = dicom-mt-name / rendered</pre>
+            <p>
+               <a id="para_555abf3f-d48f-4deb-8e2c-ff9af3a4ea9e" shape="rect"></a>See <a class="xref" href="sect_8.6.html#sect_8.6.1.2.1" title="8.6.1.2.1 Multipart Payload Syntax" shape="rect">Section 8.6.1.2.1</a> for the definition of boundary and related-parameters.</p>
+            <p>
+               <a id="para_e4b19f47-2845-456a-ac54-ac1d2ca1e56f" shape="rect"></a>Each multipart media type shall include a "type" parameter that defines the media type of the parts and shall also include a "boundary" parameter that specifies the boundary string that is used to separate the parts. For example:</p>
+            <pre class="programlisting" xml:space="preserve">Accept: multipart/related; type="application/octet-stream", multipart/related; type="image/*"; boundary=**, multipart/related; type="video/*"; boundary=**</pre>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.7.3.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.7.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.7.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.7.3.4 Transfer Syntax </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.7.3.5.2 Transfer Syntax Parameter</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

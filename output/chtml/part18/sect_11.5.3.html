@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>11.5.3 Response</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_11.5.html" title="11.5 Retrieve Workitem Transaction" />
+      <link rel="prev" href="sect_11.5.2.html" title="11.5.2 Behavior" />
+      <link rel="next" href="sect_11.5.3.2.html" title="11.5.3.2 Response Header Fields" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">11.5.3 Response <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_11.5.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_11.5.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">11.5 Retrieve Workitem Transaction</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_11.5.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_11.html" shape="rect">Worklist Service and Resources</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_11.5.html" shape="rect">Retrieve Workitem Transaction</a>
+         </span> &gt; <span class="breadcrumb-node">Response</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_11.5.3" shape="rect"></a>11.5.3 Response</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_bb968640-70a7-43b9-8fd5-1c34e793a6c5" shape="rect"></a>The response shall have the following syntax:</p>
+         <pre class="programlisting" xml:space="preserve">version SP status-code SP reason-phrase CRLF</pre>
+         <pre class="programlisting" xml:space="preserve">[Content-Type: dicom-media-type CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">[(Content-Length: uint / Transfer-Encoding: encoding) CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">[Content-Location: url CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">*(header-field CRLF)</pre>
+         <pre class="programlisting" xml:space="preserve">CRLF</pre>
+         <pre class="programlisting" xml:space="preserve">[workitem / status-report]</pre>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_11.5.3.1" shape="rect"></a>11.5.3.1 Status Codes</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_af0a162d-4daa-4a93-9267-b01f11d1f722" shape="rect"></a>
+                        <a class="xref" href="sect_11.5.3.html#table_11.5.3-1" title="Table 11.5.3-1. Status Code Meaning" shape="rect">Table 11.5.3-1</a> shows some common status codes corresponding to this transaction. See also <a class="xref" href="sect_8.5.html" title="8.5 Status Codes" shape="rect">Section 8.5</a> for additional status codes.</p>
+            <div class="table">
+               <a id="table_11.5.3-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 11.5.3-1. Status Code Meaning</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6c7f6b52-e815-4566-98f8-abf4b55c1345" shape="rect"></a>Status</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2a32a3fd-b521-444e-ba2c-b417e8bc0eb0" shape="rect"></a>Code</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2ce9b1cf-70a7-4553-aac5-9f3e2301ec01" shape="rect"></a>Meaning</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_68f41051-8d86-4f9a-beb4-e201c84509bd" shape="rect"></a>Success</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e9ea6914-6410-434e-9261-21127cea1a6e" shape="rect"></a>200 (OK)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f8630184-0d1d-4ac6-b148-2128c709e2d3" shape="rect"></a>All Instances were successfully retrieved.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                 <a id="para_dffaffd3-ff87-4a06-9364-d35ba98c0709" shape="rect"></a>Failure</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6c26f8a4-7419-47b2-b71d-b021d4112c1a" shape="rect"></a>400 (Bad Request)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_89d35c11-b678-458a-b1c6-74cf20f1f4a7" shape="rect"></a>There was a problem with the request.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a08bb13e-210f-4d23-ab96-3a8224243543" shape="rect"></a>404 (Not Found)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_70f7d682-2f5e-4442-89f0-4f33dc34c45c" shape="rect"></a>The origin server has no knowledge of the Target Workitem. See <a href="../part04/sect_CC.2.html#sect_CC.2.1.3" class="olink" shape="rect">Section CC.2.1.3 “Service Class Provider Behavior” in PS3.4</a>.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b3c449cd-346a-4b3c-a5ca-3ec7f9e30192" shape="rect"></a>409 (Conflict)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f876e61e-ca57-42e0-90ef-c5b798283ae1" shape="rect"></a>The request cannot be performed for one of the following reasons:</p>
+                                    <div class="itemizedlist">
+                                 <ul class="itemizedlist" style="list-style-type: disc; ">
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_1b47869d-a4cd-44b9-b79b-5f0f8af8282b" shape="rect"></a>the submitted request is inconsistent with the current state of the Target Workitem</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_e1976f00-393d-44ce-88c9-049bb78014d7" shape="rect"></a>the Transaction UID is missing</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_0cda9fdd-ce54-4c92-9bb7-ba6e6269811f" shape="rect"></a>the Transaction UID is incorrect</p>
+                                    </li>
+                                 </ul>
+                              </div>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d9cebcd8-49c3-4c82-ac7b-8999edc2eaf6" shape="rect"></a>410 (Gone)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3755b05f-d2b9-4e97-8d7e-42a0f150dd6b" shape="rect"></a>The origin server knows that the Target Workitem did exist but has been deleted.</p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_11.5.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_11.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_11.5.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">11.5.2 Behavior </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 11.5.3.2 Response Header Fields</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

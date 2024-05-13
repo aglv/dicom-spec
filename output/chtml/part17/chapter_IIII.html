@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>IIII Encapsulated STL (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="chapter_HHHH.html" title="HHHH Protocol Approval Examples and Concepts (Informative)" />
+      <link rel="next" href="sect_IIII.2.html" title="IIII.2 Example of Fused CT/MR Derived Encapsulated STL" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">IIII Encapsulated STL (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_IIII.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_HHHH.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_IIII.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Encapsulated STL (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_IIII" shape="rect"></a>IIII Encapsulated STL (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_bdc52eba-586d-4eb4-90a7-a7b25bf0ad24" shape="rect"></a>The goal of encapsulating a Stereolithography (STL) 3D manufacturing model file inside a DICOM instance rather than transforming the data into a different representation is to facilitate preservation of the STL file in the exact form that it is used with extant manufacturing devices, while at the same time unambiguously associating it with the patient for whose care the model was created and the images from which the model was derived.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_IIII.1" shape="rect"></a>IIII.1 Example of CT Derived Encapsulated STL</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d800fdfc-ec07-411b-9a63-80b8e50b761d" shape="rect"></a>In this example, the patient requires a replacement implant for a large piece of skull on the left side of his head. A 3D manufacturing model (encoded in binary STL) was created by mirroring the corresponding section of the patient's right skull hemisphere, and then modified by trimming to fit the specific implantation area.</p>
+            <p>
+               <a id="para_3b134547-1e8b-4aad-a31b-4e80c526b50a" shape="rect"></a>The model was derived from a series of CT images (CT-01). The STL data in this example is the first version, having no predecessor. The STL data was created on November 22, 2017 at 7:10:14 AM and then stored in a DICOM instance at 7:15:23 AM. The CT images were acquired weeks earlier.</p>
+            <p>
+               <a id="para_58752391-d792-45c2-8ff5-fecc901356ac" shape="rect"></a>The STL data was created in the coordinate system of CT-01; so they share the same Frame of Reference UID value.</p>
+            <p>
+               <a id="para_ad9f1401-ae01-4beb-94af-915e4070e048" shape="rect"></a>A preview image (optional) showing the rendered 3D object was created and included with the encapsulated STL as an icon image.</p>
+            <p>
+               <a id="para_c3ef3e08-86d3-467c-a421-246dd4496b43" shape="rect"></a>No burned in annotation identifying the patient was included. The region of the skull reconstructed in the model contains no distinguishing facial features of the patient.</p>
+            <div class="table">
+               <a id="table_IIII.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table IIII.1-1. CT Derived Encapsulated STL Example</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_98fc2a73-6a79-4b36-a561-a28dd65c605c" shape="rect"></a>Attribute Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0440f804-6b25-4e1b-bfc5-6a5478464686" shape="rect"></a>Tag</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b40db8b7-72b9-4c93-8f84-00cdd1f44a14" shape="rect"></a>Example Value</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_21187d95-bb09-40d5-a6a4-05d67ae1d795" shape="rect"></a>Comments</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <p>
+                                 <a id="para_458f0e45-a123-4cfd-9e35-845439326c73" shape="rect"></a>
+                                <span class="italic">&lt;Patient and General Study Modules not shown for brevity&gt;</span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a45ee142-9a30-46f0-9dd5-9b5455913196" shape="rect"></a>Modality</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7e88cb80-8e65-4597-b501-9c20d0d32744" shape="rect"></a>(0008,0060)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ef89ceb3-2300-4ee7-91c2-e8386de32dba" shape="rect"></a>M3D</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_98a57df1-5bc3-4301-887e-643c9505960c" shape="rect"></a>Series Instance UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f4cc7588-a68a-4863-86b1-df7b13e14025" shape="rect"></a>(0020,000E)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9671ca9e-d91c-4c2c-bdf6-2d2745084519" shape="rect"></a>2.999.89235.5951.35894.0047</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23216e50-b0d0-4d89-8789-dff7cee7ec32" shape="rect"></a>Series Number</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0cf6627d-ef38-4d26-8092-a6e25658810e" shape="rect"></a>(0020,0011)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e2267b20-2917-4bbb-942e-91167780d338" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9f0f1528-f73a-4f41-aec1-7fcf741a3a34" shape="rect"></a>Series Description</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a26a49be-295e-47bc-a818-30f8fb532617" shape="rect"></a>(0008,103E)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_864f5415-7fc2-4da0-9b6f-292043ffc83f" shape="rect"></a>Skull plate</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_38b9bfa5-b053-465c-b648-5ce3035b0d73" shape="rect"></a>Instance Number</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c7b36249-323f-4235-8099-983b04419db8" shape="rect"></a>(0020,0013)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a60e637-f3c1-4a85-9ac4-bba914932c1e" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_154ef8c6-6332-4799-aa48-14284f93582c" shape="rect"></a>Frame of Reference UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4da98810-b0c2-47b7-b76e-1a8b85e482ff" shape="rect"></a>(0020,0052)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9e0b4a57-7bb6-4cfc-9552-d2a818c84f10" shape="rect"></a>1.2.3.4.5.6.7.8.99</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d71d8e43-9067-40e8-b532-6a956b689d08" shape="rect"></a>Manufacturer</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5f978fca-5f02-4a96-b00e-49616f52f914" shape="rect"></a>(0008,0070)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_db1138e6-9a62-4ca8-a8b9-381f34b0a348" shape="rect"></a>Acme Additive Inc</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a8edd092-3388-47e0-b5b7-c0bf29a471eb" shape="rect"></a>Manufacturer's Model Name</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e59760e9-e5ee-4e6e-82e2-481c4411c2e3" shape="rect"></a>(0008,1090)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_59318f3d-a858-415f-a3a9-b8bd62a5873c" shape="rect"></a>Implant Maker</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9ad72274-da21-43b5-8ea1-372e40768668" shape="rect"></a>Device Serial Number</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fa802a00-83b3-4a8c-ac47-e1c73e4b8053" shape="rect"></a>(0018,1000)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_067694e1-7cde-4d1d-b4fb-6b9bf67cb2b7" shape="rect"></a>00004367</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ce7dd50b-1ee1-4fdf-a3eb-9b3961a04081" shape="rect"></a>Software Versions</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9a93b069-f947-49eb-900a-194aa19689cd" shape="rect"></a>(0018,1020)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b6fd897c-a640-450f-a769-d836fbb97de7" shape="rect"></a>3.0.1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_472152ab-64b5-49a3-a129-58209c890bff" shape="rect"></a>Content Date</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6cd0b996-fd0f-417d-b5c7-af91a5f6034d" shape="rect"></a>(0008,0023)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ea8bb2e2-c389-448c-9caf-cc4701056073" shape="rect"></a>20171122</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d00669a1-00f9-4981-b2b7-2fd63eab2705" shape="rect"></a>Content Time</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_696c712f-a029-4b89-a086-928285b153f6" shape="rect"></a>(0008,0033)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6b207520-bd4a-49df-9976-586e4db6bab8" shape="rect"></a>071014</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9ada606d-8dc6-4e66-a1a6-0a7a9d332a33" shape="rect"></a>Acquisition DateTime</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_89dc1e24-171b-46af-921b-b540f20d23db" shape="rect"></a>(0008,002A)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_691def99-b53a-4859-b532-a41ea919cacf" shape="rect"></a>20171122071014</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b5f933b8-3a71-4e2a-986d-5a469ae42133" shape="rect"></a>Image Laterality</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cca3527b-d826-41de-9497-7c6086d449c7" shape="rect"></a>(0020,0062)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c33dff82-b52e-45c0-b879-22127efe3865" shape="rect"></a>L</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7de79658-8ec9-4315-a863-6b9b659a75ed" shape="rect"></a>Burned In Annotation</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e4d9aa18-fc45-41e7-8cdb-18281bca7aca" shape="rect"></a>(0028,0301)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fbe9f3d8-0b67-4fe5-b8f9-cbcccc0fd5bc" shape="rect"></a>NO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4e34a422-1a9d-44c1-bdf2-9b60edcbb4fd" shape="rect"></a>Recognizable Visual Features</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_95862bf4-0543-4bf6-b801-bc73bdf0e1b9" shape="rect"></a>(0028,0302)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8ceaa52d-0f61-42ec-8e36-cd75d9ff49b3" shape="rect"></a>NO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b4c93c30-bcc2-4865-8858-bb7a38f7d951" shape="rect"></a>Source Instance Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0fb842b8-306a-4248-884d-5549bcb03626" shape="rect"></a>(0042,0013)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_acb73874-3992-43bc-8292-4a6d31551dda" shape="rect"></a>A sequence referencing the CT-01 source images</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e06ce3e7-fb63-4944-b9f7-888c98457835" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9c17a13c-847c-4282-aa02-5eec01917dd1" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_29ff386e-8b8a-4173-9172-e30dbdc08feb" shape="rect"></a>(0008,1150)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aa7b0d98-b17c-463d-bd12-a7fea0c6f9dc" shape="rect"></a>1.2.840.10008.5.1.4.1.1.2.1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5090ae60-75eb-4497-a400-0d623fadf08c" shape="rect"></a>Referenced object is an Enhanced CT Image Storage Instance</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_21823876-fea1-478d-9f2f-8c037d3ca58b" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cb2aa2e4-a1b3-4a15-b207-f160a4a6fc7e" shape="rect"></a>(0008,1155)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c3d2c797-cf06-4289-ad18-5c5d082b1c3a" shape="rect"></a>2.999.89235.5951.35894.155</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7e51db58-456b-44df-8dbb-169b7495c497" shape="rect"></a>The multi-frame CT instance from study CT-01</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2a91ddb2-e8a5-4afc-9768-45cf63b426c3" shape="rect"></a>&gt;Purpose of Reference Code Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8fe7d2c8-5a89-4a1f-81ff-146d8f7234f3" shape="rect"></a>(0040,A170)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8e50bd13-0fba-447e-bcee-7276264a1d30" shape="rect"></a>
+                                <a href="../part16/chapter_D.html#DCM_121324" class="olink" shape="rect">(121324, DCM, "Source image")</a>
+                              </p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_95c5359a-49a0-47f7-b4f0-f0559eb34e2a" shape="rect"></a>
+                                <span class="italic">
+                                    <a href="../part16/sect_CID_7060.html" class="olink" shape="rect">CID 7060 “Encapsulated Document Source Purpose of Reference”</a>
+                                </span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f43d1c87-d2a7-481a-80f2-cd67436fb26a" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5220854f-80a1-4141-8069-c14636ef36a0" shape="rect"></a>Document Title</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_98ef0f51-5d54-49df-ad75-143951a073f0" shape="rect"></a>(0042,0010)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7c7ee31a-7533-4673-b396-1bc81ec791ed" shape="rect"></a>CT 3D CAM model</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7c01eec0-a798-4d85-9ff8-47a4ab759481" shape="rect"></a>Concept Name Code Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_86b586dc-afac-4ebc-9812-c996e89d0521" shape="rect"></a>(0040,A043)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0e8274fe-4dc6-4a3d-87a4-7e6669424fb6" shape="rect"></a>
+                                <a class="link" href="http://loinc.org/24725-4/" target="_blank" shape="rect">(85040-4, LN, "CT 3D CAM model")</a>
+                              </p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ff1c92ef-13de-4d03-89ca-10547de25cf6" shape="rect"></a>
+                                <span class="italic">
+                                    <a href="../part16/sect_CID_7061.html" class="olink" shape="rect">CID 7061 “Model Document Title”</a>
+                                </span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_003def64-13f4-47f0-adb2-53cc8dc5561f" shape="rect"></a>MIME Type of Encapsulated Document</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ef4c7dd1-1ae4-46e3-9b63-58f93f274cf0" shape="rect"></a>(0040,0012)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a8f85740-3f53-429b-a620-b6fe9e50b5a3" shape="rect"></a>model/stl</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4048a726-00b4-405a-89b6-1b799bdd677f" shape="rect"></a>Encapsulated Document</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9e63eb85-3241-4651-afd7-78ec4177a5a9" shape="rect"></a>(0042,0011)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d8b2d0cb-d31e-4be7-b038-d52e9171204d" shape="rect"></a>&lt;Byte stream representing the binary STL file&gt;</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f8bffa0b-2b1e-4c37-bef3-27ff585511cc" shape="rect"></a>Note that ASCII STL files are not supported.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_77c79047-3ec9-434f-b752-b02598d1e023" shape="rect"></a>Content Description</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f0c8f2ee-c8b4-47d0-a839-90a2054c2e13" shape="rect"></a>(0070,0081)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1620f83f-8dd8-422f-bc41-0a457a73448a" shape="rect"></a>Mirrored and trimmed skull plate model from CT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_08080c92-355e-4692-9810-31874a887002" shape="rect"></a>Measurement Units Code Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8fa58b78-ff4b-485c-ba11-ac087b3a47e1" shape="rect"></a>(0040,08EA)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f635b2ba-2a1f-4fbd-9982-63f98fdc66a8" shape="rect"></a>(mm, UCUM, "mm")</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_edf9fe7b-7004-4941-aebc-1e8cc5b707e4" shape="rect"></a>Model Modification</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c72c4fd1-fa57-40ba-9aba-e7f53a986274" shape="rect"></a>(0068,7001)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fcc84491-6df0-44e5-afb7-a9861ea849b3" shape="rect"></a>YES</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e708db21-ca16-42b6-8625-bffe513d9554" shape="rect"></a>Model Mirroring</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0d36b097-f130-4c06-80c8-f1fceaac5ec0" shape="rect"></a>(0068,7002)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f8f92e21-f1c7-4cdd-ae6f-5ed4cc69e826" shape="rect"></a>YES</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_853a3779-44da-4a6c-b60e-a2e376f3a2e0" shape="rect"></a>In this example, mirroring (from the right side) was performed to create the object.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a91be839-9389-464f-ba8d-1be33f908265" shape="rect"></a>Model Usage Code Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c66441e4-ba19-4701-a235-dc0d5b453855" shape="rect"></a>(0068,7003)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e6f3944f-d81a-422d-823c-4bef8c4cf392" shape="rect"></a>
+                                <a href="../part16/chapter_D.html#DCM_129016" class="olink" shape="rect">(129016, DCM, "Implant Fabrication")</a>
+                              </p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_254587ac-bce5-4b69-ad83-ff8ff63c589d" shape="rect"></a>
+                                <span class="italic">
+                                    <a href="../part16/sect_CID_7064.html" class="olink" shape="rect">CID 7064 “Model Usage”</a>
+                                </span>
+                              </p>
+                              <p>
+                                 <a id="para_1d45e119-f783-491d-9a43-04ab01c8bc4e" shape="rect"></a>In this example, the goal is to implant the object in the patient.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13750d2c-39e0-4250-82a4-3726d0fb7a3b" shape="rect"></a>Icon Image Sequence</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3ce43a59-9596-4b4d-8592-141ef7cb883a" shape="rect"></a>(0088,0200)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1eb71484-7f44-4b4d-b9f0-8573d9b9a784" shape="rect"></a>Sequence containing the pre-rendered preview image</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e58f6a57-9840-4b20-8109-aaf5d5604d07" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                              <p>
+                                 <a id="para_35953821-4646-43e4-a035-06a7ae9a42a1" shape="rect"></a>
+                                <span class="italic">&lt;Content of Table C.7-11b "Image Pixel Macro Attributes" not shown&gt;</span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_25c8cf02-d859-441c-b8ee-2dd97cae2c3b" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f0fd5921-280a-4777-9fbf-0f90529cf29a" shape="rect"></a>SOP Class UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_12512a1d-c452-4e87-99d9-f091397d5582" shape="rect"></a>(0008,0016)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c5b0149f-8922-4efc-a6b8-bb0396663bde" shape="rect"></a>1.2.840.10008.5.1.4.1.1.104.3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_99f9ceef-543a-4596-86c3-ff8ab42f812b" shape="rect"></a>SOP Instance UID</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8d9c05f6-896b-4dc5-aed4-701a115a3133" shape="rect"></a>(0008,0018)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ad25fa8c-1260-41dd-8386-19bd11c27859" shape="rect"></a>1.2.3.4.5.6.7.88.901</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4468758e-41ae-46c7-93b8-4565f9b5af9f" shape="rect"></a>Instance Creation Date</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c7f944f6-7aca-45db-bfde-98d8f6ad9e93" shape="rect"></a>(0008,0012)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_391a9522-79e6-4757-ae65-42fa6be12a38" shape="rect"></a>20171122</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_56177b8f-4576-43a1-a261-b431e391316a" shape="rect"></a>Instance Creation Time</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bc7ed5e1-e238-4c8a-a3fc-631ef57c2a35" shape="rect"></a>(0008,0013)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f21aa037-76cc-434b-baa6-7747a4ffc3d1" shape="rect"></a>071523</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_HHHH.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_IIII.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">HHHH Protocol Approval Examples and Concepts (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> IIII.2 Example of Fused CT/MR Derived Encapsulated STL</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

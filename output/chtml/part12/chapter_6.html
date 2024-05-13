@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>6 Relationship to the DICOM Media Storage Model</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.12.html" title="PS3.12" />
+      <link rel="up" href="PS3.12.html" title="PS3.12" />
+      <link rel="prev" href="chapter_5.html" title="5 Conventions" />
+      <link rel="next" href="chapter_A.html" title="A PC File System (Normative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.12 2024a - Media Formats and Physical Media for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">6 Relationship to the DICOM Media Storage Model <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part12/chapter_6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_A.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.12.html" shape="rect">PS3.12</a>
+         </span> &gt; <span class="breadcrumb-node">Relationship to the DICOM Media Storage Model</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_6" shape="rect"></a>6 Relationship to the DICOM Media Storage Model</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_b561abd9-569c-4044-9918-ac6a51e87d85" shape="rect"></a>
+            <a href="../part10/PS3.10.html" class="olink" shape="rect">PS3.10</a> defines various media storage concepts. The implementation of these generic concepts on a specific medium and file system is defined in an annex. For each physical medium and file system a mapping is described between these media storage concepts and the specific physical media and file system facilities:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_b8725080-1a90-42d0-a88d-23b3db46f0b9" shape="rect"></a>File-set ID - The method for providing a File-set ID</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_cae2f81c-35df-4af1-96ea-705a37b41fd6" shape="rect"></a>File ID - The method for mapping a DICOM File ID into a specific file system</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_88510299-432d-4bd9-b34a-89e4a9a4c5ca" shape="rect"></a>File creation/update date and time - The specific file system mechanisms used to provide this information</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0b3b8e47-4521-43ca-869f-5d6c59742f5b" shape="rect"></a>File-set location</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_fa261c86-9f4c-4677-8123-b93099c55f94" shape="rect"></a>Processing of DICOM removable media requires that the DICOMDIR be in a known location. Most file systems provide a hierarchical directory structure with a root directory for an entire medium or medium partition. The annex defines where the DICOMDIR(s) are located. When only one File-set is permitted on one medium, the DICOMDIR shall be in the root directory of that medium. When multiple File-sets are permitted on a single medium, the annex will describe how File-sets are found and identified. When a File-set is permitted to span multiple pieces of physical media, the appropriate annex will describe how this is managed.</p>
+         <p>
+            <a id="para_fce36886-5671-4ad2-984d-c41b4bba1dc3" shape="rect"></a>
+            <a class="xref" href="chapter_6.html#figure_6-1" title="Figure 6-1. Media Supporting a Single File-set" shape="rect">Figure 6-1</a> illustrates the structure of a DICOM removable medium that supports a single DICOM File-set per medium partition. <a class="xref" href="chapter_6.html#figure_6-2" title="Figure 6-2. Media Supporting Multiple File-sets" shape="rect">Figure 6-2</a> illustrates the structure of a DICOM medium that supports multiple File-sets per partition. DICOM File-sets shall not intersect when media permit multiple File-sets.</p>
+         <p>
+            <a id="para_e1fb83ac-d0af-4d2a-9859-d88cebd5057b" shape="rect"></a>
+         </p>
+         <div class="figure">
+            <a id="figure_6-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.12_6-1.svg" alt="Media Supporting a Single File-set" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 6-1. Media Supporting a Single File-set</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_3fbf8852-a5f5-4de9-b9cf-754079308047" shape="rect"></a>
+         </p>
+         <div class="figure">
+            <a id="figure_6-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.12_6-2.svg" alt="Media Supporting Multiple File-sets" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 6-2. Media Supporting Multiple File-sets</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_032364ac-671a-44d9-96ff-1783a5957a0b" shape="rect"></a>Media and file systems that do not utilize the directory concept will specify the equivalent usage in these annexes that describe these media.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_ad896d27-79eb-4873-9410-644aa64dc851" shape="rect"></a>Many applications will need to automatically create many image files and assign them unique File IDs. Maintaining File ID uniqueness without sacrificing performance will require some care. The approach of taking a basic name part, e.g., "IMAGE," and appending sequence numbers, e.g., "IMAGE001, IMAGE002, ..." can easily result in delays finding the next available File ID.</p>
+         </div>
+         <p>
+            <a id="para_0a9947d6-2a62-445f-8647-30f6e5b7c2f0" shape="rect"></a>Some approaches that can rapidly generate unique File IDs include:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_971255bb-d38f-4762-8ef5-b1bedb8b6ebd" shape="rect"></a>Generating a unique sub-directory per sequence, then using increasing file numbering within the sub-directory</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_170e4f57-575b-47fc-9184-e58eda3e2c79" shape="rect"></a>Using a random number generator and seed, then using a prime hash function with probes to find unused file names. An eight character File ID component permits a large prime value for the hash</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1fdc44ac-d4da-4dc0-b6c9-7cf75fbd04d1" shape="rect"></a>Using the current time (in seconds, milliseconds) as a pseudo-random number to generate one of the File ID components, and resolving collisions with sequential or prime hash probes</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_efa50bbf-f54b-406b-85a8-d1468c132598" shape="rect"></a>All of these approaches result in File IDs that are of limited semantic content. The semantic information that describes file contents is in the DICOMDIR and the file contents to which it points.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_A.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">5 Conventions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.12.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A PC File System (Normative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.12 2024a - Media Formats and Physical Media for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

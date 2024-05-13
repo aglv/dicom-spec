@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.2.2.2.8 Multiple Value Matching</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_C.2.2.2.html" title="C.2.2.2 Attribute Matching" />
+      <link rel="prev" href="sect_C.2.2.2.7.html" title="C.2.2.2.7 Empty Value Matching" />
+      <link rel="next" href="sect_C.2.2.3.html" title="C.2.2.3 Matching Multi-valued Entity Attributes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.2.2.2.8 Multiple Value Matching <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.2.2.2.8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.2.2.7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.2.2.2 Attribute Matching</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.html" shape="rect">Query/Retrieve Information Model Definition</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.2.html" shape="rect">Attributes Definition</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.2.2.2.html" shape="rect">Attribute Matching</a>
+         </span> &gt; <span class="breadcrumb-node">Multiple Value Matching</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.2.2.2.8" shape="rect"></a>C.2.2.2.8 Multiple Value Matching</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d10a80e7-e986-4cef-aef2-c83e7ce46582" shape="rect"></a>Multiple Value Matching refers to providing multiple values in the Key Attribute.
+                            This section describes how to perform matching with such Key Attributes.
+                            <a class="xref" href="sect_C.2.2.3.html" title="C.2.2.3 Matching Multi-valued Entity Attributes" shape="rect">Section C.2.2.3</a> describes what to return when an entity Attribute is matched that contains multiple values.</p>
+         <p>
+            <a id="para_fb921d84-72f8-43af-b505-c04135ae35cb" shape="rect"></a>If Extended Negotiation of Multiple Value Matching is successful, for Attributes with VR of AE, AS, AT, CS, LO, PN, SH, or UC and a defined VM greater than 1, a Key Attribute with multiple values specified in a request shall indicate matching to a multi-valued entity Attribute.
+                            Such a match is successful only if each and every value in the Key Attribute matches a value in the corresponding Attribute in the entity.</p>
+         <p>
+            <a id="para_b845794b-ffa8-40d0-b3c7-fbf13742efaa" shape="rect"></a>Key Attribute Values shall not include wild cards.</p>
+         <p>
+            <a id="para_de9215dd-f839-43a5-a7d7-eaa87e30dea4" shape="rect"></a>The order of Attribute Values in the request need not match the order in the corresponding entity Attribute.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7348e042-3acd-4ac8-b321-0fc32dc48f83" shape="rect"></a>This is a logical 'AND' function for all values in the Key Attribute. E.g., a value of CT\PT for Modalities in Study (0008,0061) in the Request Identifier will match only Studies that include both a CT Series and a PT Series.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a44d77f4-e4f4-4a65-8113-b997ed2c54f2" shape="rect"></a>There may be additional values in the entity Attribute that do not match values in the Key Attribute.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ad27644e-c865-48da-808e-e15e0e74e419" shape="rect"></a>Multiple Value Matching does not apply to Specific Character Set (0008,0005), which is not a Key Attribute for matching, but rather specifies the encoding of characters in the Identifier.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_84180d13-6561-43e7-b9f8-0ce4bd4be26a" shape="rect"></a>In the absence of successful Extended Negotiation for Multiple Value Matching, the semantics of multiple values in a Key Attribute is undefined.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.2.2.7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.2.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.2.2.2.7 Empty Value Matching </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.2.2.3 Matching Multi-valued Entity Attributes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

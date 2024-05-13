@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>5.3.2 Null Flavor</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.20.html" title="PS3.20" />
+      <link rel="up" href="sect_5.3.html" title="5.3 Encoding" />
+      <link rel="prev" href="sect_5.3.html" title="5.3 Encoding" />
+      <link rel="next" href="sect_5.3.3.html" title="5.3.3 Unknown Information" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024a - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">5.3.2 Null Flavor <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part20/sect_5.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_5.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">5.3 Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_5.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.20.html" shape="rect">PS3.20</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_5.html" shape="rect">Conventions</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_5.3.html" shape="rect">Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">Null Flavor</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_5.3.2" shape="rect"></a>5.3.2 Null Flavor</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3c8b0a1d-5c9f-439e-8f89-df173e8cca7f" shape="rect"></a>Information technology solutions store and manage data, but sometimes data are not available: an item may be unknown, not relevant, or not computable or measurable. In HL7 v3, a
+          flavor of null, or nullFlavor, describes the reason for missing data.</p>
+         <p>
+            <a id="para_8fd8d3bc-d063-4c6b-8b28-0b6c94c60294" shape="rect"></a>For example, if a patient arrives at an Emergency Department unconscious and with no identification, a null flavor is used to represent the lack of information. The patient's birth date could be represented with a null flavor of "NAV", which is the code for "temporarily unavailable". When the patient regains consciousness or a relative arrives, we expect to be able to obtain the patient's birth date.</p>
+         <div class="example">
+            <a id="example_5.3.2-1" shape="rect"></a>
+            <p class="title">
+               <strong>Example 5.3.2-1. nullFlavor example</strong>
+            </p>
+            <div class="example-contents">
+               <pre class="programlisting" xml:space="preserve">&lt;birthTime nullFlavor="NAV"/&gt; &lt;!--coding an unknown birthdate--&gt;</pre>
+            </div>
+         </div>
+         <br class="example-break" clear="none" />
+         <p>
+            <a id="para_a692407d-41bf-4979-ad01-f538e67283f1" shape="rect"></a>Use null flavors for unknown, required, or optional attributes:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">NI</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_75c5c081-4075-4b74-8e52-fcd724314f33" shape="rect"></a>No information. This is the most general and default null flavor.</p>
+               </dd>
+               <dt>
+                  <span class="term">NA</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_8afd55ae-59db-4c75-8138-b930bdcdaaac" shape="rect"></a>Not applicable. Known to have no proper value (e.g., last menstrual period for a male).</p>
+               </dd>
+               <dt>
+                  <span class="term">UNK</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_59713173-4084-4fa8-957e-9c53bf0bf056" shape="rect"></a>Unknown. A proper value is applicable, but is not known.</p>
+               </dd>
+               <dt>
+                  <span class="term">ASKU</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_a3792589-5ffe-49e8-b7e6-6b07ba14d4e1" shape="rect"></a>Asked, but not known. Information was sought, but not found (e.g., the patient was asked but did not know).</p>
+               </dd>
+               <dt>
+                  <span class="term">NAV</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_0d01316f-ff12-4472-a230-b36b73c0db48" shape="rect"></a>Temporarily unavailable. The information is not available, but is expected to be available later.</p>
+               </dd>
+               <dt>
+                  <span class="term">NASK</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_94339a0e-85cc-46be-8956-7a0541a35097" shape="rect"></a>Not asked. The patient was not asked.</p>
+               </dd>
+               <dt>
+                  <span class="term">MSK</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_29e7206c-a942-4a2e-b06d-6f6f410423ec" shape="rect"></a>Masked. There is information on this item available but it has not been provided by the sender due to security, privacy, or other reasons. There may be an alternate mechanism for gaining access to this information.</p>
+               </dd>
+               <dt>
+                  <span class="term">OTH</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_b112ef08-4d78-4915-bfaf-67ea399269be" shape="rect"></a>Other. The actual value is not an element in the value domain of a variable. (e.g., concept not provided by required code system).</p>
+               </dd>
+            </dl>
+         </div>
+         <p>
+            <a id="para_5598aaf7-5f3a-4498-8ebc-e3d9ca79366b" shape="rect"></a>The above null flavors are commonly used in clinical documents. For the full list and descriptions, see the nullFlavor vocabulary domain in the HL7 v3 Vocabulary referenced by the CDA specification.</p>
+         <p>
+            <a id="para_5104a8ca-1a58-4a79-886e-6a8c25e62927" shape="rect"></a>Any SHALL conformance requirement on an element may use nullFlavor, unless nullFlavor is explicitly disallowed (as indicated by
+          noNull, see <a class="xref" href="sect_5.2.7.html" title="5.2.7 Value Conformance" shape="rect">Section 5.2.7 Value Conformance</a>). SHOULD and MAY conformance requirements may also use nullFlavor. nullFlavor does not apply to conformance requirements on attributes.</p>
+         <p>
+            <a id="para_ebd734f3-7d7c-4b8e-bcda-39b66d2f7651" shape="rect"></a>The encoding of nullFlavor as an attribute of the data type element is not shown in the templates, hence there is no business name associated with the attribute.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_672db73f-925b-4702-9dda-f07e84ad19d7" shape="rect"></a>Production logic based on Business Names needs to provide a mechanism for assignment of a value to the nullFlavor attribute as an alternative for a value for the element. Specification of such production logic is outside the scope of this Standard.</p>
+         </div>
+         <div class="example">
+            <a id="example_5.3.2-2" shape="rect"></a>
+            <p class="title">
+               <strong>Example 5.3.2-2. XML example of allowed nullFlavors when element is required</strong>
+            </p>
+            <div class="example-contents">
+               <pre class="programlisting" xml:space="preserve">&lt;entry&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+        &lt;id nullFlavor="NI"/&gt;
+        &lt;code nullFlavor="OTH"&gt;
+            &lt;originalText&gt;New Grading system&lt;/originalText&gt;
+        &lt;/code&gt;
+        &lt;statusCode code="completed"/&gt;
+        &lt;effectiveTime nullFlavor="UNK"/&gt;
+        &lt;value xsi:type="CD" nullFlavor="NAV"&gt;
+            &lt;originalText&gt;Spiculated mass grade 5&lt;/originalText&gt;
+        &lt;/value&gt;
+    &lt;/observation&gt;
+&lt;/entry&gt;</pre>
+            </div>
+         </div>
+         <br class="example-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_5.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_5.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_5.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">5.3 Encoding </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.20.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 5.3.3 Unknown Information</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024a - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

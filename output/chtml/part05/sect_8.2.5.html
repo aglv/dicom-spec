@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2.5 MPEG2 Main Profile / Main Level Video Compression</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" />
+      <link rel="prev" href="sect_8.2.4.html" title="8.2.4 JPEG 2000 Image Compression" />
+      <link rel="next" href="sect_8.2.6.html" title="8.2.6 MPEG2 Main Profile / High Level Video Compression" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2.5 MPEG2 Main Profile / Main Level Video Compression <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_8.2.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.2 Native or Encapsulated Format Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Encoding of Pixel, Overlay and Waveform Data</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.2.html" shape="rect">Native or Encapsulated Format Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">MPEG2 Main Profile / Main Level Video Compression</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.2.5" shape="rect"></a>8.2.5 MPEG2 Main Profile / Main Level Video Compression</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_1f5ce4d4-99d8-4263-8e07-fe67a269ef76" shape="rect"></a>DICOM provides a mechanism for supporting the use of MPEG2 Main Profile / Main Level Video Compression through the Encapsulated Format. <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a> defines Non-Fragmentable and Fragmentable Encapsulated Transfer Syntaxes that reference the MPEG2 Main Profile / Main Level Standard.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_c7cb7067-a7ee-4fc4-ba28-177d332921ba" shape="rect"></a>MPEG2 compression is inherently lossy. The context where the usage of lossy compression of medical images is clinically acceptable is beyond the scope of the DICOM Standard. The policies associated with the selection of appropriate compression parameters (e.g., compression ratio) for MPEG2 Main Profile / Main Level are also beyond the scope of this Standard.</p>
+         </div>
+         <p>
+            <a id="para_1cbdb168-629e-4145-99a9-4767b0dec92a" shape="rect"></a>The use of the DICOM Encapsulated Format to support MPEG2 Main Profile / Main Level compressed pixel data requires that the Data Elements that are related to the Pixel Data encoding (e.g., Photometric Interpretation, Samples per Pixel, Planar Configuration, Bits Allocated, Bits Stored, High Bit, Pixel Representation, Rows, Columns, etc.) shall contain Values that are consistent with the characteristics of the compressed data stream, with some specific exceptions noted here. The Pixel Data characteristics included in the MPEG2 Main Profile / Main Level bit stream shall be used to decode the compressed data stream.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_afa32905-415a-4f71-98b1-67e8ea4aba49" shape="rect"></a>These requirements are specified in terms of consistency with what is encapsulated, rather than in terms of the uncompressed pixel data from which the compressed data stream may have been derived.</p>
+         </div>
+         <p>
+            <a id="para_9d54ce83-fbe6-44d9-a910-4c3eae7443be" shape="rect"></a>When decompressing, should the characteristics explicitly specified in the compressed data stream be inconsistent with those specified in the DICOM Data Elements, those explicitly specified in the compressed data stream should be used to control the decompression. The DICOM Data Elements, if inconsistent, can be regarded as suggestions as to the form in which an uncompressed Data Set might be encoded, subject to the general and IOD-specific rules for uncompressed Photometric Interpretation and Planar Configuration, which may require that decompressed data be converted to one of the permitted forms.</p>
+         <p>
+            <a id="para_c268bcf7-3ff6-4626-af47-8aab8feb28ff" shape="rect"></a>The MPEG2 Main Profile / Main Level bit stream specifies whether or not a reversible or irreversible multi-component (color) transformation, if any, has been applied. If no multi-component transformation has been applied, then the components shall correspond to those specified by the DICOM Attribute Photometric Interpretation (0028,0004). MPEG2 Main Profile / Main Level applies an irreversible multi-component transformation, so DICOM Attribute Photometric Interpretation (0028,0004) shall be YBR_PARTIAL_420 in the case of multi-component data, and MONOCHROME2 in the case of single component data (even though the MPEG2 bit stream itself is always encoded as three components, one luminance and two chrominance).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2ba2146f-321d-499e-931c-17f41cb4a462" shape="rect"></a>If MPEG2 Compressed Pixel Data is decompressed and re-encoded in Native (uncompressed) form, then the Data Elements that are related to the Pixel Data encoding are updated accordingly. If color components are converted from YBR_PARTIAL_420 to RGB during decompression and Native re-encoding, the Photometric Interpretation will be changed to RGB in the Data Set with the Native encoding.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1657a855-c8c2-4d9c-a5a6-5c6bf4093180" shape="rect"></a>MPEG2 proposes some video formats. Each of the standards specified is used in a different market, including: ITU-R BT.470-2 System M for SD NTSC and ITU-R BT.470-2 System B/G for SD PAL/SECAM. A PAL based system should therefore be based on ITU-BT.470 System B for each of Color Primaries, Transfer Characteristic (gamma) and matrix coefficients and should take a value of 5 as defined in <a class="xref" href="chapter_2.html#biblio_ISOIEC13818-2" title="Information technology -- Generic coding of moving pictures and associated audio information - Part 2: Video" shape="rect">[<abbr class="abbrev">ISO/IEC 13818-2</abbr>]</a>.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_6572622d-e549-4279-9ff6-b1c29e90d98c" shape="rect"></a>The Value of Planar Configuration (0028,0006) is irrelevant since the manner of encoding components is specified in the MPEG2 Main Profile / Main Level standard, hence it shall be set to 0.</p>
+         <p>
+            <a id="para_c52e14b1-3f92-476c-be1f-21528a35ce09" shape="rect"></a>In summary:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_08e7f576-d52b-48c5-8b1c-b98d0f33a040" shape="rect"></a>Samples per Pixel (0028,0002) shall be 3</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d4dfb074-7f84-49c0-a087-e6076c3985f5" shape="rect"></a>Photometric Interpretation (0028,0004) shall be YBR_PARTIAL_420</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d9d8a93a-8456-4796-9b59-4fd175d26ef6" shape="rect"></a>Bits Allocated (0028,0100) shall be 8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_f84dcdf0-217a-4004-bb83-eeffd64aa049" shape="rect"></a>Bits Stored (0028,0101) shall be 8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5d0902d5-9c2d-4a80-8131-a35062b83e92" shape="rect"></a>High Bit (0028,0102) shall be 7</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_89c83e3d-a690-412a-8525-d485f6d3254f" shape="rect"></a>Pixel Representation (0028,0103) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_79bedcd7-f3d4-43a8-97df-ce86d89600e9" shape="rect"></a>Planar Configuration (0028,0006) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9af789da-aa17-43e7-91c3-2a122dd06ad3" shape="rect"></a>Rows (0028,0010), Columns (0028,0011), Cine Rate (0018,0040) and Frame Time (0018,1063) or Frame Time Vector (0018,1065) shall be consistent with the limitations of Main Profile / Main Level, as specified in <a class="xref" href="sect_8.2.5.html#table_8-1" title="Table 8-1. MPEG2 Main Profile / Main Level Image Transfer Syntax Rows and Columns Attributes" shape="rect">Table 8-1</a>.</p>
+               </li>
+            </ul>
+         </div>
+         <div class="table">
+            <a id="table_8-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8-1. MPEG2 Main Profile / Main Level Image Transfer Syntax Rows and Columns Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1ef0cebb-2fa0-4896-91db-5cb0bf7c80c8" shape="rect"></a>Video Type</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f24b2066-5570-4e98-82ed-c4d32adc6dad" shape="rect"></a>Spatial resolution</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4a2c3f2b-8156-4483-a112-3ee86967503c" shape="rect"></a>Frame Rate</p>
+                                <p>
+                              <a id="para_e1ce6a70-efb8-4795-96ae-a0e246c36ad5" shape="rect"></a>(see Note 4)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_17461efb-7aa4-4328-90c2-a05bc6801867" shape="rect"></a>Frame Time</p>
+                                <p>
+                              <a id="para_f5f0393e-8e66-4429-b8bc-8836cdb6110d" shape="rect"></a>(see Note 5)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_91087dc1-b91f-4af0-9583-8e7ce7063ec6" shape="rect"></a>Maximum Rows</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b671efea-8e62-4fdd-b3bd-c079d4b2662a" shape="rect"></a>Maximum Columns</p>
+                            </td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f97f07e4-1ef9-4cde-b5f6-eabf415e2f7e" shape="rect"></a>525-line NTSC</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_be341ee5-2ecc-4765-b5d5-3da158bf9db7" shape="rect"></a>Full</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d68f71f8-041d-41fa-bd0a-1d0c6b249312" shape="rect"></a>30</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e8b3a1ca-2928-4e49-a7bd-ee62fa752b8d" shape="rect"></a>33.33 ms</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_26b30a30-30be-44a8-bf3c-4e8fa8cea7a9" shape="rect"></a>480</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_17e0858f-c09c-498a-a3bf-ad91df5fd137" shape="rect"></a>720</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0d111d56-8dab-4cb9-ae3e-94115738d781" shape="rect"></a>625-line PAL</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d17159ef-9ad9-4aa6-b051-1c0d8802e7e4" shape="rect"></a>Full</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bbd93c8b-f973-4b8e-816f-18c50dff1d3a" shape="rect"></a>25</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_206c7595-347d-4020-85d8-dbe9fb6d3242" shape="rect"></a>40.0 ms</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e29cf9a0-6f2e-4578-96a6-f9c4f26cd0b6" shape="rect"></a>576</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_181e9802-9d82-4f1f-bf89-86ca26179774" shape="rect"></a>720</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_97b61f09-bdd5-4c74-9aa5-a57de7ee91be" shape="rect"></a>Although different combinations of Values for Rows and Columns are possible while respecting the maximum values listed above, it is recommended that the typical 4:3 ratio of image width to height be maintained in order to avoid image deformation by MPEG2 decoders. A common way to maintain the ratio of width to height is to pad the image with black areas on either side.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8066a375-a811-47cb-9eb8-3afff6bdd14d" shape="rect"></a>"Half" definition of pictures (240x352 and 288x352 for NTSC and PAL, respectively) are always supported by decoders.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_44c9f00a-04b2-42d0-8b3b-cdb076a51665" shape="rect"></a>Main Profile / Main Level allows for various different display and pixel aspect ratios, including the use of square pixels, and the use of non-square pixels with display aspect ratios of 4:3 and 16:9. DICOM specifies no additional restrictions beyond what is provided for in Main Profile / Main Level. All permutations allowed by Main Profile / Main Level are valid and are require to be supported by all DICOM decoders.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d3f641f8-8c72-4a98-bcca-6a36be2bfd99" shape="rect"></a>The actual frame rate for NTSC MPEG2 is approximately 29.97 frames/sec.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2d368950-6894-44cd-bc11-f30340b9b3a6" shape="rect"></a>The nominal Frame Time is supplied for the purpose of inclusion on the DICOM Cine Module Attributes, and should be calculated from the actual frame rate.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_b20c10fe-7587-41cc-a075-99eea79b135f" shape="rect"></a>For the Non-Fragmentable Encapsulated Transfer Syntax, one Fragment shall contain the whole MPEG2 stream.</p>
+         <p>
+            <a id="para_caba1431-2156-4e48-9395-1b0afb9b6109" shape="rect"></a>For the Fragmentable Encapsulated Transfer Syntax, the stream may be segmented into multiple Fragments.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a1558ab2-d9c9-432e-8d4c-24ac5f69aa22" shape="rect"></a>If a video stream exceeds the maximum length of one fragment (2^32-2 bytes), it may be sent using a Fragmentable Encapsulated Transfer Syntax. Alternatively, it may be sent using a Non-Fragmentable Encapsulated Transfer Syntax as multiple SOP Instances, but each SOP Instance will contain an independent and playable bit stream, and not depend on the encoded bit stream in other (previous) instances. The manner in which such separate instances are related is not specified in the Standard, but mechanisms such as grouping into the same Series, and references to earlier instances using Referenced Image Sequence may be used.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_967d1b38-55b5-439b-a472-71f097e7d8a1" shape="rect"></a>Fragmentable Encapsulated Transfer Syntaxes allow for streams of essentially unlimited length; the only limit imposed is the maximum Number of Frames (0028,0008), which is 2^31-1 frames (largest positive Value in an Integer String VR).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_d64df278-a6ae-401e-8647-f5985d401b88" shape="rect"></a>The Basic Offset Table shall be empty (present but zero length).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_9708519f-0fc8-4c8b-91f7-10773a783c8f" shape="rect"></a>The Basic Offset Table is not used because MPEG2 contains its own mechanism for describing navigation of frames. To enable decoding of only a part of the sequence, MPEG2 manages a header in any group of pictures (GOP) containing a time_code - a 25-bit integer containing the following: drop_frame_flag, time_code_hours, time_code_minutes, marker_bit, time_code_seconds and time_code_pictures.</p>
+         </div>
+         <p>
+            <a id="para_54b32ddd-2a81-407e-9e5d-7aa488550609" shape="rect"></a>The container format for the video bit stream is not constrained. For example, it may MPEG-2 Transport Stream (MPEG-TS), MPEG-2 Program Stream (MPEG-PS), MPEG-2 Elementary Stream (MPEG-ES), MPEG-2 Packetized Elementary Stream (MPEG-PES) (see <a class="xref" href="chapter_2.html#biblio_ISOIEC13818-1" title="Information technology -- Generic coding of moving pictures and associated audio information - Part 1: Systems" shape="rect">[<abbr class="abbrev">ISO/IEC 13818-1</abbr>]</a>) or MPEG-4 (MP4) container (see <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-12" title="Information technology - Coding of audio-visual objects - Part 12: ISO base media file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-12</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-14" title="Information technology - Coding of audio-visual objects - Part 14: MP4 file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-14</abbr>]</a>).</p>
+         <p>
+            <a id="para_72d7f028-ebc5-45f1-a1b4-9c2d077c7e19" shape="rect"></a>Any audio components present within the MPEG bit stream shall comply with the following restrictions:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_b3696689-16a6-4fcc-bb45-cc014866aac5" shape="rect"></a>CBR MPEG-1 LAYER III (MP3) Audio Standard</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_70849564-1c36-4a34-ae83-ea1957b5f0f8" shape="rect"></a>up to 24 bits</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_f2fd5dd7-be39-44d3-b02c-a979b3bf604c" shape="rect"></a>32 kHz, 44.1 kHz or 48 kHz for the main channel (the complementary channels can be sampled at the half rate, as defined in the Standard)</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_f5727538-3f96-4e27-a676-a2080d25196b" shape="rect"></a>one main mono or stereo channel, and optionally one or more complementary channel(s)</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_184bb12a-3946-43c3-a6c7-716c04816dac" shape="rect"></a>MPEG-1 Layer III is standardized in Part 3 of the MPEG-1 standard (see <a class="xref" href="chapter_2.html#biblio_ISOIEC11172-3" title="Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 3: Audio" shape="rect">[<abbr class="abbrev">ISO/IEC 11172-3</abbr>]</a>).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_91f4529b-dade-4384-a997-eac3d64cf73e" shape="rect"></a>Although MPEG describes each channel as including up to 5 signals (e.g., for surround effects), it is recommended to limit each of the two channels to 2 signals each one (stereo).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.4 JPEG 2000 Image Compression </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2.6 MPEG2 Main Profile / High Level Video Compression</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

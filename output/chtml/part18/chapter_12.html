@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>12 Non-Patient Instance Service and Resources</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="PS3.18.html" title="PS3.18" />
+      <link rel="prev" href="sect_11.13.html" title="11.13 Workitem Event Reports" />
+      <link rel="next" href="sect_12.2.html" title="12.2 Conformance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">12 Non-Patient Instance Service and Resources <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/chapter_12.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_11.13.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_12.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-node">Non-Patient Instance Service and Resources</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_12" shape="rect"></a>12 Non-Patient Instance Service and Resources</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_12.1" shape="rect"></a>12.1 Overview</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_aa6430eb-7a32-423a-a442-e6976edaf5be" shape="rect"></a>The Non-Patient Instance (NPI) Storage Service enables a user agent to retrieve, store, and search an origin server for instances that are not related to an individual patient.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_8a938ac1-3983-4bb3-8393-7f3182ea9956" shape="rect"></a>Non-Patient Instances adhere to a Composite Instance IOD Information Model that does not have at its root the Patient Information Entity representing an individual Patient.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_c677c6dc-cd35-45dd-9635-e86995f6007f" shape="rect"></a>"Non-patient" does not imply that there is no patient-related identifiable information in the Instances. E.g., the Inventory IOD does include Attributes of the patient, but it does not have a Patient IE at the root of its information model.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p>
+               <a id="para_35f04672-b6a1-4d20-91b4-fc53c5df82a1" shape="rect"></a>An NPI Storage Service manages a collection of resources belonging to the categories specified in <a class="xref" href="chapter_12.html#table_12.1.1-1" title="Table 12.1.1-1. Resource Categories, URI Templates and Descriptions" shape="rect">Table 12.1.1-1</a>.</p>
+            <p>
+               <a id="para_98b7efb5-0e44-4a15-8614-cbc15fc26db6" shape="rect"></a>All NPI Storage Service origin servers shall support the Retrieve Capabilities, Retrieve, and Search transactions. Support for the Store transaction is optional. All NPI Storage Service user agents support one or more of the Retrieve Capabilities, Retrieve, Store, or Search transactions.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_12.1.1" shape="rect"></a>12.1.1 Resource Descriptions</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f918670e-7f10-4ba5-ade8-493542dfed15" shape="rect"></a>An NPI Service manages resources from the same NPI Category. Target URIs have the following templates:</p>
+               <pre class="programlisting" xml:space="preserve">
+/{npi-name}
+/{npi-name}/{uid}
+</pre>
+               <p>
+                  <a id="para_033579e9-1193-4770-b4a3-e4ff21cd9854" shape="rect"></a>Where</p>
+               <pre class="programlisting" xml:space="preserve">
+npi-name    = "color-palettes"
+            / "defined-procedure-protocols"
+            / "hanging-protocols"
+            / "implant-templates"
+            / "inventories"
+uid         ; is the Unique Identifier of an NPI Instance
+</pre>
+               <p>
+                  <a id="para_da932503-488b-4c22-84be-a11e1c98e754" shape="rect"></a>
+                    <a class="xref" href="chapter_12.html#table_12.1.1-1" title="Table 12.1.1-1. Resource Categories, URI Templates and Descriptions" shape="rect">Table 12.1.1-1</a> contains the templates for the NPI Resource Categories.</p>
+               <div class="table">
+                  <a id="table_12.1.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 12.1.1-1. Resource Categories, URI Templates and Descriptions</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d55a401c-d7aa-4ae5-b4f8-40894d0f9114" shape="rect"></a>Resource Category</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_dd132b1d-61e3-45e4-9919-d5bb3bd2c782" shape="rect"></a>URI Template and Description</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_15dcbd68-d6c9-413f-94f8-be7925915182" shape="rect"></a>Corresponding IOD</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_296a7b65-7ec5-4b5c-806b-d28a4fb65362" shape="rect"></a>Storage Class</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5275bd32-f7bc-4aa8-8939-dd9673ebe809" shape="rect"></a>Information Model</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ad5ca9ca-bd77-481f-9d45-843e9b602041" shape="rect"></a>Color Palette</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">/color-palettes{/uid}</pre>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_66ff41b5-8627-464f-8639-5c2401682292" shape="rect"></a>
+                                    <a href="../part03/sect_A.58.html" class="olink" shape="rect">Section A.58 “Color Palette IOD” in PS3.3</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_934a050a-436a-48d2-81e6-85ab1e3b2315" shape="rect"></a>
+                                    <a href="../part04/chapter_GG.html" class="olink" shape="rect">Section GG “Non-Patient Object Storage Service Class” in PS3.4</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e4bf31d8-275b-435e-9fb1-0433303e1be6" shape="rect"></a>
+                                    <a href="../part04/chapter_X.html#sect_X.1.3" class="olink" shape="rect">Section X.1.3 “Query/Retrieve Information Model” in PS3.4</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3559dc49-5b1d-40ed-bde1-f7d878582e7d" shape="rect"></a>Defined Procedure Protocol</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">/defined-procedure-protocols{/uid}</pre>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5b3e1b65-26a6-4e36-9236-a515454dc7e5" shape="rect"></a>
+                                    <a href="../part03/sect_A.82.html" class="olink" shape="rect">Section A.82 “Procedure Protocol IODs” in PS3.3</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ef818d78-eacf-4f5b-b2ae-782ad2167d99" shape="rect"></a>
+                                    <a href="../part04/chapter_GG.html" class="olink" shape="rect">Section GG “Non-Patient Object Storage Service Class” in PS3.4</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_82d444da-dd7b-41c5-a15f-dbbc1835b17c" shape="rect"></a>
+                                    <a href="../part04/chapter_HH.html#sect_HH.1.3" class="olink" shape="rect">Section HH.1.3 “Query/Retrieve Information Model” in PS3.4</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_51d646c5-61fb-4ce5-b565-6b97692e8b45" shape="rect"></a>Hanging Protocol</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">/hanging-protocols{/uid}</pre>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_977fdf50-f1d9-449e-ad58-a463bc4d3715" shape="rect"></a>
+                                    <a href="../part03/sect_A.44.html" class="olink" shape="rect">Section A.44 “Hanging Protocol IOD” in PS3.3</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_244cfe2d-9da2-45e8-a55b-bb451bbf2b02" shape="rect"></a>
+                                    <a href="../part04/chapter_GG.html" class="olink" shape="rect">Section GG “Non-Patient Object Storage Service Class” in PS3.4</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_db622ad6-37a7-4c7d-83be-3b034dcf6db2" shape="rect"></a>
+                                    <a href="../part04/chapter_U.html#sect_U.1.3" class="olink" shape="rect">Section U.1.3 “Query/Retrieve Information Model” in PS3.4</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_480d51e6-886f-47b4-a9d6-9094565cd5fb" shape="rect"></a>Implant Template</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">/implant-templates{/uid}</pre>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ed145531-a1ec-4bde-bf10-8201e772cf10" shape="rect"></a>
+                                    <a href="../part03/sect_A.61.html" class="olink" shape="rect">Section A.61 “Generic Implant Template IOD” in PS3.3</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a8bee12d-24c6-42d8-86bf-b63ae2556f83" shape="rect"></a>
+                                    <a href="../part04/chapter_GG.html" class="olink" shape="rect">Section GG “Non-Patient Object Storage Service Class” in PS3.4</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_969fd5ec-e11d-4f5a-bb9e-2a9ff56e4631" shape="rect"></a>
+                                    <a href="../part04/chapter_BB.html#sect_BB.1.3" class="olink" shape="rect">Section BB.1.3 “Query/Retrieve Information Model” in PS3.4</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3fd78074-a3ad-417f-b941-699ee5d77fda" shape="rect"></a>Inventory</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">/inventories{/uid}</pre>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d3c8c2f3-d74c-4dcd-962f-78b179c6db62" shape="rect"></a>
+                                    <a href="../part03/sect_A.88.html" class="olink" shape="rect">Section A.88 “Inventory IOD” in PS3.3</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f7e12784-b244-4090-bc73-91eea1580380" shape="rect"></a>
+                                    <a href="../part04/chapter_GG.html" class="olink" shape="rect">Section GG “Non-Patient Object Storage Service Class” in PS3.4</a>
+                                </p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a0e82f1d-e7b6-445b-b729-7b8eff9ce188" shape="rect"></a>
+                                    <a href="../part04/sect_JJ.2.html" class="olink" shape="rect">Section JJ.2 “Inventory Q/R Information Model” in PS3.4</a>
+                                </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_eebe1620-6a34-40f9-843b-6ec5bce9e62c" shape="rect"></a>The NPI SOP Classes are listed in <a href="../part04/sect_GG.3.html#table_GG.3-1" class="olink" shape="rect">Table GG.3-1 “Standard SOP Classes” in PS3.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_12.1.2" shape="rect"></a>12.1.2 Common Query Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_c9d7aa39-805b-48e3-903c-f40ef0c434d0" shape="rect"></a>The origin server shall support Query Parameters as required in <a class="xref" href="chapter_12.html#table_12.1.2-1" title="Table 12.1.2-1. Common Query Parameters" shape="rect">Table 12.1.2-1</a>.</p>
+               <p>
+                  <a id="para_9b5615c1-e3ef-42b2-bb47-989c870c1676" shape="rect"></a>The user agent shall supply in the request Query Parameters as required in <a class="xref" href="chapter_12.html#table_12.1.2-1" title="Table 12.1.2-1. Common Query Parameters" shape="rect">Table 12.1.2-1</a>.</p>
+               <div class="table">
+                  <a id="table_12.1.2-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 12.1.2-1. Common Query Parameters</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_ca5cf352-f8f8-4f13-8ed9-06561ee17f9b" shape="rect"></a>Name</p>
+                              </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_ce0e73ab-484c-40b6-9085-593777796c9d" shape="rect"></a>Value</p>
+                              </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                <p>
+                                    <a id="para_544e8c9b-65df-4588-becd-931ef12ceb3a" shape="rect"></a>Usage</p>
+                              </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_03a87c08-979d-4d52-9716-1c8e63e1b751" shape="rect"></a>Section</p>
+                              </th>
+                           </tr>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ac754474-b21d-4dc0-aaa9-6d2b3ed0b004" shape="rect"></a>User Agent</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_488cc92f-2905-40a4-ab58-5edbf1af4e51" shape="rect"></a>Origin Server</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b16ca811-3d28-481f-91e7-5980e49ecf1e" shape="rect"></a>Accept</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_69559581-8c02-4a18-b18b-20ef704f23c4" shape="rect"></a>media-type</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a1d1c1d1-2537-4f50-9625-15dfd83051ea" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f7b29baa-4db2-4f53-be5e-ec601439580d" shape="rect"></a>M</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_eea9807d-beb9-40f5-90a2-63c60b1921d1" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.3.html#sect_8.3.3.1" title="8.3.3.1 Accept Query Parameter" shape="rect">Section 8.3.3.1</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_02257816-89ef-42c0-86da-5ff6dd964427" shape="rect"></a>Accept-Charset</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_766ac1fe-5cff-4c11-afda-5b7917e24e69" shape="rect"></a>charset</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_bc9661fc-3206-49db-9b61-0eb6983006c2" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_90261a5f-75d3-4342-8fb0-bd5c64b068f3" shape="rect"></a>M</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c7c80da4-6c63-4207-9e09-7bebb666e62e" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" shape="rect">Section 8.3.3.2</a>
+                                </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_7e18014d-9204-43f8-a8ec-66ce03bdc91e" shape="rect"></a>See also <a class="xref" href="sect_8.4.html" title="8.4 Header Fields" shape="rect">Section 8.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_12.1.3" shape="rect"></a>12.1.3 Common Media Types</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3b1f5ff3-ea76-4804-814b-02a7f073059b" shape="rect"></a>The origin server shall support the media types listed as Default or Required in <a class="xref" href="chapter_12.html#table_12.1.3-1" title="Table 12.1.3-1. Default, Required, and Optional Media Types" shape="rect">Table 12.1.3-1</a> for all NPI transactions.</p>
+               <div class="table">
+                  <a id="table_12.1.3-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 12.1.3-1. Default, Required, and Optional Media Types</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c058758b-2162-4f15-ae9b-3d3c321f7fd9" shape="rect"></a>Media Type</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fd6cd662-7c08-4f60-a1b2-31def1e3ff62" shape="rect"></a>Usage</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2f1a6327-c4ed-4116-9bcc-e71ff8cabd7c" shape="rect"></a>Section</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_71442e51-1930-4e1b-ab10-fd40692e3939" shape="rect"></a>application/dicom</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e45c9c7f-fa78-40f1-bb85-63612db3c74f" shape="rect"></a>Required</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f536977e-59fa-4eb8-b291-91ca6b536b41" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.html#sect_8.7.3.1" title="8.7.3.1 Instance Media Types" shape="rect">Section 8.7.3.1</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fd63a92a-6ea7-4965-b2bd-ab1a172fe523" shape="rect"></a>application/dicom+json</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_40b66e53-5a0b-4ac4-a966-342942588f88" shape="rect"></a>Default</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c8d2fa6b-0a66-4a3b-93ef-de83a2a14196" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.2.html" title="8.7.3.2 Metadata Media Types" shape="rect">Section 8.7.3.2</a>
+                                </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d78839fb-b54f-4f78-bf86-bf913f648547" shape="rect"></a>multipart/related; type="application/dicom+xml"</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0f882325-acb3-4972-81f4-d860c73d96bd" shape="rect"></a>Required</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b8be9068-beed-4235-8e02-6c3e2937b639" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.2.html" title="8.7.3.2 Metadata Media Types" shape="rect">Section 8.7.3.2</a>
+                                </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_11.13.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_12.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">11.13 Workitem Event Reports </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 12.2 Conformance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

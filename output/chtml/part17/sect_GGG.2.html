@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>GGG.2 Implementation Examples</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_GGG.html" title="GGG Unified Worklist and Procedure Step - UPS (Informative)" />
+      <link rel="prev" href="chapter_GGG.html" title="GGG Unified Worklist and Procedure Step - UPS (Informative)" />
+      <link rel="next" href="sect_GGG.2.2.html" title="GGG.2.2 Typical Pull Workflow" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">GGG.2 Implementation Examples <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_GGG.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_GGG.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">GGG Unified Worklist and Procedure Step - UPS (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_GGG.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_GGG.html" shape="rect">Unified Worklist and Procedure Step - UPS (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Implementation Examples</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_GGG.2" shape="rect"></a>GGG.2 Implementation Examples</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_86854e4b-4544-4662-89ac-de64ce7d53b1" shape="rect"></a>The following sections describe ways UPS workflows could be used to address some typical scenarios.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_GGG.2.1" shape="rect"></a>GGG.2.1 Typical SOP Class Implementations</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_dd4cbed7-0574-4ef1-9702-c5c89b064d44" shape="rect"></a>The decision of which SOP Classes to implement in which systems will revolve partly around where it makes the most sense for the business logic to reside, what information each system would have access to, and what kind of workflow is most effective for the users.</p>
+            <p>
+               <a id="para_9ee65f4d-62ad-4d6c-b24d-3f9539f9e382" shape="rect"></a>
+                    <a class="xref" href="sect_GGG.2.html#table_GGG.1-1" title="Table GGG.1-1. SOP Classes for Typical Implementation Examples" shape="rect">Table GGG.1-1</a> shows a number of hypothetical systems and the combination of SOP Classes they might implement. For example, a typical worklist manager would support all four SOP Classes as an SCP. A typical scheduling system might want to be a UPS Push SCU to submit work items to the worklist manager, a UPS Watch SCU to subscribe for notifications and get details of the results, and a UPS Event SCU to receive the progress notifications. A simple "pull performer" might only be a UPS Pull SCU, similar to modalities today.</p>
+            <p>
+               <a id="para_11e42319-a765-49e8-b45e-f361a7f5a143" shape="rect"></a>Other examples are listed for:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_531c18ea-4c5b-4bde-93c9-2db6091ad566" shape="rect"></a>"Minimal Scheduler", a requesting system that is not interested in monitoring progress or results.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_fe022618-8fa1-42a4-8686-eecda7799349" shape="rect"></a>"Watcher", a system interested in tracking the progress and/or results of Unified Procedure Steps.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_fdbd03cb-e7e3-4350-82ce-1b27df51a3da" shape="rect"></a>"General Contractor", a system that accepts work items pushed to it, then uses internal business logic to subdivide/create work items that it pushes or makes available to systems that will actually perform the work.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_9f40b855-8048-4ade-8f15-40fa61ae5ec8" shape="rect"></a>"Push Performer", a system, for example a CAD system, that has work pushed to it, and provides status and results information to interested observers.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_74031e0e-480d-471a-80fb-ec6775a567ad" shape="rect"></a>"Self-Scheduled Performer", which internally schedules it's own work, but supports notifications and N-GET so the details of the work can be made available to other departmental systems.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e679c1eb-96ec-4532-a782-3e7f6963142c" shape="rect"></a>"Self-Scheduled Pull Performer", which pushes a workitem onto a worklist manager and then pulls it off to perform it. This allows it to work on "unscheduled" procedures without taking on the responsibility of being an SCP for notifications and events.</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="table">
+               <a id="table_GGG.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table GGG.1-1. SOP Classes for Typical Implementation Examples</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_4b8ba241-4062-48de-9c49-584f180b757c" shape="rect"></a>SOP Classes</p>
+                            </th>
+                           <th align="center" colspan="4" rowspan="1">
+                                <p>
+                                 <a id="para_8ee1b169-187f-4f26-9aaa-eff424987552" shape="rect"></a>SCU</p>
+                            </th>
+                           <th align="center" colspan="4" rowspan="1">
+                                <p>
+                                 <a id="para_8267a78d-ccc8-4900-b2af-d205d10de109" shape="rect"></a>SCP</p>
+                            </th>
+                        </tr>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_64ff7973-7a77-4644-83f1-062b65a246b0" shape="rect"></a>UPS Push</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_36ca9c50-5c2b-497e-b84c-17e0fd3a15d3" shape="rect"></a>UPS Watch</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_960f4c5d-5387-4607-b067-9b6467ac44be" shape="rect"></a>UPS Event</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1d062b62-5949-41a7-8a24-96a46046a4ea" shape="rect"></a>UPS Pull</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_873c76d6-c5f4-4c3e-ad7d-56c145de0b2b" shape="rect"></a>UPS Push</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ddc5c9f2-23db-4cae-8cce-4378c80f2879" shape="rect"></a>UPS Watch</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2bf3895c-2013-4d40-8382-93b0cde09fb3" shape="rect"></a>UPS Event</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f6bb6bf6-7737-4735-b8d9-2ac9e5da0548" shape="rect"></a>UPS Pull</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" colspan="9" rowspan="1">
+                                <p>
+                                 <a id="para_df2500e2-b1b5-4d7f-a09a-523f73566e78" shape="rect"></a>Non-Performing SCUs</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_65c94c4f-c383-4d31-aedb-0e2721ed16c3" shape="rect"></a>Minimal Scheduler</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_66557fdf-0e54-4dd8-9f47-1ac48e764b21" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_4679cc6b-d74c-42ab-a592-4274b988a902" shape="rect"></a>Typical Scheduler</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e44dba6f-2b3d-4d38-b063-11c1d74950d9" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_fec61e2c-8dd0-484c-a653-c7d191b6ecd8" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a9f46bf1-d2c5-46b4-8972-e0455e4abf72" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_6cd9fd38-bfdd-452a-ae82-5ffc4e488b36" shape="rect"></a>Watcher</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_6af5d8f4-9e89-4c9c-86f5-24f23debae0a" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_253e4291-5858-42ea-be4a-53c6d37cd0d4" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" colspan="9" rowspan="1">
+                                <p>
+                                 <a id="para_5914b95f-b839-4fdf-a54b-c7bd586840e9" shape="rect"></a>Worklist SCPs</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e1e08afc-d99f-4541-a761-de2dde5f5c7d" shape="rect"></a>Worklist Manager</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_83c90a9d-7c28-436f-8a5c-5202f83e652f" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f41ac5b3-def3-4f5b-9f18-edc1b3fde200" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_78af867e-1c54-4ac3-adf8-e7d2345e529b" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9eeec150-8c51-459f-b0aa-846e89d21b2a" shape="rect"></a>X</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_917eb70a-7598-4d51-a5f1-3e4e98d3c7dc" shape="rect"></a>General Contractor</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0d6bd523-f67d-460d-8275-5d523c3688c1" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8ac7ff74-3b28-4eb0-9d64-f35f1e59dd62" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_4755cf85-1d4d-467b-9a81-3fbfc50b712c" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e785329f-0f95-4688-ab38-22d31723b45e" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d29d157b-4784-49b3-b053-10a82b2b8871" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b16d75d2-037c-442e-b60e-709f90cb133c" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2d16978f-a44c-4a8d-9b57-bb013c5b868d" shape="rect"></a>X</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" colspan="9" rowspan="1">
+                                <p>
+                                 <a id="para_0b8351f7-2ebc-4cf1-9315-5d5f1a7f162e" shape="rect"></a>Performing SCPs</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cc49527f-dc8f-4b92-9baa-027e519fc49a" shape="rect"></a>Push Performer</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_5f3d9f7b-d997-49cf-845f-bebe56954769" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cdfddda0-1aa9-4862-9269-05ae849a1ae6" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a91bb3eb-c005-4aba-be9b-3bedb2f5c650" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1fd9562c-71a5-4edf-b2ea-1383a3489d1f" shape="rect"></a>Self-Scheduled Performer</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_5d179b83-25c9-4ee0-84be-270426bda2ab" shape="rect"></a>X</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_6638ceb9-108d-4ee6-a58e-ae44cfe2c2a1" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" colspan="9" rowspan="1">
+                                <p>
+                                 <a id="para_b988b4cf-4745-427f-8c9d-9fc9b8fbf9fc" shape="rect"></a>Performing SCUs</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_02586a91-e490-4da6-94de-fb96b8160495" shape="rect"></a>Pull Performer</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_97453c78-9d45-40d3-9bd4-ea67ef770d27" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_11485422-5cc3-4bb8-a212-fe886756ffb0" shape="rect"></a>Self-Scheduled Pull Performer</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_6a1e1477-25f9-44fa-b5cb-45a3f6bb78ec" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b375bf09-2fc6-4c88-a4bf-6b1478c5e0f6" shape="rect"></a>X</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_54dd03a9-e058-4e36-8327-f127e4a86dbd" shape="rect"></a>A system that implements UPS Watch as an SCP will also need to implement UPS Event as an SCP to be able to send Event Reports to the systems from whom it accepts subscriptions.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_GGG.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_GGG.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_GGG.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">GGG Unified Worklist and Procedure Step - UPS (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> GGG.2.2 Typical Pull Workflow</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

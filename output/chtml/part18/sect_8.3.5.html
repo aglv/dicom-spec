@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3.5 Rendering Query Parameters</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.3.html" title="8.3 Query Parameters" />
+      <link rel="prev" href="sect_8.3.4.6.html" title="8.3.4.6 Multiple Value Matching" />
+      <link rel="next" href="sect_8.3.5.2.html" title="8.3.5.2 Query Parameters For Thumbnails" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3.5 Rendering Query Parameters <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.4.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.3 Query Parameters</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.3.html" shape="rect">Query Parameters</a>
+         </span> &gt; <span class="breadcrumb-node">Rendering Query Parameters</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.3.5" shape="rect"></a>8.3.5 Rendering Query Parameters</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_500a839e-fab7-4077-9759-452ddeaea1f8" shape="rect"></a>This section defines the Query Parameter syntax and behavior for Retrieve requests for Rendered Media Types.</p>
+         <p>
+            <a id="para_f1bc0f2d-0986-42ee-985d-08f235d870f2" shape="rect"></a>All Retrieve transactions for Rendered Media Types shall support these parameters.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_8.3.5.1" shape="rect"></a>8.3.5.1 Query Parameters For Rendered Resources</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_e69b4f13-c6f8-47ad-aa37-f3f963062877" shape="rect"></a>The Query Parameters defined in this section specify various rendering transformations to be applied to the DICOM images, video, and text contained in the parent DICOM Resource.</p>
+            <p>
+               <a id="para_e47cab06-4d5e-4d48-af1e-e0b84543ee1e" shape="rect"></a>The following rules pertain to all parameters defined in this section:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7a3d4b94-b128-4953-9348-ecf37b5b1f9c" shape="rect"></a>All parameters are optional for the user agent.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8ab44514-5aab-4c1c-8109-0e8cdd37a5b4" shape="rect"></a>Not all parameters are required to be supported by the origin server.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b3bb6d83-4b0f-49c0-aef3-8ccce19dbf84" shape="rect"></a>These parameters only apply to resources that are images and video.</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_e8848285-3e85-4f78-b93d-ac2efbf6989a" shape="rect"></a>The set of transformations specified by the parameters in this section shall be applied to the images as if the parameters were a Presentation State, that is, in the order specified by the applicable image rendering pipeline specified in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>.</p>
+            <p>
+               <a id="para_470a0b04-a22d-4de6-a520-9a9480ae4be3" shape="rect"></a>
+                        <a class="xref" href="sect_8.3.5.html#table_8.3.5-1" title="Table 8.3.5-1. Retrieve Rendered Query Parameters" shape="rect">Table 8.3.5-1</a> shows the Query Parameters that may be used when requesting a Rendered Representation.</p>
+            <div class="table">
+               <a id="table_8.3.5-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 8.3.5-1. Retrieve Rendered Query Parameters</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0a379a6e-dbae-4598-ac47-2158096258e8" shape="rect"></a>Key</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2bfbffee-126d-4ac6-8a76-0b8bf868fc29" shape="rect"></a>Values</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d07bddef-c894-4100-9a71-a6bdd3ff4913" shape="rect"></a>Target Resource Category</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_9413ce8c-4111-43f4-872e-ef1c05176b2b" shape="rect"></a>Section</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">accept</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">Rendered Media Type</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_305191df-f35a-4bf0-86fe-332b42c24663" shape="rect"></a>All Categories</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b1bcc95f-c0a0-4961-8d94-b6ecd0558fde" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.html#sect_8.3.3.1" title="8.3.3.1 Accept Query Parameter" shape="rect">8.3.3.1</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">annotation</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">"patient" and/or "technique"</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_83e62151-c0bd-4818-8ca9-c937303bf73c" shape="rect"></a>Image (single or multi-frame) or Video</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0bc9443a-279d-4527-aafb-187d4ae1f98e" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.1" title="8.3.5.1.1 Image Annotation" shape="rect">8.3.5.1.1</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">charset</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">character set token</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7d03ae93-01d2-4a32-b6ca-055f925f85aa" shape="rect"></a>All Categories</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1b6ebc6b-b2c5-4f5d-a9bb-454b1f7556ea" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" shape="rect">8.3.3.2</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">quality</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">uint</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ddd8282d-fc24-46cc-b8b2-9be0dd45bb8e" shape="rect"></a>Image (single or multi-frame) or Video</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6d77ecdd-23ea-4011-a48e-46856034bde3" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.2" title="8.3.5.1.2 Image Quality" shape="rect">8.3.5.1.2</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">viewport</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">vw, vh, [ sx, sy, sw, sh ]</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_bb4a26ab-b15b-482a-99e6-0a2b21e1967b" shape="rect"></a>Non-Presentation States</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0eda1bdf-b736-4cdd-aeba-dcd262c217a9" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.3" title="8.3.5.1.3 Viewport Scaling" shape="rect">8.3.5.1.3</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">viewport</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">vw, vh,</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a48144af-97de-4c8a-a448-4018aa344300" shape="rect"></a>Presentation States</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_12974600-2738-40aa-b132-19ddca68a97a" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.3" title="8.3.5.1.3 Viewport Scaling" shape="rect">8.3.5.1.3</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">window</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">center, width, shape</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f5d7e38c-ac70-4003-b7e3-6cbb3b6affcc" shape="rect"></a>Non-Presentation States</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_15fa752c-10ac-4bc1-8b73-70407b8bd5fe" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.4" title="8.3.5.1.4 Windowing" shape="rect">8.3.5.1.4</a>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">iccprofile</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">"no", "yes", "srgb", "adobergb" or "rommrgb"</pre>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5cbbf2a5-6658-49a2-abc9-ced2836ba2bd" shape="rect"></a>Image (single or multi-frame) or Video</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_99067773-f633-490d-ae9d-f660abb0d9ac" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.5" title="8.3.5.1.5 ICC Profile" shape="rect">8.3.5.1.5</a>
+                                    </p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.5.1.1" shape="rect"></a>8.3.5.1.1 Image Annotation</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_cd6062dc-7545-4370-8692-fdc7ba91f18e" shape="rect"></a>This parameter specifies that the rendered images or video will have annotations. Its name is "annotation" and its value is a comma-separated list of one or more keywords. It has the following syntax:</p>
+               <pre class="programlisting" xml:space="preserve">annotation = %s"annotation=" 1#( %s"patient" / %s"technique" )</pre>
+               <p>
+                  <a id="para_00f077fe-6b9e-45b6-ad8c-af22e3c770cd" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">"patient"</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_30bb7926-7a5f-425b-ab44-4b284d4feaba" shape="rect"></a>Indicates that the rendered images shall be annotated with patient information (e.g., patient name, birth date, etc.).</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">"technique"</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_248195e9-ac67-454a-86c2-6beeeae8bb51" shape="rect"></a>Indicates that the rendered images shall be annotated with information about the procedure that was performed (e.g., image number, study date, image position, etc.).</p>
+                                    </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_7f5f222d-e75b-413f-8399-0bfceb1af686" shape="rect"></a>When this parameter is not present, no annotations shall be applied.</p>
+               <p>
+                  <a id="para_b72f563c-3a21-45c6-b619-bad81eccc1c8" shape="rect"></a>The image rendering pipelines specified in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a> require that annotations be applied after all other parameters have been applied and the image or video has been rendered. The exact nature and presentation of the annotations is determined by the origin server and is "burned-in" to the rendered content.</p>
+               <p>
+                  <a id="para_14178571-e3ac-47f8-a2ec-7b12cf710329" shape="rect"></a>The origin server may support additional keywords, which shall be documented in the Conformance Statement and, if the service supports it, the Retrieve Capabilities response.</p>
+               <p>
+                  <a id="para_1e9f7655-a901-462a-a252-ad85bfe2a429" shape="rect"></a>If any of the parameter values are not keywords, or there are no parameter values, the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+               <p>
+                  <a id="para_8a351b94-75d1-43a5-bcbd-a2561ccb6af9" shape="rect"></a>The origin server shall ignore any unsupported parameter values. If unsupported values are present, the origin server shall include the following header field:</p>
+               <pre class="programlisting" xml:space="preserve">Warning 299 &lt;service&gt;: The following annotation values are not supported: &lt;values&gt;</pre>
+               <p>
+                  <a id="para_f4bded98-e92d-4a67-a695-c7e9e07a6a90" shape="rect"></a>and may include a payload containing an appropriate warning message.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7c5e7b1a-b8e5-4572-95b7-bafba363af8e" shape="rect"></a>The exact nature and presentation of the annotation is determined by the origin server. The annotation is burned into the rendered image pixels.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_26c990d2-a513-40f2-ac05-343d495a8d87" shape="rect"></a>A user agent wanting more control over annotations may retrieve an image, omitting the "annotation" parameter, and separately retrieve the metadata, and create customized annotations on the image.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_743f3a0a-5f73-4acb-bef5-14e811e9ba04" shape="rect"></a>A user agent wanting more control over annotations can retrieve an image, omitting the "annotation" parameter, separately retrieve the metadata, and create customized annotations on the image.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_52a9c361-c0a4-4017-9e96-d4152f94f770" shape="rect"></a>The Target Resource could already contain "burned-in" text that is beyond the control of this parameter.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.5.1.2" shape="rect"></a>8.3.5.1.2 Image Quality</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f5075b6d-ac29-476f-8320-eb0a9582a3f5" shape="rect"></a>The "quality" parameter specifies the requested quality of the rendered images or video. It has the following syntax:</p>
+               <pre class="programlisting" xml:space="preserve">quality = %s"quality=" uint</pre>
+               <p>
+                  <a id="para_f1348340-3c3a-4292-9056-034e6ad32048" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">uint</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_6815474e-ae10-4ba6-96b7-77d9763f1066" shape="rect"></a>is an unsigned integer between 1 and 100 inclusive, with 100 being the best quality.</p>
+                                    </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_ff0e77f7-ecfc-4307-b746-5a7d6dd7c052" shape="rect"></a>If the value of this parameter is missing or is not an integer between 1 and 100 inclusive, the response shall be a 400 (Bad Request) and may include a payload containing an appropriate error message.</p>
+               <p>
+                  <a id="para_b5c8524d-d94c-47ef-910c-ec20e188b8f0" shape="rect"></a>The "quality" parameter is only supported for media types that allow lossy compression.</p>
+               <p>
+                  <a id="para_2496aff3-2390-437b-bd56-bf1347140276" shape="rect"></a>The meaning of this parameter is determined by the origin server and shall be documented in the Conformance Statement and, if the Service supports it, Retrieve Capabilities response.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4fd9dbf9-b27c-48c4-bd91-35d51f951506" shape="rect"></a>Decompression and re-compression may degrade the image quality if the original image was already irreversibly compressed. If the image has been already lossy compressed using the same format as required (e.g., jpeg), it may be sent as it is without decompressing and re-compressing it.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c64201c3-fbf9-4f1a-970e-2d77109b67cd" shape="rect"></a>The origin server could choose to disregard the quality parameter if the resultant image quality would be too low.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.5.1.3" shape="rect"></a>8.3.5.1.3 Viewport Scaling</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4adb27dc-9c08-4bdc-8e7c-dc9b14cbb4d6" shape="rect"></a>The "viewport" parameter specifies a rectangular region of the source image(s) or video to be cropped, and a rectangular region corresponding to the size of the user agent's viewport to which the cropped image or video should be scaled.</p>
+               <p>
+                  <a id="para_3656c5e8-8535-4d3d-a434-6b56dfe22fea" shape="rect"></a>The syntax of this parameter for a Presentation State Instance or a Thumbnail is:</p>
+               <pre class="programlisting" xml:space="preserve">%s"viewport=" vw "," vh</pre>
+               <p>
+                  <a id="para_2d42ed5e-13fa-4c81-8597-f586807d3790" shape="rect"></a>Otherwise it is:</p>
+               <pre class="programlisting" xml:space="preserve">%s"viewport=" vw "," vh ["," [sx] "," [sy] "," [sw] "," [sh] ]</pre>
+               <p>
+                  <a id="para_ce260f6d-65b4-45ca-b943-d76ad6caf175" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">vw and vh</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_3bd6735d-22dd-4481-bf69-5ae69de56de1" shape="rect"></a>are positive integers specifying the width and height, in pixels, of the rendered image or video. Both values are required.</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">sx and sy</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_fba761f9-6f29-494e-b0b4-c7d629c3f8ae" shape="rect"></a>are decimal numbers whose absolute values specify, in pixels, the top-left corner of the region of the source image(s) to be rendered. If either sx or sy is not specified, it defaults to 0. A value of 0,0 specifies the top-left corner of the source image(s).</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">sw and sh</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_21eb12c2-100c-4d66-bd48-730f0ddf791b" shape="rect"></a>are decimal numbers whose absolute values specify, in pixels, the width and height of the region of the source image(s) to be rendered. If sw is not specified, it defaults to the right edge of the source image. If sh is not specified, it defaults to the bottom edge of the source image. If sw is a negative value, the image is flipped horizontally. If sh is a negative value, the image is flipped vertically.</p>
+                                    </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_71b95fcc-3b3d-43d8-be63-1a0ea1430dcd" shape="rect"></a>The origin server shall crop the source images or video to the region specified by sx, sy, sw, and sh. It shall then scale the source content, maintaining the aspect ratio of the cropped region, until either the rendered content width or height is the same as the viewport width or height, whichever avoids truncation. In other words, viewport scaling makes the image(s) as large as possible, within the viewport, without overflowing the viewport area and without distorting the image.</p>
+               <p>
+                  <a id="para_ae00613e-861c-4dcc-beb3-3f546c7c1140" shape="rect"></a>If any of the optional parameter values are not present, the default value shall be used. Individual values may be elided, but the commas between the values shall be present. For example:</p>
+               <pre class="programlisting" xml:space="preserve">viewport=512,512,,,512,512</pre>
+               <p>
+                  <a id="para_dca4f12c-1d5e-4cd0-82b3-b917ae2fd14c" shape="rect"></a>The missing sx and sy parameter values default to 0.</p>
+               <p>
+                  <a id="para_2966a7f1-a7da-47c6-8cc3-f746dbd4bf00" shape="rect"></a>If trailing values are elided, then the trailing commas shall be omitted. For example:</p>
+               <pre class="programlisting" xml:space="preserve">viewport=1024,1024</pre>
+               <p>
+                  <a id="para_910db65a-63e3-456d-81b7-e37175aa996b" shape="rect"></a>The missing sx, sy, sw, sh will have their default values, i.e., the image(s) shall not be cropped, i.e., the full image is rendered.</p>
+               <p>
+                  <a id="para_55a14f66-af9e-4699-b2bb-84eb255f4bbc" shape="rect"></a>If the viewport parameter is not present, the rendered image(s) or video shall not be scaled, i.e., the rendered image(s) shall contain the same sized pixel matrix as the source DICOM image.</p>
+               <p>
+                  <a id="para_a19063ce-937f-4074-ba41-78b186736f42" shape="rect"></a>If any of the following are true:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_d543cf28-5b36-4d67-9f29-71f87c8b95f6" shape="rect"></a>This parameter specifies viewport dimensions that are either ill-formed or not supported</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_ec8f517e-f485-4bbb-8338-2e623389a09c" shape="rect"></a>The Target Resource is a Presentation State or Thumbnail and anything other than vw and vh are specified</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_1a82f569-830a-45b0-9bda-e449d95684ff" shape="rect"></a>then the response shall be 400 (Bad Request) and may include a payload containing an appropriate Status Report.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_1326ee0f-9838-42ae-ac06-96ef9cd915bb" shape="rect"></a>The default values for sx and sy differ from the defaults in the Specified Displayed Area in Presentation States, which uses integer values with the top left corner being (1\1). See <a href="../part03/sect_C.10.4.html" class="olink" shape="rect">Section C.10.4 in <span class="olinkdocname">PS3.3</span>
+                     </a>.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.5.1.4" shape="rect"></a>8.3.5.1.4 Windowing</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_232bf620-f802-44b3-8fee-5f99092f751f" shape="rect"></a>The "window" parameter controls the windowing of the images or video as defined in <a href="../part03/sect_C.8.11.3.html#sect_C.8.11.3.1.5" class="olink" shape="rect">Section C.8.11.3.1.5 in <span class="olinkdocname">PS3.3</span>
+                  </a>. It has the following syntax:</p>
+               <pre class="programlisting" xml:space="preserve">%s"window=" center "," width "," function</pre>
+               <p>
+                  <a id="para_295d0bf3-4b55-4443-a2c3-9cbda0ce6dbc" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">center</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_3e8c73ea-7fcf-40a0-a912-354b5111d7b6" shape="rect"></a>is a decimal number containing the window-center value</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">width</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_0065f806-3089-4a1c-9350-32d4cef2307f" shape="rect"></a>is a decimal numbercontaining the window-width value</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">function</pre>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_ef843917-7ded-4f8d-987d-871136f49461" shape="rect"></a>is one of the following keywords: "linear", "linear-exact", or "sigmoid".</p>
+                                    </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_4195abae-cb73-40d5-9725-f202bb33ae42" shape="rect"></a>These correspond to the differently capitalized and punctuated values of VOI LUT Function (0028,1056). See <a href="../part03/sect_C.11.2.html#sect_C.11.2.1.2" class="olink" shape="rect">Section C.11.2.1.2 in <span class="olinkdocname">PS3.3</span>
+                     </a>.</p>
+               </div>
+               <p>
+                  <a id="para_bbe65c9d-81e9-40db-9deb-b3af80ae285d" shape="rect"></a>All three parameters shall be present with valid values.</p>
+               <p>
+                  <a id="para_16552a08-ab5c-49f4-8b0f-f4efec99685d" shape="rect"></a>If any of the parameter values are missing or ill-formed, the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+               <p>
+                  <a id="para_2ef28c5a-9f78-4164-b0c7-f4b8fb87ccd0" shape="rect"></a>If the Target Resource is a Presentation State, this parameter shall not be used. If this parameter is present when the Target Resource is a Presentation state, the origin server shall return a 400 (Bad Request).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.5.1.5" shape="rect"></a>8.3.5.1.5 ICC Profile</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_981ce263-356e-4bf6-9102-ee93f5e29cc8" shape="rect"></a>The "iccprofile" parameter specifies the color characteristics of, and inclusion of an ICC Profile in, the rendered images. It has the following syntax:</p>
+               <pre class="programlisting" xml:space="preserve">%s"iccprofile=" 1#( %s"no" / %s"yes" / %s"srgb" / %s"adobergb" / %s"rommrgb" )</pre>
+               <p>
+                  <a id="para_aec52e2a-ac76-4c2b-bdcb-872e9f165e8a" shape="rect"></a>Where</p>
+               <div class="informaltable">
+                  <table frame="void" rules="none">
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_a6b68a12-85ce-4777-91d5-00d83b5a1bef" shape="rect"></a>"no"</p>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_b89597f5-4fb9-4f3d-8273-a86ab343871f" shape="rect"></a>indicates that no ICC profile shall be present in the rendered image in the response.</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_7a27bdbc-8552-4547-9f51-0f81b9539908" shape="rect"></a>"yes"</p>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_81244bcc-808e-499c-83d1-5a6b777d09a8" shape="rect"></a>indicates that an ICC profile shall be present in the rendered image in the response, describing its color characteristics, if the Media Type supports embedded ICC Profiles.</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_1d4dd703-0c3e-4d5c-a0c9-6c70087ccacc" shape="rect"></a>"srgb"</p>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_fede96af-807f-44cd-b63a-e42679e9b2f7" shape="rect"></a>indicates that an sRGB ICC profile shall be present in the image, if the Media Type supports embedded ICC Profiles, and that the pixels of the rendered image in the response shall be transformed from their original color space and be encoded in the sRGB color space [IEC 61966-2.1].</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_b93b19da-a742-4a2a-a9ff-0bc43d8bb0e5" shape="rect"></a>"adobergb"</p>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_5c617bc1-7d0e-4bf4-bcb2-e4b7a00ecd89" shape="rect"></a>indicates that an Adobe RGB ICC profile shall be present in the image, if the Media Type supports embedded ICC Profiles, and that the pixels of the rendered image in the response shall be transformed from their original color space and be encoded in the Adobe RGB color space [Adobe RGB].</p>
+                                    </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_1dd6652d-5069-4fbb-bb7b-cee307dd456b" shape="rect"></a>"rommrgb"</p>
+                                    </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                 <a id="para_d973222c-5ed8-4797-b3e5-be6f2fff55fa" shape="rect"></a>indicates that a ROMM RGB ICC profile shall be present in the image, if the Media Type supports embedded ICC Profiles, and that the pixels of the rendered image in the response shall be transformed from their original color space and encoded in the ROMM RGB color space [ISO 22028-2].</p>
+                                    </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_2675b469-4819-4689-ae1f-5a1615162efd" shape="rect"></a>When this parameter is not present:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_c83707af-f676-4de0-8c2e-11d7d0047a98" shape="rect"></a>an ICC profile may or may not be present in the image in the response;</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_99b7bb95-2ed3-4662-8033-66c76bad02b7" shape="rect"></a>the color characteristics of the image in the response may or may not be consistent with any DICOM ICC Profile (0028,2000) Attribute in the metadata.</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_c00be647-241d-4baa-b1c9-10dc3fde8f69" shape="rect"></a>The ICC Profile in the image in the response shall be:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_de4a88a4-45fa-4e31-bc44-edcae0b3ac3e" shape="rect"></a>the ICC profile of the color space specified explicitly by the parameter,</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_e28b299b-a9f0-4fe5-bb56-58b1983f055e" shape="rect"></a>otherwise, the ICC profile encoded in the source DICOM ICC Profile (0028,2000) Attribute, if any, appropriate to the selected frame,</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_afeb924b-85a8-4350-8fbf-f32777c3566c" shape="rect"></a>otherwise, the ICC profile, if any, embedded in the stored compressed representation of the selected frame,</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_9b1baa7d-3306-4660-8ba2-3affeedca70f" shape="rect"></a>otherwise, at the discretion of the origin server, the ICC profile of a well-known color space listed in <a href="../part03/sect_C.11.15.html#sect_C.11.15.1.2" class="olink" shape="rect">Section C.11.15.1.2 “Color Space” in PS3.3</a> that is appropriate to the type and source of the image.</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_81b276c6-c572-4c90-a902-8d3a9948c46c" shape="rect"></a>If the Media Type does not support embedded ICC Profiles:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_2dec5093-cdb2-4cc5-9a39-83cdb4c15da9" shape="rect"></a>a 400 Bad Request error shall be returned if the parameter value is other than "no"</p>
+                     </li>
+                  </ul>
+               </div>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_dac082b7-1879-41d6-b246-ccd5e3918c10" shape="rect"></a>This parameter allows ICC profile information to be present in the image in the response so that the user agent can make use of it for local color management (e.g., an ICC profile capable browser can apply the profile when displaying the rendered image in the response).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_02616218-8143-49c6-a362-deb15532fd37" shape="rect"></a>This parameter provides a limited mechanism for requesting that the origin server perform some color management. It provides the names of well-known color spaces for the rendered image in the response. It does not provide a mechanism to supply an arbitrary ICC profile, such as the calibration profile of a display, so it does not absolve the user agent from the need to handle its own color calibration and color management.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_80507148-4fc1-41e8-93ca-5151be0ded0f" shape="rect"></a>ICC profiles can theoretically be large relative to the compressed pixel data of a single frame, so the user agent may specify a parameter value of "no", retrieve the DICOM ICC Profile (0028,2000) Attribute value(s) that apply to multiple frames from the metadata, and combine these itself.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_03885bab-2716-480e-a0d2-4f872e0a88d9" shape="rect"></a>ICC profiles are embedded in rendered images of Media Type image/jpeg as one or more chunks in APP2 marker segments with an identifier of "ICC_PROFILE", as defined in Annex B of <a class="xref" href="chapter_2.html#biblio_ISOIEC15076-1" title="Image technology colour management - Architecture, profile format, and data structure" shape="rect">[<abbr class="abbrev">ISO 15076-1</abbr>]</a>.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_07511abf-7cfc-40ba-b202-54c73d3a149f" shape="rect"></a>ICC profiles are embedded in rendered images of Media Type image/jp2 either as JP2 Restricted or JPX Full profiles according to <a class="xref" href="chapter_2.html#biblio_ISOIEC15444-1" title="JPEG 2000 Image Coding System" shape="rect">[<abbr class="abbrev">ISO/IEC 15444-1</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_ISOIEC15444-2" title="JPEG 2000 Image Coding System: Extensions" shape="rect">[<abbr class="abbrev">ISO/IEC 15444-2</abbr>]</a>, respectively; rendered images in the response are not subject to the prohibition against inclusion of a JP2 box in JPEG 2000 compressed data streams in DICOM images.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_85387a42-c7d3-4053-8784-d4ec696d652e" shape="rect"></a>ICC profiles are embedded in rendered images of Media Type image/png in an iCCP chunk, as defined in <a class="xref" href="chapter_2.html#biblio_ISO15948" title="Information technology -- Computer graphics and image processing -- Portable Network Graphics (PNG): Functional specification" shape="rect">[<abbr class="abbrev">ISO 15948</abbr>]</a>.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.4.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.3.4.6 Multiple Value Matching </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3.5.2 Query Parameters For Thumbnails</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

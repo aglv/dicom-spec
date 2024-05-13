@@ -1,0 +1,1218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TTT.2 Application Cases</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_TTT.html" title="TTT X-Ray 3D Angiographic Image Encoding Examples (Informative)" />
+      <link rel="prev" href="chapter_TTT.html" title="TTT X-Ray 3D Angiographic Image Encoding Examples (Informative)" />
+      <link rel="next" href="sect_TTT.2.2.html" title="TTT.2.2 Case #2: Reconstruction From A Sub-set of Projection Frames" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TTT.2 Application Cases <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_TTT.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_TTT.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">TTT X-Ray 3D Angiographic Image Encoding Examples (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_TTT.html" shape="rect">X-Ray 3D Angiographic Image Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Application Cases</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_TTT.2" shape="rect"></a>TTT.2 Application Cases</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d5295b3e-f9e2-4e6d-90b0-1eb447e292f0" shape="rect"></a>This chapter describes different scenarios and application cases where the 3D volume is reconstructed from rotational angiography. Each application case is structured in four sections:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="1">
+               <li class="listitem">
+                  <p>
+                     <a id="para_b7d066cd-b597-44ec-baa8-456671eaacd8" shape="rect"></a>
+                        <span class="bold">
+                        <strong>User Scenario</strong>
+                     </span>: Describes the user needs in a specific clinical context, and/or a particular system configuration and equipment type.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c65c87e7-9762-4863-89e5-8286f3be724f" shape="rect"></a>
+                        <span class="bold">
+                        <strong>Encoding Outline</strong>
+                     </span>: Describes the X-Ray 3D Angiographic Image SOP Class related to this scenario, and highlights key aspects.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c5a6f68e-f3de-490e-919f-40ada1971e54" shape="rect"></a>
+                        <span class="bold">
+                        <strong>Encoding Details</strong>
+                     </span>: Provides detailed recommendations of the key Attributes of the Image IOD(s) to address this particular scenario. The tables are similar to the IOD tables of the <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Only Attributes with a specific recommendation in this particular scenario have been included.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_876c60a9-860b-4746-b065-19d4a39808c4" shape="rect"></a>
+                        <span class="bold">
+                        <strong>Example</strong>
+                     </span>: Presents a typical example of the scenario, with realistic sample values, and gives details of the encoding of the key Attributes of the Image IOD(s) to address this particular scenario. In the values of the Attributes, the text in bold face indicates specific Attribute values; the text in italic face gives an indication of the expected value content.</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_49f21ad7-00db-4769-b675-68bd96c84ac7" shape="rect"></a>The first application case describes the most general reconstruction scenario, and can be considered as a baseline. The further application cases only describe the specificities of the new scenario vs. the baseline.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_TTT.2.1" shape="rect"></a>TTT.2.1 Case #1: One Rotation, One 2D Instance, One Reconstruction, One X-Ray 3D Instance</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_263dab3c-ac2f-4b16-94c1-84b143df370a" shape="rect"></a>This application case is related to the most general reconstruction of a 3D volume directly from all the frames of a rotational 2D projection acquisition.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_TTT.2.1.1" shape="rect"></a>TTT.2.1.1 User Scenario</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_cecca30c-158e-4459-9e9d-69d481b4d406" shape="rect"></a>The image acquisition system performs a rotational acquisition around the patient and a volume is reconstructed from the acquired data (e.g., through "back-projection" algorithm). The reconstruction can either occur on the same system (e.g., Acquisition Modality) or a secondary processing system (e.g., Co-Workstation).</p>
+               <p>
+                  <a id="para_e24cb272-9ae5-445a-b0e1-43e723f3c96c" shape="rect"></a>The reconstructed Volume needs to be encoded and kept saved for interchange with 3D rendering application or further equipment involved during an interventional procedure.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_TTT.2.1.2" shape="rect"></a>TTT.2.1.2 Encoding Outline</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f44f98b3-c949-4297-b4a0-5a45529bcc33" shape="rect"></a>This is the basic use case of X-Ray 3D Angiographic image encoding.</p>
+               <p>
+                  <a id="para_ca619fec-df01-4be7-9383-a0ff20717d4f" shape="rect"></a>The rotational acquisition can be encoded either as a multifamily XA Image with limited frame-specific Attributes or as an Enhanced XA Image, with frame-specific Attributes encoded that support the algorithms to reconstruct volume data.</p>
+               <p>
+                  <a id="para_c5612995-802d-4eb6-aba6-da78f40ef9ff" shape="rect"></a>The volume data is encoded as an X-Ray 3D Angiographic instance. The volume data typically spans the complete region of the projected matrix size (in number of rows and columns).</p>
+               <p>
+                  <a id="para_ac7b4f95-d92f-470b-a27f-b5b8a6fc31d7" shape="rect"></a>All the projections of the original XA instance or Enhanced XA instance are used to reconstruct the volume.</p>
+               <p>
+                  <a id="para_292bddf9-b029-46af-9bc8-546d84300fef" shape="rect"></a>The X-Ray 3D Angiographic instance references the original XA instance or Enhanced XA instance and uses Attributes to define the context on how the original 2D image frames are used to create the volume.</p>
+               <p>
+                  <a id="para_31643868-59c7-42f6-9291-1af0c4e3a1b3" shape="rect"></a>
+                        </p>
+               <div class="figure">
+                  <a id="figure_TTT.2.1-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_TTT.2.1-1.svg" alt="Encoding of a 3D reconstruction from all the frames of a rotational acquisition" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure TTT.2.1-1. Encoding of a 3D reconstruction from all the frames of a rotational acquisition</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                    </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_TTT.2.1.3" shape="rect"></a>TTT.2.1.3 Encoding Details</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_TTT.2.1.3.1" shape="rect"></a>TTT.2.1.3.1 X-Ray 3D Angiographic Image IOD</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.1" shape="rect"></a>TTT.2.1.3.1.1 General and Enhanced Series Modules Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_e6194357-7a42-4f71-a174-5b91f74dedaf" shape="rect"></a>These modules encode the Series relationship of the created volume.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-1" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-1. General and Enhanced Series Modules Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5deefddb-f195-4360-871e-1064ec897d55" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_61dc5f58-789d-4975-8ef8-68ff8d4116e0" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_9cf53081-6beb-4572-b1e6-e9cebf722dcc" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_981f0821-26bc-4897-a315-59c89fa28b34" shape="rect"></a>Series Instance UID</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_2fdfa867-4a35-4501-a6df-cc5efdae4629" shape="rect"></a>(0020,000E)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_c30319b6-aba1-4cc2-a670-0831bc6dc80c" shape="rect"></a>Use a different Series than the original projections.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_924727e2-1a82-440a-8778-9603387c1518" shape="rect"></a>Series Description</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_dbfee8ca-6f80-4472-a4a9-fc0cf0626dd4" shape="rect"></a>(0008,103E)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_475733d3-6a52-4cdf-8c14-cd67348d0762" shape="rect"></a>Free text to describe the volume content, different from the description of the series of the projection images.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_8ecfb06f-d145-4f95-a8b9-ca38c3678072" shape="rect"></a>Protocol Name</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_35a43db3-af54-4eef-8edb-11846f098400" shape="rect"></a>(0018,1030)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_6ac04bda-58cd-4a56-8962-33cdf65ec87b" shape="rect"></a>Free text to describe technical aspects of the reconstruction (focusing on imaging protocol rather than clinical protocol). May be relevant for grouping, sorting or finding of the X-Ray 3D volume.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_cc643161-9491-493c-9bb5-3b2cfba0b5fb" shape="rect"></a>Referenced Performed Procedure Step Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3ec47001-823b-4190-9550-2be532d7ccfe" shape="rect"></a>(0008,1111)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3397e4aa-5f3a-4d69-8b4b-8bf2896c3ea4" shape="rect"></a>Reference to the image acquisition procedure. May also reference a dedicated processing procedure step (e.g., UPS).</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.2" shape="rect"></a>TTT.2.1.3.1.2 Frame of Reference Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_5cc7decb-7c52-4342-9621-ee9b1912fc4b" shape="rect"></a>This module encodes the identifier for the spatial relationship base of this volume. If the originating 2D images do not deliver a value, it has to be created for the reconstructed volume.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-2" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-2. Frame of Reference Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_1d5a9379-ddbe-4217-94d7-fb326a6745fb" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3c7b5d7d-4b16-4263-9ac1-c84cb1394f55" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_6d845eb1-2c2d-497b-8212-9383e16fa81e" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_8625089d-1c7f-4eaa-a034-c25078c9b3fa" shape="rect"></a>Frame of Reference UID</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_8680d47d-8402-41e0-9d1f-709231cb66fa" shape="rect"></a>(0020,0052)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_c6683b50-276a-43da-a3dd-2db59675e98e" shape="rect"></a>Volumes with identical FoR UID share the same spatial relationship. Copy the FoR UID if the originating image is encoded as an Enhanced XA Image.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_37ac0206-2d2e-413c-b92f-e670fca9065e" shape="rect"></a>Position Reference Indicator</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_901abe7e-9fe0-430a-974f-530400e838da" shape="rect"></a>(0020,1040)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5e10c7b2-9465-4236-b742-f8a2b0f81584" shape="rect"></a>If the system is capable to derive such information from the anatomy-related information in the projection X-Ray image data, otherwise no recommendation to set a value.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.3" shape="rect"></a>TTT.2.1.3.1.3 General and Enhanced General Equipment Modules Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_7c9ea8ef-5e11-4ad5-9f69-4595ad7b7cc8" shape="rect"></a>This module encodes the equipment identification information of the system that reconstructed the volume data. Since the reconstruction is not necessarily performed by the same system that acquired the projections, the identification of the Equipment performing the reconstruction is recommended. Furthermore the Contributing Equipment Sequence (0018,A001) of the <a href="../part03/sect_C.12.html#sect_C.12.1" class="olink" shape="rect">SOP Common Module</a> is recommended to be used to preserve the identification of the system that created the projection image that was base for the reconstruction.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.4" shape="rect"></a>TTT.2.1.3.1.4 Image Pixel Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_7671c5ef-baf2-469d-9bda-e26238ff1009" shape="rect"></a>This module encodes the actual pixels of the volume slices. Each slice is encoded as one frame of the X-Ray 3D Angiographic instance. The order of the frames encoded in the pixel data is aligned with the Image Position (Patient) Attribute. The order of frames is optimal for simple 2D viewing if the x-,y-,z-values steadily increase or decrease.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.5" shape="rect"></a>TTT.2.1.3.1.5 Enhanced Contrast/Bolus Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_bff7b8a4-6f2a-4340-a211-9a07209440dc" shape="rect"></a>This module encodes the contrast media applied. The minimum information that needs to be provided is related to the contrast agent and the administration route. In the reconstructed image, the contrast information comes either from the acquisition system in case of direct reconstruction without source DICOM instances, or from the projection images in case of reconstruction from source DICOM instances.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-3" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-3. Enhanced Contrast/Bolus Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_ec7a5dc3-55d4-4ae2-934a-cc4132e0833d" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_0948a20d-50a9-4b0e-be49-4eabe196045e" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_9e5b8240-1302-42d0-bf2a-8b7903f59671" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_cb9d11f3-cdff-4aa4-b192-b89abd573110" shape="rect"></a>Contrast/Bolus Agent Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_f6c0112b-ec10-43a1-8df7-93f444d94f0b" shape="rect"></a>(0018,0012)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1"></td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5c864585-f437-42f9-96bd-c8ba2562765e" shape="rect"></a>
+                                                <span class="italic">&gt;Include <a href="../part03/sect_8.8.html#table_8.8-1" class="olink" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes” in <span class="olinkdocname">PS3.3</span>
+                                             </a> Baseline <a href="../part16/sect_CID_12.html" class="olink" shape="rect">CID 12 “Imaging Contrast Agent”</a>.</span>
+                                            </p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1"></td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5aeafa51-c197-4076-a2e2-7b4dc6055061" shape="rect"></a>See <a class="xref" href="sect_TTT.2.html#sect_TTT.2.1.3.1.5.1" title="TTT.2.1.3.1.5.1 Differences between XA and Enhanced XA" shape="rect">Section TTT.2.1.3.1.5.1</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_eaf91246-eb85-4ec2-bf7c-a25d74dcfeba" shape="rect"></a>&gt;Contrast/Bolus Administration Route Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_0eae6ee0-afa7-489a-8565-236c03e154c2" shape="rect"></a>(0018,0014)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1"></td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_fd85d93b-4e2d-4bc3-8871-eb5a36d59a0d" shape="rect"></a>
+                                                <span class="italic">&gt;&gt;Include <a href="../part03/sect_8.8.html#table_8.8-1" class="olink" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes” in <span class="olinkdocname">PS3.3</span>
+                                             </a> Baseline <a href="../part16/sect_CID_11.html" class="olink" shape="rect">CID 11 “Administration Route”</a>.</span>
+                                            </p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1"></td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_e12ec190-0ae3-440b-b50d-8fc4073a6a00" shape="rect"></a>See <a class="xref" href="sect_TTT.2.html#sect_TTT.2.1.3.1.5.1" title="TTT.2.1.3.1.5.1 Differences between XA and Enhanced XA" shape="rect">Section TTT.2.1.3.1.5.1</a>.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                     <div class="section">
+                        <div class="titlepage">
+                           <div>
+                              <div>
+                                 <h6 class="title">
+                                    <a id="sect_TTT.2.1.3.1.5.1" shape="rect"></a>TTT.2.1.3.1.5.1 Differences between XA and Enhanced XA</h6>
+                              </div>
+                           </div>
+                        </div>
+                        <p>
+                           <a id="para_02169a67-9404-45e6-be08-b72b4bea46dc" shape="rect"></a>If the source instance is encoded as an Enhanced XA instance, the Enhanced Contrast/Bolus Module is specified in that IOD, then those values are copied from the source instance.</p>
+                        <p>
+                           <a id="para_5bfe4b4b-136a-4729-a87b-c0a3ab2296b3" shape="rect"></a>If the source instance is encoded as an XA Image, only the Contrast/Bolus Module is specified in that IOD. Although acquisition devices are encouraged to provide details of the contrast, most of the relevant Attributes are type 3, so it is possible that if contrast was applied, the only indication will be the presence of Contrast/Bolus Agent (0018,0010) since that Attribute is type 2. In that case, if the application is unable to get more specific information from the operator, it may populate the contrast details with the generic <a class="link" href="http://snomed.info/id/7140000" target="_blank" shape="rect">(7140000, SCT, "Contrast agent")</a> code for contrast agent and the <a class="link" href="http://snomed.info/id/261665006" target="_blank" shape="rect">(261665006, SCT, "Unknown")</a> code for the administration route.</p>
+                     </div>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.6" shape="rect"></a>TTT.2.1.3.1.6 Multi-frame Dimensions Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_16ed9bfe-452a-4037-ae06-2799175bd528" shape="rect"></a>This module encodes a (default) presentation order of the image frames.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-4" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-4. Multi-frame Dimensions Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3e82bf21-4b58-47c0-bd16-a0d9e441250f" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_d2a18f84-3fe6-4c74-9efc-5d725422daee" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5e103b17-d4d6-423e-bc4c-ce34f72a0e19" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_c63d14c6-cb9e-403c-8454-bfc8ecb54b29" shape="rect"></a>Dimension Organization Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_224373b9-a48b-42ea-91a7-7e476347dd96" shape="rect"></a>(0020,9221)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_709d0e9c-1bd1-48f9-9d48-84deb76b5fa8" shape="rect"></a>This will be an initial single dimension and therefore a single Dimension UID is sufficient.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_1c85a7dd-cf2c-4498-b7d1-196ccadf443e" shape="rect"></a>Dimension Organization Type</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_9abebc6a-ab6e-4a31-b803-7498bae2831c" shape="rect"></a>(0020,9311)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3ecde9f9-9b1e-42c3-a555-f49ecdf93a89" shape="rect"></a>The value will be "3D".</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_8dd69c41-98ad-40d9-92a7-d09fb3b3f72c" shape="rect"></a>Dimension Index Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_742433fa-1cad-4226-99e1-17ff3a0eae40" shape="rect"></a>(0020,9222)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_f588b224-e0af-4c7a-a15f-04b78640c4fc" shape="rect"></a>Specifies a Dimension Index that refers to the Image Position (Patient) as dimension for frame order during 2D presentation of an X-Ray 3D volume.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.7" shape="rect"></a>TTT.2.1.3.1.7 Patient Orientation Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_818d0ac6-9f1c-479f-9159-0875c495f95b" shape="rect"></a>This module encodes the orientation of the Patient for later use with same or other equipment. The related coded terms can be derived from the Patient Position (0018,5100) according to the following table, where:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_ca33977b-04e9-4003-ab61-eead3661ae45" shape="rect"></a>PO denotes the Patient Orientation Code Sequence (0054,0410);</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_2391578d-39b2-4ac6-a38c-a4f3275836b2" shape="rect"></a>POM denotes the Patient Orientation Modifier Code Sequence (0054,0412);</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_eeb5d4ce-c0c7-47cd-9276-0c50cd646049" shape="rect"></a>PGR denotes the Patient Gantry Relationship Code Sequence (0054,0414).</p>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="table">
+                        <a id="table_TTT.2.1-5" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-5. Patient Position to Orientation Conversion Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a210c985-5ef0-4f3a-9414-afd442562cec" shape="rect"></a>Patient Position</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_e3965fea-1cd2-4dc1-8b06-175286aac4b3" shape="rect"></a>Patient Orientation Coding</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_fcd9e2d1-9562-475b-b207-ce1b8812cf09" shape="rect"></a>HFS</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_54d2745c-04f9-445e-abc6-5bb5a2214e1f" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_be5d77f8-fd63-4f0e-b034-28254bb41aee" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/40199007" target="_blank" shape="rect">(40199007, SCT, "supine")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_dcc1300d-1bd2-44cc-b961-fe8a35a693c3" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102540008" target="_blank" shape="rect">(102540008, SCT, "headfirst")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_cfbc36c0-fd4b-4cb6-91d3-5a7ba7953402" shape="rect"></a>HFP</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_e7509164-47d0-448d-a74b-40d12b514978" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_070c7939-9873-4ae6-9a07-f61da08f0ed3" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/1240000" target="_blank" shape="rect">(1240000, SCT, "prone")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_e0735010-542f-45e7-b827-33a5a68e4898" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102540008" target="_blank" shape="rect">(102540008, SCT, "headfirst")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3f7874f7-6282-44c4-878c-3c282af0005b" shape="rect"></a>FFS</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_ec1aea0c-a63f-4118-af8f-a9b7e6ce5362" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_8d5df838-4ebc-4410-b07f-6e5dcf9b5f68" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/40199007" target="_blank" shape="rect">(40199007, SCT, "supine")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_4f2d90b5-07f2-436b-bc6c-9390a8a7f009" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102541007" target="_blank" shape="rect">(102541007, SCT, "feet-first")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_f76e6546-bb0e-42c0-84f7-e53de29b40b9" shape="rect"></a>FFP</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a3c2e83e-5dbd-4327-aba2-6ae5066f190e" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_e25f7da0-e192-4d91-9376-5012b0fb1fc3" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/1240000" target="_blank" shape="rect">(1240000, SCT, "prone")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_5df9c693-b26c-4fb6-b919-44965511b736" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102541007" target="_blank" shape="rect">(102541007, SCT, "feet-first")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_633fc4c3-00b4-4e6e-a366-d78cefbac976" shape="rect"></a>HFDR</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3c850c91-3327-4749-a9a4-8054f589c6a3" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_6fcf3dfc-f426-4faa-9d38-7a59aee87a09" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/102535000" target="_blank" shape="rect">(102535000, SCT, "right lateral decubitus")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_6d22fb71-6c98-4e36-86c6-ede449999c8c" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102540008" target="_blank" shape="rect">(102540008, SCT, "headfirst")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_42a5de91-50dd-42d2-b93e-0b181861eed4" shape="rect"></a>HFDL</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_039fe63b-b3c8-47b5-8593-508335c4d791" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_06567eb2-a1b6-49f9-80fd-735121390418" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/102536004" target="_blank" shape="rect">(102536004, SCT, "left lateral decubitus")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_e998c70a-5ec0-434e-be05-15a1729e9712" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102540008" target="_blank" shape="rect">(102540008, SCT, "headfirst")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5ba0ea69-44ab-4a67-a6ba-1669ea96651b" shape="rect"></a>FFDR</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_6cef6065-ff14-4c20-bb75-79c3d11d220b" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_c2f632b5-b1d8-4f65-954b-1273615f691c" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/102535000" target="_blank" shape="rect">(102535000, SCT, "right lateral decubitus")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_f45dcd7e-cf68-4d3f-8f2b-568742094ef7" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102541007" target="_blank" shape="rect">(102541007, SCT, "feet-first")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5dc1447a-9d76-46e6-978a-2ac03a621f14" shape="rect"></a>FFDL</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3d73c02c-8d37-48b7-ae41-b33b4c91cad0" shape="rect"></a>PO: <a class="link" href="http://snomed.info/id/102538003" target="_blank" shape="rect">(102538003, SCT, "recumbent")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_dee1ca48-14e4-488e-8300-075e78cf6c7f" shape="rect"></a>POM: <a class="link" href="http://snomed.info/id/102536004" target="_blank" shape="rect">(102536004, SCT, "left lateral decubitus")</a>
+                                            </p>
+                                            <p>
+                                          <a id="para_ab853d00-4794-4dce-b26a-186ac2708429" shape="rect"></a>PGR: <a class="link" href="http://snomed.info/id/102541007" target="_blank" shape="rect">(102541007, SCT, "feet-first")</a>
+                                            </p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.8" shape="rect"></a>TTT.2.1.3.1.8 X-Ray 3D Image Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_a4d8ec81-769a-4c8f-94ff-fd5399e752fa" shape="rect"></a>This module encodes the specific content of the reconstructed volume.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-6" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-6. X-Ray 3D Image Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_85162d10-011b-414c-9628-4efa8fbcf298" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a0358adf-f24c-4333-96c2-a55959fec2c9" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_cd3a5110-de49-4af1-9a0b-897e44b1feec" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_b4cd5b9a-7d8e-4acc-a557-bf8574adc279" shape="rect"></a>Image Type</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_db885b59-e71c-4c92-a4f6-2ac9359942aa" shape="rect"></a>(0008,0008)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_cf91d46e-272d-481a-b039-271e78105aea" shape="rect"></a>Use "ORIGINAL" value 1 (Pixel Data Characteristics) to indicate a reconstruction from original projections.</p>
+                                            <p>
+                                          <a id="para_bbaa27d9-a0c6-4aee-a8f8-a237f410a02c" shape="rect"></a>Use "VOLUME" in value 3 (Image Flavor) to indicate regularly sampled.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3e590be3-acc5-4108-8edf-3f7f59321f74" shape="rect"></a>Icon Image Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a2ed9def-2730-435e-b956-39c5ee4ee67b" shape="rect"></a>(0088,0200)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_388fe8c4-9d40-4658-ad86-3ba21d11993b" shape="rect"></a>Include if the reconstruction application may be able to generate a rendered representative icon image.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.9" shape="rect"></a>TTT.2.1.3.1.9 X-Ray 3D Angiographic Image Contributing Sources Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_74b33b89-3d94-4631-9b7f-0668394dc149" shape="rect"></a>This module encodes the source SOP instances used to create the X-Ray 3D Angiographic instance.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-7" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-7. X-Ray 3D Angiographic Image Contributing Sources Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_edb780e4-e9de-45c5-bf3e-06a5383dd3c0" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a26a3304-d47d-4b81-b513-71887c1430da" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_51e33adc-1d8e-4a8c-b568-cea2d7bd2d84" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_644e51d5-0566-4c49-a6d3-e5ed781c2503" shape="rect"></a>Contributing Sources Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_6344b0c8-dfeb-4ce4-a6d6-58b2317ee0c5" shape="rect"></a>(0018,9506)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_c3610399-5e7e-4963-9eb7-53b069d99036" shape="rect"></a>One item since there is only one originating image that contributed to the creation of the X-Ray 3D Angiographic image.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.10" shape="rect"></a>TTT.2.1.3.1.10 X-Ray 3D Angiographic Acquisition Module Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_7016c2a1-b2dc-468d-9500-bb9ec7dde203" shape="rect"></a>This module encodes the important technical and physical parameters of the source SOP instances used to create the X-Ray 3D Angiographic Image instance.</p>
+                     <p>
+                        <a id="para_ad0c141a-16ca-4f21-bb64-02844352af8a" shape="rect"></a>The contents of the Enhanced XA Image IOD and XA Image IOD are significantly different. Therefore the contents of the X-Ray 3D Acquisition Sequence will vary depending on availability of encoded data in the source instance.</p>
+                     <p>
+                        <a id="para_d3efb624-e3f9-4c66-a83e-5da6dc23a4eb" shape="rect"></a>The content of the X-Ray 3D General Positioner Movement Macro provides a general overview on the Positioner data. In case a system does not support the Isocenter Reference System, it may still be of advantage to provide the patient-based Positioner Primary and Secondary Angles in the Per Projection Acquisition Sequence (0018,9538).</p>
+                     <p>
+                        <a id="para_0fdd1137-a3c4-4190-b483-165b3491679b" shape="rect"></a>The contents of the Per Projection Acquisition Sequence (0018,9538) need to be carefully aligned with the list of frame numbers in the Referenced Frame Numbers (0008,1160) Attribute in the Source Image Sequence (0008,2112).</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-8" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-8. X-Ray 3D Angiographic Acquisition Module Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_af7ff8d0-2b32-45e2-8d79-32fb96b94a69" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3fb4457a-4e56-4f93-a232-288e8d797ed7" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_34231643-171a-46e1-97b6-f5c7a691492a" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_bf630930-a737-4ba0-a3bc-9993512d7ea5" shape="rect"></a>X-Ray 3D Acquisition Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_c2b19d82-de8a-4f76-893e-4e6247238e66" shape="rect"></a>(0018,9507)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_f173a807-3aaa-4f8c-8a57-26ca2be900c1" shape="rect"></a>One item since there is only one acquisition context that contributed to the reconstruction of the X-Ray 3D Angiographic image pixel data contents.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.11" shape="rect"></a>TTT.2.1.3.1.11 Pixel Measures Macro Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_fdf125e5-cb5c-4431-ac70-4fc10fe8bc80" shape="rect"></a>This module encodes the detailed size of the volume element (Pixel Spacing for row/column dimension of each slice, and Slice Thickness for the distance between slices). It depends on the reconstruction algorithm and is not necessarily identical to the related sizes in the projection images.</p>
+                     <p>
+                        <a id="para_b5834649-930f-453a-8f06-e45e8a73ff4e" shape="rect"></a>For a single volume this macro is encoded "shared" as all the slices will have the same Pixel Spacing and Slice Thickness.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.12" shape="rect"></a>TTT.2.1.3.1.12 Frame Content Macro Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_99c3901b-cceb-49fb-97d8-9385ce8efe78" shape="rect"></a>This module encodes the timing information of the frames, as well as dimension and stack index values.</p>
+                     <p>
+                        <a id="para_49966c25-3431-464c-815e-b7b31d1b6180" shape="rect"></a>In the reconstruction from rotational projections the figure C.7.6.16-2 of <a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.2.1" class="olink" shape="rect">Section C.7.6.16.2.2.1 “Timing Parameter Relationships” in <span class="olinkdocname">PS3.3</span>
+                        </a> should be interpreted carefully. All the frames forming one X-Ray 3D Angiographic volume have been reconstructed simultaneously, therefore all of them have a same time reference and the same acquisition duration.</p>
+                     <p>
+                        <a id="para_5efcf806-8524-4fb7-87de-bcd4d8724478" shape="rect"></a>The projections have been acquired over a period of time, all of them contributing to each 3D frame. Therefore, it's recommended to encode the 3D frame acquisition duration as the elapsed time from the first to the last projection frame time that contributed to that volume.</p>
+                     <div class="table">
+                        <a id="table_TTT.2.1-9" shape="rect"></a>
+                        <p class="title">
+                           <strong>Table TTT.2.1-9. Frame Content Macro Recommendations</strong>
+                        </p>
+                        <div class="table-contents">
+                           <table frame="box" rules="all">
+                              <thead>
+                                 <tr valign="top">
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_e6ba74d3-d19c-4981-94d4-6c0a9d46f7a0" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                    <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_feff1530-c7bd-4cc3-9718-17bb046e3087" shape="rect"></a>Tag</p>
+                                        </th>
+                                    <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_e670a66d-7be2-4f75-b344-3288934e5411" shape="rect"></a>Recommendation</p>
+                                        </th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_9bfbdca0-66e4-4d88-81c5-71dcb03a795f" shape="rect"></a>Frame Content Sequence</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_b2162799-584d-4c43-bd29-cd97c8dcc600" shape="rect"></a>(0020,9111)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_9b559d44-f1cc-49ee-b5b6-0e8307ccf366" shape="rect"></a>Provides details for each frame. The Date and Time Attributes are identical for all frames and are set to the date/time of the first projection frame due to the nature of the volume creation. The Stack information can be used to group frames into sub-volumes, if needed.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_2a32162f-3221-45ac-a304-a8c361a8124f" shape="rect"></a>&gt;Frame Reference DateTime</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_ae067d48-3376-4207-afb3-486df636d336" shape="rect"></a>(0018,9151)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_219ff63d-732e-4818-b867-912c6e27b636" shape="rect"></a>Use the date and time of the first 2D frame used for the reconstruction of this 3D frame. Same value for all the frames of the same reconstruction.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_2a323e95-dd90-4d42-8531-b643182afe8a" shape="rect"></a>&gt;Frame Acquisition DateTime</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_8f6a636a-3841-4b71-bdac-5195a1143fd7" shape="rect"></a>(0018,9074)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_03e84ea7-fef1-4dff-8868-b688b97c6cf9" shape="rect"></a>Use the same value as the Frame Reference DateTime (0018,9151).</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_a5709f5a-8e61-493c-800c-25a430ec8415" shape="rect"></a>&gt;Frame Acquisition Duration</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_5f125845-c4f1-40e1-ba46-bf7e545d337d" shape="rect"></a>(0018,9220)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_0cd41a5e-c154-481f-9682-9055aa0b7531" shape="rect"></a>Use the duration of the rotational acquisition. Same value for all the frames of the same reconstruction.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_6d694086-b2e6-4937-bbfa-08bbf9fb5576" shape="rect"></a>&gt;Dimension Index Values</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_67f02b76-634d-4a9f-a5bc-0d0f8950a9b5" shape="rect"></a>(0020,9157)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_ccd2dea0-e732-44f3-a19a-4b8f9d9f8e26" shape="rect"></a>From 1 to M or M to 1 depending whether the frames are to be displayed in the storage order or reverse, M being the number of frames of the reconstructed volume.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_55058fa3-1275-4ab8-8863-424b9ea51d94" shape="rect"></a>&gt;Stack ID</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_3205bf20-118b-4519-bcdf-ecc3f8120c1f" shape="rect"></a>(0020,9056)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_531647d2-d8c0-4c4a-8567-69315d285c24" shape="rect"></a>Use the value "1" for all the frames, since they belong to the same reconstructed volume.</p>
+                                        </td>
+                                 </tr>
+                                 <tr valign="top">
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_27f714b6-f479-4c99-a96e-c8e8cf224d2f" shape="rect"></a>&gt;In-Stack Position Number</p>
+                                        </td>
+                                    <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_11b984c8-ccb3-4993-a8a6-491ae1346e83" shape="rect"></a>(0020,9057)</p>
+                                        </td>
+                                    <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                          <a id="para_42ff5dba-4b6b-4f60-a9a3-092d0bab0ebb" shape="rect"></a>From 1 to M, where M is the number of frames of the reconstructed volume.</p>
+                                        </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <br class="table-break" clear="none" />
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.13" shape="rect"></a>TTT.2.1.3.1.13 Derivation Image Macro Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_f4f4ec9d-1e8b-470d-b102-bc900739e3cc" shape="rect"></a>The volume is directly reconstructed from the original set of projections and therefore not "derived" in this sense. Thus this macro is not applicable in this scenario as the contents of the Contributing Sources Sequence (0018,9506) and the X-Ray 3D Acquisition Sequence (0018,9507) are sufficient to describe the relationship to the originating image.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.14" shape="rect"></a>TTT.2.1.3.1.14 Frame Anatomy Macro Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_42ff6afd-80d0-4121-906e-80ba9b893fbf" shape="rect"></a>This macro encodes the anatomical context. It can be important to parameterize the presentation of the volumes. For a single volume this macro is encoded "shared". Typically the anatomy of the volume is only available if the information is already provided within the originating projection image, either by detection algorithm or by user input.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_TTT.2.1.3.1.15" shape="rect"></a>TTT.2.1.3.1.15 X-Ray 3D Frame Type Macro Recommendations</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_825bfb53-6637-4826-861f-5307a4ffbedc" shape="rect"></a>This macro encodes the general characteristics of the volume slices like color information for presentation, volumetric properties for geometrical manipulations etc. In case of a single volume, this macro is encoded "shared" as each slice of the volume has identical characteristics. If multiple volumes are encoded in a single instance, this macro may be encoded "per frame".</p>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_TTT.2.1.4" shape="rect"></a>TTT.2.1.4 Example</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_TTT.2.1.4.1" shape="rect"></a>TTT.2.1.4.1 Reconstruction Using All Frames of An Enhanced XA Image</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_c5055c66-31fd-4378-9e57-e6b116e51ff2" shape="rect"></a>This basic example is the reconstruction of a volume by a back-projection from all frames of a rotational acquisition which have been encoded as an Enhanced XA Instance. The rotational acquisition takes 5 seconds to acquire all the projections.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_5e097785-73e4-4b42-84f5-d6a715d4bf92" shape="rect"></a>The example would be very similar if the rotational acquisition was encoded as an XA Image.</p>
+                  </div>
+                  <p>
+                     <a id="para_921225b8-fc8f-46a2-a9cb-870b5a17fd72" shape="rect"></a>The dimension organization is based on the spatial position of the 3D frames. The frames are to be displayed in the same order as stored.</p>
+                  <p>
+                     <a id="para_ebc4c3b6-677d-4f17-a528-36725540514e" shape="rect"></a>The UIDs of this example correspond to the diagram shown in <a class="xref" href="sect_TTT.2.html#figure_TTT.2.1-1" title="Figure TTT.2.1-1. Encoding of a 3D reconstruction from all the frames of a rotational acquisition" shape="rect">Figure TTT.2.1-1</a>
+                        </p>
+                  <p>
+                     <a id="para_dee31e13-7d72-42b1-95aa-f0369bf401de" shape="rect"></a>
+                            </p>
+                  <div class="figure">
+                     <a id="figure_TTT.2.1-2a" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.17_TTT.2.1-2a.svg" alt="Attributes of 3D Reconstruction using all frames" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure TTT.2.1-2a. Attributes of 3D Reconstruction using all frames</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                            </p>
+                  <div class="figure">
+                     <a id="figure_TTT.2.1-2b" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.17_TTT.2.1-2b.svg" alt="Attributes of 3D Reconstruction using all frames (continued)" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure TTT.2.1-2b. Attributes of 3D Reconstruction using all frames (continued)</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                        </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_TTT.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_TTT.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TTT X-Ray 3D Angiographic Image Encoding Examples (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TTT.2.2 Case #2: Reconstruction From A Sub-set of Projection Frames</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

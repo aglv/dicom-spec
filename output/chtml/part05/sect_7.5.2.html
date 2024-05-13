@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7.5.2 Delimitation of The Sequence of Items</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="sect_7.5.html" title="7.5 Nesting of Data Sets" />
+      <link rel="prev" href="sect_7.5.html" title="7.5 Nesting of Data Sets" />
+      <link rel="next" href="sect_7.5.3.html" title="7.5.3 Sequence Inheritance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7.5.2 Delimitation of The Sequence of Items <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_7.5.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">7.5 Nesting of Data Sets</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_7.html" shape="rect">The Data Set</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_7.5.html" shape="rect">Nesting of Data Sets</a>
+         </span> &gt; <span class="breadcrumb-node">Delimitation of The Sequence of Items</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_7.5.2" shape="rect"></a>7.5.2 Delimitation of The Sequence of Items</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_a09882d6-704b-4ed5-904a-82720bcb9314" shape="rect"></a>Delimitation of the last Item of a Sequence of Items, encapsulated in a Data Element of Value Representation SQ, shall be in one of the two following ways:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_d71de31c-4f0d-4931-abc0-a6c37746a639" shape="rect"></a>Explicit Length: The number of bytes (even) contained in the Data Element Value (following but not including the Value (Sequence) Length Field) is encoded as a 32-bit unsigned integer value (see <a class="xref" href="chapter_7.html#sect_7.1" title="7.1 Data Elements" shape="rect">Section 7.1</a>). This length shall include the total length resulting from the sequence of zero or more items conveyed by this Data Element. This Data Element Length shall be equal to 00000000H if the sequence of Items contains zero Items.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_029a52f3-dfa3-4118-a6d8-80b10d81e9c8" shape="rect"></a>Undefined Length: The Value (Sequence) Length Field shall contain a Value FFFFFFFFH to indicate a Sequence of Undefined Length. It shall be used in conjunction with a Sequence Delimitation Item. A Sequence Delimitation Item shall be included after the last Item in the sequence. Its Item Tag shall be (FFFE,E0DD) with a Value (Item) Length Field of 00000000H. No Value shall be present. A Sequence containing zero Items is encoded by a Sequence Delimitation Item only.</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_2b122d42-aee2-48de-ab9a-7fea2ceda162" shape="rect"></a>The encoder of a Sequence of Items may choose either one of the two ways of encoding. Both ways of encoding shall be supported by decoders of the Sequence of Items.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_7bf5035d-a895-469c-9c77-d0ba09d006cd" shape="rect"></a>The Sequence Delimitation Item Tag (FFFE,E0DD) is different from the Item Delimitation Tag (FFFE,E00D) introduced above in that it indicates the end of a Sequence of Items whose Length was left undefined. If an Undefined Length Item is the last Item of a Sequence of Items of Undefined Length, then an Item Delimitation Tag will be followed by a Sequence Delimitation Tag.</p>
+         </div>
+         <p>
+            <a id="para_4bd79395-f404-4f80-b16b-a449083e55c7" shape="rect"></a>For an example of an SQ Data Element of Explicit Length encapsulating Items of Explicit Length see <a class="xref" href="sect_7.5.2.html#table_7.5-1" title="Table 7.5-1. Example of a Data Element with Implicit VR Defined as a Sequence of Items (VR = SQ) with Three Items of Explicit Length" shape="rect">Table 7.5-1</a>.</p>
+         <p>
+            <a id="para_b150cbb6-e619-457c-a842-4f05ef732c08" shape="rect"></a>For an example of an SQ Data Element of Undefined Length encapsulating Items of Explicit Length see <a class="xref" href="sect_7.5.2.html#table_7.5-2" title="Table 7.5-2. Example of a Data Element with Explicit VR Defined as a Sequence of Items (VR = SQ) of Undefined Length, Containing Two Items of Explicit Length" shape="rect">Table 7.5-2</a>.</p>
+         <p>
+            <a id="para_6da2f461-bed5-43c9-88a3-7a2ef5b9e8e8" shape="rect"></a>For an example of an SQ Data Element of Undefined Length encapsulating Items of both Explicit and Undefined Length see <a class="xref" href="sect_7.5.2.html#table_7.5-3" title="Table 7.5-3. Example of a Data Element with Implicit VR Defined as a Sequence of Items (VR = SQ) of Undefined Length, Containing Two Items Where One Item is of Explicit Length and the Other Item is of Undefined Length" shape="rect">Table 7.5-3</a>.</p>
+         <div class="table">
+            <a id="table_7.5-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7.5-1. Example of a Data Element with Implicit VR Defined as a Sequence of Items (VR = SQ) with Three Items of Explicit Length</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_00407aea-5b76-4327-9d7d-e7c4275298eb" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e2aef116-2188-4fec-a1fd-30670e2b398c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="9" rowspan="1">
+                           <p>
+                              <a id="para_f7d82cec-3b71-4acc-8f6f-a87c15fd091e" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_5aebd2a8-10dc-4f5e-bda5-6019439b7833" shape="rect"></a>(gggg, eeee) with VR of SQ</p>
+                        </td>
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_2d92461f-a54e-4966-99d9-8781265d5b2c" shape="rect"></a>0000 0F00H</p>
+                        </td>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_5e0d9024-338a-4f6d-b1fa-79690e2bfb10" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>First Item</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <td align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_88f40711-68f7-4bbe-8494-3c14369d4474" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Second Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                        <td align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_76beefb9-38c4-4a92-ad7f-b05ccfc472a5" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Third Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6bbc55bd-3f9a-4d1a-8b44-e8d2e663405f" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b9339a07-3e14-4481-bcf9-f799848cc106" shape="rect"></a>Item Length 0000 04F8H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ac70352f-b2ad-4692-a10b-d621cb63df3c" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b21e912b-3380-45ee-8e23-3c1b0647e3bc" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b60a4c6a-7166-4f4b-9a1d-5dec424bfe44" shape="rect"></a>Item Length 0000 04F8H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_18456fe7-725a-4060-ad09-c1f5064c8e75" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f08405c2-bd4e-4965-bdb5-80b84181e66b" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c69b0f07-64ac-425b-b3aa-cfb9c929ef7c" shape="rect"></a>Item Length 0000 04F8H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2aef0f52-efb2-4000-a582-b30072b58446" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a4520410-2c9a-4286-9733-e25e3cf3c7f6" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_29b83c64-4b2b-4d28-a646-8c368df9ca3a" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a42f182e-5196-48d4-964b-bc81f150dcb1" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_644cd9dc-11bf-4930-a392-29ffaa38f4f4" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_09eb8d19-1ec8-434d-8c07-646866e5a141" shape="rect"></a>04F8H bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d09d7c4b-9ebd-48e4-99bb-b713763490d9" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d669be8f-e56a-442b-8f98-9e5e7f80273a" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_825c076e-25fc-49b4-b137-6677b2441b2e" shape="rect"></a>04F8H bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a993b48-5c03-43ba-a9b9-e438c62c4989" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b5b39c78-09e2-4e6a-8448-942707089960" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4e53009d-b79a-453e-82ed-8663e2618c06" shape="rect"></a>04F8H bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="table">
+            <a id="table_7.5-2" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7.5-2. Example of a Data Element with Explicit VR Defined as a Sequence of Items (VR = SQ) of Undefined Length, Containing Two Items of Explicit Length</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_345a4574-de1e-464e-b2b3-020cd4ead127" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_77eaa67a-c0c1-4f32-b3b6-1f2d8b72b374" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Value Representation</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_247ecefb-b842-4d33-afe3-9d2d85934243" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <td align="left" colspan="8" rowspan="1">
+                           <p>
+                              <a id="para_30a18c53-ea4e-4497-94df-81fef40156a4" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Value</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_68bc9930-5820-4853-bdb4-49f36c23d972" shape="rect"></a>(gggg, eeee) with VR of SQ</p>
+                        </td>
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_f11f7ea9-0bdf-499c-a664-66d2aba2056d" shape="rect"></a>SQ</p>
+                        </td>
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_334ce65d-a00a-4609-b594-8adf8dd75743" shape="rect"></a>0000H Reserved</p>
+                        </td>
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_c4ca95cd-2438-466b-a8d3-87d9a69bcfca" shape="rect"></a>FFFF FFFFH Undefined Length</p>
+                        </td>
+                        <td align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_87f80db2-ce97-452e-927b-219982527f0c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>First Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                        <td align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_529a581e-c405-425a-9b5f-08462efa6702" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Second Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                        <td align="left" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_e12e6480-d602-4e46-ac94-b4debc9926d2" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delimitation Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_71975460-9fcb-492c-9fb9-de8e50b1f3bd" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0c908c5e-a71b-4e2e-9ce1-eff2e82e89e2" shape="rect"></a>Item Length 98A5 2C68H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c0390cde-6e73-4811-a750-963405b06790" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d7caee91-2ac0-499e-a937-e834928a650d" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_73d567a7-f10c-4241-a023-bf7717d99f48" shape="rect"></a>Item Length B321 762CH</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cabbe5ad-bfca-48dc-b100-dccf3772d782" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_19bcd953-b037-4c86-abcc-0c7212d66683" shape="rect"></a>Seq. Delim. Tag (FFFE, E0DD)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ebdc7267-0711-412c-80f3-2c06ca00dbb0" shape="rect"></a>Item Length 0000 0000H</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c37315b0-fc46-4c77-9417-7c5f3e5e3c73" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e0a8e72c-d3c7-443a-8b31-ace3be0b285c" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d20e8545-3b6f-4988-b389-0a72a4d09cfb" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c597557c-ca27-4260-8ec3-7e961845a0d1" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba1d808b-6184-4ad0-a773-5e6c251f3f27" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f04ce747-7fcb-4172-8892-2bb5a8322cd7" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a333b3c0-4ce5-4d0c-9266-d3b040d15387" shape="rect"></a>98A5 2C68H bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f9f2f259-a38a-4eaf-b15f-00088f9a6117" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_df69d895-48cd-4b29-b1c3-a1a2dd01f95f" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b0fad72b-d9cb-4d78-be69-f49542554373" shape="rect"></a>B321 762CH bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f2607108-56d0-42be-8182-3c48b61bd172" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16daff78-e77f-46d8-84b3-192c3b3cf890" shape="rect"></a>4 bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_dd57c8e3-6108-4c41-8487-128a4df145d6" shape="rect"></a>The Data Set within the Item Values in <a class="xref" href="sect_7.5.2.html#table_7.5-2" title="Table 7.5-2. Example of a Data Element with Explicit VR Defined as a Sequence of Items (VR = SQ) of Undefined Length, Containing Two Items of Explicit Length" shape="rect">Table 7.5-2</a> have VRs Explicitly defined.</p>
+         </div>
+         <div class="table">
+            <a id="table_7.5-3" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7.5-3. Example of a Data Element with Implicit VR Defined as a Sequence of Items (VR = SQ) of Undefined Length, Containing Two Items Where One Item is of Explicit Length and the Other Item is of Undefined Length</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d345a58d-268a-4919-aaba-fe5ab17147df" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fe79b1d5-fe0e-485a-be7f-eb6d0dcadad5" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <td align="center" colspan="10" rowspan="1">
+                           <p>
+                              <a id="para_cc022837-92cb-4541-9b5f-a68b96d4d9b7" shape="rect"></a>
+                              <span class="left">Data Element Value</span>
+                           </p>
+                        </td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_e00906a4-d496-4022-bebf-4de0bfa5da25" shape="rect"></a>(gggg, eeee) with VR of SQ</p>
+                        </td>
+                        <td align="center" rowspan="2" colspan="1">
+                           <p>
+                              <a id="para_9b46ce0c-7d53-483f-8e57-23cc034ebd86" shape="rect"></a>FFFF FFFFH Undefined Length</p>
+                        </td>
+                        <td align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_08e60692-522d-43ba-87ba-75cd4b36d767" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>First Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                        <td align="left" colspan="5" rowspan="1">
+                           <p>
+                              <a id="para_94ce7083-f392-4fb7-902d-a63d96056bac" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Second Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                        <td align="left" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_64c7d812-b71e-4345-8103-42a7c730b7a1" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delimitation Item</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_41039097-948e-4d18-96c3-1d35856d7469" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a840f7f-eda6-401a-a2c2-3da71d49bb45" shape="rect"></a>Item Length 0000 17B6H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c22a9311-e060-46eb-a850-675292a362d6" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_73af26e8-5791-464a-885c-0b3499575df0" shape="rect"></a>Item Tag (FFFE, E000)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cde01416-69ff-4051-8f03-3a0266e8cc25" shape="rect"></a>Item Length FFFF FFFFH Undefined Length</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c4434c30-c1da-4f44-b54e-5d8134fa5359" shape="rect"></a>Item Value Data Set</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1fcdf21b-ee1e-48f4-b6a3-c486ece87fba" shape="rect"></a>Item Delim. Tag (FFFE, E00D)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2733cf8b-abd2-4882-bbb9-af1188f17b58" shape="rect"></a>Length 0000 0000H</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_26b51ed5-258f-4eec-a0ab-1e5a33e46e47" shape="rect"></a>Seq. Delim. Tag (FFFE, E0DD)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8ecbfe27-70e6-484b-b149-a52db2fe1cfa" shape="rect"></a>Item Length 0000 0000H</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_21d31990-b47c-46e9-928b-56cc936a98a8" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49aae69e-850c-47e8-a97a-9765b4b4dbd9" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e48a56ef-1c6d-4e29-a5a3-1f8ae328d26a" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_47d862a4-625b-4897-99e7-c1cb830a4f97" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9cde4b7c-ab21-41c3-ba92-f24dbe590ea5" shape="rect"></a>17B6H bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3beb1313-b3c1-4a82-a10d-f32748d397d8" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8856531b-3732-48f0-82b7-b005a0eb216c" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_777d9efe-c601-42eb-8475-3d3c96609c54" shape="rect"></a>Undefined Length</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1cd910f0-6e1b-4c75-a591-7fed4a9a85ac" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68e00b52-5ebc-445e-a1f7-18e21815c6f7" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_99655e5a-f9b6-4248-bd29-a37006028129" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0beb1d73-a505-4032-b777-536e6969ff1a" shape="rect"></a>4 bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_7.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7.5 Nesting of Data Sets </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.5.3 Sequence Inheritance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

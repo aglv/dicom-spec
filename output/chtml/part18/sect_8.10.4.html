@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.10.4 Open Notification Connection Transaction</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.10.html" title="8.10 Notifications" />
+      <link rel="prev" href="sect_8.10.3.html" title="8.10.3 Transaction Overview" />
+      <link rel="next" href="sect_8.10.4.2.html" title="8.10.4.2 Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.10.4 Open Notification Connection Transaction <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.10.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.10.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.10 Notifications</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.10.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.10.html" shape="rect">Notifications</a>
+         </span> &gt; <span class="breadcrumb-node">Open Notification Connection Transaction</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.10.4" shape="rect"></a>8.10.4 Open Notification Connection Transaction</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_95d0ced5-f65d-4924-80cd-2a641e57088a" shape="rect"></a>This transaction creates a connection between the user agent and the origin server over which the origin server can send Event Reports to the user agent.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_5cf07c80-6209-4c1c-b3b5-2a0966ce0e93" shape="rect"></a>An origin server might play the role of a user agent when communicating with another origin-server.</p>
+         </div>
+         <p>
+            <a id="para_b5c90ddf-a7bd-421b-b1d9-ba9e53264cd2" shape="rect"></a>The connection uses the WebSocket protocol. The connection can use the same TCP port as the HTTP connection, but they are separate connections.</p>
+         <p>
+            <a id="para_df0db58b-2ca3-454b-90da-3e0fabe226cb" shape="rect"></a>See <a class="xref" href="chapter_2.html#biblio_RFC_6455" title="The WebSocket Protocol" shape="rect">[<abbr class="abbrev">RFC6455</abbr>]</a> for details of the WebSocket protocol.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_8.10.4.1" shape="rect"></a>8.10.4.1 Request</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_76ad950a-9edd-45e3-a72c-363fb83d6cbf" shape="rect"></a>There is more than one way to establish a WebSocket connection. An origin server that conforms to <a class="xref" href="chapter_2.html#biblio_RFC_6455" title="The WebSocket Protocol" shape="rect">[<abbr class="abbrev">RFC6455</abbr>]</a> will at least support requests to open a WebSocket over an HTTP connection that have the following syntax:</p>
+            <pre class="programlisting" xml:space="preserve">GET SP / SP version CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Host: host CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Upgrade: "WebSocket" CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Connection: "Upgrade" CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Origin: url CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Sec-WebSocket-Key: nonce CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Sec-WebSocket-Protocol: protocols CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Sec-WebSocket-Version: "13" CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">*(&lt;header-field&gt; CRLF)</pre>
+            <pre class="programlisting" xml:space="preserve">CRLF</pre>
+            <p>
+               <a id="para_cf5ef089-932b-4751-88a1-10bb89b16959" shape="rect"></a>The origin server may support other methods of opening a WebSocket connection, which should be included in the Conformance Statement and the Retrieve Capabilities response.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.10.4.1.1" shape="rect"></a>8.10.4.1.1 Target Resources</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b851f8d8-99e3-4b18-a87e-71b942e8d31f" shape="rect"></a>The Target Resource is an origin server implementing a DICOM RESTful Service.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.10.4.1.2" shape="rect"></a>8.10.4.1.2 Query Parameters</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_83b908a2-968e-4ec8-8252-fc7059a2f6da" shape="rect"></a>This transaction has no query parameters.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.10.4.1.3" shape="rect"></a>8.10.4.1.3 Request Header Fields</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_da5e24b3-27b2-4f04-bb9c-8ac32d1c7b71" shape="rect"></a>
+                            <a class="xref" href="sect_8.10.4.html#table_8.10.4-1" title="Table 8.10.4-1. Request Header Fields" shape="rect">Table 8.10.4-1</a> shows the Request Header Field usage for opening a WebSocket connection over http/https.</p>
+               <div class="table">
+                  <a id="table_8.10.4-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 8.10.4-1. Request Header Fields</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1646b132-179b-4af7-b948-b3a4f6789f4b" shape="rect"></a>Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a203f632-53f9-46f7-b4b8-fa7810f387f3" shape="rect"></a>Value</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_725081dd-a33a-43b3-a8dc-0489b73047bf" shape="rect"></a>Usage</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2609cdbc-b65a-4abd-8ee7-9d25af28becb" shape="rect"></a>Content-Type</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_236ea7c8-bcba-4aff-85a4-be94c76b5402" shape="rect"></a>media-type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f82fc1a3-d7d8-4824-9e53-51fce4660dc6" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e47fa4f8-1108-45ca-9d6b-bcf4f35dc5fd" shape="rect"></a>Upgrade</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_12ed6ccf-0434-458d-a67d-51227b096740" shape="rect"></a>"WebSocket"</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_03dc85f3-08c2-4fc8-b648-09e18528fcde" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9f40d245-4fe8-4d8e-ac8e-02a4a794a912" shape="rect"></a>Connection</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_91ac3e3b-8b3d-47bb-8c2d-38fded5205cf" shape="rect"></a>"Upgrade"</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1d1b108f-1177-492d-88ed-bb19304904ec" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_73fc0320-9a06-48d9-bcd5-f9e06c7c9094" shape="rect"></a>Origin</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e4c70f3e-1054-4322-ba2b-094d16e3856d" shape="rect"></a>url</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f492ca1e-343b-4a74-bd25-8775c3322ca4" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ab601f87-4ec1-486e-81eb-ba9ce5975562" shape="rect"></a>Sec-WebSocket-Key</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e6625ced-ae11-4252-85cd-4a3e82373943" shape="rect"></a>accept-key</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_43156de2-f559-445f-9edc-af3085caa9a0" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_32bdb2b4-fc30-4dd3-b7b4-443bf9f3c7a4" shape="rect"></a>Sec-WebSocket-Protocol</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9a9a8552-2ea9-457c-a1aa-b66c69c6dac9" shape="rect"></a>protocols</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0bbdb107-97d6-4a64-aa3e-2c6b9ef523c4" shape="rect"></a>O</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8d3e6ca8-a152-4e29-bf0f-9a6b9b8b7778" shape="rect"></a>Sec-WebSocket-Version</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1e33351f-77be-4b21-9042-538c2a3e2ad3" shape="rect"></a>version</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b9b3c3d3-4ea7-42e3-abfc-abb318a25a8d" shape="rect"></a>M</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_8c549839-325b-450e-b6fe-22d8e6c19423" shape="rect"></a>For details of the request header field values and other methods of opening a WebSocket connection see <a class="xref" href="chapter_2.html#biblio_RFC_6455" title="The WebSocket Protocol" shape="rect">[<abbr class="abbrev">RFC6455</abbr>]</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.10.4.1.4" shape="rect"></a>8.10.4.1.4 Request Payload</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f0d00d3b-62f4-43ae-8312-2b1760d4f2c7" shape="rect"></a>The request has no payload.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.10.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.10.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.10.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.10.3 Transaction Overview </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.10.4.2 Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

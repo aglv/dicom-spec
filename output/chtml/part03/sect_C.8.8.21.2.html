@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.21.2 Specified and Delivered Meterset Values</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.21.html" title="C.8.8.21 RT Beams Session Record Module" />
+      <link rel="prev" href="sect_C.8.8.21.html" title="C.8.8.21 RT Beams Session Record Module" />
+      <link rel="next" href="sect_C.8.8.21.3.html" title="C.8.8.21.3 Definition Source Sequence" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.21.2 Specified and Delivered Meterset Values <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.21.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.21.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8.21 RT Beams Session Record Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.21.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.21.html" shape="rect">RT Beams Session Record Module</a>
+         </span> &gt; <span class="breadcrumb-node">Specified and Delivered Meterset Values</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.8.8.21.2" shape="rect"></a>C.8.8.21.2 Specified and Delivered Meterset Values</h5>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.21.2.1" shape="rect"></a>C.8.8.21.2.1 Beam Level</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_7672391b-1a9b-41b6-838c-90b5f78a19a2" shape="rect"></a>The value of Specified Primary Meterset (3008,0032) shall be the value specified by Beam Meterset (300A,0086) in the corresponding Fraction Group of the referenced RT Plan. The referenced RT Plan is found in the Referenced RT Plan Sequence (300C,0002), and within this plan the Fraction Group is found using the Referenced Fraction Group Number (300C,0022) in this Module. The Beam is found in the referenced RT Plan using the Referenced Beam Number (300C,0006) in the same Item of the Treatment Session Beam Sequence (3008,0020) as the Specified Primary Meterset (3008,0032).</p>
+            <p>
+               <a id="para_23791fb1-d8a8-49a1-bdd9-72b9841cf6d4" shape="rect"></a>The value of Delivered Primary Meterset (3008,0036) shall be the accumulated value of the delivered Meterset across all Control Points, which is recorded in this Item of the Treatment Session Beam Sequence (3008,0020).</p>
+            <p>
+               <a id="para_300bf3bd-77ba-4646-954f-0d88d9bdca23" shape="rect"></a>Note that, for example, when a partial treatment has occurred and resumption(s) have been delivered that complete delivery of all control points remaining, the sum of the Delivered Primary Meterset (3008,0036) values in all RT Beams Session Records for the beam in question and the fraction being treated will match the specified Meterset for the whole fraction.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.21.2.2" shape="rect"></a>C.8.8.21.2.2 Control Point Level</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_abf425f0-1b2e-4a43-8e23-89a669bf9e09" shape="rect"></a>Specified Meterset (3008,0042) contains the MU as specified in the corresponding RT Plan at a given control point.</p>
+            <p>
+               <a id="para_3fc455ea-8c92-44c5-9197-ef042f8ef127" shape="rect"></a>Delivered Meterset (3008,0044) shall contain one of the following three values:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_974e6d50-9881-4945-a975-fa1a80a40c85" shape="rect"></a>the Meterset value at which the delivery of the current beam started</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6672779d-7478-49d2-857a-5b90a02e4db5" shape="rect"></a>the Specified Meterset</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b5976612-8a6f-43b3-8e94-092ca1f7c196" shape="rect"></a>the Meterset value at which the delivery of the current beam ended</p>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_157a00c3-6b0e-4018-a5c6-9217aaa5b2bf" shape="rect"></a>Control points that already have been treated in an earlier session shall contain the Meterset value at which the delivery of the current beam started. Control points that have been completely treated during the current session shall contain the Specified Meterset value for this Control Point. Control Points that have not yet been treated or not completely shall contain the total delivered MU up to the point where the interruption has occurred (i.e., the last control point treated).</p>
+            <p>
+               <a id="para_fa3885ee-4b4e-464d-b470-1f385b3dae7f" shape="rect"></a>This can be expressed by the following equation:</p>
+            <div class="informalequation">
+               <span class="mathphrase">DelMS[CP<sub>n</sub>] = MAX (StartMS, MIN (SpecMS[CP<sub>n</sub>], EndMS))</span>
+            </div>
+            <p>
+               <a id="para_315c5d44-ee0f-4aa1-aa16-e99cc3c628d2" shape="rect"></a>with</p>
+            <div class="variablelist">
+               <dl class="variablelist">
+                  <dt>
+                     <span class="term">DelMS[CP<sub>n</sub>]</span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_c7518223-c657-4ff5-8e90-e2fa33070641" shape="rect"></a>Delivered Meterset value at control point n</p>
+                  </dd>
+                  <dt>
+                     <span class="term">SpecMS[CP<sub>n</sub>]</span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_83d93ca9-9e75-4b97-8ce4-b19e88fd4ed8" shape="rect"></a>Specified Meterset value at control point n</p>
+                  </dd>
+                  <dt>
+                     <span class="term">StartMS</span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_c967f71b-15a3-4cd1-8cbb-0af017b594a5" shape="rect"></a>Meterset value where delivery of current beam started</p>
+                  </dd>
+                  <dt>
+                     <span class="term">EndMS</span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_19729a81-e229-49db-befa-aac712c8ff44" shape="rect"></a>Meterset value where delivery of current beam ended</p>
+                  </dd>
+               </dl>
+            </div>
+            <p>
+               <a id="para_39141b63-c276-4595-93ab-072c694b6fa6" shape="rect"></a>By this definition it is unambiguously recorded, which 'segments' of control points have been delivered in case of partial treatments.</p>
+            <p>
+               <a id="para_1425195a-e140-4492-87c5-642d77fe44e1" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_C.8.8.21-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.3_C.8.8.21-1.svg" alt="Control Point Example 1: 2 Control Points, 2 Complete Partial Treatments" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure C.8.8.21-1. Control Point Example 1: 2 Control Points, 2 Complete Partial Treatments</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+            <p>
+               <a id="para_b8f9d9a5-aea7-4ecf-aaef-06d616c777a5" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_C.8.8.21-2" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.3_C.8.8.21-2.svg" alt="Control Point Example 1: 2 Control Points, 2 Complete Partial Treatments" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure C.8.8.21-2. Control Point Example 1: 2 Control Points, 2 Complete Partial Treatments</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+            <p>
+               <a id="para_f786663d-cf3f-4393-a3fc-1e257ac97e29" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_C.8.8.21-3" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.3_C.8.8.21-3.svg" alt="Control Point Example 3: 7 Control Points, 2 Partial Treatments with Small Gap" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure C.8.8.21-3. Control Point Example 3: 7 Control Points, 2 Partial Treatments with Small Gap</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.21.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.21.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.21.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.21 RT Beams Session Record Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.21.3 Definition Source Sequence</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.36.2.2.7 Radiation Generation Mode Macro</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.36.2.2.html" title="C.36.2.2 RT Second Generation Device Macros" />
+      <link rel="prev" href="sect_C.36.2.2.6.html" title="C.36.2.2.6 External Beam Control Point General Macro" />
+      <link rel="next" href="sect_C.36.2.2.8.html" title="C.36.2.2.8 RT Beam Limiting Devices Definition Macro" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.36.2.2.7 Radiation Generation Mode Macro <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.36.2.2.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.36.2.2.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.36.2.2 RT Second Generation Device Macros</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.36.2.2.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.36.html" shape="rect">RT Second Generation Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.36.2.html" shape="rect">RT Second Generation Macros</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.36.2.2.html" shape="rect">RT Second Generation Device Macros</a>
+         </span> &gt; <span class="breadcrumb-node">Radiation Generation Mode Macro</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.36.2.2.7" shape="rect"></a>C.36.2.2.7 Radiation Generation Mode Macro</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_6cb470ab-5c15-41ca-bf32-132d7550a277" shape="rect"></a>
+                            <a class="xref" href="sect_C.36.2.2.7.html#table_C.36.2.2.7-1" title="Table C.36.2.2.7-1. Radiation Generation Mode Macro Attributes" shape="rect">Table C.36.2.2.7-1</a> specifies the Attributes of the <a class="xref" href="sect_C.36.2.2.7.html" title="C.36.2.2.7 Radiation Generation Mode Macro" shape="rect">Radiation Generation Mode Macro</a>, which are required to generate radiation by a delivery device.</p>
+         <p>
+            <a id="para_bca07bfc-f0a2-48ce-a486-06613e1f01c9" shape="rect"></a>Treatment devices can produce a multitude of different beams with properties such as energy spectrum, depth dose, surface dose and beam profile. A particular combination of such properties is referred to as a Radiation Generation Mode. Such Radiation Generation Modes are created by the machine by using different primary electron/particle beams, flattening and scattering filters, etc., creating a specific physical and geometric distribution of radiation. In many cases the Radiation Generation Mode characterizes the fluence just below the Monitor Chamber. Subsequently these primary beams may be modulated by beam modifiers such as Beam Limiting Devices, Wedges, Spreaders etc. While these beam modifiers are described in the Control Point Sequence, the primary beam is assumed to have fixed characteristics. In many cases, the Radiation Generation Mode will be constant throughout the radiation.</p>
+         <p>
+            <a id="para_122f6814-d9d0-4599-9ae5-fdfeb23f4f41" shape="rect"></a>Radiation Generation Modes specify the beam fluence. To convey content other than the beam fluence, such as annotating the role of the beam in the clinical process or the usage of that beam during a treatment session, annotate treatment constraints, use other Attributes like RT Radiation Set Intent (300A,0637) in the <a class="xref" href="sect_C.36.10.html" title="C.36.10 RT Radiation Set Module" shape="rect">RT Radiation Set Module</a> and information provided by the workflow protocols.</p>
+         <div class="table">
+            <a id="table_C.36.2.2.7-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.36.2.2.7-1. Radiation Generation Mode Macro Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_15646cf5-5c01-47dc-a4bc-54cc79befb16" shape="rect"></a>Attribute Name</p>
+                                    </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6de62799-115a-49ba-ac45-199699f028e9" shape="rect"></a>Tag</p>
+                                    </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f50c4dc5-7e93-414c-8bd7-2e1cbf96c25c" shape="rect"></a>Type</p>
+                                    </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ca1dc531-fb23-4135-8862-5c5dce28659e" shape="rect"></a>Attribute Description</p>
+                                    </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6d213c64-1b47-4c8d-a54d-e3237a354ada" shape="rect"></a>Number of Radiation Generation Modes</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ee813562-c07d-4c64-8be4-6142a45ec594" shape="rect"></a>(300A,0685)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_009c9ef8-b962-4bed-8592-a607d2f43dbc" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_286831c2-5417-43e3-b57b-34d81cd12531" shape="rect"></a>Number of Radiation Generation Modes defined in the Radiation Generation Mode Sequence (300A,067B).</p>
+                                        <p>
+                              <a id="para_1587f5b3-a8ae-4685-b3ea-fdc55d514288" shape="rect"></a>The Number shall be greater than zero.</p>
+                                        <p>
+                              <a id="para_726f4ac0-14f0-45b2-9c9a-c1b8588e1a5a" shape="rect"></a>Required if RT Radiation Physical and Geometric Content Detail Flag (300A,0638) equals FULL. May be present otherwise.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_a57deeab-5c88-4476-8832-d32d53a2286a" shape="rect"></a>Radiation Generation Mode Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e4b8c672-982f-4499-8857-9880d0773de8" shape="rect"></a>(300A,067B)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_09b1c2c7-2232-4f9c-a25b-d0aeb33868a4" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_79cd9c3f-ed50-4b90-a7d0-9c1fd359d702" shape="rect"></a>Radiation Generation Modes defining the type of radiation and characteristics of the beam generated.</p>
+                                        <p>
+                              <a id="para_ba1e629f-e53e-4958-8ca9-2cdbf5279edb" shape="rect"></a>Radiation Generation Modes shall characterize different primary beam fluence.</p>
+                                        <p>
+                              <a id="para_6f241d51-3694-410f-8b5c-49c5cf382678" shape="rect"></a>The number of Items included in this Sequence shall equal the value of Number of Radiation Generation Modes(300A,0685).</p>
+                                        <p>
+                              <a id="para_cbaab583-547d-431a-8986-8d275c21e0e1" shape="rect"></a>Required if Number of Radiation Generation Modes (300A,0685) is present.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_861bb09c-99f2-4565-9658-fa93c39daae5" shape="rect"></a>&gt;Radiation Generation Mode Index</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_b832d014-f88e-48a2-bf0d-0a85d15c0d28" shape="rect"></a>(300A,0601)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1a60ca3b-a313-4a62-a5e6-d92a80dd32bd" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ca56901d-01ca-49d6-a164-8e80cf413693" shape="rect"></a>Index of this Item in this Sequence.</p>
+                                        <p>
+                              <a id="para_51b188c9-f680-4e20-8b09-9305a10c1370" shape="rect"></a>The value shall start at 1 and increase monotonically by 1.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2d7e3fd2-4087-4d1f-bfb8-442501150c68" shape="rect"></a>&gt;Radiation Generation Mode Label</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_5a2dae6b-d98a-48da-9e28-369eebd3d84c" shape="rect"></a>(300A,067C)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_d36b14cf-c8e8-402d-98db-ba8c37ac2d67" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_8cd77a89-813f-4e4e-aac0-bc543558b31a" shape="rect"></a>User-defined label that identifies this Radiation Generation Mode.</p>
+                                        <p>
+                              <a id="para_dfd39ccc-af1f-4241-b3bb-b00b8e2b14c0" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.3" title="C.36.2.2.7.1.3 Radiation Generation Mode Label" shape="rect">Section C.36.2.2.7.1.3</a>.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_59fde9db-c78c-44db-8421-0e35db454ab2" shape="rect"></a>&gt;Radiation Generation Mode Description</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_36ba224d-7933-4a6d-a339-a49766ee264d" shape="rect"></a>(300A,067D)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_201cce36-1320-4cde-85b7-9a8c134b7448" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_cfac9923-d591-4455-a422-e2f935a36500" shape="rect"></a>User-defined description of the Radiation Generation Mode.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_98789742-0598-420d-a9a7-51e2136b9eee" shape="rect"></a>&gt;Radiation Generation Mode Machine Code Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4f4c4fd0-2d8d-4284-bdd1-f857c4fadf3a" shape="rect"></a>(300A,067E)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_0da867d9-ad91-41d4-b1bd-5c463a9937aa" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_06a42c13-7183-4184-8a98-f367c8ab0939" shape="rect"></a>A vendor-specified machine-readable code that unambiguously identifies this Radiation Generation Mode.</p>
+                                        <p>
+                              <a id="para_cbee752b-0904-464d-b4cd-ac027c22a958" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                        <p>
+                              <a id="para_925863c1-8ad9-44f2-99d0-8db19f8bb511" shape="rect"></a>Required if RT Radiation Physical and Geometric Content Detail Flag (300A,0638) equals FULL. May be present otherwise.</p>
+                                        <p>
+                              <a id="para_0d557249-052b-45fc-bf04-54f679650f2f" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.2" title="C.36.2.2.7.1.2 Radiation Generation Mode Machine Code" shape="rect">Section C.36.2.2.7.1.2</a>.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                              <a id="para_d39b1b6d-f4d2-4b27-86ef-9407bab32346" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>.</span>
+                                        </p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_533205e4-6dcb-42fb-95ee-dad43ce128be" shape="rect"></a>
+                              <span class="italic">No Baseline CID is defined.</span>
+                           </p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_c9714f42-40f4-48b7-8a68-ea104202414a" shape="rect"></a>&gt;Radiation Type Code Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_02a81910-f404-4543-811b-eea5b3eae2c3" shape="rect"></a>(300A,067F)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4aa790be-c6c0-4fea-a056-ba895f4786fa" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_13788079-ac6b-4800-876b-b0e95ebc98b4" shape="rect"></a>Type of radiation for this Radiation Generation Mode.</p>
+                                        <p>
+                              <a id="para_79d8ae6c-a4ea-4107-860a-da39d383e907" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                              <a id="para_110b6a9e-41f9-402f-87e3-3a13c2ead833" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>.</span>
+                                        </p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_95fd7536-2946-4953-bd9a-573ef8de0478" shape="rect"></a>
+                              <span class="italic">CID is specified at invocation.</span>
+                           </p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_3da17bec-e19b-4f37-a49f-c85362ba393f" shape="rect"></a>&gt;Energy Unit Code Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ecd8f92c-7bcc-4c5b-bbe2-c6c0bb334280" shape="rect"></a>(300A,0684)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_b7cbda96-ad0a-4aad-a81b-d4391d43f4a8" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9ec94e23-bd90-4179-bf96-debe25ff5a42" shape="rect"></a>The unit of energy values specified in Nominal Energy (300A,0680), Minimum Nominal Energy (300A,0681), Maximum Nominal Energy (300A,0682).</p>
+                                        <p>
+                              <a id="para_abe63913-9be1-400d-bec7-c838d7161316" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                              <a id="para_770e1f69-666f-4af5-a51c-320f0117447f" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>.</span>
+                                        </p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e43376c0-aa95-40e9-a02a-52c9241d5b94" shape="rect"></a>
+                              <span class="italic">CID is specified at invocation.</span>
+                           </p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_67ec023c-eef6-45dd-bc08-16aee7b4b7c6" shape="rect"></a>&gt;Nominal Energy</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_0c041684-197b-4040-9c15-3e0e304e8e72" shape="rect"></a>(300A,0680)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_c861828e-def5-454b-bb2c-8df5d150f447" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_88a5d4e1-2f73-4cce-b562-ecc7e8ef34ca" shape="rect"></a>The nominal beam energy in units as defined in the Energy Unit Code Sequence (300A,0684).</p>
+                                        <p>
+                              <a id="para_8f1d1d9b-9576-4e89-b5e2-6dc30080b04a" shape="rect"></a>Required if Minimum Nominal Energy (300A,0681) and Maximum Nominal Energy (300A,0682) are not present.</p>
+                                        <p>
+                              <a id="para_689edc2d-1d51-41f2-b3f0-aaca58010d85" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.1" title="C.36.2.2.7.1.1 Energy Attributes" shape="rect">Section C.36.2.2.7.1.1</a>.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_cd89b183-920a-4f8a-9e45-2faf8280e792" shape="rect"></a>&gt;Minimum Nominal Energy</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_7ae35bd1-17e3-42c2-ba86-679b9e87a248" shape="rect"></a>(300A,0681)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_af5870b2-a850-46ac-a339-a568a305eb0f" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_40b7bfd0-1a74-4bbf-9996-1fc8f42dcf60" shape="rect"></a>The minimum nominal beam energy in units as defined in the Energy Unit Code Sequence (300A,0684).</p>
+                                        <p>
+                              <a id="para_b0e39938-7469-4634-b54b-33bc20dd1871" shape="rect"></a>Required if Nominal Energy (300A,0680) is not present.</p>
+                                        <p>
+                              <a id="para_928c1c3c-2525-4ad6-828b-a17e1d9255ac" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.1" title="C.36.2.2.7.1.1 Energy Attributes" shape="rect">Section C.36.2.2.7.1.1</a>.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_55513677-e284-4c62-aba6-e0de11535f75" shape="rect"></a>&gt;Maximum Nominal Energy</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_5f8ce816-b81d-4ad0-b270-fe6985f54d1e" shape="rect"></a>(300A,0682)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_48ddd992-e3d7-4652-a892-4ed20dad9e71" shape="rect"></a>1C</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_cc54528f-46a3-48ca-8ffd-649457f5a27c" shape="rect"></a>The maximum nominal beam energy in units as defined in the Energy Unit Code Sequence (300A,0684).</p>
+                                        <p>
+                              <a id="para_a5be807e-264f-413c-a0fa-2d9d46c083d4" shape="rect"></a>Required if Nominal Energy (300A,0680) is not present.</p>
+                                        <p>
+                              <a id="para_702c0a42-5925-4abf-9e93-09b3edc74e88" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.1" title="C.36.2.2.7.1.1 Energy Attributes" shape="rect">Section C.36.2.2.7.1.1</a>.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ce505d76-f286-4af9-8750-5727c86df62e" shape="rect"></a>&gt;Radiation Fluence Modifier Code Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_160e4e7a-37c3-4096-935c-34b0f14b329d" shape="rect"></a>(300A,0683)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6112d161-89ba-4765-a10e-d3e104b33a3e" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_07b16edb-64b8-4e7d-acf4-e42966fe736d" shape="rect"></a>Identifies the type of fluence modifier of this Radiation Generation Mode.</p>
+                                        <p>
+                              <a id="para_e446ec67-2fed-42c1-ab39-3316e70438f4" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                              <a id="para_8e2e702f-a191-4af2-90ce-fd025ecbb525" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>.</span>
+                                        </p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_8bd1097b-08f8-46c0-8fac-0064a6921b22" shape="rect"></a>
+                              <span class="italic">CID is specified at invocation.</span>
+                           </p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6bff8ccb-a646-4807-aa92-13f63741e162" shape="rect"></a>&gt;Radiation Device Configuration and Commissioning Key Sequence</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_08f51899-aa38-4533-8ed4-a076a6a06502" shape="rect"></a>(300A,065A)</p>
+                                    </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f7acb403-8895-4dec-b33a-40cd5673662b" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2933ba8e-433f-40fc-8ad7-bfd9faad967b" shape="rect"></a>Keys identifying the configuration and commissioning data used as input for treatment planning of this Instance.</p>
+                                        <p>
+                              <a id="para_a51f77b1-c842-472a-9360-2e8a5c40414b" shape="rect"></a>Value Type (0040,A040) is constrained to value UIDREF.</p>
+                                        <p>
+                              <a id="para_bbf1821d-4121-4555-8eb9-248268ddeffe" shape="rect"></a>See <a class="xref" href="sect_C.36.2.2.7.html#sect_C.36.2.2.7.1.4" title="C.36.2.2.7.1.4 Radiation Device Configuration and Commissioning Key Sequence" shape="rect">Section C.36.2.2.7.1.4</a>.</p>
+                                        <p>
+                              <a id="para_ea3cca11-2666-43bb-8b7c-0c424c1e466c" shape="rect"></a>Zero or more Items shall be included in this Sequence.</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                              <a id="para_941c96fa-7ff5-4422-b0dd-d1f8ac581d28" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.2.html#table_10-2" title="Table 10-2. Content Item Macro Attributes" shape="rect">Table 10-2 “Content Item Macro Attributes”</a>.</span>
+                                        </p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_69904af1-c2d5-4d41-80ed-3ebdaeb89f10" shape="rect"></a>
+                                            <span class="italic">No Baseline TID defined.</span>
+                                        </p>
+                                    </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.36.2.2.7.1" shape="rect"></a>C.36.2.2.7.1 Radiation Generation Mode Macro Attribute Descriptions</h6>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.36.2.2.7.1.1" shape="rect"></a>C.36.2.2.7.1.1 Energy Attributes</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_d344b5e8-1413-4bae-a9a7-8cd27e9cb3b5" shape="rect"></a>The Nominal Energy (300A,0680) parameter is provided for beams where a single discrete energy is annotated by that value. Energy modulation can be used at the Control Point level (both discrete and continuous), in which case the Minimal Nominal Energy (300A,0681) and Maximal Nominal Energy (300A,0682) are used.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.36.2.2.7.1.2" shape="rect"></a>C.36.2.2.7.1.2 Radiation Generation Mode Machine Code</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b06fb42e-28ce-4a04-987a-7e817fdd6573" shape="rect"></a>When two Radiation Generation Modes differ in any value of Nominal Energy (300A,0680), Minimum Nominal Energy (300A,0681), Maximum Nominal Energy (300A,0682) or any code value(s) of the Radiation Type Code Sequence (300A,067F) or the Radiation Fluence Modifier Code Sequence(300A,0683), the Radiation Generation Modes must have different values for Radiation Generation Mode Machine Code. Even if all those Attributes have the same values, the two modes may still have a different value for Radiation Generation Mode Machine Code, e.g., when other device-specific beam generation steering parameters differ.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.36.2.2.7.1.3" shape="rect"></a>C.36.2.2.7.1.3 Radiation Generation Mode Label</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_cbb5d50e-c133-475b-a02a-7239151bd997" shape="rect"></a>Radiation Generation Mode Label (300A,067C) should uniquely identify a specific mode within a treatment device. The label is intended only for display to human readers, while the authoritative definition of the Radiation Generation Mode is contained in the other Attributes of the Sequence.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.36.2.2.7.1.4" shape="rect"></a>C.36.2.2.7.1.4 Radiation Device Configuration and Commissioning Key Sequence</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_25a2ea3d-72ec-4518-8c4a-552149aa0732" shape="rect"></a>The Radiation Device Configuration and Commissioning Key Sequence (300A,065A) has no TID defined, as it is intended that the codes for the UIDs that are defined are vendor-specific and also specific to actual installations.</p>
+               <p>
+                  <a id="para_a331172f-5c91-463a-ad5f-e3b345bb4062" shape="rect"></a>For example, vendor A may provide a UID to identify specific beam parameter measurements used during creation of the Instance. Vendor B may provide a UID for a specific treatment machine configuration currently active for a certain treatment device.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.36.2.2.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.36.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.36.2.2.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.36.2.2.6 External Beam Control Point General Macro </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.36.2.2.8 RT Beam Limiting Devices Definition Macro</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

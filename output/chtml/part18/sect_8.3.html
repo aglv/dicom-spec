@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3 Query Parameters</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_8.html" title="8 Common Aspects of DICOM Web Services" />
+      <link rel="prev" href="sect_8.2.html" title="8.2 Target Resources" />
+      <link rel="next" href="sect_8.3.2.html" title="8.3.2 Query Parameter Usage" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3 Query Parameters <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 Common Aspects of DICOM Web Services</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-node">Query Parameters</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.3" shape="rect"></a>8.3 Query Parameters</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d6429a01-8b94-458f-a204-8a8d6dc07522" shape="rect"></a>Query Parameters are specified in the query component of the URI (see <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a>
+                <a class="link" href="http://tools.ietf.org/html/rfc3986#section-3.4" target="_top" shape="rect">Section 3.4</a>.</p>
+         <p>
+            <a id="para_5875ec3e-4053-4db8-ac37-c349f3b1fefb" shape="rect"></a>The query component of a request URI may only be used to specify one or more Query Parameters. These parameters are referred to as Query Parameters to distinguish them from header field parameters or other types of parameters that may be contained in the payload.</p>
+         <p>
+            <a id="para_51806b3a-22db-4811-a842-8d38b7cfd222" shape="rect"></a>The Query Parameters are specified using a URI Template that uses Form {?var} and Query Continuation Style {&amp;var} Query Expansion as defined in <a class="xref" href="chapter_2.html#biblio_RFC_6570" title="URI Template" shape="rect">[<abbr class="abbrev">RFC6570</abbr>]</a>.</p>
+         <p>
+            <a id="para_41ac9dbf-4ff2-4ca0-90a6-015a1a17adf8" shape="rect"></a>If a Target URI includes a "query component" (see <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a>
+                <a class="link" href="http://tools.ietf.org/html/rfc3986#section-3.4" target="_top" shape="rect">Section 3.4</a>), it shall contain Query Parameters that conform to the syntax defined here.</p>
+         <p>
+            <a id="para_b8e4dc05-1723-49b6-afa9-0377ec2a01af" shape="rect"></a>The Services and Transactions defined elsewhere in this Part of the Standard may further refine the qp-name and qp-value rules defined below.</p>
+         <p>
+            <a id="para_2a1e1784-efb0-47ea-ba00-7aa9899b6f9c" shape="rect"></a>
+                <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> does not permit an empty query component, i.e., if the "?" appears in the Target URI, then there shall be at least one Query Parameter in the URI.</p>
+         <p>
+            <a id="para_032b9745-bbe5-40dc-b1d6-40b01ca27bff" shape="rect"></a>The origin server may define and support additional Query Parameters, or additional Query Parameter values for an existing Query Parameter. If an origin server defines new or extends existing Query Parameters, they shall be documented in the Conformance Statement and, if the service supports it, the Retrieve Capabilities response.</p>
+         <p>
+            <a id="para_549029bf-5e06-4a8e-b90a-ef8669839d54" shape="rect"></a>The origin server shall ignore any unsupported Query Parameters. The origin server shall process the request as if the unsupported parameters were not present and may return a response containing appropriate warning and/or error messages.</p>
+         <p>
+            <a id="para_51899380-8294-488d-a5ac-31bd3dc6aa36" shape="rect"></a>If a supported Query Parameter has an invalid value, the origin server shall return a 400 (Bad Request) error response and may include a payload containing an appropriate Status Report.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_8.3.1" shape="rect"></a>8.3.1 Query Parameter Syntax</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_514567f7-cf17-46b3-ab1b-a3c448204f6e" shape="rect"></a>Query parameters have the following syntax:</p>
+            <pre class="programlisting" xml:space="preserve">query-parameters = "?" parameter *("&amp;" parameter)</pre>
+            <p>
+               <a id="para_4b1e246a-7298-4597-9116-e57433f62faf" shape="rect"></a>Each parameter after the first, is separated from the following parameter by the "&amp;" character. Each parameter has the following syntax:</p>
+            <pre class="programlisting" xml:space="preserve">
+parameter = qp-name 
+          / qp-name "=" 1#qp-value
+          / qp-name "=" 1#attribute
+          / attribute 
+          / attribute "=" 1#qp-value
+</pre>
+            <p>
+               <a id="para_cc638749-7d03-4da8-9d37-bcd1597c8b55" shape="rect"></a>The qp-name is case sensitive, and starts with an alphabetic or underscore character, followed by zero or more alphanumeric or underscore "_" characters:</p>
+            <pre class="programlisting" xml:space="preserve">qp-name = %s 1*(ALPHA / "_") *(ALPHA / DIGIT / "_")</pre>
+            <p>
+               <a id="para_44cba91b-69f5-442b-b5be-8e82ea2575cc" shape="rect"></a>A qp-name by itself (with no values) is a legal Query Parameter. A parameter qp-name may also be followed by a comma-separated list of one or more qp-values, or one or more Attributes.</p>
+            <p>
+               <a id="para_c581666e-88fd-4c05-9e23-6fee9859efa2" shape="rect"></a>The qp-values are case-sensitive. A qp-value is composed of qp-chars, where qp-char is the set of legal query component characters as defined by <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a>, minus the equal ("="), ampersand ("&amp;"), and comma (",") characters.</p>
+            <pre class="programlisting" xml:space="preserve">
+qp-value   = %s DQUOTE 1*qp-char DQUOTE
+qp-char    = unreserved / pct-encoded / qp-special
+qp-special = "!" / "$" / "'" / "(" / ")" / "*" / "+" / ";" /":" / "@" / "/" / "?"
+</pre>
+            <p>
+               <a id="para_8ad789f8-0f26-4ff6-8cf4-9d12b002fcbb" shape="rect"></a>The only visible US-ASCII characters disallowed in the query component by <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> are "#", "[", "]". This Part of the Standard further disallows "&amp;", "=", and ",". However, the characters ("#", "[", "]" "&amp;", "=", and ",".) may be included in qp-values if they are percent encoded.</p>
+            <p>
+               <a id="para_774114d3-651e-4a9e-aa74-c94cc988bde7" shape="rect"></a>Each Attribute is either a simple-attribute or a sequence-attribute:</p>
+            <pre class="programlisting" xml:space="preserve">attribute = simple-attribute / sequence-attribute</pre>
+            <p>
+               <a id="para_a606b14a-cc71-4084-be97-7c27b0d7caa3" shape="rect"></a>A simple-attribute is a single Data Element Tag or Keyword (see <a href="../part06/chapter_6.html#table_6-1" class="olink" shape="rect">Table 6-1 “Registry of DICOM Data Elements” in PS3.6</a>) that does not have a VR of SQ:</p>
+            <pre class="programlisting" xml:space="preserve">
+simple-attribute = keyword / tag
+keyword          = %s DQUOTE 1*ALPHA *(ALPHA / DIGIT) DQUOTE
+tag              = 8HEXDIG
+</pre>
+            <p>
+               <a id="para_44a5fe8a-1d05-4899-a33e-08963492da1c" shape="rect"></a>DICOM keywords are case sensitive; they shall start with an alphabetic character followed by zero or more alphanumeric characters. See <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+            <p>
+               <a id="para_2dd37ffb-46a9-41fb-8ec0-c60e8831f86f" shape="rect"></a>A sequence-attribute is two or more attributes separated by the dot character ("."), all but the last attribute shall have a VR of SQ, and the last attribute shall not have a VR of SQ.</p>
+            <pre class="programlisting" xml:space="preserve">sequence-attribute = (keyword / tag) *("." attribute)</pre>
+            <p>
+               <a id="para_ed620001-cd0f-4ef4-901b-a80a64102db1" shape="rect"></a>The following are examples of valid values for attribute:</p>
+            <pre class="programlisting" xml:space="preserve">0020000D</pre>
+            <pre class="programlisting" xml:space="preserve">StudyInstanceUID</pre>
+            <pre class="programlisting" xml:space="preserve">00101002.00100020</pre>
+            <pre class="programlisting" xml:space="preserve">OtherPatientIDsSequence.PatientID</pre>
+            <pre class="programlisting" xml:space="preserve">00101002.00100024.00400032</pre>
+            <pre class="programlisting" xml:space="preserve">OtherPatientIDsSequence.IssuerOfPatientIDQualifiersSequence.UniversalEntityID</pre>
+            <p>
+               <a id="para_cfc7fac0-e1ff-4f1a-a355-d78072a6cc2c" shape="rect"></a>Some Query Parameters have a qp-name, which is an attribute, and a value that is a comma-separated list of one or more qp-values. The qp-values of an attribute parameter shall satisfy its Value Representation and Value Multiplicity, as defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> and <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>, of the corresponding attribute.</p>
+            <p>
+               <a id="para_715b7314-8fe3-463b-9112-b89bce0974c8" shape="rect"></a>Unlike the Value Representations defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>, Query Parameters:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a3af2f3a-b601-4e25-8444-ca12afda29bc" shape="rect"></a>shall not be padded to an even length</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e6e54ed0-cb38-4ea8-bfe6-7143f2aea0d3" shape="rect"></a>shall not contain any NULL (%x00) characters</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b94072c3-c709-4216-8f67-f047153069ae" shape="rect"></a>shall encode UIDs as specified in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>, except that they shall not be padded to an even length</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_8.3.1.1" shape="rect"></a>8.3.1.1 Query Parameter Syntax</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_bb757508-55ce-49d9-bb44-75cf3d836b4b" shape="rect"></a>The syntax and semantics of valid qp-names, qp-values and attributes are specified by the defining Service or Transaction; however, they shall conform to the rules in this Section.</p>
+               <p>
+                  <a id="para_6d305e4d-04d7-49f4-8550-1ecb0e9c167b" shape="rect"></a>
+                        <a class="xref" href="sect_8.3.html#table_8.3.1-1" title="Table 8.3.1-1. ABNF for Query Parameter" shape="rect">Table 8.3.1-1</a> contains the collected syntax of Query Parameters. The Services and Transactions defined elsewhere in this Part of the Standard may further refine the qp-name, attribute, and qp-value rules.</p>
+               <p>
+                  <a id="para_1279cb94-74f8-4024-9c75-f7c461687327" shape="rect"></a>All qp-names are case sensitive.</p>
+               <div class="table">
+                  <a id="table_8.3.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 8.3.1-1. ABNF for Query Parameter</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9109a1af-6831-497c-a19c-e19d13fae653" shape="rect"></a>Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5f171697-3666-418d-b993-b16d30afbc2c" shape="rect"></a>Rule</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">query-parameters</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= "?" parameter *("&amp;" parameter)</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">parameter</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= qp-name; a name only</pre>
+                                    <pre class="programlisting" xml:space="preserve">/ qp-name "=" 1#qp-value ; a name with one or more values</pre>
+                                    <pre class="programlisting" xml:space="preserve">/ qp-name "=" 1#attribute; a name with one or more attributes</pre>
+                                    <pre class="programlisting" xml:space="preserve">/ attribute; an attribute only</pre>
+                                    <pre class="programlisting" xml:space="preserve">/ attribute "=" 1#qp-value ; an attribute with one or more values</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">qp-name</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= %s (ALPHA / "_") *(ALPHA / DIGIT / "_")</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">qp-value</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">=int / uint / pos-int / decimal / float /string / base64 / uid</pre>
+                                    <pre class="programlisting" xml:space="preserve">/ %s 1*qp-char/ %s DQUOTE 1*qp-special DQUOTE; See <a class="xref" href="chapter_5.html#sect_5.1.1" title="5.1.1 Common Syntactic Rules For Data Types" shape="rect">Section 5.1.1</a>
+</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">qp-char</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= unreserved / pct-encoded</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">qp-special</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= "!" / "$" / "'" / "(" / ") " / "*" / "+" / ";"/":" / "@" / "/" / "?"</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">simple-attribute</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= keyword / tag</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">sequence-attribute</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= keyword *( "." attribute) / tag *( "." attribute )</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">keyword</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= %suppercase *( ALPHA / DIGIT )</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">uppercase</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">=%x41-5A</pre>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">tag</pre>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <pre class="programlisting" xml:space="preserve">= 8HEXDIG</pre>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_d5faacf8-9464-4692-a41c-5ca2ae74313b" shape="rect"></a>The syntax of qp-values is defined in <a class="xref" href="chapter_5.html#sect_5.1.1" title="5.1.1 Common Syntactic Rules For Data Types" shape="rect">Section 5.1.1</a>.</p>
+                  <p>
+                     <a id="para_45bef02a-4e37-4f76-b040-453e292a8371" shape="rect"></a>The qp-char (Query Parameter characters) rule defined above is the query rule of <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a>, which defines the legal characters for the query component, minus the equal sign ("="), comma (","), and ampersand ("&amp;"). So, the qp-char rule is the VCHAR rule minus "#", "[", "]", "=", "&amp;", and ",".</p>
+               </div>
+               <p>
+                  <a id="para_d70d7fe7-9d1d-4b2c-bb37-15657e21110d" shape="rect"></a>All DICOM keywords are case sensitive. See <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2 Target Resources </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3.2 Query Parameter Usage</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

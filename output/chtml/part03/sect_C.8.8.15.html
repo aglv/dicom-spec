@@ -1,0 +1,2414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.15 RT Brachy Application Setups Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.html" title="C.8.8 Radiotherapy Modules" />
+      <link rel="prev" href="sect_C.8.8.14.19.html" title="C.8.8.14.19 Definition Source Sequence" />
+      <link rel="next" href="sect_C.8.8.15.2.html" title="C.8.8.15.2 Referenced ROI Number" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.15 RT Brachy Application Setups Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.15.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.14.19.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8 Radiotherapy Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.15.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-node">RT Brachy Application Setups Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.8.15" shape="rect"></a>C.8.8.15 RT Brachy Application Setups Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_35ed77ec-773b-4ed6-93c2-56cd075843af" shape="rect"></a>The <a class="xref" href="sect_C.8.8.15.html" title="C.8.8.15 RT Brachy Application Setups Module" shape="rect">RT Brachy Application Setups Module</a> describes the application of a brachytherapy radiotherapy treatment. It contains one or more sources, each associated with one or more Channels. A Channel is a device by which a source is placed in its intended treatment position or positions. A Channel may consist of a Source Applicator plus a Transfer Tube, a Source Applicator alone, a rigid or flexible linear source, or a seed. A number of Channels (for example applicators, sources or seeds) are generally arranged in an Application Setup, which may be considered a "logical" device. It is important not to confuse Application Setup with Applicator. The model used here has been primarily built around the concept of remote afterloading, but extended to support other brachytherapy applications such as manual applicators and molds, seeds, and sources. Additional devices that are not Channels are
+                        described as Brachy Accessory Devices. Examples of Accessory Devices include shields that modify the dose distribution from all sources in the treatment. However, Channel shields modify the dose only for the source(s) in that Channel.</p>
+         <p>
+            <a id="para_64461525-de7f-4e30-8b94-4cc9643cc2ad" shape="rect"></a>The data in the Module are arranged as follows:</p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_ac5d189c-4753-4a3b-a09b-355fe42d2548" shape="rect"></a>Treatment Machine Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_3daf5a67-9609-4653-b654-ab68aa4b59b8" shape="rect"></a>
+                                        <span class="italic">;treatment machine information (single Item)</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_8b79b00a-1082-43ef-a45e-89ebb3d327f9" shape="rect"></a>Source Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_168b754e-80ce-4631-95bf-6ddd64066606" shape="rect"></a>
+                                        <span class="italic">;library of sources used in brachy application</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_85d98049-08fd-4f40-a0c8-c4d8e51d8f6d" shape="rect"></a>Application Setup Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_12b36e27-7a2c-4976-83e9-7f86675209c9" shape="rect"></a>
+                                        <span class="italic">;one or more applicators, sources, seeds etc</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_d8adcce3-2868-4670-afa0-adb399a7ee82" shape="rect"></a>&gt;Brachy Accessory Device Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_b2688046-e073-48b7-a401-3138ee833b18" shape="rect"></a>
+                                        <span class="italic">;application level shields etc</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_bf909886-2a7a-4417-b1db-7e8a58ed2dfa" shape="rect"></a>&gt;Channel Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_a34d9adc-e675-44ad-9aff-b4567540fe93" shape="rect"></a>
+                                        <span class="italic">;applicator, line source(s), seed(s) etc</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_a2c657fe-9e31-49ca-8baf-3ce131826865" shape="rect"></a>&gt;&gt;Channel Shield Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_0b229a9f-80e5-44b9-91d5-b8e3d04bbc66" shape="rect"></a>
+                                        <span class="italic">;channel-specific shields</span>
+                                    </p>
+                                </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_1679128e-63f0-4366-af3e-cefb63b9ed5d" shape="rect"></a>&gt;&gt;Brachy Control Point Sequence</p>
+                                </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                           <a id="para_8c190430-0940-4102-a8f5-ff4bcd3f8a8c" shape="rect"></a>
+                                        <span class="italic">;mechanism to support individual source dwell times</span>
+                                    </p>
+                                </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="table">
+            <a id="table_C.8-51" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8-51. RT Brachy Application Setups Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_466cb54c-9653-4a1c-a297-a962928a6363" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_98caba8a-b4be-4a3a-b2fd-2db3730c34f0" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_01130190-d44a-4d42-9153-cd1626bd7e91" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fdf1f5ed-7218-4cd7-8a16-adcf23b85207" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f869bd8-f4ef-4ea9-8fe5-61f7df5fe119" shape="rect"></a>Brachy Treatment Technique</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_48661ce3-5236-4eaa-a4b1-5dac3c9e1f3d" shape="rect"></a>(300A,0200)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b9d34548-152e-456b-82e8-00ae3b858c3a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a96edeb3-9368-4f41-bf2c-079007eb1cf8" shape="rect"></a>Type of brachytherapy treatment technique.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">INTRALUMENARY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7f6329b1-11f4-42f0-9836-7eeaeea4fec7" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">INTRACAVITARY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9f764193-e8f5-4ad4-9e0a-08342f73543e" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">INTERSTITIAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5efccc27-2aa8-4e42-b737-6d727b4d9899" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CONTACT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_96392c1d-3d10-45f8-8520-0d0933bab7ba" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">INTRAVASCULAR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9996dcfb-2bdd-4f00-944a-daf51a44b8f0" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PERMANENT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5ed903c4-bad5-47a0-a496-a78e04c1126c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                    <p>
+                              <a id="para_8a55387e-ab06-4e71-943c-c3656e0cd928" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.html#sect_C.8.8.15.1" title="C.8.8.15.1 Permanent Implants" shape="rect">Section C.8.8.15.1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eefbc3a3-48bd-4a90-adf9-a7cc254922cb" shape="rect"></a>Brachy Treatment Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_47d1a5c3-ade5-461c-99eb-3be2680137a1" shape="rect"></a>(300A,0202)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1acc37f3-addd-4e62-88f5-20da43668969" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_298e136e-2ec2-4b3b-b01a-a3645ee64a72" shape="rect"></a>Type of brachytherapy treatment.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">MANUAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6f259a1d-981e-4570-b88f-f9459db79acd" shape="rect"></a>manually positioned</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">HDR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_0fcd338d-0b0f-496b-ad6e-b685ddea39d1" shape="rect"></a>High dose rate</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MDR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_63d5b9a2-5e17-4f21-a504-611b3e3e348c" shape="rect"></a>Medium dose rate</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">LDR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5185bf9a-bfcc-4ae7-8a61-9f68b24713df" shape="rect"></a>Low dose rate</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PDR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a1229b70-b01a-492f-9bf7-fcf16dba1644" shape="rect"></a>Pulsed dose rate</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4676790c-0f2f-4139-971a-a8e1a1334ec1" shape="rect"></a>Treatment Machine Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f14cc374-a2c1-4032-b62c-9f3538f84ebe" shape="rect"></a>(300A,0206)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_635fcb65-273a-4f44-9a43-fce3e1a1598d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0518f58b-e449-4b43-86c6-85d40bb5feb6" shape="rect"></a>A Sequence describing treatment machine to be used for treatment delivery.</p>
+                                    <p>
+                              <a id="para_cc36bcdc-4d58-45cc-8ae9-e5493164bf52" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7452e2dc-8a41-42d8-8e9a-f28328890fe2" shape="rect"></a>&gt;Treatment Machine Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c524fc77-e302-40ea-a756-82274e8e9d2e" shape="rect"></a>(300A,00B2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ddcd18fc-4467-4fcc-a79b-b93e39ba6edd" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f1aec416-6daf-4a04-aacc-f66e8660b5d1" shape="rect"></a>User-defined name identifying treatment machine to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f3cac1e7-204b-4353-91d0-00bce1b233d0" shape="rect"></a>&gt;Manufacturer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3bec4510-a5d8-45cc-a000-a70ce1d5dcfc" shape="rect"></a>(0008,0070)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f90e1a16-3901-490e-8e89-286b930e197d" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c555093e-a7c1-43ef-9721-5673be5adf83" shape="rect"></a>Manufacturer of the equipment to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c23e0e22-5dba-4abe-be1e-b5e3cbc8a8cc" shape="rect"></a>&gt;Institution Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b9632efc-a360-48fc-908f-ee8bc5943af1" shape="rect"></a>(0008,0080)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_03a7c7c8-08d5-4c93-9675-be2c722d35ec" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f3c1bd2-194d-493e-b651-376a66c08ccc" shape="rect"></a>Institution where the equipment is located that is to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e552b9c0-c761-4244-93e9-e14a3dafeb4d" shape="rect"></a>&gt;Institution Address</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a7e55b40-8231-4454-8b77-5045f4e1d5e1" shape="rect"></a>(0008,0081)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0d2a925c-ac73-4c31-bfdc-b21ce58b39ce" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_193078c1-da0f-4f1c-be10-d2a6b7add0df" shape="rect"></a>Mailing address of the institution where the equipment is located that is to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7be84337-371f-4226-a67c-82e2622addd8" shape="rect"></a>&gt;Institutional Department Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5d0d88b5-8345-4e5f-a1bf-3b0045ab379b" shape="rect"></a>(0008,1040)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9943456f-416c-4c2a-9aac-c978677a2ce6" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b4c85b5d-edbc-4905-8cf2-1760d4f567e8" shape="rect"></a>Department in the institution where the equipment is located that is to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4438a967-d047-4e31-a7c0-fb2ca0003dfd" shape="rect"></a>&gt;Institutional Department Type Code Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_13e5d40f-e307-49ad-84ce-b0f822b9a905" shape="rect"></a>(0008,1041)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_82a4f575-8121-4f26-8c75-a0d2ef2ad3e4" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7ebf7ee-26ef-4b85-ac2c-bd1a45779dee" shape="rect"></a>A coded description of the type of Department or Service within the healthcare facility.</p>
+                                    <p>
+                              <a id="para_3da53699-f67f-4bdb-a376-d551d1616ed2" shape="rect"></a>Only a single Item is permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                              <a id="para_6b7e24fc-c0e8-4c37-b8d3-8f271efed512" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9d2dcab5-1a6b-4c66-93f1-6047d672cf8c" shape="rect"></a>
+                                        <span class="italic">B<a href="../part16/sect_CID_7030.html" class="olink" shape="rect">CID 7030 “Institutional Department/Unit/Service”</a>.</span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_34246b91-f224-4137-8aa2-dbb310ed891c" shape="rect"></a>&gt;Manufacturer's Model Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ae22022d-bb53-4cda-87b5-6131fc26c948" shape="rect"></a>(0008,1090)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0357472e-24a4-4088-b9f9-65f669184e93" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_267209c2-43a7-41a2-98f1-a970b1646ce4" shape="rect"></a>Manufacturer's model name of the equipment that is to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8813fcdf-c1c6-43a1-b88c-0ad7b9d3f40b" shape="rect"></a>&gt;Device Serial Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2579f21b-66e8-4375-8cc4-f95d7e3d03ce" shape="rect"></a>(0018,1000)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_072743ac-5614-4ebe-8f40-98fc9068f0ca" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_95ee631e-8787-4d18-9bdb-575d777d1ec3" shape="rect"></a>Manufacturer's serial number of the equipment that is to be used for treatment delivery.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4b4016a3-ea16-4ae1-a778-48c7adc84c73" shape="rect"></a>&gt;Date of Manufacture</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ec24ac36-3317-484b-8c0c-245efec5a0f5" shape="rect"></a>(0018,1204)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_407037df-c36f-4764-88e2-e5256c11462e" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8e0bb1f4-28d3-4e0d-8498-23245f033e56" shape="rect"></a>The date the equipment that is to be used for treatment delivery was originally manufactured or re-manufactured (as opposed to refurbished).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a1d795b8-638a-4170-9e9b-0685ea8cf21e" shape="rect"></a>&gt;Date of Installation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_59c60e90-a6ba-44cb-a5f2-286d2edc6dd1" shape="rect"></a>(0018,1205)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_30dff825-adbf-4446-81f1-c3d3e2b5922d" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_888d58e7-bdaa-4084-86a0-f11c9381b1fa" shape="rect"></a>The date the equipment that is to be used for treatment delivery was installed in its current location. The equipment may or may not have been used prior to installation in its current location.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b73c3589-671f-4b89-8a2b-043f260cf641" shape="rect"></a>Source Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d9eebd8e-9d23-4614-9e38-515bfba3e686" shape="rect"></a>(300A,0210)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f0314da6-896f-4880-b9bd-3abe7ea347ca" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_510c364d-37e1-4229-93c6-c8434133b15c" shape="rect"></a>Sequence of Sources to be used within Application Setups. One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_516d087c-41ad-41b8-b4b7-f0590b2fbc42" shape="rect"></a>&gt;Source Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c9d0aa5f-a42f-44f7-8136-0dca58c34759" shape="rect"></a>(300A,0212)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_282da548-6a1b-4e3b-9b90-1e0cae3f0896" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b3d693db-ee16-45af-b7cb-4a5a3d868f6b" shape="rect"></a>Identification number of the Source. The value of Source Number (300A,0212) shall be unique within the RT Plan in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9ac78bd2-6467-4bd8-ac28-5dc751dd9624" shape="rect"></a>&gt;Source Serial Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f9e5379-537d-4f8f-9b67-6b8c7a2d9ecf" shape="rect"></a>(3008,0105)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_370a4358-5af3-49b5-8e24-23f51b1a5163" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_50c59bb7-4a8f-4acc-b028-ceec505a42cd" shape="rect"></a>Identifier for the Source Instance. Identifies the actual source Instance of the source, to which Source Strength Reference Date (300A,022C) and Source Strength Reference Time (300A,022E) refer.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_75bf3616-2ed4-4351-969c-08f7f5fbbae8" shape="rect"></a>&gt;Source Model ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b472287f-22ff-4309-b6d9-3ac517068fc4" shape="rect"></a>(300A,021B)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b9fa5bd7-dc1f-4940-8c03-ce5cfcb9ffaa" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5cf13a9a-8c80-4c7a-9809-6be6276d069f" shape="rect"></a>Identifier for the Source Model. Identifies the model, the source Instance belongs to.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_79a4e518-63ce-4b8b-9afe-e5d946a54763" shape="rect"></a>&gt;Source Description</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a9fb33d9-7bbf-48ab-9902-8d484e2eca03" shape="rect"></a>(300A,021C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d311ef63-c7f0-4e86-a7a9-5fc8f452d247" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_96ab27f6-5425-4016-8452-3cd413f6c806" shape="rect"></a>Description of the source.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3bf3f0f3-de97-4e4d-83b1-1ae845bfbea2" shape="rect"></a>&gt;Source Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_083f510c-1289-46d8-a5fa-4c1eb8d927f9" shape="rect"></a>(300A,0214)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_835bc094-1fcf-48f0-92d0-2b190fddd780" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_94a4a277-a711-4395-b838-3c5ea3d66bf6" shape="rect"></a>Type of Source.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">POINT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_0120053c-c23a-4087-a58c-5947fefcbcf4" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">LINE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a9d8c0d0-77ad-4a2b-8d42-9a45ff149fb5" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CYLINDER</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7df37614-f6e4-48fe-bc43-819cf7f1466c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">SPHERE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_dfb2d040-bfc7-4104-bead-8e3ec1b5453b" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9c2a530b-96e0-4e8f-80c6-b624f30ad4db" shape="rect"></a>&gt;Source Manufacturer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_afc99d3f-3e05-4609-b90c-101d16b549ab" shape="rect"></a>(300A,0216)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b8db532f-8960-4600-b7e1-b3b043657e05" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f9a2b3eb-0f88-47ca-96c3-610daf46195b" shape="rect"></a>Manufacturer of Source.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ee111565-d1e4-4314-835d-1101b30ad3d6" shape="rect"></a>&gt;Active Source Diameter</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ef929647-ac20-48d5-8599-2134b55136a2" shape="rect"></a>(300A,0218)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d0f66108-cecc-4634-9a5d-f5ab4c359c03" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9220b8ef-5596-4ba8-9a95-eb3be1493af5" shape="rect"></a>Diameter of active Source (mm).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_669ad738-44b2-487e-af7a-3ad5a421364a" shape="rect"></a>&gt;Active Source Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_167d6362-4b70-4336-85c0-7a341704488d" shape="rect"></a>(300A,021A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9cb739a4-4fdd-4799-83b0-b2345eaa3ad4" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3d458eca-2365-47b4-8420-7dd6a963336d" shape="rect"></a>Length of active Source (mm).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ab6c9c05-1ca8-4944-97cd-2dac4000863b" shape="rect"></a>&gt;Material ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_350875e5-ff50-4741-aec6-58d14dfeba13" shape="rect"></a>(300A,00E1)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_efe01658-03b2-46d5-b68f-923aac9e1dd1" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_87a3e0e0-c265-49e0-91d4-5191017060da" shape="rect"></a>User-supplied identifier for encapsulation material of active Source.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dddf92bf-4cad-4c3f-af4d-374528813293" shape="rect"></a>&gt;Source Encapsulation Nominal Thickness</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1c98d2c0-7465-4c33-9678-e844d4a7fecf" shape="rect"></a>(300A,0222)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0e0b6d19-5165-4c35-b999-0f256241f23d" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_23df19cd-9326-4964-bd6f-b2690bd0f425" shape="rect"></a>Nominal thickness of wall of encapsulation (mm). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6bf94b7f-ff9e-4b13-aa5e-687433f78833" shape="rect"></a>&gt;Source Encapsulation Nominal Transmission</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_aebaf809-2c7c-46fc-be44-5baae7f810d8" shape="rect"></a>(300A,0224)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf67eb0f-939d-499b-96e0-9eb392233365" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_aed58bcb-0d7f-437b-9d25-6004c8ceb9c1" shape="rect"></a>Nominal transmission through wall of encapsulation (between 0 and 1). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_50f2c61d-4267-45f6-974f-4c36e58a95b7" shape="rect"></a>&gt;Source Isotope Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c0b8ca8a-5f9d-4952-ad15-a3f7bbe8de67" shape="rect"></a>(300A,0226)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_29d13f5f-d59a-4153-8f64-6b9d5bb585cc" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7713a5ff-3f9a-4d9a-952c-e459333b0999" shape="rect"></a>Name of Isotope.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5299256b-f720-40d8-85f2-cb99357bd14e" shape="rect"></a>&gt;Source Isotope Half Life</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_29cd8612-7413-43db-8721-8fb61d897fc3" shape="rect"></a>(300A,0228)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_01defe81-7c85-4266-8153-c06ea1b62e16" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_01cfd3a8-af03-4b93-b50f-498b56a124fb" shape="rect"></a>Half-life of Isotope (days).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_30677f95-c856-440f-84cf-91f1ff6ccd47" shape="rect"></a>&gt;Source Strength Units</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_28d7473a-df12-441f-bf2b-e688148e6ea6" shape="rect"></a>(300A,0229)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_95006029-ba18-4741-b823-06fc0a7a4f16" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e1e29ec2-957f-45d7-870a-7596111de541" shape="rect"></a>Measurement unit of Source Strength.</p>
+                                    <p>
+                              <a id="para_3dc54036-271f-459f-9f09-17f7472eff89" shape="rect"></a>Required if the source is not a gamma-emitting (photon) source. May be present otherwise.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">AIR_KERMA_RATE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ed0aef8f-48c3-459a-8fc6-b5c944707aca" shape="rect"></a>Air Kerma Rate if Source is Gamma emitting Isotope.</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">DOSE_RATE_WATER</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_868d49ff-5d40-472c-ba34-22a9c828f537" shape="rect"></a>Dose Rate in Water if Source is Beta emitting Isotope.</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2df67560-4aa8-45ea-9f08-3e2f4cf824cd" shape="rect"></a>&gt;Reference Air Kerma Rate</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e06d11e8-c914-4576-baf4-e7d62152d621" shape="rect"></a>(300A,022A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c445a9c-85e1-413e-8705-7681aea0f95a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ae7d0b65-670a-44ef-a0d0-0276e4d321d0" shape="rect"></a>Air Kerma Rate in air of Isotope specified at Source Strength Reference Date (300A,022C) and Source Strength Reference Time (300A,022E) (in µGy h<sup>-1</sup> at 1 m). Value shall be zero for non-gamma sources.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5a52b83c-702d-41e6-accc-afb02d2c3b75" shape="rect"></a>&gt;Source Strength</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6d526949-5c4a-4b1c-a1c8-2f3a285ead0b" shape="rect"></a>(300A,022B)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3371e5ca-efb7-40b3-8bf2-a6040557a992" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_90bda6df-3630-4e85-987a-5a2313085900" shape="rect"></a>Source Strength of Isotope at Source Strength Reference Date (300A,022C) and Source Strength Reference Time (300A,022E), in units specified in Source Strength Units (300A,0229).</p>
+                                    <p>
+                              <a id="para_1b894a58-d17b-45ab-9503-2f17ca334ffb" shape="rect"></a>Required if the source is not a gamma-emitting (photon) source. See <a class="xref" href="sect_C.8.8.15.13.html" title="C.8.8.15.13 Reference Point for Calibration of Beta Emitting Isotopes" shape="rect">Section C.8.8.15.13</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3f29a8c9-287d-46a5-949f-3c9c42837f07" shape="rect"></a>&gt;Source Strength Reference Date</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ba0b9104-247c-4bf1-bfb2-2e029ee8c92f" shape="rect"></a>(300A,022C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ed64ec84-499a-4f8e-a965-64d54c574fe0" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_121f0716-d735-420a-9bdd-d67b874735e6" shape="rect"></a>Reference date for Reference Air Kerma Rate (300A,022A) or Source Strength (300A,022B) of Isotope.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0612cf31-a93c-4dd6-b855-4cfc41dfc5b5" shape="rect"></a>&gt;Source Strength Reference Time</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bcfa0a32-eb25-48ae-986f-c13cf0550a39" shape="rect"></a>(300A,022E)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a50f021d-3808-4e93-9106-1bb92b4cbe0d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_94f469c2-9775-420b-8fbb-7514113e2bcc" shape="rect"></a>Reference time for Air Kerma Rate (300A,022A) or Source Strength (300A,022B) of Isotope.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c01f9c75-27c5-4aaf-af71-a7d6e0fd33c2" shape="rect"></a>Application Setup Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4b67a77b-e00b-422d-9a1a-19c7232233cf" shape="rect"></a>(300A,0230)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fb388ed7-dd5b-4c2b-a8c3-ea2b3130929a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_52bc7196-79e6-440f-a6ab-f12467798602" shape="rect"></a>Sequence of Application Setups for current RT Plan.</p>
+                                    <p>
+                              <a id="para_b28d81a9-777e-453b-8395-39c038f4500e" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8715a20d-ff5e-4a26-92ec-394d0a5c1bd3" shape="rect"></a>&gt;Application Setup Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9f52281b-cb5d-4e32-8029-c80b0bb85bd0" shape="rect"></a>(300A,0232)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_79870dfd-e1de-47eb-8601-73571f212566" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4acdfffe-313a-41a9-946f-90ca1ded96f5" shape="rect"></a>Type of Application Setup.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">FLETCHER_SUIT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_b87cf6b4-0456-44fc-b228-6aa94b930d52" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">DELCLOS</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_c6ba582a-771a-4a4e-9a17-98207c170140" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BLOEDORN</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_b89103fd-64cd-40c8-89e3-58b98f9f85c4" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">JOSLIN_FLYNN</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_745121bf-8c77-4a15-a340-3123c2fe003b" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CHANDIGARH</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_dc2faab7-e621-46b3-9359-8033ccb316a2" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MANCHESTER</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d45374fe-1705-4703-882a-dc684aa8045d" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">HENSCHKE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_975de7d2-26fd-4bf6-9107-3fa7b59c0fac" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NASOPHARYNGEAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_98352c4c-ae0a-48a5-a749-1d61c2f35f08" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">OESOPHAGEAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_f9d9745f-37c5-4e87-ac6d-3f1179eee792" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ENDOBRONCHIAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_012c1967-ba16-43ab-a9ad-84f1c4376a85" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">SYED_NEBLETT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_592cafc4-cc34-4da7-ab5f-79c2042adc6d" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ENDORECTAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_83748a54-441b-4802-aa40-391ff114bcfc" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PERINEAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_4bb73e15-d525-40a4-a0ba-2dcc4b185941" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1cd46db5-199c-41f4-b84c-4c52d7663a3d" shape="rect"></a>&gt;Application Setup Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ca616dad-9eb1-47b5-afb4-9b74b2d2dfb4" shape="rect"></a>(300A,0234)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a7d95365-e056-4933-a8c6-38824b5437b9" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fd92c628-da33-48e0-9063-32a64dd61b12" shape="rect"></a>Identification number of the Application Setup. The value of Application Setup Number (300A,0234) shall be unique within the RT Plan in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_238f7c96-cd2f-427e-9d84-6719e5332718" shape="rect"></a>&gt;Application Setup Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cb69dc9f-c70d-41d8-8f82-86cf1d12cf40" shape="rect"></a>(300A,0236)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8efd65e2-c784-4815-b83a-740ceb660405" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3a8dc545-9c59-4088-afd6-2ebda5f6601b" shape="rect"></a>User-defined name for Application Setup.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6a3e6d6f-77bd-4a6b-bf67-f615ded9e415" shape="rect"></a>&gt;Application Setup Manufacturer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e3b25d4e-6b3a-4748-8ca6-7ad4082d9d21" shape="rect"></a>(300A,0238)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_06d92245-ee3a-4482-8834-ed4201ff987a" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ab9c8df7-2424-46ae-add0-16452a0fda39" shape="rect"></a>Manufacturer of Application Setup.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f4c02178-5eb1-4365-9c22-d57ea3b8fa0d" shape="rect"></a>&gt;Template Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3b08ac6d-b018-4315-af00-20b7febf22a3" shape="rect"></a>(300A,0240)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1f1613c6-eee4-4eab-8215-abab55661a11" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_81d7383b-8b18-40fc-b25f-153201170da9" shape="rect"></a>Identification number of the Template. The value of Template Number (300A,0240) shall be unique within the Application Setup in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_893a34a5-acb6-43ee-995b-cac749cebdc5" shape="rect"></a>&gt;Template Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_03ce97c6-ab1f-4f48-a58b-55f826e56c6b" shape="rect"></a>(300A,0242)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7eedb8aa-3c0f-4c3a-9adc-c4fd3b4c3376" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7f7b519f-cf79-4065-95b0-3d0a21cbf77c" shape="rect"></a>User-defined type for Template Device.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7ef9e34-3230-4f9d-be50-8a9cc8522964" shape="rect"></a>&gt;Template Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4d6f1fed-27a5-4eb8-8206-097b082cc2a0" shape="rect"></a>(300A,0244)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ab5cc9b9-b4c0-4f04-a15e-1936a97c1983" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_101c02fc-9359-4247-a094-a61b2af5e7e7" shape="rect"></a>User-defined name for Template Device.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e3e6d0ac-c906-4a6d-8730-c6bfa4f5bbe3" shape="rect"></a>&gt;Referenced Reference Image Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d93a5a72-824d-4c36-834a-7adc528f0dbb" shape="rect"></a>(300C,0042)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eef36ff1-5c67-4086-b849-5a87a17005d4" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1c57eb28-96ac-4ebe-9ce1-16d510feba42" shape="rect"></a>Sequence of reference images used for validation of current Application Setup.</p>
+                                    <p>
+                              <a id="para_012448ee-6279-4877-990b-712e403d6a83" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_17812e92-3369-48de-9248-8c17b8d78705" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bb7c9746-6b30-4075-a0a2-3c239873ed27" shape="rect"></a>&gt;Total Reference Air Kerma</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c419d643-383c-46e6-a9fc-24f89f13613a" shape="rect"></a>(300A,0250)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d54a3b5a-6a4d-4603-b990-62ccae8fa70d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_48f8a67d-8775-488c-9a1e-4c00456a74da" shape="rect"></a>Total Reference Air Kerma for current Application Setup, i.e., the product of Air Kerma Rate of all Sources in all Channels with their respective Channel Times (µGy at 1 m). Value shall be zero for non-gamma sources.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_60b942e8-3ac9-440a-ada9-790aec24c98b" shape="rect"></a>&gt;Brachy Accessory Device Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d267f45f-d856-4c76-a2bf-547e98d8f356" shape="rect"></a>(300A,0260)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7224536-9f5d-4fac-900f-1dc6d43e703e" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2778233c-15d8-4e4d-bedd-416e8c693ef2" shape="rect"></a>Sequence of Brachy Accessory Devices associated with current Application Setup.</p>
+                                    <p>
+                              <a id="para_79e51418-2441-4659-9547-a284984e9aed" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f7193fac-26d5-453a-b793-cee0a3db6620" shape="rect"></a>&gt;&gt;Brachy Accessory Device Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4aa454a4-01f6-463d-80c4-a344358062a4" shape="rect"></a>(300A,0262)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c94d72d7-5830-4138-8abb-a1418c0df4ca" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1ca7fb7b-9f4b-43b8-b939-20087ed536fe" shape="rect"></a>Identification number of the Brachy Accessory Device. The value of Brachy Accessory Device Number (300A,0262) shall be unique within the Application Setup in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3e4fd187-b9f3-4c96-ad12-1800ad154ac1" shape="rect"></a>&gt;&gt;Brachy Accessory Device ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7c61f27-76b3-4885-94c5-7b6a6b5e615b" shape="rect"></a>(300A,0263)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_09a06d0c-6c0a-4763-a822-b9930902f088" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c6f4689-e1fd-434f-8d50-8745933cdaf3" shape="rect"></a>User or machine supplied identifier for Brachy Accessory Device.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e2f37e9a-9c74-4bad-9f73-82c1b3d1ec8e" shape="rect"></a>&gt;&gt;Brachy Accessory Device Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_30c26262-8e9e-47d6-95ec-0f01f14b3351" shape="rect"></a>(300A,0264)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6769e792-2f41-4904-94df-adbeccf731b2" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bec348bb-438e-49e8-b3a1-5112bbd38e65" shape="rect"></a>Type of Brachy Accessory Device.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">SHIELD</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_f560c827-abd7-4830-9f5d-7280b99f5dea" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">DILATATION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_015a70b2-d084-4d57-9e6f-7629b1abfa4b" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MOLD</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_3472dc75-43d9-46b3-a3c0-73297c48767c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PLAQUE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ee551da3-eb75-40ba-9824-35642f860070" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">FLAB</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_21a26223-7d56-4b4f-95cf-aa0f78b89675" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_120ea7f8-fbd6-453a-847e-2a95454ee615" shape="rect"></a>&gt;&gt;Brachy Accessory Device Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b1df9884-3fde-41e7-824e-0a76142506d5" shape="rect"></a>(300A,0266)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5a08d51e-e4ce-4885-93be-d7871ce4406d" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_37c7cd1d-2348-46c6-b2ef-15117c6369e3" shape="rect"></a>User-defined name for Brachy Accessory Device.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a69d72fe-dd47-4f95-8eb4-511719cf248a" shape="rect"></a>&gt;&gt;Material ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3ed9abb6-6e41-49d7-8b5d-5f6e5fafb3d9" shape="rect"></a>(300A,00E1)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f981d98f-b780-4fd3-aa5c-78ff136847a0" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_37f6e12e-7509-4762-8b11-9b0b4dfdd653" shape="rect"></a>User-supplied identifier for material of Brachy Accessory Device. See Note.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_110fdafe-ba6d-4ebb-ade2-7b00d1048dfc" shape="rect"></a>&gt;&gt;Brachy Accessory Device Nominal Thickness</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fa4c9544-ff68-4dd7-90bd-f844364d7d0c" shape="rect"></a>(300A,026A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7c458ba7-f9eb-4e1d-b7c6-9d177ff5cfb0" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fbf55158-50a3-4253-a182-d0ac941cd201" shape="rect"></a>Nominal thickness of Brachy Accessory Device (mm). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fbda98bc-35ee-401f-86df-c0dff9cd0aa1" shape="rect"></a>&gt;&gt;Brachy Accessory Device Nominal Transmission</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_06f35859-e29a-44cd-833d-5ab74d25378e" shape="rect"></a>(300A,026C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7e908705-d720-4c5a-a59a-7feba5168fdf" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1e719873-6e95-44da-b8cd-8b71754fed40" shape="rect"></a>Nominal Transmission through Brachy Accessory Device (between 0 and 1). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8e77b524-b4b8-403b-8b8e-ec1a30b74ae3" shape="rect"></a>&gt;&gt;Referenced ROI Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_119b1ef1-d33b-4995-a350-eb05dd273a37" shape="rect"></a>(3006,0084)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5640312e-07df-4a6f-bb8c-ccfb55ed3fc9" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_71be927f-fd9b-4c18-9de7-b5892d7c1b44" shape="rect"></a>Uniquely identifies ROI representing the Brachy Accessory specified by ROI Number (3006,0022) in Structure Set ROI Sequence (3006,0020) in <a class="xref" href="sect_C.8.8.5.html" title="C.8.8.5 Structure Set Module" shape="rect">Structure Set Module</a> within RT Structure Set referenced by Referenced RT Structure Set Sequence (300C,0060) in <a class="xref" href="sect_C.8.8.9.html" title="C.8.8.9 RT General Plan Module" shape="rect">RT General Plan Module</a>. See <a class="xref" href="sect_C.8.8.15.2.html" title="C.8.8.15.2 Referenced ROI Number" shape="rect">Section C.8.8.15.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f280fc15-3c82-4789-9759-8f613fa8facb" shape="rect"></a>&gt;Channel Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2a4f87af-ee68-47ac-a897-079993e4055d" shape="rect"></a>(300A,0280)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_69540ff0-5490-494e-8c16-bc9f9e59f0af" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2d3d5a9e-49ed-4e46-b3b4-b5b40eb6871e" shape="rect"></a>Sequence of Channels for current Application Setup.</p>
+                                    <p>
+                              <a id="para_51718277-a567-4ed5-b860-421005a11aff" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_586d0f71-7aeb-4505-896a-905b455ffa81" shape="rect"></a>&gt;&gt;Channel Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9a091588-0112-4046-aafe-c55a9212e049" shape="rect"></a>(300A,0282)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ca68889b-fc18-492a-920a-a02fbd721db4" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_26e25a52-4565-4320-bf0d-c1a9b69a44dd" shape="rect"></a>Identification number of the Channel. The value of Channel Number (300A,0282) shall be unique within the Application Setup in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5136efa2-29f3-4187-a376-15263284fd95" shape="rect"></a>&gt;&gt;Channel Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf5d86d8-2b58-4eed-b868-2842f038e990" shape="rect"></a>(300A,0284)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4484987d-491b-4f22-ba42-a95c2c652341" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_426b9a9d-1c6b-43a6-907c-3a8a9cf45740" shape="rect"></a>Length of Channel (mm). See <a class="xref" href="sect_C.8.8.15.3.html" title="C.8.8.15.3 Channel Length" shape="rect">Section C.8.8.15.3</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4b40c9ad-b080-478c-8632-8ae3992829f0" shape="rect"></a>&gt;&gt;Channel Total Time</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c367d6cb-aa58-4c6d-9e7c-15f9ada017d0" shape="rect"></a>(300A,0286)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_40aeb937-f8cf-4ce6-90da-a61bd49a1797" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cc63db93-8144-4b46-9f69-1005608b1791" shape="rect"></a>Total amount of time between first and final Control Points of the Brachy Control Point Sequence (300A,02D0) for current Channel (sec). Channel Total Time calculation is based upon the Reference Air Kerma Rate (300A,022A) of the Referenced Source Number (300C,000E).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b89f1c05-3570-441b-8498-afb00ef98209" shape="rect"></a>&gt;&gt;Source Movement Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3a0d37ad-fd79-43ec-9b6b-97dffd78e5f8" shape="rect"></a>(300A,0288)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e856e0b6-5d9c-47d8-8796-02e2d8622f55" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c999dd99-468a-42b6-ac5a-4895f00e7175" shape="rect"></a>Type of Source movement. See <a class="xref" href="sect_C.8.8.15.4.html" title="C.8.8.15.4 Oscillating Source Movement" shape="rect">Section C.8.8.15.4</a>.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">STEPWISE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_2a39ea50-192d-483d-b57d-c91523fe3d1d" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">FIXED</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a0f54681-2422-41d9-ace4-43cae85d579f" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">OSCILLATING</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_70a7c31c-79de-4f22-b13b-c9b4b10dcc95" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">UNIDIRECTIONAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9812b610-f521-4376-9065-58bd5e110c58" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8bee8d6d-f89c-4a35-b8bb-bf62930c73b8" shape="rect"></a>&gt;&gt;Number of Pulses</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_19b7bed9-acac-419d-8af3-a6c918dd371e" shape="rect"></a>(300A,028A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf0defb5-40bf-4ff1-92c4-aa4c1448d5f4" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ee9c8eb3-44b6-4e06-9188-380f52eb7f0c" shape="rect"></a>Number of Pulses per fraction for current Channel. Required if Brachy Treatment Type (300A,0202) is PDR.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_975ef801-e358-4045-bda1-dd5e172eabfe" shape="rect"></a>&gt;&gt;Pulse Repetition Interval</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c77d6fa9-9f39-40d1-93f5-1f3ab09e0db2" shape="rect"></a>(300A,028C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e926d041-8db9-49dc-a09d-6b47f4009b11" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0761e142-9da4-4db2-b6c4-cf6332c24a53" shape="rect"></a>Pulse repetition interval (sec) for current Channel. Required if Brachy Treatment Type (300A,0202) is PDR.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cbeeecbc-59dd-4ae9-9254-d5464071d888" shape="rect"></a>&gt;&gt;Source Applicator Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1f666962-c766-4649-b847-07fa07103485" shape="rect"></a>(300A,0290)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9b2e9a8d-9670-4673-8b07-71725d4f7e63" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1ea9c2fc-04b9-4bf4-992a-8d85e7d76cc2" shape="rect"></a>Identification number of the Source Applicator. The value of Source Applicator Number (300A,0290) shall be unique within the Channel in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_140b582d-850b-45b0-95f5-fabdf3bca630" shape="rect"></a>&gt;&gt;Source Applicator ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_85dca96f-2858-4907-89ca-431b61b028cf" shape="rect"></a>(300A,0291)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_61472dab-242c-4e5c-a610-1385de5c830c" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e7e0ed32-2d01-4e1e-b6d9-70fa17c5162e" shape="rect"></a>User or machine supplied identifier for Source Applicator. Required if Source Applicator Number (300A,0290) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b15dc271-8ccf-4674-a89e-2cf58506a7b9" shape="rect"></a>&gt;&gt;Source Applicator Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7c8ce08-763e-4c03-8c9a-23efa9d15c3d" shape="rect"></a>(300A,0292)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_04cc02d3-bc40-4353-a378-23ea5463019b" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6d94acff-5953-4f27-ab36-359809cca47d" shape="rect"></a>Type of Source Applicator. Required if Source Applicator Number (300A,0290) is present.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">FLEXIBLE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_c7403112-1519-493f-8613-6f27d44e9a34" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RIGID</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_e062dd8c-3043-43b3-b3db-6345433a5dc9" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_616f76d3-e21c-47da-aba4-6af46d529d9b" shape="rect"></a>&gt;&gt;Source Applicator Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2e2a5208-afc4-4722-82d0-4ab9e031fbc3" shape="rect"></a>(300A,0294)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_670c40ca-27b6-4454-ad81-bafdb5f822e2" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4f0db4ca-9600-493e-b3a7-c26a1b548cdc" shape="rect"></a>User-defined name for Source Applicator.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bed1d580-5e97-4e9b-b3b6-1739a1fe1a36" shape="rect"></a>&gt;&gt;Source Applicator Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f359a5d7-cecc-4ba5-ade5-ad3d25a914ae" shape="rect"></a>(300A,0296)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dc62966f-d7b2-45d8-884f-ac5b55800db0" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_aee3222c-8821-4cce-9ee3-bab959d504f3" shape="rect"></a>Length of Source Applicator (mm), defined as the distance between the connector of the applicator and the distal-most position of the source.</p>
+                                    <p>
+                              <a id="para_8fa515e2-38d9-4abe-93d7-4e54bd089858" shape="rect"></a>Required if Source Applicator Number (300A,0290) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_083c0bb6-8125-4787-9631-0f4038e145c5" shape="rect"></a>&gt;&gt;Source Applicator Tip Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4e6d75f8-f3dc-4268-9880-257750879a36" shape="rect"></a>(300A,0274)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e2e8cd3e-1f8c-4a02-a584-44c3165e4d85" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_85ca12e6-9487-4aa6-a75f-af1547dbe53e" shape="rect"></a>Length of Source Applicator Tip (in mm), defined as the distance between the outer tip of the applicator and the center of the distal-most possible position of the source.</p>
+                                    <p>
+                              <a id="para_d7c7a7f7-dbb1-414f-95bb-7e7a3f732ba2" shape="rect"></a>Required if Channel Effective Length (300A,0271) is present.</p>
+                                    <p>
+                              <a id="para_3fefda69-7a6e-45ff-bf6a-4b53d1c1a8b6" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.16.html" title="C.8.8.15.16 Geometric Parameters" shape="rect">Section C.8.8.15.16</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0a35530b-47d8-4210-a2d3-7764974faeb8" shape="rect"></a>&gt;&gt;Source Applicator Manufacturer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_86558fee-ace2-4e9e-8a6e-b9ac23eebb1f" shape="rect"></a>(300A,0298)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_85f7afd9-6e31-4172-92e7-e1d5b737e378" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4fcbb960-3343-4521-b55d-586e3ff3652b" shape="rect"></a>Manufacturer of Source Applicator.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fccfad0a-6a60-4536-9b69-a06e732af6cc" shape="rect"></a>&gt;&gt;Material ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_77032c4e-1343-45cf-835f-c7133cf40b6e" shape="rect"></a>(300A,00E1)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9d4a632a-4c33-4884-aa03-bb0352676e77" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c058a03d-c0f2-442b-b24e-47de559b9ba2" shape="rect"></a>User-supplied identifier for material of Source Applicator wall. See Note.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a1d3de8d-dfb8-40bf-bcc8-0b9f4b03744c" shape="rect"></a>&gt;&gt;Source Applicator Wall Nominal Thickness</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_279ba7ec-f027-46eb-89ca-991200de35c2" shape="rect"></a>(300A,029C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_73761108-e9fc-418e-ae21-4944b9638d49" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c96dd92a-d378-46b4-b0cc-477a0f10aed3" shape="rect"></a>Nominal Thickness of Source Applicator wall (mm). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4772ac08-2257-4e7c-a427-981ba0affcf8" shape="rect"></a>&gt;&gt;Source Applicator Wall Nominal Transmission</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_70f63de4-3cfd-4e44-88a1-495c1055395c" shape="rect"></a>(300A,029E)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f6be9db3-0cf4-4ca9-bd7b-87c64c164dfe" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6d48fc04-f0e4-46a5-a762-60024b5bbaba" shape="rect"></a>Nominal Transmission through Source Applicator wall (between 0 and 1). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bd096008-c8dd-4828-b152-515e29123305" shape="rect"></a>&gt;&gt;Source Applicator Step Size</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_14569c73-f3bc-4084-8891-d127339d2bb9" shape="rect"></a>(300A,02A0)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eb17e9c2-ce53-44c3-9566-54fe0bd51cdc" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6b52e72c-f7d3-4918-9852-8bfc82eef90f" shape="rect"></a>Distance of path along channel (in mm) between adjacent (potential) dwell positions. Required if Source Movement Type (300A,0288) is STEPWISE.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2f2eab90-96c7-4093-8d96-e98607d37d17" shape="rect"></a>&gt;&gt;Applicator Shape Referenced ROI Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_98b3f740-f07b-4312-b183-c42a2b0b9481" shape="rect"></a>(300A,02A1)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ae492797-59c2-425a-a295-d6a2eee40f36" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2842dfb6-1e0b-489a-a5fe-12a2165a2f73" shape="rect"></a>Uniquely identifies the ROI representing the Applicator shape surrounding the Channel.</p>
+                                    <p>
+                              <a id="para_999f0233-1fdc-43a8-b2f4-324ca7205498" shape="rect"></a>Defined in Structure Set ROI Sequence (3006,0020) within the RT Structure Set referenced by Referenced RT Structure Set Sequence (300C,0060).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e2d8c2e6-b3a3-4d20-a0b2-ee6537ba1509" shape="rect"></a>&gt;&gt;Referenced ROI Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8985ae40-d4dd-4311-86ab-c6aca9f0fbfa" shape="rect"></a>(3006,0084)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2af393b9-eaea-4b36-89ba-c0dd4a1b577d" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_41bda128-b43e-4907-b337-c83881fdb012" shape="rect"></a>Uniquely identifies the ROI representing the Channel shape.</p>
+                                    <p>
+                              <a id="para_4426bfe3-025a-497b-8877-c785848a7a65" shape="rect"></a>Specified by ROI Number (3006,0022) in Structure Set ROI Sequence (3006,0020) in <a class="xref" href="sect_C.8.8.5.html" title="C.8.8.5 Structure Set Module" shape="rect">Structure Set Module</a> within RT Structure Set referenced by Referenced RT Structure Set Sequence (300C,0060) in <a class="xref" href="sect_C.8.8.9.html" title="C.8.8.9 RT General Plan Module" shape="rect">RT General Plan Module</a>.</p>
+                                    <p>
+                              <a id="para_feca04c6-67c8-4731-ac38-48afb66259b2" shape="rect"></a>Required if Source Applicator Number (300A,0290) is present. See <a class="xref" href="sect_C.8.8.15.2.html" title="C.8.8.15.2 Referenced ROI Number" shape="rect">Section C.8.8.15.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_87ac48d1-6197-425e-826d-423201d932e1" shape="rect"></a>&gt;&gt;Transfer Tube Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_43393ac2-e866-4e02-b4b4-ffb6c1b699f7" shape="rect"></a>(300A,02A2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5e3e460b-e6e9-474a-9bb5-0d47c9c17c2d" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_17d6f8e6-0b92-42a5-8a3a-8279cb9e3fd2" shape="rect"></a>Identification number of the Transfer Tube. The value of Transfer Tube Number (300A,02A2) shall be unique within the Channel in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3dc112f3-7188-405c-8ff7-0b0b7b71f681" shape="rect"></a>&gt;&gt;Transfer Tube Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_63c13af3-7b80-4d77-9271-4fe82a159b77" shape="rect"></a>(300A,02A4)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9337792a-472d-44f3-b9a1-0ed0c9153442" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_68a49cbd-aac2-41fb-9c9d-73ff93cfe471" shape="rect"></a>Length of Transfer Tube of current afterloading Channel (mm). Required if value Transfer Tube Number (300A,02A2) is non-null.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fc0dafbf-0631-48d3-84b5-fa8b82067ae8" shape="rect"></a>&gt;&gt;Channel Effective Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3fc6e485-02d7-4620-a61f-364d2ead134e" shape="rect"></a>(300A,0271)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f700d2f1-ccf2-4f85-ba4d-516c27d5a008" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d1f84d5f-c9f2-4ab6-be8a-afd2f6be9f57" shape="rect"></a>Length of Channel (in mm) defined as the distance between the connector on the afterloader and the center of the distal-most possible position of the source.</p>
+                                    <p>
+                              <a id="para_8c8e5121-9fd3-41f2-8d69-a8c5727fe286" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.16.html" title="C.8.8.15.16 Geometric Parameters" shape="rect">Section C.8.8.15.16</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6a34e0ac-2688-417d-8f5b-eec8beef6e92" shape="rect"></a>&gt;&gt;Channel Inner Length</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9c1c82f2-3786-4120-9573-be6aa85f1f3d" shape="rect"></a>(300A,0272)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9bf2c408-7867-4599-a903-87fcc059fe12" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_550cfb46-da4b-438e-ac1a-a19c33cd81e0" shape="rect"></a>The total physical inner length of channel (in mm). Specifies the distance between the connector on the afterloader and the end of the channel.</p>
+                                    <p>
+                              <a id="para_c03f8329-c22d-4c01-b99f-2fa55c1a0616" shape="rect"></a>Required if Channel Effective Length (300A,0271) is present.</p>
+                                    <p>
+                              <a id="para_6b618989-2d7e-454c-b227-d5a96ec59c86" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.16.html#sect_C.8.8.15.16.1" title="C.8.8.15.16.1 Channel Inner Length" shape="rect">Section C.8.8.15.16.1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a73fcfb6-88ce-4225-8690-740f50bf00b1" shape="rect"></a>&gt;&gt;Afterloader Channel ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6be3cd6a-1efb-4920-b765-91e553f3af2a" shape="rect"></a>(300A,0273)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_035c802d-a1f5-49e0-96d0-b818ab64a130" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5c12c353-e5e9-40d3-8f05-020a9f251712" shape="rect"></a>Identification of the Channel connection on the afterloader.</p>
+                                    <p>
+                              <a id="para_75b5c774-9920-4add-899b-a3ab3073ef53" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.16.html#sect_C.8.8.15.16.2" title="C.8.8.15.16.2 Afterloader Channel ID" shape="rect">Section C.8.8.15.16.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_554375fa-3191-455d-aab6-c8de72f3f40c" shape="rect"></a>&gt;&gt;Channel Shield Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c4f1747e-22ea-4d80-a8a5-cd1df5e0b4de" shape="rect"></a>(300A,02B0)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6b94ac33-c3d8-4615-8388-c6eccd9754ce" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b325544f-75f1-4898-b4b1-f189b0d62eed" shape="rect"></a>Sequence of Channel Shields associated with current Channel.</p>
+                                    <p>
+                              <a id="para_8ea8e954-89bf-441a-8c78-27a92a924e70" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                    <p>
+                              <a id="para_2831fea9-c74d-4939-9c72-f6606075bd96" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.5.html" title="C.8.8.15.5 Channel Shields" shape="rect">Section C.8.8.15.5</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a0f6802f-9f26-46e3-aa7d-6ff511eb6b8d" shape="rect"></a>&gt;&gt;&gt;Channel Shield Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3dc5260e-4538-443a-93b0-7c4c89ac3e57" shape="rect"></a>(300A,02B2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_760ab128-900e-472a-9f11-578545f465a8" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_131ad6e8-bf44-47a8-8b68-c54958f72d36" shape="rect"></a>Identification number of the Channel Shield. The value of Channel Shield Number (300A,02B2) shall be unique within the Channel in which it is created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4f3b04bd-93b0-4eb7-aa61-161e74804989" shape="rect"></a>&gt;&gt;&gt;Channel Shield ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b175498c-3ea8-4803-aab9-42e8c89e1565" shape="rect"></a>(300A,02B3)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3327b3af-8849-41fe-9d6c-953f801403d7" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4040bac7-c03a-42fb-92a1-8f4418ee4909" shape="rect"></a>User or machine supplied identifier for Channel Shield.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_15a0a8cf-6195-459c-8d5b-7d1a04f41bee" shape="rect"></a>&gt;&gt;&gt;Channel Shield Name</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4ed48a65-cd5f-4fe2-9b45-f1689ba292e7" shape="rect"></a>(300A,02B4)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c12a909f-ef8d-453e-b97e-4c32e5628580" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eb9790a4-0ff3-4983-932c-45c99aa92a53" shape="rect"></a>User-defined name for Channel Shield.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_63537668-9d79-4b38-ab9e-3f4012f4d8b5" shape="rect"></a>&gt;&gt;&gt;Material ID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_34001fbc-b5c4-4ad0-85e8-193790bad899" shape="rect"></a>(300A,00E1)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_280c5e6a-37a8-4186-9dc2-3341a4311162" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e8f62113-079e-438b-aa10-d89d3d04bb9b" shape="rect"></a>User-supplied identifier for material of Channel Shield. See Note.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f0315b45-653e-450a-b8c6-e64c48284c05" shape="rect"></a>&gt;&gt;&gt;Channel Shield Nominal Thickness</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7345057a-4334-4e28-9aaa-8c641085cb79" shape="rect"></a>(300A,02B8)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b21a0f6b-3f2f-41b2-a033-38a1f19324ab" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f48caeb-9578-4005-83e8-2f3b8beb6f9f" shape="rect"></a>Nominal Thickness of Channel Shield (mm). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f570d0d7-b918-4dff-8a91-7050700e860e" shape="rect"></a>&gt;&gt;&gt;Channel Shield Nominal Transmission</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d626e5a1-3807-43f7-976c-1b232ad98e2b" shape="rect"></a>(300A,02BA)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_467f591f-95f8-48fe-93db-9775154228af" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b75b74e8-0486-4c55-82f1-526c5790cc3a" shape="rect"></a>Nominal Transmission of Channel Shield (between 0 and 1). See <a class="xref" href="sect_C.8.8.15.12.html" title="C.8.8.15.12 Nominal Thickness and Nominal Transmission" shape="rect">Section C.8.8.15.12</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5887bb9d-7ed2-411b-ae07-d5741124cdd4" shape="rect"></a>&gt;&gt;&gt;Referenced ROI Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9e7dde33-0153-4465-9340-1898830c09f6" shape="rect"></a>(3006,0084)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_52efca1d-de83-45c3-92fb-f8693cf2bf85" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_27b86580-811a-41b3-8dfa-39b1b998cc24" shape="rect"></a>Uniquely identifies ROI representing the Channel Shield specified by ROI Number (3006,0022) in Structure Set ROI Sequence (3006,0020) in <a class="xref" href="sect_C.8.8.5.html" title="C.8.8.5 Structure Set Module" shape="rect">Structure Set Module</a> within RT Structure Set referenced by Referenced RT Structure Set Sequence (300C,0060) in <a class="xref" href="sect_C.8.8.9.html" title="C.8.8.9 RT General Plan Module" shape="rect">RT General Plan Module</a>. See <a class="xref" href="sect_C.8.8.15.2.html" title="C.8.8.15.2 Referenced ROI Number" shape="rect">Section C.8.8.15.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f4360380-911e-40da-92b7-cf61cfe3a535" shape="rect"></a>&gt;&gt;Referenced Source Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f9c7f04a-b365-419f-b215-4b63e6a323c8" shape="rect"></a>(300C,000E)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_513a94c3-bd54-4e28-b52c-acc5de715f88" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_03ddbc00-2f70-463a-9f1d-4995f2578104" shape="rect"></a>Uniquely identifies the referenced Source within Source Sequence (300A,0210) for current Application Setup.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_21b243e6-31e3-439f-a64f-02bf923c4937" shape="rect"></a>&gt;&gt;Number of Control Points</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a55cafa0-4a85-4b09-87c7-a8d1ee747c11" shape="rect"></a>(300A,0110)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f2d386b9-f3ba-4952-9888-2b9c76aacaf1" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_44ac6d94-850c-41c8-98e9-995e4758d634" shape="rect"></a>Number of control points in Channel. For an N-segment Channel there will be 2N (stepwise movement) or N+1 (continuous movement) control points.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a366d706-6e45-49a8-bb4d-f84d893a03a9" shape="rect"></a>&gt;&gt;Final Cumulative Time Weight</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_88fe8d57-138e-4bd0-887f-d691914f863a" shape="rect"></a>(300A,02C8)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_76181cf0-ed4e-44b4-bb7d-34928ea89192" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c25dac40-0d0d-4afa-a2b2-c1bddb8ee647" shape="rect"></a>Value of Cumulative Time Weight (300A,02D6) for final Control Point in Brachy Control Point Sequence (300A,02D0). Required if Cumulative Time Weight (300A,02D6) is non-null in Control Points specified within Brachy Control Point Sequence (300A,02D0). See <a class="xref" href="sect_C.8.8.15.6.html" title="C.8.8.15.6 Time Calculations" shape="rect">Section C.8.8.15.6</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_45a8009b-57fe-4afb-a289-1ed336ee9ba3" shape="rect"></a>&gt;&gt;Brachy Control Point Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dadd9436-8e4a-4565-af4a-5a779003d162" shape="rect"></a>(300A,02D0)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fc6c1443-c862-4156-853c-d66f1cde78d8" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_53b318d8-d9c1-4a7c-8673-f574fca7d522" shape="rect"></a>Sequence of machine configurations describing this Channel.</p>
+                                    <p>
+                              <a id="para_14abc5a5-01f0-4791-86c1-66209aa5da6c" shape="rect"></a>The number of Items in this Sequence shall equal the value of Number of Control Points (300A,0110).</p>
+                                    <p>
+                              <a id="para_c6889dc4-952d-4b9a-8c6b-617605e13804" shape="rect"></a>See <a class="xref" href="sect_C.8.8.15.7.html" title="C.8.8.15.7 Brachy Control Point Sequence" shape="rect">Section C.8.8.15.7</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d80176ec-947d-4b5a-abee-ad9cdf63b885" shape="rect"></a>&gt;&gt;&gt;Control Point Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8311b080-e8a7-45a9-9c6b-d2e96f85f5a4" shape="rect"></a>(300A,0112)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8a13e037-afc2-4d82-8514-ec77a449372c" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5017dc9b-a5f8-4cee-9c40-abb9473a95fb" shape="rect"></a>Index of current Control Point, starting at 0 for first Control Point.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_deb6ecc7-db42-42fd-a747-195108744fb3" shape="rect"></a>&gt;&gt;&gt;Cumulative Time Weight</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d982341e-0bec-46e5-9ec3-578c0f2bc44d" shape="rect"></a>(300A,02D6)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_096a9459-0c90-4cd7-b7dc-4ae22b4cc186" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_00878c2a-54b6-461a-9c53-ed8b34aa2b42" shape="rect"></a>Cumulative time weight to current Control Point (where the weighting is proportional to time values delivered). Cumulative Time Weight for first Item in Brachy Control Point Sequence (300A,02D0) is always zero. See <a class="xref" href="sect_C.8.8.15.6.html" title="C.8.8.15.6 Time Calculations" shape="rect">Section C.8.8.15.6</a> and <a class="xref" href="sect_C.8.8.15.8.html" title="C.8.8.15.8 Source Transit Time" shape="rect">Section C.8.8.15.8</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_77c94b68-c02f-47c8-bb3f-a88d822d1454" shape="rect"></a>&gt;&gt;&gt;Control Point Relative Position</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_76b602cc-5509-42a5-a648-69ce09e0cdec" shape="rect"></a>(300A,02D2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ebfa9524-1c39-4282-b6c0-d4d52d7ee167" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0ce2272c-51bc-4013-9346-e729d57b7676" shape="rect"></a>Distance between current Control Point Position and the center of the distal-most possible Source position in current Channel (mm). See <a class="xref" href="sect_C.8.8.15.9.html" title="C.8.8.15.9 Control Point Relative Position" shape="rect">Section C.8.8.15.9</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_87a04691-4418-4f07-af28-477a0d6dcacc" shape="rect"></a>&gt;&gt;&gt;Control Point 3D Position</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fb93da47-9d9c-4168-9c91-0b2a1db386f7" shape="rect"></a>(300A,02D4)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_10b28a2a-30f9-4d92-8686-b0e687a02554" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8006dc6e-21ec-411f-967f-1038b557e11c" shape="rect"></a>Coordinates (x, y, z) of Control Point in the Patient-Based Coordinate System described in <a class="xref" href="sect_C.7.6.2.html#sect_C.7.6.2.1.1" title="C.7.6.2.1.1 Image Position and Image Orientation" shape="rect">Section C.7.6.2.1.1</a> (mm). See <a class="xref" href="sect_C.8.8.15.10.html" title="C.8.8.15.10 Control Point 3D Position" shape="rect">Section C.8.8.15.10</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_62fba474-9a62-4204-9b92-34a6dd21b0bc" shape="rect"></a>&gt;&gt;&gt;Control Point Orientation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6c8171c8-4c8f-46a2-a008-94cb9bb58d96" shape="rect"></a>(300A,0412)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6fe455f5-b850-4427-b9d3-f56e6d716b5d" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a69ed22d-d9c5-41d2-aca8-aab588275b9e" shape="rect"></a>(x,y,z) component of the direction vector of the brachy source or seed at the Control Point 3D Position (300A,02D4). See <a class="xref" href="sect_C.8.8.15.14.html" title="C.8.8.15.14 Orientation of Brachy Sources" shape="rect">Section C.8.8.15.14</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_455caac6-ab23-4977-ad0a-13586028a683" shape="rect"></a>&gt;&gt;&gt;Brachy Referenced Dose Reference Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2ac7d089-47cc-435c-8bf6-fb8cbbfbc183" shape="rect"></a>(300C,0055)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_337b9906-40e8-4cdb-9681-3acc57a78ef2" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_df94bad4-95cc-43f4-8a86-97675c2845b1" shape="rect"></a>A Sequence of Dose References for current Channel.</p>
+                                    <p>
+                              <a id="para_bd6ebb54-0163-4668-8081-e3eff0b8a65c" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c9688188-ac14-4374-b642-c8b6db6e9674" shape="rect"></a>&gt;&gt;&gt;&gt;Referenced Dose Reference Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7fdc0331-95b3-4756-8d12-51334e418b49" shape="rect"></a>(300C,0051)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_872d52a4-074e-4557-9d1a-65090f42bf5a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_610abcc8-944f-42bc-8505-aa138079fc9e" shape="rect"></a>Uniquely identifies Dose Reference described in Dose Reference Sequence. (300A,0010) within <a class="xref" href="sect_C.8.8.10.html" title="C.8.8.10 RT Prescription Module" shape="rect">RT Prescription Module</a> of current RT Plan.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e1a32a86-ae7c-42e2-88f3-cd8b9ce161fb" shape="rect"></a>&gt;&gt;&gt;&gt;Cumulative Dose Reference Coefficient</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_40e7afc7-6775-459b-8c46-0dd5ab1e0b93" shape="rect"></a>(300A,010C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1d7c5679-f666-4e58-89ac-4b5ccbb11364" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5a08f914-9636-4ebd-9fa3-ffee910c61b9" shape="rect"></a>Coefficient used to calculate cumulative dose contribution from this Source to the referenced Dose Reference at the current Control Point. See <a class="xref" href="sect_C.8.8.15.11.html" title="C.8.8.15.11 Cumulative Dose Reference Coefficient" shape="rect">Section C.8.8.15.11</a>.</p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_77f54653-fd26-4fb0-88c3-c92dde2b784b" shape="rect"></a>Material ID (300A,00E1) may also be specified within a referenced ROI, if an ROI is used to describe the object.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.8.15.1" shape="rect"></a>C.8.8.15.1 Permanent Implants</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d18d1367-2785-4f4d-a0f4-f8aff9419837" shape="rect"></a>In permanent implant techniques the value for Channel Total Time (300A,0286) shall be mean life time of the isotope. The Brachy Control Point Sequence (300A,02D0) shall consist of two Items: the first having Cumulative Time Weight (300A,02D6) = 0 and the second having Cumulative Time Weight (300A,02D6) = Final Cumulative Time Weight (300A,02C8).</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.14.19.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.15.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.14.19 Definition Source Sequence </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.15.2 Referenced ROI Number</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

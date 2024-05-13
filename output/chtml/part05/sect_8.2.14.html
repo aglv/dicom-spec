@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2.14 High-Throughput JPEG 2000 Image Compression</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" />
+      <link rel="prev" href="sect_8.2.13.html" title="8.2.13 Constraints For SMPTE ST 2110-20 Uncompressed Active Video For DICOM-RTV" />
+      <link rel="next" href="sect_8.3.html" title="8.3 Waveform Data and Related Data Elements" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2.14 High-Throughput JPEG 2000 Image Compression <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_8.2.14.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.13.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.2 Native or Encapsulated Format Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Encoding of Pixel, Overlay and Waveform Data</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.2.html" shape="rect">Native or Encapsulated Format Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">High-Throughput JPEG 2000 Image Compression</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.2.14" shape="rect"></a>8.2.14 High-Throughput JPEG 2000 Image Compression</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_49cf8ae0-0346-4b31-9127-93e1a663ae4c" shape="rect"></a>DICOM provides a mechanism for supporting the use of High-Throughput JPEG 2000 (HTJ2K) Image Compression through the Encapsulated Format. <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a> defines three Transfer Syntaxes that reference the HTJ2K Standard and provide one lossy compression scheme, and two lossless compression schemes, the second of which is optimized for display of progressive bit streams.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_a0f1a6f6-393c-48a0-925a-6d5c2c493ac5" shape="rect"></a>The context where the usage of lossy compression of medical images is clinically acceptable is beyond the scope of the DICOM Standard. The policies associated with the selection of appropriate compression parameters (e.g., compression ratio) for HTJ2K lossy compression are also beyond the scope of this Standard.</p>
+         </div>
+         <p>
+            <a id="para_9d538ac0-1513-4371-ab9b-50d91cc4556c" shape="rect"></a>The use of the DICOM Encapsulated Format to support HTJ2K Compressed Pixel Data requires that the Data Elements that are related to the Pixel Data encoding (e.g., Photometric Interpretation, Samples per Pixel, Planar Configuration, Bits Allocated, Bits Stored, High Bit, Pixel Representation, Rows, Columns, etc.) shall contain Values that are consistent with the characteristics of the compressed data stream. The Pixel Data characteristics included in the HTJ2K bit stream shall be used to decode the compressed data stream.</p>
+         <p>
+            <a id="para_6ddbe367-8705-4d09-953a-f024377cf37e" shape="rect"></a>The requirements when using a Standard Photometric Interpretation (i.e., a Defined Term from PS.3. C.7.6.3.1.2) are specified in <a class="xref" href="sect_8.2.14.html#table_8.2.14-1" title="Table 8.2.14-1. Valid Values of Pixel Data Related Attributes for HTJ2K Transfer Syntaxes using Standard Photometric Interpretations" shape="rect">Table 8.2.14-1</a>. No other Standard Photometric Interpretation Values shall be used.</p>
+         <div class="table">
+            <a id="table_8.2.14-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8.2.14-1. Valid Values of Pixel Data Related Attributes for HTJ2K Transfer Syntaxes using Standard Photometric Interpretations</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_134f821e-434c-45b2-9f18-8a76920e02a7" shape="rect"></a>Photometric Interpretation</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3b276971-aaff-4d79-9a69-30a1b5f060d1" shape="rect"></a>Transfer Syntax</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ff3172cf-dd31-4ab3-8f82-82935fb3f476" shape="rect"></a>Transfer Syntax UID</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_350707ae-94c3-4d9e-b798-dde7d9ff68f4" shape="rect"></a>Samples per Pixel</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_97a170bf-ebfd-4a1a-9edc-eb3864f27d2c" shape="rect"></a>Planar Configuration</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bae31833-a6d6-4f0c-96fc-f21ff0d19335" shape="rect"></a>Pixel Representation</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_600caea9-af13-4366-a493-0a8b84948c4d" shape="rect"></a>Bits Allocated</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f3afae03-30de-46c3-8981-2003d246e336" shape="rect"></a>Bits Stored</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1ceb47b8-1ef9-4701-b180-6d5865365993" shape="rect"></a>High Bit</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_947f8439-8e4c-4c66-9ccf-783398cdc188" shape="rect"></a>MONOCHROME1</p>
+                                <p>
+                              <a id="para_cbceeaee-4085-428e-88a8-a7d1373ecde1" shape="rect"></a>MONOCHROME2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b5f92cc2-47b7-4a1e-8bca-1e4dfca411e7" shape="rect"></a>HTJ2K (Lossless Only)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c3df3f3b-807d-4e1b-a165-499f80df4968" shape="rect"></a>1.2.840.10008.1.2.​4.​201</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_48039437-3857-4f1d-85e8-6619e155fc21" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_41f69fe6-66a0-498c-a0d7-d1fcf25647e0" shape="rect"></a>absent</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_5310ed04-7130-40d0-a246-b7dd323617c5" shape="rect"></a>0 or 1</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_e62da889-14fb-4f2f-a151-0c1f8cd3eb62" shape="rect"></a>8, 16, 24, 32 or 40</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_fb068b71-c712-4cdd-a351-b10599fe6b50" shape="rect"></a>1-38</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_b6752c39-5fee-463f-b979-f1f706cb6e87" shape="rect"></a>0-37</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0fa40af4-0495-4f66-83f4-1a068fd92151" shape="rect"></a>HTJ2K (Lossless RPCL)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5375e928-4d1b-456c-9bca-01b36116ee29" shape="rect"></a>1.2.840.10008.1.2.​4.​202</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a58a62a7-f225-40e8-a05e-305ae968cc4d" shape="rect"></a>HTJ2K</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bd5660df-4e7b-4a29-9b5a-805a00263f6d" shape="rect"></a>1.2.840.10008.1.2.​4.​203</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_e85af7f5-fdb3-4b65-8635-396a81f7186e" shape="rect"></a>PALETTE COLOR</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_47358c21-aa89-4ae7-a76a-bba605a71b92" shape="rect"></a>HTJ2K (Lossless Only)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9904ca9c-2f9d-4c3c-b2b8-3ad08dbde368" shape="rect"></a>1.2.840.10008.1.2.​4.​201</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_10fa646e-3352-49fe-a5af-589af808fc04" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_c4d32588-5232-4806-a2f0-f78f3467d29c" shape="rect"></a>absent</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_bda2539d-b661-48c8-9c43-1dfa5c5959fe" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_8441445b-7746-4ef3-baf9-a7534de75590" shape="rect"></a>8 or 16</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_9d824853-e239-41cb-937d-e1a738ba96fa" shape="rect"></a>1-16</p>
+                            </td>
+                        <td align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_4622d27f-d21e-4928-bae8-f21a934cc499" shape="rect"></a>0-15</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b33f9763-e260-480b-b58b-f930f347c93b" shape="rect"></a>HTJ2K (Lossless RPCL)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_62b5e4fa-9c40-4a0c-b5ba-34d0f6c27533" shape="rect"></a>1.2.840.10008.1.2.​4.​202</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_9a7fca39-2c8e-4f61-84c3-b1e74057cf98" shape="rect"></a>YBR_RCT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1bbcfd94-182f-4485-bde0-1b6b8e1122d0" shape="rect"></a>HTJ2K (Lossless Only)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b55ac1fe-1af6-4616-b908-ec3367bb8abc" shape="rect"></a>1.2.840.10008.1.2.​4.​201</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_acc97f26-838c-4a18-9d2e-7297ff76de5c" shape="rect"></a>3</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_90093a44-11af-4e38-9358-2e3dd533afd9" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_15a769ad-0559-4e41-9e90-677d543aa15f" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_509d4218-ea5e-4f1d-94bb-b02b45e5ea4c" shape="rect"></a>8, 16, 24, 32 or 40</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_ae37e7c9-056a-4abc-8546-60d49d881354" shape="rect"></a>1-38</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_a56bd5b5-2f4c-43d2-bd48-3a266544e415" shape="rect"></a>0-37</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bd6d41b2-63e0-4178-b5b8-d02ef14efc17" shape="rect"></a>HTJ2K (Lossless RPCL)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_534b26bb-6854-4b49-a7a7-737b2712b6e4" shape="rect"></a>1.2.840.10008.1.2.​4.​202</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ed1629d3-7596-44d8-ab11-8199a89ce03b" shape="rect"></a>HTJ2K</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_627e0ffa-8ce7-4fc8-9a79-348e87091ec0" shape="rect"></a>1.2.840.10008.1.2.​4.​203</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_16dcf068-6ce1-4404-8d9e-ac94eb803864" shape="rect"></a>YBR_ICT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8c5807dc-3cdd-46bb-8bcf-f5cff19e2e21" shape="rect"></a>HTJ2K</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b8389030-b8ca-43a3-b9d7-e7c40a16c39e" shape="rect"></a>1.2.840.10008.1.2.4.203</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_458294b2-3577-41e8-90fa-789c320475af" shape="rect"></a>3</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1c45f1d3-1678-44f6-896e-49580c87239a" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6d24f65c-3f7d-49d7-820f-3c70d7ac0b2f" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_103311b5-aeab-4baf-8cf5-fbce02bb193d" shape="rect"></a>8, 16, 24, 32 or 40</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_901aa975-f7a9-4b6b-8e97-e0399e359dbc" shape="rect"></a>1-38</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4e6b2be0-21d4-47ad-b351-63933ac07d92" shape="rect"></a>0-37</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_6c81297b-06e6-4e9d-a918-9295c9847526" shape="rect"></a>RGB</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c6cc961d-1477-4262-ba88-03b66aadc7cd" shape="rect"></a>HTJ2K (Lossless Only)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7b759439-ac95-4a10-80fb-ca0381d644d8" shape="rect"></a>1.2.840.10008.1.2.​4.​201</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_c7551a8b-5723-496a-9ab2-b7517b5af15f" shape="rect"></a>3</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_4f190245-bf23-4a72-9116-3fa38f525b95" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_ef91fdd1-8ec7-4b8f-985f-944cabb134cf" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_128ca78f-daf2-4217-be5d-68d899fc551a" shape="rect"></a>8, 16, 24, 32 or 40</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_16f19eb2-2a89-4698-8f12-af264aaa4ff3" shape="rect"></a>1-38</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_d45f3e8d-42e3-448a-b217-3fbc4a01937a" shape="rect"></a>0-37</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b80274dd-693b-437d-8c98-0191c2688c19" shape="rect"></a>HTJ2K (Lossless RPCL)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8f5abed4-5e12-4c8b-a35f-64b05ac2b23f" shape="rect"></a>1.2.840.10008.1.2.​4.​202</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_52d408f9-1f50-4c42-bd7c-48bb123e5778" shape="rect"></a>HTJ2K</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_18484573-a592-4734-961d-c5b28299e39b" shape="rect"></a>1.2.840.10008.1.2.​4.​203</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_37994c5a-bcaa-4fac-a941-b27063796879" shape="rect"></a>YBR_FULL</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9a0246af-6ee1-4555-8fb4-153071d6c50e" shape="rect"></a>HTJ2K (Lossless Only)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_17e8d2be-c0ba-4e0f-b8cb-62fe61326a78" shape="rect"></a>1.2.840.10008.1.2.​4.​201</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_b94a2e87-a936-490c-b2ac-c7907ca4ae99" shape="rect"></a>3</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_cf3f51c4-659c-4d3e-b8c2-dd53552fff8d" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_63961ba1-c3de-4731-b9dc-6a0c13ef5ed8" shape="rect"></a>0</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_c2a4c5cf-c67e-46cf-acb7-99e46c1976f3" shape="rect"></a>8, 16, 24, 32 or 40</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_9706690b-88a5-4265-ba14-d0fdfa28adc6" shape="rect"></a>1-38</p>
+                            </td>
+                        <td align="center" rowspan="3" colspan="1">
+                                <p>
+                              <a id="para_74aa2057-3146-465e-9701-9d9e58e9c420" shape="rect"></a>0-37</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b51e3f5d-461c-41aa-a6a0-5afd2e043436" shape="rect"></a>HTJ2K (Lossless RPCL)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_66e2945b-e4b1-46ef-85c9-4fb9f46bbc38" shape="rect"></a>1.2.840.10008.1.2.​4.​202</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fa727b2e-abbe-4b27-a9dd-cd2db1f83ebd" shape="rect"></a>HTJ2K</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_34a5535e-60f1-41ac-a461-c5bf33789240" shape="rect"></a>1.2.840.10008.1.2.​4.​203</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_ec45f1d5-31bc-4085-96d1-1661a69505b2" shape="rect"></a>These requirements are specified in terms of consistency with what is encapsulated, rather than in terms of the uncompressed pixel data from which the compressed data stream may have been derived.</p>
+         </div>
+         <p>
+            <a id="para_409cb365-1cb7-4e75-bde8-fbf4ec4cae94" shape="rect"></a>When decompressing, should the characteristics explicitly specified in the compressed data stream be inconsistent with those specified in the DICOM Data Elements, those explicitly specified in the compressed data stream should be used to control the decompression. The DICOM Data Elements, if inconsistent, can be regarded as suggestions as to the form in which an uncompressed Data Set might be encoded, subject to the general and IOD-specific rules for uncompressed Photometric Interpretation and Planar Configuration, which may require that decompressed data be converted to one of the permitted forms.</p>
+         <p>
+            <a id="para_731be1bc-26ba-4ead-bd37-96ced32a887c" shape="rect"></a>The HTJ2K bit stream specifies whether or not a reversible or irreversible multi-component (color) transformation [ISO 15444-1 Annex G], if any, has been applied. If no multi-component transformation has been applied, then the components shall correspond to those specified by the DICOM Attribute Photometric Interpretation (0028,0004). If the JPEG 2000 Part 1 reversible multi-component transformation has been applied then the DICOM Attribute Photometric Interpretation (0028,0004) shall be YBR_RCT. If the JPEG 2000 Part 1 irreversible multi-component transformation has been applied then the DICOM Attribute Photometric Interpretation (0028,0004) shall be YBR_ICT.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_161fd997-d952-4b8f-a2f6-0acf91286274" shape="rect"></a>For example, single component may be present, and the Photometric Interpretation (0028,0004) may be MONOCHROME2.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_dab3f942-f10b-44f0-871f-21d709243846" shape="rect"></a>The application of a JPEG 2000 Part 1 reversible multi-component transformation is signaled in the JPEG 2000 bit stream by a value of 1 rather than 0 in the SGcod Multiple component transformation type of the COD marker segment [ISO 15444-1 Table A.17]. No other Value of Photometric Interpretation than YBR_RCT or YBR_ICT is permitted when SGcod Multiple component transformation type is 1.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_9f5a1fff-77b1-4237-a4c1-caa9a8c1f735" shape="rect"></a>Though it would be unusual, would not take advantage of correlation between the red, green and blue components, and would not achieve effective compression, a Photometric Interpretation of RGB could be specified as long as no multi-component transformation [ISO 15444-1 Annex G] was specified by the JPEG 2000 bit stream. For some applications the use of RGB is permitted, e.g., Whole Slide Microscopy Images, to allow conversion to DICOM from proprietary formats without loss due to color space transformation. Alternative methods of decorrelation of the color components than those specified in [ISO 15444-1 Annex G] are permitted as defined in PS3.3, such as a Photometric Interpretation of YBR_FULL; this may be useful when converting existing YBR_FULL Pixel Data (e.g., in a different Transfer Syntax) without further loss.</p>
+                     <p>
+                        <a id="para_8917527e-12ef-46e8-ac06-d249d9318c51" shape="rect"></a>In either case (Photometric Interpretation of RGB or YBR_FULL), the value of SGcod Multiple component transformation type would be 0.</p>
+                     <p>
+                        <a id="para_052b773a-6c00-4e70-91e1-2364c3cbbfa5" shape="rect"></a>
+                                <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> may constrain the Values of Photometric Interpretation for specific IODs.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3e4b06ee-7704-4801-a156-c17a623d7d27" shape="rect"></a>Despite the application of a multi-component color transformation and its reflection in the Photometric Interpretation Attribute, the "color space" remains undefined. There is currently no means of conveying "standard color spaces" either by fixed values (such as sRGB) or by ICC profiles. Note in particular that the JP2 file header is not sent in the HTJ2K bit stream that is encapsulated in DICOM.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d27efa8f-db41-4ac9-98d3-15d380e921e6" shape="rect"></a>If HTJ2K Compressed Pixel Data is decompressed and re-encoded in Native (uncompressed) form, then the Data Elements that are related to the Pixel Data encoding are updated accordingly. If color components are converted from YBR_ICT or YBR_RCT to RGB during decompression and Native re-encoding, the Photometric Interpretation will be changed to RGB in the Data Set with the Native encoding.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_5f795a8f-0e46-4570-9e2a-acac7b4bdf3b" shape="rect"></a>The upper limit of 40 on Bits Allocated (0028,0100) and 38 on Bits Stored (0028,0101) reflects the maximum HTJ2K sample precision of 38 and the DICOM requirement to describe Bits Allocated (0028,0100) as multiples of bytes (octets).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_b2944157-2f83-4645-bb1e-2be0025975bc" shape="rect"></a>The HTJ2K bit stream is capable of encoding both signed and unsigned pixel values, hence the Value of Pixel Representation (0028,0103) may be either 0 or 1 for monochrome Photometric Interpretations depending on what has been encoded (as specified in the SIZ marker segment in the precision and sign of component parameter).</p>
+         <p>
+            <a id="para_8eb19045-5e95-44ab-b09f-db9c263453ad" shape="rect"></a>The Value of Planar Configuration (0028,0006) is irrelevant since the manner of encoding components is specified in the JPEG 2000 standard, hence it shall be set to 0.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.13.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.13 Constraints For SMPTE ST 2110-20 Uncompressed Active Video For DICOM-RTV </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3 Waveform Data and Related Data Elements</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

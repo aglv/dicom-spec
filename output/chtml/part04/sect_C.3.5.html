@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.3.5 New Instance Creation for Enhanced Multi-Frame Image Conversion</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_C.3.html" title="C.3 Standard Query/Retrieve Information Models" />
+      <link rel="prev" href="sect_C.3.4.html" title="C.3.4 Additional Query/Retrieve Attributes" />
+      <link rel="next" href="sect_C.4.html" title="C.4 DIMSE-C Service Groups" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.3.5 New Instance Creation for Enhanced Multi-Frame Image Conversion <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.3.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.3 Standard Query/Retrieve Information Models</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.3.html" shape="rect">Standard Query/Retrieve Information Models</a>
+         </span> &gt; <span class="breadcrumb-node">New Instance Creation for Enhanced Multi-Frame Image Conversion</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.3.5" shape="rect"></a>C.3.5 New Instance Creation for Enhanced Multi-Frame Image Conversion</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_332ac21c-8829-4ed9-b1b1-eca2ea5b1ce1" shape="rect"></a>When Query/Retrieve View (0008,0053) is present with a value of "CLASSIC" or "ENHANCED" in a C-FIND, C-MOVE or C-GET Request Identifier, then the Information Model against which the query or retrieval is performed and any SOP Instances that are retrieved shall be returned, constructed or converted according to the requirements in this section.</p>
+         <p>
+            <a id="para_c1aeb6b6-6e4c-4321-9016-35679d5a9af8" shape="rect"></a>There are no requirements with respect to when such instances are actually created or persisted, only that they be available on request. I.e., they may be created in advance (cached) or they may be created dynamically as required, as long as the process is deterministic in the sense that the same Attributes will be populated with the same values on successive queries and retrievals (including UIDs).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8d6961aa-d457-4841-b297-d4427f126ce2" shape="rect"></a>The UID generation process is required to be deterministic but it is important to remember that appending a suffix to an existing UID is not a valid approach to generating a new UID, unless the converter is the producer (owner of the root) of the original UID and knows that this is safe and the result will be unique.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d26594db-5ad0-405f-805d-b57a8b6e9d43" shape="rect"></a>The cross-references between original and converted instances contain sufficient information to recover UIDs in the alternative form.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_5b1ef5d4-a9fe-4c0c-9792-9a1397e0f8cd" shape="rect"></a>All instances for a Patient known to the SCP shall be converted as necessary to maintain referential integrity and to avoid information loss.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_452e434e-c63c-426a-b4c1-c84a48558139" shape="rect"></a>It is not permitted to fail to include a subset of instances within this scope, for example, the presentation states or key object selection documents, in the "ENHANCED" view, in order to avoid the effort of creating new instances with updated references required to maintain referential integrity. In other words, the total "information content" of any view will be no less than that of the default view.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_22976cf5-d332-48a2-8267-0532f90c6106" shape="rect"></a>This does not mean that all instances need to be converted, since if they contain no such references, they can be left alone and included in the view. For example, a Classic single slice CT localizer image with no references can remain unchanged in the view as a CT Image Storage SOP Class with its existing SOP Instance UID and SOP Class and in its existing Series, and be referenced from converted instances, such as the axial images prescribed from it. An SCU cannot make any assumptions about what will or will not be converted, or in what order.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_9c5eeb1e-4b78-411a-a672-57f88ed56e8f" shape="rect"></a>It is understood that the requirements of this section are applicable to a single SCP; it is not possible to require all SCPs that perform conversion to perform it the same way, or create the same UIDs, etc.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_13ff6b49-ded3-4f85-8d20-62d6eba913ba" shape="rect"></a>In addition to the general requirements in this section, specific requirements apply to the following types of instance created:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_0dd3a072-8e2e-48c8-b798-613e017ebfd5" shape="rect"></a>Enhanced (true or legacy converted) multi-frame images that are created from Classic single frame images</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_978ea839-4d05-4065-bf66-69f9b988bcc5" shape="rect"></a>Classic single frame images that are created from Enhanced (true or legacy converted) multi-frame images</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c011f6fe-175a-472c-971f-7372dd3a9e12" shape="rect"></a>Instances that contain references to the SOP Instance UIDs or Series Instance UIDs corresponding to either the converted single frame images, or other instances with such references</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_e3c15937-d203-4866-9c17-e07c0933fc84" shape="rect"></a>The general requirements are that:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_d8887479-d247-4b9f-99b9-afb06829ea32" shape="rect"></a>The new Composite Instance shall have a new SOP Instance UID.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_96904914-d276-48e5-bd34-e869f598b933" shape="rect"></a>The new Composite Instance shall be a valid SOP Instance (i.e., will comply with the IOD, Module and Attribute requirements for the Storage SOP Class).</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_12d9273c-f3e6-4aa3-af03-b66e1d5b182d" shape="rect"></a>The new Composite Instance shall contain the Contributing Equipment Sequence (0018,A001). If the source Composite Instances already contain the Contributing Equipment Sequence with a consistent set of Item values (excluding Contribution DateTime (0018,A002)), then a new Item shall be appended to the copy of the sequence in the new Composite Instance; if the source Composite Instance does not contain the Contributing Equipment Sequence or the Item values (excluding Contribution DateTime (0018,A002)) differ between source instances, then Contributing Equipment Sequence shall be created, containing one new Item. In either case, the new Item shall describe the equipment that is creating the new Composite Instance, and the Purpose of Reference Code Sequence (0040,A170) within the Item shall be <a href="../part16/chapter_D.html#DCM_109106" class="olink" shape="rect">(109106, DCM, "Enhanced Multi-frame Conversion Equipment")</a> and the
+                            Contribution Description (0018,A003) shall be "Legacy Enhanced Image created from Classic Images", "Classic Image created from Enhanced Image", or "Updated UID references during Legacy Enhanced Classic conversion" as appropriate.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_b769fa2d-e0ef-4804-92d3-4940092766fd" shape="rect"></a>The new Composite Instance shall have the same Patient and Study level information as the source Instance, including the same Study Instance UID.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_af1bb71c-1916-40e1-b744-63128a3fa038" shape="rect"></a>The new Composite Instance shall have the same spatial and temporal Frame of Reference information as the source instance, if present (e.g., the Frame of Reference UID shall be the same).</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_28393879-8b8d-45e5-a2ca-49928ab5a960" shape="rect"></a>The new Composite Instance shall be placed in a new Series (together with other new Composite Instances that share the same, new Series level information), with a new Series Instance UID. The Series Date (0008,0021) and Series Time (0008,0031) of all the Instances in the new Series shall be the earliest of the values in the source Composite Instances, if present.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_0ad2b23c-b8af-40d5-8425-263abedd2ee4" shape="rect"></a>The new Series Date and Time shall NOT be that of when the conversion was performed, but shall reflect the values in the source images.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_37750ec7-1e2d-44a3-bb19-b41e375f4485" shape="rect"></a>There is no standard requirement or mechanism defined to change or preserve other Series level Attributes, such as Series Number or Series Description. This is left to the discretion of the implementer, particularly in cases where instances from different Series are merged.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fdee36d0-2d2e-4e5d-a0d8-12d3e08eed7f" shape="rect"></a>The new Composite Instance shall have the same Items and Values of Request Attributes Sequence (0040,0275) as the source Composite Instances, if Request Attributes Sequence (0040,0275) is present in any of the source Composite Instances.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1e988cc9-0f0f-4331-97f7-2dd46ee90c8e" shape="rect"></a>If the new Composite Instance contains references to another entity for the same Patient (including, but not limited to, references to SOP Instances, Series, Studies or Frames of Reference), and the target of those references is also converted, then the references shall be changed to refer to the converted entity.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_8edaca01-6bf6-4494-9a3c-729c404a8421" shape="rect"></a>For example, if the source instance refers to an instance in a Series, and the referenced instance is also converted, and hence placed in a new Series, then both the SOP Instance UID and the Series Reference UID in the hierarchical reference to the instance will need to be updated, as will the SOP Class UID of the referenced instance, if that has changed, as it likely will have.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_aa48fe7c-84db-454d-af7c-662b6143ec5a" shape="rect"></a>The overall intent is to maintain referential integrity within the converted set of instances, within the scope of the same Patient. Since it is likely that most if not all non-image instances for a patient will reference images that will be converted, this means that most if not all non-image instances will also have to be "converted", for the purpose of updating such references. This referential integrity is required regardless of whether the initial request is for a subset of instances for the patient only, or not.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_0f71bd56-68da-41bf-a6d4-410c25e513e0" shape="rect"></a>The UIDs referenced in Conversion Source Attributes Sequence (0020,9172) are not converted, since by definition, these reference instances in the "other" view; they should not exist in the source, but will be inserted (or be replaced, if previously converted) during conversion.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_b8446984-1691-4c6b-a5e7-db54feb71a37" shape="rect"></a>The specific requirements for the conversion of single frame images to Enhanced Multi-frame images are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_30c8a886-f6a8-4c41-850a-84c2d15c9cee" shape="rect"></a>The SOP Class of the new Composite Instance shall be the appropriate modality-specific Enhanced Image Storage SOP Class that is intended for de novo creation by an acquisition or post-processing device, unless the source images do not contain sufficient information to populate mandatory Attributes with standard Enumerated Values and Defined Terms or Coded Sequence Item values, in which case the appropriate modality-specific Legacy Converted Enhanced Image Storage SOP Class shall be used. The appropriate SOP Classes are defined in <a class="xref" href="sect_C.3.5.html#table_C.3.5-1" title="Table C.3.5-1. Modality-Specific SOP Class Conversions" shape="rect">Table C.3.5-1</a>.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_ce20516c-ef8a-49e4-be18-f231903120e3" shape="rect"></a>For example, if the source images to be converted are of the CT Image Storage SOP Class, then the preferred new SOP Class is the Enhanced CT Image Storage SOP Class, but if this is not possible, the Legacy Converted Enhanced CT Image Storage SOP Class is used.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_ade3471a-a732-4e65-b9a3-104e3b4f6682" shape="rect"></a>It is not intended that images from different modalities be combined in the same new Composite Instance. For example, it is not expected that CT and PET images would be combined in the same Instance, since the technique Attributes and the pixel data characteristics are quite distinct.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_2c4bb4e3-d90f-4488-8022-b790bcf6b569" shape="rect"></a>It is expected that as many single frame images will be combined into a single multi-frame image as is sensible, given the constrains on what Attributes must be identical as defined in this section, and depending on the type of images and the size of the resulting object. Different implementations may make different choices in this respect. For example, an application might choose to combine only images in the same Series, or with the same slice spacing, or the same values for Image Type, or with the same Image Orientation (Patient).</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2c7e88c9-e6c3-4f9b-ac8c-ff36b5c20ba5" shape="rect"></a>The new Composite Instance shall not be contained in a Concatenation. This means that it shall not contain a Concatenation UID (0020,9161) Attribute or other Concatenation Attributes. If the existing Composite Instance contains such Attributes, they shall not be included in the new Composite Instance.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e00a6b11-3c11-4cfc-b12d-8788f826d70b" shape="rect"></a>The new Composite Instance contains only one set of Attributes for the Image Pixel Module, hence the contents of the Image Pixel Module shall either be identical in all source images, or the Pixel Data for each frame shall be converted as necessary to match the Image Pixel Module of the new Composite Instance.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_b15430e3-11a0-4875-9955-572ac97c0d29" shape="rect"></a>In particular this means that the values of Rows, Columns, Bits Stored, Bits Allocated, High Bit, Pixel Representation, Samples per Pixel, Photometric Interpretation and Planar Configuration applicable to all of the frames needs to be the same.
+                                        In special cases, such as where Bits Stored is less than Bits Allocated but varies per frame, it may be safe to use the largest value for all the frames and ensure that any unused high bits are appropriately masked before encoding.
+                                        It is not expected that source images with different numbers of Rows and Columns will be combined (by padding the periphery of images smaller than the largest); quite apart from not being the intended use case, this has the potential to greatly expand the size of the instance, and might also require adjustment of the Image Position (Patient) values.
+                                        If the value of Photometric Interpretation in the source single frame images is not permitted for the Enhanced Multi-frame image IOD, lossless conversion of the PixelData and updating of the related Attributes is required, e.g., from MONOCHROME1 to MONOCHROME2.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_5547a489-4a2b-41a4-bdbe-10bb599735f6" shape="rect"></a>Special attention should be given to the Pixel Padding Value and associated Attributes, in case these vary per frame in the source images, in which case the Pixel Data for some frames may need to be modified to be consistent with all the other frames.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_b5c0fa84-0837-452e-9ae7-f09e54482885" shape="rect"></a>It is possible to change the Image Pixel Module Attributes related to compressed Transfer Syntaxes (including lossy or irreversible compression) during conversion.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9ac60fee-12a9-4f3c-a65f-f8bc6ffda655" shape="rect"></a>All mandatory Attributes of all mandatory Modules and Functional Group Macros of the SOP Class of the new Composite Instance shall be populated as required by the IOD. In this context, "mandatory" means either required or conditional where the condition is satisfied.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_ef21050e-900e-42b6-aa04-c4fe8f702586" shape="rect"></a>For example, if the source images to be converted are of the CT Image Storage SOP Class, and the new Composite Instance is of the Legacy Converted Enhanced CT Image Storage SOP Class, then it is required that the Pixel Measures Functional Group be populated from Pixel Spacing, that the Plane Position (Patient) Functional Group be populated from Image Position (Patient), etc. In addition, if Body Part Examined is present in the source images with a standard value, then the condition for the inclusion of the Frame Anatomy Functional Group is satisfied, and the value therein needs to be converted to the appropriate Anatomic Region Sequence code.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_970fbe27-facb-42b7-9853-40e124e56cf2" shape="rect"></a>All optional Attributes, Modules and Functional Group Macros for which corresponding information is present in the source images in Standard Attributes shall also be populated.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e7c5cee6-106c-4d75-83fe-a277c1ee7659" shape="rect"></a>All Attributes of the Overlay Module shall be removed and converted into a Grayscale or Color Softcopy Presentation State (depending on the value of Photometric Interpretation); if the Overlay uses high bits in the Pixel Data (7FE0,0010) these shall be extracted and encoded in Overlay Data (60xx,3000) in the Presentation State and shall be set to zero in the Pixel Data (7FE0,0010) Attribute in the converted image.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_7cd1f2de-7796-43d5-a7b3-380db71305f1" shape="rect"></a>The extraction of Overlays from multiple frames may lead to a proliferation of GSPS Instances (one per converted frame), unless the converter recognizes commonality in the binary values of overlay bit planes and factors it out into fewer GSPS objects that each apply to multiple frames.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_44bee0f3-55bf-4aed-979b-9a1c113ef996" shape="rect"></a>All Attributes of the Curve Module (retired, but formerly defined in DICOM) shall be removed; they may be converted into a Grayscale or Color Softcopy Presentation State (depending on the value of Photometric Interpretation) or a Waveform as appropriate, but this is not required.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6163de9e-2c6e-48ff-bf16-fbdde22d42cb" shape="rect"></a>All Attributes of the Graphic Annotation Sequence (0070,0001) (not defined in Classic image IODs, but sometimes used in a Standard Extended SOP Class) shall be removed; they may be converted into a Grayscale or Color Softcopy Presentation State (depending on the value of Photometric Interpretation), but this is not required.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_41ed14f0-dce7-427b-a17b-d8a8aec17748" shape="rect"></a>All remaining Attributes in the source images (i.e., those that have not been used to populate mandatory or optional Attributes in Modules and Functional Groups), including Private Attributes, shall be copied into the top-level Data Set or the Unassigned Shared Converted Attributes Sequence (0020,9170) if they are present in all of the source images for the new Composite Instance, have the same number of values, and have the same values, otherwise they shall be copied into the Unassigned Per-Frame Converted Attributes Sequence (0020,9171).</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_8a3a2a04-4902-4120-8a00-1948ef3bb7ac" shape="rect"></a>The semantics of Private Attributes, or Standard Attributes used in a Standard Extended SOP Class, might not be maintained, being unknown to the converting application; for example, referential integrity of UIDs in Private Attributes might not be updated.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0e44abdb-0620-4b36-99a9-cc2ba9a276e6" shape="rect"></a>The new Composite Instance shall contain references to the source Instances from which it was converted, encoded in the Conversion Source Attributes Sequence (0020,9172) of the Image Frame Conversion Source Functional Group Macro.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_33beded4-e4b4-4a85-923e-ae6202a4a39d" shape="rect"></a>The specific requirements for the conversion of Enhanced Multi-frame images to Classic single frame images are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_ac92d445-346f-493f-b4ff-de73063de4f2" shape="rect"></a>The SOP Class of the new Composite Instance shall be the appropriate modality-specific (Classic) Image Storage SOP Class that is intended for de novo creation by an acquisition or post-processing device.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_6df46f2e-ab94-4efb-8c3f-d467dcbc1016" shape="rect"></a>For example, if the source images to be converted are of the Enhanced CT Image Storage SOP Class or the Legacy Converted Enhanced CT Image Storage SOP Class, then the new SOP Class is the CT Image Storage SOP Class.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e0314d59-77d3-4439-8e4f-04ebfd2324d4" shape="rect"></a>All mandatory Attributes of the IOD of the SOP Class of the new Composite Instance shall be populated. In this context, "mandatory" means either required or conditional where the condition is satisfied.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_5228a645-0b04-4c7c-8f71-3fc82fc348d2" shape="rect"></a>For example, if the source images to be converted are of the Legacy Converted Enhanced CT Image Storage SOP Class, and the new Composite Instance is of the CT Image Storage SOP Class, then it is required that Pixel Spacing be populated from the Pixel Measures Functional Group, that Image Position (Patient) be populated from the Plane Position (Patient) Functional Group, etc.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_553113e0-7547-4205-bb7c-26611ab6397e" shape="rect"></a>All optional Attributes in Modules of the IOD for which corresponding information is present in the source images shall also be populated.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_700ba7d0-6b05-44fe-a336-f6ef82a708c1" shape="rect"></a>All remaining Attributes in the source images (i.e., those that have not been used to populate mandatory or optional Attributes in Modules), including Private Attributes, shall be copied from the top-level Data Set and the Shared Functional Group Macro and the corresponding Item of the Per-Frame Functional Group Macro into the top-level Data Set of the new Composite Instance, including those in the Unassigned Shared Converted Attributes Sequence (0020,9170) and the corresponding Item of the Unassigned Per-Frame Converted Attributes Sequence (0020,9171) (which will result in a Standard Extended SOP Class).</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_3c194e18-cb6f-4460-b10e-096a1e15df1b" shape="rect"></a>Identifying Attributes, such as Series Number or Series Description, will be present in the Unassigned functional groups, and UIDs will be present in the Conversion Source Attributes Sequence, allowing, for example, the original Series organization to be recovered, whether or not a single Series was previously converted into a single Legacy Converted instance or it was split or merged with other Series.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_99321f3b-b0c6-4f20-bad7-ec1d3476e6c3" shape="rect"></a>The integrity of the set of Private Attributes recovered in this manner cannot be guaranteed to result in the correct function of any applications that depend on them, but the expectation is that this will be no better or worse than the impact of storing instances with private Attributes on any Storage SCP that may or may not reorganize and/or selectively preserve Private Attributes.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_414c364a-993a-4597-b7b2-12cdff654308" shape="rect"></a>The new Composite Instance shall contain references to the source Instances from which it was converted, encoded in the Conversion Source Attributes Sequence (0020,9172) in the SOP Common Module.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_df3d8cda-b344-4ddd-8d62-1bd3dfbfecf7" shape="rect"></a>The specific requirements for the conversion of other instances are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_ced49b0f-fcd1-4545-8f56-2f7755b5007c" shape="rect"></a>The new Composite Instance shall be an instance of the same SOP Class as the source Composite Instance.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5105909a-bfa3-4793-ac3a-794b02112646" shape="rect"></a>The new Composite Instance shall contain references to the source Instances from which it was converted, encoded in the Conversion Source Attributes Sequence (0020,9172) in the SOP Common Module.</p>
+               </li>
+            </ul>
+         </div>
+         <div class="table">
+            <a id="table_C.3.5-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.3.5-1. Modality-Specific SOP Class Conversions</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_92075de5-f060-4fa0-8b4d-706228b3ecf2" shape="rect"></a>Classic</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_482e1ba2-d3df-4cac-9683-cec0652b96a4" shape="rect"></a>True Enhanced</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_810da575-bb6b-4557-9319-5dc7dfd02029" shape="rect"></a>Legacy Converted Enhanced</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_98f1b6d7-ea01-428f-8034-1c71a3ef1ddc" shape="rect"></a>CT Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c2296a08-1775-4e5a-b1f3-a7a3900dc21e" shape="rect"></a>Enhanced CT Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_909c18ec-722b-4426-a00d-4b1b633f024e" shape="rect"></a>Legacy Converted Enhanced CT Image Storage</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a56a1d8c-0dbb-489a-9086-56ebdccace3b" shape="rect"></a>MR Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_08ad830d-962e-4d38-af11-a509527c9c59" shape="rect"></a>Enhanced MR Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_28d5c2bd-5f90-4c6d-852b-d3d8f79a6c3e" shape="rect"></a>Legacy Converted Enhanced MR Image Storage</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d8af1e1e-fc01-491c-9bd4-c02bcf9537ec" shape="rect"></a>PET Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_041ec3a9-f7bf-4d11-aeb3-e5258e7ad4af" shape="rect"></a>Enhanced PET Image Storage</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7dc76625-5110-40d6-8795-ba390d85984f" shape="rect"></a>Legacy Converted Enhanced PET Image Storage</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.3.4 Additional Query/Retrieve Attributes </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.4 DIMSE-C Service Groups</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

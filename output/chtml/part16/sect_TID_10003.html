@@ -1,0 +1,1663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TID 10003 Irradiation Event X-Ray Data</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.16.html" title="PS3.16" />
+      <link rel="up" href="sect_XRayRadiationDoseSRIODTemplates.html" title="X-Ray Radiation Dose SR IOD Templates " />
+      <link rel="prev" href="sect_TID_10002.html" title="TID 10002 Accumulated X-Ray Dose" />
+      <link rel="next" href="sect_TID_10003A.html" title="TID 10003A Irradiation Event X-Ray Detector Data" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024a - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TID 10003 Irradiation Event X-Ray Data <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_TID_10003.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_10002.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">X-Ray Radiation Dose SR IOD Templates </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_10003A.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.16.html" shape="rect">PS3.16</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Structured Reporting Templates (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_XRayRadiationDoseSRIODTemplates.html" shape="rect"></a>
+         </span> &gt; <span class="breadcrumb-node">Irradiation Event X-Ray Data</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_TID_10003" shape="rect"></a>TID 10003 Irradiation Event X-Ray Data</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_1d859a52-3457-480c-8612-d521dc3fb71f" shape="rect"></a>This Template conveys the dose and equipment parameters of a single irradiation event.</p>
+         <p>
+            <a id="para_cc2f1287-3f5c-4c38-a2b6-ccb92a4feb5d" shape="rect"></a>The Template and requirements are structured to consider equipment with various levels of integration between the components (X-Ray Source, Plate or Detector, and Gantry/Table) of the equipment.</p>
+         <p>
+            <a id="para_d7e79580-7719-48ef-a492-d26870c7fc1d" shape="rect"></a>An irradiation event is the loading of X-Ray equipment caused by a single continuous actuation of the equipment's irradiation switch, from the start of the loading time of the first pulse until the loading time trailing edge of the final pulse. The irradiation event is the "smallest" information entity to be recorded in the realm of Radiation Dose reporting. Individual Irradiation Events are described by a set of accompanying physical parameters that are sufficient to understand the "quality" of irradiation that is being applied. This set of parameters may be different for the various types of equipment that are able to create irradiation events. Any automatic on-off switching of the irradiation source during the event shall not be treated as separate events, rather the event includes the time between start and stop of irradiation as triggered by the user. E.g., a pulsed fluoro X-Ray acquisition shall be treated
+                    as a single irradiation event.</p>
+         <p>
+            <a id="para_c18ca492-0967-40ba-bd80-7ba20a573aca" shape="rect"></a>As described in <a class="xref" href="sect_6.2.4.html" title="6.2.4 Post-coordinated Codes and Has Concept Modifier Relationship" shape="rect">Section 6.2.4</a>, measurement concepts may be post-coordinated, even though not explicitly specified in the Template. In particular, post-coordination using modifier concept <a class="link" href="chapter_D.html#DCM_121401" shape="rect">(121401, DCM, "Derivation")</a>, with modifier values drawn from <a class="xref" href="sect_CID_10009.html" title="CID 10009 Measured/Calculated" shape="rect">CID 10009 “Measured/Calculated”</a> would be appropriate to encode indications of measured or of calculated values.</p>
+         <div class="variablelist">
+            <dl class="variablelist compact">
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Type:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_7f13dcaa-8f71-4a72-9f23-3b12462d6d16" shape="rect"></a>
+                                <span class="bold">
+                        <strong>Extensible</strong>
+                     </span>
+                            </p>
+               </dd>
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Order:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_086baa62-65a0-47dc-9729-f2dbf59d4756" shape="rect"></a>
+                                <span class="bold">
+                        <strong>Non-Significant</strong>
+                     </span>
+                            </p>
+               </dd>
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Root:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_441e5483-157c-4db2-9042-7c3e43b54c5b" shape="rect"></a>
+                                <span class="bold">
+                        <strong>No</strong>
+                     </span>
+                            </p>
+               </dd>
+            </dl>
+         </div>
+         <div class="table">
+            <a id="table_TID_10003" shape="rect"></a>
+            <p class="title">
+               <strong>Table TID 10003. Irradiation Event X-Ray Data</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3fd9f2f3-9206-46ee-8d38-f58ef902d31b" shape="rect"></a>
+                           </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33e3e8a7-a4fb-4f09-8898-5d8ebd851699" shape="rect"></a>NL</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_56cbbb1f-9f07-4e3e-a5ef-0eab5f0c449e" shape="rect"></a>Rel with Parent</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_888cfff7-391a-4fec-b13d-44d214406b5a" shape="rect"></a>VT</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9398418e-973a-41f4-8744-af6e14d4beab" shape="rect"></a>Concept Name</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_eb618511-723c-4fd0-8ca3-ecd76c316816" shape="rect"></a>VM</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2759102c-113d-42c9-bd22-e277469d8672" shape="rect"></a>Req Type</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_762ce8d6-ac3a-495e-86fb-40a5f5d48ee5" shape="rect"></a>Condition</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1b3f626a-cb98-410e-a5ac-59ed3e87f040" shape="rect"></a>Value Set Constraint</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c6c97826-ed89-49cd-81c8-e6067fd300a5" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b644a0c-8983-4142-9437-b8269f671980" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1dbd5b0f-ecc4-4a49-968d-51a631fc43c3" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7648ab5c-4b29-401d-83cf-4e92de5327af" shape="rect"></a>CONTAINER</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c5e6c352-f21a-4d8f-820f-250ec956de98" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113706" shape="rect">(113706, DCM, "Irradiation Event X-Ray Data")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7b2907b0-52c8-485a-84b7-1c35466601a7" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5d84f21b-f273-4344-9030-98b8828e8511" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_19c2e021-85d5-464b-a264-78e25a478cd3" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c77dd0e1-b0bf-4f6f-a65c-7de6422dd4f1" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3dc2d914-fa13-4971-b55a-38dccb19b94a" shape="rect"></a>2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_81272fac-cf3b-4ca2-a99d-cf88a58146da" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_094d8fd9-5382-4aca-8299-eb8218a91bdd" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0683529a-500b-42b5-afd4-324922795842" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4fd79a64-82cb-413c-b815-f04514a4d7cc" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113764" shape="rect">(113764, DCM, "Acquisition Plane")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aac136db-c45c-4691-aac8-1688a8199a0b" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_337392e0-d1b0-4ec9-a4e3-e58713dc73a2" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d438009e-74bc-4cd5-92e0-973809f15fe0" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4dfaa192-3b40-4fe5-a095-4e05c847ea4f" shape="rect"></a>D<a class="xref" href="sect_CID_10003.html" title="CID 10003 Equipment Plane Identification" shape="rect">CID 10003 “Equipment Plane Identification”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0f4e622d-60a2-4cf8-a926-4b00c574d460" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8bbdce2c-44f8-4fb7-a53e-5a0fd34dcd5c" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0629cb60-cb7b-4401-a507-58c0383a3387" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fe180959-75b5-4aa9-a880-63ca9454525a" shape="rect"></a>UIDREF</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_796a0c51-5822-4f76-8b10-bdf68600c546" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113769" shape="rect">(113769, DCM, "Irradiation Event UID")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_229be873-f645-411f-a360-2e128ac12a18" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b058151b-6dc8-4b24-a8f2-a4b49a650198" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3099a0a7-d042-4a71-98a3-f6c091d95ca2" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_052b9979-b40b-4d43-803d-3d0859d71f09" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6345ce0b-59ee-4dd5-9c40-f04a7e8f7f8b" shape="rect"></a>4</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_72a9566b-a915-47fd-9a01-3146450a9a79" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_07761dcc-a296-4544-9cef-6cabd6ec5547" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_693bd28b-63d8-4684-bbf6-81b00f30a8c8" shape="rect"></a>TEXT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e82d403a-bd9d-4b94-aa36-32c6f277adad" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113605" shape="rect">(113605, DCM, "Irradiation Event Label")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_69504732-9289-4a9a-ac97-bf42f31ed2ac" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7c3fafc5-5a83-4d2f-9be2-6a67e9a7c9ba" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_91a4e9e1-919b-4720-8086-43ab6bbffe30" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3f5ff5d3-618f-42d6-87d8-daa0de71c4cd" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_374d76d7-4afa-4039-bbf5-1f02feacee26" shape="rect"></a>5</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a0d4da6e-37e8-4c3d-a3b3-4b3f6a24add7" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33a47ad1-7c3e-4726-a780-3fa3877b5b7c" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7383858a-761d-4322-afba-5fe2bc3dbe35" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_16c8f22b-c125-4394-a919-bddefe1d3ac4" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113606" shape="rect">(113606, DCM, "Label Type")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9d20f6aa-8c89-4d18-a270-9ec425a03a22" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_048e3bc1-0c1e-41f7-a859-755641f2e403" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7f0da1f6-2694-41d8-9ff6-3a91f83117df" shape="rect"></a>IF the value of Row 4 is the value of an Attribute in the images.</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c6c34b78-f09e-4da1-909c-a23cb472c3ea" shape="rect"></a>D<a class="xref" href="sect_CID_10022.html" title="CID 10022 Label Type" shape="rect">CID 10022 “Label Type”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7f2bf665-1b28-477b-be3f-f9a770bff40b" shape="rect"></a>5a</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cf134f23-3b0e-48d0-a177-617b459519ef" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3045001b-1a77-417c-ac1c-c146a38d18df" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a20e3d02-d21d-43c2-a2f6-45f7647ac0a8" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_442f848a-ef43-47f5-80ae-b36728183bdb" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_128551" shape="rect">(128551, DCM, "Is Repeated Acquisition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_75089b3a-be68-41b1-8641-d6cfa282ad76" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cdc372dc-e022-40ee-a28f-e71638cb7810" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c7ba2bb-674e-4838-97e1-ce2d57d2e7c7" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3ba6b19c-f790-4e68-ae6e-eebfe049ba47" shape="rect"></a>D<a class="xref" href="sect_CID_231.html" title="CID 231 Yes-No Only" shape="rect">CID 231 “Yes-No Only”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_41ecfeac-05bb-4e7b-a2e2-8ba9a702908f" shape="rect"></a>5b</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c187987a-6202-464b-a13a-f42c5567ab96" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_80cbe2ff-bd87-440c-9f14-7103f67ed7a1" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_473a4726-75a5-4c07-b303-087e74762b7f" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6c4732ca-aada-4d44-b9db-96340ea0e05e" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_128552" shape="rect">(128552, DCM, "Reason for Repeating Acquisition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fb84246c-6c90-4e13-a4fa-5b189f501f39" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_de37c1a0-87dc-41c9-ac82-16d8018780a9" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a6d27512-bec4-46a2-a3fd-e83f9883032c" shape="rect"></a>IFF value of Row 5a = (373066001, SCT, "Yes")</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cbab6d10-fda2-40c5-8018-57586e68886b" shape="rect"></a>D<a class="xref" href="sect_CID_10034.html" title="CID 10034 Reason for Repeating Acquisition" shape="rect">CID 10034 “Reason for Repeating Acquisition”</a>
+                                </p>
+                                <p>
+                              <a id="para_c71352c7-1e7a-4e5c-9474-5c47844ca5ec" shape="rect"></a>D<a class="xref" href="sect_CID_7011.html" title="CID 7011 Rejected for Quality Reason" shape="rect">CID 7011 “Rejected for Quality Reason”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9d0c6285-3752-4f48-988d-33c76bb9ba04" shape="rect"></a>5c</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_865e1138-419d-408f-8b19-03e380199de5" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_644d53aa-7f18-44a3-a0c3-dd67f3526703" shape="rect"></a>HAS PROPERTIES</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4f1275e9-c1cc-47f2-8771-bfccd4e6efbc" shape="rect"></a>UIDREF</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c5210cbe-d4b7-49ca-9476-7ded2c39fcf5" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113769" shape="rect">(113769, DCM, "Irradiation Event UID")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_343f214c-5cdf-4d30-aeb8-f0b35e9a9d7c" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0087e953-e0b4-496d-969b-e9374c09b3f2" shape="rect"></a>UC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2f57027e-edc1-40fa-ad5d-3bed6f5c47c1" shape="rect"></a>IFF value of Row 5a = (373066001, SCT, "Yes")</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_573ba9a1-5927-4b46-b2ec-6861680fca62" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e098e924-2072-411c-8321-e439e4e2b2fb" shape="rect"></a>5d</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_80000fca-d123-4d44-94ad-db6c31974db7" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4cae0c76-eebb-4636-8f5f-281c7fd492bb" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_24afd457-6071-407d-97c7-d22353293e65" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e2b09bac-5744-4bf1-8d93-6c9ac706623e" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_130503" shape="rect">(130503, DCM, "Is Rejected Acquisition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2683f3d4-226c-475d-9f69-b187d8937f0f" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_53de15da-9376-458e-9d62-9dffa0bd1566" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_af8361d5-7d8f-45b6-8138-4bdca99ddf1d" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ffc52781-a9f8-418a-a21f-888044850f4a" shape="rect"></a>D<a class="xref" href="sect_CID_231.html" title="CID 231 Yes-No Only" shape="rect">CID 231 “Yes-No Only”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d37acfc9-10c7-4b76-ad0f-d96f43212cd1" shape="rect"></a>5e</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4fa69438-9647-4a96-954d-b7019e36c61b" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0491377a-67c6-44f4-a5f3-517481572c32" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f1975bfb-3fa3-45b3-8251-f85051a82582" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c158870-e771-4681-84a2-70e1432653e4" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_130504" shape="rect">(130504, DCM, "Reason for Rejecting Acquisition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_78f2399d-e560-419b-882a-84ff18bab4e2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c61c5b6-8e66-47da-817f-ec91026a5f11" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9b0b5a95-b60f-450e-916d-57ace6751f30" shape="rect"></a>IFF value of Row 5d = <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_37ec5ced-f353-4548-aa00-064f83855e20" shape="rect"></a>D<a class="xref" href="sect_CID_10034.html" title="CID 10034 Reason for Repeating Acquisition" shape="rect">CID 10034 “Reason for Repeating Acquisition”</a>
+                                </p>
+                                <p>
+                              <a id="para_597de73f-5fc1-4ec3-a631-d3d70c81b3ca" shape="rect"></a>D<a class="xref" href="sect_CID_7011.html" title="CID 7011 Rejected for Quality Reason" shape="rect">CID 7011 “Rejected for Quality Reason”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_597ee5a6-d6c7-4525-9e40-baf618ff0579" shape="rect"></a>6</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_148d2968-57e4-40d3-a0eb-786f177fc8e4" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_393dc1c6-5a6a-4968-9efc-715c2c1f8ceb" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7bc9fe33-4d38-468f-8cb0-438876803515" shape="rect"></a>DATETIME</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_be61f41f-c6d1-49b5-af98-7dededbf1335" shape="rect"></a>DT <a class="link" href="chapter_D.html#DCM_111526" shape="rect">(111526, DCM, "DateTime Started")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0edb46fe-f91b-4038-a4cf-cddaa43780e4" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_66080f6d-6e08-4aae-b118-8e7e12baa7a7" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c35db546-bc8d-4737-a1fd-cddbef4d82ca" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_95ad228f-69d6-4cd1-96ab-6ec586750d94" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_24a791d4-56c6-48a6-94cc-f8a8f1e71a62" shape="rect"></a>7</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4d7fe13a-18b7-4f82-b30b-c7f8038bbe5f" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d462417c-ecb4-444c-87b0-93c42b505a91" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2254a039-624c-4477-8878-3a00498b5f2a" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9451ba85-cadb-4840-9f2b-07aba19eb9c6" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113721" shape="rect">(113721, DCM, "Irradiation Event Type")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9a6c58a3-71dd-4a42-987e-64799e4564e2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_786f0ad8-313c-4e68-a8f8-46881951628c" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc7ecd0d-d718-4cf1-938d-f1dc4d4cacc6" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_07b9c9ea-7b92-4463-91da-a2d5762f8f16" shape="rect"></a>D<a class="xref" href="sect_CID_10002.html" title="CID 10002 Irradiation Event Type" shape="rect">CID 10002 “Irradiation Event Type”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c68fdab0-2f18-49aa-a269-84ba875c2c6f" shape="rect"></a>8</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8547da3f-0942-463d-a61d-5850ba6cfd76" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b373e196-c32b-4a94-b32f-ce7b7450c36f" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_98a5397f-8b71-49ed-86a3-c5bff768230f" shape="rect"></a>TEXT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_285f6fc8-98a7-4c4c-91f1-9c3b01b92d7d" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_125203" shape="rect">(125203, DCM, "Acquisition Protocol")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_436daba7-3451-46fc-9a4c-81f3ab229db2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_195fa252-ba5e-485c-8449-9f666ecefbf4" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_92d1f58d-3a00-4f22-ae05-6c98459c9bf7" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ae327ebe-19ef-4be6-b69a-e622cf8e71f4" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a1db4d37-b0e4-4102-97cc-0bcaa4f3b990" shape="rect"></a>11</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7f3b2367-8cec-47c3-8997-e580f6893612" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5a32897f-64bb-431f-b41c-13e475b84d4f" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_110f2a0f-317f-4a1f-85e7-885c93aca87f" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2b349eed-bdf1-41bb-999e-433a9717e437" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111031" shape="rect">(111031, DCM, "Image View")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c5798707-a354-457d-b08f-b942262755ba" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fe8bc204-0129-49d8-83f7-f1e7ab1508aa" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_18531047-2757-4007-9104-4c3e0aeb7880" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_054c9b36-3458-47cd-8ab7-1fe8e33eef52" shape="rect"></a>D<a class="xref" href="sect_CID_4010.html" title="CID 4010 DX View" shape="rect">CID 4010 “DX View”</a>
+                                </p>
+                                <p>
+                              <a id="para_049ecebf-3548-49de-8579-9931e613eee2" shape="rect"></a>D<a class="xref" href="sect_CID_4014.html" title="CID 4014 View for Mammography" shape="rect">CID 4014 “View for Mammography”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a7a00fa1-f5ce-4f6d-bcea-642934d8c608" shape="rect"></a>12</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4f5890e4-8da9-4add-aab6-899a004449b3" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c235fbd-8fe2-4696-9f57-09ee9e1af7db" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f4de38f5-55e8-43f9-8a2a-307a1bed77a3" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1b5d5db3-2e72-4426-86ab-3ccf107c5230" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111032" shape="rect">(111032, DCM, "Image View Modifier")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_17ee6f5b-563b-41a4-ac0a-b7893d38e7af" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8f7249de-dca8-4ab4-987f-bf56979a0904" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_227cc985-2fe0-4cfb-ad71-52a66b7fb0ec" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7a6b788e-1ff2-4a80-bd50-679641c06457" shape="rect"></a>D<a class="xref" href="sect_CID_4011.html" title="CID 4011 DX View Modifier" shape="rect">CID 4011 “DX View Modifier”</a>
+                                </p>
+                                <p>
+                              <a id="para_866c7045-c23e-4eaf-a425-a72019687024" shape="rect"></a>D<a class="xref" href="sect_CID_4015.html" title="CID 4015 View Modifier for Mammography" shape="rect">CID 4015 “View Modifier for Mammography”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1bf79f34-0f57-4923-9393-31507d9b0cc7" shape="rect"></a>13</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7662517e-bd3a-4363-9121-92fe823b9dc2" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c750be0b-d548-4c67-acd2-b232968b7d5b" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_350f3bda-e686-4011-af28-b594056ef4a7" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b197a1cc-5bd7-40fc-869b-1961a094fcdd" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113946" shape="rect">(113946, DCM, "Projection Eponymous Name")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e5b5139b-4edd-473b-9a87-753b9618f4fb" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_597a2a69-c097-4fc0-ae05-c7ea7efa7520" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9067619f-e762-454e-ba88-3c38ccac97e3" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5c403d10-c84f-42e0-892b-24b14ae1b5a5" shape="rect"></a>D<a class="xref" href="sect_CID_4012.html" title="CID 4012 Projection Eponymous Name" shape="rect">CID 4012 “Projection Eponymous Name”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0beee260-b9b4-4109-a3db-b4035e8b935d" shape="rect"></a>14</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_12b98dfe-aa71-404a-abbf-06cf22ff47ca" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1afba53a-2bd3-4e3c-9fa2-a710559923dc" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_950e3c19-5576-459a-ac74-499a43a9f45b" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fc73f612-c8d0-43e6-b4da-2102f460d46e" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113745" shape="rect">(113745, DCM, "Patient Table Relationship")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ab2435d3-3f92-47e6-923d-3f26ad3c7180" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_63d17549-a89d-4f9f-8ef5-34dcd80d3821" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c9b082c6-6e31-4829-b4d4-40d157be891b" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b04e162d-ee3f-41ea-afbf-a366ed6b88ce" shape="rect"></a>D<a class="xref" href="sect_CID_21.html" title="CID 21 Patient Equipment Relationship" shape="rect">CID 21 “Patient Equipment Relationship”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b1ff333-5394-42ff-b895-76547922f2b1" shape="rect"></a>15</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9db2012c-8817-4e26-aca8-0135c1cfb065" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b1e99a77-ac73-4b9e-9e27-4d90244f729b" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1153dbc1-6f86-482e-9233-f19a7432464d" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7d05c38d-4376-4c68-b1a8-47a6f38051e7" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113743" shape="rect">(113743, DCM, "Patient Orientation")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2788bc36-46c9-442a-88a2-bf33ab46fca1" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_14e78db9-b3fd-4f39-934e-94e91c7aa8fe" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e44e29e6-7d7f-4050-8ab0-fc8dd1b2092f" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0855178c-6031-42e0-9e0c-1f760f8d3a04" shape="rect"></a>D<a class="xref" href="sect_CID_19.html" title="CID 19 Patient Orientation" shape="rect">CID 19 “Patient Orientation”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b01a83d-46ed-496c-b0ad-7b3f83365d95" shape="rect"></a>16</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_885244a3-667f-49d8-b2e2-8aa4902e2341" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_11fe1a3e-cb17-4d17-9ddf-140740e36004" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_79bc2bff-f98a-4e70-94dc-91e7aaf59d09" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_66862f14-15c9-4d5e-bba0-c34b7d8e1237" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113744" shape="rect">(113744, DCM, "Patient Orientation Modifier")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_379a4fc3-e8c8-4123-9a79-4efa0f2b5dba" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cad87b95-8ccd-4f5e-9488-6c868628d715" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_257eec1f-1ec9-4040-8128-51cf7255a45b" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d9876bb9-dc81-4346-951f-776ff9868a24" shape="rect"></a>D<a class="xref" href="sect_CID_20.html" title="CID 20 Patient Orientation Modifier" shape="rect">CID 20 “Patient Orientation Modifier”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_de32d539-5d58-4e38-b0f5-279b6fd77640" shape="rect"></a>17</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4933fbb7-fce6-4a68-a316-a866acc54e7d" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0ced1ae2-708a-4c4a-9dca-f17c8743a320" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_150d470f-6d9e-43bc-9929-acb3482edbd6" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e798abf2-10de-41e4-993e-cb167635b0ea" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_123014" shape="rect">(123014, DCM, "Target Region")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dc139763-d9e2-4cf6-ac18-f2bff81e4dc4" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e9bdef06-df4a-422e-9651-d751dacdeb19" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0d5fa7d8-7fdf-4b4f-a267-02fa43fe6be0" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33521a68-53af-4009-a873-62465fd15f7b" shape="rect"></a>D<a class="xref" href="sect_CID_4031.html" title="CID 4031 Common Anatomic Region" shape="rect">CID 4031 “Common Anatomic Region”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_62aaa4f6-c4fe-4cd9-b1b5-71ba3f8fb7ed" shape="rect"></a>17b</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6a244210-0ed9-4279-a6eb-96d05ad3ab76" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_592e686f-282c-4900-a75a-bd7543c5cb6d" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e9a1535b-4327-42a7-975e-bc358df4b79e" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4fcf19f9-94fc-4765-8073-3314404e20c6" shape="rect"></a>EV <a class="link" href="http://snomed.info/id/272741003" target="_blank" shape="rect">(272741003, SCT, "Laterality")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b9c4f7f4-be45-4e8b-ae18-5021ec24d457" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9ebfa86b-6710-4d00-998e-c3cc583d4674" shape="rect"></a>UC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e347ef4f-b76b-49f5-8c8a-d6112096f5c7" shape="rect"></a>If anatomy is bi-lateral</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a8a93b9d-f3a1-4eb5-a3b1-393990dcccd5" shape="rect"></a>D<a class="xref" href="sect_CID_244.html" title="CID 244 Laterality" shape="rect">CID 244 “Laterality”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ff06533b-0bdc-4b75-805a-be0476ab5e39" shape="rect"></a>18</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5a70c1e6-de3f-463d-8253-484bf6178e47" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_34d9862f-fcbf-4d4d-93b3-c5a9fffcad06" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc224f33-3f2a-4b3c-8cb9-cb6196e16035" shape="rect"></a>NUM</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e0a6c273-8ac4-4d3e-8ac9-213f1cd96a31" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_122130" shape="rect">(122130, DCM, "Dose Area Product")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bd4e561f-0bb6-492e-9164-aa32d0dc99c1" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_29ef63a0-d7be-4be2-b980-c1b9f7008dc2" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3c46d2a2-5b6f-4b00-b4e0-9847e2dd49a0" shape="rect"></a>IFF <a class="xref" href="sect_XRayRadiationDoseSRIODTemplates.html#sect_TID_10001" title="TID 10001 Projection X-Ray Radiation Dose" shape="rect">TID 10001</a> Row 2 = <a class="link" href="chapter_D.html#DCM_113704" shape="rect">(113704, DCM, "Projection X-Ray")</a>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ff8ea70d-297e-45b1-a77c-37fbd78a6265" shape="rect"></a>UNITS = EV (Gy.m2, UCUM, "Gy.m2")</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b0bcb0f-b917-478a-b4ff-80afe43b0c45" shape="rect"></a>19</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_484e0148-c6b1-45a5-a207-3e27aa7bb298" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3ba48743-bb20-4ebe-b486-0f4650098a61" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_90498d10-8106-41fc-8bbd-174fdb55aeed" shape="rect"></a>NUM</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_872ed962-e747-4482-b355-8733c2cd3687" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111634" shape="rect">(111634, DCM, "Half Value Layer")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4f8951d8-e693-47e7-9c36-a402c2310021" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a1edcd0e-b0fa-4a4d-bff3-8b328c2289de" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b0c616d9-27b1-4961-b9a8-bb8fbd3ec2eb" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_507f54ad-e282-43ad-8375-47f00c9081b1" shape="rect"></a>UNITS = EV (mm, UCUM, "mm")</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_83cc3e49-7114-4fdb-b88d-78715af484de" shape="rect"></a>20</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f9dbf7f3-b9f0-485f-8a06-e4bbcfd5fb4b" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_087696a1-3a8c-4d1b-bc81-768158bdccc5" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d4e2b38a-860e-43fd-bc9e-e85a6a0eadf8" shape="rect"></a>NUM</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7001221f-588f-47d0-84a2-a56bf7757825" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111638" shape="rect">(111638, DCM, "Patient Equivalent Thickness")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_abe2233e-1176-439e-bc0a-284aeb8b5a56" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a1ea9af6-807a-4d64-9908-83b1a16addd8" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2d05ab6b-0c46-4d43-a84b-ad89d42ba140" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_005ed3d2-d8bf-4096-9f71-b4a2e785c647" shape="rect"></a>UNITS = EV (mm, UCUM, "mm")</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_29e61c7f-3be0-4baf-968d-a4fa6cbf5ef0" shape="rect"></a>21</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_72daad86-3802-4511-bfbb-2138b3761945" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5c7fd001-5c89-4748-9723-e2b870f25581" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5cd179cf-da00-4901-beaf-2cbcecc5fcf7" shape="rect"></a>NUM</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a0ab780b-9763-44c8-83e0-df9a4894cc62" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111636" shape="rect">(111636, DCM, "Entrance Exposure at RP")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f5fc8bfd-0bf6-4f01-87e6-9fc6b501d0a3" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8314becb-ee35-4580-9094-ef055b699c41" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d95baf31-53ff-4f40-bef8-c39360569a38" shape="rect"></a>IF <a class="xref" href="sect_XRayRadiationDoseSRIODTemplates.html#sect_TID_10001" title="TID 10001 Projection X-Ray Radiation Dose" shape="rect">TID 10001</a> Row 2 = <a class="link" href="http://snomed.info/id/71651007" target="_blank" shape="rect">(71651007, SCT, "Mammography")</a> and (TID (10001) Row 9 is absent or value is <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>) and (TID (10001) Row 10 is absent or value is <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_633fa819-91a2-4dff-b0b1-6599caa12e34" shape="rect"></a>UNITS = EV (mGy, UCUM, "mGy")</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_968719f8-f880-4877-97fe-cd7bb69bccfe" shape="rect"></a>22</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2e15da3b-3627-4e7f-8427-f48badf4acda" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b0b7023-ef55-4b49-962a-47d1d88d1010" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3a13adbd-8603-44cb-97aa-25d64f4d108b" shape="rect"></a>TEXT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e6c2f901-b739-46f1-8a63-58025a9a748f" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113780" shape="rect">(113780, DCM, "Reference Point Definition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d9cc9c82-8eae-45f5-abc7-f923667222c0" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b70aaaed-0409-4c64-8826-1f70b389fc65" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_36291ae8-9973-4f3b-a02f-1bc90876e2f8" shape="rect"></a>IF Row 21 is present and Row 23 is not present</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ccd4bcc5-2598-4cd3-a8c2-2e71627edfa6" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2c9002f1-9e2b-41ff-8ab4-934357f6e22a" shape="rect"></a>23</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8b767710-1d81-47b3-9b71-6d6eaf50d916" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_036f329e-6d7e-4dff-b786-b8fba2fc4205" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_05291b3a-a5ed-41d5-8e78-9115a6f8e97e" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_051744c9-0175-4b44-a7b2-0a9ecb227a61" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_113780" shape="rect">(113780, DCM, "Reference Point Definition")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bba7e8fa-e78e-491b-a17e-4deea0cb4846" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9d100d5b-69e5-4cf0-866c-b813c245b618" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_147dc3c7-cc1e-42d1-b4fc-99c686888ab6" shape="rect"></a>IF Row 21 is present and Row 22 is not present</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cea653e5-2038-4d2b-a2e4-2b8247c02fa9" shape="rect"></a>D<a class="xref" href="sect_CID_10025.html" title="CID 10025 Radiation Dose Reference Point" shape="rect">CID 10025 “Radiation Dose Reference Point”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5ac43bee-eb1f-448b-963a-cd84266a49bf" shape="rect"></a>24</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2dbab8b9-9226-4af3-a5b6-e87c1ee47f6d" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d6a1f359-82f4-4de7-bbf1-a2deb20a8bc4" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_34075ef4-c508-4fb0-a1ab-b845cc65b15e" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_75aca5fc-3ce2-4da0-b7b6-7ed645de19a8" shape="rect"></a>D<a class="xref" href="sect_TID_4007.html" title="TID 4007 Mammography CAD Breast Composition" shape="rect">TID 4007 “Mammography CAD Breast Composition”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_56ac0be4-dfe4-42f0-874f-3a927dd4591a" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b860298b-8665-4ebf-acdc-b334e9f215c5" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_df635c3a-011f-4a5b-a877-c4ae9078f7d0" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e7465e57-f508-4a63-bff6-44a7e859929f" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4be90959-66e5-450d-8493-c35032ce9d15" shape="rect"></a>25</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a84a96ca-31eb-4f40-ba1e-c0d27ac07e41" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a44d72cb-bba9-4c05-be5e-0857b7555843" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_72e5d591-7fec-49d9-b450-9d67125edbd0" shape="rect"></a>TEXT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9f7ca30c-f58d-4b8d-b1e4-d22723c86e9f" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_121106" shape="rect">(121106, DCM, "Comment")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dc1d9674-afc0-4fea-b87b-779796c18353" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a5700023-a6b7-40b6-9a8b-f598dd3b1509" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0734590d-7313-4a8e-9bc6-77066d9742d5" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d5577dc0-8f36-4050-bea9-d0497ff3cde1" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b162deb3-04d7-4a40-829d-4d92478d5767" shape="rect"></a>26</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4f8bdca1-0be9-4a65-ad7b-6caedec4f882" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_358552ba-e839-4999-a9e1-87a1b8311a73" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_339d43c9-beee-4fff-b659-ac552edf8596" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_753618f2-4260-4b58-affe-673fdea78ca7" shape="rect"></a>D<a class="xref" href="chapter_A.html#sect_TID_1020" title="TID 1020 Person Participant" shape="rect">TID 1020 “Person Participant”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_27201e9a-e009-44f1-abf5-66cb3e2b0093" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d9d5f877-385f-4d93-b44b-e7f95bcb18f2" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6d93fb3c-f491-481a-82a6-0ce5d274bf50" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_44073556-4472-4566-9760-e7c65e01cc19" shape="rect"></a>$PersonProcedureRole = EV <a class="link" href="chapter_D.html#DCM_113851" shape="rect">(113851, DCM, "Irradiation Administering")</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6a9fb5b2-cedf-4547-abbc-c57130721436" shape="rect"></a>27</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5b0ef55f-0f90-4f97-951f-12fcfd00939b" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8da62143-25e2-464f-a974-b7b63e6c6b7d" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9b70d716-9bb2-4c1e-b188-c42ef5ceb770" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_086cff9c-7361-431f-8ef4-a85b8e88d7e5" shape="rect"></a>D<a class="xref" href="sect_TID_10003A.html" title="TID 10003A Irradiation Event X-Ray Detector Data" shape="rect">TID 10003A “Irradiation Event X-Ray Detector Data”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8d3a8d13-032d-4d87-a97d-e050adb5bf07" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ab3c45d8-94ce-409b-b3ea-2089dae4cb86" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0efd88bf-efe3-4954-952d-026a8713875f" shape="rect"></a>IFF <a class="xref" href="sect_XRayRadiationDoseSRIODTemplates.html#sect_TID_10001" title="TID 10001 Projection X-Ray Radiation Dose" shape="rect">TID 10001</a> Row 8 is absent or has a value of <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e2876a4f-4970-4cc0-9c1f-8fbbd9d1f5f7" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_941eb982-fd2d-48f1-8cb4-957bf1b501b8" shape="rect"></a>28</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_979725a3-1d0a-4906-b241-38e677020a0e" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3ecbe930-23d7-48b1-9743-00923c286462" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f1fd1b26-50bb-443c-8a74-8ea7a7882380" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9f66317e-856b-4c96-872b-6733aab11784" shape="rect"></a>D<a class="xref" href="sect_TID_10003B.html" title="TID 10003B Irradiation Event X-Ray Source Data" shape="rect">TID 10003B “Irradiation Event X-Ray Source Data”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cf3db190-a3e1-475e-8d98-f4272ee724b6" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2315fb08-69d4-4092-8613-abc9102bb0e0" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_21594ee8-e4bd-43e6-995f-eaa0640d4ce3" shape="rect"></a>IFF <a class="xref" href="sect_XRayRadiationDoseSRIODTemplates.html#sect_TID_10001" title="TID 10001 Projection X-Ray Radiation Dose" shape="rect">TID 10001</a> Row 9 is absent or has a value of <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ae78a959-7048-4efb-91d8-4a0963196303" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_631b9db2-b831-4e5c-bdf3-dd836a548d32" shape="rect"></a>29</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3abce8de-ea7b-4aec-a240-5e40da49a78a" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_18d2f7f7-06e9-4946-9532-d789de8d3a82" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_34af4f1a-7f3b-4379-b92e-635c3e18a6a6" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9ad9db42-897e-4f01-888f-f347ad971ade" shape="rect"></a>D<a class="xref" href="sect_TID_10003C.html" title="TID 10003C Irradiation Event X-Ray Mechanical Data" shape="rect">TID 10003C “Irradiation Event X-Ray Mechanical Data”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7b7781f3-2d89-4e7f-b69d-fe4fbf1a02c0" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_575b0640-06e1-4d87-9bb6-1f10bf857655" shape="rect"></a>MC</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_25bd6a74-a636-4a46-8721-cb5bc7132d19" shape="rect"></a>IFF <a class="xref" href="sect_XRayRadiationDoseSRIODTemplates.html#sect_TID_10001" title="TID 10001 Projection X-Ray Radiation Dose" shape="rect">TID 10001</a> Row 10 is absent or has a value of <a class="link" href="http://snomed.info/id/373066001" target="_blank" shape="rect">(373066001, SCT, "Yes")</a>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_080e3362-2fff-4f3a-a424-d133ad7e5bfa" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_a8d5657d-40ca-4452-9fd5-7d2b4306e4f5" shape="rect"></a>
+                    <span class="bold">
+               <strong>Content Item Descriptions</strong>
+            </span>
+                </p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_86a2fe15-1e00-45fb-b546-d6a03174d2b9" shape="rect"></a>Row 3</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1d7921da-981d-4096-b93d-813a61813860" shape="rect"></a>If the image generating entity does not assign a DICOM UID to the irradiation event (e.g., for non-digital imaging equipment), the application generating this report shall assign a UID.</p>
+                                <p>
+                           <a id="para_83d89e29-7cc6-4a90-ba6f-71bed374e5ac" shape="rect"></a>In the case of non-integrated cassette-based equipment, a standalone Detector will generate UIDs for the Events it observes. If the X-Ray Source component of the equipment also reports information, it too will generate UIDs for the Events it creates. A downstream system (e.g., a workstation or the Dose Information Reporter itself) may combine the two reports into a composite report, and match up the events based on details such as the time information, and use the UIDs of the X-Ray Source.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_8f86a93e-b276-43c3-b1cf-b2d6a56dbbee" shape="rect"></a>Rows 5a, 5b, 5c</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b17cb05f-9eed-4a10-aeeb-0b0acb0477a8" shape="rect"></a>If an acquisition is a repeat because an earlier acquisition was unsatisfactory, this may be recorded along with a coded reason and the earlier acquisition's irradiation event UID. This is intended to help with subsequent analysis by providing a priori information about why the study might be flagged as an outlier with higher dose exposure values than usual for the type of study.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ac6f3f20-8763-443e-baba-8690e569e038" shape="rect"></a>Rows 5d, 5e</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_24841513-aed3-46ec-b346-72ba1ceec475" shape="rect"></a>If an acquisition is a rejected because it was unsatisfactory, this may be recorded along with a coded reason. This is intended to help with subsequent analysis by providing a priori information about why the study might be flagged as an outlier with higher dose exposure values than usual for the type of study.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_2963a0c7-e27f-4395-a120-c3ffbd56b137" shape="rect"></a>Row 6</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_659b7c9e-9890-4d66-b76d-193b0aad59fe" shape="rect"></a>The DateTime that the application of X-Rays started for this irradiation event.
+                                    This shall correspond to the start of the first irradiation in the Irradiation Event, which defines the starting point for the calculation of
+                                    <a class="xref" href="sect_TID_10003A.html" title="TID 10003A Irradiation Event X-Ray Detector Data" shape="rect">TID 10003A “Irradiation Event X-Ray Detector Data”</a> Row 10 "Irradiation Duration".</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_82c96a23-a7bf-4a70-a404-94fdf4103a10" shape="rect"></a>Row 17</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_16411101-b954-4a10-a06a-7e24412cd11b" shape="rect"></a>The target region is the anatomy exposed.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_27cc4bb5-b569-4fe8-a677-18dcd4a4d76f" shape="rect"></a>Row 17b</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_aa39b8d1-b54d-4344-a4f3-58586e076484" shape="rect"></a>Previously, a CODE content item <a class="link" href="http://snomed.info/id/91723000" target="_blank" shape="rect">(91723000, SCT, "Anatomical structure")</a> along with CODE concept modifier <a class="link" href="http://snomed.info/id/272741003" target="_blank" shape="rect">(272741003, SCT, "Laterality")</a> were used to identify bilateral anatomy. This duplicated the function of Row 17 and was retired. See PS3.16 2017c.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_52a28c47-5395-4f05-b876-2fa133e0fae9" shape="rect"></a>Row 21</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_eaffd6f8-6549-4ea4-b1d0-5835ee0a21c8" shape="rect"></a>A text definition of the Reference Point (RP) used for RP-related dose values.</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_ae7db94a-210a-40ec-a8df-6ce522193372" shape="rect"></a>Row 22</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d605937c-7103-4414-834b-31eb1830d227" shape="rect"></a>A coded definition of the Reference Point (RP) used for RP-related dose values</p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_17e796d5-f041-4664-9ffe-951e8202531d" shape="rect"></a>Row 26</p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_824fc59d-829d-4ca0-92fd-3b938bc377fe" shape="rect"></a>People responsible for the administration of the radiation reported in the irradiation event. May include values that would appear in Performing Physicians' Name (0008,1050), Performing Physician Identification Sequence (0008,1052), Operators' Name (0008,1070) and/or Operator Identification Sequence (0008,1072).</p>
+                            </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_10002.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_XRayRadiationDoseSRIODTemplates.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_10003A.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TID 10002 Accumulated X-Ray Dose </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.16.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TID 10003A Irradiation Event X-Ray Detector Data</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024a - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

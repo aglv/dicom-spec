@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>CC.2.4.3 Service Class Provider Behavior</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_CC.2.4.html" title="CC.2.4 Report a Change in UPS Status (N-EVENT-REPORT)" />
+      <link rel="prev" href="sect_CC.2.4.2.html" title="CC.2.4.2 Service Class User Behavior" />
+      <link rel="next" href="sect_CC.2.4.4.html" title="CC.2.4.4 Status Codes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">CC.2.4.3 Service Class Provider Behavior <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_CC.2.4.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_CC.2.4.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">CC.2.4 Report a Change in UPS Status (N-EVENT-REPORT)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.4.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_CC.html" shape="rect">Unified Procedure Step Service and SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_CC.2.html" shape="rect">DIMSE Service Groups</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_CC.2.4.html" shape="rect">Report a Change in UPS Status (N-EVENT-REPORT)</a>
+         </span> &gt; <span class="breadcrumb-node">Service Class Provider Behavior</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_CC.2.4.3" shape="rect"></a>CC.2.4.3 Service Class Provider Behavior</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_baacc143-388a-46da-b412-fd368fc15ee9" shape="rect"></a>The SCP shall specify in the N-EVENT-REPORT Request Primitive the Event Type ID and the UID of the UPS Instance with which the event is associated. Since all UPSs are created as instances of the UPS Push SOP Class, the Affected SOP Class UID (0000,0002) in the N-EVENT-REPORT request shall be the UID of the UPS Push SOP Class. See <a class="xref" href="sect_CC.3.html#sect_CC.3.1" title="CC.3.1 Service Class and SOP Class UIDs" shape="rect">Section CC.3.1</a> for further details. The SCP shall additionally include Attributes related to the event as defined in <a class="xref" href="sect_CC.2.4.html#table_CC.2.4-1" title="Table CC.2.4-1. Report a Change in UPS Status - Event Report Information" shape="rect">Table CC.2.4-1</a>.</p>
+         <p>
+            <a id="para_5e3f4d4d-9909-4350-b41c-131ac9b24e46" shape="rect"></a>Each time the SCP completes a Subscribe to Receive UPS Event Reports Action (see <a class="xref" href="sect_CC.2.3.html#sect_CC.2.3.1" title="CC.2.3.1 Action Information" shape="rect">Section CC.2.3.1</a>) for a specific UPS instance, the SCP shall send to the Receiving AE a UPS State Report Event and provide the current value of the Procedure Step State (0074,1000) and Input Readiness State (0040,4041) Attributes for the UPS instance.</p>
+         <p>
+            <a id="para_1555a277-b33a-4020-aa7d-7a0464f7fae9" shape="rect"></a>Each time the SCP completes a Subscribe to Receive UPS Event Reports Action (see <a class="xref" href="sect_CC.2.3.html#sect_CC.2.3.1" title="CC.2.3.1 Action Information" shape="rect">Section CC.2.3.1</a>) for the well-known UID 1.2.840.10008.5.1.4.34.5 with the value of the Deletion Lock set to TRUE (i.e., a Global Subscription with Lock), the SCP shall send to the Receiving AE a UPS State Report Event for every UPS Instance managed by the SCP and provide the current value of the Procedure Step State (0074,1000) and Input Readiness State (0040,4041) Attributes.</p>
+         <p>
+            <a id="para_c62402b8-aa20-47e8-b12c-0176cad6a0d8" shape="rect"></a>Each time the SCP creates a new UPS instance, the SCP shall send a UPS State Report Event, indicating a change of status to SCHEDULED and the initial value of and Input Readiness State (0040,4041), to all AEs with a Global Subscription State of "Global Subscription with Lock" or "Global Subscription w/o Lock". (see <a class="xref" href="sect_CC.2.3.html" title="CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)" shape="rect">Section CC.2.3</a>)</p>
+         <p>
+            <a id="para_a6b92781-c301-4264-a2a8-4ad3017e7fd5" shape="rect"></a>Each time the SCP creates a new UPS instance and either the Scheduled Station Name Code Sequence (0040,4025) or the Scheduled Human Performers Sequence (0040,4034) is populated, the SCP shall also send a UPS Assigned Event, with the current contents of the Scheduled Station Name Code Sequence (0040,4025) and the Scheduled Human Performers Sequence (0040,4034), to all AEs with a Global Subscription State of "Global Subscription with Lock" or "Global Subscription w/o Lock".</p>
+         <p>
+            <a id="para_5d495682-7f89-46da-b0af-2395e764510a" shape="rect"></a>In the following text "Subscribed SCUs" means all AEs where the UPS Subscription State of the UPS Instance in question is "Subscribed with Lock" or "Subscribed w/o Lock" (see <a class="xref" href="sect_CC.2.3.html" title="CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)" shape="rect">Section CC.2.3</a>). If the SCP also supports the HTTP CreateSubscription service as an origin server, "Subscribed SCUs" also includes all CreateSubscription user agents where the UPS Subscription State of the UPS Instance in question is "Subscribed with Lock" or "Subscribed w/o Lock" (see <a href="../part18/sect_11.10.html" class="olink" shape="rect">Section 11.10 “Subscribe Transaction” in <span class="olinkdocname">PS3.18</span>
+            </a>).</p>
+         <p>
+            <a id="para_649ec948-1648-4cc1-96b1-b3328c054661" shape="rect"></a>Each time the SCP changes the Procedure Step State (0074,1000) Attribute for a UPS instance, the SCP shall send a UPS State Report Event to subscribed SCUs.</p>
+         <p>
+            <a id="para_fac7052c-a284-4f4b-a9d5-d520a4985252" shape="rect"></a>Each time the SCP changes the Input Readiness State (0040,4041) Attribute for a UPS instance, the SCP shall send a UPS State Report Event to subscribed SCUs.</p>
+         <p>
+            <a id="para_b8e29236-a064-4441-a63f-52ff00d929c5" shape="rect"></a>Each time the SCP receives an N-ACTION with an Action Type ID of 2 (Request UPS Cancel), the SCP shall send a UPS Cancel Requested Event to subscribed SCUs. The SCP shall include the AE Title of the triggering N-ACTION SCU in the Requesting AE Attribute. The SCP shall include the Reason For Cancellation, Contact Display Name and Contact URI Attributes if they were provided in the triggering N-ACTION.</p>
+         <p>
+            <a id="para_e68a5649-e0a3-473c-9fae-a5f1ca427873" shape="rect"></a>Each time the SCP updates the Scheduled Station Name Code Sequence (0040,4025) or the Scheduled Human Performers Sequence (0040,4034) for a UPS instance, the SCP shall send a UPS Assigned Event, with the current contents of the Scheduled Station Name Code Sequence (0040,4025) and the Scheduled Human Performers Sequence (0040,4034), to subscribed SCUs.</p>
+         <p>
+            <a id="para_53413c43-93b3-4e7b-92c1-4f973fe53653" shape="rect"></a>Each time the SCP updates the Procedure Step Progress (0074,1004), the Procedure Step Progress Description (0074,1006), or the contents of the Procedure Step Communications URI Sequence (0074,1008) for a UPS instance, the SCP shall send a UPS Progress Event, with the current contents of the Procedure Step Progress Information Sequence (0074,1002), to subscribed SCUs.</p>
+         <p>
+            <a id="para_cfbc3c94-ad5e-4eae-b0ab-26fdbb7f8f03" shape="rect"></a>Each time the SCP is restarted, the SCP shall send an SCP Status Change Event. The SCP, if it knows it is going down, may send an additional SCP Status Change Event before it is shut down. Since the subscription lists may be incomplete or missing in the event of a restart, the SCP shall maintain a fallback list of AEs (for example as a configuration file, or from an LDAP server). The SCP shall send the SCP Status Change Events to:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_0ce5bc4b-3f35-4f24-bec6-7aacc3906d8d" shape="rect"></a>all AEs on the fallback list and,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9b407d29-8500-432c-98fe-095177228c8e" shape="rect"></a>all AEs with a Global Subscription State of "Global Subscription with Lock" or "Global Subscription w/o Lock" and,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_42fac00c-0359-4990-b030-ee7f838f5306" shape="rect"></a>all AEs with a UPS Subscription State of "Subscribed with Lock" or "Subscribed w/o Lock" for any UPS Instance managed by the SCP</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_5b59b8db-e1b1-4869-a502-df5c1a5a9859" shape="rect"></a>The SCP may choose to not send duplicate messages to an AE.</p>
+         </div>
+         <p>
+            <a id="para_bb2db62f-a0a3-43c3-82e0-5505c0ef87f6" shape="rect"></a>The value of SCP Status (0074,1242) shall be RESTARTED if the SCP is sending this message due to being restarted and GOING DOWN if the SCP will be shut down soon.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_ad2179bb-dfb5-430d-88bb-11bf670bd5fe" shape="rect"></a>SCPs that report they are GOING DOWN might stop accepting new interactions from SCUs until after they have restarted.</p>
+         </div>
+         <p>
+            <a id="para_f57d5a3c-262f-4973-9a1a-e41e6e7737ae" shape="rect"></a>When SCP Status (0074,1242) is RESTARTED, the value of Subscription List Status (0074,1244) shall be WARM START if the SCP preserved the Subscription List to the best of its knowledge, and COLD STARTED if the SCP has not preserved the Subscription List.</p>
+         <p>
+            <a id="para_6495c2ff-725b-4e64-881f-ae10ec4b55ec" shape="rect"></a>When SCP Status (0074,1242) is RESTARTED, the value of Unified Procedure Step List Status (0074,1246) shall be WARM START if the SCP preserved the UPS List to the best of its knowledge, and COLD START if the SCP has not preserved the UPS List.</p>
+         <p>
+            <a id="para_50037c8b-9bd8-4dba-885c-eb87fe0687e6" shape="rect"></a>If the SCP is unable to successfully complete an N-EVENT-REPORT to any given SCU, the SCP has no obligation to queue or retry, and it should not imply any effect on the subscription list or deletion locks.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_CC.2.4.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_CC.2.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.4.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">CC.2.4.2 Service Class User Behavior </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> CC.2.4.4 Status Codes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

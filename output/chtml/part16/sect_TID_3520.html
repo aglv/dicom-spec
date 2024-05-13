@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TID 3520 Hemodynamic Clinical Context</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.16.html" title="PS3.16" />
+      <link rel="up" href="sect_HemodynamicsReportTemplates.html" title="Hemodynamics Report Templates " />
+      <link rel="prev" href="sect_TID_3516.html" title="TID 3516 Blood Lab Measurements" />
+      <link rel="next" href="sect_TID_3521.html" title="TID 3521 Relative Time" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024a - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TID 3520 Hemodynamic Clinical Context <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_TID_3520.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_3516.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">Hemodynamics Report Templates </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_3521.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.16.html" shape="rect">PS3.16</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Structured Reporting Templates (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_HemodynamicsReportTemplates.html" shape="rect"></a>
+         </span> &gt; <span class="breadcrumb-node">Hemodynamic Clinical Context</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_TID_3520" shape="rect"></a>TID 3520 Hemodynamic Clinical Context</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_73cb4c16-9373-4d02-9012-0758058ddb37" shape="rect"></a>The Clinical Context Template allows the recording of information about the patient's clinical state that may affect interpretation of the hemodynamic measurements. This Template includes several coded conditions (e.g., complications, drugs, physiological challenges, etc.), each of which may have a Concept Modifier of "Relative Time". This Modifier indicates the temporal relationship of the hemodynamic measurements to the conditions recorded in this Template. E.g., the Content Item structure:</p>
+         <p>
+            <a id="para_4f350fe6-6f70-4f44-8f1a-f670370907b2" shape="rect"></a>[CONTAINER] "Findings"</p>
+         <p>
+            <a id="para_ec5ba7e0-ba60-470e-9b14-3b6cb5cb47f1" shape="rect"></a>&gt;HAS ACQ CONTEXT "Cath Procedure Phase" "Post-intervention phase"</p>
+         <p>
+            <a id="para_65152ebb-1780-4176-8479-49e024a8ef67" shape="rect"></a>&gt;HAS ACQ CONTEXT [CONTAINER] "Clinical Context"</p>
+         <p>
+            <a id="para_732f5353-8052-4918-b2d4-d1d8be80f379" shape="rect"></a>&gt;&gt;CONTAINS [CODE] "Complication" "Arrhythmia"</p>
+         <p>
+            <a id="para_f26c9fa3-19b3-48d7-86d6-847774cddbc3" shape="rect"></a>&gt;&gt;&gt;HAS CONCEPT MOD [CODE] "Relative Time" "After"</p>
+         <p>
+            <a id="para_d37e0e5f-28ae-40db-a211-3db68c65dbc5" shape="rect"></a>&gt;CONTAINS [CONTAINER] "Arterial Measurements"…</p>
+         <p>
+            <a id="para_6f88a3e8-5077-426c-8be8-ff19742d0dba" shape="rect"></a>conveys the semantics that this group of measurements for the post-intervention phase of a cath procedure was made after an occurrence of arrhythmia in the patient.</p>
+         <p>
+            <a id="para_1554a29c-71ca-40c9-83f4-9709004f1d9d" shape="rect"></a>In the absence of a Relative Time modifier, the acquisition context is during the identified event or state.</p>
+         <div class="variablelist">
+            <dl class="variablelist compact">
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Type:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_cee9e1ce-65dd-4fed-8ded-c0f1fb518460" shape="rect"></a>
+                                <span class="bold">
+                        <strong>Extensible</strong>
+                     </span>
+                            </p>
+               </dd>
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Order:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_c925b85f-b2a3-478e-a2bb-5b322b315daa" shape="rect"></a>
+                                <span class="bold">
+                        <strong>Significant</strong>
+                     </span>
+                            </p>
+               </dd>
+               <dt>
+                  <span class="term">
+                            <span class="bold">
+                        <strong>Root:</strong>
+                     </span>
+                        </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_fe8f2598-2a5b-4ab1-8f7e-4a995dc6aa63" shape="rect"></a>
+                                <span class="bold">
+                        <strong>No</strong>
+                     </span>
+                            </p>
+               </dd>
+            </dl>
+         </div>
+         <div class="table">
+            <a id="table_TID_3520" shape="rect"></a>
+            <p class="title">
+               <strong>Table TID 3520. Hemodynamic Clinical Context</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_09991761-44f0-491d-bd04-7087758f5797" shape="rect"></a>
+                           </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bd88bf46-9d5f-48ad-ba97-8d1e0a0e2e25" shape="rect"></a>NL</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3290821e-ef14-42f7-870f-6d575b47cd56" shape="rect"></a>Rel with Parent</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a541d39c-819c-4e94-af26-3605fa17ae35" shape="rect"></a>VT</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_81b7f8c5-f937-4851-a57b-434ae500e77b" shape="rect"></a>Concept Name</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b6c6778f-176a-4b75-a527-1af7158f6038" shape="rect"></a>VM</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_acc674d3-871c-454e-b9f6-35f7c07f6942" shape="rect"></a>Req Type</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ecd2049b-3c74-43c4-aecf-ea9494570e10" shape="rect"></a>Condition</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f73d3c9c-c654-4ac1-94a8-490279342788" shape="rect"></a>Value Set Constraint</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_758f4e9e-afa1-4ee9-86ab-f73a4c370158" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9a0deccd-d1a1-43dd-9843-20074f9c3937" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0a906cc8-0c39-4120-909a-b9dc589b41b8" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_97dc4e0f-d26c-48f1-a487-d26480322b46" shape="rect"></a>CONTAINER</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_32705828-a534-43a6-b45d-fa7f56df6da1" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_122127" shape="rect">(122127, DCM, "Clinical Context")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ef76a189-b21f-41a9-bf3c-0fb7489b0025" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2be0feb2-206e-4099-ae89-75388b62a828" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_43dc987d-af2f-403c-a957-545b10e29131" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_64b65e3a-2efa-4943-a738-69339967a27e" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_37ad50b2-ef76-48f6-b509-18ed6b71f663" shape="rect"></a>2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3dd59011-0d91-4e96-85bc-ea693e2416ec" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_200b8535-5b65-4c57-838b-5d83c3219b40" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_08066651-2665-45e7-9f6e-5e076f447744" shape="rect"></a>CODE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_50359bcb-5397-4f5f-ba99-3f68977f6750" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_109054" shape="rect">(109054, DCM, "Patient State")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_48dad0f3-9ef6-41bf-be05-ed306fe3a1cd" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f08443a3-073a-47ae-aca9-4b93e30159b1" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6315fa60-2ef9-4600-b5a1-a80b4cf4d56b" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f7bc618f-5f6d-442e-80c3-7245ceea7d63" shape="rect"></a>B<a class="xref" href="sect_CID_3602.html" title="CID 3602 Hemodynamic Patient State" shape="rect">CID 3602 “Hemodynamic Patient State”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dec1e88d-d6f1-4cc4-8686-e2797dbc8a60" shape="rect"></a>3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_de809e7e-0e69-4b7b-95fa-1aca940ab2ae" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_131c059b-9b73-464f-9c15-7fe7ac14f795" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fb0a338e-8b91-49ef-b7ab-b94e8b40bf09" shape="rect"></a>TEXT</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d2216f1c-0f85-42f7-b2f0-48b952031d2c" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_109054" shape="rect">(109054, DCM, "Patient State")</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f4cbadd5-7d0f-4fcf-bb17-40394d3a06da" shape="rect"></a>1</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f8070c33-3e2e-4493-abeb-ac510adace70" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aa4a23cd-292e-4668-a3bc-a68b066bd616" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fccfe2df-2679-4f7a-9d19-7c0104e193e1" shape="rect"></a>
+                           </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_708a8974-f8f8-458e-b774-24b91ae9c963" shape="rect"></a>4</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_610c87bd-db93-471a-8133-0ff39d0a1fe1" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_36ddebf0-c12a-4eb4-be5d-825166ebfe69" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6182e1fd-619e-4553-b351-afbe93b76d0d" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7cc45f44-dac5-440e-95ef-c7a4c498e3fb" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ad77182d-4b65-4504-aeb1-277786c63580" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1320dd8e-cde9-4706-8f77-20c5ccf58e62" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_57ff50b7-e7f8-4967-991c-c3906a06a409" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_96e56e09-d3e9-4292-98ad-5f1c51a52e0f" shape="rect"></a>$ConditionName = EV <a class="link" href="http://snomed.info/id/116224001" target="_blank" shape="rect">(116224001, SCT, "Complication of Procedure")</a>
+                                </p>
+                                <p>
+                              <a id="para_23d7ee80-4ea8-4ae3-9de7-cd2cb173c3f3" shape="rect"></a>$ConditionValue = D<a class="xref" href="sect_CID_3413.html" title="CID 3413 Adverse Outcome" shape="rect">CID 3413 “Adverse Outcome”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_772f42a5-e46b-49c7-b0d8-5310876dfd6a" shape="rect"></a>5</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2f081ed9-cd95-48b7-ab7b-d350a978f9a3" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a6085b63-6e61-4772-a4f1-11a091464ea9" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c22969ec-b43a-416f-95c0-481e32209c9b" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b83018e8-ce46-4d5b-a1fb-b7630b3a2b9a" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cd15e875-769f-4819-8b12-23bc53554103" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c6dcf6e3-2686-44ed-b82e-a55c530655f2" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_df5ac678-00c4-42c1-a8bd-eab3a15b853f" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e9865f6c-bfe5-497b-97b4-4e08524327fa" shape="rect"></a>$ConditionName = EV <a class="link" href="chapter_D.html#DCM_122086" shape="rect">(122086, DCM, "Contrast administered")</a>
+                                </p>
+                                <p>
+                              <a id="para_1cfc9161-8b1e-443a-b38a-034b74905d74" shape="rect"></a>$ConditionValue = B<a class="xref" href="sect_CID_12.html" title="CID 12 Imaging Contrast Agent" shape="rect">CID 12 “Imaging Contrast Agent”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7b2f05b7-56fa-4cb3-939a-92e0094cd762" shape="rect"></a>6</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8a8b0105-e0d8-4b97-9ad5-c2a0efec09fc" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_244e72d6-41e3-4b49-85dd-4f1cddb20f2b" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_543e4fa5-6c9b-490c-a4e2-418d740f259f" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_53bc9aae-32d2-42b4-985f-8cc61427fcdb" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_373c00cc-70fd-450c-9965-44d0a8d2ed3e" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ee33fbdc-8ac4-43cc-9a23-ac50375ad6f8" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8df9246b-b038-457a-8d6f-4699430b8358" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d96890c8-a0a3-4753-a574-550c4280276d" shape="rect"></a>$ConditionName = EV <a class="link" href="chapter_D.html#DCM_122083" shape="rect">(122083, DCM, "Drug administered")</a>
+                                </p>
+                                <p>
+                              <a id="para_e9f5a61f-d209-4252-ab40-7a7ce10f1ecd" shape="rect"></a>$ConditionValue = B<a class="xref" href="sect_CID_10.html" title="CID 10 Interventional Drug" shape="rect">CID 10 “Interventional Drug”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_075ba177-9278-4686-939a-ff01094500f8" shape="rect"></a>7</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f52cbf71-dd1a-4c8b-ae8a-15b36fd5c417" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a4e6bc98-7abb-4a3a-9891-3778f199842f" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_106fa37a-447e-4a41-bc63-fcc174caa274" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0e2c2a33-3f1a-4e41-a87c-9b35e8b75c55" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dc1769d9-7f7a-401d-ac1c-3a2f4e01c8fb" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f1f25913-e0f3-43a0-9ed6-ef401f1761ae" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a23af2ad-0a14-4afa-8908-977c42ec9625" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b24e1dec-0019-4e68-a622-795bf0046a89" shape="rect"></a>$ConditionName = EV <a class="link" href="chapter_D.html#DCM_109059" shape="rect">(109059, DCM, "Physiological challenges")</a>
+                                </p>
+                                <p>
+                              <a id="para_ac621a62-c1cf-453c-9bbc-f5dc1b05f39f" shape="rect"></a>$ConditionValue = B<a class="xref" href="sect_CID_3271.html" title="CID 3271 Hemodynamic Physiological Challenge" shape="rect">CID 3271 “Hemodynamic Physiological Challenge”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_574b483d-a62b-42b0-93c0-836059238212" shape="rect"></a>8</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7fece3de-421d-4300-97ef-4da00a9210ed" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3cf329d1-2f43-4120-9860-2167d683ff33" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2489543d-e7ed-4779-8ec2-0e7d8c59bd9b" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dcf0aa25-d378-4ad8-be1e-f797f0b7577d" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6abf274f-b28f-4b96-9000-03fd147d314b" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bf0102c3-33bf-4d78-8906-47ebdb94d48b" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d1614056-5926-4fb1-9f58-4766424b345b" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_87dfef46-8d04-4f7d-8182-0c772cb9ce45" shape="rect"></a>$ConditionName = EV <a class="link" href="chapter_D.html#DCM_122138" shape="rect">(122138, DCM, "Circulatory Support")</a>
+                                </p>
+                                <p>
+                              <a id="para_1892b4b6-9b15-4110-b5eb-a6edb46610ab" shape="rect"></a>$ConditionValue = D<a class="xref" href="sect_CID_3553.html" title="CID 3553 Circulatory Support" shape="rect">CID 3553 “Circulatory Support”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e4daafc6-fc1b-4a52-91ed-3b6ec1454c72" shape="rect"></a>9</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c9b68804-ea09-4944-9db1-e0d12bbb91e3" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a5854329-cf62-4fc6-8bb3-4b29f43e5bc0" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_137b4248-9219-48b8-84d7-7f26b5d19549" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b4051bbf-b08b-4525-bcdd-d590bdc56b18" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9dd4376e-fdd7-48bc-ae8c-e40ec796dfa8" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ca8dd435-f82b-4ab3-a8ce-57d48677354f" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c224af83-0bca-44a1-8aaa-0e69982048be" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6125d960-b50f-410e-9f92-d79284325a0f" shape="rect"></a>$ConditionName = EV <a class="link" href="http://snomed.info/id/243147009" target="_blank" shape="rect">(243147009, SCT, "Controlled ventilation")</a>
+                                </p>
+                                <p>
+                              <a id="para_b3b5da57-3c9b-47ec-bd08-5ec5709d81b9" shape="rect"></a>$ConditionValue = D<a class="xref" href="sect_CID_3554.html" title="CID 3554 Ventilation" shape="rect">CID 3554 “Ventilation”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6bd664c1-d698-47ed-9391-34804b46651c" shape="rect"></a>10</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_956ed7c0-6080-4ac1-8709-f40603a32dc6" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_18b9df7d-ca16-441e-b988-4b16ada381dc" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8199d1c7-336b-427f-9965-8ef6137caa42" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2917afcf-7956-42f1-910f-0c3098863f37" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bb52568e-67d6-4ccc-992f-0eac7f528073" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2a18b1b5-d82c-4a8f-b9a8-ccdf71e7b484" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a6c502c3-ffcb-410d-9a6f-fd04fd217d29" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9efc71e6-895e-40d9-a8d7-ed249747c6d8" shape="rect"></a>$ConditionName = EV <a class="link" href="http://snomed.info/id/18590009" target="_blank" shape="rect">(18590009, SCT, "Cardiac Pacing")</a>
+                                </p>
+                                <p>
+                              <a id="para_cb5f275d-b5ac-42f5-b10c-0f45f8b90686" shape="rect"></a>$ConditionValue = B<a class="xref" href="sect_CID_3555.html" title="CID 3555 Pacing" shape="rect">CID 3555 “Pacing”</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_056e7ade-8b17-444f-998b-0a649de55c51" shape="rect"></a>11</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7db58c09-832c-489c-b59b-ebab2fe31d03" shape="rect"></a>&gt;</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6e366c6d-4117-4157-af6a-711bdd38a3df" shape="rect"></a>CONTAINS</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_60485537-c2bd-4c5a-9388-e64b5ee6cce1" shape="rect"></a>INCLUDE</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cb795047-e70a-48a7-a26c-cfc9f76da549" shape="rect"></a>D<a class="xref" href="sect_TID_3521.html" title="TID 3521 Relative Time" shape="rect">TID 3521 “Relative Time”</a>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ca397743-c402-4d30-91dc-6f3913db2089" shape="rect"></a>1-n</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8486b547-8bf8-4253-83da-77d875ee7172" shape="rect"></a>U</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5d8b6f36-0534-425c-8052-25943c098cff" shape="rect"></a>
+                           </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a452c908-baef-4c21-a125-058408663dfb" shape="rect"></a>$ConditionName = EV <a class="link" href="http://snomed.info/id/71388002" target="_blank" shape="rect">(71388002, SCT, "Procedure")</a>
+                                </p>
+                                <p>
+                              <a id="para_a88e92b6-0170-4f9e-91fb-812c7b019c55" shape="rect"></a>$ConditionValue = B<a class="xref" href="sect_CID_3405.html" title="CID 3405 Procedure Action Value" shape="rect">CID 3405 “Procedure Action Value”</a>
+                                </p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_3516.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_HemodynamicsReportTemplates.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_3521.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TID 3516 Blood Lab Measurements </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.16.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TID 3521 Relative Time</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024a - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

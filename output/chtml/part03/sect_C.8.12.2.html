@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.12.2 Slide Coordinates Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.12.html" title="C.8.12 VL Modules and Functional Group Macros" />
+      <link rel="prev" href="sect_C.8.12.html" title="C.8.12 VL Modules and Functional Group Macros" />
+      <link rel="next" href="sect_C.8.12.3.html" title="C.8.12.3 Whole Slide Microscopy Series Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.12.2 Slide Coordinates Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.12.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.12.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.12 VL Modules and Functional Group Macros</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.12.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.12.html" shape="rect">VL Modules and Functional Group Macros</a>
+         </span> &gt; <span class="breadcrumb-node">Slide Coordinates Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.12.2" shape="rect"></a>C.8.12.2 Slide Coordinates Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_02a645bc-d86f-4580-8e6e-b18f7f389c59" shape="rect"></a>The table in this Section contains Attributes that describe Slide Coordinates. Slide Coordinates provide a means to locate an image within a given Frame of Reference.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3478d9f6-47bf-46ab-ab34-1a9ea985f20d" shape="rect"></a>A Frame of Reference (identified by a Frame of Reference UID) typically only applies to a single mounting of a slide on a particular microscope stage; there is no guarantee that a subsequent mounting of the slide, even on the same equipment, will allow reproducible positioning to the exact same location. These Attributes allow consistent location of multiple images within the Series of a single Frame of Reference.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6b179c22-2ddb-4a42-b762-3162d400dc9f" shape="rect"></a>There is no a priori correspondence of pixels to Slide Coordinates. Therefore, the geometrical symmetry point through the pixel plane of the digital microscope may not correspond to the center of a pixel. The geometrical symmetry point could be between pixels.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_87e24262-ebc8-49d7-a044-e608de49a05e" shape="rect"></a>This Module formerly included a Type 3 Attribute Pixel Spacing Sequence (0040,08D8), and subsidiary Attributes; see <a class="link" href="http://dicom.nema.org/MEDICAL/Dicom/2009/09_03pu3.pdf" target="_top" shape="rect">PS3.3-2009</a>. Pixel Spacing is an Attribute of the image acquisition, not the slide coordinates, and is inappropriate for this Module. It is now conveyed by Pixel Spacing (0028,0030) in the <a class="xref" href="sect_C.8.12.html#sect_C.8.12.1" title="C.8.12.1 VL Image Module" shape="rect">VL Image Module</a> or the Pixel Measures Functional Group (see <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.1" title="C.7.6.16.2.1 Pixel Measures Macro" shape="rect">Section C.7.6.16.2.1</a>).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="table">
+            <a id="table_C.8-78" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8-78. Slide Coordinates Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3f959cb1-e121-41b5-88a3-73ec4b8fa9d3" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf29fc92-0651-4de5-b97a-31461e13a0ec" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_afc4f0b3-7761-4a1a-b502-343626da7a72" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf715e60-bae2-4726-9063-b7dd11bba732" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_443381b0-6573-446d-83d4-888e2933fca0" shape="rect"></a>Image Center Point Coordinates Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6776915a-3512-4105-b779-68c72c40db12" shape="rect"></a>(0040,071A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_024d5c92-6623-4f7d-80c2-75b41d9ee72d" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_427c4f4f-04ac-4568-b41f-13fc204d9fd3" shape="rect"></a>The coordinates of the center point of the Image in the Slide Coordinate System Frame of Reference.</p>
+                                    <p>
+                              <a id="para_78474887-9738-46d7-a94d-547420b2489e" shape="rect"></a>Zero or one Item shall be included in this Sequence.</p>
+                                    <p>
+                              <a id="para_b22fa108-f6e9-4afe-a1f4-ff36149358fa" shape="rect"></a>See <a class="xref" href="sect_C.8.12.2.html#sect_C.8.12.2.1.1" title="C.8.12.2.1.1 Image Center Point Coordinates Sequence" shape="rect">Section C.8.12.2.1.1</a> for further explanation.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a6a12828-f236-4666-a21c-18cc9df225f9" shape="rect"></a>&gt;X Offset in Slide Coordinate System</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2753c59d-7521-4e86-b8bd-8ea8e0005c52" shape="rect"></a>(0040,072A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fedaba77-7bc9-4b1e-846d-fe89590e781d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f430bf45-5d9c-40cf-8ab9-747f793f34fb" shape="rect"></a>The X offset in millimeters from the Origin of the Slide Coordinate System. See <a class="xref" href="sect_C.8.12.2.html#figure_C.8-16" title="Figure C.8-16. Reference Slide Orientation - Ex-vivo imaging - slide contains label" shape="rect">Figure C.8-16</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_294b0719-0752-49e6-8bb6-728b4196b030" shape="rect"></a>&gt;Y Offset in Slide Coordinate System</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_497ff905-84f2-494d-86b7-5d2f2acb7a67" shape="rect"></a>(0040,073A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bf5ba336-e772-474f-9dae-d9a131c52131" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c0aafc5-cfb6-4c09-b636-1a9b2e4ee779" shape="rect"></a>The Y offset in millimeters from the Origin of the Slide Coordinate System. See <a class="xref" href="sect_C.8.12.2.html#figure_C.8-16" title="Figure C.8-16. Reference Slide Orientation - Ex-vivo imaging - slide contains label" shape="rect">Figure C.8-16</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_78383171-3389-4aff-8294-0efbf5854342" shape="rect"></a>&gt;Z Offset in Slide Coordinate System</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_508470df-71f0-4aba-9c12-b946dd501fe3" shape="rect"></a>(0040,074A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_acefe789-74f7-4bb9-9432-6f6659759f0e" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_680fba6a-c0c7-4976-8f17-3b2b23f5cd1e" shape="rect"></a>The Z offset in µm from the image substrate reference plane (i.e., utilized surface of a glass slide).</p>
+                                    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_4dfa27de-57b9-443a-8122-4b5f50c9adbf" shape="rect"></a>The use of units of microns is inconsistent with the use of millimeters for Point Coordinates Data (0066,0016), Double Point Coordinates Data (0066,0022) and Common Z Coordinate Value (006A,0010) in the <a class="xref" href="sect_C.37.html#sect_C.37.1.2" title="C.37.1.2 Microscopy Bulk Simple Annotations Module" shape="rect">Section C.37.1.2 Microscopy Bulk Simple Annotations Module</a>.</p>
+                           </div>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.12.2.1" shape="rect"></a>C.8.12.2.1 Slide Coordinates Module Attribute Descriptions</h5>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.12.2.1.1" shape="rect"></a>C.8.12.2.1.1 Image Center Point Coordinates Sequence</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f735e50f-29cc-4d6a-8b7b-ec7f1c41ea3d" shape="rect"></a>This Section defines the Slide Coordinate System and specifies the Attributes that shall be used to describe the location of the center point of the Image pixel plane (as captured through a microscope) in the Slide Coordinate System Frame of Reference.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_a4f0f900-6b82-4252-b730-19ff94600e5c" shape="rect"></a>In Slide Microscopy (SM), the Microscope is equipped with a moveable Stage and position sensors that enable storage of the location of the center point of the displayed image with respect to the examined Specimen.</p>
+               </div>
+               <p>
+                  <a id="para_ed3cc1e4-c732-43c6-b52c-e68148987597" shape="rect"></a>The Stage is the part of the Microscope to which the Slide is attached for viewing. The Objective Lens is the lens that is closest to the Specimen. The Top Surface of the Slide is the surface of the Slide on which the Specimen is mounted. The Bottom Surface of the Slide is the opposite surface. This Specification presumes that: 1) the Slide is rectangular; 2) the Top Surface of the Slide is oriented toward the Objective Lens of the Microscope; and 3) the Bottom Surface of the Slide is in perfect contact with the Microscope Stage when the Slide is attached to the Stage for viewing.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8aeb5b41-9727-4d20-a1be-5b3a6913736d" shape="rect"></a>The Label of the Slide is presumed to be mounted-on or written-on the Top Surface of the Slide.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_ed5ea015-af3e-404e-b4d6-d7ced2febef4" shape="rect"></a>Specification of the mechanical form, function, or tolerances of the Microscope are outside the scope of this Standard.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_fda986cd-c3c8-4f97-b121-e7d0f1b0475f" shape="rect"></a>
+                                <a class="xref" href="sect_C.8.12.2.html#figure_C.8-16" title="Figure C.8-16. Reference Slide Orientation - Ex-vivo imaging - slide contains label" shape="rect">Figure C.8-16</a> and <a class="xref" href="sect_C.8.12.2.html#figure_C.8-16b" title="Figure C.8-16b. Reference Slide Orientation - Ex-vivo imaging - slide does not contain label" shape="rect">Figure C.8-16b</a> depict the Top Surface of the Slide on the Microscope Stage from the perspective of the Objective Lens. This is Reference Slide Orientation. The X, Y, and Z axes of the Slide Coordinate System in Reference Slide Orientation are defined as follows. The Y-axis is a line that nominally represents the Left Edge of the Slide. The X-axis is a line that is orthogonal to the Y-axis and nominally represents the Specimen Edge of the Slide. The Z-axis is a line that passes through the intersection of the X-axis and Y-axis and is orthogonal to the Microscope Stage. The Origin (0,0,0) of the Slide Coordinate System is the point of intersection of the X, Y, and Z axes.</p>
+               <p>
+                  <a id="para_36d52c09-aef4-4f53-8b10-bc2e5b626b98" shape="rect"></a>
+                                </p>
+               <div class="figure">
+                  <a id="figure_C.8-16" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.3_C.8-16.svg" alt="Reference Slide Orientation - Ex-vivo imaging - slide contains label" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure C.8-16. Reference Slide Orientation - Ex-vivo imaging - slide contains label</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                            </p>
+               <p>
+                  <a id="para_ec4ff781-1fef-4eef-a226-53ca317eddf4" shape="rect"></a>
+                                </p>
+               <div class="figure">
+                  <a id="figure_C.8-16b" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.3_C.8-16b.svg" alt="Reference Slide Orientation - Ex-vivo imaging - slide does not contain label" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure C.8-16b. Reference Slide Orientation - Ex-vivo imaging - slide does not contain label</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                            </p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6f75d096-e16b-4139-a582-7c2aa19a4042" shape="rect"></a>An improperly-placed coverslip or Specimen that overlaps an Edge of a Slide is not considered part of the Edge a Slide for purposes of defining the Slide Coordinate System. However, such objects may cause inaccurate positioning of the Slide on the Stage.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_b07e1686-89e7-4ca2-8981-0abbc435ab89" shape="rect"></a>If the Left Edge and Specimen Edge of the Slide are not orthogonal (e.g., the Slide is damaged or defective or the Specimen Edge is curvilinear), then the lower left-hand corner of the Slide may not be located at the Origin.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8fe225b8-beca-4aff-ae17-574ec2795075" shape="rect"></a>The definitions of X, Y, and Z axes are the same for inverted microscopes, with the Top Surface of the slide (i.e., Specimen side of the Slide) still being closest to the Objective Lens.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_307ba051-6e0b-447e-99dd-e7798a9ae318" shape="rect"></a>The origin of a Frame of Reference is arbitrary (see <a class="xref" href="sect_C.7.4.html#sect_C.7.4.1" title="C.7.4.1 Frame of Reference Module" shape="rect">Section C.7.4.1</a>), but its nominal location for consistency of slide coordinates is defined in this section.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_832272ef-7802-428b-a0c1-06098988b172" shape="rect"></a>
+                                <a class="xref" href="sect_C.8.12.2.html#figure_C.8-17" title="Figure C.8-17. Z-Axis Center Point Location, View From Right Edge of Slide" shape="rect">Figure C.8-17</a> depicts the Z-axis center point location.
+                                The X Offset in Slide Coordinate System (0040,072A) shall increase from the Origin toward the Right Edge in Reference Slide Orientation.
+                                The Y Offset in Slide Coordinate System (0040,073A) shall increase from the Origin toward the Label Edge or Top Edge (in the absence of a label) in Reference Slide Orientation.
+                                The Z Offset in Slide Coordinate System (0040,074A) shall be nominally referenced as zero at the image substrate reference plane (i.e., the top surface of a glass slide) and shall increase in a positive fashion coincident with increased distance from the substrate surface.</p>
+               <p>
+                  <a id="para_04a587cb-dc5c-472e-a1e2-adf3c962211a" shape="rect"></a>
+                                </p>
+               <div class="figure">
+                  <a id="figure_C.8-17" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.3_C.8-17.svg" alt="Z-Axis Center Point Location, View From Right Edge of Slide" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure C.8-17. Z-Axis Center Point Location, View From Right Edge of Slide</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                            </p>
+               <p>
+                  <a id="para_3a5801f0-34e9-4e3d-8915-380ce2641a6e" shape="rect"></a>In-vivo imaging uses a Cartesian, orthogonal, right-handed coordinate system.
+                                This coordinate system is depicted in <a class="xref" href="sect_C.8.12.2.html#figure_C.8-17b" title="Figure C.8-17b. In-vivo microscopy coordinates a) is a front on view b) is top-down view of in-vivo imaging" shape="rect">Figure C.8-17b</a>.
+                                The Y-axis is oriented from the nominal bottom of the microscope to the nominal top of the microscope.
+                                The X-axis is oriented from nominal left of the microscope to the nominal right of the microscope.
+                                The Z-axis is oriented from the subject towards the microscope.</p>
+               <p>
+                  <a id="para_01a6a4b9-5894-4b46-8bf8-d70e63eb73af" shape="rect"></a>
+                                </p>
+               <div class="figure">
+                  <a id="figure_C.8-17b" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="75%">
+                           <tr>
+                              <td rowspan="1" colspan="1">
+                                 <img src="figures/PS3.3_C.8-17b.png" width="100%" alt="In-vivo microscopy coordinates a) is a front on view b) is top-down view of in-vivo imaging" />
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure C.8-17b. In-vivo microscopy coordinates a) is a front on view  b) is top-down view of in-vivo imaging</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                            </p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.12.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.12.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.12.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.12 VL Modules and Functional Group Macros </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.12.3 Whole Slide Microscopy Series Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

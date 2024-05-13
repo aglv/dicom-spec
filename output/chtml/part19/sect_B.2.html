@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>B.2 Host Interface - Version 20100825</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="chapter_B.html" title="B Interface Definitions" />
+      <link rel="prev" href="chapter_B.html" title="B Interface Definitions" />
+      <link rel="next" href="sect_B.2.2.html" title="B.2.2 Definition of Data Structures Used" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">B.2 Host Interface - Version 20100825 <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/sect_B.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_B.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">B Interface Definitions</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_B.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_B.html" shape="rect">Interface Definitions</a>
+         </span> &gt; <span class="breadcrumb-node">Host Interface - Version 20100825</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_B.2" shape="rect"></a>B.2 Host Interface - Version 20100825</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_B.2.1" shape="rect"></a>B.2.1 WSDL Definition of the Interface</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_a7dda263-e962-4521-84e4-7910a8e2ca4b" shape="rect"></a>The following is the content of HostService-20100825.wsdl:</p>
+            <pre class="programlisting" xml:space="preserve">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;wsdl:definitions name="HostService-20100825"
+targetNamespace="http://dicom.nema.org/PS3.19/HostService-20100825"
+xmlns:tns="http://dicom.nema.org/PS3.19/HostService-20100825"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+xmlns:wsa10="http://www.w3.org/2005/08/addressing"
+xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"&gt;
+  &lt;wsdl:types&gt;
+    &lt;xsd:schema targetNamespace="http://dicom.nema.org/PS3.19/Imports/HostService-20100825"&gt;
+
+      &lt;xsd:import namespace="http://dicom.nema.org/PS3.19/HostService-20100825"
+      schemaLocation="./HostService-20100825.xsd" /&gt;
+      &lt;xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"
+      schemaLocation="./Types.xsd" /&gt;
+      &lt;xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"
+      schemaLocation="./ArrayOfString.xsd" /&gt;
+      &lt;xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Xml.XPath"
+      schemaLocation="./XPathNodeType.xsd" /&gt;
+    &lt;/xsd:schema&gt;
+  &lt;/wsdl:types&gt;
+  &lt;wsdl:message name="IHostService_GenerateUID_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GenerateUID" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GenerateUID_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GenerateUIDResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetAvailableScreen_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetAvailableScreen" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetAvailableScreen_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetAvailableScreenResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetOutputLocation_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetOutputLocation" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetOutputLocation_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetOutputLocationResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyStateChanged_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyStateChanged" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyStateChanged_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyStateChangedResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyStatus_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyStatus" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyStatus_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyStatusResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyDataAvailable_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyDataAvailable" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_NotifyDataAvailable_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:NotifyDataAvailableResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetData_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetData" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetData_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetDataResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_ReleaseData_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:ReleaseData" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_ReleaseData_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:ReleaseDataResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetAsModels_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetAsModels" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_GetAsModels_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:GetAsModelsResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_ReleaseModels_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:ReleaseModels" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_ReleaseModels_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:ReleaseModelsResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_QueryModel_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:QueryModel" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_QueryModel_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:QueryModelResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_QueryInfoSet_InputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:QueryInfoSet" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:message name="IHostService_QueryInfoSet_OutputMessage"&gt;
+    &lt;wsdl:part name="parameters" element="tns:QueryInfoSetResponse" /&gt;
+  &lt;/wsdl:message&gt;
+  &lt;wsdl:portType name="IHostService-20100825"&gt;
+    &lt;wsdl:operation name="GenerateUID"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GenerateUID"
+      message="tns:IHostService_GenerateUID_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GenerateUIDResponse"
+      message="tns:IHostService_GenerateUID_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetAvailableScreen"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetAvailableScreen"
+      message="tns:IHostService_GetAvailableScreen_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetAvailableScreenResponse"
+      message="tns:IHostService_GetAvailableScreen_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetOutputLocation"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetOutputLocation"
+      message="tns:IHostService_GetOutputLocation_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetOutputLocationResponse"
+      message="tns:IHostService_GetOutputLocation_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyStateChanged"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyStateChanged"
+      message="tns:IHostService_NotifyStateChanged_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyStateChangedResponse"
+      message="tns:IHostService_NotifyStateChanged_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyStatus"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyStatus"
+      message="tns:IHostService_NotifyStatus_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyStatusResponse"
+      message="tns:IHostService_NotifyStatus_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyDataAvailable"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyDataAvailable"
+      message="tns:IHostService_NotifyDataAvailable_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/NotifyDataAvailableResponse"
+      message="tns:IHostService_NotifyDataAvailable_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetData"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetData"
+      message="tns:IHostService_GetData_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetDataResponse"
+      message="tns:IHostService_GetData_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="ReleaseData"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/ReleaseData"
+      message="tns:IHostService_ReleaseData_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/ReleaseDataResponse"
+      message="tns:IHostService_ReleaseData_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetAsModels"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetAsModels"
+      message="tns:IHostService_GetAsModels_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/GetAsModelsResponse"
+      message="tns:IHostService_GetAsModels_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="ReleaseModels"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/ReleaseModels"
+      message="tns:IHostService_ReleaseModels_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/ReleaseModelsResponse"
+      message="tns:IHostService_ReleaseModels_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="QueryModel"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/QueryModel"
+      message="tns:IHostService_QueryModel_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/QueryModelResponse"
+      message="tns:IHostService_QueryModel_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="QueryInfoSet"&gt;
+      &lt;wsdl:input wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/QueryInfoSet"
+      message="tns:IHostService_QueryInfoSet_InputMessage" /&gt;
+      &lt;wsdl:output
+        wsaw:Action="http://dicom.nema.org/PS3.19/IHostService/QueryInfoSetResponse"
+      message="tns:IHostService_QueryInfoSet_OutputMessage" /&gt;
+    &lt;/wsdl:operation&gt;
+  &lt;/wsdl:portType&gt;
+  &lt;wsdl:binding name="HostService-YYYYNNDDBinding"
+  type="tns:IHostService-20100825"&gt;
+    &lt;soap:binding transport="http://schemas.xmlsoap.org/soap/http" /&gt;
+    &lt;wsdl:operation name="GenerateUID"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/GenerateUID"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetAvailableScreen"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/GetAvailableScreen"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetOutputLocation"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/GetOutputLocation"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyStateChanged"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/NotifyStateChanged"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyStatus"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/NotifyStatus"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="NotifyDataAvailable"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/NotifyDataAvailable"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetData"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/GetData"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="ReleaseData"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/ReleaseData"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="GetAsModels"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/GetAsModels"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="ReleaseModels"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/ReleaseModels"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="QueryModel"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/QueryModel"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name="QueryInfoSet"&gt;
+      &lt;soap:operation
+         soapAction="http://dicom.nema.org/PS3.19/IHostService/QueryInfoSet"
+      style="document" /&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use="literal" /&gt;
+      &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+  &lt;/wsdl:binding&gt;
+  &lt;wsdl:service name="HostService-20100825"&gt;
+    &lt;wsdl:port name="HostServiceBinding"
+    binding="tns:HostService-YYYYNNDDBinding"&gt;
+      &lt;soap:address location="http://localhost/Service" /&gt;
+    &lt;/wsdl:port&gt;
+  &lt;/wsdl:service&gt;
+&lt;/wsdl:definitions&gt;
+</pre>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_B.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_B.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_B.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">B Interface Definitions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> B.2.2 Definition of Data Structures Used</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024a - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

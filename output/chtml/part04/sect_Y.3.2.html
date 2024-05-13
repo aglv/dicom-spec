@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Y.3.2 Construction and Interpretation of Frame Range Keys</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_Y.3.html" title="Y.3 Standard Composite Instance Root Retrieve Information Model" />
+      <link rel="prev" href="sect_Y.3.html" title="Y.3 Standard Composite Instance Root Retrieve Information Model" />
+      <link rel="next" href="sect_Y.3.3.html" title="Y.3.3 New Instance Creation At the Frame Level" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">Y.3.2 Construction and Interpretation of Frame Range Keys <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_Y.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Y.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">Y.3 Standard Composite Instance Root Retrieve Information Model</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Y.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_Y.html" shape="rect">Composite Instance Root Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_Y.3.html" shape="rect">Standard Composite Instance Root Retrieve Information Model</a>
+         </span> &gt; <span class="breadcrumb-node">Construction and Interpretation of Frame Range Keys</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_Y.3.2" shape="rect"></a>Y.3.2 Construction and Interpretation of Frame Range Keys</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_775f63f6-630a-4607-8aef-cdb81b91fccb" shape="rect"></a>The following rules for the use of Frame Range Keys apply to both an SCU creating such keys and to an SCP interpreting them.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_Y.3.2.1" shape="rect"></a>Y.3.2.1 Frame List definitions</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_8a1612b9-aef1-419a-ac16-303b137fdfc2" shape="rect"></a>The selection of frames to be included in a new created SOP Instance made in response to a FRAME level Composite Instance Root Retrieve request shall be defined by one of the mechanisms defined in this section, and the list of frames so specified shall be referred to as the "Frame List".</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_2efc1aa6-cc8e-4fce-9924-378835a4b45b" shape="rect"></a>Re-ordering of frames is not supported, and order of the frames in the Frame List will always be the same as in the original SOP Instance.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_477639ba-c7aa-47bc-92c5-18d845e6b45d" shape="rect"></a>New allowable frame selection mechanisms may be defined in the future by the addition of new SOP Classes</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Y.3.2.1.1" shape="rect"></a>Y.3.2.1.1 Simple Frame List</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4ff4b41a-4c20-433e-a88b-a4cadc413765" shape="rect"></a>Simple Frame List (0008,1161) is a multi-valued Attribute containing a list of frame numbers, each specifying a frame to be included in the returned object. The first frame of the source instance shall be denoted as frame number 1.</p>
+               <p>
+                  <a id="para_30089cf0-8c2f-4611-a68f-0378a152db22" shape="rect"></a>The frame numbers in the list shall not contain any duplicates, and shall increase monotonically.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_51c9f165-1752-468b-af1c-68e2f4a7581f" shape="rect"></a>Due to the use of UL for this element, a maximum of 16383 values may be specified, as only a 2 byte length is available when an explicit VR Transfer Syntax is used.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Y.3.2.1.2" shape="rect"></a>Y.3.2.1.2 Calculated Frame List</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_599b2f30-3b4e-4741-b176-941d38a40033" shape="rect"></a>Calculated Frame List (0008,1162) is a multi-valued Attribute containing a list of 3-tuples, each representing a sub-range of frames to be included in the returned object. The first frame of the source instance shall be denoted as frame number 1. For each 3-tuple:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_b331dfa9-0dd6-42bd-9192-beb4eb8bf43d" shape="rect"></a>The first number shall be the frame number of the first frame of the sub-range.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_d4930280-accb-46e7-844c-c1b36c6dc4e9" shape="rect"></a>The second number shall be the upper limit of the sub-range, and shall be greater than or equal to the first number.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_bf85b95a-88fc-4b71-b3a2-f40d86a16406" shape="rect"></a>The third number shall be the increment between requested frames of the sub-range. This shall be greater than zero.</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_40a1a758-1658-4ef9-a4f6-2518416e17fc" shape="rect"></a>The difference between the first and second numbers is not required to be an exact multiple of the increment.</p>
+               <p>
+                  <a id="para_13506225-d93d-408a-905c-36d7e87d4ddb" shape="rect"></a>If the difference between the first and second numbers is an exact multiple of the increment, then the last frame of the sub-range shall be the second number.</p>
+               <p>
+                  <a id="para_fc53dae6-469a-4750-9ebc-8536f7db3334" shape="rect"></a>If the first number is greater than the number of frames in the referenced SOP Instance then that sub-range shall be ignored.</p>
+               <p>
+                  <a id="para_42c1e166-f6bb-46f7-a489-0f3fbdce90a9" shape="rect"></a>The sub-ranges shall be non-overlapping such that the sequence of frame numbers determined by concatenating all the sub-ranges shall not contain any duplicates, and shall increase monotonically. A value of FFFFFFFFH or any value greater than the number of frames in the referenced SOP Instance as the second value shall denote the end of the set of frames in the referenced SOP Instance, and may only occur in the last 3-tuple.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_92e8eafb-8478-4d2d-ab4c-d62ac45022ba" shape="rect"></a>For example, if the Calculated Frame List contains 6 values, 2, 9, 3, 12, FFFFFFFFH, 5 and is applied to an Instance containing 25 frames. The resulting Frame List will contain the values 2, 5, 8, 12, 17 and 22.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Y.3.2.1.3" shape="rect"></a>Y.3.2.1.3 Time Range</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3c18e5ca-8679-4434-abde-8474ec93746a" shape="rect"></a>Time Range (0008,1163) contains the start and end times to be included in the returned object. Times are in seconds, relative to the value of the Content Time (0008,0033) in the parent object.</p>
+               <p>
+                  <a id="para_9eb3d995-9533-4d33-9843-14c90e55644a" shape="rect"></a>The range shall include all frames between the specified times including any frames at the specified times.</p>
+               <p>
+                  <a id="para_948ea1ea-7456-45ca-9187-ed9183fe139f" shape="rect"></a>The range may be expanded as a consequence of the format in which the information is stored. Where such expansion occurs, any embedded audio data shall be similarly selected. Under all circumstances, the returned Composite SOP Instance shall retain the relationship between image and audio data.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_66107f94-b1bc-4d06-81f2-da9155b6d1a3" shape="rect"></a>For MPEG-2, MPEG-4 AVC/H.264 and HEVC/H.265 this would be to the nearest surrounding Key Frames.</p>
+               </div>
+               <p>
+                  <a id="para_975c167b-50ab-4137-a621-14e3141fa6a5" shape="rect"></a>For JPEG 2000 Part 2, this would be to nearest surrounding precinct or tile boundary</p>
+               <p>
+                  <a id="para_b17892b7-6137-45df-b800-4d25e0581e8c" shape="rect"></a>Time Range shall only be used to specify extraction from SOP instances where the times of frames can be ascertained using one or more of the following Attributes:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_64daa1fd-3c61-4e92-9591-a169af456a9b" shape="rect"></a>Frame Time (0018,1063)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_3308b82d-de4f-4cd6-b65b-5a40c6e34c05" shape="rect"></a>Frame Time Vector (0018,1065)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_678ee34d-006d-4dde-b343-0551fad296e4" shape="rect"></a>Frame Reference DateTime (0018,9151) in the Frame Content Sequence (0020,9111)</p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Y.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_Y.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Y.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">Y.3 Standard Composite Instance Root Retrieve Information Model </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> Y.3.3 New Instance Creation At the Frame Level</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024a - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

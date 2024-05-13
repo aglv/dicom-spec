@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2 Target Resources</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_8.html" title="8 Common Aspects of DICOM Web Services" />
+      <link rel="prev" href="chapter_8.html" title="8 Common Aspects of DICOM Web Services" />
+      <link rel="next" href="sect_8.3.html" title="8.3 Query Parameters" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2 Target Resources <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_8.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 Common Aspects of DICOM Web Services</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-node">Target Resources</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.2" shape="rect"></a>8.2 Target Resources</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f3f74449-aa1f-4496-b23e-b00c8d651ea8" shape="rect"></a>Transaction specifications define what resource types are valid Target Resources for the transaction and define the format of the URI for the Target Resource (and Query Parameters) using URI Templates. The URI of a Target Resource is referred to as the Target URI. Transaction specifications also define what resource types are valid resources for the response.</p>
+         <p>
+            <a id="para_14b67e7f-aba1-4e10-854b-af57598f9545" shape="rect"></a>A Target URI is composed of three components: The Base URI, the Target Resource Path, and Query Parameters (which are often optional).</p>
+         <p>
+            <a id="para_d9ba5ced-b830-4eb5-8258-ec71861e1338" shape="rect"></a>No whitespace is permitted in URIs. Whitespace around line breaks and the line breaks themselves should be stripped before parsing the URI. See <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> Appendix C.</p>
+         <p>
+            <a id="para_f193b9bb-a9e8-4729-9273-68ebcfe3d5f3" shape="rect"></a>The most general template for a Target URI is:</p>
+         <pre class="programlisting" xml:space="preserve">target-uri = "/" {/resource} {?optional*}</pre>
+         <p>
+            <a id="para_9bf26b7c-a3c5-40fa-b5ad-47016aa5479a" shape="rect"></a>or if any of the Query Parameters are required</p>
+         <pre class="programlisting" xml:space="preserve">target-uri = "/" {/resource} ?{required*}{&amp;optional*}</pre>
+         <p>
+            <a id="para_7db41411-342e-4dec-9886-169053b08614" shape="rect"></a>Where</p>
+         <div class="informaltable">
+            <table frame="void" rules="none">
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">"/"</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_1cf77e63-f339-43eb-a31f-5b040fc9a9e5" shape="rect"></a>The slash character ('/') is used to designate the Base URI.</p>
+                        </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">{/resource}</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_296fce96-86ca-4233-8574-c63e7062c126" shape="rect"></a>A URI template for the Target Resource Path, a relative path component that references the Target Resource. The '/' in the template indicates that reserved characters, such as '/', can be used in the template expansion. See <a class="xref" href="chapter_2.html#biblio_RFC_6570" title="URI Template" shape="rect">[<abbr class="abbrev">RFC6570</abbr>]</a>.</p>
+                            <p>
+                           <a id="para_666cea11-a0bc-4628-8338-756e059fd51b" shape="rect"></a>"/{/resource}" indicates the absolute URI to the Target Resource on the origin server.</p>
+                        </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">{required*}</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_c16de360-2a58-4319-a42f-b352152fdcdc" shape="rect"></a>A URI Template for one or more required query parameters. See <a class="xref" href="sect_8.3.html#sect_8.3.1" title="8.3.1 Query Parameter Syntax" shape="rect">Section 8.3.1</a> for an example.</p>
+                        </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">{&amp;optional*)</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_c8d02914-7e6a-47ec-b2ab-d07231c7bb67" shape="rect"></a>A URI Template for zero or more optional query parameters. See <a class="xref" href="sect_8.3.html#sect_8.3.1" title="8.3.1 Query Parameter Syntax" shape="rect">Section 8.3.1</a> for an example.</p>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_7a47172b-783f-44cc-95d4-e421f9a011f3" shape="rect"></a>The Base URI of a Service is an absolute URI that specifies the location of the origin server implementing the Service. Each Target URI defined by this Part of the Standard starts with a "/", which is a shorthand that designates the Base URI of the Service. The Base URI may support more than one Service.</p>
+         <p>
+            <a id="para_32098f39-e1d4-4212-b768-1248bf23756c" shape="rect"></a>The Service Root Path is the Base URI without the Scheme and Authority components.</p>
+         <p>
+            <a id="para_5a5f4727-01e8-4580-9d16-f25a6e91469e" shape="rect"></a>The Target Resource Path is a relative URI that specifies the path to the resource from the Base URI of the Service. It is specified by a URI Template that uses Path Expansion {/var} as defined in <a class="xref" href="chapter_2.html#biblio_RFC_6570" title="URI Template" shape="rect">[<abbr class="abbrev">RFC6570</abbr>]</a>.</p>
+         <p>
+            <a id="para_7818b044-b6a5-48d7-ab1d-14c348cb9959" shape="rect"></a>For example, given the URI:</p>
+         <pre class="programlisting" xml:space="preserve">http://dicom.nema.org/service/studies/2.25.123456789/series/2.25.987654321</pre>
+         <p>
+            <a id="para_b4649f9e-9329-4bc4-b346-7473c0bb79bb" shape="rect"></a>The Base URI is:</p>
+         <pre class="programlisting" xml:space="preserve">http://dicom.nema.org/service</pre>
+         <p>
+            <a id="para_cc236c39-6164-4262-b9dd-0dada4d420e8" shape="rect"></a>The Service Root Path is:</p>
+         <pre class="programlisting" xml:space="preserve">/service</pre>
+         <p>
+            <a id="para_12ab8d59-99f7-4210-bea9-8575c01b8aab" shape="rect"></a>The Target Resource Path is:</p>
+         <pre class="programlisting" xml:space="preserve">/studies/2.25.123456789/series/2.25.987654321</pre>
+         <p>
+            <a id="para_6995e395-3d99-42c5-b425-0d8763f0901b" shape="rect"></a>The URI Template for this resource is:</p>
+         <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}</pre>
+         <p>
+            <a id="para_7f783126-9d3f-482b-ab74-e52e8d4e2775" shape="rect"></a>Where</p>
+         <div class="informaltable">
+            <table frame="void" rules="none">
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">{study}</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_dfd06d3a-4bb1-43ac-96e3-0c0a83385d29" shape="rect"></a>is the Study Instance UID of a Study</p>
+                        </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                            <pre class="programlisting" xml:space="preserve">{series}</pre>
+                        </td>
+                     <td align="left" rowspan="1" colspan="1">
+                            <p>
+                           <a id="para_01f90e4c-f26e-40d8-885c-209d5ad85843" shape="rect"></a>is the Series Instance UID of a Series</p>
+                        </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_8.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8 Common Aspects of DICOM Web Services </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3 Query Parameters</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

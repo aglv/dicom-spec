@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10.3 Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_10.html" title="10 Transfer Syntax" />
+      <link rel="prev" href="sect_10.2.html" title="10.2 Transfer Syntax for a DICOM Default of Lossless JPEG Compression" />
+      <link rel="next" href="sect_10.4.html" title="10.4 Transfer Syntax for DICOM RLE Image Compression" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10.3 Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_10.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">10 Transfer Syntax</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_10.html" shape="rect">Transfer Syntax</a>
+         </span> &gt; <span class="breadcrumb-node">Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_10.3" shape="rect"></a>10.3 Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_26a80371-0759-4b0a-8f4d-ddd1d0059b20" shape="rect"></a>DICOM defines defaults for Lossy JPEG Image Compression, one for 8-bit images and the other for 12-bit images. JPEG coding Process 1 (identified by Transfer Syntax UID = "1.2.840.10008.1.2.4.50") is used for 8-bit images. JPEG coding Process 4 (identified by Transfer Syntax UID = "1.2.840.10008.1.2.4.51") is used for 12-bit images. This implies that:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_04f98967-a7de-481b-82a8-01bb85ce7cf8" shape="rect"></a>If an Application Entity issues an A-ASSOCIATE request where any offered Abstract Syntaxes is associated in one or more Presentation Context(s) with a JPEG lossy compression Transfer Syntax, at least one of the Presentation Contexts that include this Abstract Syntax, shall include the appropriate DICOM Default Lossy JPEG Compression Transfer Syntax.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_336dac86-d622-4f60-bd1f-c979afb417f2" shape="rect"></a>Offering Abstract Syntax (AS1) in two Presentation Contexts with Transfer Syntaxes JPEG lossy (JL1) and (JL2) is not valid, but offering AS1-JL1, AS1-JL2 and AS1-JLD is valid because the DICOM Default Lossy JPEG Transfer Syntax (JLD) is present in at least one of the Presentation Contexts that are based on Abstract Syntax (AS1).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_7e076c7b-c3be-40c3-ae98-33af14a175d1" shape="rect"></a>The DICOM Default Little Endian Transfer Syntax (uncompressed) may be offered if the sender has access to the original pixel data in an uncompressed or lossless compressed form.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_3501751b-7b1c-4a64-802a-8005ab70a176" shape="rect"></a>If an Application Entity that supports one or more Lossy JPEG Transfer Syntaxes receives an A-ASSOCIATE indication corresponding to a request that follows the requirements specified in <a class="xref" href="sect_10.3.html" title="10.3 Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression" shape="rect">Section 10.3</a> (a), every Presentation Context related to a given Abstract Syntax cannot be rejected in an A-ASSOCIATE response for the reason that the DICOM Default Lossy JPEG Transfer Syntax is not supported.</p>
+               </li>
+            </ol>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c4b3f464-bbce-42fa-8459-137177bae395" shape="rect"></a>The 12 bit Default Transfer Syntax 1.2.840.10008.1.2.4.51 can also be used to encode 8 bit images, but the bit stream required is not identical to that used in the 8 bit Default Transfer Syntax 1.2.840.10008.1.2.4.50 (see <a class="xref" href="sect_A.4.html#sect_A.4.1" title="A.4.1 JPEG Image Compression" shape="rect">A.4.1</a>).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b8af1533-7d20-46d0-851c-85033ead13ee" shape="rect"></a>When Abstract Syntax (AS1) is offered in three Presentation Contexts with Transfer Syntaxes JPEG lossy (JL1) and (JL2) as well as (JLD), the DICOM Default JPEG Lossy Compression Transfer Syntax (JLD) can be rejected if at least one of the other Presentation Contexts for Abstract Syntax (AS1) is accepted.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_10.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.2 Transfer Syntax for a DICOM Default of Lossless JPEG Compression </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.4 Transfer Syntax for DICOM RLE Image Compression</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024a - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

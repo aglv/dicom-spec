@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7.5 Security Considerations for DICOM File Format</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.10.html" title="PS3.10" />
+      <link rel="up" href="chapter_7.html" title="7 DICOM File Format" />
+      <link rel="prev" href="sect_7.4.html" title="7.4 Secure DICOM File Format" />
+      <link rel="next" href="chapter_8.html" title="8 DICOM File Service" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024a - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7.5 Security Considerations for DICOM File Format <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part10/sect_7.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">7 DICOM File Format</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.10.html" shape="rect">PS3.10</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_7.html" shape="rect">DICOM File Format</a>
+         </span> &gt; <span class="breadcrumb-node">Security Considerations for DICOM File Format</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_7.5" shape="rect"></a>7.5 Security Considerations for DICOM File Format</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_e5d008fb-9829-43c5-bc81-817f60435b6d" shape="rect"></a>The DICOM File Format has a potential security vulnerability when the 128-byte File Preamble contains malicious executable content. Such malicious executable content may also refer to other malicious content in the file hidden within Data Elements of the File Meta Information or the Data Set.</p>
+         <p>
+            <a id="para_da577221-78ba-4c0b-8cac-6a4f0a41babd" shape="rect"></a>Depending upon the use and purpose of a particular application it may be appropriate to:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_0ebdc4f2-9de8-40a8-b9bf-95f4964b7598" shape="rect"></a>Sanitize the preamble, such as by:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_cd652a8a-1403-429b-b7cf-c4b2b048d146" shape="rect"></a>Verifying that the preamble is:</p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: square; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_8eb25c3b-21f4-4ca2-85cc-cdc93c5078ef" shape="rect"></a>all zeroes, or</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_9526e3ef-dab5-480a-bef8-588cb9eb7677" shape="rect"></a>begins with a valid magic number for recognized dual format content (e.g., TIFF or BigTIFF), or</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_2b57aae2-3436-4401-a938-f636c58c222e" shape="rect"></a>contains other known safe content.</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_07b3087a-303d-48ee-8a09-c9b1fab4878c" shape="rect"></a>Clearing the preamble regardless of its content</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_55ab1eed-6aab-46e8-8f1f-0d8c22caac45" shape="rect"></a>This will prevent use by applications that depend on the non-DICOM format, if the dual format capability has been used.</p>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_d68d500b-7531-483a-b3bf-58a3419e2761" shape="rect"></a>Testing explicitly for executable preamble contents.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_75172478-b1e5-4dfa-a26f-ba7584991959" shape="rect"></a>The proper response to the presence of executable content depends upon the purpose of the application, but generally, legitimate executable content will not be found in a DICOM File.
+                                  A hypothetical example of an exception would be if the file contained its own executable viewer; this is sufficiently unlikely as to be not worth considering.</p>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_f41eaab2-f377-44b8-930d-474a92e2bea1" shape="rect"></a>Test explicitly for executable content anywhere within the DICOM File.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5a52a50d-54fa-4da7-b963-1c238597c4f7" shape="rect"></a>Validate that the DICOM values, structures and content comply with the standard encoding rules and the IOD of the specified SOP Class, including Private Data Elements.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_c5c56b92-6030-4ac7-b3ea-1fafd9b515be" shape="rect"></a>Validation that Data Element Values comply with their Value Representation may partially mitigate the risk of hidden malicious content,
+                          but it may be necessary to remove or analyze the contents of opaque binary data in OB or other binary numeric value Data Elements,
+                          whether they be Standard or Private Data Elements.
+                          The VR of Private Data Elements may not be known.
+                          Without an executable preamble, such hidden content may not be directly executable, but may still serve as a repository of malicious code to be activated by some other accompanying exploit.</p>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a9a822e3-3a1b-4ac1-93f5-ba6e200fcdec" shape="rect"></a>Validate that the contents are of the appropriate SOP Classes.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_8bed7e68-f2b6-497c-9593-9a0637d8a493" shape="rect"></a>Validate that DICOM File Format files created for HTTP requests and responses do not contain such malicious content.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_9e7cb254-4818-4e7e-a308-c5e47d0b1be0" shape="rect"></a>For example, it may be appropriate for an archive that stores and retrieves PS3.10 Files to verify and validate both input and output, rather than store and retrieve files without checking the content.</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_41907368-1897-45ee-9f7d-5c36d1b61311" shape="rect"></a>The proper response to a validation failure depends upon the purpose of the application. Validation might be performed on input, output, or both.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_94854e7e-bc04-4e5c-af4f-c7805879d3d7" shape="rect"></a>For example, an archive may choose to sanitize SOP Instances upon receipt, sanitize SOP Instances upon retrieval,
+                  validate the structure and fail storage requests for SOP Instances that fail validation,
+                  or other behavior based on the product purpose and the threat environment.
+                  This behavior is not specified by DICOM because the product purpose and the threat environment are highly dependent upon the application.</p>
+         </div>
+         <p>
+            <a id="para_2d9bdc13-f186-4944-98e2-2203b9475872" shape="rect"></a>An implementation shall describe in its Conformance Statement its behavior with respect to sanitization of the preamble and any other validation performed.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7.4 Secure DICOM File Format </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.10.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8 DICOM File Service</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024a - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

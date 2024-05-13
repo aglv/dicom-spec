@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>FFF.2.4.2.4 Examples</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_FFF.2.4.2.html" title="FFF.2.4.2 Image Derivation and Pixel Data Properties" />
+      <link rel="prev" href="sect_FFF.2.4.2.3.html" title="FFF.2.4.2.3 Encoding Details" />
+      <link rel="next" href="sect_FFF.2.5.html" title="FFF.2.5 Registration" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">FFF.2.4.2.4 Examples <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_FFF.2.4.2.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.4.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">FFF.2.4.2 Image Derivation and Pixel Data Properties</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FFF.2.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_FFF.html" shape="rect">Enhanced XA/XRF Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FFF.2.html" shape="rect">Application Cases</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FFF.2.4.html" shape="rect">Processing</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FFF.2.4.2.html" shape="rect">Image Derivation and Pixel Data Properties</a>
+         </span> &gt; <span class="breadcrumb-node">Examples</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_FFF.2.4.2.4" shape="rect"></a>FFF.2.4.2.4 Examples</h5>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_FFF.2.4.2.4.1" shape="rect"></a>FFF.2.4.2.4.1 Various Successive Derivations</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_cae32b70-7589-4398-bc7e-77e3259408f9" shape="rect"></a>In this example, the acquisition modality creates two instances of the Enhanced XA object: the instance "A" with mask frames and the instance "B" with contrast frames. A temporal filtering has been applied by the modality before the creation of the instances.</p>
+            <p>
+               <a id="para_c22222d6-0b5c-476b-b714-1030d141db3f" shape="rect"></a>The workstation 1 performs a digital subtraction of the frames of the instance "B" by using the frames of the instance "A" as mask, then the resulting subtracted frames are stored in a new instance "C".</p>
+            <p>
+               <a id="para_35422cf1-8790-46c9-a066-b452c522bcf0" shape="rect"></a>Finally the workstation 2 processes the instance "C" by applying a zoom and edge enhancement, and the resulting processed frames are stored in a new instance "D".</p>
+            <p>
+               <a id="para_9b154a84-85df-4e9a-be97-ea4c7d567131" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_FFF.2.4-2" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_FFF.2.4-2.svg" alt="Example of various successive derivations" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure FFF.2.4-2. Example of various successive derivations</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+            <p>
+               <a id="para_feb9ae96-97e0-466c-adbf-c31df61dbe8c" shape="rect"></a>
+                                <a class="xref" href="sect_FFF.2.4.2.4.html#figure_FFF.2.4-3" title="Figure FFF.2.4-3. Attributes of the Example of Various Successive Derivations" shape="rect">Figure FFF.2.4-3</a> shows the values of the Attributes of the instance "D" in the corresponding modules and macros related to derivation information. The Source Image Sequence (0008,2112) of the Derivation Image Sequence (0008,9124) does not contain the Attribute Referenced Frame Number (0008,1160) because all the frames of the source images are used to generate the derived images.</p>
+            <div class="figure">
+               <a id="figure_FFF.2.4-3" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_FFF.2.4-3.svg" alt="Attributes of the Example of Various Successive Derivations" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure FFF.2.4-3. Attributes of the Example of Various Successive Derivations</strong>
+               </p>
+            </div>
+            <br class="figure-break" clear="none" />
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_FFF.2.4.2.4.2" shape="rect"></a>FFF.2.4.2.4.2 Derivation by Applying A Square Root Transformation</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_e32c713e-0040-4fa3-bbdb-678d5f251237" shape="rect"></a>In this example, the acquisition modality creates the instance "A" of the Enhanced XA object with 14 bits stored where the relationship between the pixel intensity and the X-Ray intensity is linear.</p>
+            <p>
+               <a id="para_e1f62fa6-f9d3-48a3-8b8d-9ab04993f7a2" shape="rect"></a>A workstation reads the instance "A", transforms the pixel values of the stored pixel data by applying a square root function and stores the resulting frames on the instance "B" with 8 bits stored.</p>
+            <p>
+               <a id="para_1fc067e4-2468-48bf-ac0b-abc0eff67dd3" shape="rect"></a>
+                                </p>
+            <div class="figure">
+               <a id="figure_FFF.2.4-4" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_FFF.2.4-4.svg" alt="Example of Derivation by Square Root Transformation" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure FFF.2.4-4. Example of Derivation by Square Root Transformation</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+                            </p>
+            <p>
+               <a id="para_f066dc14-f420-47f5-9aad-44e6270cbe24" shape="rect"></a>The following figure shows the values of the Attributes of the instance "B" in the corresponding modules and macros related to derivation information.</p>
+            <p>
+               <a id="para_4db6a154-9191-4041-9b17-b856a6435714" shape="rect"></a>Note that the Derivation Code Sequence (0008,9215) is present when the Derivation Image Sequence (0008,9124) includes one or more items, even if the derivation code is not defined in the <a href="../part16/sect_CID_7203.html" class="olink" shape="rect">CID 7203 “Image Derivation”</a>.</p>
+            <p>
+               <a id="para_73d96b41-2edf-45e5-a222-3db09b886619" shape="rect"></a>The Pixel Intensity Relationship LUT Sequence (0028,9422) contains a LUT with the function "TO_LINEAR" to allow the calculation of the gray level intensity to be linear to the X-Ray intensity. Since the instance "B" has 8 bits stored, this LUT contains 256 entries (starting the mapping at pixel value 0) and is encoded in 16 bits.</p>
+            <p>
+               <a id="para_9559861a-bd3a-46d0-a088-ed98d813d780" shape="rect"></a>The value of the Pixel Intensity Relationship (0028,1040) in the Frame Pixel Data Properties Sequence (0028,9443) could be "OTHER" as it is described in the defined terms. However, a more explicit term like "SQRT" is also allowed and will have the same effect in the reading application.</p>
+            <p>
+               <a id="para_3e30a4b2-b87e-422d-862c-529ed3e5a927" shape="rect"></a>In the case of a modification of the pixel intensity relationship of an image, the value of the Attribute Image Processing Applied (0028,9446) in the Frame Pixel Data Properties Sequence (0028,9443) can be "NONE" in order to indicate to the reading applications that there was no image processing applied to the original image that could modify the spatial or temporal characteristics of the pixels.</p>
+            <div class="figure">
+               <a id="figure_FFF.2.4-5" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_FFF.2.4-5.svg" alt="Attributes of the Example of Derivation by Square Root Transformation" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure FFF.2.4-5. Attributes of the Example of Derivation by Square Root Transformation</strong>
+               </p>
+            </div>
+            <br class="figure-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.4.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_FFF.2.4.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FFF.2.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">FFF.2.4.2.3 Encoding Details </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> FFF.2.5 Registration</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024a - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

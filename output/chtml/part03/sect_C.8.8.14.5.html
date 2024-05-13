@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.14.5 Control Point Sequence</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.14.html" title="C.8.8.14 RT Beams Module" />
+      <link rel="prev" href="sect_C.8.8.14.4.html" title="C.8.8.14.4 Multiple Aperture Blocks" />
+      <link rel="next" href="sect_C.8.8.14.6.html" title="C.8.8.14.6 Absolute and Relative Machine Coordinates" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.14.5 Control Point Sequence <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.14.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.14.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8.14 RT Beams Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.14.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.14.html" shape="rect">RT Beams Module</a>
+         </span> &gt; <span class="breadcrumb-node">Control Point Sequence</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.8.8.14.5" shape="rect"></a>C.8.8.14.5 Control Point Sequence</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_240f59d2-c936-4f06-83a5-6a1e1da37dee" shape="rect"></a>The <a class="xref" href="sect_C.8.8.14.html" title="C.8.8.14 RT Beams Module" shape="rect">RT Beams Module</a> uses a single beam model to handle static, arc, and dynamic delivery of external beam radiation by a medical accelerator or gamma beam therapy equipment (cobalt unit). All applicable parameters shall be specified at Control Point 0, with the exception of couch positions (see <a class="xref" href="sect_C.8.8.14.6.html" title="C.8.8.14.6 Absolute and Relative Machine Coordinates" shape="rect">Section C.8.8.14.6</a>). All parameters that change at any control point of a given beam shall be specified explicitly at all control points (including those preceding the change). No assumptions are made about the behavior of machine parameters between specified control points, and communicating devices shall agree on this behavior outside the current Standard.</p>
+         <p>
+            <a id="para_9e6e9390-9966-4085-949f-8ffa53963693" shape="rect"></a>The Cumulative Meterset Weight (300A,0134) values in a Control Point Sequence (300A,0111) shall be monotonically increasing in the order of increasing Control Point Index (300A,0112).</p>
+         <p>
+            <a id="para_fc67da7b-1279-4130-ac10-b633fa31cd55" shape="rect"></a>Gantry Rotation Direction (300A,011F), Beam Limiting Device Rotation Direction (300A,0121), Patient Support Rotation Direction (300A,0123), and Table Top Eccentric Rotation Direction (300A,0126) are defined as applying to the segment following the control point, and changes to these parameters during treatment may be specified without use of a "non-irradiation" segment. All other Control Point Sequence Attributes are defined only at the control point. To unambiguously encode changes in discrete-valued Attributes such as Wedge Position (300A,0118) and Nominal Beam Energy (300A,0114), a non-irradiation segment where Cumulative Meterset Weight (300A,0134) does not change, shall be used.</p>
+         <p>
+            <a id="para_2bdbcc8c-d219-406b-9187-5e7855fa5f7e" shape="rect"></a>Some examples of beam specification using control points are as follows:</p>
+         <p>
+            <a id="para_22482b53-ef33-48ac-9a9b-ba094eba7c08" shape="rect"></a>
+                            <span class="italic">a) Static delivery:</span>
+                        </p>
+         <p>
+            <a id="para_56918dd1-2eb5-4b1b-9f45-678daba17dce" shape="rect"></a>
+                            <span class="italic">Control Point 0:</span> All applicable treatment parameters defined, Cumulative Meterset Weight = 0</p>
+         <p>
+            <a id="para_061f902a-0afd-4317-b6a6-7e517de093ea" shape="rect"></a>
+                            <span class="italic">Control Point 1:</span> Cumulative Meterset Weight = 1, no other parameters defined</p>
+         <p>
+            <a id="para_a3e17096-d17e-433a-9941-f1f3ac8cd584" shape="rect"></a>
+                            <span class="italic">b) Arc delivery:</span>
+                        </p>
+         <p>
+            <a id="para_48f12d47-e0b5-41cb-8fc7-be2d86925494" shape="rect"></a>
+                            <span class="italic">Control Point 0:</span> All applicable treatment parameters defined, Cumulative Meterset Weight = 0, Gantry Rotation Direction = <span class="italic">rotation direction</span>, Gantry Angle = <span class="italic">initial angle</span>
+                        </p>
+         <p>
+            <a id="para_5f333a32-218f-478d-98f7-f14d412ff96d" shape="rect"></a>
+                            <span class="italic">Control Point 1:</span> Cumulative Meterset Weight = 1, Gantry Rotation Direction = NONE, Gantry Angle = <span class="italic">final angle</span>
+                        </p>
+         <p>
+            <a id="para_21629de0-3756-4f07-b3cf-68d16b7c2a03" shape="rect"></a>
+                            <span class="italic">c) Dynamic delivery of two equally weighted segments</span>:</p>
+         <p>
+            <a id="para_3f71b024-e8c3-4b6e-853b-ea76fc461b17" shape="rect"></a>
+                            <span class="italic">Control Point 0:</span> All applicable treatment parameters defined, Cumulative Meterset Weight = 0</p>
+         <p>
+            <a id="para_63dbdc99-6166-4412-9fbf-1262a1eeec0d" shape="rect"></a>
+                            <span class="italic">Control Point 1:</span> All changing treatment parameters defined (including those which do not change at this control point), Cumulative Meterset Weight = 0.5</p>
+         <p>
+            <a id="para_acb58f03-d481-450c-a329-02f06e4d1ca6" shape="rect"></a>
+                            <span class="italic">Control Point 2:</span> All changing treatment parameters defined (including those which do not change at this control point), Cumulative Meterset Weight = 1</p>
+         <p>
+            <a id="para_df2bb1d7-a046-47ca-b585-beaf1dc88303" shape="rect"></a>
+                            <span class="italic">d) Dynamic Delivery of two unequally weighted segments with a step change in table angle</span>:</p>
+         <p>
+            <a id="para_504f162f-41ca-4ffb-a37f-0e1f8e65f9ff" shape="rect"></a>
+                            <span class="italic">Control Point 0:</span> All applicable treatment parameters defined, Patient Support Angle = <span class="italic">initial angle</span>, Patient Support Rotation Direction = NONE, Cumulative Meterset Weight = 0</p>
+         <p>
+            <a id="para_63ff8a03-c274-4cc9-9475-0cee92e72b7b" shape="rect"></a>
+                            <span class="italic">Control Point 1:</span> All changing parameters defined (including those that do not change at this control point), Cumulative Meterset Weight = 0.3, Patient Support Angle = <span class="italic">initial angle</span>, Patient Support Rotation Direction = <span class="italic">rotation direction</span>
+                        </p>
+         <p>
+            <a id="para_e4061bb3-4952-4925-b04b-e0fa957b550b" shape="rect"></a>
+                            <span class="italic">Control Point 2:</span> All changing parameters defined (although none should change at this control point), Cumulative Meterset Weight = 0.3, Patient Support Angle = <span class="italic">new angle</span>, Patient Support Rotation Direction = NONE</p>
+         <p>
+            <a id="para_37cdb871-2b5d-46d9-9148-482718f4377b" shape="rect"></a>
+                            <span class="italic">Control Point 3:</span> All changing parameters defined (including those that do not change at this control point), Cumulative Meterset Weight = 1, Patient Support Angle = <span class="italic">new angle</span>, Patient Support Rotation Direction = NONE</p>
+         <p>
+            <a id="para_9cfbd97f-f3ba-4dd0-84d6-4e144c3ae1db" shape="rect"></a>
+            <span class="italic">e) Dynamic delivery with moving MLC leaves and stationary collimator jaws:</span>:</p>
+         <p>
+            <a id="para_56a6c26f-4f6f-4db6-bbbe-14c589856b99" shape="rect"></a>
+            <span class="italic">In this example the collimator jaws stay in the same position throughout the Beam, while the MLC leaves change positions.</span>:</p>
+         <p>
+            <a id="para_5bf22e9b-d155-4296-90ac-a2bc739530a6" shape="rect"></a>
+            <span class="italic">
+               <a class="xref" href="sect_C.8.8.14.5.html#table_C.8.8.14.5-1" title="Table C.8.8.14.5-1. Example of dynamic collimation in RT Beams Module" shape="rect"></a> illustrates the presence of Items in the Beam Limiting Device Position Sequence (300A,011A) and sample values.</span>:</p>
+         <div class="table">
+            <a id="table_C.8.8.14.5-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8.8.14.5-1. Example of dynamic collimation in RT Beams Module</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_d5772017-c7be-4905-9c26-af940556bbff" shape="rect"></a>Control Point Index (300A,0112)</p>
+                                    </th>
+                        <th align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4f932ff8-9e0d-43fb-a848-fd624ff2c4be" shape="rect"></a>Number of Items present in</p>
+                                        <p>
+                              <a id="para_ce6c8695-ebf6-417d-939e-98251ab3723d" shape="rect"></a>Beam Limiting Device Position Sequence (300A,011A)</p>
+                                    </th>
+                        <th align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_48afedfe-6701-4f9b-9d08-bf642ba3fcb3" shape="rect"></a>Leaf/Jaw Positions (300A,011C)</p>
+                                        <p>
+                              <a id="para_d12210ef-a86b-40cc-85fe-6075431c0cc7" shape="rect"></a>for Item with</p>
+                                        <p>
+                              <a id="para_4bf43450-8c5d-4f7b-a42c-2499f68ebbc8" shape="rect"></a>RT Beam Limiting Device Type (300A,00B8) = X</p>
+                                    </th>
+                        <th align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_18ff63ec-c898-4b09-8ee2-b0e937f3153e" shape="rect"></a>Leaf/Jaw Positions (300A,011C)</p>
+                                        <p>
+                              <a id="para_34e2b0e2-74ff-4842-b26e-cb34c9bf6a29" shape="rect"></a>for Item with</p>
+                                        <p>
+                              <a id="para_4f07995a-24ea-424e-807e-1918e111655d" shape="rect"></a>RT Beam Limiting Device Type (300A,00B8) = Y</p>
+                                    </th>
+                        <th align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_c10306ec-d427-4d67-8a30-280f2f8574fc" shape="rect"></a>Leaf/Jaw Positions (300A,011C)</p>
+                                        <p>
+                              <a id="para_7652806b-6bef-4a4e-ba4d-a1227cd28d35" shape="rect"></a>for Item with</p>
+                                        <p>
+                              <a id="para_5f2d5d59-b53c-4325-95c4-b0306c071875" shape="rect"></a>RT Beam Limiting Device Type (300A,00B8) = Z</p>
+                                    </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f9ba8e41-34fa-49e9-a7d8-bb359cc4fd35" shape="rect"></a>0</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_bad76414-3936-412e-89f5-20e133a17b57" shape="rect"></a>3</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_538b6fe7-64a5-4b96-a1bd-b162c22afd07" shape="rect"></a>present with values</p>
+                                        <p>
+                              <a id="para_804f1565-7804-4739-8311-ab33c3e08085" shape="rect"></a>-5/5</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_75b22d58-ba40-46ff-a688-124d005bcfb6" shape="rect"></a>present with values</p>
+                                        <p>
+                              <a id="para_99dda852-b990-4d09-9145-0ae8dc49a161" shape="rect"></a>-4/4</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_578ab7fb-f410-46aa-b1c7-b5d0961a0056" shape="rect"></a>present with values</p>
+                                        <p>
+                              <a id="para_17393791-e113-43b9-ac32-d2f1c26b6ce6" shape="rect"></a>-4.9/-4.8/…/3.9/3.8</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2888ce4a-19b7-4116-9dda-0c09827f3cd6" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9861867d-e06a-48e9-819f-79460f56f67b" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e59b996b-216b-466b-9098-cae672cbd984" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_58731b4f-7e7e-443a-94a2-5ee31387d4ab" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_a7b7d8bf-9482-4aac-a62d-b67c155a5024" shape="rect"></a>-4.8/-4.7/…/3.8/3.7</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_711cf2a8-7852-4476-9aee-398be1a932c3" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4693a9ad-a477-4396-be42-5a069173c60e" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9964b919-b988-4188-8824-c74abfb2ca6a" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6f9ccf56-971a-4b17-b4e4-b44b1f1c64e7" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_db630fed-a3b7-442f-99f0-55d593112f6f" shape="rect"></a>-4.7/-4.6/…/3.7/3.6</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_d2cf126f-3b1c-424c-9142-280655644df8" shape="rect"></a>3</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_5dd507cf-2c8e-4693-8d43-62a72f453591" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_fbf1ce7c-597a-4930-85b5-fca2d256b0ee" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_26206c98-891e-40e3-ae30-c98a6cad03df" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9dafdff9-c1b2-4c17-9056-135b4e702b51" shape="rect"></a>-4.6/-4.5/…/3.6/3.5</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1d3c0d3c-0f9f-4216-9e2b-238df82d6866" shape="rect"></a>4</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_ae9d9f4d-0e03-4858-aeb5-d7c2e6653925" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_44fe463e-459c-44f9-b38d-8c8e4ef5dea3" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_cf8ea0db-f2c7-4a88-ae3c-c8eb93c872df" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_a10a31db-37ef-4eb7-bad6-ec370723fbf7" shape="rect"></a>-4.5/-4.4/…/3.5/3.4</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2decdb9d-d6a8-4523-a210-b9188a451907" shape="rect"></a>5</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_28e249b0-df45-4147-a535-22a6523d363f" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2f0288f8-b327-4637-853c-ad2402901863" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_c686f7cd-c084-428e-9bf4-938299c5ba81" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_43f083d7-406a-475f-8c34-e92ff673733f" shape="rect"></a>-4.4/-4.3/…/3.4/3.3</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_de9620b6-7ff0-4474-a3b9-553bfffb9a9d" shape="rect"></a>6</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f45b7020-8420-41ea-9eab-2fa5a02325b0" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_53a92140-5b90-43b0-9aa3-d790ef227ab2" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4de85789-b267-446d-80ab-96b117475588" shape="rect"></a>absent</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_91ef07bc-c8e9-4c7c-ad6b-bc5fb23566d6" shape="rect"></a>-4.3/-4.2/…/3.3/3.2</p>
+                                    </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.14.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.14.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.14.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.14.4 Multiple Aperture Blocks </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.14.6 Absolute and Relative Machine Coordinates</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024a - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

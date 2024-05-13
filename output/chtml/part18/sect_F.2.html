@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>F.2 DICOM JSON Model</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_F.html" title="F DICOM JSON Model" />
+      <link rel="prev" href="chapter_F.html" title="F DICOM JSON Model" />
+      <link rel="next" href="sect_F.2.2.html" title="F.2.2 DICOM JSON Model Object Structure" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">F.2 DICOM JSON Model <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_F.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_F.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">F DICOM JSON Model</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_F.html" shape="rect">DICOM JSON Model</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM JSON Model</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_F.2" shape="rect"></a>F.2 DICOM JSON Model</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3b315642-71bb-4dbd-a444-62eedf72b4cb" shape="rect"></a>The DICOM JSON Model follows the Native DICOM Model for XML very closely, so that systems can take advantage of both formats without much retooling. The Media Type for DICOM JSON is application/dicom+json. The default character repertoire shall be UTF-8 / ISO_IR 192.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_F.2.1" shape="rect"></a>F.2.1 Multiple Results Structure</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_f02e5138-5558-4a07-a2fe-67644ad16ce2" shape="rect"></a>Multiple results returned in JSON are organized as a single top-level array of JSON objects. This differs from the Native DICOM Model, which returns multiple results as a multi-part collection of singular XML documents.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_F.2.1.1" shape="rect"></a>F.2.1.1 Examples</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_F.2.1.1.1" shape="rect"></a>F.2.1.1.1 Native DICOM Model</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <pre class="programlisting" xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8" xml:space="preserve" ?&gt;
+&lt;NativeDicomModel&gt;
+  &lt;DicomAttribute tag="0020000D" vr="UI" keyword="StudyInstanceUID"&gt;
+    &lt;Value number="1"&gt;1.2.392.200036.9116.2.2.2.1762893313.1029997326.945873&lt;/Value&gt;
+  &lt;/DicomAttribute&gt;
+&lt;/NativeDicomModel&gt;
+…
+&lt;?xml version="1.0" encoding="UTF-8" xml:space="preserve" ?&gt;
+&lt;NativeDicomModel&gt;
+  &lt;DicomAttribute tag="0020000D" vr="UI" keyword="StudyInstanceUID"&gt;
+    &lt;Value number="1"&gt;1.2.444.200036.9116.2.2.2.1762893313.1029997326.945876&lt;/Value&gt;
+  &lt;/DicomAttribute&gt;
+&lt;/NativeDicomModel&gt;
+</pre>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_F.2.1.1.2" shape="rect"></a>F.2.1.1.2 DICOM JSON Model</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <pre class="programlisting" xml:space="preserve">[
+  {
+     "0020000D": {
+      "vr": "UI",
+      "Value": [ "1.2.392.200036.9116.2.2.2.1762893313.1029997326.945873" ]
+    }
+  },
+  {
+    "0020000D" : {
+      "vr": "UI",
+      "Value": [ "1.2.392.200036.9116.2.2.2.2162893313.1029997326.945876" ]
+    }
+  }
+]
+</pre>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_F.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_F.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">F DICOM JSON Model </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> F.2.2 DICOM JSON Model Object Structure</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024a - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>
