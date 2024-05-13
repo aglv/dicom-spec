@@ -1,0 +1,1 @@
+This branch is DocBookDICOM2024b\_sourceandrenderingpipeline\_20240331180906.tar.bz2 (source dir only) from https://dicom.nema.org/medical/dicom/2024b/
