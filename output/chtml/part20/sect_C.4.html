@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.4 Body Transformation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.20.html" title="PS3.20" />
+      <link rel="up" href="chapter_C.html" title="C SR to CDA Imaging Report Transformation Guide" />
+      <link rel="prev" href="sect_C.3.html" title="C.3 Header Transformation" />
+      <link rel="next" href="sect_C.4.2.html" title="C.4.2 Section/text" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024b - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.4 Body Transformation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part20/sect_C.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C SR to CDA Imaging Report Transformation Guide</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.20.html" shape="rect">PS3.20</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">SR to CDA Imaging Report Transformation Guide</a>
+         </span> &gt; <span class="breadcrumb-node">Body Transformation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_C.4" shape="rect"></a>C.4 Body Transformation</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d87f1194-a38f-4e1b-a434-62d090e3806d" shape="rect"></a>For transformation of the body, this Section maps the SR content items to their target CDA elements. This allows the transforming application to traverse the SR content tree and construct equivalent CDA content.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_C.4.1" shape="rect"></a>C.4.1 Section Mapping</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_894b185b-0c71-488f-b1d2-dfd9634aa04d" shape="rect"></a>SR <a href="../part16/chapter_A.html#sect_TID_2000" class="olink" shape="rect">TID 2000</a>, <a href="../part16/chapter_A.html#sect_TID_2005" class="olink" shape="rect">TID 2005</a> and <a href="../part16/chapter_A.html#sect_TID_2006" class="olink" shape="rect">TID 2006</a> specify that imaging report elements are contained in sections, represented as CONTAINERs with concept name codes from <a href="../part16/sect_CID_7001.html" class="olink" shape="rect">CID 7001</a>.</p>
+            <p>
+               <a id="para_d208ecac-1439-4259-b4f0-2a4ef44f06aa" shape="rect"></a>Each CONTAINER immediately subsidiary to the root CONTAINER shall be mapped to the section or subsection as specified in <a class="xref" href="sect_C.4.html#table_C.4-1" title="Table C.4-1. SR Section mapping to CDA" shape="rect">Table C.4-1</a>. Note that some SR document sections are mapped to subsections under CDA Template 1.2.840.10008.9.1.</p>
+            <div class="table">
+               <a id="table_C.4-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.4-1. SR Section mapping to CDA</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d65d201d-45f1-449c-b631-8e8679398933" shape="rect"></a>Coding Scheme Designator</p>
+                           </th>
+                           <th align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7504d911-1571-4fc0-8e0e-7b4969be262e" shape="rect"></a>Code Value</p>
+                           </th>
+                           <th align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_06f1d2f5-e42e-4c81-b05d-02b4afbe6708" shape="rect"></a>Code Meaning</p>
+                           </th>
+                           <th align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f42e7c2a-3c9a-4904-b6e9-812c0c60f6b5" shape="rect"></a>Map to Template Section/Subsection</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_019bdd04-672f-49ac-a56b-e6a65ff457b3" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_72ab5b0c-8fea-4103-9a95-5b8b651174d8" shape="rect"></a>11329-0</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_71835fa2-3f93-4716-b790-06ffa2e3a885" shape="rect"></a>History</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9cb950fd-e4f5-48f1-b6a5-188d624da8f1" shape="rect"></a>
+                                 <a class="xref" href="sect_9.2.html" title="9.2 Clinical Information" shape="rect">9.2 Clinical Information</a> / <a class="xref" href="sect_9.8.3.html" title="9.8.3 Medical (General) History" shape="rect">9.8.3 Medical (General) History</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_afe4f175-ce65-4db4-a6f6-c65e9a4f18d4" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2c80c424-34a1-4b44-99b8-251ca155dbed" shape="rect"></a>55115-0</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_45c1db7f-f62d-4225-9241-55b89ac98b04" shape="rect"></a>Request</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b141f7cb-d989-4b8c-86bd-21075214a51d" shape="rect"></a>
+                                 <a class="xref" href="sect_9.2.html" title="9.2 Clinical Information" shape="rect">9.2 Clinical Information</a> / <a class="xref" href="sect_9.8.html#sect_9.8.1" title="9.8.1 Request" shape="rect">9.8.1 Request</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6ad30604-2e9c-4c2a-9df3-6f765fd539a1" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1433397f-d90e-434a-a566-9c2e7facbbee" shape="rect"></a>55111-9</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1cd72c80-0e40-4c86-8e06-d8120e619236" shape="rect"></a>Current Procedure Descriptions</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1bb893f0-0e59-4d6c-8364-137972660ca1" shape="rect"></a>
+                                 <a class="xref" href="sect_9.3.html" title="9.3 Imaging Procedure Description" shape="rect">9.3 Imaging Procedure Description</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_48bf4660-128b-4791-8e76-add9cc24bf75" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ed5acde8-2ecb-4e68-84b7-2b4d4800b326" shape="rect"></a>55114-3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7f505a05-337f-4670-ab3f-36cf6ab340e7" shape="rect"></a>Prior Procedure Descriptions</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d84ffeb0-aefb-42fa-84f4-13413cb4635b" shape="rect"></a>
+                                 <a class="xref" href="sect_9.4.html" title="9.4 Comparison Study" shape="rect">9.4 Comparison Study</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_355757ed-fc53-4f5d-8fc0-64e78eab5875" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_caf32c54-8e63-4ac9-b2c9-def35d0d2317" shape="rect"></a>18834-2</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_069d8ebd-2ddf-45fc-9548-edbce08c9d0e" shape="rect"></a>Previous Findings</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_75448fa0-d3f8-4800-b747-8e3618cd759e" shape="rect"></a>
+                                 <a class="xref" href="sect_9.4.html" title="9.4 Comparison Study" shape="rect">9.4 Comparison Study</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_857511e2-7974-4855-9665-c49ac4be6c6d" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_30eae55c-5a9f-4864-909b-88e2f6ac3be3" shape="rect"></a>18782-3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d35b17ec-562b-499c-b5a0-d9120c5994cc" shape="rect"></a>Findings (Study Observation)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bf80d9d1-8977-4842-b420-0ecf3c66d233" shape="rect"></a>
+                                 <a class="xref" href="sect_9.5.html" title="9.5 Findings" shape="rect">9.5 Findings</a> or <a class="xref" href="sect_9.5.html" title="9.5 Findings" shape="rect">9.5 Findings</a> / <a class="xref" href="sect_9.8.8.html" title="9.8.8 Fetus Findings" shape="rect">9.8.8 Fetus Findings</a> (see <a class="xref" href="sect_C.4.html#sect_C.4.1.3" title="C.4.1.3 Fetus Subject Context" shape="rect">C.4.1.3</a>)</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_179b7f6d-e8b6-46a1-8db4-f90c504b7d47" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0a6b679a-d660-4912-af5e-027c71c4d838" shape="rect"></a>59776-5</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_728ed6e8-91c2-4d15-85b4-24de19b73cca" shape="rect"></a>Findings</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c09db0bc-2850-429e-a61d-d13919f4c29a" shape="rect"></a>
+                                 <a class="xref" href="sect_9.5.html" title="9.5 Findings" shape="rect">9.5 Findings</a> or <a class="xref" href="sect_9.5.html" title="9.5 Findings" shape="rect">9.5 Findings</a> / <a class="xref" href="sect_9.8.8.html" title="9.8.8 Fetus Findings" shape="rect">9.8.8 Fetus Findings</a> (see <a class="xref" href="sect_C.4.html#sect_C.4.1.3" title="C.4.1.3 Fetus Subject Context" shape="rect">C.4.1.3</a>)</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_08887e3e-b8b3-4f03-9046-cd45b28c5ee4" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8b3801ec-8b5b-467b-a591-b878ccb75633" shape="rect"></a>19005-8</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_112be464-2cae-4695-b0f3-9b4a4e9c964e" shape="rect"></a>Impressions</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1b139baf-2817-499a-a9ff-3ea399e4ef00" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_55030c64-e0d0-40c5-a871-5d483084dce0" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_62a29c14-3719-40cb-b75c-8ee23bb26975" shape="rect"></a>18783-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aefdc364-f4c2-4d5f-99d0-dd4e61ad6584" shape="rect"></a>Recommendations</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_87ad8dc0-e9c8-4bd6-85c9-9d774906ef36" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a> / <a class="xref" href="sect_9.8.11.html" title="9.8.11 Recommendation" shape="rect">9.8.11 Recommendation</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_577692d3-c2c1-4d6e-81dd-5304b94768fb" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_75b6a930-26b9-4646-92b9-8634901fb550" shape="rect"></a>55110-1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d38a6fe4-05e0-413d-bafc-21fbda348fb4" shape="rect"></a>Conclusions</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a792ca46-f0e0-4811-acda-02c478396a02" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_96dd32a0-c949-4516-a248-47bb2d17d670" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cf1a4ea6-f1a0-4317-9e84-ebc089a00f2d" shape="rect"></a>55107-7</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a19cb757-08fa-4998-8255-128247803a51" shape="rect"></a>Addendum</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ac2abd0a-5c92-4ecc-8c33-e4306db48072" shape="rect"></a>
+                                 <a class="xref" href="sect_9.7.html" title="9.7 Addendum" shape="rect">9.7 Addendum</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7579828d-dd17-48b2-b61e-745df827f672" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ced71b7a-131e-4948-a08c-03f10c068a73" shape="rect"></a>18785-6</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e5c4733e-5e32-4e08-b4f8-60dddf9d6f04" shape="rect"></a>Indications for Procedure</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_faae038a-c653-4fb2-8c55-6048ce99305e" shape="rect"></a>
+                                 <a class="xref" href="sect_9.2.html" title="9.2 Clinical Information" shape="rect">9.2 Clinical Information</a> / <a class="xref" href="sect_9.8.2.html" title="9.8.2 Procedure Indications" shape="rect">9.8.2 Procedure Indications</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_02b7c55a-6998-447c-99df-964e9d8d95f8" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3407ce68-63ef-4065-8169-6a36f54322b1" shape="rect"></a>55108-5</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a2648d6-9d25-4ab7-bae8-128bc9bf5718" shape="rect"></a>Patient Presentation</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0ad283bf-e7ba-45f6-b8f5-d23f5d8a7729" shape="rect"></a>
+                                 <a class="xref" href="sect_9.2.html" title="9.2 Clinical Information" shape="rect">9.2 Clinical Information</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ce9049f9-8355-4f7f-bebb-fd21a0626720" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5350060f-1484-4bb8-bd77-d3b4ec877352" shape="rect"></a>55109-3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9f807514-a4ec-4a28-9e38-9ad74cfa3c8c" shape="rect"></a>Complications</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_89bb1c05-67c5-4ed9-9dac-0ced5fcaa166" shape="rect"></a>
+                                 <a class="xref" href="sect_9.3.html" title="9.3 Imaging Procedure Description" shape="rect">9.3 Imaging Procedure Description</a> / <a class="xref" href="sect_9.8.4.html" title="9.8.4 Complications" shape="rect">9.8.4 Complications</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8c400412-7f75-4725-b9ec-23d189000533" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_32e8ee4d-5aa6-4e4d-af60-209f48eada0d" shape="rect"></a>55112-7</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d28c61f0-caf7-4107-a1dc-d794633583e7" shape="rect"></a>Summary</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_981911e1-348e-4d00-9844-23b3676fdcba" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ba1b4559-9f77-40f7-beaf-122bdfbeae7c" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ddabb173-22cc-409e-82cb-e4fef70f7e51" shape="rect"></a>55113-5</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0023aa1d-0336-4fb6-ad2a-8c9a9de115e3" shape="rect"></a>Key Images</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c810a2e5-4e28-4bc4-a712-6153977666f0" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a> / <a class="xref" href="sect_9.8.6.html" title="9.8.6 Key Images" shape="rect">9.8.6 Key Images</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bdd664f0-f468-4200-b4a7-7e2756149713" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_364e6234-a7dc-4863-ade3-bb48f12a68db" shape="rect"></a>73569-6</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8d733a31-cdf4-4a8a-ab64-32e9d9fa98b3" shape="rect"></a>Radiation Exposure and Protection Information</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f7667ac6-2a82-4d9c-a0aa-b6a8e04e8d81" shape="rect"></a>
+                                 <a class="xref" href="sect_9.3.html" title="9.3 Imaging Procedure Description" shape="rect">9.3 Imaging Procedure Description</a> / <a class="xref" href="sect_9.8.5.html" title="9.8.5 Radiation Exposure and Protection Information" shape="rect">9.8.5 Radiation Exposure and Protection Information</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5539d949-ea45-4baf-887c-e0213c7f836d" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_78dc7afb-2fed-4d03-8cef-6b0250d57119" shape="rect"></a>55752-0</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d2b3562f-5eda-4cb3-bffb-3709c76b012d" shape="rect"></a>Clinical Information</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_caf7f5b8-ff93-4295-b265-4b4cc80edc9c" shape="rect"></a>
+                                 <a class="xref" href="sect_9.2.html" title="9.2 Clinical Information" shape="rect">9.2 Clinical Information</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7bb2bed0-6f0d-4b61-8d23-3dd1766bda63" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_efbdc8ec-0d4d-4257-adac-b1ab54535c13" shape="rect"></a>29549-3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13a7a64f-26e7-4f35-b716-8f3d15d15bad" shape="rect"></a>Medications Administered</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cc334da0-b46d-4f1a-9f5f-fa1f1f68813b" shape="rect"></a>
+                                 <a class="xref" href="sect_9.3.html" title="9.3 Imaging Procedure Description" shape="rect">9.3 Imaging Procedure Description</a> / <a class="xref" href="sect_10.2.html" title="10.2 Procedural Medication" shape="rect">10.2 Procedural Medication</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5c7b4616-3d5b-42a9-8867-66225c6c371a" shape="rect"></a>LN</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_011eaf81-d35c-4ddb-a9c3-76fc7ddcc85a" shape="rect"></a>73568-8</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eef186e0-652d-4ae2-bb77-e38640bb99e7" shape="rect"></a>Communication of Critical Results</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d15053b3-29ec-4743-9151-4680a3c8f998" shape="rect"></a>
+                                 <a class="xref" href="sect_9.6.html" title="9.6 Impression" shape="rect">9.6 Impression</a> / <a class="xref" href="sect_9.8.10.html" title="9.8.10 Communication of Actionable Findings" shape="rect">9.8.10 Communication of Actionable Findings</a>
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_afd52985-3d14-43bc-b051-18d24fb92537" shape="rect"></a>CDA Template 1.2.840.10008.9.1 requires a minimum of an Imaging Procedure Description section and an Impression section.</p>
+            <p>
+               <a id="para_d0111d29-b9a8-437e-87d9-d12c87babdc1" shape="rect"></a>The section/code element shall be populated in accordance with the relevant CDA template; note that the code might not be the same as the Concept Name code of the SR section CONTAINER. The title element of each CDA section shall be populated as shown in <a class="xref" href="sect_C.4.html#table_C.4-2" title="Table C.4-2. CDA Section mapping from SR" shape="rect">Table C.4-2</a>.</p>
+            <div class="table">
+               <a id="table_C.4-2" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.4-2. CDA Section mapping from SR</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23273bff-d6d1-4381-83d8-dee9c5d35831" shape="rect"></a>CDA Business Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8a686942-1cb0-4750-872d-d2a3d57dc7c4" shape="rect"></a>DICOM SR</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_373f00b0-912a-4b47-8044-50e8f94e9340" shape="rect"></a>&lt;section&gt;: Title</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f38cb921-55ec-416a-a052-5c53624fe944" shape="rect"></a>
+                                 <span class="italic">Concept Name Code Sequence (0040,A043) &gt; Code Meaning (0008,0104)</span> [of the section CONTAINER content item]</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a61a9384-fd76-4e48-9e67-6617b5d4cdb1" shape="rect"></a>&lt;section&gt;: Text</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5b234db3-099b-45b5-bc8d-2236849057b8" shape="rect"></a>[See <a class="xref" href="sect_C.4.2.html" title="C.4.2 Section/text" shape="rect">C.4.2</a>]</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b8142d05-83ae-4cfb-8223-e109ee5a7128" shape="rect"></a>&lt;section&gt;: CodedObservation[*]</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b6c5d2ff-5236-4b17-993d-a3c63577954f" shape="rect"></a>[See <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1" title="C.4.3.1 Coded Observations" shape="rect">C.4.3.1</a> and <a class="xref" href="sect_C.4.3.2.html" title="C.4.3.2 Text Observations" shape="rect">C.4.3.2</a>]</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4b9d7425-7511-4f9b-9674-543832ec5ae9" shape="rect"></a>&lt;section&gt;: QuantityMeasurement[*]</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_da1e3a72-302b-412f-9d53-5784866dc4dc" shape="rect"></a>[See <a class="xref" href="sect_C.4.3.4.html" title="C.4.3.4 Numeric Observations" shape="rect">C.4.3.4</a>]</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_416301af-0296-403a-ad4e-854a08a959ec" shape="rect"></a>&lt;section&gt;: SOPInstance[*]</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ba5a86eb-6cbc-42ce-a971-83151b47df60" shape="rect"></a>[See <a class="xref" href="sect_C.4.3.3.html" title="C.4.3.3 Image Observations" shape="rect">C.4.3.3</a>]</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_afad45ec-4cc5-4262-b4ec-89c35a954d81" shape="rect"></a>SR allows sections to be qualified by observation context, using <a href="../part16/chapter_A.html#sect_TID_1001" class="olink" shape="rect">TID 1001</a> and its subsidiary templates. This capability is constrained in this mapping.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.1" shape="rect"></a>C.4.1.1 Section Observer Context</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_2fc421e9-8961-4d48-a3fb-7216da3e31f5" shape="rect"></a>
+                  <a href="../part16/chapter_A.html#sect_TID_1002" class="olink" shape="rect">TID 1002 Observer Context</a> allows identification of a human or device author.</p>
+               <div class="table">
+                  <a id="table_C.4-3" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.4-3. CDA Section author mapping from SR</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8dfe0592-cfa9-4e8e-b2e1-2f88a47bd014" shape="rect"></a>CDA Business Name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_bdd60899-6932-487c-b5bb-b66de5e38c6f" shape="rect"></a>DICOM SR</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_778dc4c2-e594-4e05-b9b9-956761355687" shape="rect"></a>&lt;section&gt;: AuthorID</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_188df97e-b89e-4f91-a70e-c5d9f5e83dd6" shape="rect"></a>If
+                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121005" class="olink" shape="rect">(121005, DCM, "Observer Type")</a>
+                                    </span> = <a href="../part16/chapter_D.html#DCM_121007" class="olink" shape="rect">(121007, DCM, "Device")</a>, then
+                    <span class="italic"></span>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121012" class="olink" shape="rect">(121012, DCM, "Device Observer UID")</a>
+                                    </span>
+                                 </p>
+                                 <p>
+                                    <a id="para_83d40c88-08ef-402a-b856-d831ebeaa115" shape="rect"></a>ID for human observer not represented in SR; use nullFlavor="UNK"</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_db4d82f2-be30-40b7-a90b-81045480ba8b" shape="rect"></a>&lt;section&gt;: AuthorName</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_bb144204-2c21-4c78-9c34-56fa7044d5fd" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121008" class="olink" shape="rect">(121008, DCM, "Person Observer Name")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5fdeb1b7-a47f-4850-9088-56015a773ae3" shape="rect"></a>&lt;section&gt;: AuthorOrganization</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_dc69481a-8649-4e0f-8f0b-b543cf7bf466" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121009" class="olink" shape="rect">(121009, DCM, "Person Observer's Organization Name")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_0575ce50-2131-4339-a57a-94ec1d4d61c1" shape="rect"></a>&lt;section&gt;: AuthorDeviceModel</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_11af308b-d47e-4d86-aef1-7a4647f82a56" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121015" class="olink" shape="rect">(121015, DCM, "Device Observer Model Name")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9a404ab3-70a6-491f-a0ea-49a4b59cf79f" shape="rect"></a>&lt;section&gt;: AuthorSoftware</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_cb200898-cfdf-4046-a314-06e92df4d22d" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121013" class="olink" shape="rect">(121013, DCM, "Device Observer Name")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.2" shape="rect"></a>C.4.1.2 Comparison Study Procedure Context</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0d7c4717-2e7d-4068-8913-cdea609267a8" shape="rect"></a>
+                  <a href="../part16/chapter_A.html#sect_TID_1005" class="olink" shape="rect">TID 1005 Procedure Study Context</a> allows identification of a different procedure than the procedure identified in the SR Study IE as the context for the section observations. In the transformations of this Annex, only an identified comparison procedure is supported as Procedure Context, the SR section being transformed must be either Prior Procedure Descriptions or Previous Findings, and the CDA section shall be in accordance with the Comparison Study section Template 1.2.840.10008.9.4.</p>
+               <p>
+                  <a id="para_ba0e8c61-4acb-4f66-ad30-cc283135f543" shape="rect"></a>SR Instances using <a href="../part16/chapter_A.html#sect_TID_2006" class="olink" shape="rect">TID 2006</a> have additional attributes of a comparison procedure specified using <a href="../part16/chapter_A.html#sect_TID_2007" class="olink" shape="rect">TID 2007</a>, which is used in the Prior Procedure Descriptions section. The attributes of both <a href="../part16/chapter_A.html#sect_TID_1005" class="olink" shape="rect">TID 1005</a> and <a href="../part16/chapter_A.html#sect_TID_2007" class="olink" shape="rect">TID 2007</a> are source data in the <a class="xref" href="sect_C.4.html#table_C.4-4" title="Table C.4-4. Comparison Study mapping from SR" shape="rect">Table C.4-4</a> mapping.</p>
+               <div class="table">
+                  <a id="table_C.4-4" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.4-4. Comparison Study mapping from SR</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_354b989b-656c-455a-b810-d79213234dfc" shape="rect"></a>CDA Business Name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f8732746-180f-42f5-952e-b8521445ef1d" shape="rect"></a>DICOM SR</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2bc57851-5dde-41fd-ada4-a8fe694f830d" shape="rect"></a>ComparisonStudy: ProcedureTechnique: ProcedureCode</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5f6f826f-5112-4ee9-9522-2dc94a1e4e06" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121023" class="olink" shape="rect">(121023, DCM, "Procedure Code")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ee2ca962-c14f-49c3-8320-a733aa789ab0" shape="rect"></a>ComparisonStudy: ProcedureTechnique: EffectiveTime</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_44e7ef70-9829-4155-ae04-6a6b60d8f362" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_111060" class="olink" shape="rect">(111060, DCM, "Study Date")</a> + <a href="../part16/chapter_D.html#DCM_111061" class="olink" shape="rect">(111061, DCM, "Study Time")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8f051b28-99be-43a4-acca-e6b4371bd851" shape="rect"></a>ComparisonStudy: ProcedureTechnique: Modality</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_682ad076-7ddf-4646-b2be-3b575197d260" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_122142" class="olink" shape="rect">(122142, DCM, "Acquisition Device Type")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ae75c932-eba7-48e8-a099-14b939879069" shape="rect"></a>ComparisonStudy: ProcedureTechnique: MethodCode</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_c400edf7-d7ce-4a82-93a1-9563a4f6ffaa" shape="rect"></a>ComparisonStudy: ProcedureTechnique: TargetSite</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3ccd7444-a84c-48e2-9b7a-03932ddafa29" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_123014" class="olink" shape="rect">(123014, DCM, "Target Region")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_12a93589-5b4b-4c79-941b-d8f7c3edf1de" shape="rect"></a>ComparisonStudy: ProcedureTechnique: Laterality:</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_6cae14ee-d9a1-4891-915d-af42d7586dd8" shape="rect"></a>ComparisonStudy: ProcedureTechnique: Ref:</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9be87c34-6a8c-4ca1-bef4-8c326befb2b0" shape="rect"></a>ComparisonStudy: ProcedureTechnique: ProviderOrganization</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7d2e6565-b617-4cd9-867d-6e885d1d9e3e" shape="rect"></a>ComparisonStudy: Study[*]: StudyUID</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_eb7ba60f-e0e6-48ed-a032-3d976af6e526" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121018" class="olink" shape="rect">(121018, DCM, "Procedure Study Instance UID")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3c8ebb85-1655-46e7-b260-8e16813dfd96" shape="rect"></a>ComparisonStudy: Study[*]: Description</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f43a777e-18e5-4491-a613-3656340ab2dd" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121065" class="olink" shape="rect">(121065, DCM, "Procedure Description")</a>
+                                    </span> , if present, or
+                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121023" class="olink" shape="rect">(121023, DCM, "Procedure Code")</a> &gt; Code Meaning (0008,0104)</span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_e28775ef-f141-414d-b66b-c59c3b9261ba" shape="rect"></a>ComparisonStudy: Study[*]: Time</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7b43e1dd-133d-4ddb-9c1b-2aa0e8628d01" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_111060" class="olink" shape="rect">(111060, DCM, "Study Date")</a> + <a href="../part16/chapter_D.html#DCM_111061" class="olink" shape="rect">(111061, DCM, "Study Time")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.3" shape="rect"></a>C.4.1.3 Fetus Subject Context</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8482a277-c5a4-43bc-bc96-2b6f654d329d" shape="rect"></a>
+                  <a href="../part16/chapter_A.html#sect_TID_1006" class="olink" shape="rect">TID 1006 Subject Context</a> allows identification of a different subject than the patient identified in the SR Patient IE. In the transformations of this Annex, only an identified fetus subject is supported as Subject Context for a Findings section. An SR section with a fetus subject context shall be mapped to a CDA section shall be in accordance with the Fetus Findings subsection Template 1.2.840.10008.9.9. This section is subsidiary to the top level Findings section; multiple SR fetus findings sections may be mapped to separate CDA Fetus Findings subsections.</p>
+               <div class="table">
+                  <a id="table_C.4-5" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.4-5. CDA Fetus subject mapping from SR</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_76d37db4-bfc4-4aa3-bf52-0b1b459e58f1" shape="rect"></a>CDA Business Name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f1667301-ab67-41cf-9fdc-c363fbe7bd21" shape="rect"></a>DICOM SR</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_e473ae3e-b372-4fcc-b3a5-4da54b1d2bee" shape="rect"></a>Findings: FetusFindings[*]: FetusID</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_bedc06fa-b398-4720-9287-bbb6c118d766" shape="rect"></a>
+                                    <span class="italic">
+                                       <a href="../part16/chapter_D.html#DCM_121030" class="olink" shape="rect">(121030, DCM, "Subject ID")</a>
+                                    </span> or
+                    <span class="italic">
+                                       <a class="link" href="http://loinc.org/11951-1/" target="_blank" shape="rect">(11951-1, LN, "Fetus ID")</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_C.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.3 Header Transformation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.20.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.4.2 Section/text</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024b - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

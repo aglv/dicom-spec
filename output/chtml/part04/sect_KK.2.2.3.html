@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>KK.2.2.3 Service Class Provider Behavior</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_KK.2.2.html" title="KK.2.2 Operations" />
+      <link rel="prev" href="sect_KK.2.2.2.html" title="KK.2.2.2 Service Class User Behavior" />
+      <link rel="next" href="sect_KK.2.3.html" title="KK.2.3 Notifications" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">KK.2.2.3 Service Class Provider Behavior <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_KK.2.2.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_KK.2.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">KK.2.2 Operations</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_KK.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_KK.html" shape="rect">Storage Management Service Class</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_KK.2.html" shape="rect">Inventory Creation SOP Class</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_KK.2.2.html" shape="rect">Operations</a>
+         </span> &gt; <span class="breadcrumb-node">Service Class Provider Behavior</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_KK.2.2.3" shape="rect"></a>KK.2.2.3 Service Class Provider Behavior</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0dee0ca0-68c7-401f-8326-b95eb8fc30de" shape="rect"></a>Upon receipt of the N-ACTION request, the SCP shall return, via the N-ACTION response primitive, the N-ACTION Response Status Code applicable to the associated request (see <a class="xref" href="sect_KK.2.2.3.html#table_KK.2.2.3-1" title="Table KK.2.2.3-1. N-ACTION Response Status Values" shape="rect">Table KK.2.2.3-1</a>).
+                        A Success status conveys that the SCP has successfully received the request.
+                        A Warning status conveys that the SCP has successfully received the request, but might not process some of the requested parameters.
+                        A Failure status conveys that the SCP is not processing the request.</p>
+         <p>
+            <a id="para_68ba2603-f5c3-474a-a7ed-0e43585981ff" shape="rect"></a>For Action Type "Initiate" (Action Type ID = 11), the SCP shall return a Failure Status Code of 0212H "Mistyped argument" if the SCP does not support all of the character sets identified in Specific Character Set (0008,0005), or all of the matching mechanisms identified in Extended Matching Mechanisms (0008,040F), or the identified Inventory Level (0008,0403); additional explanation may be returned in Error Comment (0000,0902).
+                        The SCP shall return a Warning Status Code of B010H "Attribute list error - One or more of Key Attributes are not supported for matching" if one or more of the Key Attributes specified in the Scope of Inventory Sequence (0008,0400) are not supported for matching, and shall return the list of unsupported Attributes in Attribute Identifier List (0000,1005).</p>
+         <div class="table">
+            <a id="table_KK.2.2.3-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table KK.2.2.3-1. N-ACTION Response Status Values</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bd576f0c-a3dd-4887-b3cc-149ec006fc6e" shape="rect"></a>Service Status</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cb943928-fdee-4fdd-a194-3fcda2e69f03" shape="rect"></a>Further Meaning</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_39008157-4acc-4877-8219-49ab5b3a149a" shape="rect"></a>Status Codes</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b0fb53b8-be06-40f5-8afc-aaa09bb4ea35" shape="rect"></a>Related Fields</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="5" colspan="1">
+                                    <p>
+                              <a id="para_06629f09-bb6d-4bd9-b229-bd203bb6e165" shape="rect"></a>Failure</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2e3a6c06-6792-4f89-806b-64e44d927ecc" shape="rect"></a>Processing Failure</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f2d41ad7-ae42-4967-bd76-ce4997e7e040" shape="rect"></a>0110</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e0c80630-0db3-48cd-b340-dfcfe197250d" shape="rect"></a>(0000,0902)</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_79fece33-fa94-4e8d-ae2a-c14c64acd5b5" shape="rect"></a>Refused: Not authorized</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b0253a6a-5c78-44dd-9447-93d35ba5a08d" shape="rect"></a>0124</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ddf19b7a-1fb3-48b9-87e1-0f5ad83fa883" shape="rect"></a>(0000,0902)</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5d88ab97-d981-4d95-8fbb-9388f8f71cb0" shape="rect"></a>Mistyped argument - One of the parameters supplied has not been agreed for use</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_132b5461-24ca-4fe5-adc5-03fff38d06ba" shape="rect"></a>0212</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_209518b8-4f9e-468a-8b17-595c8dea2b02" shape="rect"></a>(0000,0902)</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_afd9e3bf-dc0e-4f51-9a22-3d0724a3c66c" shape="rect"></a>Resource Limitation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ba20d6a1-7848-4e02-8855-23ce720975ad" shape="rect"></a>0213</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e0838ee4-8811-4090-8401-52cb6e3530a5" shape="rect"></a>(0000,0902)</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_64b54f3f-0623-40fe-b231-2cad27053182" shape="rect"></a>
+                                        <span class="italic">Other Failure statuses as specified in</span>
+                                        <span class="italic">
+                                 <a href="../part07/chapter_10.html#sect_10.1.4.1.10" class="olink" shape="rect">Section 10.1.4.1.10 “Status” in PS3.7</a>
+                              </span>
+                                    </p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_30a0bea9-89b9-475b-a1bf-6d5a25da7c97" shape="rect"></a>Warning</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_512d407b-e94e-4244-9284-c576a5f52af3" shape="rect"></a>Attribute list error - One or more of Key Attributes are not supported for matching</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_03d489cf-6edb-461a-9de5-42e9307bfa47" shape="rect"></a>B010</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_763f22fc-d6ab-49ca-9b63-f7f544f7d3f7" shape="rect"></a>(0000,1005)</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a63a50c8-8985-448e-9032-8d46a5340f26" shape="rect"></a>Success</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d4230ab9-89c6-4e42-a342-d2a20cd4bc87" shape="rect"></a>Success</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4611aa42-d143-4dbe-b80f-ddd7278dbd44" shape="rect"></a>0000</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_ce8a4bff-34e7-4b1f-86ec-c838a20a44aa" shape="rect"></a>See <a href="../part07/chapter_E.html#sect_E.1" class="olink" shape="rect">Section E.1 “Registry of DICOM Command Elements” in PS3.7</a> for definition of the Related Fields.</p>
+         </div>
+         <p>
+            <a id="para_87c5c058-2f4f-4dd4-824e-ec3d9556f61b" shape="rect"></a>If the SCP conveys a Success or Warning status for Action Type "Initiate" (Action Type ID = 11), it shall initiate production of an Inventory and periodic status reporting in accordance with the parameters of the Scope of Inventory Sequence (0008,0400) and Inventory Level (0008,0403) provided in the N-ACTION request.
+                        The Inventory SOP Instance(s) produced to satisfy the N-ACTION request shall include the Transaction UID (0008,1195).
+                        The Scope of Inventory in the produced Inventory SOP Instances shall include only those Key Attributes that were supported for matching.
+                        Any value provided by the SCU for Inventory Purpose (0008,0401) shall be included in the produced Inventory SOP Instances.</p>
+         <p>
+            <a id="para_64734ab3-50e3-4979-8c6b-dd19f4fc351f" shape="rect"></a>The produced Inventory SOP Instance(s) may include existing Inventory SOP Instances by reference in the Incorporated Inventory Instance Sequence (0008,0422).
+                        Existing Inventory SOP Instances that contribute to satisfying the N-ACTION request may be included by reference,
+                        but since they were not produced in response to the request,
+                        they would not contain its Transaction UID (0008,1195),
+                        and may have a different Scope of Inventory, or Inventory Purpose (0008,0401).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a430baf0-9d8d-4054-9883-d2625381fe39" shape="rect"></a>See <a href="../part17/sect_YYYY.3.3.html" class="olink" shape="rect">Section YYYY.3.3 “Inventory Instance Tree” in PS3.17</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ce7ddcac-0fd2-4073-9b90-57b19b5f4612" shape="rect"></a>An existing Inventory SOP Instance included by reference might have no Transaction UID (0008,1195)
+                                    if its creation was not initiated by a transaction of the Inventory Creation SOP Class.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f30a41f3-8254-4ee1-af8d-b74fca93056d" shape="rect"></a>An Inventory SOP Instance may be produced that is solely a “wrapper” for an existing Inventory SOP Instance included by reference.
+                                    The produced Inventory SOP Instance establishes the Content Date (0008,0023), Content Time (0008,0033), and Inventory Purpose (0008,0401) for the Inventory,
+                                    and links it to the Transaction UID (0008,1195).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_0b2f8d79-1c01-488c-97d1-6a45b171bfe3" shape="rect"></a>The SCP shall produce at least one Inventory SOP Instance (at the root of the tree of referenced SOP Instances) upon reaching the COMPLETE state.</p>
+         <p>
+            <a id="para_ecdbafeb-771c-4cf7-8755-8a18e1b5c404" shape="rect"></a>If the SCP encounters a failure when producing the Inventory, it may attempt to complete the encoding into an Inventory SOP Instance of Study records already obtained, and set Inventory Completion Status (0008,0426) in that SOP Instance to "FAILURE".</p>
+         <p>
+            <a id="para_bf4fdeb9-92e8-4ce4-a4eb-2cdd67d6c479" shape="rect"></a>If the SCP conveys a Success status for Action Type "Request Status" (Action Type ID = 12), it shall initiate sending an N-EVENT-REPORT with Event Type "Inventory Status" (Event Type ID = 12).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_5f491966-e3b5-4298-966a-c6d6ce67df83" shape="rect"></a>The N-EVENT-REPORT may be sent on the same or a different Association as the N-ACTION request (see <a class="xref" href="chapter_KK.html#sect_KK.1.3.1" title="KK.1.3.1 Association Negotiation" shape="rect">Section KK.1.3.1</a>).</p>
+         </div>
+         <p>
+            <a id="para_eeabd7eb-869c-40fd-bcfd-aaaa60b50739" shape="rect"></a>If the SCP conveys a Success status for Action Type "Cancel" (Action Type ID = 13), it shall stop production of the Inventory associated with the Transaction UID (0008,1195).
+                        If the Cancel request includes Retain Instances (0008,0415) with value "N", the SCP may delete any Inventory SOP Instances associated with the Transaction UID (0008,1195).
+                        If the Cancel request includes Retain Instances (0008,0415) with value "Y", the SCP shall complete the encoding into an Inventory SOP Instance of Study records already obtained, and set Inventory Completion Status (0008,0426) to "CANCELED".
+                        Some Study records may be only partially complete at the time of the Cancel request, e.g., not all the subsidiary Series and Instance records had been compiled.
+                        Whether such partial Study records are completed and included in the Inventory SOP Instance is implementation specific. Partial Study records shall not be included in an Inventory.</p>
+         <p>
+            <a id="para_c5fa6c44-1669-492a-9f6e-4b8c73af6ca0" shape="rect"></a>If the SCP conveys a Success status for Action Type "Pause" (Action Type ID = 14), it shall pause production of the Inventory associated with the Transaction UID (0008,1195).
+                        The SCP may complete any processing necessary to reach a stable state for pausing the Inventory production to allow efficient resumption.</p>
+         <p>
+            <a id="para_11e02211-9d9d-4ac2-b0b4-eb897bd716e0" shape="rect"></a>If the SCP conveys a Success status for Action Type "Resume" (Action Type ID = 15), it shall resume production of the Inventory associated with the Transaction UID (0008,1195).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_bddc5270-d619-41fc-a9e9-64c54f141a14" shape="rect"></a>The SCP may return a Failure Status Code of 0124H "Refused: Not authorized" or 0213H "Resource Limitation" if the conditions that caused the Pause have not been corrected and the production is not resumed.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_KK.2.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_KK.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_KK.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">KK.2.2.2 Service Class User Behavior </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> KK.2.3 Notifications</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

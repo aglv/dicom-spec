@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.15.7 Brachy Control Point Sequence</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.15.html" title="C.8.8.15 RT Brachy Application Setups Module" />
+      <link rel="prev" href="sect_C.8.8.15.6.html" title="C.8.8.15.6 Time Calculations" />
+      <link rel="next" href="sect_C.8.8.15.8.html" title="C.8.8.15.8 Source Transit Time" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.15.7 Brachy Control Point Sequence <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.15.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.15.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8.15 RT Brachy Application Setups Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.15.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.15.html" shape="rect">RT Brachy Application Setups Module</a>
+         </span> &gt; <span class="breadcrumb-node">Brachy Control Point Sequence</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.8.8.15.7" shape="rect"></a>C.8.8.15.7 Brachy Control Point Sequence</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_650be652-bf4f-45ea-a272-3017d1a9fc17" shape="rect"></a>The Control Points shall be arranged such that the first Control Point for a particular Channel describes the first dwell position and the final Control Point for the Channel describes the final dwell position. If Brachy Treatment Type (300A,0202) is PDR, the Brachy Control Point Sequence (300A,02D0) shall specify the sequence of machine configurations for a single pulse. Similarly, if Source Movement Type (300A,0288) is OSCILLATING, the Brachy Control Point Sequence (300A,02D0) shall specify the sequence of machine configurations for a single period.</p>
+         <p>
+            <a id="para_cecc4b83-181b-4b3a-aeec-56a3b57e85c8" shape="rect"></a>Some examples of Brachytherapy specification using control points are as follows:</p>
+         <p>
+            <a id="para_1413e562-91ae-46ef-bb3a-6b73e0cd8375" shape="rect"></a>
+                            <span class="italic">a) Stepwise motion; Four equally weighted dwell positions; Step size = 10; Final Cumulative Time Weight = 100:</span>
+                        </p>
+         <p>
+            <a id="para_dfb34f42-4c38-4846-adf2-ec4bab8e345f" shape="rect"></a>Control Point 0: Control Point Relative Position = 30, Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_ff572102-1051-4895-a5be-ff5663b50918" shape="rect"></a>Control Point 1: Control Point Relative Position = 30, Cumulative Time Weight = 25</p>
+         <p>
+            <a id="para_5389db22-b2f8-4a19-a898-96a648fed8df" shape="rect"></a>Control Point 2: Control Point Relative Position = 20, Cumulative Time Weight = 25</p>
+         <p>
+            <a id="para_09a33bd2-9d84-4607-a3ed-8be22bf296a6" shape="rect"></a>Control Point 3: Control Point Relative Position = 20, Cumulative Time Weight = 50</p>
+         <p>
+            <a id="para_e16f0a66-02f1-416a-9f27-44557c3ed229" shape="rect"></a>Control Point 4: Control Point Relative Position = 10, Cumulative Time Weight = 50</p>
+         <p>
+            <a id="para_03ba9ada-56d1-4905-af74-4034048259bb" shape="rect"></a>Control Point 5: Control Point Relative Position = 10, Cumulative Time Weight = 75</p>
+         <p>
+            <a id="para_2bbab779-ea32-45c8-b1d7-375ea89a751e" shape="rect"></a>Control Point 6: Control Point Relative Position = 0, Cumulative Time Weight = 75</p>
+         <p>
+            <a id="para_65aea956-831d-4817-ba62-89833b268c8c" shape="rect"></a>Control Point 7: Control Point Relative Position = 0, Cumulative Time Weight = 100</p>
+         <p>
+            <a id="para_089a466b-13b4-426d-9150-9f9fcce3fe09" shape="rect"></a>
+                            <span class="italic">b) Fixed (manually placed) sources; Final Cumulative Time Weight = 100:</span>
+                        </p>
+         <p>
+            <a id="para_73750900-e851-4f37-a592-98331a888ee3" shape="rect"></a>Control Point 0: Control Point Relative Position = 0, Control Point 3D Position = (x,y,z), Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_8395277c-f84d-4d54-afaf-999f36773828" shape="rect"></a>Control Point 1: Control Point Relative Position = 0, Control Point 3D Position = (x,y,z), Cumulative Time Weight = 100</p>
+         <p>
+            <a id="para_bf47b408-5b5a-4da6-82ee-05f9d3241161" shape="rect"></a>
+                            <span class="italic">c) Oscillating movement; Final Cumulative Time Weight = 100</span>:</p>
+         <p>
+            <a id="para_7207112d-8e18-40b7-80fe-bbb78c634e80" shape="rect"></a>Control Point 0: Control Point Relative Position = 100, Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_4a9e8a36-3212-4a2c-a36a-b2d55329361b" shape="rect"></a>Control Point 1: Control Point Relative Position = 0, Cumulative Time Weight = 100</p>
+         <p>
+            <a id="para_1d01c37a-071d-4431-b685-5a66e40a592b" shape="rect"></a>
+                            <span class="italic">d) Unidirectional movement; Final Cumulative Time Weight = 100</span>:</p>
+         <p>
+            <a id="para_01728bef-0f8c-4d96-800b-00f4eaaee4d3" shape="rect"></a>Control Point 0: Control Point Relative Position = 0, Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_eb4de54c-9e4b-41c6-bc06-fa2762261ae0" shape="rect"></a>Control Point 1: Control Point Relative Position = 100, Cumulative Time Weight = 100</p>
+         <p>
+            <a id="para_c067d8fa-6feb-4d20-8fdf-0ad480594421" shape="rect"></a>
+                            <span class="italic">e) Stepwise motion with consideration of source transit times between dwell positions; Three equally weighted dwell positions; Step size = 10; Final Cumulative Time Weight = 79:</span>
+                        </p>
+         <p>
+            <a id="para_5b94145f-62a0-485e-b62c-2d4cda4f4112" shape="rect"></a>Control Point 0: Control Point Relative Position = 30, Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_bbe17142-b187-4aa7-81bf-ef572c20f529" shape="rect"></a>Control Point 1: Control Point Relative Position = 30, Cumulative Time Weight = 25</p>
+         <p>
+            <a id="para_113a94f5-be45-42b0-8e93-36fde168b108" shape="rect"></a>Control Point 2: Control Point Relative Position = 20, Cumulative Time Weight = 27</p>
+         <p>
+            <a id="para_786b3597-a978-46af-85b5-f0fd1d3ca0e6" shape="rect"></a>Control Point 3: Control Point Relative Position = 20, Cumulative Time Weight = 52</p>
+         <p>
+            <a id="para_3b3968cd-beec-4b12-bfbc-fb533659c78f" shape="rect"></a>Control Point 4: Control Point Relative Position = 10, Cumulative Time Weight = 54</p>
+         <p>
+            <a id="para_f26d6af7-7ef7-4a3f-b2f7-51c4a4f8af3a" shape="rect"></a>Control Point 5: Control Point Relative Position = 10, Cumulative Time Weight = 79</p>
+         <p>
+            <a id="para_b0a4874a-5ddc-4444-be20-d4c06d2bbc81" shape="rect"></a>
+                            <span class="italic">f) Stepwise motion with consideration of source transit times between dwell positions and to first and from last dwell position; Three equally weighted dwell positions; Step size = 10; Final Cumulative Time Weight = 383:</span>
+                        </p>
+         <p>
+            <a id="para_72699bda-72fe-4e70-83f1-7c7cf760b115" shape="rect"></a>Control Point 0: Control Point Relative Position = 1200, Cumulative Time Weight = 0</p>
+         <p>
+            <a id="para_ddc22151-4486-4ae1-82ac-1200d840c1d7" shape="rect"></a>Control Point 1: Control Point Relative Position = 30, Cumulative Time Weight = 150</p>
+         <p>
+            <a id="para_a28441ca-4a41-4a42-b973-44579b1e1f91" shape="rect"></a>Control Point 2: Control Point Relative Position = 30, Cumulative Time Weight = 175</p>
+         <p>
+            <a id="para_5bdceb88-a240-490a-bed6-20dd865bc120" shape="rect"></a>Control Point 3: Control Point Relative Position = 20, Cumulative Time Weight = 177</p>
+         <p>
+            <a id="para_2f940a0a-1bca-4a6f-9540-85d0799a66ba" shape="rect"></a>Control Point 4: Control Point Relative Position = 20, Cumulative Time Weight = 202</p>
+         <p>
+            <a id="para_66abe910-0b0c-4f5b-931a-8cc9cef21fb1" shape="rect"></a>Control Point 5: Control Point Relative Position = 10, Cumulative Time Weight = 204</p>
+         <p>
+            <a id="para_0f517a08-5b10-4b46-a4c2-48aad31ee551" shape="rect"></a>Control Point 6: Control Point Relative Position = 10, Cumulative Time Weight = 229</p>
+         <p>
+            <a id="para_00bbfbaf-9853-41f2-9c16-d7ffe32ecb5c" shape="rect"></a>Control Point 7: Control Point Relative Position = 1200, Cumulative Time Weight = 383</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.15.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.15.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.15.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.15.6 Time Calculations </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.15.8 Source Transit Time</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

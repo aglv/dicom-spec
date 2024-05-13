@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>CC.2.3.2 Service Class User Behavior</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_CC.2.3.html" title="CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)" />
+      <link rel="prev" href="sect_CC.2.3.html" title="CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)" />
+      <link rel="next" href="sect_CC.2.3.3.html" title="CC.2.3.3 Service Class Provider Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">CC.2.3.2 Service Class User Behavior <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_CC.2.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_CC.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_CC.html" shape="rect">Unified Procedure Step Service and SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_CC.2.html" shape="rect">DIMSE Service Groups</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_CC.2.3.html" shape="rect">Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION)</a>
+         </span> &gt; <span class="breadcrumb-node">Service Class User Behavior</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_CC.2.3.2" shape="rect"></a>CC.2.3.2 Service Class User Behavior</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_06d2e42d-9ed8-40c5-b891-b12e7e0dc610" shape="rect"></a>The SCU subscribing to track the progress and results of the scheduled procedure step may be the system that created the UPS as an SCU of the UPS Push SOP Class, or it may be some other interested observer.</p>
+         <p>
+            <a id="para_51f6dc09-ed70-4f24-891d-d096278b1ddb" shape="rect"></a>An SCU shall use the N-ACTION primitive to request the SCP to subscribe an AE (usually the requesting SCU) to receive event reports relating to UPS instances managed by the SCP. Since all UPSs are created as instances of the UPS Push SOP Class, the Requested SOP Class UID (0000,0003) in the N-ACTION request shall be the UID of the UPS Push SOP Class. See <a class="xref" href="sect_CC.3.html#sect_CC.3.1" title="CC.3.1 Service Class and SOP Class UIDs" shape="rect">Section CC.3.1</a> for further details.</p>
+         <p>
+            <a id="para_6e05f3ae-cd6a-4081-8426-70beb98cfb7b" shape="rect"></a>An SCU shall also use the N-ACTION primitive to request the SCP to unsubscribe an AE to stop receiving event reports relating to UPS instances managed by the SCP. Action Information is specified in <a class="xref" href="sect_CC.2.3.html#table_CC.2.3-1" title="Table CC.2.3-1. Subscribe/Unsubscribe to Receive UPS Event Reports - Action Information" shape="rect">Table CC.2.3-1</a>. The SCU shall always provide the AE Title that is to receive (or stop receiving) the N-EVENT-REPORTs.</p>
+         <p>
+            <a id="para_6597a6db-95e7-4b6a-9978-ec19d9a8c5a0" shape="rect"></a>To subscribe for events relating to a single specific UPS instance managed by the SCP, the SCU shall use Action Type ID 3 (Subscribe to Receive UPS Event Reports) and provide the SOP Instance UID of the specific UPS instance in the N-ACTION primitive request. The SCU shall indicate a need for the UPS instance to persist after its state has changed to COMPLETED or CANCELED by setting the value of the Deletion Lock to TRUE. Otherwise the SCU shall set the value of the Deletion Lock to FALSE.</p>
+         <p>
+            <a id="para_f0942f9d-6a75-409d-8e04-dfc601acf0dd" shape="rect"></a>To unsubscribe for events relating to a single specific UPS instance managed by the SCP, the SCU shall use Action Type ID 4 (Unsubscribe from Receiving UPS Event Reports) and provide the SOP Instance UID of the specific UPS instance in the N-ACTION primitive request.</p>
+         <p>
+            <a id="para_17fe0ad0-67f8-45fc-b29a-0a234ab6447c" shape="rect"></a>To subscribe for events relating to all current and subsequently created UPS instances managed by the SCP, the SCU shall use Action Type ID 3 (Subscribe to Receive UPS Event Reports) and provide the well-known UID 1.2.840.10008.5.1.4.34.5 in the N-ACTION primitive request. The SCU shall indicate a need for UPS instances to persist after their states have changed to COMPLETED or CANCELED by setting the value of the Deletion Lock to TRUE. Otherwise the SCU shall set the value of the Deletion Lock to FALSE.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_adcea620-07be-4c74-9c27-43783a920dae" shape="rect"></a>This "global subscription" is useful for SCUs that wish to monitor all activities without having to issue regular C-FINDs to identify new UPS instances.</p>
+         </div>
+         <p>
+            <a id="para_f0e58c26-73d7-480e-a19b-2c0d738a0d4f" shape="rect"></a>To subscribe for events relating to a filtered subset of all current and subsequently created UPS instances (Filtered Global Subscription) managed by the SCP, the SCU shall use Action Type ID 3 (Subscribe to Receive UPS Event Reports) and provide both the well-known UID 1.2.840.10008.5.1.4.34.5.1 and a set of Matching Keys and values in the N-ACTION primitive request (see <a class="xref" href="sect_CC.2.3.3.html#sect_CC.2.3.3.1" title="CC.2.3.3.1 Filtered Global Subscription" shape="rect">Section CC.2.3.3.1</a>). The SCU shall indicate a need for UPS instances to persist after their states have changed to COMPLETED or CANCELED by setting the value of the Deletion Lock to TRUE. Otherwise the SCU shall set the value of the Deletion Lock to FALSE.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_fcd83293-74d5-4d44-9d9f-fe98a51c1b55" shape="rect"></a>The well-known UID for a Filtered Global Subscription is distinct from the Global Subscription well-known UID.</p>
+         </div>
+         <p>
+            <a id="para_252566b0-7cfd-4b06-a83b-fb471cc3af69" shape="rect"></a>To unsubscribe for events relating to all current UPS instances managed by the SCP and also stop being subscribed to subsequently created UPS instances, the SCU shall use Action Type ID 4 (Unsubscribe from Receiving UPS Event Reports) and provide the well-known UID 1.2.840.10008.5.1.4.34.5 in the N-ACTION primitive request.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_d93b3ce2-c169-4ba1-8542-da0bee19be7e" shape="rect"></a>This "global unsubscription" is useful for SCUs that wish to stop monitoring all activities and release all deletion locks (if any) placed for this subscriber.</p>
+         </div>
+         <p>
+            <a id="para_a5649534-73e6-4b2c-a013-60067d930bd3" shape="rect"></a>To just stop being subscribed to subsequently created UPS instances, but still continue to receive events for currently subscribed instances managed by the SCP, the SCU shall use Action Type ID 5 (Suspend Global Subscription) and provide the well-known UID 1.2.840.10008.5.1.4.34.5 in the N-ACTION primitive request.</p>
+         <p>
+            <a id="para_5bc5c7b2-3c75-4bc6-976a-911ffc5c24a3" shape="rect"></a>For each UPS instance on which the SCU has placed a deletion lock, either explicitly on the specific instance or implicitly via a global subscription with lock, the SCU shall remove the deletion lock once any needed final state information for the instance has been obtained. The deletion lock may be removed either by unsubscribing or by subscribing with the value of the Deletion Lock set to FALSE.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_7b85b09d-2f0b-49b8-bc55-20027ef178d2" shape="rect"></a>The SCP will retain COMPLETED or CANCELED UPS Instances until all deletion locks have been released. Failure by SCUs to release the deletion lock may cause problems for the SCP. SCUs that do not have a significant need for the final state information, or who cannot dependably remove deletion locks should not use deletion locks.</p>
+         </div>
+         <p>
+            <a id="para_c4d14db3-204e-4277-9f8c-2eab400a6142" shape="rect"></a>The successful N-ACTION Response Status Code indicates that the SCP has received the N-ACTION request and the Subscription State for the AE has been successfully modified.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_babc1259-0c4d-4876-8ca3-ad99bc2b5694" shape="rect"></a>When subscribing to a specific instance, the SCU can also expect to receive an initial N-EVENT-REPORT containing the current state of the UPS instance. When subscribing globally with the Deletion Lock set to TRUE, the SCU can expect to receive initial N-EVENT-REPORTs for every instance currently managed by the SCP. Initial N-EVENT-REPORTs for newly created instances, received as a result of a global subscription, will appear as transitions to the SCHEDULED state.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_5fce36fb-2cc4-4c76-af74-2ea8fa80772d" shape="rect"></a>The UPS-RS user agent is responsible for opening the N-EVENT-REPORT communication channel (see <a href="../part18/sect_8.10.4.html" class="olink" shape="rect">Section 8.10.4 “Open Notification Connection Transaction” in <span class="olinkdocname">PS3.18</span>
+                        </a>). The UPS-RS user agent is also responsible for re-establishing the N-EVENT-REPORT communication channel if it is disconnected. This differs from the DIMSE approach where the UPS SCP opens an Association for N-EVENT-REPORT messages as necessary.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_f8113996-ade6-4730-87a0-0a3ca052c56d" shape="rect"></a>A warning N-ACTION Response Status Code of "Deletion Lock not granted", indicates that the AE subscription requested by the SCU was successful, but the deletion lock has not been set.</p>
+         <p>
+            <a id="para_ecbba3a1-542f-4259-8582-69345a4f37c4" shape="rect"></a>A failure N-ACTION Response Status Code indicates that the subscription state change requested will not be processed and no subscription states have been changed. The action taken by the SCU upon receiving this status is beyond the scope of this Standard.</p>
+         <p>
+            <a id="para_6eae75a7-b899-4309-af36-d4641b4d8b4c" shape="rect"></a>At any time after receipt of the N-ACTION response, the SCU may release the association on which it sent the N-ACTION request.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_CC.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_CC.2.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">CC.2.3 Subscribe/Unsubscribe to Receive UPS Event Reports (N-ACTION) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> CC.2.3.3 Service Class Provider Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

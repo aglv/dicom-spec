@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.3.6 Producer vs. Consumer Implementation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.3.html" title="YYYY.3 The Inventory Information Object" />
+      <link rel="prev" href="sect_YYYY.3.5.html" title="YYYY.3.5 Additional Data Elements" />
+      <link rel="next" href="sect_YYYY.4.html" title="YYYY.4 Related Services For Inventory SOP Instances" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.3.6 Producer vs. Consumer Implementation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.3.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.3.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.3 The Inventory Information Object</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.3.html" shape="rect">The Inventory Information Object</a>
+         </span> &gt; <span class="breadcrumb-node">Producer vs. Consumer Implementation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.3.6" shape="rect"></a>YYYY.3.6 Producer vs. Consumer Implementation</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_1277bc53-6ed6-4a64-9046-2e4bc15b8f3d" shape="rect"></a>In all interoperability design, there is a tradeoff between ease of implementation for the producer of information versus the consumer of that information. By adding constraints on the message content to which the producer must adhere, the processing requirements for the receiver might be simplified. Fewer constraints on the producer means the consumer must account for more variability in the exchanged data.</p>
+         <p>
+            <a id="para_2f799266-c47c-4e76-9a87-b3c39ff03a64" shape="rect"></a>In the design of the Inventory IOD, a policy was chosen to simplify the production of the SOP Instances, even at the risk of complicating the implementation of the consumer. The goal is to allow the producer of the inventory to simply report what it has, without substantial additional processing. For example, in a repository that might distribute the SOP Instances of a Study across multiple subsystems, each subsystem can report on the SOP Instances that it knows about, and there is no requirement for the producer of the combined Inventory to consolidate or reconcile those different records. For the migration and consolidation use case (see <a class="xref" href="sect_YYYY.5.html#sect_YYYY.5.1" title="YYYY.5.1 Migration and Consolidation" shape="rect">Section YYYY.5.1</a>), the consumer of the inventory will typically need to perform substantial reconciliation activities, which do not need to be replicated in the producer.</p>
+         <p>
+            <a id="para_2aa8705e-0991-4849-990d-e01fd8959146" shape="rect"></a>This policy can also be seen in the approach to repository data that has been removed from operational use (deprecated, soft-deleted, or hidden). As DICOM has not established a standard approach to this type of data, storage system implementations take a variety of approaches. The Inventory IOD does not attempt to introduce a single way of managing such data. Rather, the repository system can simply report a removal status at the level(s) at which it manages that status, be it Study, Series, or Instance, with an optional reason code if it has one. If the removal was due to a directive in a Key Object Selection Document SOP Instance, e.g., in accordance with the <a class="xref" href="chapter_2.html#biblio_IHE_RAD_TF_1" title="Integrating the Healthcare Enterprise Radiology Technical Framework Volume 1 Integration Profiles" shape="rect">[<abbr class="abbrev">IHE RAD TF-1</abbr>]</a> IOCM Profile, the Inventory IOD makes no assumption about the presence or status of that KOS object; the system simply reports whether it is stored in the repository.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.3.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.3.5 Additional Data Elements </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.4 Related Services For Inventory SOP Instances</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

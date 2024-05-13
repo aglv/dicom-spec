@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2 Native or Encapsulated Format Encoding</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_8.html" title="8 Encoding of Pixel, Overlay and Waveform Data" />
+      <link rel="prev" href="chapter_8.html" title="8 Encoding of Pixel, Overlay and Waveform Data" />
+      <link rel="next" href="sect_8.2.2.html" title="8.2.2 Run Length Encoding Image Compression" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2 Native or Encapsulated Format Encoding <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_8.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_8.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 Encoding of Pixel, Overlay and Waveform Data</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Encoding of Pixel, Overlay and Waveform Data</a>
+         </span> &gt; <span class="breadcrumb-node">Native or Encapsulated Format Encoding</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.2" shape="rect"></a>8.2 Native or Encapsulated Format Encoding</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f9b54410-31ad-4044-9be0-651dd86c84b3" shape="rect"></a>Pixel data conveyed in the Pixel Data (7FE0,0010) may be sent either in a Native (uncompressed) Format or in an Encapsulated Format (e.g., compressed).</p>
+         <p>
+            <a id="para_1767d1f2-fcf4-46b9-a6fa-21b2e61e9b5d" shape="rect"></a>If Pixel Data (7FE0,0010) is sent in a Native Format, then the Photometric Interpretation (0028,0004) shall be other than:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_774003a0-209a-48f5-af47-8e9300923ac7" shape="rect"></a>YBR_RCT</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_27a4a868-af1f-459a-8812-7fa85c078cd9" shape="rect"></a>YBR_ICT</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_03cacdb3-b82e-42e2-abe3-be054301c5f2" shape="rect"></a>YBR_PARTIAL_420</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_14b7aa28-e3b2-4f0f-ae44-6c1be9f58fce" shape="rect"></a>These Values are not permitted because they are not encodable in an uncompressed form.</p>
+         </div>
+         <p>
+            <a id="para_7bc14864-77a5-4409-8ec0-c246cace4681" shape="rect"></a>Pixel Data conveyed in the Float Pixel Data (7FE0,0008) or Double Float Pixel Data (7FE0,0009) shall be in a Native (uncompressed) Format if encoded in a Standard Transfer Syntax.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_19247c30-979c-41f0-8ef0-f8174def91a2" shape="rect"></a>In future, if Standard Transfer Syntaxes are defined for compression of Float Pixel Data (7FE0,0008) or Double Float Pixel Data (7FE0,0009), this constraint may be relaxed and Encapsulated Format permitted.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8f83d270-3f31-4a61-9325-e6f2a8e8c7f9" shape="rect"></a>This constraint does not apply to Private Transfer Syntaxes.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_cdbe477b-a4f5-417d-bee0-82e5a0b1a9ad" shape="rect"></a>If Pixel Data (7FE0,0010) is sent in a Native Format, the Value Representation OW is most often required. The Value Representation OB may also be used for Pixel Data (7FE0,0010) in cases where Bits Allocated has a Value less than or equal to 8, but only with Transfer Syntaxes where the Value Representation is explicitly conveyed (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ec814ff7-cbc9-4530-a0b6-a580a48d6cf4" shape="rect"></a>The DICOM Default Little Endian Transfer Syntax (Implicit VR Little Endian) does not explicitly convey Value Representation and therefore the VR of OB may not be used for Pixel Data (7FE0,0010) when using the Default Transfer Syntax.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a7e1bfa6-d021-48eb-bbe7-4bbe16f873a4" shape="rect"></a>The 32-bit Value Length Field limits the maximum size of large data Value Fields such as Pixel Data sent in a Native Format.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_dec19bac-823e-44b1-ba85-3bc875c2010d" shape="rect"></a>Float Pixel Data (7FE0,0008) is sent in Native Format; the Value Representation shall be OF, Bits Allocated (0028,0100) shall be 32, Bits Stored (0028,0101), High Bit (0028,0102) and Pixel Representation (0028,0103) shall not be present.</p>
+         <p>
+            <a id="para_c0645d98-0279-4962-b94a-7481a0897cf2" shape="rect"></a>Double Float Pixel Data (7FE0,0009) is sent in Native Format; the Value Representation shall be OD, Bits Allocated (0028,0100) shall be 64, Bits Stored (0028,0101) and High Bit (0028,0102) and Pixel Representation (0028,0103) shall not be present.</p>
+         <p>
+            <a id="para_3085b522-c695-4899-b4fd-9740e6e97fcc" shape="rect"></a>It is not permitted to have more than one of Pixel Data Provider URL (0028,7FE0), Pixel Data (7FE0,0010), Float Pixel Data (7FE0,0008) or Double Float Pixel Data (7FE0,0009) in the top level Data Set.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_a530b9e7-2346-42df-9816-f085515ad011" shape="rect"></a>Pixel Data encoded in Float Pixel Data (7FE0,0008) or Double Float Pixel Data (7FE0,0009) can be considered as consisting of Pixel Cells that entirely occupy the allocated bits, and therefore do not cross word boundaries.</p>
+         </div>
+         <p>
+            <a id="para_d6734089-67bc-433e-87f7-40f00a859a9d" shape="rect"></a>Native format Pixel Cells are encoded as the direct concatenation of the bits of each Pixel Cell, the least significant bit of each Pixel Cell is encoded in the least significant bit of the encoded word or byte, immediately followed by the next most significant bit of each Pixel Cell in the next most significant bit of the encoded word or byte, successively until all bits of the Pixel Cell have been encoded, then immediately followed by the least significant bit of the next Pixel Cell in the next most significant bit of the encoded word or byte. The number of bits of each Pixel Cell is defined by the Bits Allocated (0028,0100) Data Element Value. When a Pixel Cell crosses a word boundary in the OW case, or a byte boundary in the OB case, it shall continue to be encoded, least significant bit to most significant bit, in the next word, or byte, respectively (see <a class="xref" href="chapter_D.html" title="D Examples of Various Pixel Data and Overlay Encoding Schemes (Informative)" shape="rect">Annex D</a>). For Pixel Data (7FE0,0010) encoded with the Value Representation OW, the byte ordering of the resulting 2-byte words is defined by the Little Endian Transfer Syntaxes negotiated at the Association Establishment (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1e6dec20-1376-4b1e-b909-255ba6abcf59" shape="rect"></a>For Pixel Data (7FE0,0010) encoded with the Value Representation OB, the Pixel Data (7FE0,0010) encoding is unaffected by byte ordering.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_754c31cf-0a9a-484e-bfba-2130fc81252e" shape="rect"></a>If encoding Pixel Data (7FE0,0010) with a Value for Bits Allocated (0028,0100) not equal to 16 be sure to read and understand <a class="xref" href="chapter_D.html" title="D Examples of Various Pixel Data and Overlay Encoding Schemes (Informative)" shape="rect">Annex D</a>.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_6287384f-06a5-47f6-ab74-625074661b31" shape="rect"></a>If sent in an Encapsulated Format (i.e., other than the Native Format) the Value Representation OB is used. The Pixel Cells are encoded according to the encoding process defined by one of the negotiated Transfer Syntaxes (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+         <p>
+            <a id="para_289bc48e-549d-4bbd-82c2-35b261235538" shape="rect"></a>A Fragmentable Encapsulated Transfer Syntax allows the encapsulated pixel stream of encoded pixel data to be split into one or more Fragments.</p>
+         <p>
+            <a id="para_c2b51c46-a6b2-448e-97d2-cad7b38e6597" shape="rect"></a>A Non-Fragmentable Encapsulated Transfer Syntax requires the entire encapsulated pixel stream of encoded pixel data to be encoded in a single Fragment.</p>
+         <p>
+            <a id="para_fce5d1ef-597b-44a3-b82d-59a1ec97482a" shape="rect"></a>Each Fragment conveys its own explicit even length (see <a class="xref" href="sect_A.4.html" title="A.4 Transfer Syntaxes For Encapsulation of Encoded Pixel Data" shape="rect">Section A.4</a>).</p>
+         <p>
+            <a id="para_2a7369c2-643e-417c-9ca9-9b4b932a9dbb" shape="rect"></a>The Sequence of Fragments of the encapsulated pixel stream is terminated by a Sequence Delimiter Item, thus allowing the support of encoding processes where the resulting length of the entire pixel stream is not known until it is entirely encoded. Encapsulated Formats support both Single-Frame and Multi-Frame images (as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>). At least one Frame shall be present, and hence at least one Fragment will be present.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b50189ee-a299-4737-bea1-c0510c91ffe1" shape="rect"></a>Depending on the Fragmentable Encapsulated Transfer Syntax, a frame may be entirely contained within a single fragment, or may span multiple fragments to support buffering during compression or to avoid exceeding the maximum size of a fixed length fragment. A recipient can detect fragmentation of frames by comparing the number of fragments (the number of Items minus one for the Basic Offset Table) with the number of frames. Some performance optimizations may be available to a recipient in the absence of fragmentation of frames, but an implementation that fails to support such fragmentation does not conform to the Standard.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_0ea29a5b-45f9-4acd-8d23-0a7be834f2fc" shape="rect"></a>The total size of the encapsulated pixel stream, not including any trailing padding in the last Fragment, if known, may be encoded in Encapsulated Pixel Data Value Total Length (7FE0,0003); see <a href="../part03/sect_C.7.6.6.html" class="olink" shape="rect">PS3.3 Section C.7.6.6 “Multi-frame Module”</a> and <a href="../part03/sect_C.7.6.16.html" class="olink" shape="rect">PS3.3 Section C.7.6.16 “Multi-frame Functional Groups Module”</a>.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_8.2.1" shape="rect"></a>8.2.1 JPEG Image Compression</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d1f3d3c5-fcdf-4dc2-b38b-0bd7fbf79491" shape="rect"></a>DICOM provides a mechanism for supporting the use of JPEG Image Compression through the Encapsulated Format. <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a> defines a number of Transfer Syntaxes that reference the JPEG Standard and provide a number of lossless (bit preserving) and lossy compression schemes.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_8cd648e8-6c76-459a-ad3a-f3c2b1c8fb4c" shape="rect"></a>The context where the usage of lossy compression of medical images is clinically acceptable is beyond the scope of the DICOM Standard. The policies associated with the selection of appropriate compression parameters (e.g., compression ratio) for JPEG lossy compression is also beyond the scope of this Standard.</p>
+            </div>
+            <p>
+               <a id="para_9d46a7e0-da15-452f-b8d4-02d7a4b6b25b" shape="rect"></a>In order to facilitate interoperability of implementations conforming to the DICOM Standard that elect to use one or more of the Transfer Syntaxes for JPEG Image Compression, the following policy is specified:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_4d36fc54-f14b-4417-ada8-8b839895c1d3" shape="rect"></a>Any implementation that conforms to the DICOM Standard and has elected to support any one of the Transfer Syntaxes for Lossless JPEG Image Compression, shall support the following lossless compression: The subset (first-order horizontal prediction [Selection Value 1) of JPEG Process 14 (DPCM, non-hierarchical with Huffman coding) (see <a class="xref" href="chapter_F.html" title="F Encapsulated Images As Part of A DICOM Message (Informative)" shape="rect">Annex F</a>).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f7127df5-ae83-4a2f-ac8d-fd3356d5be0c" shape="rect"></a>Any implementation that conforms to the DICOM Standard and has elected to support any one of the Transfer Syntaxes for 8-bit Lossy JPEG Image Compression, shall support the JPEG Baseline Compression (coding Process 1).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3df4846f-15b7-45ca-8705-582504847dfe" shape="rect"></a>Any implementation that conforms to the DICOM Standard and has elected to support any one of the Transfer Syntaxes for 12-bit Lossy JPEG Image Compression, shall support the JPEG Compression Process 4.</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_80e3247d-ca00-45fb-9c75-56d6805533ad" shape="rect"></a>The DICOM conformance statement shall differentiate whether or not the implementation is capable of simply receiving or receiving and processing JPEG encoded images (see <a href="../part02/PS3.2.html" class="olink" shape="rect">PS3.2</a>).</p>
+            </div>
+            <p>
+               <a id="para_4bcb841e-c6bf-4e26-82a5-3fad3c942da0" shape="rect"></a>The use of the DICOM Encapsulated Format to support JPEG Compressed Pixel Data requires that the Data Elements that are related to the Pixel Data encoding (e.g., Photometric Interpretation, Samples per Pixel, Planar Configuration, Bits Allocated, Bits Stored, High Bit, Pixel Representation, Rows, Columns, etc.) shall contain Values that are consistent with the characteristics of the compressed data stream.</p>
+            <p>
+               <a id="para_e85c4e05-8672-41cc-b179-25140f06e76c" shape="rect"></a>The requirements when using a Standard Photometric Interpretation (i.e., a Defined Term from <a href="../part03/sect_C.7.6.3.html#sect_C.7.6.3.1.2" class="olink" shape="rect">Section C.7.6.3.1.2 in <span class="olinkdocname">PS3.3</span>
+               </a>) are specified in <a class="xref" href="sect_8.2.html#table_8.2.1-1" title="Table 8.2.1-1. Valid Values of Pixel Data Related Attributes for JPEG Lossy Transfer Syntaxes using Standard Photometric Interpretations" shape="rect">Table 8.2.1-1</a> and <a class="xref" href="sect_8.2.html#table_8.2.1-2" title="Table 8.2.1-2. Valid Values of Pixel Data Related Attributes for JPEG Lossless Transfer Syntaxes using Standard Photometric Interpretations" shape="rect">Table 8.2.1-2</a>. No other Standard Photometric Interpretation Values shall be used.</p>
+            <div class="table">
+               <a id="table_8.2.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 8.2.1-1. Valid Values of Pixel Data Related Attributes for JPEG Lossy Transfer Syntaxes using Standard Photometric Interpretations</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a7d246d9-3778-4932-8b2a-82d8a8dc168b" shape="rect"></a>Photometric Interpretation</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_fd49f3b7-cad2-4bab-a7ae-770361959347" shape="rect"></a>Transfer Syntax</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_76506fba-44e8-4da7-a10e-e9beb79fbfd3" shape="rect"></a>Transfer Syntax UID</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_456f2265-a5c3-4a15-8965-11973122f4f5" shape="rect"></a>Samples per Pixel</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f86eeeaa-f979-4b04-a1f7-b6729586f999" shape="rect"></a>Planar Configuration</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_eda82aae-bc04-44f8-99ed-ddbeed92c344" shape="rect"></a>Pixel Representation</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_bbbb3826-f6bf-4a4a-baf7-de9256760236" shape="rect"></a>Bits Allocated</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cef69c9e-3d58-4158-8fa4-16db44257d04" shape="rect"></a>Bits Stored</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_943ad4aa-2971-4f80-9b14-ff0be535be65" shape="rect"></a>High Bit</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_06313e0f-d1d7-4cd8-8498-3754925681c0" shape="rect"></a>MONOCHROME1</p>
+                                <p>
+                                 <a id="para_e1bf87e1-46f4-4018-8dd5-786488b6ea1b" shape="rect"></a>MONOCHROME2</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_7dae7ef7-2568-4fd3-9318-3b8dc615dd46" shape="rect"></a>JPEG Baseline</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d4aab92e-7d0c-4176-a018-0b959b76057b" shape="rect"></a>1.2.840.10008.1.2.4.50</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f4881ca5-e2f9-433a-b069-41b186f503f6" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9a3fb788-7faf-4931-b350-38d502d4ecb6" shape="rect"></a>absent</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e938c494-e0e0-4b3c-9bd4-641b9ef15d87" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_57f94afe-e261-40ea-b2f0-0ad993e7c7de" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_08fca125-a23a-49f2-b179-d616c6efd80b" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f58c0385-f5d6-4cce-80cc-72a461979262" shape="rect"></a>7</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_11870e59-7644-439f-a511-c42db55ded28" shape="rect"></a>MONOCHROME1</p>
+                                <p>
+                                 <a id="para_230cf81e-635b-4ab2-81eb-1165754c7fef" shape="rect"></a>MONOCHROME2</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f45cc0bc-573b-4fe0-9e67-6f342ebe1224" shape="rect"></a>JPEG Extended</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1d698b55-e3b4-4a5a-b879-44f9aab6d8e4" shape="rect"></a>1.2.840.10008.1.2.4.51</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_663e7a5f-0817-4de5-bae0-f50680b70bb0" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_3f6558ca-be73-447e-a1e4-9558cc44a2e0" shape="rect"></a>absent</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ecf77926-d06e-4ed6-a9d9-55bec9630ea4" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_541957b7-58b4-4385-872c-0b0560a852f4" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1bc421c9-d998-42cf-bafe-c3c68a09850c" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a8350cfa-1280-4517-b7f5-172f1690d2eb" shape="rect"></a>7</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_197d9691-a705-49c5-9b19-ed864aa82415" shape="rect"></a>MONOCHROME1</p>
+                                <p>
+                                 <a id="para_594bd44f-97d2-4914-9d1a-9183814c3135" shape="rect"></a>MONOCHROME2</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b1bd452a-09cf-4792-9516-77f404530a0b" shape="rect"></a>JPEG Extended</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f435ebde-6ddf-4a26-825f-9358c0777751" shape="rect"></a>1.2.840.10008.1.2.4.51</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_bea28c2d-d5e3-4374-ac34-aaf9901744c8" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_006a053d-8240-4a0b-a0c7-443ca8ae6f5e" shape="rect"></a>absent</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_bb5ed856-00f5-4260-bee5-9b53358f9691" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8895f4ee-07ea-4350-ab71-fb8f6d2889b3" shape="rect"></a>16</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_57f38d9c-5fe2-41e7-a93f-f7554f8de271" shape="rect"></a>12</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_69110862-0332-4b29-8dbf-c81b02defe81" shape="rect"></a>11</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2af116cd-cdcb-4d6c-ba69-0c56967a88c2" shape="rect"></a>YBR_FULL_422</p>
+                                <p>
+                                 <a id="para_f2769529-080f-4fcf-8d18-edd426fd3e61" shape="rect"></a>RGB</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8f836445-dbe9-42a1-831d-d17c75e084f3" shape="rect"></a>JPEG Baseline</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_366ccc69-3761-4eb9-96ce-8c4698039430" shape="rect"></a>1.2.840.10008.1.2.4.50</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_29e3a35b-26d7-48f5-8be9-73dc65756704" shape="rect"></a>3</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8829d1de-e453-43fc-9c82-c23ebdb02e9c" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_464971a3-3698-45b6-85d6-d11191ff9e86" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_acdb439e-5b2d-4c10-bdba-115508ecd27b" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e5954653-58d7-462c-8806-03e8fb831474" shape="rect"></a>8</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_98c2777c-1138-4e1c-98b9-7e9a519502c5" shape="rect"></a>7</p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="table">
+               <a id="table_8.2.1-2" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 8.2.1-2. Valid Values of Pixel Data Related Attributes for JPEG Lossless Transfer Syntaxes using Standard Photometric Interpretations</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_fc2d258a-29ab-4297-b0cc-004585b87ab6" shape="rect"></a>Photometric Interpretation</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_09dc880b-c6d8-447a-b3f0-3f2ed4963257" shape="rect"></a>Transfer Syntax</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e3f59c6b-a6ca-4c79-aeb1-3dcc802b533d" shape="rect"></a>Transfer Syntax UID</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_37ef8219-d5cc-4af7-879f-5b01973471dd" shape="rect"></a>Samples per Pixel</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e81e5c35-ab28-4ee1-a0a2-21546d55f02c" shape="rect"></a>Planar Configuration</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_47d577ae-4207-40ca-a2f0-62ed1955e993" shape="rect"></a>Pixel Representation</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_20ecfe7c-81cb-43c2-b841-4eb2df26bc97" shape="rect"></a>Bits Allocated</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_3541a82d-e480-424e-99cf-8e5750a734d5" shape="rect"></a>Bits Stored</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c2954b63-8874-4cf2-a499-d14810a896ce" shape="rect"></a>High Bit</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_a6921f95-72d8-4719-9a19-871911ea8422" shape="rect"></a>MONOCHROME1</p>
+                                <p>
+                                 <a id="para_e34c73e4-38a6-4572-80e1-8901113f8daf" shape="rect"></a>MONOCHROME2</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_079f2d09-c539-4d91-a44c-bad4658b33c8" shape="rect"></a>JPEG Lossless, Non-Hierarchical</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9f150637-8044-47d1-a5c1-b666a6fa563a" shape="rect"></a>1.2.840.10008.1.2.4.57</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_4a139fae-7dcf-4bbf-b712-04c773404533" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_a7cd9ba0-5683-45ef-87c0-9e30f7c62bac" shape="rect"></a>absent</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_d463d992-9339-4bff-b494-926fe8e83ed8" shape="rect"></a>0 or 1</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_170d404f-b606-4fae-aec2-8d7310fa4bb3" shape="rect"></a>8 or 16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_b8ef92e7-18d5-487b-bbdd-df53ba92d8b7" shape="rect"></a>1-16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_febea6ce-dcb4-4a81-a4dc-0051d5450373" shape="rect"></a>0-15</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_45a5e156-21ca-4bf0-9c9f-ec2afc5ec924" shape="rect"></a>JPEG Lossless, Non-Hierarchical, SV1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_03f94dae-23f2-49a9-b0b2-4156d929043e" shape="rect"></a>1.2.840.10008.1.2.4.70</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_3735041e-8f90-4ff0-a34d-4f1d31d2a5ac" shape="rect"></a>PALETTE COLOR</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_229ef4fe-2fb6-4736-abc4-99b1714382f0" shape="rect"></a>JPEG Lossless, Non-Hierarchical</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f7fdc91b-eed7-434f-9bb2-46fce548cc3d" shape="rect"></a>1.2.840.10008.1.2.4.57</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_cddcfefe-c25f-4c60-994c-a6ec204260ab" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_69a59093-a886-4487-baeb-80ca52eb613a" shape="rect"></a>absent</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_546ffadc-8174-4933-b8c2-154ef277a9ba" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_f086b011-fe41-428b-bb11-1e94cc27f9ad" shape="rect"></a>8 or 16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_7df81375-e56e-44df-ac70-3e0d9f8a6380" shape="rect"></a>1-16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_6422b522-ce76-43d4-a4ef-314bb1a5dc53" shape="rect"></a>0-15</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9676f134-5881-4638-9247-27f7f4ae1758" shape="rect"></a>JPEG Lossless, Non-Hierarchical, SV1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_939c086a-6f33-4d65-9e6f-2ceb219e5902" shape="rect"></a>1.2.840.10008.1.2.4.70</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_88156f50-11f9-42dc-ba0b-dd884dbf4fb7" shape="rect"></a>YBR_FULL</p>
+                                <p>
+                                 <a id="para_6318ce11-b3ce-4913-a94b-5e13c2bf10ac" shape="rect"></a>RGB</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a33d1334-8e81-4fb7-8491-b66bf1b7439d" shape="rect"></a>JPEG Lossless, Non-Hierarchical</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c7d47145-683f-4674-a86f-021e7a138d01" shape="rect"></a>1.2.840.10008.1.2.4.57</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_61bb5100-71ee-468e-b5d9-2173c7bb6885" shape="rect"></a>3</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_5ad99581-9f2b-4aec-aeec-e3c3d3e6e56b" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_87e3131c-4ef6-432d-8dee-a2ccd233a509" shape="rect"></a>0</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_1832dee8-9eaf-40cc-ae75-0d0a0ebe91b5" shape="rect"></a>8 or 16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_8737a20b-2aaa-4ccd-a755-0a89e436815c" shape="rect"></a>1-16</p>
+                            </td>
+                           <td align="center" rowspan="2" colspan="1">
+                                <p>
+                                 <a id="para_37e995a2-4bbb-4e54-bea6-ed2f28e8d7a3" shape="rect"></a>0-15</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_764b8a43-d0c0-499e-a630-a714b0ebe7b6" shape="rect"></a>JPEG Lossless, Non-Hierarchical, SV1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e4d49879-5b98-4dc8-8115-eecf68064306" shape="rect"></a>1.2.840.10008.1.2.4.70</p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_c2ac8f4a-9824-420f-a861-6a1c61719ee7" shape="rect"></a>The Pixel Data characteristics included in the JPEG Interchange Format shall be used to decode the compressed data stream.</p>
+            <p>
+               <a id="para_c82ff006-e1a8-46d4-a5db-0f63db0fd123" shape="rect"></a>If APP2 marker segments with an identifier of "ICC_PROFILE" (as defined in Annex B of <a class="xref" href="chapter_2.html#biblio_ISOIEC15076-1" title="Image technology colour management - Architecture, profile format, and data structure" shape="rect">[<abbr class="abbrev">ISO 15076-1</abbr>]</a>) are present in the compressed data stream, their concatenated value shall be identical to the Value of ICC Profile (0028,2000) Attribute, if present, excluding padding.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_651e0fda-0843-4bef-b448-30495fd6330f" shape="rect"></a>These requirements were formerly specified in terms of the "uncompressed pixel data from which the compressed data stream was derived". However, since the form of the "original" uncompressed data stream could vary between different implementations, this requirement is now specified in terms of consistency with what is encapsulated.</p>
+                        <p>
+                           <a id="para_07617cc6-a4a9-4751-9435-7b496910168d" shape="rect"></a>When decompressing, should the characteristics explicitly specified in the compressed data stream (e.g., spatial subsampling or number of components or planar configuration) be inconsistent with those specified in the DICOM Data Elements, those explicitly specified in the compressed data stream should be used to control the decompression. The DICOM Data Elements, if inconsistent, can be regarded as suggestions as to the form in which an uncompressed Data Set might be encoded, subject to the general and IOD-specific rules for uncompressed Photometric Interpretation and Planar Configuration, which may require that decompressed data be converted to one of the permitted forms.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_6424f9ef-dfaa-40ff-9ca9-109d42a93363" shape="rect"></a>Those characteristics not explicitly specified in the compressed data stream (e.g., the color space of the compressed components, which is not specified in the JPEG Interchange Format), or implied by the definition of the compression scheme (e.g., always unsigned in JPEG), can therefore be determined from the DICOM Data Element in the enclosing Data Set. For example a Photometric Interpretation of "YBR_FULL_422" would describe the color space that is commonly used to lossy compress images using JPEG. It is unusual to use an RGB color space for lossy compression, since no advantage is taken of correlation between the red, green and blue components (e.g., of luminance), and poor compression is achieved; however, for some applications this is permitted, e.g., Whole Slide Microscopy Images, to allow conversion to DICOM from proprietary formats without loss due to color space transformation.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_e639eb95-8d71-43a2-9a21-017e0bd8eb56" shape="rect"></a>The JPEG Interchange Format is distinct from the JPEG File Interchange Format (JFIF). The JPEG Interchange Format is defined in <a class="xref" href="chapter_2.html#biblio_ISOIEC10918-1" title="JPEG Standard for digital compression and encoding of continuous-tone still images. Part 1 - Requirements and implementation guidelines" shape="rect">[<abbr class="abbrev">ISO/IEC 10918-1</abbr>]</a> section 4.9.1, and refers to the inclusion of decoding tables, as distinct from the "abbreviated format" in which these tables are not sent (and the decoder is assumed to already have them). The JPEG Interchange Format does NOT specify the color space. The JPEG File Interchange Format, not part of the original JPEG standard, but defined in <a class="xref" href="chapter_2.html#biblio_ECMA_TR-098" title="JPEG File Interchange Format (JFIF)" shape="rect">[<abbr class="abbrev">ECMA TR-098</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_ISOIEC10918-5" title="JPEG Standard for digital compression and encoding of continuous-tone still images. Part 5 - JPEG File Interchange Format (JFIF)" shape="rect">[<abbr class="abbrev">ISO/IEC 10918-5</abbr>]</a>, is often used to store JPEG bit streams in consumer format files, and does include the ability to specify the color space of the components. The JFIF APP0 marker segment is NOT required to be present in DICOM encapsulated JPEG bit streams, and should not be relied upon to recognize the color space. Its presence is not
+                                forbidden (unlike the JP2 information for JPEG 2000 Transfer Syntaxes), but it is recommended that it be absent.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_b217610e-776a-4c22-88c2-6c765f687a4b" shape="rect"></a>Should the compression process be incapable of encoding a particular form of pixel data representation (e.g., JPEG cannot encode signed integers, only unsigned integers), then ideally only the appropriate form should be "fed" into the compression process. However, for certain characteristics described in DICOM Data Elements but not explicitly described in the compressed data stream (such as Pixel Representation), then the DICOM Data Element should be considered to describe what has been compressed (e.g., the pixel data really is to be interpreted as signed if Pixel Representation so specifies).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_c141d2a1-75f6-426e-85fe-e99495d48030" shape="rect"></a>DICOM Data Elements should not describe characteristics that are beyond the capability of the compression scheme used. For example, JPEG lossy processes are limited to 12 bits, hence the Value of Bits Stored should be 12 or less. Bits Allocated is irrelevant, and is likely to be constrained by the Information Object Definition in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> to Values of 8 or 16. Also, JPEG compressed data streams are always color-by-pixel and should be specified as such (a decoder can essentially ignore this Data Element however as the value for JPEG compressed data is already known).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_e47ec72b-e48e-4484-8cfb-62153e734c28" shape="rect"></a>If JPEG Compressed Pixel Data is decompressed and re-encoded in Native (uncompressed) form, then the Data Elements that are related to the Pixel Data encoding are updated accordingly. If color components are converted from YBR_FULL_422 to RGB during decompression and Native re-encoding, the Photometric Interpretation will be changed to RGB in the Data Set with the Native encoding.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_8.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8 Encoding of Pixel, Overlay and Waveform Data </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2.2 Run Length Encoding Image Compression</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2.11 HEVC/H.265 Main 10 Profile / Level 5.1 Video Compression</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" />
+      <link rel="prev" href="sect_8.2.10.html" title="8.2.10 HEVC/H.265 Main Profile / Level 5.1 Video Compression" />
+      <link rel="next" href="sect_8.2.12.html" title="8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2.11 HEVC/H.265 Main 10 Profile / Level 5.1 Video Compression <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_8.2.11.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.10.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.2 Native or Encapsulated Format Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.12.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Encoding of Pixel, Overlay and Waveform Data</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.2.html" shape="rect">Native or Encapsulated Format Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">HEVC/H.265 Main 10 Profile / Level 5.1 Video Compression</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.2.11" shape="rect"></a>8.2.11 HEVC/H.265 Main 10 Profile / Level 5.1 Video Compression</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ea60a87d-627c-4294-aed3-2cae565709e4" shape="rect"></a>HEVC/H.265 Main 10 Profile / Level 5.1 Main tier is designed for the compression of 4:2:0 video formats up to 4k at 60 frames per second with a bit depth of 10 bits. DICOM provides a mechanism for supporting the use of HEVC/H.265 Image Compression through the Encapsulated Format. <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a> defines a Fragmentable Encapsulated Transfer Syntax that references the HEVC/H.265 Standard.</p>
+         <p>
+            <a id="para_bd767978-4c77-40ab-9f1c-96a4aad381e1" shape="rect"></a>The use of the DICOM Encapsulated Format to support HEVC/H.265 compressed pixel data requires that the Data Elements that are related to the Pixel Data encoding (e.g., Photometric Interpretation, Samples per Pixel, Planar Configuration, Bits Allocated, Bits Stored, High Bit, Pixel Representation, Rows, Columns, etc.) shall contain Values that are consistent with the characteristics of the compressed data stream, with some specific exceptions noted here. The Pixel Data characteristics included in the HEVC/H.265 bit stream shall be used to decode the compressed data stream.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c81d7049-de34-42fe-a614-1c154d3850e2" shape="rect"></a>These requirements are specified in terms of consistency with what is encapsulated, rather than in terms of the uncompressed pixel data from which the compressed data stream may have been derived.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1693618b-1de9-4c36-84de-c945b03033bb" shape="rect"></a>When decompressing, should the characteristics explicitly specified in the compressed data stream be inconsistent with those specified in the DICOM Data Elements, those explicitly specified in the compressed data stream should be used to control the decompression. The DICOM Data Elements, if inconsistent, can be regarded as suggestions as to the form in which an uncompressed Data Set might be encoded, subject to the general and IOD-specific rules for uncompressed Photometric Interpretation and Planar Configuration, which may require that decompressed data be converted to one of the permitted forms.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_f9359985-4512-44ae-8648-6c8b8f8dde52" shape="rect"></a>The requirements are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_026e918f-5e12-4df0-9f06-a0fb993c852a" shape="rect"></a>Planar Configuration (0028,0006) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_ccb0f8a4-325c-40e1-a911-1745aa24056c" shape="rect"></a>Samples per Pixel (0028,0002) shall be 3</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d3d07c69-1ef8-4fde-bcef-ad8ac395ca5a" shape="rect"></a>Photometric Interpretation (0028,0004) shall be YBR_PARTIAL_420</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a368515b-5fb5-4749-8e53-cf43fdbf5ee0" shape="rect"></a>Bits Allocated (0028,0100) shall be 16</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2e5b0075-b543-40a8-94a6-b18b3b2d221f" shape="rect"></a>Bits Stored (0028,0101) shall be 10</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2346aecb-d609-4d13-a9b0-94e8ad9ebce2" shape="rect"></a>High Bit (0028,0102) shall be 9</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1210a07f-4078-4534-bcb1-7d0ac13056f0" shape="rect"></a>Pixel Representation (0028,0103) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fcc3f829-2fe4-4227-98cd-e1a51fb14eff" shape="rect"></a>The value of HEVC/H.265 sample aspect_ratio_idc shall be 1 in the encapsulated HEVC/H.265 bit stream if aspect_ratio_info_present_flag is 1.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a613bf7f-43e7-448b-8c4d-04c7c9aa9bd7" shape="rect"></a>Pixel Aspect Ratio (0028,0034) shall be absent. This corresponds to a 'Sampling Aspect Ratio' (SAR) of 1:1.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_09e08cee-c861-4025-9f02-a724b4a7b7ff" shape="rect"></a>The Values for Rows (0028,0010), Columns (0028,0011), Cine Rate (0018,0040), and Frame Time (0018,1063) or Frame Time Vector (0018,1065) shall be compliant with the Main 10 Profile / Level 5.1 of the HEVC/H.265 standard <a class="xref" href="chapter_2.html#biblio_ISOIEC23008-2" title="Information technology - High efficiency coding and media delivery in heterogeneous environments - Part 2: High efficiency video coding" shape="rect">[<abbr class="abbrev">ISO/IEC 23008-2</abbr>]</a> and restricted to a square pixel aspect ratio.</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b0a49b3b-7eae-4bb0-a0a3-cdb86e6d2ce1" shape="rect"></a>The Value of Planar Configuration (0028,0006) is irrelevant since the manner of encoding components is specified in the HEVC/H.265 standard, hence it is set to 0.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_93c3447c-db1d-4165-b2cc-9a942229f41d" shape="rect"></a>The limitation on rows and columns are to maximize interoperability between software environments and commonly available hardware HEVC/H.265 encoder/decoder implementations. Source pictures that have a lower value should be re-formatted by scaling and/or pixel padding prior to HEVC/H.265 encoding.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_53bd8c24-c993-499c-8e13-c3203c74024e" shape="rect"></a>The Frame Time (0018,1063) may be calculated from the frame rate of the acquiring camera. A frame rate of 29.97 frames per second corresponds to a frame time of 33.367 ms.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e53f788b-98ad-49df-8350-ad8882898bc1" shape="rect"></a>The value of chroma_format_idc for this profile and level is equal to 1, indicating the usage of 4:2:0 content.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_a7048ccf-0028-469c-a04f-45b652636a8c" shape="rect"></a>The encapsulated pixel data stream may be segmented into multiple fragments.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_357dc601-83dc-4917-a3f3-de898714f3b3" shape="rect"></a>The recipient is expected to concatenate the fragments while decoding them. This allows for essentially unlimited length streams; the only limit imposed is the maximum Value for Number of Frames (0028,0008) which is 2^31-1 frames (largest positive Value in an Integer String VR).</p>
+         </div>
+         <p>
+            <a id="para_78f2ef6d-dc85-4a5d-a1ea-b204a859e2b3" shape="rect"></a>The container format for the video bit stream shall be MPEG-2 Transport Stream, a.k.a. MPEG-TS (see <a class="xref" href="chapter_2.html#biblio_ISOIEC13818-1" title="Information technology -- Generic coding of moving pictures and associated audio information - Part 1: Systems" shape="rect">[<abbr class="abbrev">ISO/IEC 13818-1</abbr>]</a>) or MPEG-4, a.k.a. MP4 container (see <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-12" title="Information technology - Coding of audio-visual objects - Part 12: ISO base media file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-12</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-14" title="Information technology - Coding of audio-visual objects - Part 14: MP4 file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-14</abbr>]</a>). The PTS/DTS of the transport stream shall be used in the MPEG coding.</p>
+         <p>
+            <a id="para_ba783f8e-62d4-4907-abb1-ae865a0c5206" shape="rect"></a>Any audio components included in the data container shall follow the constraints detailed in <a class="xref" href="sect_8.2.12.html" title="8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams" shape="rect">Section 8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams</a>.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.10.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.12.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.10 HEVC/H.265 Main Profile / Level 5.1 Video Compression </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

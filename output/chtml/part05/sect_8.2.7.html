@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2.7 MPEG-4 AVC/H.264 High Profile / Level 4.1 Video Compression</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" />
+      <link rel="prev" href="sect_8.2.6.html" title="8.2.6 MPEG2 Main Profile / High Level Video Compression" />
+      <link rel="next" href="sect_8.2.8.html" title="8.2.8 MPEG-4 AVC/H.264 High Profile / Level 4.2 Video Compression" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2.7 MPEG-4 AVC/H.264 High Profile / Level 4.1 Video Compression <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_8.2.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.2 Native or Encapsulated Format Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Encoding of Pixel, Overlay and Waveform Data</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.2.html" shape="rect">Native or Encapsulated Format Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">MPEG-4 AVC/H.264 High Profile / Level 4.1 Video Compression</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.2.7" shape="rect"></a>8.2.7 MPEG-4 AVC/H.264 High Profile / Level 4.1 Video Compression</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_65917ac3-a992-42eb-9354-ba19938a0b2b" shape="rect"></a>MPEG-4 AVC/H.264 High Profile / Level 4.1 corresponds to what is commonly known as HDTV ('High Definition Television'). DICOM provides a mechanism for supporting the use of MPEG-4 AVC/H.264 Image Compression through the Encapsulated Format. <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a> defines Non-Fragmentable and Fragmentable Encapsulated Transfer Syntaxes that reference the MPEG-4 AVC/H.264 Standard.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_3472a19e-4744-4448-ae6d-5f3cfbe425ec" shape="rect"></a>MPEG-4 AVC/H.264 compression / High Profile compression is inherently lossy. The context where the usage of lossy compression of medical images is clinically acceptable is beyond the scope of the DICOM Standard. The policies associated with the selection of appropriate compression parameters (e.g., compression ratio) for MPEG-4 AVC/H.264 High Profile / Level 4.1 are also beyond the scope of this Standard.</p>
+         </div>
+         <p>
+            <a id="para_382fd973-3a0c-4bca-9be2-a12b55d74976" shape="rect"></a>The use of the DICOM Encapsulated Format to support MPEG-4 AVC/H.264 compressed pixel data requires that the Data Elements that are related to the Pixel Data encoding (e.g., Photometric Interpretation, Samples per Pixel, Planar Configuration, Bits Allocated, Bits Stored, High Bit, Pixel Representation, Rows, Columns, etc.) shall contain Values that are consistent with the characteristics of the compressed data stream, with some specific exceptions noted here. The Pixel Data characteristics included in the MPEG-4 AVC/H.264 bit stream shall be used to decode the compressed data stream.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_189b7ade-5a0e-4b48-a83c-a2735266ee5a" shape="rect"></a>These requirements are specified in terms of consistency with what is encapsulated, rather than in terms of the uncompressed pixel data from which the compressed data stream may have been derived.</p>
+         </div>
+         <p>
+            <a id="para_1e5e3340-6432-49d9-8cdf-21c44d306380" shape="rect"></a>When decompressing, should the characteristics explicitly specified in the compressed data stream be inconsistent with those specified in the DICOM Data Elements, those explicitly specified in the compressed data stream should be used to control the decompression. The DICOM Data Elements, if inconsistent, can be regarded as suggestions as to the form in which an uncompressed Data Set might be encoded, subject to the general and IOD-specific rules for uncompressed Photometric Interpretation and Planar Configuration, which may require that decompressed data be converted to one of the permitted forms.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_10b66283-59e0-410b-bd94-c1ca64a0eec1" shape="rect"></a>If MPEG-4 Compressed Pixel Data is decompressed and re-encoded in Native (uncompressed) form, then the Data Elements that are related to the Pixel Data encoding are updated accordingly. If color components are converted from YBR_PARTIAL_420 to RGB during decompression and Native re-encoding, the Photometric Interpretation will be changed to RGB in the Data Set with the Native encoding.</p>
+         </div>
+         <p>
+            <a id="para_475237f7-b060-4238-a2ea-c4194c317a0a" shape="rect"></a>The requirements are:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_1cbbe360-2540-4190-91ee-b15ad4889d03" shape="rect"></a>Planar Configuration (0028,0006) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_45526acd-9d8d-4fae-9f2c-78789ead39a8" shape="rect"></a>Samples per Pixel (0028,0002) shall be 3</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0e6d3a02-d2c9-436f-92bf-abf5e66426d2" shape="rect"></a>Photometric Interpretation (0028,0004) shall be YBR_PARTIAL_420</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_dfd4f6f7-f3f4-45ac-875d-22992ce31dfe" shape="rect"></a>Bits Allocated (0028,0100) shall be 8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_903f97bc-0eb4-41c7-8d04-c372431d599f" shape="rect"></a>Bits Stored (0028,0101) shall be 8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_77874c28-b409-45c5-b097-f4abb46f5a5c" shape="rect"></a>High Bit (0028,0102) shall be 7</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_346c4771-ce79-4e2a-a3a5-c0c2d76676fe" shape="rect"></a>Pixel Representation (0028,0103) shall be 0</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5a76a9a9-04c1-4998-92fd-5fb065e9df25" shape="rect"></a>The value of MPEG-4 AVC/H.264 sample aspect_ratio_idc shall be 1 in the encapsulated MPEG-4 AVC/H.264 bit stream if aspect_ratio_info_present_flag is 1.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_cd8a94cf-2a14-481e-919c-bea2000d8d02" shape="rect"></a>Pixel Aspect Ratio (0028,0034) shall be absent. This corresponds to a 'Sampling Aspect Ratio' (SAR) of 1:1.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_9f6199c0-53da-449c-93e0-19c616ebbcc6" shape="rect"></a>The possible Values for Rows (0028,0010), Columns (0028,0011), Cine Rate (0018,0040), and Frame Time (0018,1063) or Frame Time Vector (0018,1065) depend on the used Transfer Syntax.</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2d08b7a4-ee6b-4e49-9045-36a0497567c1" shape="rect"></a>For MPEG-4 AVC/H.264 High Profile / Level 4.1 Transfer Syntax, the Values for these Data Elements shall be compliant with the High Profile / Level 4.1 of the MPEG-4 AVC/H.264 standard (<a class="xref" href="chapter_2.html#biblio_ISOIEC14496-10" title="Information technology - Coding of audio-visual objects - Part 10: Advanced Video Coding" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-10</abbr>]</a>) and restricted to a square pixel aspect ratio.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_601240e1-a68f-43c0-9419-1a0d433c8d22" shape="rect"></a>For MPEG-4 AVC/H.264 BD-compatible High Profile / Level 4.1 Transfer Syntax, the Values for these Data Elements shall be as specified in <a class="xref" href="sect_8.2.7.html#table_8-4" title="Table 8-4. Values Permitted for MPEG-4 AVC/H.264 BD-compatible High Profile / Level 4.1" shape="rect">Table 8-4</a>.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="table">
+            <a id="table_8-4" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8-4. Values Permitted for MPEG-4 AVC/H.264 BD-compatible High Profile / Level 4.1</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_63e47108-0c44-468b-9184-754cc487d4bc" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Rows</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_901c01c8-6914-4ab3-b78d-f08c3266a071" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Columns</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_febbe109-b40b-446a-85f2-0073e3d40509" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Frame rate</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5900a51b-45fb-4bd7-bd28-a5f45b65fedf" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Video Type</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_98c29c17-b1e9-4daf-92fb-50eebb172b04" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Progressive or Interlace</strong>
+                              </span>
+                                </p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d90508dd-2003-4112-a786-55eb75da0f3c" shape="rect"></a>1080</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_77b68215-9acc-4b0e-85fd-4dc5b43c4692" shape="rect"></a>1920</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d1991022-f571-4f1c-aec9-823f37537ed6" shape="rect"></a>25</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_62d21722-593f-4704-a8dc-ee217487daeb" shape="rect"></a>25 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_601151d3-4507-4df0-ab81-529bde25c3ee" shape="rect"></a>I</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e46a6ff2-a4c4-4eeb-a1d9-1ea78195e4d8" shape="rect"></a>1080</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_76c1586e-353d-4332-a865-2305a7107add" shape="rect"></a>1920</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_57a28e80-f9f5-450b-aa26-30074c99a0f0" shape="rect"></a>29.97</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a1e666a1-ba56-4644-88d4-e4641ae8b4df" shape="rect"></a>30 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7fd5d1d8-42a3-4b26-aa7a-07c715dc19d5" shape="rect"></a>I</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dad12484-a61f-4d12-8d19-f05d2393a9f8" shape="rect"></a>1080</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_36485735-3f47-4751-a47f-2ead9c907066" shape="rect"></a>1920</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_017c320b-2364-450e-b4ed-4e0fba988e0d" shape="rect"></a>24</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ebf94b67-b3c0-4d0e-aa2a-4276f79956be" shape="rect"></a>24 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_38686cbc-99d9-4e0f-a2ca-2d415553b4ce" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e1753b39-4cad-4f51-bb3b-19b1dc27591f" shape="rect"></a>1080</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_059135de-d626-4e7d-a41c-af01383d7fd3" shape="rect"></a>1920</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_69fdd8d1-d2ad-48db-9b93-6e9dbeb20554" shape="rect"></a>23.976</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33bf1e03-fa3e-42fb-a85c-d75716ef3d65" shape="rect"></a>24 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6efec382-3126-4942-8aa5-6742cf7cfcff" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5966b3eb-ab1d-46e0-8391-d0f8efda097a" shape="rect"></a>720</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fb308f86-621a-43f3-af2b-cdf68ec15826" shape="rect"></a>1280</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f327a213-268b-4d8c-97bc-30e336c6e311" shape="rect"></a>50</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ef845e06-8f48-4f62-ac1d-3e8a185c833a" shape="rect"></a>50 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f3a98c16-e148-42d3-be52-bf8e1222ea42" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6f6b75d7-76a6-4d48-9fe7-3bab13418000" shape="rect"></a>720</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_38cd30f2-4ec8-413b-b5f1-f59b61df410a" shape="rect"></a>1280</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7fbd5e88-ef45-4ce0-b6e6-944c69fa90a3" shape="rect"></a>59.94</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d0e978a6-4fb2-41f6-8a04-b691ec61fb52" shape="rect"></a>60 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_13365da4-4987-46de-870f-6b90c9af23e8" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3827926b-66f4-4a1b-96b3-581b113c74bc" shape="rect"></a>720</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_180d6bd1-3f42-420f-8911-9fc0565b2dca" shape="rect"></a>1280</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5ec24adc-0d1b-4206-ad49-9ed2881161c5" shape="rect"></a>24</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7440ad67-c6a2-4396-bbb3-204aaf41061c" shape="rect"></a>24 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6fe45852-3b29-4a97-8220-1e0a8b13fdc0" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7086b630-c965-4695-824d-c95a89f0aa9b" shape="rect"></a>720</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_29b23ad9-5eff-4579-b4bf-ec28dc88844c" shape="rect"></a>1280</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5e7fede9-edf4-401a-b758-bb1e57a9aa02" shape="rect"></a>23.976</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_70fb6ad1-58d8-490e-86fa-f3d5c3d5ea9d" shape="rect"></a>24 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_847cf762-c85e-4241-a3de-fefe8bfd7347" shape="rect"></a>P</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a10eb607-0ee8-402c-9f77-de73d5c8d0ad" shape="rect"></a>The Value of Planar Configuration (0028,0006) is irrelevant since the manner of encoding components is specified in the MPEG-4 AVC/H.264 standard, hence it is set to 0.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_39e69a18-bf46-4d5d-bdeb-d14d4f83641b" shape="rect"></a>The limitation on rows and columns are to maximize interoperability between software environments and commonly available hardware MPEG-4 AVC/H.264 encoder/decoder implementations. Source pictures that have a lower value should be re-formatted by scaling and/or pixel padding prior to MPEG-4 AVC/H.264 encoding.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_010973db-58ae-484d-9b95-a95eafbb5313" shape="rect"></a>The frame rate of the acquiring camera for '30 Hz HD' MPEG-4 AVC/H.264 may be either 30 or 30/1.001 (approximately 29.97) frames/sec. Similarly, the frame rate in the case of 60 Hz may be either 60 or 60/1.001 (approximately 59.94) frames/sec. This may lead to small inconsistencies between the video timebase and real time. The relationship between frame rate and frame time is shown in Table 8-5.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_11b190f4-f02f-4cc1-bd62-0d098c839913" shape="rect"></a>The Frame Time (0018,1063) may be calculated from the frame rate of the acquiring camera. A frame rate of 29.97 frames per second corresponds to a frame time of 33.367 ms.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_569ea0de-88dd-408b-84f1-e048f7be4ae4" shape="rect"></a>The value of chroma_format for this profile and level is defined by MPEG as 4:2:0.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c830d481-1e21-49be-9dd9-de13747d2ce0" shape="rect"></a>Example screen resolutions supported by MPEG-4 AVC/H.264 High Profile / Level 4.1 can be taken from Table 8-4. Frame rates of 50 Hz and 60 Hz (progressive) at the maximum resolution of 1080 by 1920 are not supported by MPEG-4 AVC/H.264 High Profile / Level 4.1. Interlace at the maximum resolution is supported at a field rate of 50 Hz or 60 Hz, which corresponds to a frame rate of 25 Hz or 30 Hz respectively. Smaller resolutions may be used as long as they comply with the square pixel aspect ratio. An example is XGA resolution with an image resolution of 768 by 1024 pixels. For smaller resolutions there are higher frame rates possible. For example it may be up to 80 Hz for XGA.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_66aa43fd-6eb3-4b43-a584-bd95937017a8" shape="rect"></a>The display aspect ratio is defined implicitly by the pixel resolution of the video picture. Only square pixel aspect ratio is allowed. MPEG-4 AVC/H.264 BD-compatible High Profile / Level 4.1 will only support resolutions that result in a 16:9 display aspect ratio</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8928bd30-2035-4af8-80e7-2fbbac7abf3d" shape="rect"></a>The permitted screen resolutions for the MPEG-4 AVC/H.264 BD-compatible High Profile / Level 4.1 are listed in Table 8-4. Only HD resolutions and no progressive frame rates for 25 or 29.97 frames per seconds are supported. Frame rates of 50 Hz and 60 Hz (progressive) at the maximum resolution of 1080 by 1920 are not supported.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="table">
+            <a id="table_8-5" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8-5. MPEG-4 AVC/H.264 High Profile / Level 4.1 Image Transfer Syntax Frame Rate Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ea9a8d8e-2e8a-42c4-92f6-a0c4ac08ac5c" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Video Type</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2cc1ed1d-c1b6-4ae4-a2bd-0217b141ae0a" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Spatial resolution layer</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b856d1aa-0c06-4a1e-9127-254237218520" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Frame Rate (see Note 2)</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1030eff9-b813-4022-b46b-0d93502d71a4" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Frame Time (see Note 3)</strong>
+                              </span>
+                                </p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6000d7e3-0fab-4f87-a54f-3c5b99ebc45b" shape="rect"></a>30 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bf88c79c-30f7-41fa-aa74-9f666fac5863" shape="rect"></a>Single level, Enhancement</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_55ec763b-8c07-412b-aa48-bc172ecf2646" shape="rect"></a>30</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5d6a4a59-83b6-4af0-97aa-68ae14b1c5c6" shape="rect"></a>33.33 ms</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3b1d91c9-1b42-4bb6-aceb-abd21934e347" shape="rect"></a>25 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_afaa1bb5-7119-4e7f-aca4-98e592e92731" shape="rect"></a>Single level, Enhancement</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c7f4fd98-9b8c-4f12-8ff3-201f26317e7f" shape="rect"></a>25</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_441a22b7-2715-4a1b-94e8-4115b7b5acb0" shape="rect"></a>40.0 ms</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e093747c-50db-4f7c-b99f-33893f96b922" shape="rect"></a>60 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c8aeab2e-ce78-49ed-ac4d-d580834e9a07" shape="rect"></a>Single level, Enhancement</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_78a6e7a6-739b-4ad0-89e4-b3dc87890fbb" shape="rect"></a>60</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8a8ca35e-8880-4a52-9363-5086164aa50d" shape="rect"></a>16.67 ms</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d3ded3fa-a25a-44c6-82cf-5e4857077325" shape="rect"></a>50 Hz HD</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_330477ed-adf0-4706-b418-cadb3d30b442" shape="rect"></a>Single level, Enhancement</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_253bfeb8-f4c6-4cf5-982f-21fe9f0bca54" shape="rect"></a>50</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc6b2f1c-d506-440e-9265-199884f24da2" shape="rect"></a>20.00 ms</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_2a871b9c-fa9e-43bc-a561-b22de2393053" shape="rect"></a>For the Non-Fragmentable Encapsulated Transfer Syntax, one Fragment shall contain the whole MPEG-4 AVC/H.264 bit stream.</p>
+         <p>
+            <a id="para_9f61be3f-6f7f-4dea-aaf6-2e1e29c3f098" shape="rect"></a>For the Fragmentable Encapsulated Transfer Syntax, the stream may be segmented into multiple Fragments.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_64b3560c-0f8b-4916-9515-6500ed260053" shape="rect"></a>If a video stream exceeds the maximum length of one fragment (2^32-2 bytes), it may be sent using a Fragmentable Encapsulated Transfer Syntax. Alternatively, it may be sent using a Non-Fragmentable Encapsulated Transfer Syntax as multiple SOP Instances, but each SOP Instance will contain an independent and playable bit stream, and not depend on the encoded bit stream in other (previous) instances. The manner in which such separate instances are related is not specified in the Standard, but mechanisms such as grouping into the same Series, and references to earlier instances using Referenced Image Sequence may be used.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8e37ec5d-6f0a-4bc1-9d24-d9c831fdb969" shape="rect"></a>Fragmentable Encapsulated Transfer Syntaxes allow for streams of essentially unlimited length; the only limit imposed is the maximum Number of Frames (0028,0008), which is 2^31-1 frames (largest positive Value in an Integer String VR).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_93e08e1e-89db-4979-be11-b382f2b31514" shape="rect"></a>The container format for the video bit stream shall be MPEG-2 Transport Stream, a.k.a. MPEG-TS (see <a class="xref" href="chapter_2.html#biblio_ISOIEC13818-1" title="Information technology -- Generic coding of moving pictures and associated audio information - Part 1: Systems" shape="rect">[<abbr class="abbrev">ISO/IEC 13818-1</abbr>]</a>) or MPEG-4, a.k.a. MP4 container (see <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-12" title="Information technology - Coding of audio-visual objects - Part 12: ISO base media file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-12</abbr>]</a> and <a class="xref" href="chapter_2.html#biblio_ISOIEC14496-14" title="Information technology - Coding of audio-visual objects - Part 14: MP4 file format" shape="rect">[<abbr class="abbrev">ISO/IEC 14496-14</abbr>]</a>). The PTS/DTS of the transport stream shall be used in the MPEG coding.</p>
+         <p>
+            <a id="para_835e9db2-8467-431c-bc8f-b05d1cd4b2bd" shape="rect"></a>Any audio components included in the data container shall follow the constraints detailed in <a class="xref" href="sect_8.2.12.html" title="8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams" shape="rect">Section 8.2.12 Constraints for Audio Data Integration in AVC and HEVC Compressed Bit Streams</a>.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.6 MPEG2 Main Profile / High Level Video Compression </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2.8 MPEG-4 AVC/H.264 High Profile / Level 4.2 Video Compression</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

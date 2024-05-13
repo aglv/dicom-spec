@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A Data Exchange Models</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="PS3.19.html" title="PS3.19" />
+      <link rel="prev" href="sect_10.2.html" title="10.2 Person Name Components" />
+      <link rel="next" href="sect_A.2.html" title="A.2 Abstract Multi-Dimensional Image Model" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024b - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A Data Exchange Models <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/chapter_A.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-node">Data Exchange Models</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_A" shape="rect"></a>A Data Exchange Models</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_A.1" shape="rect"></a>A.1 Native DICOM Model</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.1" shape="rect"></a>A.1.1 Usage</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_70a6281c-dd00-4724-9b6c-4349e9a347b3" shape="rect"></a>The Native DICOM Model defines a representation of binary-encoded DICOM SOP Instances as XML Infosets that allows a recipient of data to navigate through a binary DICOM data set using XML-based tools instead of relying on tool kits that understand the binary encoding of DICOM.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_94007198-f168-4973-b2f4-12b7a636e4f6" shape="rect"></a>It is not the intention that this form be utilized as the basis for other uses. This form does not take advantage of the self-validation features that could be possible with a pure XML representation of the data.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f16d9e41-83f1-4ed4-81ea-84cd6dd679c9" shape="rect"></a>As per the XML standard, XML tags are case sensitive.
+                        The case convention for elements is an upper case initial letter, camel case.
+                        The case convention for attributes is a lower initial letter, camel case.
+                        Keywords referenced in the XML schema are the DICOM title case from the definitions in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_a8115fff-75ff-415c-ab58-0ea9147bb66a" shape="rect"></a>With the exception of padding to an even byte length,
+              a data source that is creating a new instance of a Native DICOM Model
+              (e.g., the result from some analysis application) shall follow the DICOM encoding rules
+              (e.g., the handling of character sets) in creating Values for the DicomAttributes within the instance of the Native DICOM Model.
+              Attribute Values encoded in a Native DICOM Model are not required to be padded to an even byte length.</p>
+               <p>
+                  <a id="para_7dc8dcaf-f53d-49cd-8570-4d9993788825" shape="rect"></a>Group Length (gggg,0000) attributes shall not be included in a Native DICOM Model instance.</p>
+               <p>
+                  <a id="para_8d20e0b7-09d7-44b4-841a-7ad8690364e0" shape="rect"></a>A data recipient that converts data from an instance of the Native DICOM Model
+            back into a binary encoded DICOM object shall adjust the padding to an even byte length as necessary to meet the encoding rules specified in DICOM
+            <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.2" shape="rect"></a>A.1.2 Identification</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_c32bc1e8-a10e-4aa6-b9d6-917e2bacaf24" shape="rect"></a>The ObjectDescriptors MIME content type for the Native DICOM Model shall be "application/x-dicom.native".</p>
+               <p>
+                  <a id="para_f49fab43-2f5d-4ab0-8643-ad7f26d30355" shape="rect"></a>The ObjectDescriptors class UID for the Native DICOM Model shall be "1.2.840.10008.7.1.1".</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.3" shape="rect"></a>A.1.3 Support</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4269045c-f019-4d8f-a9f1-63015a82368a" shape="rect"></a>Support of the Native DICOM Model as both a data source and a data recipient shall be required of all Hosting Systems implementing the interface.</p>
+               <p>
+                  <a id="para_18652955-2cec-4219-a7a2-a53ce3b4a673" shape="rect"></a>Support of the Native DICOM Model as either a data source or a data recipient shall be optional for all Hosted Applications implementing the interface.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.4" shape="rect"></a>A.1.4 Information Model</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9b6153ac-5015-4fc4-a4cd-8568c0591ce5" shape="rect"></a>A diagram of the Native DICOM Model appears in <a class="xref" href="chapter_A.html#figure_A.1.4-1" title="Figure A.1.4-1. Native DICOM Model" shape="rect">Figure A.1.4-1</a>.</p>
+               <p>
+                  <a id="para_b68bd114-6859-45d7-a0ee-2394b7277e0b" shape="rect"></a>
+               </p>
+               <div class="figure">
+                  <a id="figure_A.1.4-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.19_A.1.4-1.svg" alt="Native DICOM Model" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure A.1.4-1. Native DICOM Model</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.5" shape="rect"></a>A.1.5 Description</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="table">
+                  <a id="table_A.1.5-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table A.1.5-1. Native DICOM Model</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8da58663-e6fd-41ef-a42f-cfa13356d1f3" shape="rect"></a>Name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4e2f992b-9e74-42ec-ba33-ca8f6fdfc357" shape="rect"></a>Optionality</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_829caf1a-25f1-485f-9b5d-d926602784f2" shape="rect"></a>Cardinality</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8a848bb1-407b-4f39-901d-3592ad1d07fa" shape="rect"></a>Description</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_99992767-8ca8-4caf-8e2c-a8dcfc8d5708" shape="rect"></a>NativeDicomModel</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_dc8e602f-e2cd-4181-a385-88f4c22f1041" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_14b9f55f-b161-4328-a021-a95621548a6d" shape="rect"></a>1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a39f4ee5-2f43-4519-8b13-b9c88f6fbc67" shape="rect"></a>An Infoset (as defined in W3C Recommendation XML Information Set "<a class="link" href="http://www.w3.org/TR/xml-infoset/" target="_top" shape="rect">http://www.w3.org/TR/xml-infoset/</a>") representing the content of a DICOM Data Set (as defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                                 <p>
+                                    <a id="para_e89577b7-6741-40cc-9241-da3ac83a6f5b" shape="rect"></a>The directivexml:space="preserve" shall be included.</p>
+                                 <p>
+                                    <a id="para_d4d92794-bff5-4b57-b3c3-597b3cb011ff" shape="rect"></a>Examples include:</p>
+                                 <div class="itemizedlist">
+                                    <ul class="itemizedlist" style="list-style-type: disc; ">
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_761a92ec-eb3f-44f1-a884-45af28f340f7" shape="rect"></a>the contents of an entire DICOM Composite Instance (as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>) in response to a native model request, or</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_4732d3b0-05c0-4012-8af2-11cba3b2a0ab" shape="rect"></a>the contents of part of a DICOM Composite Instance in response to a query on a native model, or</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_6b875924-267e-4a38-a988-75676a6d8834" shape="rect"></a>the contents of a <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a> Studies Service Store (STOW-RS) response</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_cef5d8f3-4943-404a-9281-438b73d60ff4" shape="rect"></a>the contents of a Sequence Item (as defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>), recursively included within an Infoset Value element.</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                 <p>
+                                    <a id="para_bed985ed-1922-4732-a79a-5d1acc6d0c0b" shape="rect"></a>
+                                    <span class="italic">Include <a class="xref" href="chapter_A.html#table_A.1.5-2" title="Table A.1.5-2. DICOM Data Set Macro" shape="rect">Table A.1.5-2 “DICOM Data Set Macro”</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="table">
+                  <a id="table_A.1.5-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table A.1.5-2. DICOM Data Set Macro</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_c218b456-f838-4f94-aa50-e29ba82d18d3" shape="rect"></a>Name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_b2134810-216a-4ba9-9d02-423f3977a7cc" shape="rect"></a>Optionality</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f9451cd0-5b97-46f6-801a-d78eac224b8a" shape="rect"></a>Cardinality</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d5f5e379-5f85-4614-9021-6788d744409e" shape="rect"></a>Description</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7f6203e4-be88-4948-bdc0-0824924d7b26" shape="rect"></a>DicomAttribute</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2a7c93a4-4643-4423-b76b-b02778e8e630" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_eea6cdfe-515a-49d2-b0cc-11017d05fd84" shape="rect"></a>0-n</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_694c6e9f-b061-4df8-8453-5f5b73da11ca" shape="rect"></a>An Infoset element corresponding to each DICOM Attribute.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_1d416383-158b-4bfd-ba92-7223df0fcf4c" shape="rect"></a>&gt;keyword</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f842b962-83cc-4ffa-8ccd-7c36bcf76f0f" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8c2b1639-5b4b-4e8e-82c3-6c7c5db9dda5" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_66f45ae8-1b6d-4c61-955e-7b86f748e6eb" shape="rect"></a>The keyword as defined in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+                                 <p>
+                                    <a id="para_fb131966-4369-449d-94f4-c8089c0ec9d7" shape="rect"></a>Required unless the DICOM Data Element is unknown to the host.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4d0f6fa1-31f0-4404-8ec2-04fee9496a77" shape="rect"></a>&gt;tag</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_6d560625-a5d5-4467-a24f-2d5732114b20" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_b217533a-d1d0-4d44-bd37-ffc8d15efde2" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_917cc0ce-8a47-4652-8dbe-21aeb08982e4" shape="rect"></a>The four-digit zero-padded hexadecimal values of the Group and Element Numbers of the Data Element Tag, concatenated as a single string without a delimiter and with lowercase letters disallowed. E.g., Data Element (0010,0020) would have a tag of "00100020".</p>
+                                 <p>
+                                    <a id="para_ca2b90b1-e54e-48dd-bea2-f0bfa4e86576" shape="rect"></a>For Private Data Elements, the two most significant hexadecimal characters of the Element Number shall be 00, since the Private Creator is explicitly conveyed and the block used in the DICOM encoding shall not be sent (i.e., a Private Data Element has the form gggg00ee).</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a17e59c9-8124-4bc2-8038-8a46dcf37f86" shape="rect"></a>&gt;vr</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5666ce45-1e8d-4d53-bfa0-31ad0a01e037" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_636a0a23-6f72-4168-970c-73d08f8eff9d" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_014336b0-0974-40fa-a418-b5baa8a53b78" shape="rect"></a>The Value Representation of this element, represented as a two character uppercase string, as defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> and specified for this Data Element in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_f886b675-6060-4a18-910a-70a11d6168cf" shape="rect"></a>Implementations may utilize the Value Representation to validate data values, if desired.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_fc3fea2d-bdaa-492f-bc88-0f692dcb06df" shape="rect"></a>&gt;privateCreator</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a11d9eb5-2776-4f39-bad5-0d23c42075b1" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_0677fdd2-07f9-41ba-8e9d-fd2e559a369a" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_55e8739a-76d2-4648-8565-9630cd843483" shape="rect"></a>The value of the Private Creator Data Element corresponding to the block in which this Private Data Element is used.</p>
+                                 <p>
+                                    <a id="para_9197f661-3766-4e6e-ab5e-f9875af66186" shape="rect"></a>Required for Private Data Elements. Shall not be present otherwise (i.e., for Data Elements defined by the DICOM Standard).</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_31b6df8b-b513-47c7-98fd-7560712cf032" shape="rect"></a>&gt;Value</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_66f6d78e-6622-4c90-b6cd-660b875c0561" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_1d501a66-bd93-47d8-9a27-0ea5030abf7c" shape="rect"></a>1-n</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_8ee25519-f1f2-45e5-a5f9-6249b8c964b9" shape="rect"></a>A Value from the Value Field of the DICOM Data Element. There is one Infoset Value element for each DICOM Value or Sequence Item.</p>
+                                 <p>
+                                    <a id="para_7b4cbdca-1cff-4e57-a7cf-599188cd008b" shape="rect"></a>Required if the DICOM Data Element represented is not zero length and an Item, PersonName, InlineBinary or BulkData XML element is not present. Shall not be used if the VR of the enclosing Attribute is either SQ or PN.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d0c47fec-5721-4111-b2ed-ca3034812620" shape="rect"></a>&gt;&gt;number</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_53b65dc8-ea20-441b-b509-7123660701af" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_0c5061a4-4588-492e-9a72-f9990a1833cb" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5b04873d-7191-441b-addd-4c045ca74172" shape="rect"></a>The order in which the Value occurs within the DICOM Value Field, as a number monotonically increasing starting from 1 by 1.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_1daed623-acf6-4392-acf7-4c423d8310a5" shape="rect"></a>The Number XML Attribute is used to preserve the original order.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_f152303f-05ed-4a56-8e2f-31c33ba0d684" shape="rect"></a>&gt;&gt;
+        <span class="italic">plain character data</span>
+                                 </p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2a971c47-c087-456b-8835-a8e1366b7771" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9f1ab8f6-c247-443b-a832-c6b93fd65f95" shape="rect"></a>1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_70229b9e-09a7-440e-8a8f-c60ec9d7122b" shape="rect"></a>A single DICOM value encoded as plain character data.</p>
+                                 <p>
+                                    <a id="para_84418073-c8ec-46d7-bc5e-6ba64764754b" shape="rect"></a>E.g., a DICOM Decimal String Value Field that contained two delimiter-separated values, e.g., "0.5\0.4" would be encoded as two Infoset Value elements:&lt;Value number="1"&gt;0.5&lt;/Value&gt;&lt;Value number="2"&gt;0.4&lt;/Value&gt;A Code String Value Field that containing three delimiter-separated values, the second of which was zero length, "MPG\\XR3", would be encoded as:&lt;Value number="1"&gt;MPG&lt;/Value&gt;&lt;Value number="2"&gt;&lt;/Value&gt;&lt;Value number="3"&gt;XR3&lt;/Value&gt;Contrast the latter example with a zero length Value Field, in which case there would be no Infoset Value elements at all.</p>
+                                 <p>
+                                    <a id="para_e44ff8c0-0481-4c28-92e6-c7562b32b917" shape="rect"></a>For DICOM Data Elements whose VR is AT, each value shall be encoded as the four-digit zero-padded hexadecimal values of the Group and Element Numbers of the Data Element Tag, concatenated as a single string without a delimiter and with lowercase letters disallowed.</p>
+                                 <p>
+                                    <a id="para_be4572fa-ffda-4da0-964d-548e8c4c7e24" shape="rect"></a>The character encoding is that declared for the Infoset, regardless of any DICOM Specific Character Set, and any necessary translation from the DICOM Specific Character Set to the Infoset character encoding shall have been performed.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_ce3069d1-6ef0-4660-8308-8617ea1c8312" shape="rect"></a>This translation might not be completely lossless, particularly with Asian character sets.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4c3a5f29-6745-40cf-910b-19df43a143ba" shape="rect"></a>&gt;Item</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_73dc80dc-7254-48a1-b134-45458c859066" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_56237551-fa97-4388-95d8-b804682985df" shape="rect"></a>1-n</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_90a765bf-9f94-4434-9be7-259a46fc7d49" shape="rect"></a>A DICOM sequence item, in other words a nested DICOM Data Set.</p>
+                                 <p>
+                                    <a id="para_d9d7628d-ddb9-4dd7-9bab-a1161e3eb6ad" shape="rect"></a>Required if the DICOM Data Element represented is a Sequence (has a VR of "SQ") and is not zero length. Not allowed otherwise.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_208ad5ab-98a1-4015-b51d-1a557d7a06f7" shape="rect"></a>&gt;&gt;number</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_00f732a4-0c57-41b2-870b-1f38d5a41a9f" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_19771f8c-cd32-422b-9e11-4c7cf3829da0" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7ccd73b7-456f-4cab-8d72-7afff9ddd260" shape="rect"></a>The order in which the Item occurs within a Sequence of Items, as a number monotonically increasing from 1 by 1.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_a962c5ad-21de-4b0a-86d2-706f3715a590" shape="rect"></a>The Number XML Attribute is used to preserve the original order.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ea089a22-8a7d-4f90-b732-ff518c772fd7" shape="rect"></a>&gt;&gt;<span class="italic">Include <a class="xref" href="chapter_A.html#table_A.1.5-2" title="Table A.1.5-2. DICOM Data Set Macro" shape="rect">Table A.1.5-2 “DICOM Data Set Macro”</a>
+                                    </span>
+                                 </p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_bc88a569-56dd-45e4-b78a-630e9023f58e" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_fb0cddbb-8877-4daf-92f0-b5551ddbffb8" shape="rect"></a>1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2c4fcbe1-c0da-41e2-8130-b499a2cd539e" shape="rect"></a>Recursively includes the Data Set corresponding to a Sequence Item.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7c8c6335-99d7-4af0-b7ee-38979e69fae9" shape="rect"></a>&gt;PersonName</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_10dfb2fc-5f0c-4088-bbdd-74e5b9a6e323" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_86edf921-dc67-4bd7-87ee-e9e5a09f1516" shape="rect"></a>1-n</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_43d0a229-c2f1-4618-9142-d4abde5d565e" shape="rect"></a>A parsed representation in XML of a DICOM Data Element containing a name (i.e., whose VR is PN).</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_26e44780-fc8c-4fd7-9a88-ee12987c6f29" shape="rect"></a>Parsing Attributes with a VR of PN into an XML representation of the name groups and components simplifies the creation of XPath statements to pull only portions of names out of the DICOM data.</p>
+                                 </div>
+                                 <p>
+                                    <a id="para_dbdd4364-0e00-42a8-bb9e-1978b75265b7" shape="rect"></a>Required if the DICOM Data Element represented has a VR of PN and is not zero length. Not allowed otherwise.</p>
+                                 <p>
+                                    <a id="para_ea3c14e8-8353-4bf3-a789-73a968953934" shape="rect"></a>The rules defined in DICOM <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> on the usage of the Alphabetic, Ideographic, and Phonetic groups of name components within a DICOM Attribute with a Value Representation of PN apply.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_252ae967-c4c2-4774-9b81-3f0011808c6b" shape="rect"></a>&gt;&gt;number</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d7581ba6-c796-4e15-bd9d-a3917e259914" shape="rect"></a>R</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_851038b7-3140-4852-83c6-9bf983bef559" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_38bb23d2-f641-4493-b525-3bb44bb6ff95" shape="rect"></a>The order in which the PersonName occurs within the DICOM Value Field, as a number monotonically increasing from 1 by 1.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_6faaf8f3-682b-4004-8c00-93a1d2f0e173" shape="rect"></a>The Number XML Attribute is used to preserve the original order.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_52d4fc38-5744-4b30-8c70-95715dc04b70" shape="rect"></a>&gt;&gt;Alphabetic</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7b0a6348-5b4b-4cd5-97b1-01d6fe09eda3" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9d3f93dd-501f-4825-bf87-91a08815a6ba" shape="rect"></a>0-1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_28e5e3fb-c248-49a8-a9b0-00161f7be6d0" shape="rect"></a>A group of name components that are represented in alphabetical characters (see the definition for the Value Representation of PN in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                 <p>
+                                    <a id="para_fb115909-6f64-47d4-996c-9c7415c0eb01" shape="rect"></a>&gt;&gt;&gt;<span class="italic">Include <a class="xref" href="sect_10.2.html#table_10.2-1" title="Table 10.2-1. Person Name Components Macro" shape="rect">Table 10.2-1 “Person Name Components Macro”</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_0291f831-ff68-4b7f-9e51-265efbfad099" shape="rect"></a>&gt;&gt;Ideographic</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4836150c-50ae-4571-ad0f-f70c3b20c811" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d293ac61-76dd-47ef-b990-66206fa3caed" shape="rect"></a>0-1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ba2b40c4-da4c-4e89-94b9-d39c798081ce" shape="rect"></a>A group of name components that are represented in ideographic characters (see the definition for the Value Representation of PN in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                 <p>
+                                    <a id="para_3a0ce899-5ad5-4195-9ec0-0c81f5f92036" shape="rect"></a>&gt;&gt;&gt;<span class="italic">Include <a class="xref" href="sect_10.2.html#table_10.2-1" title="Table 10.2-1. Person Name Components Macro" shape="rect">Table 10.2-1 “Person Name Components Macro”</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9d32b6c6-75a7-4b48-a57b-b09eec3f2960" shape="rect"></a>&gt;&gt;Phonetic</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9434c4f3-988c-4c55-80ef-9d634f25b66a" shape="rect"></a>O</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_fa419d3a-7b90-43aa-af4f-95048c0af287" shape="rect"></a>0-1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_27c40df2-b56e-480d-8be7-fa9daffb928a" shape="rect"></a>A group of name components that are represented in phonetic characters (see the definition for the Value Representation of PN in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                 <p>
+                                    <a id="para_27d09c17-08da-4601-8c02-029d8a45872e" shape="rect"></a>&gt;&gt;&gt;<span class="italic">Include <a class="xref" href="sect_10.2.html#table_10.2-1" title="Table 10.2-1. Person Name Components Macro" shape="rect">Table 10.2-1 “Person Name Components Macro”</a>
+                                    </span>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2b996d78-0885-405e-a398-275654546c4b" shape="rect"></a>&gt;BulkData</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d839bf89-c633-4c62-8159-6df6dcdfcd7e" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_916744f4-562d-45bf-bc50-b5d2aba9934b" shape="rect"></a>1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_e28f29d3-876d-4219-823d-d63a61daa38e" shape="rect"></a>A reference to a blob of data that the recipient may retrieve through use of the GetData() method,
+                    a <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a> Studies Service Retrieve (WADO-RS) transaction or
+                    a <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a> Studies Service Store (STOW-RS) transaction.</p>
+                                 <p>
+                                    <a id="para_56897839-8f7d-4cbe-9959-e50ec10937cd" shape="rect"></a>Required if the DICOM Data Element represented is not zero length and an XML Infoset Value, Item, InlineBinary or PersonName element is not present.</p>
+                                 <p>
+                                    <a id="para_05efa8e6-e32a-4bc7-8c41-1e8eda28f39b" shape="rect"></a>The provider of the data may use a BulkData reference at its discretion to avoid encoding a large DICOM Value Field as text by value in the Infoset. For example, pixel data or look up tables.</p>
+                                 <p>
+                                    <a id="para_ac5ff352-569c-43cb-864c-882bd9deb93f" shape="rect"></a>There is a single BulkData Infoset element representing the entire Value Field, and not one per Value in the case where the Value Multiplicity is greater than one.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_214d1867-e438-4959-9d1c-1d5b8123d934" shape="rect"></a>E.g., a LUT with 4096 16 bit entries that may be encoded in DICOM with a Value Representation of OW, with a VL of 8192 and a VM of 1, or a US VR with a VL of 8192 and a VM of 4096 would both be represented as a single BulkData element.</p>
+                                 </div>
+                                 <p>
+                                    <a id="para_40e6cfd1-d1ab-428c-aa1d-759b3233246a" shape="rect"></a>All rules (e.g., byte ordering and swapping) in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> apply.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_368ed09e-9d16-43d8-acad-d6712577863f" shape="rect"></a>Implementers should pay particular attention to the <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> rules regarding the value representations of OD, OF, OL, OV and OW.</p>
+                                 </div>
+                                 <p>
+                                    <a id="para_63ec0186-3bf5-40db-80b1-b9418adccb87" shape="rect"></a>If the BulkData has a string or text Value Representation, the value(s) of the DICOM Specific Character Set Data Element, if present, might be necessary to determine its encoding.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3fa71763-244f-4749-9ba6-eb5e1a44bd37" shape="rect"></a>&gt;&gt;uuid</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4bfb580b-3e11-452f-a297-851827639e8a" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_52022b61-5a34-432a-b1ab-ef39d329ad1d" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_b5053adf-1bac-457f-b2ce-99adab598b5e" shape="rect"></a>An identifier of this bulk data reference formatted as a UUID using the hexadecimal representation defined in <a class="xref" href="chapter_2.html#biblio_ITU-T_X.667" title="Information technology - Procedures for the operation of object identifier registration authorities: Generation of universally unique identifiers and their use in object identifiers" shape="rect">[<abbr class="abbrev">ITU-T X.667</abbr>]</a>.</p>
+                                 <p>
+                                    <a id="para_a4156d0b-91c7-42c2-b493-8dc5a6374e4d" shape="rect"></a>Required if BulkData URI is not present. Shall not be present otherwise.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_fd94e2a5-822b-461a-b434-ddaf24a0fad4" shape="rect"></a>&gt;&gt;uri</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_1f264c7f-d4a0-46c5-b7cf-e3db1cdee514" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d2694148-f51a-4fa0-9ae3-b5f68c1414d5" shape="rect"></a>A</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5974c1a2-62cb-40dc-8b98-155919135c69" shape="rect"></a>The HTTP(S) URI for this bulk data reference.</p>
+                                 <p>
+                                    <a id="para_5b121441-d071-4191-8924-eed4a2bda48c" shape="rect"></a>Required if the NativeDicomModel was:</p>
+                                 <div class="itemizedlist">
+                                    <ul class="itemizedlist" style="list-style-type: disc; ">
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_2b854968-2dc5-4ee0-b53d-576843e1d67f" shape="rect"></a>returned in response to a <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a> Studies Service Retrieve (WADO-RS) Retrieve Metadata request</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <p>
+                                    <a id="para_d531a2f7-01e6-4b69-96b5-3cd81da55589" shape="rect"></a>Shall not be present otherwise.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_33499e05-95a8-41ef-bcb1-dd40828a0094" shape="rect"></a>&gt;InlineBinary</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_953d3787-25b8-4492-a8d6-754a636a6ca7" shape="rect"></a>C</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_6ab8dc55-455a-412c-9ee6-55d9f6b07fee" shape="rect"></a>1</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_c8261e23-154d-478b-942f-d5cf04ec6e80" shape="rect"></a>The Value Field of the enclosing Attribute encoded as base64.</p>
+                                 <p>
+                                    <a id="para_13d05e88-dca4-43da-8b95-6813cc019b00" shape="rect"></a>Required if the DICOM Data Element represented is:</p>
+                                 <div class="itemizedlist">
+                                    <ul class="itemizedlist" style="list-style-type: disc; ">
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_ae8c8397-ac01-44c6-ab86-c1331edbdf51" shape="rect"></a>not zero length</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_ea43ed8e-37de-4f23-bb03-143638a399e9" shape="rect"></a>the VR if the enclosing Attribute is OB, OD, OF, OL, OV, OW, or UN</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_b03235fb-fdb4-4ead-90ef-6e72088c8ccb" shape="rect"></a>an XML Infoset Value or BulkData XML element is not present</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <p>
+                                    <a id="para_0b53c5f8-fe34-45f9-84e7-5c444ddeb5c8" shape="rect"></a>Shall not be present otherwise.</p>
+                                 <p>
+                                    <a id="para_5bb461ea-68fb-4344-94d4-eca457036c25" shape="rect"></a>There is a single InlineBinary Infoset element representing the entire Value Field, and not one per Value in the case where the Value Multiplicity is greater than one.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_1e59701e-0115-4042-b6a4-f224edcaf619" shape="rect"></a>E.g., a LUT with 4096 16 bit entries that may be encoded in DICOM with a Value Representation of OW with a VL of 8192 and a VM of 1 would be represented as a single InlineBinary element.</p>
+                                 </div>
+                                 <p>
+                                    <a id="para_59619b0f-1a7f-49ec-9d00-3dd74f2c1b72" shape="rect"></a>All rules (e.g., byte ordering and swapping) in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> apply.</p>
+                                 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_50130faa-0218-41ff-86cb-3c9c9a4d8e7b" shape="rect"></a>Implementers should pay particular attention to the <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> rules regarding the value representations of OD, OF, OL, OV and OW.</p>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.6" shape="rect"></a>A.1.6 Schema</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_eea6840e-17f5-42f7-b623-3a780af825a5" shape="rect"></a>The Normative version of the Relax NG Compact Schema for the Native DICOM Model follows:</p>
+               <pre class="programlisting" xml:space="preserve">default namespace="http://dicom.nema.org/PS3.19/models/NativeDICOM"
+
+# This schema was created as an intermediary, a means of describing
+# native binary encoded DICOM objects as XML Infosets, thus allowing  
+# one to manipulate binary DICOM objects using familiar XML tools. 
+# As such, the schema is designed to facilitate a simple, mechanical,
+# bi-directional translation between binary encoded DICOM and XML-like 
+# constructs without constraints, and to simplify identifying portions 
+# of a DICOM object using XPath statements.
+#
+# Since this schema has minimal type checking, it is neither intended 
+# to be used for any operation that involves hand coding, nor to 
+# describe a definitive, fully validating encoding of DICOM concepts
+# into XML, as what one might use, for example, in a robust XML  
+# database system or in XML-based forms, though it may be used
+# as a means for translating binary DICOM Objects into such a form
+# (e.g., through an XSLT script).
+
+start = element NativeDicomModel { DicomDataSet }
+
+# A DICOM Data Set is as defined in PS3.5.  It does not appear 
+# as an XML Element, since it does not appear in the binary encoded 
+# DICOM objects.  It exists here merely as a documentation aid. 
+DicomDataSet = DicomAttribute*
+
+DicomAttribute = element DicomAttribute {
+  Tag, VR, Keyword?, PrivateCreator?, 
+  (BulkData | Value+ | Item+ | PersonName+ | InlineBinary)? 
+} 
+BulkData = element BulkData{ UUID | URI } 
+Value = element Value { Number, xsd:string }
+InlineBinary = element InlineBinary { xsd:base64Binary }
+Item = element Item { Number, DicomDataSet }
+PersonName = element PersonName {
+  Number,
+  element Alphabetic  { NameComponents }?,
+  element Ideographic { NameComponents }?,
+  element Phonetic    { NameComponents }?
+}
+
+NameComponents =
+  element FamilyName {xsd:string}?,
+  element GivenName  {xsd:string}?,
+  element MiddleName {xsd:string}?,
+  element NamePrefix {xsd:string}?,
+  element NameSuffix {xsd:string}?
+  
+# keyword is the attribute tag from PS3.6 
+# (derived from the DICOM Attribute's name)
+Keyword = attribute keyword { xsd:token }
+# canonical XML definition of Hex, with lowercase letters disallowed
+Tag = attribute tag { xsd:string{ minLength="8" maxLength="8" pattern="[0-9A-F]{8}" } } 
+VR = attribute vr { "AE" | "AS" | "AT"| "CS" | "DA" | "DS" | "DT" | "FL" | "FD" 
+                    | "IS" | "LO" | "LT" | "OB" | "OD" | "OF" | "OL" | "OV" | | "OW" | "PN" | "SH" | "SL" 
+                    | "SQ" | "SS" | "ST" | "SV" | "TM" | "UC" | "UI" | "UL" | "UN" | "UR" | "US" | "UT" | "UV" }
+PrivateCreator = attribute privateCreator{ xsd:string }
+UUID = attribute uuid { xsd:string }
+URI = attribute uri { xsd:anyURI }
+Number = attribute number { xsd:positiveInteger } 
+</pre>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_A.1.7" shape="rect"></a>A.1.7 Examples</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1b3b9e93-9780-4d2e-96e2-25d1bd2d7eef" shape="rect"></a>Here is an example XPath query to extract the code meaning of the first item in the View Code Sequence:</p>
+               <p>
+                  <a id="para_aeef2b56-f2d2-4b3f-a2b2-bc1dfa831dbf" shape="rect"></a>/NativeDicomModel/DicomAttribute[@keyword="ViewCodeSequence"]/Item[@number=1]/​DicomAttribute[@keyword="CodeMeaning"]/Value[@number=1]</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.2 Person Name Components </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.2 Abstract Multi-Dimensional Image Model</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024b - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

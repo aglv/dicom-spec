@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>B.3 Association Negotiation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_B.html" title="B Storage Service Class (Normative)" />
+      <link rel="prev" href="sect_B.2.3.html" title="B.2.3 Statuses" />
+      <link rel="next" href="sect_B.4.html" title="B.4 Conformance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">B.3 Association Negotiation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_B.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">B Storage Service Class (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_B.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_B.html" shape="rect">Storage Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Association Negotiation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_B.3" shape="rect"></a>B.3 Association Negotiation</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ff638d5b-d9fd-4475-ab08-ce885801b827" shape="rect"></a>SCUs and SCPs of Storage SOP Classes operate on SOP Instances specific to the SOP Class. They may use the SOP Class Extended Negotiation Sub-Item defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. This Sub-Item allows DICOM AEs to exchange application information specific to SOP Class specifications. This is achieved by defining the Service-class-application-information field.</p>
+         <p>
+            <a id="para_e764e49d-50e4-49f9-a52c-556457adaa51" shape="rect"></a>SCUs may use the SOP Class Common Extended Negotiation Sub-Item defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. This Sub-Item allows DICOM AEs to exchange information about the nature of the SOP Classes.</p>
+         <p>
+            <a id="para_ddd2cc89-3a94-4124-92e8-b548bde8fa11" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item and SOP Class Common Extended Negotiation Sub-Item negotiation is optional for storage based SOP Classes.</p>
+         <p>
+            <a id="para_d4b1562f-90e7-41e4-b031-2c5785d633e4" shape="rect"></a>The following negotiation rules apply to all DICOM SOP Classes and Specialized SOP Classes of the Storage Service Class.</p>
+         <p>
+            <a id="para_4f4c6b47-8355-41e1-be03-50afb813d19c" shape="rect"></a>The Association-requestor (Storage SCU role) in the A-ASSOCIATE request shall convey:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_257ca3b7-6598-41f1-af1d-0c09579b3f75" shape="rect"></a>one Abstract Syntax, in a Presentation Context, for each supported SOP Class of the Storage Service Class</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_71bd3ccd-1f7f-4a7e-a2ca-9482824c89ed" shape="rect"></a>optionally, one SOP Class Extended Negotiation Sub-Item, for each supported SOP Class of the Storage Service Class</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e26e22a6-1e56-4669-b753-bca067e1d54c" shape="rect"></a>optionally, one SOP Class Common Extended Negotiation Sub-Item, for each supported SOP Class of the Storage Service Class</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_b5f79803-2ef8-4b35-aaad-afe19cbf6c14" shape="rect"></a>The Association-acceptor (Storage SCP role) in the A-ASSOCIATE request shall accept:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_9005d823-8e6d-46f1-aa1a-5eda504b8202" shape="rect"></a>one Abstract Syntax, in a Presentation Context, for each supported SOP Class of the Storage Service Class</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_dc582325-e784-4d26-bf1c-2c847f808085" shape="rect"></a>optionally, one SOP Class Extended Negotiation Sub-Item, for each supported SOP Class of the Storage Service Class</p>
+               </li>
+            </ul>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_B.3.1" shape="rect"></a>B.3.1 Extended Negotiation</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_40b932fb-94ea-4279-b8f8-9374539880fa" shape="rect"></a>At the time of Association establishment implementations may exchange information about their respective capabilities, as described in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> and <a href="../part08/PS3.8.html" class="olink" shape="rect">PS3.8</a>. SCUs and SCPs may use the SOP Class Extended Negotiation Sub-Item Structure as described in <a href="../part07/sect_D.3.3.5.html" class="olink" shape="rect">Section D.3.3.5 in <span class="olinkdocname">PS3.7</span>
+               </a> to exchange information about the level of conformance and options supported. SCUs may use the SOP Class Common Extended Negotiation Sub-Item defined in <a href="../part07/sect_D.3.3.6.html" class="olink" shape="rect">Section D.3.3.6 in <span class="olinkdocname">PS3.7</span>
+               </a> to exchange information about the nature of the SOP Classes.</p>
+            <p>
+               <a id="para_41418307-c7d0-4ce9-8efb-14085ba10117" shape="rect"></a>Extended Negotiation is optional. In the event that either the SCU or the SCP does not support Extended Negotiation, the defaults shall apply.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_B.3.1.1" shape="rect"></a>B.3.1.1 Service-Class-Application-Information (A-ASSOCIATE-RQ)</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_11a25564-2515-43eb-ba3b-8f3a80bb3852" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item is made of a sequence of mandatory fields as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. <a class="xref" href="sect_B.3.html#table_B.3-1" title="Table B.3-1. Service-Class-Application-Information (A-ASSOCIATE-RQ)" shape="rect">Table B.3-1</a> shows the format of the Service-class-application-information field of the SOP Class Extended Negotiation Sub-Item for SOP Classes of the Storage Service Class in the A-ASSOCIATE-RQ.</p>
+               <div class="table">
+                  <a id="table_B.3-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table B.3-1. Service-Class-Application-Information (A-ASSOCIATE-RQ)</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c98ebbc0-c0f1-4710-8dd8-8949f5604308" shape="rect"></a>Item Bytes</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1ae6c15d-b6ff-4682-9892-212b3fb2de2c" shape="rect"></a>Field Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_742c411c-36c4-4032-8b1f-6d07907fa67b" shape="rect"></a>Description of Field</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a3abcc46-63cc-4d1e-8372-a6c1fa52d877" shape="rect"></a>1</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0bf11dc8-261b-4322-b177-2482b509a9d1" shape="rect"></a>Level of Storage Support</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_76197296-c044-42c0-9a9b-d6b2202f4eab" shape="rect"></a>This byte field defines the supported Storage Level of the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values:</p>
+                                    <p>
+                                    <a id="para_1a34ba89-2ef7-4dc8-bf99-3cd55ee313e3" shape="rect"></a>0 - Storage Level 0 SCP</p>
+                                    <p>
+                                    <a id="para_0b2955de-131a-441c-8d10-286a0cc98ae2" shape="rect"></a>1 - Storage Level 1 SCP</p>
+                                    <p>
+                                    <a id="para_f43ea9e3-e0e8-4eb3-b21a-d755e80424da" shape="rect"></a>2 - Storage Level 2 SCP</p>
+                                    <p>
+                                    <a id="para_d24ee65f-95c0-40b7-a626-b166fac30a87" shape="rect"></a>3 - N/A Association-requestor is SCU only</p>
+                                    <p>
+                                    <a id="para_47ea249b-8dd2-414b-a446-c08c7a8b56a0" shape="rect"></a>If Extended Negotiation is not supported, the default shall have a value of 3.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b83a3867-b814-469f-a18d-ff0a27914cb8" shape="rect"></a>2</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0e79a5be-b606-4c0d-afa3-76fcdfc13fca" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_48b9c1f4-0c55-48a3-bec6-3896e128a3ac" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_95b58f7d-e73e-4589-9812-9f972b86b70c" shape="rect"></a>3</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_18e42edb-b8a1-4786-916c-3283da77487b" shape="rect"></a>Level of Digital Signature Support</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b208d628-663a-454d-bb09-77023d313152" shape="rect"></a>A Storage Level 2 SCP may further define its behavior in this byte field.</p>
+                                    <p>
+                                    <a id="para_e3eb8c5f-5fb0-4ebc-a3fb-858a8e414104" shape="rect"></a>0 - The Signature Level is unspecified, the AE is an SCU only, or the AE is not a Storage Level 2 SCP</p>
+                                    <p>
+                                    <a id="para_9698083d-a82a-4b0d-974a-c6f8eb8813ab" shape="rect"></a>1 - Signature Level 1</p>
+                                    <p>
+                                    <a id="para_91cf6495-aedb-4fb6-aa22-0561adf3c4f7" shape="rect"></a>2 - Signature Level 2</p>
+                                    <p>
+                                    <a id="para_3b248d9c-90aa-454c-914a-8b315b31925d" shape="rect"></a>3 - Signature Level 3</p>
+                                    <p>
+                                    <a id="para_c760e54e-2be5-43b5-a8eb-5d3567696d01" shape="rect"></a>If Extended Negotiation is not supported, the default shall have a value of 0.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3e07c18c-5db0-409d-944f-224e14b0a194" shape="rect"></a>4</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f46184dc-b8da-41c9-9773-9b5d31a7b590" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_27cb9cd7-402d-463d-9c25-d2c2fff1be61" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_654248d1-99b0-45b3-b574-6307f3c2dab7" shape="rect"></a>5</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d17df1b9-47b9-4027-a608-ea8ae80b97ad" shape="rect"></a>Element Coercion</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a352422d-259d-4972-9e19-4d246a05d1fd" shape="rect"></a>This byte field defines whether the Association-requestor may coerce Data Elements. It shall be encoded as an unsigned binary integer and shall use one of the following values:</p>
+                                    <p>
+                                    <a id="para_d30270f7-8ce7-4c88-abba-790564ee3965" shape="rect"></a>0 - does not coerce any Data Element</p>
+                                    <p>
+                                    <a id="para_e0716b41-fe52-4f75-8159-ecdc90a5e247" shape="rect"></a>1 - may coerce Data Elements</p>
+                                    <p>
+                                    <a id="para_f6d05c60-6921-4bbe-bdaf-c9930fb8efc5" shape="rect"></a>2 - N/A - Association-requestor is SCU only</p>
+                                    <p>
+                                    <a id="para_887006f8-1685-4012-9f48-ae23c7efce77" shape="rect"></a>If Extended Negotiation is not supported, the default shall have a value of 2.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e069dc92-0403-4613-9532-1dd9d6f4426f" shape="rect"></a>6</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6d8d812f-2f11-45e2-a9ca-af7bc0da97db" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_70bdb0d9-cf8a-4493-9ff4-91f94c5e3b63" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_B.3.1.2" shape="rect"></a>B.3.1.2 Service-Class-Application-Information (A-ASSOCIATE-AC)</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_2148bbf6-817b-455a-ab0a-430a51a51585" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item is made of a sequence of mandatory fields as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. <a class="xref" href="sect_B.3.html#table_B.3-2" title="Table B.3-2. Service-Class-Application-Information (A-ASSOCIATE-AC)" shape="rect">Table B.3-2</a> shows the format of the Service-class-application-information field of the SOP Class Extended Negotiation Sub-Item for SOP Classes of the Storage Service Class in the A-ASSOCIATE-AC.</p>
+               <div class="table">
+                  <a id="table_B.3-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table B.3-2. Service-Class-Application-Information (A-ASSOCIATE-AC)</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_37e96ab5-fc2f-4b18-bd96-94263982cab1" shape="rect"></a>Item Bytes</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cde4c5d9-f4eb-461b-84f0-117b629131e0" shape="rect"></a>Field Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3605f914-ef1f-45ca-b7a1-729329ac79a3" shape="rect"></a>Description of Field</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_80458990-e986-436c-ab7b-e50660961353" shape="rect"></a>1</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_46ef6254-1dc7-46b6-9c66-ef100f7da883" shape="rect"></a>Level of Storage Support</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b179eab2-31c4-441b-b124-609c4978599e" shape="rect"></a>This byte field defines the supported Storage Level of the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values:</p>
+                                    <p>
+                                    <a id="para_89d0000a-6f83-475e-974f-1883de130d0b" shape="rect"></a>0 - Storage Level 0 SCP</p>
+                                    <p>
+                                    <a id="para_11716e43-0d15-4ce8-8814-a64ec1902e78" shape="rect"></a>1 - Storage Level 1 SCP</p>
+                                    <p>
+                                    <a id="para_c64a3e9a-0107-4c77-8f73-bf8dc9e14936" shape="rect"></a>2 - Storage Level 2 SCP</p>
+                                    <p>
+                                    <a id="para_abf2de8a-0aa0-43d1-97b4-7ce3f169f181" shape="rect"></a>3 - N/A - Association-acceptor is SCU only</p>
+                                    <p>
+                                    <a id="para_d974d6e6-2ca8-481a-9dfc-4893527ff0c7" shape="rect"></a>If Extended Negotiation is not supported, no assumptions shall be made by the Association-requestor about the capabilities of the Association-acceptor based upon this Extended Negotiation.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ad554467-2cd5-4e4b-846b-34d0091fc8e5" shape="rect"></a>2</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_bb7ee334-3a0b-43db-a395-62782a3faf9b" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_34e18a3d-0584-4c2a-be64-8046fdc1061d" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_bdb65f03-9aca-4240-b3de-35965f3457ff" shape="rect"></a>3</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9a9b1ad2-063c-441f-ab84-75bf101b2e6e" shape="rect"></a>Level of Digital Signature Support</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2037fd0b-7763-4c89-8001-b40dabe3930c" shape="rect"></a>A Level 2 SCP may further define its behavior in this byte field.</p>
+                                    <p>
+                                    <a id="para_6ddb1756-8317-4f99-b5b9-17c4db442450" shape="rect"></a>0 - The Signature Level is unspecified, the AE is an SCU only, or the AE is not a Storage Level 2 SCP</p>
+                                    <p>
+                                    <a id="para_038f125c-89c0-4510-aaa7-b95adeeeaca9" shape="rect"></a>1 - Signature Level 1</p>
+                                    <p>
+                                    <a id="para_172d88d6-27e2-4b8c-bb4a-38d139a95e91" shape="rect"></a>2 - Signature Level 2</p>
+                                    <p>
+                                    <a id="para_f34d6834-0923-40df-a00e-ac5c6f45ffa2" shape="rect"></a>3 - Signature Level 3</p>
+                                    <p>
+                                    <a id="para_ada2c8ba-f2cb-40ac-9b6f-f4389861985d" shape="rect"></a>If Extended Negotiation is not supported, no assumptions shall be made by the Association-requestor about the capabilities of the Association-acceptor based upon this Extended Negotiation.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_85706d02-f270-4c7b-8116-5981cf80669f" shape="rect"></a>4</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6fd39ab9-6e92-4b62-a88a-dcbae0bb58ad" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a0fdf81d-4b24-4383-abc0-e5e7f5e4656e" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9294118b-40c2-410f-91c9-77d40d7401b5" shape="rect"></a>5</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ce0a5bb4-8f04-4399-8418-9cdd185545fa" shape="rect"></a>Element Coercion</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2c38005f-5dfd-4f62-b2bb-58edfa0ada38" shape="rect"></a>This byte field defines whether the Association-acceptor may coerce Data Elements. It shall be encoded as an unsigned binary integer and shall use one of the following values:</p>
+                                    <p>
+                                    <a id="para_421ea33b-fe85-46fa-8454-0369ff79d2ab" shape="rect"></a>0 - does not coerce any Data Element</p>
+                                    <p>
+                                    <a id="para_11ed1f0a-d852-49e5-84b8-c10d7a68bffc" shape="rect"></a>1 - may coerce Data Elements</p>
+                                    <p>
+                                    <a id="para_dfb15df0-7500-4df3-a5da-dfcfd7a0c806" shape="rect"></a>2 - N/A - Association-acceptor is SCU only</p>
+                                    <p>
+                                    <a id="para_d8711e48-bb24-43de-88a7-acbab8cd1585" shape="rect"></a>If Extended Negotiation is not supported, no assumptions shall be made by the Association-requestor about the capabilities of the Association-acceptor based upon this Extended Negotiation.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1f342575-63c7-4c27-875e-3e2c976af931" shape="rect"></a>6</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4947d26a-b97b-450f-a047-803b6717234f" shape="rect"></a>Reserved</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b2a089ef-4dd2-44f3-a470-c75fed4b43e5" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_B.3.1.3" shape="rect"></a>B.3.1.3 Service Class UID (A-ASSOCIATE-RQ)</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_34ca3f99-9d87-4865-a6e8-761958ecfbe7" shape="rect"></a>SOP Class Common Extended Negotiation Sub-Item allows the SCU to convey the Service Class UID of each proposed SOP Class.</p>
+               <p>
+                  <a id="para_3c7254e2-0ca9-40fb-b639-8f2b16d801bc" shape="rect"></a>The Storage Service Class UID shall be "1.2.840.10008.4.2".</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_B.3.1.4" shape="rect"></a>B.3.1.4 Related General SOP Classes (A-ASSOCIATE-RQ)</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5858dd3a-a29e-409d-867f-0083e8c48a5e" shape="rect"></a>A limited set of Standard SOP Classes in the Storage Service Class are defined to have one or more Related General SOP Classes. The Related General SOP Classes may be conveyed using the SOP Class Relationship Extended Negotiation during association establishment as defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. <a class="xref" href="sect_B.3.html#table_B.3-3" title="Table B.3-3. Standard and Related General SOP Classes" shape="rect">Table B.3-3</a> identifies which Standard SOP Classes participate in this mechanism. If a Standard SOP Class is not listed in this table, Related General SOP Classes shall not be included in a Related Storage SOP Class Extended Negotiation Sub-Item.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_2ff83dad-0d1c-4ed6-840b-d6f7b6055b4f" shape="rect"></a>Implementation-defined Specialized SOP Classes (see <a href="../part02/PS3.2.html" class="olink" shape="rect">PS3.2</a>) of the Storage Service Class may convey a Related General SOP Class.</p>
+               </div>
+               <div class="table">
+                  <a id="table_B.3-3" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table B.3-3. Standard and Related General SOP Classes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_59429093-a687-4060-8803-91077ca066c5" shape="rect"></a>SOP Class Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_663c425c-f0b0-4eca-ab3e-2f57c62546bf" shape="rect"></a>Related General SOP Class Name</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_a7321889-8467-4754-bdf3-96cbe98c01b9" shape="rect"></a>12-lead ECG Waveform Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2a25d46a-afaa-42be-a314-5d715453fe9d" shape="rect"></a>General ECG Waveform Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_37e4a2d0-8035-43b6-9759-339e42a24fde" shape="rect"></a>General 32-bit ECG Waveform Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_46dac791-66df-49b2-a007-6ebaedcd4b84" shape="rect"></a>General ECG Waveform Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4bdb7a30-c2f6-479d-82d0-9e2910978409" shape="rect"></a>General 32-bit ECG Waveform Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d2e83921-bd45-4521-bad0-5bcd8b8cdf51" shape="rect"></a>Digital Mammography X-Ray Image Storage - For Presentation</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7db47d75-5ef1-46e5-b04d-7802f3e68f57" shape="rect"></a>Digital X-Ray Image Storage - For Presentation</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f05f8e9a-af36-49c1-88e5-ffa7d6d7eda1" shape="rect"></a>Digital Mammography X-Ray Image Storage - For Processing</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_eb7a49c8-ad96-4309-8968-6634aa541b7a" shape="rect"></a>Digital X-Ray Image Storage - For Processing</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_add27acb-5227-46ed-a81f-8050444b9468" shape="rect"></a>Digital Intra-Oral X-Ray Image Storage - For Presentation</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3ce89b36-54a4-49c8-ab30-fbbb86a60fe8" shape="rect"></a>Digital X-Ray Image Storage - For Presentation</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b1052042-7365-4d5a-9459-41d3ff3e189c" shape="rect"></a>Digital Intra-Oral X-Ray Image Storage - For Processing</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9f6609a7-8ed2-4e12-ae28-cf9886acc3f0" shape="rect"></a>Digital X-Ray Image Storage - For Processing</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_e07560e5-6702-4bb2-9d65-4010c2430e86" shape="rect"></a>Basic Text SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3d59b18b-e05c-44e3-b8ab-510c297b39be" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_61e74469-2550-403c-833c-ff6265cb4411" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9e568e88-6a76-4553-82a0-92a4887d838d" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a5478b30-4fd1-4b6e-ad31-1e07a928039e" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="3" colspan="1">
+                                    <p>
+                                    <a id="para_16ff914e-2dc8-48cf-9e43-474ac7609e7e" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e7034126-3f6e-4f40-aac3-f5a95cc2663d" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c97eb6bd-7f27-4361-b24a-a4a7c8f22d3e" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_fb495288-c7ea-4b2e-bef8-1c2a144636a8" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_44dc416b-d331-49d8-9a68-be24a29d10a7" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a4b05db3-f029-4eb5-8e61-40c9254d63b8" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1a579c00-a34b-4fb8-9c51-088e90941276" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cd07ed72-4d08-439f-addf-747394e031f0" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3c33bf10-b1c7-4872-8115-d8db415a689a" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_bcb2447a-5b3f-4e01-9b86-e8fd6e770f0e" shape="rect"></a>Procedure Log Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_888dbf33-144a-4664-895b-89edcc46f12e" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7a2f68b7-d6a8-428d-8df8-4b9504b5c779" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f5964b37-11ce-4220-b6e1-0a48d320364a" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_098133e1-8073-4398-ac79-f293b45def72" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_75f5d8b9-4da0-47c0-a63c-9e7eb8eeb953" shape="rect"></a>Simplified Adult Echo SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_098cb691-5eb4-4d2f-8f71-ddb801ab20d9" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a2dbb695-88ae-45cd-92d3-6bbc1646b059" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_23b76758-19d3-49b9-8e1b-d4637b791093" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_69dadf04-f8a0-4375-acd0-d0d7e6c6d187" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_501dfa8e-7542-4adc-82a0-e65bdbbf104d" shape="rect"></a>X-Ray Radiation Dose SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b95b8b72-7cae-478a-af88-98253f109fac" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b61084da-dc62-4d1d-a5ee-0a4c5183e7d6" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_dae05af2-92bf-46a0-a0f4-b84be7681ecf" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d2c8b33f-c52f-4723-8d49-f17f114d0b26" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_e79a0844-d65e-44b2-98a4-3048d627c8d3" shape="rect"></a>Radiopharmaceutical Radiation Dose SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b5b0cf31-81de-47a6-ab25-3e4b5778c334" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8044b4f5-9386-4e6c-865c-8267585cca4d" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1f55c7b8-fb38-4b20-83c8-fc9d29d94120" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_78d5a46f-534a-4765-9c2c-3b3a88cbbaab" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_9362b27e-56c5-4f11-80ea-83eb6db044c2" shape="rect"></a>Patient Radiation Dose SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d9c4185a-1292-4cdc-a866-6912836a824f" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1cbde88f-f5fd-4e23-b95b-8088dcb61bbf" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_504a4a36-993c-46a5-a7a6-4876125052c6" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d1ce024e-7a0a-4232-8d5b-76de86ecc63b" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_d78d08d6-12bb-4a0c-837f-4ab797d0a2e6" shape="rect"></a>Enhanced X-Ray Radiation Dose SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_77917c09-7e3b-4dcf-a6a4-c346d0e06cc7" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_710ee951-c8e9-40b9-9ef5-63daf8171c78" shape="rect"></a>Comprehensive SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c9eb2eb2-07bf-41e8-824a-b185c11df745" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4bca8e2d-292d-44c4-906b-19cc0a09bb8b" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                    <p>
+                                    <a id="para_da59d18a-e2a9-4f86-b899-9bed49f88d16" shape="rect"></a>Acquisition Context SR Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_81d1a09b-70b5-4890-a255-5eb9cfdc39b4" shape="rect"></a>Enhanced SR Storage (see note)</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e9e591a5-a3ea-4c55-9394-386abe1a0f2c" shape="rect"></a>Comprehensive SR Storage (see note)</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_23e7c3b5-3920-4ee2-89be-9fb25ae4bc87" shape="rect"></a>Comprehensive 3D SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b3c1f8a9-d457-4811-92d9-e832c3f1dd5f" shape="rect"></a>Extensible SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e6ae9b3d-9548-46fa-a1b2-c64c991efe68" shape="rect"></a>Spectacle Prescription Report Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0fb39aad-8107-472e-a14c-4394a09ae7a8" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a2ec2c29-0f1e-4757-aafc-6a7c69095b3a" shape="rect"></a>Macular Grid Thickness and Volume Report Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b434e9cb-4b2a-41c1-bb55-b9d9e5607c56" shape="rect"></a>Enhanced SR Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0ab0c1c9-1ed5-4d89-a6f4-8acdb7b7c38c" shape="rect"></a>Enhanced CT Image Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_debbc4d4-f3f1-48c8-a062-e1cabf455859" shape="rect"></a>Legacy Converted Enhanced CT Image Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_77f96ad1-9bc3-4940-8596-864e77bf1eb0" shape="rect"></a>Enhanced MR Image Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_188f2a64-ea18-4773-aa84-2f7c18c2294f" shape="rect"></a>Legacy Converted Enhanced MR Image Storage</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_48d01203-b1b9-4e0e-99a8-d4ebda1bf845" shape="rect"></a>Enhanced PET Image Storage</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_85636479-269a-4f29-9c23-c3af9ce66dbc" shape="rect"></a>Legacy Converted Enhanced PET Image Storage</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_ed1025c0-0b2c-4a27-8cee-07c393879879" shape="rect"></a>The Acquisition Context SR may be encoded as Enhanced or Comprehensive SR only if it does not contain stereotactic coordinates (SCOORD3D).</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_B.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_B.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_B.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">B.2.3 Statuses </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> B.4 Conformance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.36.11 RT Dose Contribution Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.36.html" title="C.36 RT Second Generation Modules" />
+      <link rel="prev" href="sect_C.36.10.html" title="C.36.10 RT Radiation Set Module" />
+      <link rel="next" href="sect_C.36.12.html" title="C.36.12 RT Delivery Device Common Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.36.11 RT Dose Contribution Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.36.11.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.36.10.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.36 RT Second Generation Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.36.12.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.36.html" shape="rect">RT Second Generation Modules</a>
+         </span> &gt; <span class="breadcrumb-node">RT Dose Contribution Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.36.11" shape="rect"></a>C.36.11 RT Dose Contribution Module</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_788fcb87-5949-4b98-86ad-5855bc43d12e" shape="rect"></a>
+                    <a class="xref" href="sect_C.36.11.html#table_C.36.11-1" title="Table C.36.11-1. RT Dose Contribution Module Attributes" shape="rect">Table C.36.11-1</a> specifies the Attributes of the <a class="xref" href="sect_C.36.11.html" title="C.36.11 RT Dose Contribution Module" shape="rect">RT Dose Contribution Module</a>, which contain information about the contribution of dose of the RT Radiations referenced by this RT Radiation Set IOD. Dose contributions refer to the RT Radiations delivering the dose and to anatomical structures receiving the dose.</p>
+         <p>
+            <a id="para_18e5c297-b938-4b6c-9947-548fb7541547" shape="rect"></a>Note that an anatomical structure (as defined by the <a class="xref" href="sect_10.33.html" title="10.33 Conceptual Volume Macro" shape="rect">Conceptual Volume Macro</a>) can either be a textually tagged definition, or a reference to a Conceptual Volume defined in the RT Segment Annotation IOD. In all cases, Conceptual Volumes are identified by a UID which allows accumulation of dose to a given Conceptual Volume across RT Radiation Sets and comparison with prescribed Dosimetric Objectives.</p>
+         <p>
+            <a id="para_9d483032-ce42-4e17-b9d7-48e72d7ea25f" shape="rect"></a>Dose contributions are defined using Meterset values. The definition points in the Meterset to Dose Mapping Sequence may or may not align with the Meterset values at the Control Points of the RT Radiation SOP Instance. For example, where a dose deposition between Control Points cannot be determined individually per segment or where this definition is not useful, the lookup table may just contain the Meterset of first and last Control Points. The Meterset and dose contribution of the first Control Point are always zero. For further details see <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.1" title="C.36.11.1.1 Meterset to Dose Mapping Sequence" shape="rect">Section C.36.11.1.1</a>.</p>
+         <div class="table">
+            <a id="table_C.36.11-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.36.11-1. RT Dose Contribution Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_13c26ab8-8cfb-47cb-ade9-68511c457e5a" shape="rect"></a>Attribute Name</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_40e85170-31b6-45de-abd3-ff7f9f53d279" shape="rect"></a>Tag</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_11e67a6a-384a-4ece-a988-b3ddbb56a77d" shape="rect"></a>Type</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3eb84d37-77f9-4579-8378-9978ad9cc823" shape="rect"></a>Attribute Description</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2b5e0f19-3db4-45e1-a870-945ffda3f1ef" shape="rect"></a>Radiation Dose Identification Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d07322e6-fb2a-4c4e-929a-dc11884d9bad" shape="rect"></a>(300A,0618)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_633a9c36-9790-4bba-9699-b8e7d20501ce" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ac5e8dc4-db1b-4e4d-8d8d-61dde3798b16" shape="rect"></a>Identifies the dose values that are delivered by this RT Radiation Set SOP Instance.</p>
+                                <p>
+                              <a id="para_e4e45a22-655b-4afa-8e66-f0be739495b3" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c5a6dc1e-7350-4cb7-9a83-af33b1fd34c6" shape="rect"></a>&gt;Radiation Dose Identification Index</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aeca9ac0-e091-4575-96f6-28dfd3d34272" shape="rect"></a>(300A,0603)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_21da9b7c-798b-4c68-82c3-9bba9324f6b2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_02c0b5f5-79a6-413d-a124-84d3ad394826" shape="rect"></a>Index of this Item in this Sequence.</p>
+                                <p>
+                              <a id="para_26cb4382-25f0-4309-8e6d-357824c6b990" shape="rect"></a>The value shall start at 1 and increase monotonically by 1.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_64eaec40-9b1c-4a9a-98ff-8f3952f61200" shape="rect"></a>&gt;Radiation Dose Identification Label</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e313abe0-ccaf-4972-afb3-9b6a5776daca" shape="rect"></a>(300A,0619)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b682ecde-966c-4aa3-9a24-45dc4c10c4f1" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2d83f98e-1760-4fc1-83fc-fa3ba38f4a05" shape="rect"></a>Label of this Radiation Dose for the user.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_561bf999-48c8-44b2-9049-81babe583570" shape="rect"></a>&gt;Reference Dose Type</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9f287eec-7881-4ee9-9f77-7b28cdfbe221" shape="rect"></a>(300A,061A)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0ab68956-f9c8-44f5-a5ef-759dd972461c" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f9637aec-ed67-40e6-8b89-b99b5f9bfa6b" shape="rect"></a>Type of reference dose.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">PER_RADIATION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_38e6e611-5675-4580-839e-a9d52c34429e" shape="rect"></a>Dose values are calculated individually for each referenced RT Radiation SOP Instance.</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NOMINAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6f40501e-942a-4916-a9f3-37254b07cb4b" shape="rect"></a>Dose values are calculated on the Fraction level and assigned to individual RT Radiation SOP Instances without Instance-specific calculations.</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f47c0668-8515-4cb0-a778-e5f5f7a84fe7" shape="rect"></a>&gt;Reference Dose Point Coordinates</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8998cade-0eab-4852-8986-84b0f41f5283" shape="rect"></a>(300A,061E)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_492ab506-6156-4542-9a94-7bc6887feaa1" shape="rect"></a>1C</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ee4890a9-b42b-4d1a-aa0f-2bf9c4de5064" shape="rect"></a>The x, y, and z coordinates, in mm of the reference dose point in the DICOM Patient Coordinate System at which the dose values are calculated.</p>
+                                <p>
+                              <a id="para_4165610c-75da-4f10-a24e-195151ffae4e" shape="rect"></a>Required if dose is calculated at a point.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4b4d878e-43c6-43d7-af6d-f9e98c6eb858" shape="rect"></a>&gt;Conceptual Volume Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b42cac10-37ee-452c-a2f5-20c4faab2160" shape="rect"></a>(3010,0025)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_58faf437-bb22-4d66-805f-a481e82941c5" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ee76062a-529a-4f52-a738-b06c746f0464" shape="rect"></a>Reference to a Conceptual Volume that receives dose.</p>
+                                <p>
+                              <a id="para_c42ed80d-0f91-48f3-9a36-e9521882ce7e" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.2" title="C.36.11.1.2 Conceptual Volume Sequence" shape="rect">Section C.36.11.1.2</a>.</p>
+                                <p>
+                              <a id="para_02c0e887-0cc9-4411-944b-c6dd61a26ce6" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                <p>
+                              <a id="para_45a8533c-3e92-4967-9a47-951d792f4027" shape="rect"></a>Each Conceptual Volume UID (3010,0006) shall appear only once in the Radiation Dose Identification Sequence (300A,0618).</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                <p>
+                              <a id="para_7f84f407-355a-49f3-81ad-6c0cd40c0921" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.34.html#table_10.34-1" title="Table 10.34-1. Conceptual Volume Segmentation Reference And Combination Macro Attributes" shape="rect">Table 10.34-1 “Conceptual Volume Segmentation Reference And Combination Macro Attributes”</a>.</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_08c2b8d2-517b-454b-8aca-12ad2bf2cc0d" shape="rect"></a>Radiation Dose Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_54c9c8dc-4685-49c0-868a-4552fc850946" shape="rect"></a>(300A,0617)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ead54bd0-c1f2-49e4-95c0-1851c626eca9" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2f6016ca-6e15-4abc-9c8d-ac49af4ba014" shape="rect"></a>Parameters that describe dose contributed by referenced RT Radiation SOP Instances.</p>
+                                <p>
+                              <a id="para_e77b144e-d3ac-4d0b-a2c6-0951fa55e02a" shape="rect"></a>For every SOP Instance referenced in RT Radiation Sequence (300A,0616) exactly one item shall be present in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a3cd5d18-5e14-43cf-abca-fa77babd847a" shape="rect"></a>&gt;Referenced RT Radiation Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_30bc87c6-4dc4-47fe-a2cd-02e72b8ec46c" shape="rect"></a>(300A,0630)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_633ea67f-4739-4623-bcc9-3c735192ec91" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f15f0a25-c813-43d1-8957-af2a35e838eb" shape="rect"></a>References the RT Radiation SOP Instance that describes parameters for dose delivery.</p>
+                                <p>
+                              <a id="para_e0dbefe0-9fe0-4779-9fb5-b73992adf47a" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                <p>
+                              <a id="para_da61ae98-7a43-487a-94a2-f714546cadaa" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>.</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f0bc8f70-03d6-44d8-ad69-c3ef2cd3feb6" shape="rect"></a>&gt;Radiation Dose Values Parameters Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_484994d9-5f48-4b04-84de-4873d0fd4ae1" shape="rect"></a>(300A,061F)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_456894df-f740-42b1-a8df-1a4d149170af" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_62138314-8c03-4f10-b79d-1cf92186331f" shape="rect"></a>Dose values of this RT Radiation with respect to the dose identification items defined in the Radiation Dose Identification Sequence (300A,0618).</p>
+                                <p>
+                              <a id="para_b9c70e69-2ba8-4e78-a7e7-b457e4540dcf" shape="rect"></a>The number of Items included in this Sequence shall be the same as the number of Items in the Radiation Dose Identification Sequence (300A,0618).</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_022f7c82-ebe3-4237-adb0-c7273a2df1df" shape="rect"></a>&gt;&gt;Primary Dose Value Indicator</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ece4dcd2-a8a5-425a-bcea-57ebb5ee2bae" shape="rect"></a>(300A,061B)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d2ab5a02-c17b-4f60-a323-f40829356885" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8a83372d-8a47-4129-8407-e548e481d274" shape="rect"></a>Whether the dose value serves as the primary dose indicator for the RT Radiation SOP Instance.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_bf090ac7-d13b-4139-b5a4-c152e3cca20c" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a20d6c35-1ac7-40fa-bf49-e4cc9d50a98d" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                <p>
+                              <a id="para_52b4c7b1-ee7f-47f3-a487-4526e34f9f96" shape="rect"></a>Exactly one item in the Radiation Dose Values Parameters Sequence (300A,061F) shall have the value YES.</p>
+                                <p>
+                              <a id="para_3c980254-f2d9-4cd6-b2b2-047d327855f7" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.3" title="C.36.11.1.3 Primary Dose Value Indicator" shape="rect">Section C.36.11.1.3</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2841b2a3-0abc-4b21-89c3-64475b6e7c5f" shape="rect"></a>&gt;&gt;Referenced Radiation Dose Identification Index</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_15ab3f0a-b276-407c-92bc-f7f5b2c315eb" shape="rect"></a>(300A,060C)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8ed8be85-8a70-4708-83c1-818b8ebb9126" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_51fd8c9b-17cf-478b-8725-ca8da18d7f88" shape="rect"></a>The value of Radiation Dose Identification Index (300A,0603) in the Radiation Dose Identification Sequence (300A,0618) identifying the dose contribution to which this Item in the Radiation Dose Values Parameters Sequence (300A,061F) applies.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8bddcdf0-2176-4ddd-99ba-1d4180f48adf" shape="rect"></a>&gt;&gt;Dose Values Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8adef9f6-2838-477d-ad40-c7b9a7af7acc" shape="rect"></a>(300A,061C)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_58ef0cc1-f137-470b-84ed-875079f85d27" shape="rect"></a>1C</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4fccc7c5-8a0c-4b0f-9ffb-b20fe992ef2e" shape="rect"></a>Dose values.</p>
+                                <p>
+                              <a id="para_e0a7f4ee-8072-441a-a520-3fa5cc4dcef3" shape="rect"></a>Required if the Meterset to dose mapping is defined.</p>
+                                <p>
+                              <a id="para_2fef9779-b7c8-449c-b09d-408cf8922cb8" shape="rect"></a>One or more Items shall be present.</p>
+                                <p>
+                              <a id="para_6228fa4c-cf3f-4c2f-a8f4-a20959b33685" shape="rect"></a>Each Radiobiological Dose Effect Flag (3010,0002) value shall appear no more than once in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d16f97e4-3e0d-42be-abc0-d6c2e02d4fd9" shape="rect"></a>&gt;&gt;&gt;Dose Value Purpose</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_021954b0-df12-4e95-a397-947cef7dcd29" shape="rect"></a>(300A,061D)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7cf90328-cf15-4520-b92d-3eaf3ddc5546" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_41ed6a54-837e-45ea-8eee-6f23f7842707" shape="rect"></a>Purpose(s) for which dose values in this Sequence Item are provided.</p>
+                                <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">TRACKING</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_351455b3-7abe-42a8-9101-e5a69577ec3e" shape="rect"></a>The dose values are used for tracking.</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">QA</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_c59d00fc-0134-4a48-adb5-ad7d3477cf3f" shape="rect"></a>The dose values are used for quality assurance.</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                <p>
+                              <a id="para_591946b4-9add-4340-9ab4-17112e53a88d" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;&gt;Include <a class="xref" href="sect_C.36.2.html#table_C.36.2.1.5-1" title="Table C.36.2.1.5-1. Radiobiological Dose Effect Description Macro Attributes" shape="rect">Table C.36.2.1.5-1 “Radiobiological Dose Effect Description Macro Attributes”</a>.</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8404f1a5-17e7-4401-baa8-ba1f5ebb137d" shape="rect"></a>&gt;&gt;&gt;Meterset to Dose Mapping Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5f421426-3fb5-488c-8fc9-e7142abb4bc1" shape="rect"></a>(300A,0620)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c96e793-d3ca-48be-b32a-481eb10746c2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_83d53eb4-70a0-4023-8309-e1c2e3e70e53" shape="rect"></a>Mapping of Cumulative Meterset (300A,063C) to Radiation Dose Value (300A,0625).</p>
+                                <p>
+                              <a id="para_8a04e264-adaf-46a5-ad9f-2d97eba0d34a" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.1" title="C.36.11.1.1 Meterset to Dose Mapping Sequence" shape="rect">Section C.36.11.1.1</a>.</p>
+                                <p>
+                              <a id="para_ed5a0599-889c-44e0-8ce7-1bcf0e030378" shape="rect"></a>Two or more Items shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33db1318-9dc6-48c7-9407-f468edb133be" shape="rect"></a>&gt;&gt;&gt;&gt;Cumulative Meterset</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_75cd66fa-a4e7-4100-977e-54f4158893cb" shape="rect"></a>(300A,063C)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1c346ded-c825-4cb2-917d-7d7db0d3cc4e" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_70d53a4c-ec13-4cfe-ad9b-bc301c6a4e3c" shape="rect"></a>Cumulative Meterset where a dose value is delivered.</p>
+                                <p>
+                              <a id="para_3b2851d0-804c-41f7-8071-3c514c0315e9" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.1" title="C.36.11.1.1 Meterset to Dose Mapping Sequence" shape="rect">Section C.36.11.1.1</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f4cfb918-3e05-41b5-bace-1e8dffefe89a" shape="rect"></a>&gt;&gt;&gt;&gt;Radiation Dose Value</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7e5d39ed-15e0-4b8b-922d-cd0b7bc0e0b6" shape="rect"></a>(300A,0625)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dd52c204-4071-4f93-991c-5246c5a07ce7" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_59d2f9dc-ee01-4ae0-a8c4-011a6aa8b224" shape="rect"></a>Dose value (in Gy) delivered at the corresponding Cumulative Meterset (300A,063C).</p>
+                                <p>
+                              <a id="para_d9aeabdf-a541-447a-a927-4e69bc67f9f3" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.5" title="C.36.11.1.5 Radiation Dose Value" shape="rect">Section C.36.11.1.5</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1290421c-8268-413e-a53b-b994d32fc705" shape="rect"></a>&gt;Expected In-Vivo Measurement Values Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5ea0f841-e44a-477a-ba1e-7fc38338411d" shape="rect"></a>(300A,0621)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_35d1b1b0-160a-4bdf-bbe1-76f805023961" shape="rect"></a>1C</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_efd4af4b-8f96-44b2-ab23-a9f5eebf3706" shape="rect"></a>Expected values against which in-vivo measurements may be compared.</p>
+                                <p>
+                              <a id="para_f210eba2-5aa3-45c2-aba8-ce5b5d0bd0eb" shape="rect"></a>Required if expected values are calculated for in-vivo measurement for this RT Radiation SOP Instance.</p>
+                                <p>
+                              <a id="para_ea9d18ae-7eef-4406-a83b-5ada659330e5" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ee811f1a-64a7-477f-9602-add0868820ab" shape="rect"></a>&gt;&gt;Expected In-Vivo Measurement Value Index</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c90df58f-e466-4849-964f-8fdde6a8f43b" shape="rect"></a>(300A,0622)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2bf248dd-981a-4818-91bd-600b03a1baf9" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_60a00651-c9df-44cb-96e4-7be45a0412c8" shape="rect"></a>Index of this Item in this Sequence.</p>
+                                <p>
+                              <a id="para_785d9d38-b9b5-4050-b71d-6dbfc3adccfe" shape="rect"></a>The value shall start at 1 and increase monotonically by 1.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_25d9997b-30eb-4c97-bc11-eb5f46775a2c" shape="rect"></a>&gt;&gt;Radiation Dose In-Vivo Measurement Label</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6b9c73a6-7850-4e7a-9e9e-3a178b7abe54" shape="rect"></a>(300A,0623)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4cbc92e3-6d48-4414-ae6f-3d0e55a662d2" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_04874a5b-ad2a-4080-896b-8879e5d14539" shape="rect"></a>Label to identify the in-vivo measurement point.</p>
+                                <p>
+                              <a id="para_4c564203-2ae1-44f0-b272-8494dda2d20c" shape="rect"></a>See <a class="xref" href="sect_10.31.html#sect_10.31.1.1" title="10.31.1.1 Entity Label" shape="rect">Section 10.31.1.1</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_60763799-33ce-4f01-a60d-a9dc5482a4bd" shape="rect"></a>&gt;&gt;Radiation Dose Central Axis Displacement</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_626a2cfd-ce2f-41fa-8ab0-9ac8539ce357" shape="rect"></a>(300A,0624)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_336ec0ab-4d3b-41cf-8ef9-8491fbf84363" shape="rect"></a>1C</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_863cecf6-d0af-45cd-b091-08f39b20011b" shape="rect"></a>Displacement (x,y) in mm of the measurement point from the central axis along the x-axis and y-axis of the Beam Modifier Definition Plane.</p>
+                                <p>
+                              <a id="para_e6e835d5-c363-4061-8a2c-9330b6ed924e" shape="rect"></a>Required if a central beam axis is defined for the Treatment Delivery Device and the Radiation Dose Measurement Point Coordinates (300A,0627) is not present.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bc18be1a-10f4-4ffb-8e41-fac6173cc1ee" shape="rect"></a>&gt;&gt;Meterset to Dose Mapping Sequence</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_69c0eeef-d834-4099-8dd4-7e0524e3ba2f" shape="rect"></a>(300A,0620)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d9816c89-c72a-4e1c-aef1-8a336a85ec2c" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_89a1bbeb-14eb-42ab-a8bd-6156e3db1fdb" shape="rect"></a>Mapping of Cumulative Meterset (300A,063C) to Radiation Dose Value (300A,0625).</p>
+                                <p>
+                              <a id="para_b301713c-a097-4529-b163-f65c7dc1e621" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_39f89bcb-c013-4651-9c18-337ad38f6e3e" shape="rect"></a>&gt;&gt;&gt;Cumulative Meterset</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ec4bb792-1a9d-4a66-86a7-7a40b645eb00" shape="rect"></a>(300A,063C)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1fde62df-79ee-4618-a2c9-a2f1f94119fe" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cdfa8323-1c85-4625-a6d1-956883054b91" shape="rect"></a>Cumulative Meterset where a dose value is delivered.</p>
+                                <p>
+                              <a id="para_4116cd05-d86c-4315-a150-79a9af505a2a" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.1" title="C.36.11.1.1 Meterset to Dose Mapping Sequence" shape="rect">Section C.36.11.1.1</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ccb54c69-d087-4186-a572-352ca1964572" shape="rect"></a>&gt;&gt;&gt;Radiation Dose Value</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b2225605-b6a2-42f2-a10c-f705fb053292" shape="rect"></a>(300A,0625)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9057cb90-6d88-4681-888f-1cf1397e7c58" shape="rect"></a>1</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ba914b1f-e457-4bf1-a3e7-cbc4ec194f63" shape="rect"></a>Dose Value in Gy at the measurement point.</p>
+                                <p>
+                              <a id="para_dae7078d-6ff6-4ac5-b936-122d12dde775" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.5" title="C.36.11.1.5 Radiation Dose Value" shape="rect">Section C.36.11.1.5</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_11f000d5-f744-4ce6-bd9f-28377342747a" shape="rect"></a>&gt;&gt;Radiation Dose Source to Skin Distance</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f4e62486-9fac-429f-9750-b6c5ecfcaca0" shape="rect"></a>(300A,0626)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_64a87b25-72d3-45a5-a1a3-efb0cc1fb18e" shape="rect"></a>2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fad36bf3-f2ed-470a-b46b-c8488ad635d0" shape="rect"></a>Distance in mm from the nominal Radiation Source location to the patient skin along the central beam axis from the source to the measurement point.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_855d247a-553b-47f8-a2c3-01662081c4fc" shape="rect"></a>&gt;&gt;Radiation Dose Source to External Contour Distance</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c5366358-f438-4230-8247-1166670ce85e" shape="rect"></a>(300A,0628)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33fb3542-8545-4ff2-ac83-75593ba88a67" shape="rect"></a>2</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0d5104c8-6bc2-470a-a944-4e981e07af2a" shape="rect"></a>Distance in mm from the nominal Radiation Source location to the External Contour along the central beam axis from the source to the measurement point including devices associated with the patient anatomy model. For dosimetric purposes this value may differ from the Radiation Dose Source to Skin Distance(300A,0626).</p>
+                                <p>
+                              <a id="para_cb896e7d-51f9-43cc-aa58-12e00b71bbe7" shape="rect"></a>See <a class="xref" href="sect_C.36.11.html#sect_C.36.11.1.4" title="C.36.11.1.4 Radiation Dose Source to External Contour Distance" shape="rect">Section C.36.11.1.4</a>.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_20f2ea3c-af36-406d-b2ae-29ca4cb4d71d" shape="rect"></a>&gt;&gt;Radiation Dose Measurement Point Coordinates</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fd2ce8b7-115f-4795-a8f0-193f1667e527" shape="rect"></a>(300A,0627)</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_67e8a34a-d239-432d-b2d4-b4d28819ddc6" shape="rect"></a>1C</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9b83508b-4dff-43df-b982-e36c5eddeec9" shape="rect"></a>Coordinates (x,y,z) in mm in the DICOM Patient Coordinate System of the measurement point.</p>
+                                <p>
+                              <a id="para_91024799-e26c-4e09-a181-198a62660d36" shape="rect"></a>Required if Radiation Dose Central Axis Displacement (300A,0624) is not present.</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_C.36.11.1" shape="rect"></a>C.36.11.1 RT Dose Contribution Attribute Description</h4>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.36.11.1.1" shape="rect"></a>C.36.11.1.1 Meterset to Dose Mapping Sequence</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_e600bfd7-13cc-49c6-9522-6617570df3ac" shape="rect"></a>The Meterset to Dose Mapping Sequence (300A,0620) contains for each Meterset value the corresponding dose value.</p>
+               <p>
+                  <a id="para_24bbd4b3-ec91-418a-b278-b1aefbfd7af6" shape="rect"></a>In the first item, the value of Cumulative Meterset (300A,063C) and of Radiation Dose Value (300A,0625) shall be zero.</p>
+               <p>
+                  <a id="para_08188197-ff2f-4a9e-9791-29bdbe8e38c4" shape="rect"></a>In the last item, the value of Cumulative Meterset (300A,063C) shall be the Meterset of the final Control Point. The value of Radiation Dose Value (300A,0625) in the last item represents the dose delivered to the referenced anatomy when one fraction is completely delivered.</p>
+               <p>
+                  <a id="para_bd10a590-b9d6-4f8f-9f5f-72840f597c78" shape="rect"></a>Cumulative Meterset Values shall be strictly monotonically increasing. Radiation Dose Values shall be monotonically non-decreasing. The increase of dose between two adjacent points of the lookup table shall be interpreted as linear.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.36.11.1.2" shape="rect"></a>C.36.11.1.2 Conceptual Volume Sequence</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_237d27c6-3ce7-4fd8-a20e-677ab3b3a580" shape="rect"></a>The Conceptual Volume Sequence (3010,0025) identifies a Conceptual Volume that defines a volume for which dose is tracked during treatments.</p>
+               <p>
+                  <a id="para_3e40e4a4-b1de-4255-a0e0-9fcfa71e89b4" shape="rect"></a>If the Conceptual Volume is associated with a segment, the segment is defined by the Referenced Segment Reference Index (3010,0020) in the <a class="xref" href="sect_10.34.html" title="10.34 Conceptual Volume Segmentation Reference and Combination Macro" shape="rect">Section 10.34 Conceptual Volume Segmentation Reference and Combination Macro</a>.</p>
+               <p>
+                  <a id="para_faecf19c-45fe-4462-a9d7-6927309b1ce4" shape="rect"></a>Alternatively, the Conceptual Volume may not be associated with a segment. For example, dose tracking may specify a nominal dose to an anatomical region of interest and the tracking coefficients approximated by Meterset values.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.36.11.1.3" shape="rect"></a>C.36.11.1.3 Primary Dose Value Indicator</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5b14980c-f32b-49a7-a62b-32bb02802dfe" shape="rect"></a>The Primary Dose Value Indicator (300A,061B) is intended to indicate the representative dose value out of the list of dose values which is used for display purposes. Typically this value refers to the primary target while the other non-primary values may refer to e.g., organs at risk.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.36.11.1.4" shape="rect"></a>C.36.11.1.4 Radiation Dose Source to External Contour Distance</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5e7a8cff-3b51-4e81-817b-2837bbea0ac9" shape="rect"></a>The Radiation Dose Source to External Contour Distance (300A,0628) is the distance to the beam entry point, which may include Bolus, Patient Positioning Devices, Patient Immobilization Devices or other devices. This value is useful for including the attenuation effects of external devices on the dose calculation and for patient setup.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.36.11.1.5" shape="rect"></a>C.36.11.1.5 Radiation Dose Value</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4616ac61-fdc1-4eaa-9d7d-0d3fe28c1287" shape="rect"></a>The Radiation Dose Value (300A,0625) represents the cumulative dose delivered from the beginning of radiation delivery to the Cumulative Meterset (300A,063C).</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.36.10.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.36.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.36.12.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.36.10 RT Radiation Set Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.36.12 RT Delivery Device Common Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

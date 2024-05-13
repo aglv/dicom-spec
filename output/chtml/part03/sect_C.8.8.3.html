@@ -1,0 +1,1470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.3 RT Dose Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.html" title="C.8.8 Radiotherapy Modules" />
+      <link rel="prev" href="sect_C.8.8.2.8.html" title="C.8.8.2.8 Exposure Time and Meterset Exposure" />
+      <link rel="next" href="sect_C.8.8.3.2.html" title="C.8.8.3.2 Grid Frame Offset Vector" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.3 RT Dose Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.2.8.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8 Radiotherapy Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-node">RT Dose Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.8.3" shape="rect"></a>C.8.8.3 RT Dose Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_12a9016b-56f8-454e-bc5a-9560e3c981f4" shape="rect"></a>The <a class="xref" href="sect_C.8.8.3.html" title="C.8.8.3 RT Dose Module" shape="rect">RT Dose Module</a> is used to convey 2D or 3D radiation dose data generated from treatment planning systems or similar devices. The Attributes defined within the Module support dose for a single radiation beam (potentially comprised of multiple segments, as delivered in a dynamic treatment) or a group of beams comprising either a fraction group (see <a class="xref" href="sect_C.8.8.13.html" title="C.8.8.13 RT Fraction Scheme Module" shape="rect">Section C.8.8.13</a>) or a complete treatment plan (potentially the sum of multiple fraction groups).</p>
+         <p>
+            <a id="para_b268aa9f-4c52-4b74-a713-f559d63599ca" shape="rect"></a>The <a class="xref" href="sect_C.8.8.3.html" title="C.8.8.3 RT Dose Module" shape="rect">RT Dose Module</a> provides the mechanism to transmit a 3D array of dose data as a set of 2D dose planes that may or may not be related to CT or MR image planes. This mechanism works via the DICOM Multi-frame Module that is required if multi-frame pixel data are present.</p>
+         <div class="table">
+            <a id="table_C.8-39" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8-39. RT Dose Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_28f207cb-5a96-4628-b2f5-3d67ea8926c7" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b44be974-9987-4ae4-aebf-85f33f6d0226" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8e3395c7-108e-42ba-8ac3-d2c6cbd13b35" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_80d6ebf9-a263-44da-bae9-35b358c91835" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a50a6b2e-4e83-48b6-810f-835d7f34ae40" shape="rect"></a>Samples per Pixel</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bb37c992-2e3c-49cb-ae6d-75603b524a5f" shape="rect"></a>(0028,0002)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bc5b15f5-2942-494b-b67b-a2dfd2c6cca1" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_98e32159-6ecd-4a09-b690-dda78e64ce9c" shape="rect"></a>Number of samples (planes) in this image. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.1" title="C.8.8.3.4.1 Samples Per Pixel" shape="rect">Section C.8.8.3.4.1</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a57acf2a-f649-4f13-b11d-cb302dcd8fa9" shape="rect"></a>Photometric Interpretation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f2f9c5a6-1aa3-4d5a-b824-d358874b6c11" shape="rect"></a>(0028,0004)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_62672a2d-4a84-4fac-b320-40aeabcddc57" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d33e3003-ff17-4245-b088-f7d5a463143a" shape="rect"></a>Specifies the intended interpretation of the pixel data. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.2" title="C.8.8.3.4.2 Photometric Interpretation" shape="rect">Section C.8.8.3.4.2</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1c47e8b3-aa8f-4de7-bdcf-69e2f500b747" shape="rect"></a>Bits Allocated</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_244ce120-c0dd-4d46-b2e9-5c829a1bd3cb" shape="rect"></a>(0028,0100)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a185130-dc45-467f-b80e-c0465ac9208c" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_67fa8a3f-a5e6-4cc7-9ddd-d7b462a92cdd" shape="rect"></a>Number of bits allocated for each pixel sample. Each sample shall have the same number of bits allocated. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.3" title="C.8.8.3.4.3 Bits Allocated" shape="rect">Section C.8.8.3.4.3</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c8d64627-ccfa-413b-bbdd-34cdf0ff07df" shape="rect"></a>Bits Stored</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_781ab2fb-0c12-4b7e-8334-a5aa4e8fcc47" shape="rect"></a>(0028,0101)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_da792036-424f-4dd6-9b7b-f998fde4f227" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_876aa9ae-939a-4271-9478-a6c29d8eac58" shape="rect"></a>Number of bits stored for each pixel sample. Each sample shall have the same number of bits stored. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.4" title="C.8.8.3.4.4 Bits Stored" shape="rect">Section C.8.8.3.4.4</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7fda0e8f-102d-4af4-84a2-44bb65c37d84" shape="rect"></a>High Bit</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_06ba777b-838a-450c-8705-68c7b90a3265" shape="rect"></a>(0028,0102)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9b14f820-9ffd-41ff-bf07-74aeef622963" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8aea3d5b-2176-46d4-acbb-d5a080c97d8b" shape="rect"></a>Most significant bit for each pixel sample. Each sample shall have the same high bit. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.5" title="C.8.8.3.4.5 High Bit" shape="rect">Section C.8.8.3.4.5</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4353061f-1367-487b-a25d-a4844a4b16e0" shape="rect"></a>Pixel Representation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_95e07035-27e9-484b-8ae0-8c482335e3ac" shape="rect"></a>(0028,0103)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_36418c08-98d2-4689-9a9a-e6f9bfac8cfb" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ef9d2c2d-4fa1-4545-b8c0-1e1df1b9abf2" shape="rect"></a>Data representation of the pixel samples. Each sample shall have the same pixel representation. See <a class="xref" href="sect_C.8.8.3.4.html#sect_C.8.8.3.4.6" title="C.8.8.3.4.6 Pixel Representation" shape="rect">Section C.8.8.3.4.6</a> for specialization. Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e12e0721-bd6d-4a66-a45b-816ee2a8e9b4" shape="rect"></a>Content Date</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_34b6a53c-a2bf-4212-aa21-45a682348718" shape="rect"></a>(0008,0023)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e9aaaa2f-ce1d-45e8-a607-f76443d3c33e" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ea2bb276-d8be-4830-ab6c-c1773738ae2d" shape="rect"></a>The date the content of this Module was created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d828967f-c5b7-4903-b272-f39d1d425fae" shape="rect"></a>Content Time</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6334dde9-d47a-4d71-8293-4708309c29d4" shape="rect"></a>(0008,0033)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e98933c0-925d-4767-a278-02e74abc0505" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a03e34a5-0932-4e19-b390-e30dbda406ba" shape="rect"></a>The time the content of this Module was created.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a42e7bb0-1326-4a1a-b47c-5a2a169f7cb2" shape="rect"></a>Dose Units</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c0393e4c-120d-4b2a-849a-20d9a2e44634" shape="rect"></a>(3004,0002)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d353e341-67f0-4cc9-a900-63ba122efd7c" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a9aac62-d7df-4b35-8d96-8883dae06186" shape="rect"></a>Units used to describe dose.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">GY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_4f6dc42e-7543-4b0f-9b12-6bc287846ad5" shape="rect"></a>Gray</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RELATIVE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_33db96dc-96a2-4049-a90a-6e5fb8ea54ae" shape="rect"></a>dose relative to implicit reference value</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fcc4361d-4931-4dff-9ed1-0c02a3750a13" shape="rect"></a>Dose Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_75dd36e6-82b6-419d-95f5-4ada468c2c2a" shape="rect"></a>(3004,0004)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7f64c5cd-1791-4fdf-bf06-66f72c5e64c7" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_684fdf35-e648-4a1b-a52f-e94882cb688c" shape="rect"></a>Type of dose.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">PHYSICAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_492b14ca-e9ab-46d5-b0d5-c17fb5a8d97b" shape="rect"></a>physical dose</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">EFFECTIVE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_25a8d7d4-5d8e-48be-abcb-249a6f61b5fd" shape="rect"></a>physical dose after correction for biological effect using user-defined modeling technique</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ERROR</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_1981f4d0-e710-408f-94e2-2c12ec19a184" shape="rect"></a>difference between desired and planned dose</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b17a5454-9df0-451a-b936-c9fa3b0c55fe" shape="rect"></a>Spatial Transform of Dose</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_95a7a15f-1e8f-4b1d-bc1d-e0b5f45c54e7" shape="rect"></a>(3004,0005)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4dbf37ca-2aa5-4088-80a4-1db2581c6e09" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d44a34ce-4c47-4cbc-865c-628a06cd669c" shape="rect"></a>The use of transformation in the calculation of the combined dose.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">NONE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_f1bd07cd-7d52-4fb1-81df-12a3bc43bfb5" shape="rect"></a>No transformation. Calculated on the original image set</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RIGID</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_55b5009c-12fb-471a-94ce-ebbf6ad6fc63" shape="rect"></a>Only Rigid transform used (see definition in <a class="xref" href="sect_C.20.2.html#sect_C.20.2.1.2" title="C.20.2.1.2 Frame of Reference Transformation Matrix Type" shape="rect">Section C.20.2.1.2</a>)</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NON_RIGID</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_f5c906a8-7a9b-4786-9ba6-88fdeaf58a22" shape="rect"></a>Any other transform used</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bb1dfb88-85d6-4f06-a5ea-90f411382d21" shape="rect"></a>Referenced Spatial Registration Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_df5e54cc-53a3-4055-93fb-99dff1652321" shape="rect"></a>(0070,0404)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5bf561e1-9d3c-4821-b79f-add1a7373a69" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8f1d85fa-0c0b-4b87-ab07-9763ef08d1d8" shape="rect"></a>A reference to a Spatial Registration SOP Instance or a Deformable Spatial Registration SOP Instance, which defines the transformation used to transform the dose.</p>
+                                    <p>
+                              <a id="para_096d4d8b-68b0-4d8a-b208-ee9d07f3a17c" shape="rect"></a>Required, if Spatial Transform of Dose (3004,0005) is provided and has a value of RIGID or NON_RIGID.</p>
+                                    <p>
+                              <a id="para_fbfbb4c8-6bd9-47b4-a818-ec0c998aadfe" shape="rect"></a>Zero or more Items shall be included in this Sequence.</p>
+                                    <p>
+                              <a id="para_e767e9db-deaa-4429-9138-fccd61bf64aa" shape="rect"></a>See <a class="xref" href="sect_C.8.8.3.5.html" title="C.8.8.3.5 Referenced Spatial Registration Sequence" shape="rect">Section C.8.8.3.5</a>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_b9a31def-ee27-406e-b822-b34b149afd2c" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cd90385d-f570-493f-92e5-268ce0052f64" shape="rect"></a>Instance Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cf78fc96-f6e9-49b9-99c3-286464a8e462" shape="rect"></a>(0020,0013)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7385530e-3ab1-4b95-9782-d3c76b9cf4e6" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a1308171-887e-487d-9596-fae2d25d0b5c" shape="rect"></a>A number that identifies this object Instance.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e0a58f4a-bb85-4041-bc2e-e69a95caab7f" shape="rect"></a>Entity Long Label</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_624d08a4-9169-44ca-a625-19ea45b2203e" shape="rect"></a>(3010,0038)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d4dce8d7-e5ed-4c38-89e7-b0b3a89937e3" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_de717201-76b2-4657-a6f2-86b7afdb3b0a" shape="rect"></a>User-defined label for dose data.</p>
+                                    <p>
+                              <a id="para_b9971f04-7980-49ec-9566-be5ca40cacd0" shape="rect"></a>See <a class="xref" href="sect_10.32.html#sect_10.32.2.1" title="10.32.2.1 Entity Long Label" shape="rect">Section 10.32.2.1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eb6ff338-2d0e-489f-9ed8-e46d9df36c8b" shape="rect"></a>Dose Comment</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1e32caf5-126d-421d-b0f2-37e478cd4707" shape="rect"></a>(3004,0006)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ccccbece-485f-4385-a79e-b1aafca5b7c4" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_426b15a4-db8e-44a1-b094-38a4491611f0" shape="rect"></a>User-defined comments for dose data.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_130382ee-666b-4098-a87d-48607e662838" shape="rect"></a>Normalization Point</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eaf377e7-2a43-437f-918c-3e58442fc6bf" shape="rect"></a>(3004,0008)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_31592514-631f-4b24-82db-30f2b31c81de" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0ff71bc1-83ae-42ec-9e1b-621187c97735" shape="rect"></a>Coordinates (x, y, z) of normalization point in the patient-Based Coordinate System described in <a class="xref" href="sect_C.7.6.2.html#sect_C.7.6.2.1.1" title="C.7.6.2.1.1 Image Position and Image Orientation" shape="rect">Section C.7.6.2.1.1</a> (mm). See <a class="xref" href="sect_C.8.8.3.html#sect_C.8.8.3.1" title="C.8.8.3.1 Normalization Point" shape="rect">Section C.8.8.3.1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7aa2630b-6122-490b-809a-acf94d084301" shape="rect"></a>Dose Summation Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e6c2e9e5-29ea-43ae-a4d5-561ad441dc4d" shape="rect"></a>(3004,000A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f803e6e8-3131-4b8c-9bad-adb9895fad07" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f71a433b-33f1-4a62-8a5f-2c068d64b721" shape="rect"></a>Type of dose summation.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">PLAN</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_477e8f11-2462-4f3f-aa7a-71f7b498a49d" shape="rect"></a>dose calculated for entire delivery of all fraction groups of RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MULTI_PLAN</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d302faba-81f2-4036-beb4-871e5db61e12" shape="rect"></a>dose calculated for entire delivery of 2 or more RT Plans</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">PLAN_OVERVIEW</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7fa39c49-cd86-4f00-b8e1-fc354a361e44" shape="rect"></a>dose calculated with respect to plan overview parameters</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">FRACTION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5afb1be8-00a4-4c6e-af61-6c4fe2248be5" shape="rect"></a>dose calculated for entire delivery of a single Fraction Group within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BEAM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6025f722-ca41-4ffb-846f-66f7efb4f23a" shape="rect"></a>dose calculated for entire delivery of one or more Beams within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BRACHY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_62dd97ba-9302-4d56-aea7-31244f1bb6a7" shape="rect"></a>dose calculated for entire delivery of one or more Brachy Application Setups within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">FRACTION_SESSION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_91b5eeed-9cb8-485a-84f1-4e2a94531ae1" shape="rect"></a>dose calculated for a single session ("fraction") of a single Fraction Group within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BEAM_SESSION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_0f45ab52-67af-478e-bf52-79768e8d54cd" shape="rect"></a>dose calculated for a single session ("fraction") of one or more Beams within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">BRACHY_SESSION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_31f44afe-0615-48c0-949a-0b030af8544d" shape="rect"></a>dose calculated for a single session ("fraction") of one or more Brachy Application Setups within RT Plan</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CONTROL_POINT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_64239443-1374-42b6-a02a-aec143fcd562" shape="rect"></a>dose calculated for one or more Control Points within a Beam for a single fraction</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">RECORD</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_f82aaaa3-7b9c-40c9-a2ad-23cc53e25266" shape="rect"></a>dose calculated for RT Beams Treatment Record</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5186fe0a-7877-4861-855b-b28f02e9514c" shape="rect"></a>Referenced RT Plan Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_be357649-c350-417a-9055-f9d28ba86183" shape="rect"></a>(300C,0002)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_100074d4-5cfe-43f1-ba35-d2f79e13a196" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_712b4702-1117-486b-9925-4fbcb14f8c8a" shape="rect"></a>Sequence describing RT Plan associated with dose.</p>
+                                    <p>
+                              <a id="para_14c5cd07-286b-491d-b1b3-1c865d53b7dc" shape="rect"></a>Required if Dose Summation Type (3004,000A) is PLAN, MULTI_PLAN, FRACTION, BEAM, BRACHY, FRACTION_SESSION, BEAM_SESSION, BRACHY_SESSION or CONTROL_POINT.</p>
+                                    <p>
+                              <a id="para_20d516c3-62ed-467a-af81-c02361990e24" shape="rect"></a>May be present if Dose Summation Type (3004,000A) is PLAN_OVERVIEW.</p>
+                                    <p>
+                              <a id="para_40ea42f1-7099-4d0c-bb42-0e0c29e86336" shape="rect"></a>Only a single Item shall be included in this Sequence, unless Dose Summation Type (3004,000A) is MULTI_PLAN, in which case two or more Items shall be included in this Sequence. See Note <a class="xref" href="sect_C.8.8.3.html#note_C.8.8.3_1" shape="rect">1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_737b40a4-ffd3-44d1-b015-ab622395e863" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f3aa5a16-6e7a-49fc-a08d-5c7e3366b326" shape="rect"></a>&gt;Referenced Plan Overview Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d626a50a-70e2-4eb3-957e-50985ffe85eb" shape="rect"></a>(300C,0118)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_53b65c44-61ef-48b7-8dab-874cdcc6b24f" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_acbd35a0-b29e-4db3-a19b-663c3cbd3723" shape="rect"></a>The value of Plan Overview Index (300C,0117) from the Plan Overview Sequence (300C,0116) to which this RT Plan corresponds. Shall be unique, i.e., not be duplicated within another Item of this Referenced RT Plan Sequence (300C,0002).</p>
+                                    <p>
+                              <a id="para_fe56528f-d836-47eb-8df0-78ce86fe6cfe" shape="rect"></a>Required if Plan Overview Sequence (300C,0116) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_321b4bde-a116-4be8-a32d-4b6d4cf228c7" shape="rect"></a>&gt;Referenced Fraction Group Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4184f08e-dcb8-4e1b-b32b-57bcd722609f" shape="rect"></a>(300C,0020)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_065074d7-e043-4a47-a08f-c7dcc05a0778" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6bcd2ab9-a8ae-4238-b4fc-2aa45502fc86" shape="rect"></a>Sequence of one Fraction Group containing beams or brachy application setups contributing to dose.</p>
+                                    <p>
+                              <a id="para_a4c67fe8-12d0-44cd-9a64-213a13100f25" shape="rect"></a>Required if Dose Summation Type (3004,000A) is FRACTION, BEAM, BRACHY, FRACTION_SESSION, BEAM_SESSION, BRACHY_SESSION or CONTROL_POINT.</p>
+                                    <p>
+                              <a id="para_8096fd49-5571-45a9-8d7d-79cc21e17966" shape="rect"></a>Only a single Item shall be included in this Sequence. See Note <a class="xref" href="sect_C.8.8.3.html#note_C.8.8.3_1" shape="rect">1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f84b4161-7d7e-4b82-a574-8183a707e991" shape="rect"></a>&gt;&gt;Referenced Fraction Group Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ea93c762-5d3c-4981-821d-8c830f2ddabb" shape="rect"></a>(300C,0022)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_09975687-3196-4c04-8a71-5a0d86ea5ce5" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_622260e8-911c-4f0e-93b8-f16b6542ff80" shape="rect"></a>Uniquely identifies Fraction Group specified by Fraction Group Number (300A,0071) in Fraction Group Sequence of <a class="xref" href="sect_C.8.8.13.html" title="C.8.8.13 RT Fraction Scheme Module" shape="rect">RT Fraction Scheme Module</a> within RT Plan referenced in Referenced RT Plan Sequence (300C,0002).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ad2fc35f-ab17-49cb-b37c-75fb72e7fc8b" shape="rect"></a>&gt;&gt;Referenced Beam Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d1747eee-84e4-4325-8c3d-910f7d046c35" shape="rect"></a>(300C,0004)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_033c85f6-5c30-4b3a-8778-4496fb5b32ac" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f714c806-ed7c-4634-a6db-7809ce6a4915" shape="rect"></a>Sequence of Beams in current Fraction Group contributing to dose. Required if Dose Summation Type (3004,000A) is BEAM, BEAM_SESSION or CONTROL_POINT.</p>
+                                    <p>
+                              <a id="para_3c3456c1-2176-4248-b2a3-684d4b766b55" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_75a8a784-fc87-42d9-bfcc-5bb73facdd93" shape="rect"></a>&gt;&gt;&gt;Referenced Beam Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_58c36805-7d58-4946-b81d-98ed2d1fbab1" shape="rect"></a>(300C,0006)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ce54cc73-9292-436c-bb70-3adfc100ca41" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3dc5e337-0c8f-40a1-bb61-05b03fd2af86" shape="rect"></a>Uniquely identifies Beam specified by Beam Number (300A,00C0) in Beam Sequence (300A,00B0) of <a class="xref" href="sect_C.8.8.14.html" title="C.8.8.14 RT Beams Module" shape="rect">RT Beams Module</a> within RT Plan referenced in Referenced RT Plan Sequence (300C,0002) or in Ion Beam Sequence (300A,03A2) of <a class="xref" href="sect_C.8.8.25.html" title="C.8.8.25 RT Ion Beams Module" shape="rect">RT Ion Beams Module</a> within RT Ion Plan referenced in Referenced RT Plan Sequence (300C,0002).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_24d952f9-5d50-4fbc-8240-e027159db5f7" shape="rect"></a>&gt;&gt;&gt;Referenced Control Point Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_96069de8-d603-4f26-a553-78fd4a4c134c" shape="rect"></a>(300C,00F2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d8c208b8-eaed-492b-b323-45555ac950dd" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e8feee24-ae17-4fe2-883e-dc9085617c70" shape="rect"></a>Sequence defining the Control Points in current Beam contributing to dose.</p>
+                                    <p>
+                              <a id="para_e3f59140-a97d-458d-8d91-c9d1b4283d53" shape="rect"></a>Required if Dose Summation Type (3004,000A) is CONTROL_POINT.</p>
+                                    <p>
+                              <a id="para_3cad20bb-d57d-4dc1-8035-a9cbf8bec249" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d3681a5e-61d3-4cbd-bc82-798692ff223c" shape="rect"></a>&gt;&gt;&gt;&gt;Referenced Start Control Point Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_16b2b449-826a-447c-8762-393e3bfdb1d1" shape="rect"></a>(300C,00F4)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f5789c1a-dc6f-44b7-a37b-907b52339f3d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e2d19875-7072-4609-8bc3-76a823c73fa0" shape="rect"></a>Identifies Control Point specified by Control Point Index (300A,0112) within Beam referenced by Referenced Beam Number (300C,0006). This is the first of the two Control Points from which the Dose contribution to the Control Point can be calculated.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_68f02929-b339-4879-8c7a-4afde9b65b9a" shape="rect"></a>&gt;&gt;&gt;&gt;Referenced Stop Control Point Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_113e001b-8178-4146-9e5f-91bb1fb70841" shape="rect"></a>(300C,00F6)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_182859cf-1fb3-43ff-98f7-3567afb708f0" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f4e9c633-24a9-445b-b81f-46162b2f04c5" shape="rect"></a>Identifies Control Point specified by Control Point Index (300A,0112) within Beam referenced by Referenced Beam Number (300C,0006). This is the second of the two Control Points from which the Dose contribution to the Control Point can be calculated.</p>
+                                    <p>
+                              <a id="para_4956ba3d-db3f-44a9-be0b-18e16721ec28" shape="rect"></a>The Control Point Index (300A,0112) referenced by Referenced</p>
+                                    <p>
+                              <a id="para_700dee67-3c4f-4210-873e-e785024abe28" shape="rect"></a>Stop Control Point Index (300C,00F6) shall be the Control Point Index (300A,0112) immediately following the Control Point Index (300A,0112) referenced by Referenced Start Control Point Index (300C,00F4) within the Referenced Beam Number (300C,0006).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_af9ee3f0-86d4-42c0-9ee5-ae00c15cbeb9" shape="rect"></a>&gt;&gt;Referenced Brachy Application Setup Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_de20c54c-c9a9-4a69-9a02-27f8454ac4c1" shape="rect"></a>(300C,000A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5ca3bd64-8dd6-469b-a262-26ec2512138d" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5a5aa11d-106e-44ff-b7f6-934b191d6092" shape="rect"></a>Sequence of Brachy Application Setups in current Fraction Group contributing to dose. Required if Dose Summation Type (3004,000A) is BRACHY or BRACHY_SESSION. One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b23b8ef8-cb45-4d13-a56a-bc28eb18e7f2" shape="rect"></a>&gt;&gt;&gt;Referenced Brachy Application Setup Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_34804e51-e5d2-4df1-8ffc-71a05f237dc4" shape="rect"></a>(300C,000C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_94f34220-6bc0-4bf6-b60e-0109f6ecd0eb" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8b4468b8-fb4c-4986-b0ba-078ced1ce3c8" shape="rect"></a>Uniquely identifies Brachy Application Setup specified by Brachy Application Setup Number (300A,0234) in Brachy Application Setup Sequence (300A,0230) of <a class="xref" href="sect_C.8.8.15.html" title="C.8.8.15 RT Brachy Application Setups Module" shape="rect">RT Brachy Application Setups Module</a> within RT Plan referenced in Referenced RT Plan Sequence (300C,0002).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_179d1683-29e3-47d7-9818-dd3e6a9895e7" shape="rect"></a>Referenced Treatment Record Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1323c901-a729-4825-87b6-688ff4c9e4f0" shape="rect"></a>(3008,0030)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d8e95e90-ebea-42d0-aa83-cd852bff9cc9" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_876da2de-d494-44ec-adaf-c07e7c300073" shape="rect"></a>Sequence describing RT Beams Treatment Record associated with dose.</p>
+                                    <p>
+                              <a id="para_4775fa9f-95a2-4836-ac85-e74c5f7f1bce" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                    <p>
+                              <a id="para_d6c505be-8cf6-41b9-bf5d-a09cd3b65f3f" shape="rect"></a>Required if Dose Summation Type (3004,000A) is RECORD.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_951f9f5f-f3c9-4626-96f4-ba5623c0d6d7" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b7d7d51d-38fb-4d4d-85f6-ab2695f50d6d" shape="rect"></a>&gt;Referenced Beam Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_989de833-66ea-458b-afd4-ddd69f2eafac" shape="rect"></a>(300C,0004)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_796c8ea4-bf0d-4d16-92e7-7fce09afa28e" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_240bf9dc-4ca4-43ea-bdd9-7475a6272893" shape="rect"></a>Sequence of Beams contributing to dose.</p>
+                                    <p>
+                              <a id="para_fac78bdc-fad8-4066-8b82-816ab41d5b69" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                    <p>
+                              <a id="para_3b9f47a6-bade-47a3-a2fd-829b1032bbe7" shape="rect"></a>Required, if the dose does not apply to the complete RT Beams Treatment Record referenced in the Referenced Treatment Record Sequence (3008,0030).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3d956314-4783-4330-90a7-eb142e77991c" shape="rect"></a>&gt;&gt;Referenced Beam Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0b51ff05-dc2c-46c9-9073-2cf9c57bab01" shape="rect"></a>(300C,0006)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_26418961-8472-4590-b448-fba20e57e2c9" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b10f6b58-4e44-4f6e-bddc-ea33829cd7c9" shape="rect"></a>Uniquely identifies Beam specified by Referenced Beam Number (300C,0006) in Treatment Session Beam Sequence (3008,0020) of <a class="xref" href="sect_C.8.8.21.html" title="C.8.8.21 RT Beams Session Record Module" shape="rect">RT Beams Session Record Module</a> within RT Beams Treatment Record referenced in the Referenced Treatment Record Sequence (3008,0030) or in Treatment Session Ion Beam Sequence (3008,0021) of <a class="xref" href="sect_C.8.8.26.html" title="C.8.8.26 RT Ion Beams Session Record Module" shape="rect">RT Ion Beams Session Record Module</a> within RT Ion Beams Treatment Record referenced in the Referenced Treatment Record Sequence (3008,0030).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ead21733-5722-4af7-8112-5b9aed43c99e" shape="rect"></a>Grid Frame Offset Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fdea3b69-ea18-4019-a2f5-b4ae4da0f755" shape="rect"></a>(3004,000C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f342ca9c-c0f3-4c4e-8748-7984e740102d" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b220a467-57d2-4869-84bd-fa4a554f172d" shape="rect"></a>An array that contains the dose image plane offsets (in mm) of the dose image frames in a multi-frame dose. Required if multi-frame pixel data are present and Frame Increment Pointer (0028,0009) points to Grid Frame Offset Vector (3004,000C). See <a class="xref" href="sect_C.8.8.3.2.html" title="C.8.8.3.2 Grid Frame Offset Vector" shape="rect">Section C.8.8.3.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4f3db909-7de0-49b4-a225-de55ad74ba9a" shape="rect"></a>Dose Grid Scaling</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_939b32df-581c-4b9f-98f1-65f725731aa1" shape="rect"></a>(3004,000E)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_27963613-6efb-44f1-b9d4-fa41da75f807" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ebc3c6ed-b416-40ba-b1c6-af18fe57bf2b" shape="rect"></a>Scaling factor that when multiplied by the dose grid data found in Pixel Data (7FE0,0010) Attribute of the <a class="xref" href="sect_C.7.6.3.html" title="C.7.6.3 Image Pixel Module" shape="rect">Image Pixel Module</a>, yields grid doses in the dose units as specified by Dose Units (3004,0002).</p>
+                                    <p>
+                              <a id="para_e3ff49cf-618e-43b8-a3d5-188dbd97ca94" shape="rect"></a>Required if Pixel Data (7FE0,0010) is present.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_087ee94a-264e-4e08-be7f-86a30bcb8f7d" shape="rect"></a>Tissue Heterogeneity Correction</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a0ed8b58-fff5-4e00-abee-4467c42a3448" shape="rect"></a>(3004,0014)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_765e972c-f668-489e-95c6-c3eac0e581f8" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_77f1d8c8-ce1c-40f4-aee1-bd19650c6bbb" shape="rect"></a>Specifies a list of patient heterogeneity characteristics used for calculating dose. This Attribute shall be multi-valued if beams used to compute the dose have differing correction techniques.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">IMAGE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_d7574702-962d-4a87-9676-4a4470ef41ce" shape="rect"></a>image data</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">ROI_OVERRIDE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_a4e1afd8-2576-4f7e-9558-3e256cda5206" shape="rect"></a>one or more ROI densities override image or water values where they exist</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">WATER</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9ab44d60-d217-4c5f-9baa-cabacf6885a7" shape="rect"></a>entire volume treated as water equivalent</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_32d3716d-ee9f-46dc-851a-505668f0bdc1" shape="rect"></a>Derivation Code Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a94a8fe7-7acf-4ba1-ae00-8a372616a4cf" shape="rect"></a>(0008,9215)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_aff7fe92-7474-40bf-9dc6-4f415029c0bd" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_de7cb27b-8e35-4428-94bd-134e4ac74b17" shape="rect"></a>A coded description of how this dose was derived from other RT Dose and/or RT Plan objects.</p>
+                                    <p>
+                              <a id="para_84f40cb3-9ed4-4ab8-bff0-ca46fc644cf5" shape="rect"></a>One or more Items are permitted in this Sequence. More than one Item indicates that successive derivation steps have been applied.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                              <a id="para_03a86708-b8d5-4186-914d-d5ead11ac462" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5072af40-fca1-4a37-84e0-04b024b6cec2" shape="rect"></a>
+                                        <span class="italic">D<a href="../part16/sect_CID_7220.html" class="olink" shape="rect">CID 7220 “RT Dose Derivation”</a>.</span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f459b65e-5f99-48a7-a4f9-e05158a4cf21" shape="rect"></a>Referenced Instance Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_262bbbbd-fbed-4d6e-aab0-8a546efe4cd1" shape="rect"></a>(0008,114A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c30afd15-15fc-4a27-840c-25899534d51b" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b3d51f7f-7d10-4ec9-867b-f32a79208ed1" shape="rect"></a>The set of SOP Instances used to derive this RT Dose SOP Instance.</p>
+                                    <p>
+                              <a id="para_43f69991-95ac-488d-8f1a-37771c8fef5e" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_b2c375ff-40fd-4bf6-8e88-c91dccd2afbb" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8f9182fa-7110-4334-b53e-5ca690fdca5a" shape="rect"></a>&gt;Purpose of Reference Code Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6e137820-9cb2-4874-b120-ec8529f621bf" shape="rect"></a>(0040,A170)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eb19b4a7-aaa0-48b5-8128-58224f3e0a2b" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c448829d-5dfc-4299-9312-4b0a93cb49ee" shape="rect"></a>Code describing the purpose of the reference to the Instance(s).</p>
+                                    <p>
+                              <a id="para_8768cdf5-aa6c-49ef-8626-f83231f7c7d1" shape="rect"></a>Only a single Item is permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                              <a id="para_a73ccd9b-eaab-4969-8ae7-bc90c2bd4756" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a52673f8-0eab-42e6-a107-1d30e9ed387f" shape="rect"></a>
+                                        <span class="italic">D<a href="../part16/sect_CID_7221.html" class="olink" shape="rect">CID 7221 “RT Dose Purpose of Reference”</a>.</span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a2e33ae6-9e14-4e51-92b1-2d26b9053393" shape="rect"></a>Plan Overview Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_45e0890b-80a2-43ce-a8e9-f057c0a70f3d" shape="rect"></a>(300C,0116)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9c8a58c1-7f9f-46ba-8c08-5be942029c13" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d7795950-8b9a-46ed-b4c8-f7dcb7d7da5c" shape="rect"></a>Parameters providing an overview of the plan used to create this RT Dose Instance.</p>
+                                    <p>
+                              <a id="para_345e3ede-da1d-4985-9afb-7c83c6e06cb0" shape="rect"></a>Required if Dose Summation Type (3004,000A) is PLAN_OVERVIEW. May be present if Dose Summation Type (3004,000A) is PLAN, MULTI_PLAN or RECORD.</p>
+                                    <p>
+                              <a id="para_1e6685b9-50d5-4c70-a31e-9f18058b4a3f" shape="rect"></a>One or more Items shall be included in this Sequence if Dose Summation Type (3004,000A) is PLAN_OVERVIEW.</p>
+                                    <p>
+                              <a id="para_95ee583e-dc18-48a4-8141-dfe7050ed710" shape="rect"></a>Only one Item shall be included in this Sequence if Dose Summation Type (3004,000A) is PLAN or RECORD.</p>
+                                    <p>
+                              <a id="para_c3a20cba-37a3-4807-9b93-12effb48c548" shape="rect"></a>Two or more Items shall be included in this Sequence if Dose Summation Type (3004,000A) is MULTI_PLAN.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_963bf3d0-d223-4178-ac12-3dc7aa1a7931" shape="rect"></a>&gt;Plan Overview Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a3d022a-41a3-4ceb-bf79-7f2a624ad7ff" shape="rect"></a>(300C,0117)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5398a5ad-46a2-4b02-94e1-451308ba348c" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_579621ff-1837-48aa-aa3e-868effa9f051" shape="rect"></a>The index of the Plan Overview within this Sequence.</p>
+                                    <p>
+                              <a id="para_b666f44d-75cf-4f68-91e1-d1226e4b1a47" shape="rect"></a>The value shall start at 1 and increase monotonically by 1.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8ab562a7-9781-4cb5-b8bd-c6cd1da41ca1" shape="rect"></a>&gt;RT Plan Label</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_65789429-e4f3-4036-8d39-4a9472fad2b8" shape="rect"></a>(300A,0002)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dc99bf68-2769-4f25-a26b-2684122387e2" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ccce5a5b-05c1-4377-b6a5-8a7641229023" shape="rect"></a>User-defined label of treatment plan.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_87fcae40-158c-46a1-ab3b-c4e98b21a2be" shape="rect"></a>&gt;Number of Fractions Included</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_db383058-8036-463e-a722-f23ed2478315" shape="rect"></a>(300C,0119)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7a0e1899-7e51-4b1e-b23e-cb14bd11d4c0" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_634be755-8c93-480e-a120-3587d80f994b" shape="rect"></a>Number of fractions of the plan included in this RT Dose Instance.</p>
+                                    <p>
+                              <a id="para_007cf7eb-2d96-4826-88e0-d1bd119780ae" shape="rect"></a>Required if Dose Summation Type (3004,000A) is PLAN_OVERVIEW, PLAN or MULTI_PLAN.</p>
+                                    <p>
+                              <a id="para_d5743e99-ebab-404d-a220-a2f1d7b674eb" shape="rect"></a>If Dose Summation Type is PLAN or MULTI_PLAN the Number of Fractions Included (300C,0119) shall equal the Number of Fractions Planned (300A,0078) of the referenced RT Plan Instance.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0a04ba00-6e38-4a5a-9dcf-4293aebf3558" shape="rect"></a>&gt;Current Fraction Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_afc467e4-2991-4346-ac84-239c5ed7350a" shape="rect"></a>(3008,0022)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_490acc64-1bed-4721-b4bf-157bd0a4f0ca" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bbcf7e41-8375-42f0-ade9-30d1a2ebc7cb" shape="rect"></a>Fraction Number of the fraction included in this RT Dose Instance.</p>
+                                    <p>
+                              <a id="para_7a8f5080-e0c7-4edb-a52e-a74cf5ccfffa" shape="rect"></a>Required if Dose Summation Type (3004,000A) is RECORD.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_268eace6-e3e4-4bf4-a3ba-15677a089803" shape="rect"></a>&gt;Treatment Site</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_187a4b84-95bd-4227-baf8-de6293ed5383" shape="rect"></a>(3010,0077)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_57bf6537-cba6-4ee5-9768-927d6dba56be" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_221ba2b3-caef-4f6a-9dd2-d66217356576" shape="rect"></a>A free-text label describing the anatomical treatment site.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7c50a53a-fadd-4c05-ae0d-ae9c43ca0831" shape="rect"></a>&gt;Treatment Site Code Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_be0ce382-2cd7-499a-8de7-5fc494029dec" shape="rect"></a>(3010,0078)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9a7d0c2c-dbff-4458-9bfa-097652f61984" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d2021ab5-ad84-4bf1-8dc7-d4ba8f37ddd7" shape="rect"></a>Coded description of the treatment site.</p>
+                                    <p>
+                              <a id="para_9755509d-67ef-416e-bbf6-a194ee120d3e" shape="rect"></a>Zero or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                              <a id="para_54df4010-d9e8-45e8-ace9-53003e2f73e4" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_04160d03-f0f2-4c0d-9dce-020b8749b9ca" shape="rect"></a>
+                                        <span class="italic">B<a href="../part16/sect_CID_4.html" class="olink" shape="rect">CID 4 “Anatomic Region”</a>.</span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0ef2642f-e53f-4c5e-b7fe-e24bafe195e4" shape="rect"></a>&gt;&gt;Treatment Site Modifier Code Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0a206817-a9c9-4fda-af41-1759f80618a8" shape="rect"></a>(3010,0089)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_569e85db-2974-4402-95b4-1a2237501570" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dad60dc7-35ac-4f71-a0fb-8f37ccf6955e" shape="rect"></a>Coded description of the laterality of the treatment site.</p>
+                                    <p>
+                              <a id="para_77b792bf-d2e8-4597-b975-821ab7ad16d8" shape="rect"></a>Only a single Item is permitted in this Sequencee.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                              <a id="para_312157b5-a430-4720-b80e-7d941f2d0157" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_180b10b7-c75a-45e6-b37c-4b50ae98fd90" shape="rect"></a>
+                                        <span class="italic">B<a href="../part16/sect_CID_244.html" class="olink" shape="rect">CID 244 “Laterality”</a>.</span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4cc5c69b-91a6-472b-90f3-0cc3b20e3d74" shape="rect"></a>&gt;Prescription Overview Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_94738f6b-dcd5-4d95-8b86-b4afc7a88c1e" shape="rect"></a>(300C,0114)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_01ca2889-4bdc-4b4d-b754-ba015e18cbff" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cd08af0b-2888-4f5a-84d3-48055cdf3717" shape="rect"></a>Prescription parameters for evaluation of the dose matrix.</p>
+                                    <p>
+                              <a id="para_afbf7897-e924-4313-ba20-77c84984cc92" shape="rect"></a>Zero or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fb27558f-8bea-4203-a8d7-947fa54d9ec1" shape="rect"></a>&gt;&gt;Entity Long Label</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_70977903-bf7d-425f-8cd3-8d5f72443d66" shape="rect"></a>(3010,0038)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1645ecc9-802c-40e3-b37b-c88aba73ee4b" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d2202b03-a45a-4b02-9f58-ee3ae0b30719" shape="rect"></a>Label identifying the Prescription Overview.</p>
+                                    <p>
+                              <a id="para_6970458c-88b5-46ef-9991-1253079a420e" shape="rect"></a>For example, this may be the name of the related target ROI or the description of a Dose Reference.</p>
+                                    <p>
+                              <a id="para_180c5922-cdcc-4002-b3f9-eebbb07d3375" shape="rect"></a>Required if Prescription Overview Sequence (300C,0114) has more than one Item. May be present otherwise.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_76827f02-a849-4b97-9da6-28886ed1cf1d" shape="rect"></a>&gt;&gt;Total Prescription Dose</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a86478dd-c493-4f5d-a5ce-260d3f67e6bc" shape="rect"></a>(300C,0115)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c577b4df-ad4d-4a6a-ad97-b1768ed97f76" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f9cba5ae-459c-42be-b7e9-797e1515fb7d" shape="rect"></a>Prescribed total dose in Gy for all fractions for the dose type defined in Dose Type (3004,0004).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a05a6c07-d070-41f6-b744-2abcea823379" shape="rect"></a>&gt;&gt;Referenced ROI Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3398eb9c-6eff-4a98-8492-3e770453db8a" shape="rect"></a>(3006,0084)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8a7b3958-6e0e-4e57-acbd-96d3b6e80119" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c6104685-1253-43a8-a47b-5cb4c8e43147" shape="rect"></a>ROI for which the prescription parameters in this Sequence apply, specified by ROI Number (3006,0022) in the Instance referenced by Referenced Structure Set Sequence (300C,0060).</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ae60551c-dae1-4b31-a437-607b7ce612ed" shape="rect"></a>&gt;Referenced Structure Set Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_70ab284b-3dd2-4abd-b02d-387e98e159c3" shape="rect"></a>(300C,0060)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7bc783d0-746c-4c88-bb41-a12616de2d88" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_020a2fc8-b63d-4a37-916d-42e79862ab3d" shape="rect"></a>Structure Set containing structures that were used to calculate the RT Dose.</p>
+                                    <p>
+                              <a id="para_cb3aaab1-d699-4319-b1ef-451079cb42ec" shape="rect"></a>Required if Referenced Image Sequence (0008,1140) is not present.</p>
+                                    <p>
+                              <a id="para_7f75c5c8-86a1-439c-9643-5e1483220720" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_0496311a-19a5-4cc1-993a-aa53bfed8fd5" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_36611614-21c2-4973-abef-a40d042190d3" shape="rect"></a>&gt;Referenced Image Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_45734150-18fe-409c-a6c0-be54b803b400" shape="rect"></a>(0008,1140)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c41d73d9-e812-434e-b2c0-3959bf2c1a09" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b56692fd-3a6a-4793-a338-f2b9afbb21e4" shape="rect"></a>Images used to calculate the RT Dose.</p>
+                                    <p>
+                              <a id="para_80a3ff2b-fc77-4fd7-8dc4-ea1baa22855c" shape="rect"></a>Required if Referenced Structure Set Sequence (300C,0060) is not present.</p>
+                                    <p>
+                              <a id="para_e203e770-ec4c-4584-883a-895c5696a6f5" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_aba87893-2421-42c2-bfe7-137226d293f8" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="note_C.8.8.3_1" shape="rect"></a>
+                        <a id="para_2a82c624-dbc4-4477-b202-133f115a2792" shape="rect"></a>In order to prevent misrepresentation of the dose summation:</p>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="a">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_b1adc4e3-099a-4403-9777-71fbc3386740" shape="rect"></a>If the Dose Summation Type (3004,000A) is PLAN, then only a single Instance of RT Plan is referenced and the dose will be for the entire plan (i.e., it is not viable to combine only certain fraction groups of different plans).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_04f97217-0c81-4ec2-bfff-3e58c84d2e70" shape="rect"></a>If the Dose Summation Type (3004,000A) is MULTI_PLAN, then 2 or more Instances of RT Plan may be referenced. As above, each reference will be for the entire plan.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_de40bf2e-9253-41a6-925a-0bfc8343a06c" shape="rect"></a>If the Dose Summation Type (3004,000A) is FRACTION or FRACTION_SESSION, then only a single Instance of RT PLAN and a single Fraction Group are referenced (i.e., component beams or brachy application setups are not referenced).</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.8.3.1" shape="rect"></a>C.8.8.3.1 Normalization Point</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_80b66d86-c800-43ff-b063-081688f89231" shape="rect"></a>Normalization Point (3004,0008) aids in the interpretation and subsequent use of the transmitted data. If used, it shall be a point receiving dose contributions from all referenced components of the dose summation.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.2.8.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.2.8 Exposure Time and Meterset Exposure </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.3.2 Grid Frame Offset Vector</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

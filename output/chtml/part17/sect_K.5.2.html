@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>K.5.2 Stage and View Identification</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_K.5.html" title="K.5 Guidelines" />
+      <link rel="prev" href="sect_K.5.html" title="K.5 Guidelines" />
+      <link rel="next" href="sect_K.5.3.html" title="K.5.3 Extra-protocol Image Identification" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">K.5.2 Stage and View Identification <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_K.5.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_K.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">K.5 Guidelines</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_K.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_K.html" shape="rect">Ultrasound Staged Protocol Data Management (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_K.5.html" shape="rect">Guidelines</a>
+         </span> &gt; <span class="breadcrumb-node">Stage and View Identification</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_K.5.2" shape="rect"></a>K.5.2 Stage and View Identification</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7fd35f38-748d-4149-b0bf-631c91d45d8b" shape="rect"></a>Display devices usually include capabilities that aid in the organization and presentation of images acquired as part of the Staged Protocol. These capabilities allow a clinician to display images of a given View acquired during different Stages of the Protocol side by side for comparison. A View is a particular combination of the transducer position and orientation at the time of image acquisition. Images are acquired at the same View in different Protocol Stages for the purpose of comparison. For these features to work properly, the display device must be able to determine the Stage and View of each image in an unambiguous fashion.</p>
+         <p>
+            <a id="para_4cfa6521-47ca-46b4-9d2f-003cd6f5c5c4" shape="rect"></a>There are three possible mechanisms for conveying Stage and View identification in the image SOP Instances:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_7dc101aa-f33e-4f53-bc9d-72b849332744" shape="rect"></a>"Numbers" (Stage Number (0008,2122) and View Number (0008,2128) ), which number Stages and Views, starting with one.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_3fcedfa4-fc7f-40f4-a9af-908e74760769" shape="rect"></a>"Names" (Stage Name (0008,2120) and View Name (0008,2127) ), which specify textual names for each Stage and View, respectively.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_480893e5-1142-4910-834f-3fe42c4e373d" shape="rect"></a>"Code sequences" (Stage Code Sequence (0040,000A) for Stage identification, and View Code Sequence (0054,0220) for View identification), which give identification "codes" to the Stage and View respectively.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_fdeb5a39-c4ad-444f-a1ce-5dbbb3427cfe" shape="rect"></a>The use of code sequences to identify Stage and View, using Context Group values specified in <a href="../part16/PS3.16.html" class="olink" shape="rect">PS3.16</a> (e.g., <a href="../part16/sect_CID_12002.html" class="olink" shape="rect">CID 12002 “Ultrasound Protocol Stage Type”</a> and <a href="../part16/sect_CID_12226.html" class="olink" shape="rect">CID 12226 “Echocardiography Image View”</a>), allows a display application with knowledge of the code semantics to render a display in accordance with clinical domain uses and user preferences (e.g., populating each quadrant of an echocardiographic display with the user desired stage and view). The IHE Echocardiography Workflow Profile requires such use of code sequences for stress-echo studies.</p>
+         <p>
+            <a id="para_f2196326-a55f-4b70-a451-0ef8eb3f7360" shape="rect"></a>
+                    <a class="xref" href="sect_K.5.2.html#table_K.5-1" title="Table K.5-1. Staged Protocol Image Attributes Example" shape="rect">Table K.5-1</a> provides an example of the Staged Protocol relevant Attributes in images acquired during a typical cardiac stress-echo ultrasound exam.</p>
+         <div class="table">
+            <a id="table_K.5-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table K.5-1. Staged Protocol Image Attributes Example</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_256362ad-3967-4eaa-8057-ed919b5c3a2d" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Baseline Stage - View 1</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b66f77d4-919a-4fa6-b664-e293b1b2fcd7" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Mid-Stress Stage - View 1</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_20217dbb-66ea-4d02-bc13-cadb17146919" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Mid-Stress Stage - View 2</strong>
+                              </span>
+                                </p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1a92d241-796f-4173-9c0b-0e39b48a613a" shape="rect"></a>Study Instance UID:</p>
+                                <p>
+                              <a id="para_8d5fcd3b-e90b-44c5-832e-23b3fbe5ecdd" shape="rect"></a>"1.2.840….123.1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_77b38895-70b0-4634-86ea-d8cf2b133f55" shape="rect"></a>Study Instance UID:</p>
+                                <p>
+                              <a id="para_9fa3c89b-be16-4027-b871-d6d704f69103" shape="rect"></a>"1.2.840….123.1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d63b8e29-5d05-4ca6-a85c-cb9a32a24521" shape="rect"></a>Study Instance UID:</p>
+                                <p>
+                              <a id="para_bbc9c4ab-019c-42f7-9c63-35818c2091f8" shape="rect"></a>"1.2.840….123.1"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_326b471f-a50b-4034-86ce-9f06a7ab0e2d" shape="rect"></a>Request Attributes Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_796996fd-ced4-4f60-9311-a2464742bfa6" shape="rect"></a>Request Attributes Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_05ae8a3f-28b7-45e4-8442-68216ff8bb3b" shape="rect"></a>Request Attributes Sequence:</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9ca97c96-fb0e-4547-a7d5-48e3759a5b80" shape="rect"></a>&gt;Scheduled Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b966bf93-e101-42df-8c41-4968894ac9de" shape="rect"></a>&gt;Scheduled Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e0594692-5916-4670-b118-4f339609733f" shape="rect"></a>&gt;Scheduled Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_da9f76a2-b4aa-4c9e-b3eb-42fcc716a131" shape="rect"></a>&gt;Scheduled Protocol Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_23ddcfaf-bca9-4e38-9216-4075912f2736" shape="rect"></a>&gt;Scheduled Protocol Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c3f5348b-af17-428a-99ff-ebbfcff25a28" shape="rect"></a>&gt;Scheduled Protocol Code Sequence:</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7481eae7-e434-4fab-898c-81e830a17ecf" shape="rect"></a>&gt;&gt;Code Value: "433233004"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6816dc62-2d7a-4c0d-92a6-177a13b4cc17" shape="rect"></a>&gt;&gt;Code Value: "433233004"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e24aa9d0-7a08-495c-b584-54fdda8d33e6" shape="rect"></a>&gt;&gt;Code Value: "433233004"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e09a88ec-6e64-40d2-9c2d-4ab481ba2936" shape="rect"></a>&gt;&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a37b893d-a635-4bab-8371-655ff2b65cd2" shape="rect"></a>&gt;&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_748a7a7f-36aa-4fe6-9e12-04975ed545bf" shape="rect"></a>&gt;&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_af80a6ad-ce47-42bd-8ae4-7fef86731873" shape="rect"></a>&gt;&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6f845de0-c35b-48cc-b899-43e02bbabb72" shape="rect"></a>&gt;&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d4693c0d-afc7-4a7f-89e8-edc4bbdce770" shape="rect"></a>&gt;&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8b5498f3-4667-4938-87c1-1a1374b23171" shape="rect"></a>Performed Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6a8ac2e8-3105-41ca-8ee9-b62755e6bd5d" shape="rect"></a>Performed Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_544857fb-bb33-427f-ae94-e87d4a6a8725" shape="rect"></a>Performed Procedure Step Description: "Exercise stress echocardiography"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d8cb2cef-532f-4f56-91c7-73a2c3004950" shape="rect"></a>Protocol Name:</p>
+                                <p>
+                              <a id="para_bb49710f-cab8-4e9c-b561-df56ee67556c" shape="rect"></a>"EXERCISE STRESS-ECHO"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_556da9a7-ad17-4e9b-86a1-a5c0c3e7fe41" shape="rect"></a>Protocol Name:</p>
+                                <p>
+                              <a id="para_61b6d8b0-1b83-4c4b-8608-dfd02bfae658" shape="rect"></a>"EXERCISE STRESS-ECHO"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_55f42136-f417-4727-83c5-73bb0efec9f7" shape="rect"></a>Protocol Name:</p>
+                                <p>
+                              <a id="para_05f18a36-20aa-45ad-b1f4-373efe38d3af" shape="rect"></a>"EXERCISE STRESS-ECHO"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_47624e2b-b7e4-4da6-acad-eef9c0db5d13" shape="rect"></a>Performed Protocol Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a918c8a3-2b8e-49cf-9e7a-57d76576b494" shape="rect"></a>Performed Protocol Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5b324353-96b2-4adb-af34-a547d5aef5a5" shape="rect"></a>Performed Protocol Code Sequence:</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc60e8ed-65ed-4482-a44e-fa77822a7a78" shape="rect"></a>&gt;Code Value: "433233004"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f06029c0-22c1-4396-ba80-ad22e8b9aa66" shape="rect"></a>&gt;Code Value: "433233004"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_85a7ca29-a698-48fa-9f41-cc443ad6a352" shape="rect"></a>&gt;Code Value: "433233004"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_98603a5a-a0c9-4172-89a8-3da2fba6d00f" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a68cbe1b-6bc9-4fe8-9652-2bf129a4ce28" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_18d6738c-5b23-4c81-bd50-5deff3cedfd9" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_03954260-ac28-4ff1-92d7-fc6e9507e3e9" shape="rect"></a>&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7c052ad7-80e4-4478-bb1b-3a0600eb586f" shape="rect"></a>&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e2d5cb1c-e821-4c88-8e1d-c47eee77e289" shape="rect"></a>&gt;Code Meaning: "Exercise stress echocardiography"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c3bfcc49-c3ac-48d4-a67d-984d82e6c48e" shape="rect"></a>Number of Stages: "4"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_edf24efc-3783-4bd7-b094-3b25460d02d9" shape="rect"></a>Number of Stages: "4"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f0df0306-68ec-43ed-b0ec-48b25444bf59" shape="rect"></a>Number of Stages: "4"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d5454109-49dd-4940-a892-44043dead6d6" shape="rect"></a>Number of Views In Stage: "2"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d00811eb-7917-41d1-ac4b-046894c9d416" shape="rect"></a>Number of Views In Stage: "2"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_02cac7fb-9211-4ced-8c34-269bcea6e162" shape="rect"></a>Number of Views In Stage: "2"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6cc2b0f0-780e-41fb-abc0-76df726b0cd6" shape="rect"></a>Stage Name: "BASELINE"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_dcfa6639-be24-4e25-ac13-101106f4319c" shape="rect"></a>Stage Name: "MID-STRESS"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_daa3efa0-28c9-430f-ac48-4285af063d78" shape="rect"></a>Stage Name: "MID-STRESS"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_13181584-3cc3-40a1-88fc-8771650449c1" shape="rect"></a>Stage Number: "1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ae9ba872-a0e3-481e-9b8f-d8e58a668c88" shape="rect"></a>Stage Number: "2"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6bf65054-c9f6-4cb2-ad7d-8b78a6b40d9c" shape="rect"></a>Stage Number: "2"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bf6a809e-5e7f-4784-a034-e816faf22338" shape="rect"></a>Stage Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_801d163d-77b6-4a64-98d9-b4b96231c456" shape="rect"></a>Stage Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_422abd54-0faf-4ebd-b503-8e7bd2c6c8da" shape="rect"></a>Stage Code Sequence:</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_52cbcb78-41d1-450c-9829-f0d010b8a443" shape="rect"></a>&gt;Code Value:"128974000"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_551ff323-4aba-4eff-881b-e30e5f9f3404" shape="rect"></a>&gt;Code Value: "109091"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_d3ce1002-2927-4422-be93-20d50aa32ffc" shape="rect"></a>&gt;Code Value: "109091"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6d832b11-ba84-4937-aedb-a94a15e3886a" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bea7085f-4d1b-43be-8a64-55705eed1190" shape="rect"></a>&gt;Coding Scheme Designator: "DCM"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_24c86fc2-991d-4c36-94e9-c6d10261a945" shape="rect"></a>&gt;Coding Scheme Designator: "DCM"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b66caeb5-7051-4768-8afa-b0a458413c80" shape="rect"></a>&gt;Code Meaning: "Baseline state"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2ab2270f-e376-4709-8e67-78d133a9f79a" shape="rect"></a>&gt;Code Meaning: "Cardiac Stress State"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ec54d1f9-c4af-49d1-9b8a-25752e6c6b20" shape="rect"></a>&gt;Code Meaning: "Cardiac Stress State"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9c796d9c-6ec4-4619-8a57-e8a811ed4d83" shape="rect"></a>View Name: "Para-sternal long axis"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f98213c2-11d2-49f4-99b8-20b9ece0edf7" shape="rect"></a>View Name: "Para-sternal long axis"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2b6ce2e5-2554-4d09-ab53-5b75146a9f0d" shape="rect"></a>View Name: "Para-sternal short axis"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cc53574d-c4d5-4cdb-8e1f-74ed604a1b89" shape="rect"></a>View Number: "1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_87f3b109-945f-4c10-9d56-c242d1a8eebd" shape="rect"></a>View Number: "1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_96d2b665-1328-448a-b622-86bbde24e219" shape="rect"></a>View Number: "2"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0d35e903-c609-40da-95bb-e1a17bcce4c3" shape="rect"></a>----</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3eca1b8c-13aa-499b-8ae0-6a4acf408862" shape="rect"></a>Number of Event Timers: "1"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_783f5264-58a3-482b-9439-51b83d65d34a" shape="rect"></a>Number of Event Timers: "1"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_fb4716c8-146c-4b74-8c02-bf6cb8cafaae" shape="rect"></a>----</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e8d1b5c9-330a-48aa-87d8-049b9ec86d50" shape="rect"></a>Event Elapsed Time(s): "10000" (ms)</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6945ef3c-c614-4cef-b04b-72c63d15a81c" shape="rect"></a>Event Elapsed Time(s): "25000" (ms)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4a2fbe02-7227-4b19-9aa3-2ddc3b8d0c97" shape="rect"></a>----</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4c800957-6ba6-491a-b9cd-0aa4e88afca4" shape="rect"></a>Event Elapsed Timer Name(s): "Time Since Exercise Halted"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_3329fd8c-7e5a-4d5d-8f45-d20ae382357c" shape="rect"></a>Event Elapsed Timer Name(s): "Time Since Exercise Halted"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5fb5f46d-033d-4611-90f2-f80db6118941" shape="rect"></a>View Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0e83519f-fa16-4275-81c9-4ca6da5d79f0" shape="rect"></a>View Code Sequence:</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_7aad77d7-6879-400b-9e43-a5e6d18ffed4" shape="rect"></a>View Code Sequence:</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_16a294f5-c7ad-40bc-b679-cb612c8f3e1e" shape="rect"></a>&gt;Code Value: "399139001"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_736afd21-01c5-465e-b8d5-f57b242e6301" shape="rect"></a>&gt;Code Value: "399139001"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a4b7eb81-6587-4585-8378-78e1aa0dad5c" shape="rect"></a>&gt;Code Value: "399306005"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2383dc2e-8530-432e-b45a-059b86ce8edc" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_00d5497a-dee0-4e47-84ba-f1b907c7ed65" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_994be9a8-fc60-4281-a876-ab29c1053381" shape="rect"></a>&gt;Coding Scheme Designator: "SCT"</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0baf5501-b2ff-4a06-9d54-488024b176f4" shape="rect"></a>&gt;Code Meaning: "Parasternal long axis"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4b5013c4-8e1e-476e-952c-77b8f2ea8354" shape="rect"></a>&gt;Code Meaning: "Parasternal long axis"</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6776f3eb-1d40-4538-894b-6d8ad0ea2be3" shape="rect"></a>&gt;Code Meaning: "Parasternal short axis"</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_K.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_K.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_K.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">K.5 Guidelines </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> K.5.3 Extra-protocol Image Identification</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

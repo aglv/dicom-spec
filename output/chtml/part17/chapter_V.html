@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>V Hanging Protocols (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="sect_U.3.2.5.html" title="U.3.2.5 Transverse Imaging" />
+      <link rel="next" href="sect_V.2.html" title="V.2 Hanging Protocol Internal Process Model" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">V Hanging Protocols (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_V.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_U.3.2.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_V.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Hanging Protocols (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_V" shape="rect"></a>V Hanging Protocols (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d6bbb90f-2c36-4380-9ec0-c3c3e1eefd46" shape="rect"></a>The Hanging Protocol Composite IOD contains information about user viewing preferences, related to image display station (workstation) capabilities. The associated Service Classes support the storage (C-STORE), query (C-FIND) and retrieve (C-MOVE and C-GET) of Hanging Protocol Instances between servers and workstations. The goal is for users to be able to conveniently define their preferred methods of presentation and interaction for different types of viewing circumstances once, and then to automatically layout image sets according to the users' preferences on workstations of similar capability.</p>
+         <p>
+            <a id="para_5dd2203c-4e3f-4b4a-914c-7a7b3c74e950" shape="rect"></a>The primary expectation is to facilitate the automatic and consistent hanging of images according to definitions provided by the users, sites or vendors of the workstations by providing the capability to:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_6c595516-446d-4987-a10d-1c66266aa12e" shape="rect"></a>Save defined Hanging Protocols</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_09e8f261-5007-4d21-aca0-58c0b5042cab" shape="rect"></a>Search for Hanging Protocols by name, level (single user, user group, site, manufacturer), user identification code, modality, anatomy, and laterality.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fb1bd7dd-17be-46c5-bb18-4fedb090ddcf" shape="rect"></a>Allow automatic hanging of image sets to occur for all studies on workstations with sufficiently compatible capabilities by matching against user or site defined Hanging Protocols. This includes supporting automatic hanging when the user reads from different locations, or on different but similar workstation types.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_4315e53d-85eb-40d4-b132-004ae4620ee4" shape="rect"></a>How relevant image sets (e.g., from the current and prior studies) are obtained is not defined by the Hanging Protocol IOD or Service Classes.</p>
+         <p>
+            <a id="para_2be8a368-8808-4e3c-ac69-c457d8e15da3" shape="rect"></a>Conformance with the DICOM Grayscale Standard Display Function and the DICOM Softcopy Presentation States in conjunction with the Hanging Protocol IOD allows the complete picture of what the users see, and how they interact with it, to be defined, stored and reproduced as similarly as possible, independent of workstation type. Further, it is anticipated that implementers will make it easy for users to point to a graphical representation of what they want (such as 4x1 versus 12x1 format with a horizontal alternator scroll mechanism) and select it.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_V.1" shape="rect"></a>V.1 Example Scenario</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_9abfa88a-70e2-4c31-a69c-cb2358739acd" shape="rect"></a>User A sits down at workstation X, with two 1024x1280 resolution screens (<a class="xref" href="chapter_V.html#figure_V.1-1" title="Figure V.1-1. Spatial layout of screens for workstations in Example Scenario" shape="rect">Figure V.1-1</a>) that recently has been installed and hence has no user specific Hanging Protocols defined. The user brings up the list of studies to be read and selects the first study, a chest CT, together with the relevant prior studies. The workstation queries the Hanging Protocol Query SCP for instances of the Hanging Protocol Storage SOP Class. It finds none for this specific user, but matches a site specific Hanging Protocol Instance, which was set up when the workstation was installed at the site. It applies the site Hanging Protocol Instance, and the user reads the current study in comparison to the prior studies.</p>
+            <p>
+               <a id="para_f711b43f-b148-4053-9944-9d6ac5a85c35" shape="rect"></a>The user decides to customize the viewing style, and uses the viewing application to define what type of Hanging Protocol is preferred (layout style, interaction style) by pointing and clicking on graphical representations of the choices. The user chooses a 3-column by 4-row tiled presentation with a "vertical alternator" interaction, and a default scroll amount of one row of images. The user places the current study on the left screen, and the prior study on the right screen. The user requests the application to save this Hanging Protocol, which causes the new Hanging Protocol Instance to be stored to the Hanging Protocol Storage SCP.</p>
+            <p>
+               <a id="para_9932f9d4-f11f-4192-93f5-82fd1f238cef" shape="rect"></a>When the same user comes back the next day to read chest CT studies at workstation X and a study is selected, the application queries the Hanging Protocol Query SCP to determine which Hanging Protocol Instances best match the scenario of this user on this workstation for this study. The best match returned by the SCP in response to the query is with the user ID matching his user ID, the study type matched to the study type(s) of the image set selected for viewing, and the screen types matching the workstation in use.</p>
+            <p>
+               <a id="para_b9a64e04-3998-4c9c-8fc8-a3c991e38a25" shape="rect"></a>A list of matches is produced, with the Hanging Protocol Instance that the user defined yesterday for chest CT matching the best, and the current CT study is automatically displayed on the left screen with that Hanging Protocol. Alternative next best matches are available to the user via the application interface's pull-down menu list of all closely matching Hanging Protocol Instances.</p>
+            <p>
+               <a id="para_0c8cbc01-c500-4b95-a56d-213b71e3a671" shape="rect"></a>Because this Hanging Protocol defines an additional image set, the prior year's chest CT study for the same patient is displayed next to the current study, on the right screen.</p>
+            <p>
+               <a id="para_6840a242-eddb-4f80-b156-a6e0360b3627" shape="rect"></a>The next week, the same user reads chest CTs at a different site in the same enterprise on a similar type workstation, workstation Y, from a different vendor. The workstation has a single 2048x2560 screen (<a class="xref" href="chapter_V.html#figure_V.1-1" title="Figure V.1-1. Spatial layout of screens for workstations in Example Scenario" shape="rect">Figure V.1-1</a>). This workstation queries the Hanging Protocol Query SCP, and retrieves matching Hanging Protocol Instances, choosing as the best match the Hanging Protocol Instance used on workstation X before by user A. This Hanging Protocol is automatically applied to display the chest CT study. The current chest CT study is displayed on the left half of the 2048x2560 screen, and the prior chest CT study is displayed on the right half of the screen, with 3 columns and 8 rows each, maintaining the same vertical alternator layout. The sequence of communications between the workstations and the SCP is depicted in <a class="xref" href="chapter_V.html#figure_V.1-2" title="Figure V.1-2. Sequence diagram for Example Scenario" shape="rect">Figure V.1-2</a>.</p>
+            <p>
+               <a id="para_a2b16e05-27bb-4a00-9331-f697d9f16579" shape="rect"></a>
+                </p>
+            <div class="figure">
+               <a id="figure_V.1-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_V.1-1.svg" alt="Spatial layout of screens for workstations in Example Scenario" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure V.1-1. Spatial layout of screens for workstations in Example Scenario</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+            </p>
+            <p>
+               <a id="para_5d7cf96c-8380-42fd-92fe-d93247eff943" shape="rect"></a>
+                </p>
+            <div class="figure">
+               <a id="figure_V.1-2" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.17_V.1-2.svg" alt="Sequence diagram for Example Scenario" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure V.1-2. Sequence diagram for Example Scenario</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+            </p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_U.3.2.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_V.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">U.3.2.5 Transverse Imaging </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> V.2 Hanging Protocol Internal Process Model</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.7.9.2.2 Linear Segment Type</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.7.9.2.html" title="C.7.9.2 Segmented Palette Color Lookup Table Data" />
+      <link rel="prev" href="sect_C.7.9.2.html" title="C.7.9.2 Segmented Palette Color Lookup Table Data" />
+      <link rel="next" href="sect_C.7.9.2.3.html" title="C.7.9.2.3 Indirect Segment Type" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.7.9.2.2 Linear Segment Type <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.9.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.7.9.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.7.9.2 Segmented Palette Color Lookup Table Data</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.7.9.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.7.html" shape="rect">Common Composite IOD Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.7.9.html" shape="rect">Palette Color Lookup Table Module</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.7.9.2.html" shape="rect">Segmented Palette Color Lookup Table Data</a>
+         </span> &gt; <span class="breadcrumb-node">Linear Segment Type</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.7.9.2.2" shape="rect"></a>C.7.9.2.2 Linear Segment Type</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7b837471-536e-4d14-ae01-938c6335aabb" shape="rect"></a>The linear segment represents a series of palette components whose values may be represented by a straight line.</p>
+         <p>
+            <a id="para_177aac8b-84cd-4a20-826d-f32800f6d27d" shape="rect"></a>X = palette address, Y = Value contained in the palette.</p>
+         <p>
+            <a id="para_54b4156c-e08b-4495-a772-fa6382d0199b" shape="rect"></a>(X<sub>0</sub>, Y<sub>0</sub>) = end of the previous segment</p>
+         <p>
+            <a id="para_00071b88-fa20-4aa5-be74-e31e8f645ff6" shape="rect"></a>(X<sub>0</sub> + Segment Length, Y<sub>1</sub>) = end of this linear segment</p>
+         <p>
+            <a id="para_d09da83e-058d-49a3-8b52-a6c987302308" shape="rect"></a>Where: Y<sub>1</sub> is contained in the data portion of this segment.</p>
+         <p>
+            <a id="para_6d2fc625-f201-4adf-8927-ce64d9fe1663" shape="rect"></a>During expansion, the application should "connect" the previous segment's endpoint, (X<sub>0</sub>, Y<sub>0</sub>), with this segment's endpoint, (X<sub>0</sub> + Segment Length, Y<sub>1</sub>) using a straight line, by computing the values for each point between the endpoints.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_0d16714b-38f6-4457-8da0-1914394b44f9" shape="rect"></a>Because the linear segment uses the end point from the previous segment, a linear segment can not be the first segment.</p>
+         </div>
+         <p>
+            <a id="para_c20ac823-d3ac-4524-85bd-6a8b5b12f04f" shape="rect"></a>The linear segment's format shall be as in <a class="xref" href="sect_C.7.9.2.2.html#table_C.7-26" title="Table C.7-26. Linear Segment Type" shape="rect">Table C.7-26</a>.</p>
+         <div class="table">
+            <a id="table_C.7-26" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.7-26. Linear Segment Type</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_80cd2783-367c-4f60-b33e-01f16aabdf6e" shape="rect"></a>Segment Opcode = 1</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1d099a3b-e336-4acd-a127-5abec340e475" shape="rect"></a>Segment Length</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_99482bb4-ee80-44a2-b56d-17919a81e709" shape="rect"></a>Y1</p>
+                                    </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.7.9.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.7.9.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.7.9.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.7.9.2 Segmented Palette Color Lookup Table Data </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.7.9.2.3 Indirect Segment Type</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

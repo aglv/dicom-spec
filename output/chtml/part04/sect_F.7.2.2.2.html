@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>F.7.2.2.2 Service Class User</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_F.7.2.2.html" title="F.7.2.2 Set Modality Performed Procedure Step Information" />
+      <link rel="prev" href="sect_F.7.2.2.html" title="F.7.2.2 Set Modality Performed Procedure Step Information" />
+      <link rel="next" href="sect_F.7.2.2.3.html" title="F.7.2.2.3 Service Class Provider" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">F.7.2.2.2 Service Class User <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_F.7.2.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.7.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">F.7.2.2 Set Modality Performed Procedure Step Information</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.7.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_F.html" shape="rect">Procedure Step SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_F.7.html" shape="rect">Modality Performed Procedure Step SOP Class</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_F.7.2.html" shape="rect">Operations</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_F.7.2.2.html" shape="rect">Set Modality Performed Procedure Step Information</a>
+         </span> &gt; <span class="breadcrumb-node">Service Class User</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_F.7.2.2.2" shape="rect"></a>F.7.2.2.2 Service Class User</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_026d76e9-3855-41c1-b153-ffeff6f48180" shape="rect"></a>The SCU shall specify in the N-SET request primitive the UID of the Modality Performed Procedure Step SOP Instance for which it wants to set Attribute Values.</p>
+         <p>
+            <a id="para_d3954b72-a500-49e5-aad9-d52a7917d27b" shape="rect"></a>The SCU shall be permitted to set Attribute Values for any Modality Performed Procedure Step SOP Class Attribute specified in <a class="xref" href="sect_F.7.2.html#table_F.7.2-1" title="Table F.7.2-1. Modality Performed Procedure Step SOP Class N-CREATE, N-SET and Final State Attributes" shape="rect">Table F.7.2-1</a>. The SCU shall specify the list of Modality Performed Procedure Step SOP Class Attributes for which it wants to set the Attribute Values. The SCU shall provide, with one or more N-SET request primitives, the Attribute Values specified in <a class="xref" href="sect_F.7.2.html#table_F.7.2-1" title="Table F.7.2-1. Modality Performed Procedure Step SOP Class N-CREATE, N-SET and Final State Attributes" shape="rect">Table F.7.2-1</a>. The encoding rules for Modality Performed Procedure Step Attributes are specified in the N-SET request primitive specification in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. The SCU shall only set Attribute Values that are already created with an N-CREATE request.</p>
+         <p>
+            <a id="para_3d7b28a5-2667-4f15-a6a4-463180328638" shape="rect"></a>The SCU shall not send N-SET request primitives for a Modality Performed Procedure Step SOP Instance after a N-SET request primitive with a value for the Attribute "Performed Procedure Step Status" (0040,0252) is "COMPLETED" or "DISCONTINUED" has been sent.</p>
+         <p>
+            <a id="para_eeabc5f2-7845-40a0-abb1-13b0ead35829" shape="rect"></a>If Sequences are included in a N-SET command, all Items of a Sequence are to be included in the command and not only the Items to be updated.</p>
+         <p>
+            <a id="para_023d41ed-3402-418b-b47a-12750a106f22" shape="rect"></a>Once the Modality Performed Procedure Step Status (0040,0252) has been set to "COMPLETED" or "DISCONTINUED" the SCU shall no longer modify the Modality Performed Procedure Step SOP Instance, and shall not create new Composite SOP Instances as part of the same Modality Performed Procedure Step SOP Instance.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_c6e1a046-e17d-40a6-97ba-c5b9d73d247f" shape="rect"></a>A Modality that wishes to continue or resume creating Composite SOP Instances may create a new Modality Performed Procedure Step.</p>
+         </div>
+         <p>
+            <a id="para_646a06ec-305c-4209-85b1-ff38020a93ff" shape="rect"></a>Before or when Modality Performed Procedure Step Status (0040,0252) is set to "COMPLETED" or "DISCONTINUED" the SCU shall have created or set all the Attributes according to the requirements in the Final State column of <a class="xref" href="sect_F.7.2.html#table_F.7.2-1" title="Table F.7.2-1. Modality Performed Procedure Step SOP Class N-CREATE, N-SET and Final State Attributes" shape="rect">Table F.7.2-1</a>.</p>
+         <p>
+            <a id="para_57b3928e-97ba-43f1-b0ca-c28d40af642c" shape="rect"></a>Before or when Modality Performed Procedure Step Status (0040,0252) is set to "COMPLETED" or "DISCONTINUED" the SCU shall have sent to the SCP a list of all Image SOP Instances and all Non-Image Composite SOP Instances created during the Procedure Step in Referenced Image Sequence (0008,1140) and Referenced Non-Image Composite SOP Instance Sequence (0040,0220) respectively.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7be96fb0-64b3-4ac7-addf-5d93ef4593d5" shape="rect"></a>The intent is that a completed or discontinued Modality Performed Procedure Step entity will contain a complete list of all the Images and Non-Image Composite SOP Instances that were created.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_26ee399b-f112-438c-8c1a-0cd70d6dc56c" shape="rect"></a>The distinction between the list of images and non-images is present for historic reasons only, and has no semantic significance.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_9bb39ade-672c-4724-a0ed-a3c3a2959189" shape="rect"></a>The Modality Performed Procedure Step Status (0040,0252) shall not be set to "COMPLETED" or "DISCONTINUED" if the list contains neither Image references nor Non-Image Composite SOP Instance references, unless no such Instances were created.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.7.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_F.7.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.7.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">F.7.2.2 Set Modality Performed Procedure Step Information </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> F.7.2.2.3 Service Class Provider</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10.4 Retrieve Transaction</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_10.html" title="10 Studies Service and Resources" />
+      <link rel="prev" href="sect_10.3.html" title="10.3 Transactions Overview" />
+      <link rel="next" href="sect_10.4.2.html" title="10.4.2 Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10.4 Retrieve Transaction <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_10.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">10 Studies Service and Resources</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_10.html" shape="rect">Studies Service and Resources</a>
+         </span> &gt; <span class="breadcrumb-node">Retrieve Transaction</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_10.4" shape="rect"></a>10.4 Retrieve Transaction</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ea3d115b-eaab-48da-9815-5a77af49d1f9" shape="rect"></a>This Transaction uses the GET method to retrieve the Target Resource. The media type in the response payload will depend on the Target URI and the Query Parameters; for example, Instances as application/dicom, Metadata as application/dicom+json or rendered Instances as application/jpeg images.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_10.4.1" shape="rect"></a>10.4.1 Request</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_2c13fb04-cf52-4036-8553-430f92405753" shape="rect"></a>The request shall have the following syntax:</p>
+            <pre class="programlisting" xml:space="preserve">GET SP "/" {/resource} {?parameter*} SP version CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Accept: 1#media-type CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">*(header-field CRLF)</pre>
+            <pre class="programlisting" xml:space="preserve">CRLF</pre>
+            <p>
+               <a id="para_5fbacf7f-8c68-48ce-956f-5fc5fd7d0bda" shape="rect"></a>Where parameter is one of the Query Parameters defined for the Target Resource in <a class="xref" href="sect_10.4.html#sect_10.4.1.2" title="10.4.1.2 Query Parameters" shape="rect">Section 10.4.1.2</a>.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.4.1.1" shape="rect"></a>10.4.1.1 Target Resources</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.1" shape="rect"></a>10.4.1.1.1 Instance Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_c17fdc7d-9303-4c1d-88f9-2aa25dfd5b20" shape="rect"></a>Instance Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1-1" title="Table 10.4.1-1. Retrieve Transaction Instance Resources" shape="rect">Table 10.4.1-1</a>) are used to retrieve Instances.</p>
+                  <p>
+                     <a id="para_06babc9f-fda6-47ab-8067-bb3331b66c2b" shape="rect"></a>Retrieving a Series Instances resource retrieves all the individual Instances contained in the Series. Retrieving a Study Instances resource retrieves all the individual Instances contained in all the Series.</p>
+                  <div class="table">
+                     <a id="table_10.4.1-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1-1. Retrieve Transaction Instance Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a6c291ed-77a5-40ef-9355-049a3a8b143f" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d17bb895-6b9a-46e3-add6-51cca48c7ac5" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fd7cfcd0-2c6f-4d67-af48-8f1534262d46" shape="rect"></a>Study Instances</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a4cfcbd7-7a46-418f-8778-c90029691e5f" shape="rect"></a>Series Instances</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8df7c060-4acb-4376-9719-ae4d255bf99e" shape="rect"></a>Instance</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_9ffbc8d0-1f9d-4796-8db7-63177981f8e8" shape="rect"></a>Bulkdata and Frames were previously listed in this table. Bulkdata is addressed in <a class="xref" href="sect_10.4.html#sect_10.4.1.1.5" title="10.4.1.1.5 Bulkdata Resources" shape="rect">Section 10.4.1.1.5</a> and Frames data is addressed in <a class="xref" href="sect_10.4.html#sect_10.4.1.1.6" title="10.4.1.1.6 Pixel Data Resources" shape="rect">Section 10.4.1.1.6</a>.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.2" shape="rect"></a>10.4.1.1.2 Metadata Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_e785b630-0fea-4d2b-abd3-b2e58a6587a8" shape="rect"></a>Metadata Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1-2" title="Table 10.4.1-2. Retrieve Transaction Metadata Resources" shape="rect">Table 10.4.1-2</a>) are used to retrieve the metadata of Instances without retrieving Bulkdata.</p>
+                  <p>
+                     <a id="para_b405eb4f-d01f-4be8-9e1e-25df98804148" shape="rect"></a>Retrieving a Series Metadata resource retrieves all the metadata for all individual Instances contained in the Series. Retrieving a Study Metadata resource retrieves all the metadata for all individual Instances contained in all the Series.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_efb32af5-d85c-4b08-84ec-d32901fb90b4" shape="rect"></a>An implementation interested in just study level or series level metadata, rather than instance level metadata for all instances, would be better served by using the Search Transaction on the All Studies or Study’s Series resources, matching against the Study Instance UID and using &amp;includefield to specify the metadata of interest (see <a class="xref" href="sect_10.6.html#sect_10.6.1.2" title="10.6.1.2 Query Parameters" shape="rect">Section 10.6.1.2</a>).</p>
+                  </div>
+                  <div class="table">
+                     <a id="table_10.4.1-2" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1-2. Retrieve Transaction Metadata Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b75ef72b-3762-4c91-a667-0406c3924832" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30a99ab2-b8ad-48dd-a06d-c687bc09e9b4" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9639c83c-b6b8-4b59-87c5-60a740892c1b" shape="rect"></a>Study Metadata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/metadata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ad8fdd00-bc74-47b2-91bc-31bbb4efba89" shape="rect"></a>Series Metadata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/metadata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0930b493-fcc8-44f1-9c42-eb4ff046643f" shape="rect"></a>Instance Metadata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/metadata</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_47066f47-5788-4f4a-aac7-91bed159c1c7" shape="rect"></a>The Metadata describes the corresponding Resource, not any Representation of it that might be separately retrieved, hence includes only the DICOM Dataset (without Bulkdata), and in particular does not include any Group 0002 File Meta Information Data Elements.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_3b94064b-e0f3-4fd2-87be-e1281248aca9" shape="rect"></a>Some Attributes of the DICOM Dataset may depend on the Representation, not the Resource, especially those that describe the Pixel Data, so may differ from those encoded in a particular retrieved Representation. E.g., Photometric Interpretation (0028,0004) may differ depending on the Transfer Syntax.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_0253c9d4-731e-4943-a550-cac4bee694b3" shape="rect"></a>Information related to Transfer Syntax UID (0002,0010) in the File Meta Information, which might be expected to be of interest for retrieval of the Representation of the Resource in a particular Media Type, may be available using the Available Transfer Syntax UID (0008,3002) in a Search Transaction.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.3" shape="rect"></a>10.4.1.1.3 Rendered Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_8ca17821-0f33-4034-aa34-1cbefd7947e8" shape="rect"></a>Rendered Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1-3" title="Table 10.4.1-3. Retrieve Transaction Rendered Resources" shape="rect">Table 10.4.1-3</a>) are used to retrieve representations of a DICOM Resource rendered as appropriate images, videos, text documents, or other representations. Its primary use case is to provide user agents with a simple means to display medical images and related documents, without requiring deep knowledge of DICOM data structures and encodings.</p>
+                  <p>
+                     <a id="para_789658df-cd3a-44d6-960f-34b228a98fd2" shape="rect"></a>A Rendered Resource exposes one or more rendered representations, i.e., in a Rendered Media type, of its parent DICOM Resource.</p>
+                  <div class="table">
+                     <a id="table_10.4.1-3" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1-3. Retrieve Transaction Rendered Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63560c92-aafb-41f9-a443-53ed71fcd88a" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7a6d7668-8bd4-458f-be77-7d8b6993a5ae" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9bc74d73-a6fe-45aa-8e20-6b78d94a3d1d" shape="rect"></a>Rendered Study</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/rendered</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3205424d-4bee-4e42-ad64-66d36c4d9c40" shape="rect"></a>Rendered Series</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/rendered</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0bdf931e-0818-45ff-88ab-652d1865ca7e" shape="rect"></a>Rendered Instance</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/rendered</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63380191-727d-4894-99ee-b05f1d3a355f" shape="rect"></a>Rendered Frames</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/frames/{frames}/rendered</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.4" shape="rect"></a>10.4.1.1.4 Thumbnail Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_67efb0f7-ae96-4f03-87e1-2a461f0c7605" shape="rect"></a>Thumbnail Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1-4" title="Table 10.4.1-4. Retrieve Transaction Thumbnail Resources" shape="rect">Table 10.4.1-4</a>) are used to retrieve a rendered representation appropriate to stand for its parent DICOM Resource.</p>
+                  <div class="table">
+                     <a id="table_10.4.1-4" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1-4. Retrieve Transaction Thumbnail Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d501fb6e-b5af-4056-a0f6-5238db706768" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_073d0e31-52b6-47b1-9d3f-72de5bb29328" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_562ade1f-1332-4af7-9b61-d7765c171423" shape="rect"></a>Study Thumbnail</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/thumbnail</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_141333b6-dad6-4806-8286-86c6a8fe15f5" shape="rect"></a>Series Thumbnail</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/thumbnail</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d3087348-c5bc-4224-a35e-70f9d90a7d5e" shape="rect"></a>Instance Thumbnail</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/thumbnail</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bb808f5d-6d46-4a8d-b874-adfdf67024df" shape="rect"></a>Frame Thumbnail</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/frames/{frames}/thumbnail</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_72306f46-554d-4bf5-8500-ee0b151bf864" shape="rect"></a>If the origin server supports any of the Thumbnail resources, it shall support all of them.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.5" shape="rect"></a>10.4.1.1.5 Bulkdata Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a0925ac7-8aea-46c2-9f88-9feb6de2bbfa" shape="rect"></a>Bulkdata Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1.5-1" title="Table 10.4.1.5-1. Retrieve Transaction Bulkdata Resources" shape="rect">Table 10.4.1.5-1</a>) are used to retrieve data elements (typically containing large data, such as Pixel Data) extracted from DICOM Instances.</p>
+                  <div class="table">
+                     <a id="table_10.4.1.5-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1.5-1. Retrieve Transaction Bulkdata Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e7a22a9f-973c-4fb1-8cca-d973fa0ecadf" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f2b824e8-3f1f-41e8-8a52-e13692590294" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_681a4b06-1432-4e61-b733-3f7cac80f73c" shape="rect"></a>Study Bulkdata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/bulkdata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cb2eeca1-8d92-4799-9953-1349aca8e1fc" shape="rect"></a>Series Bulkdata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/bulkdata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0f1515dd-f391-4b01-96fa-65b3fd3b4c0b" shape="rect"></a>Instance Bulkdata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/bulkdata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7a682afc-13dc-4696-931d-6fc3703325f4" shape="rect"></a>Bulkdata</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">{bulkdataURI}</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_20f43fc8-9cf7-47cb-aa49-e8651740a65b" shape="rect"></a>Bulkdata resources that contain pixel data can be retrieved equivalently as described in <a class="xref" href="sect_10.4.html#sect_10.4.1.1.6" title="10.4.1.1.6 Pixel Data Resources" shape="rect">Section 10.4.1.1.6</a>.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_586fb6d4-77dd-43bf-8943-fde7fc1d9c28" shape="rect"></a>Refer to <a class="xref" href="sect_10.4.html#sect_10.4.1.1.6" title="10.4.1.1.6 Pixel Data Resources" shape="rect">Section 10.4.1.1.6</a> for URI templates for Bulkdata consisting of Frame Pixel Data.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_10.4.1.1.6" shape="rect"></a>10.4.1.1.6 Pixel Data Resources</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9064a31a-8945-4476-afcd-b9fb0792c9a6" shape="rect"></a>Pixel Data Resources (defined in <a class="xref" href="sect_10.4.html#table_10.4.1.6-1" title="Table 10.4.1.6-1. Retrieve Transaction Pixel Data Resources" shape="rect">Table 10.4.1.6-1</a>) are used to retrieve data elements containing top-level pixel data from DICOM Instances.</p>
+                  <p>
+                     <a id="para_37642b2a-59fd-4b75-89ec-78c5d3a78473" shape="rect"></a>Pixel data is a subset of bulkdata. The Pixel Data resources provide a convenient method to access that specific subset.</p>
+                  <div class="table">
+                     <a id="table_10.4.1.6-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 10.4.1.6-1. Retrieve Transaction Pixel Data Resources</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c6891272-21a0-482e-b142-e6637995b753" shape="rect"></a>Resource</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ef9a77e6-e35e-4fd5-a5e4-b3e6d19caca9" shape="rect"></a>URI Template</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0108226e-fe60-4ce8-877b-dcc65981f070" shape="rect"></a>Study Pixel Data</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/pixeldata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_93b75cdb-7f31-4831-b0ce-78807eedf34e" shape="rect"></a>Series Pixel Data</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/pixeldata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_766a7656-67d4-4814-9409-94cfb24e4e5f" shape="rect"></a>Instance Pixel Data</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/pixeldata</pre>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_066923a0-d572-43d2-858d-810a44311218" shape="rect"></a>Frame Pixel Data</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <pre class="programlisting" xml:space="preserve">/studies/{study}/series/{series}/instances/{instance}/frames/{frames}</pre>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_9ddc356c-e6e8-4207-b02a-533ed0f992a1" shape="rect"></a>Frame Pixel Data is inherently pixel data so a /pixeldata subresource is not needed in the URI Template.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_8c714553-7947-4947-8af9-7fc09e1d38d9" shape="rect"></a>The Frame Pixel Data resource originally appeared in <a class="xref" href="sect_10.4.html#table_10.4.1-1" title="Table 10.4.1-1. Retrieve Transaction Instance Resources" shape="rect">Table 10.4.1-1</a>.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.4.1.2" shape="rect"></a>10.4.1.2 Query Parameters</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_349f4349-1791-4c85-9c75-0f2eaebd3bff" shape="rect"></a>The origin server shall support Query Parameters as required in <a class="xref" href="sect_10.4.html#table_10.4.1-5" title="Table 10.4.1-5. Query Parameters by Resource" shape="rect">Table 10.4.1-5</a>.</p>
+               <p>
+                  <a id="para_f32e20b7-1c75-4e41-9c5c-4fd2aede8f81" shape="rect"></a>The user agent shall supply in the request Query Parameters as required in <a class="xref" href="sect_10.4.html#table_10.4.1-5" title="Table 10.4.1-5. Query Parameters by Resource" shape="rect">Table 10.4.1-5</a>.</p>
+               <div class="table">
+                  <a id="table_10.4.1-5" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 10.4.1-5. Query Parameters by Resource</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_b95b93ae-a6fb-426a-89ce-4c808601d6f2" shape="rect"></a>Key</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_4798710a-18c3-499f-bb93-71487f503cf9" shape="rect"></a>Resources</p>
+                                </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                    <a id="para_67f0d0d8-3734-4d6a-8afe-3381871c26b4" shape="rect"></a>Usage</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_9bcdb1b9-ac3f-4d0f-9ede-b04a02916f83" shape="rect"></a>Section</p>
+                                </th>
+                           </tr>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_399fcb73-7b22-4415-94c4-8ba89a49bd7f" shape="rect"></a>User Agent</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_590432cd-10ea-43f8-9d6d-170b9c255a1e" shape="rect"></a>Origin Server</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1470819a-4d1c-4afa-8a38-6e470b5f1868" shape="rect"></a>accept</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_63cb5c6c-3f85-4ca1-8996-e8b90e3a46c7" shape="rect"></a>All Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c10c8510-c70f-490f-8c35-8e4463d0d6ee" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9cba35af-4572-4f97-bdd5-e628d29def94" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2a8f4513-003b-4868-bcea-2bea4abc3fac" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.html#sect_8.3.3.1" title="8.3.3.1 Accept Query Parameter" shape="rect">Section 8.3.3.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cd572244-998f-483e-9864-cc30c43bdaba" shape="rect"></a>charset</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_60aeb53d-4c4b-4f90-9877-e67ad1fa1c9e" shape="rect"></a>Metadata Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5bb8979e-4d8c-436b-b243-4ee4d7b19543" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d4ce93f4-0e0d-4296-8545-40b409bfe406" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_227edb6c-196d-4ae9-bd98-4b7a30120406" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" shape="rect">Section 8.3.3.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c908010c-c02f-476a-b8b4-8eef26d01e1a" shape="rect"></a>annotation</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e6583713-102f-4e7f-bc4f-c1db5cfe808b" shape="rect"></a>Rendered Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d569bbaa-5146-4cb3-ba9c-5a7cf5ae0de1" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b557645e-1afd-4b9b-a8f9-30cf1df0cec8" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_83dc14e7-3221-47b3-bac9-4943757521c5" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.1" title="8.3.5.1.1 Image Annotation" shape="rect">Section 8.3.5.1.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_eaa7a698-4249-42d7-a2a7-473bc37a7cac" shape="rect"></a>quality</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_99b3579b-afc3-4630-ad10-1e12b1b8d245" shape="rect"></a>Rendered Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_465bc9ae-3034-4b6f-adae-84a26b9667b1" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_922f366b-13be-4fd4-b62c-3d40c0123d10" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_93e317bc-f43b-41d0-a2d6-13b946421bab" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.2" title="8.3.5.1.2 Image Quality" shape="rect">Section 8.3.5.1.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_1e6280f4-3ec3-4a50-98c9-7474ce808616" shape="rect"></a>viewport</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cf26a495-e823-4ada-a851-8f40503a2c9d" shape="rect"></a>Rendered Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_56433a1b-ea46-4034-a3d0-5da610e0767f" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e83d5ba4-aaf8-4db9-9da4-d454aeb06bc2" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_0acdd68b-a465-4caf-8ae4-3ef4296f605d" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.3" title="8.3.5.1.3 Viewport Scaling" shape="rect">Section 8.3.5.1.3</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7e89436b-e347-4dd9-8f2e-4c7917be2c07" shape="rect"></a>Thumbnail Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d856ddc1-5b54-4442-8873-572bef71109f" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9ebe7673-7942-4b0f-8f30-17e0ca9681a8" shape="rect"></a>O</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f0ddadbc-ed59-4b3f-bcfa-1501dd0320a3" shape="rect"></a>window</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_13b9231c-7297-41d0-9a70-ff6d8f2cafbe" shape="rect"></a>Rendered Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9b2288a2-d0e8-446f-a6d0-ee40f30c9aef" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3a90954b-b59e-40a4-bb2b-a563a75b9b71" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b80c0661-846d-43b5-aa5f-fee0e59765a2" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.4" title="8.3.5.1.4 Windowing" shape="rect">Section 8.3.5.1.4</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e9658e3f-0b1c-4bc7-b133-a33e9a88cfb4" shape="rect"></a>iccprofile</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_385a3f1a-7bb4-4f9c-830a-4304bc76d0ee" shape="rect"></a>Rendered Resources</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_19048102-4f40-4646-b7e1-c7a31299e2fa" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0c31501e-e18b-4350-b1b5-061db71f8fb1" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2aa984f3-e801-4729-9821-8afcbf4cf6b7" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.5" title="8.3.5.1.5 ICC Profile" shape="rect">Section 8.3.5.1.5</a>
+                                    </p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.4.1.3" shape="rect"></a>10.4.1.3 Request Header Fields</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4ac9aff5-9f95-4002-aefe-9cc50cbc4df0" shape="rect"></a>The origin server shall support request header fields as required in <a class="xref" href="sect_10.4.html#table_10.4.1-6" title="Table 10.4.1-6. Request Header Fields" shape="rect">Table 10.4.1-6</a>.</p>
+               <p>
+                  <a id="para_55f86085-5955-4c38-b8c9-fea69971da84" shape="rect"></a>The user agent shall supply request header fields as required in <a class="xref" href="sect_10.4.html#table_10.4.1-6" title="Table 10.4.1-6. Request Header Fields" shape="rect">Table 10.4.1-6</a>.</p>
+               <div class="table">
+                  <a id="table_10.4.1-6" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 10.4.1-6. Request Header Fields</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_fc1db75c-a301-42c3-ae7e-55f088dce6ee" shape="rect"></a>Name</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_e4384a08-c5c9-4703-b961-9dcac9c57a4b" shape="rect"></a>Values</p>
+                                </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                    <a id="para_68f9b99d-f3b2-4204-b044-22fe6fc60461" shape="rect"></a>Usage</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_7c9a654a-d609-43d5-9f2a-8ce8d0583354" shape="rect"></a>Description</p>
+                                </th>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5b801952-da4f-49f5-b688-439463502b2f" shape="rect"></a>User Agent</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cdf33bcc-7878-49a6-b26a-ae34fef7f3bb" shape="rect"></a>Origin Server</p>
+                                </td>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0377e83f-1f60-4435-a8c2-01287370f378" shape="rect"></a>Accept</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_af5255a0-556f-405d-8984-9a4fd3e7cf6a" shape="rect"></a>media-type</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_41363b53-34de-4bf3-8a38-803adbc5cf40" shape="rect"></a>M</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2e089c13-8c06-438f-ace9-a6c58adb52fd" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7b159cd9-6a53-4264-b416-ba8ac4511e1e" shape="rect"></a>The Acceptable Media Types of the response payload</p>
+                                    <p>
+                                    <a id="para_079bcedb-20ad-400b-8a02-87fca522de31" shape="rect"></a>See <a class="xref" href="sect_10.4.4.html" title="10.4.4 Media Types" shape="rect">Section 10.4.4</a> for media types corresponding to each set of target resources defined in <a class="xref" href="sect_10.4.html#sect_10.4.1.1" title="10.4.1.1 Target Resources" shape="rect">Section 10.4.1.1</a>.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_77011367-0d3c-4349-b7ea-2f4405d518c7" shape="rect"></a>Accept-Charset</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_56d0da2f-9ef1-4ab6-8261-5304b36fcd66" shape="rect"></a>charset</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f9f03004-a2bb-45bd-bf10-8ff3d8e6e8e8" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3a6e76aa-eab7-4940-b29d-395c5c06d594" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f111704f-bf06-4e42-b89e-3bd47f559193" shape="rect"></a>The Acceptable Character Sets of the response payload</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_10f09e95-87cb-4ed6-a75d-89ae91e92f1c" shape="rect"></a>See also <a class="xref" href="sect_8.4.html" title="8.4 Header Fields" shape="rect">Section 8.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.4.1.4" shape="rect"></a>10.4.1.4 Request Payload</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_78c93b8e-afd7-488f-a663-b4c543b69c7d" shape="rect"></a>The request has no payload.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_10.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.3 Transactions Overview </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.4.2 Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

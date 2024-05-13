@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>S.3.2.2.2 Service Class User Behavior</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_S.3.2.2.html" title="S.3.2.2 Initiate Media Creation" />
+      <link rel="prev" href="sect_S.3.2.2.html" title="S.3.2.2 Initiate Media Creation" />
+      <link rel="next" href="sect_S.3.2.2.3.html" title="S.3.2.2.3 Service Class Provider Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">S.3.2.2.2 Service Class User Behavior <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_S.3.2.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_S.3.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">S.3.2.2 Initiate Media Creation</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_S.3.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_S.html" shape="rect">Media Creation Management Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_S.3.html" shape="rect">Media Creation Management SOP Class</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_S.3.2.html" shape="rect">Operations</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_S.3.2.2.html" shape="rect">Initiate Media Creation</a>
+         </span> &gt; <span class="breadcrumb-node">Service Class User Behavior</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_S.3.2.2.2" shape="rect"></a>S.3.2.2.2 Service Class User Behavior</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_6105b1b0-5b54-4383-820c-f295d29e6ff2" shape="rect"></a>The SCU shall use the N-ACTION primitive to request the SCP to create Interchange Media according to an already created Media Creation Management SOP Instance. Action Information is specified in Table S. 3.2.2.1-1.</p>
+         <p>
+            <a id="para_264cabc7-a6d4-4fff-b8c6-a6a9e0d41a06" shape="rect"></a>Upon receipt of a successful N-ACTION Response Status Code from the SCP, the SCU now knows that the SCP has received the N-ACTION Initiate Media Creation request and will process the request.</p>
+         <p>
+            <a id="para_d6926c18-b57f-41da-9665-bf2ddb414243" shape="rect"></a>Upon receipt of a failure N-ACTION Response Status Code from the SCP, the SCU now knows that the SCP will not process the Initiate Media Creation request. The actions taken by the SCU upon receiving the status is beyond the scope of this Standard.</p>
+         <p>
+            <a id="para_7e19ad4c-0235-486b-a305-9d84d768f9ba" shape="rect"></a>At any time after receipt of the N-ACTION response, the SCU may release the association on which it sent the N-ACTION request.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d35ec9cd-a921-409e-afd0-4e7cfb6cf8d6" shape="rect"></a>An N-GET of the corresponding of the Media Creation Management SOP Class may be performed on the same or subsequent associations.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_59275863-d6cd-413e-b620-0713531b8c86" shape="rect"></a>The duration for which the SOP Instance UID of an instance of the Media Creation Management SOP Class remains active once the request has been completed or has failed is implementation dependent, but should be sufficiently long to allow an SCU to determine the ultimate outcome of the request.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_S.3.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_S.3.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_S.3.2.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">S.3.2.2 Initiate Media Creation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> S.3.2.2.3 Service Class Provider Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

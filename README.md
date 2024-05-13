@@ -1,0 +1,1 @@
+This branch is DocBookDICOM2024b\_release\_chtml\_20240331180826.zip from https://dicom.nema.org/medical/dicom/2024b/

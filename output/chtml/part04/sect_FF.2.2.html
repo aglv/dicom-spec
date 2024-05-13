@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>FF.2.2 Volumetric Inputs, Registration and Cropping</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_FF.2.html" title="FF.2 Volume Transformation Processes" />
+      <link rel="prev" href="sect_FF.2.html" title="FF.2 Volume Transformation Processes" />
+      <link rel="next" href="sect_FF.2.3.html" title="FF.2.3 Volumetric Presentation State Display" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">FF.2.2 Volumetric Inputs, Registration and Cropping <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_FF.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FF.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">FF.2 Volume Transformation Processes</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FF.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_FF.html" shape="rect">Volumetric Presentation State Storage SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FF.2.html" shape="rect">Volume Transformation Processes</a>
+         </span> &gt; <span class="breadcrumb-node">Volumetric Inputs, Registration and Cropping</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_FF.2.2" shape="rect"></a>FF.2.2 Volumetric Inputs, Registration and Cropping</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_445bff8d-3f58-416a-86ff-4346ef7aca72" shape="rect"></a>A Volumetric Presentation State can take multiple volumes as input. A volume is defined in <a href="../part03/sect_C.11.23.html#sect_C.11.23.1" class="olink" shape="rect">Section C.11.23.1 “Presentation Input Type Volume Input Requirements” in PS3.3</a>. The same source data can be referenced in more than one input.</p>
+         <p>
+            <a id="para_14eddf08-ebf2-44fd-8fb8-2a2ca9398f77" shape="rect"></a>For each input volume, the Modality LUT or Rescale Slope and Rescale Intercept transformation(s) as specified in the source image(s) is applied first to the pixel data, otherwise an identity transformation shall be assumed.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_edccc604-8ff8-4ee9-9fa1-350e551acf71" shape="rect"></a>In enhanced multi-frame IODs this is specified in the Pixel Value Transformation Functional Group.</p>
+         </div>
+         <p>
+            <a id="para_9e8c5c40-c6a5-46ef-8a0e-156d6a126b5d" shape="rect"></a>The VOI LUT encoded in the Volumetric Presentation State, if any, is next applied to the input data, otherwise an identity transformation shall be assumed.</p>
+         <p>
+            <a id="para_e9a3446f-7a84-4d76-8ab8-f573e8b18829" shape="rect"></a>The input volumes may or may not be in the Volumetric Presentation State Reference Coordinate System (VPS-RCS). If they are not, they shall be registered into the VPS-RCS.</p>
+         <p>
+            <a id="para_997a435d-6e74-46fa-801e-d06af80e918f" shape="rect"></a>Two methods of cropping the input volumes are provided:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_26d0ce88-b570-4ad0-8e88-aadc9e88a5ff" shape="rect"></a>All inputs to the Volumetric Presentation State may be cropped using the common cropping methods specified by Global Crop (0070,120B) and items in the Volume Cropping Sequence (0070,1301).</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6734b522-26f4-4179-abe0-1e9d524b6205" shape="rect"></a>In addition, cropping may be specified independently for each input to the Volumetric Presentation State as specified by the value of Crop (0070,1204) and items in the Volume Cropping Sequence (0070,1301).</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_2a770c6f-ec48-4145-a363-60cc90bb1c7b" shape="rect"></a>Combinations of cropping methods may be specified. For example, all inputs could be cropped using global bounding box cropping in addition to another cropping method applied to one of more individual inputs to the Volumetric Presentation State.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FF.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_FF.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FF.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">FF.2 Volume Transformation Processes </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> FF.2.3 Volumetric Presentation State Display</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

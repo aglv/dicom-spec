@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>QQQQ Transport of Elementary Stream over IP (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="sect_PPPP.20.html" title="PPPP.20 Transmitting a Stereo Video" />
+      <link rel="next" href="chapter_RRRR.html" title="RRRR Encapsulated OBJ, 3D Model Grouping, &amp; Color (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">QQQQ Transport of Elementary Stream over IP (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_QQQQ.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_PPPP.20.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_RRRR.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Transport of Elementary Stream over IP (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_QQQQ" shape="rect"></a>QQQQ Transport of Elementary Stream over IP (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_04ecd013-46d9-4070-a4ef-eba4f8c133e2" shape="rect"></a>Carriage of audiovisual signals in their digital form across television plants has historically been achieved using coaxial cables that interconnect equipment through Serial Digital Interface (SDI) ports. The SDI technology provides a reliable transport method to carry a multiplex of video, audio and metadata with strict timing relationships.</p>
+         <p>
+            <a id="para_e83d5f5e-1893-4b46-be46-dfc685f8b5ce" shape="rect"></a>The features and throughput of IP networking equipment having improved steadily, it has become practical to use IP switching and routing technology to convey and switch video, audio, and metadata essence within television facilities.</p>
+         <p>
+            <a id="para_415e30bd-4df0-4744-a135-b77036c6943d" shape="rect"></a>Existing standards such as SMPTE ST 2022-6:2012 have seen a significant adoption in this type of application where they have brought distinct advantages over SDI, albeit only performing Circuit Emulation of SDI (i.e.; Perfect bit-accurate transport of the SDI signal contents).</p>
+         <p>
+            <a id="para_31b949f6-7520-4b02-8747-3b22d773580f" shape="rect"></a>However, the essence multiplex proposed by the SDI technology may be considered as somewhat inefficient in many situations where a significant part of the signal is left unused if little or no audio and/or ancillary data has to be carried along with the video raster, as depicted in <a class="xref" href="chapter_QQQQ.html#figure_QQQQ-1" title="Figure QQQQ-1. Structure of a High Definition SDI signal" shape="rect">Figure QQQQ-1</a> below:</p>
+         <div class="figure">
+            <a id="figure_QQQQ-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_QQQQ-1.svg" alt="Structure of a High Definition SDI signal" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure QQQQ-1. Structure of a High Definition SDI signal</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_3d1f51a5-0ed4-43a1-a095-45a696112a7e" shape="rect"></a>Acronyms on the <a class="xref" href="chapter_QQQQ.html#figure_QQQQ-1" title="Figure QQQQ-1. Structure of a High Definition SDI signal" shape="rect">Figure QQQQ-1</a> stand for: LN: line number; EAV: end of active video; SAV: start of active video; CRC: Cyclic Redundancy Code; HANC &amp; VANC: horizontal &amp; vertical ancillary data. The parentheses indicate the number of 8, 10 or 12 bits words used for each information.</p>
+         </div>
+         <p>
+            <a id="para_e640e63b-780b-4a3a-a67b-e15933b0e9cd" shape="rect"></a>As new image formats such as UHD get introduced, the corresponding SDI bit-rates increase, way beyond 10Gb/s and the cost of equipment at different points in a video system to embed, de-embed, process, condition, distribute, etc. the SDI signals becomes a major concern.</p>
+         <p>
+            <a id="para_72054ca2-7fc9-4f22-b51f-7dc0190e527b" shape="rect"></a>Consequently there has been a desire in the industry to switch and process different essence elements separately, leveraging the flexibility and cost-effectiveness of commodity networking gear and servers.</p>
+         <p>
+            <a id="para_b0497352-4a3a-4572-b7e7-9a5f5c9ae01c" shape="rect"></a>The Video Services Forum (VSF) has authored its Technical Recommendation #3 (a.k.a. VSF-TR03) describing the principles of a system where streams of different essences (namely video, audio, metadata to begin with) can be carried over an IP-based infrastructure whilst preserving their timing characteristics.</p>
+         <p>
+            <a id="para_d128d043-b255-4069-b761-ae48c665129d" shape="rect"></a>The TR03 work prepared by VSF has been handed off to the Society of Motion Picture &amp; Television Engineers (SMPTE) for due standardization process, resulting in the SMPTE ST 2110 family of standards. SMPTE ST 2110-10, 20 and 30 were approved on September 18, 2017:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_516fb869-ec53-4357-8c6b-c9363a8d806d" shape="rect"></a>ST 2110-10: System Timing and definitions;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_74e3ceb7-29a3-4a70-8a1a-010c2c27dc12" shape="rect"></a>ST 2110-20: Uncompressed active video;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_7ee5a6ef-c998-4a89-a6cf-dad8f0dbf635" shape="rect"></a>ST 2110-21: Traffic Shaping Uncompressed Video;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2bedc11f-d399-47b3-b928-5bd015a5fcc4" shape="rect"></a>ST 2110-30: Uncompressed PCM audio;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c166ccdc-daa9-4ae1-8309-f22d94376c5c" shape="rect"></a>ST 2110-40: Ancillary data.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_21ac090e-baae-40a0-86f1-ccc67c6a76a6" shape="rect"></a>The ST 2110 family of standards expands over time and the corresponding DICOM components may consider adopting these extensions (e.g., compressed video, large metadata supportâ€¦).</p>
+         <p>
+            <a id="para_2959a490-2634-4a21-be28-7b4d217a839c" shape="rect"></a>The system is intended to be extensible to a variety of essence types, its pivotal point being the use of the RTP protocol. In this system, essence streams are encapsulated separately into RTP before being individually forwarded through the IP network.</p>
+         <p>
+            <a id="para_9fc631cc-8793-49cd-945e-9ca16b81148e" shape="rect"></a>A system is built from devices that have senders and/or receivers. Streams of RTP packets flow from senders to receivers, however senders have no explicit awareness or coordination with the receivers. RTP streams can be either unicast or multicast, in which case multiple receivers can receive the stream over the network.</p>
+         <p>
+            <a id="para_b70bf6d2-3ed3-4f7a-a98a-e10a37fd3d2c" shape="rect"></a>Devices may be adapters that convert from/to existing standard interfaces like HDMI or SDI, or they may be processors that receive one or more streams from the IP network, transform them in some way and transmit the resulting stream(s) to the IP network. Cameras and monitors may transmit and receive elementary RTP streams directly through an IP-connected interface, eliminating the need for legacy video interfaces.</p>
+         <p>
+            <a id="para_a5a8136c-546f-40ee-af71-fad6b08a3118" shape="rect"></a>Proper operation of the ST 2110 environment relies on a reliable timing infrastructure that has been largely inspired by the one used in AES67 for Audio over IP.</p>
+         <p>
+            <a id="para_6d4d449c-55a9-4fc4-b9c1-9f84b23d85e7" shape="rect"></a>Inter-stream synchronization relies on timestamps in the RTP packets that are sourced by the senders from a common Reference Clock. The Reference Clock is distributed over the IP network to all participating senders and receivers via PTP (Precision Time Protocol version 2, IEEE 1588-2008).</p>
+         <p>
+            <a id="para_4ec3996c-d3f5-4cc5-9e99-384fef408b5b" shape="rect"></a>Synchronization at the receiving device is achieved by the comparison of RTP timestamps with the common Reference Clock.</p>
+         <p>
+            <a id="para_dec5cdbf-ff46-4629-8e50-4aa11dce9a05" shape="rect"></a>DICOM devices, which typically support NTP, will need to handle PTP to use this functionality, which may involve hardware changes. Each device maintains a Media Clock which is frequency locked to its internal time-base and advances at an exact rate specified for the specific media type. The media clock is used by senders to sample media and by receivers when recovering digital media streams. For video and ancillary data, the rate of the media clock is 90 kHz, whereas for audio it can be 44.1 kHz, 48 kHz, or 96 kHz.</p>
+         <p>
+            <a id="para_7bcd7a62-aa64-461b-88ea-5c66fdfc485c" shape="rect"></a>For each specific media type RTP stream, the RTP Clock operates at the same rate as the Media Clock.</p>
+         <p>
+            <a id="para_ce104efd-be25-4e4b-a7c8-16da57d8fd58" shape="rect"></a>ST 2110-20 specifies a very generic mechanism for RTP encapsulation of a video raster. It supports arbitrary resolutions, frame rates, and introduces a clever pixel packing accommodating an extremely wide variety of bit depths and sampling modes. It is very heavily inspired from IETF RFC4175.</p>
+         <p>
+            <a id="para_0723f655-94d1-4853-ab34-e6b1de62a3a7" shape="rect"></a>ST 2110-21 specifies traffic shaping and delivery timing of uncompressed video, in order to enable transport of multiple videos on the same physical network.</p>
+         <p>
+            <a id="para_0a8bb49c-cf53-4f9c-9f89-dee6551da09e" shape="rect"></a>ST 2110-30 specifies a method to encapsulate PCM digital audio using AES67 to which it applies a number of constraints. AES67 is a technical standard for audio over IP and audio over Ethernet. The standard was developed by the Audio Engineering Society.</p>
+         <p>
+            <a id="para_4f97327b-fab8-400b-91de-ac2566a10ecb" shape="rect"></a>ST 2110-40 specifies a simple method to tunnel packets of SDI ancillary data present in a signal over the IP network and enables a receiver to reconstruct an SDI signal that will embed the ancillary data at the exact same places it occupied in the original stream.</p>
+         <p>
+            <a id="para_e0bdc5cc-0fa1-4b57-ac8d-dc0d1ef60aa8" shape="rect"></a>Sender devices construct one SDP (Session Description Protocol) object per RTP Stream. These SDP objects are made available through the management interface of the device, thereby publishing the characteristics of the stream they encapsulate, however no method is specified to convey the SDP object to the receiver. Implementations can rely on web URLs, files or documentation on media, or it can be configured on the receiver from product documentation since it can be relatively static. This SDP object provides the basic information a system needs in order to identify the available signal sources on the network.</p>
+         <p>
+            <a id="para_e6444bcf-41ea-403c-a36a-89f402aadeaf" shape="rect"></a>It is worth noting that although ST 2110 currently describes the method for transporting video and audio, the same principles may be applied to other types of media by selecting the appropriate RTP payload encapsulation scheme, and complying to the general principles defined by ST 2110-10.</p>
+         <p>
+            <a id="para_b801c77a-0dc7-4e90-bcf5-667a20b99edb" shape="rect"></a>Some details of the ST 2110-10 are reproduced below for convenience. Refer to the original specifications for implementation.</p>
+         <p>
+            <a id="para_c32aa740-1bb0-4b41-ac20-a90783dfb5cf" shape="rect"></a>The RTP header bits have the following format:</p>
+         <div class="figure">
+            <a id="figure_QQQQ-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_QQQQ-2.svg" alt="RTP Header" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure QQQQ-2. RTP Header</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <p>
+            <a id="para_9750667e-1186-42da-8e1b-0470da79c372" shape="rect"></a>With:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">version (V) : 2 bits</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_f5b06d8b-d66b-407f-998c-89bb01c4fe3d" shape="rect"></a>Version of RTP as specified in IETF RFC 3550.</p>
+               </dd>
+               <dt>
+                  <span class="term">padding (P) : 1 bit</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_b686b977-5e86-418c-9481-234c5fe5d621" shape="rect"></a>When set the packet contains padding octets at the end as specified in IETF RFC 3550.</p>
+               </dd>
+               <dt>
+                  <span class="term">extension (X) : 1 bit</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_72bfc569-765b-49b9-962e-c230f9ac36fa" shape="rect"></a>When set the fixed header is followed by an RTP header extension.</p>
+               </dd>
+               <dt>
+                  <span class="term">CSRC (CC) : 4 bits</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_ac739866-e18b-45c6-a18c-249e93f7e16f" shape="rect"></a>Number of CSRC identifiers as specified in IETF RFC 3550.</p>
+               </dd>
+               <dt>
+                  <span class="term">marker (M) : 1 bit </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_edd700f2-d093-4c33-84bb-5007c4cd6b2f" shape="rect"></a>For video it is set to 1 when the RTP packet is carrying the last video essence of a frame or the last part of a field as specified in SMPTE ST 2110-20.</p>
+               </dd>
+               <dt>
+                  <span class="term">payload type (PT) </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_a7d4a6bc-1e60-4ce2-92db-7a2f9a4c7577" shape="rect"></a>Identifies the format of the payload. For a video or audio payload it is as specified in SMPTE ST 2110-10.</p>
+               </dd>
+               <dt>
+                  <span class="term">sequence number</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_7ec32b9b-969e-4d0d-89b4-e597ce13ca52" shape="rect"></a>Increments by one for each RTP data packet sent. It is as specified in IETF RFC 3550.</p>
+                  <p>
+                     <a id="para_d1c6545b-41ce-4b52-aa1d-261db6b78ce4" shape="rect"></a>Increments by one for each RTP data packet sent. It is as specified in IETF RFC 3550.</p>
+               </dd>
+               <dt>
+                  <span class="term">timestamp</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_cf588303-35d0-4b7a-af15-30b421ec906e" shape="rect"></a>Reflects the sampling instant of the first octet in the RTP data packet. It contains the timestamp as specified in SMPTE ST 2110-10.</p>
+               </dd>
+               <dt>
+                  <span class="term">SSRC</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_99c59afa-045c-42c4-a596-7755618cccc3" shape="rect"></a>Identifies the synchronization source. It is as specified in IETF RFC 3550.</p>
+               </dd>
+            </dl>
+         </div>
+         <p>
+            <a id="para_75987aee-14f9-4f5b-8d8a-74c0e50b0af9" shape="rect"></a>The RTP header extension bits have the following format:</p>
+         <div class="figure">
+            <a id="figure_QQQQ-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_QQQQ-3.svg" alt="RTP Header Extension" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure QQQQ-3. RTP Header Extension</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <p>
+            <a id="para_fde179cf-3fc0-4b1a-bab8-a3e8a87c1943" shape="rect"></a>With:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">defined by profile: 16 bits </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_d5eb5944-3280-41c0-9493-175c4dbe3d32" shape="rect"></a>It is defined by the type of header extension used.</p>
+               </dd>
+               <dt>
+                  <span class="term">length: 16 bits </span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_e2843d25-b43b-4a82-8deb-a6c28bbd4da8" shape="rect"></a>Size of the header extension in 32-bits units. It does not include the 4 byte header extension ("defined by profile" + "length").</p>
+               </dd>
+               <dt>
+                  <span class="term">header extension</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_b1d7e311-6298-41bb-8e68-22718ee137bc" shape="rect"></a>The one-byte header extension form is described below. The total size of the header extension is a multiple of 4 bytes.</p>
+               </dd>
+            </dl>
+         </div>
+         <p>
+            <a id="para_51aa6aee-722d-4a8f-8c91-6ba2335ff67f" shape="rect"></a>In complement to the SMPTE ST 2110 family of standards, AMWA (Advanced Media Workflow Association) has authored a recommendation called NMOS (Networked Media Open Specifications) which specifies the following header extensions:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">PTP Sync Timestamp</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_8c83b416-1e9a-49ec-8ff1-4003a346e429" shape="rect"></a>provides an absolute capture or playback timestamp for the Grain essence data, which consists of a 48-bit seconds field followed by a 32-bit nanosecond field. The length value in the extension header is 9.</p>
+               </dd>
+               <dt>
+                  <span class="term">PTP Origin Timestamp</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_4da16f0c-5022-417f-98ab-702d7c678260" shape="rect"></a>provides an absolute capture timestamp for the Grain essence data, which consists of a 48-bit seconds field followed by a 32-bit nanosecond field. The length value in the extension header is 9.</p>
+               </dd>
+               <dt>
+                  <span class="term">Flow Identifier</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_18d8e17e-77d3-482b-bfdc-015362251a9b" shape="rect"></a>a UUID which uniquely identifies the flow. The value is 16 bytes and therefore the length value in the extension header is 15.</p>
+               </dd>
+               <dt>
+                  <span class="term">Source Identifier</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_cb733260-8ff5-42a9-b267-87ed1b3d209e" shape="rect"></a>a UUID which uniquely identifies the source. The value is 16 bytes and therefore the length value in the extension header is 15.</p>
+               </dd>
+               <dt>
+                  <span class="term">Grain Duration</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_e4df19be-4741-4a21-98f7-3f03bb926f3d" shape="rect"></a>identifies the time period for which the video essence within the Grain should be displayed or the time period for which the audio essence should be played back, describing the length of a consistent video or audio sequence. It is a rational number consisting of a 4 byte numerator and 4 byte denominator. The value is 8 bytes and therefore the length value in the extension header is 7. Use of Grain Duration is optional.</p>
+               </dd>
+               <dt>
+                  <span class="term">Grain Flags</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_d342f198-36db-4bc4-b509-9c5baa18b55d" shape="rect"></a>The Grain Flags are a single byte with the following form:</p>
+                  <div class="figure">
+                     <a id="figure_QQQQ-4" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.17_QQQQ-4.svg" alt="RTP Grain Flags" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure QQQQ-4. RTP Grain Flags</strong>
+                     </p>
+                  </div>
+                  <br class="figure-break" clear="none" />
+                  <div class="variablelist">
+                     <dl class="variablelist">
+                        <dt>
+                           <span class="term">Start flag (S) : 1 bit </span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_ffe5957a-ce8b-4a55-8376-0f0e1414550b" shape="rect"></a>This bit shall be set to 1 in the first packet of the Grain. Otherwise it shall be set to 0.</p>
+                        </dd>
+                        <dt>
+                           <span class="term">End flag (E) : 1 bit </span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_275144f6-bf38-4da0-bbe7-17208a0e6860" shape="rect"></a>This bit shall be set to 1 in the last packet of the Grain. Otherwise it shall be set to 0.</p>
+                        </dd>
+                        <dt>
+                           <span class="term">Reserved: 6 bits </span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_386e3fa1-0323-4815-a1e3-b2dc4bf40475" shape="rect"></a>These bits are reserved for future use and should be set to 0. The length value of this extension header is 0.</p>
+                        </dd>
+                     </dl>
+                  </div>
+               </dd>
+            </dl>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_PPPP.20.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_RRRR.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">PPPP.20 Transmitting a Stereo Video </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> RRRR Encapsulated OBJ, 3D Model Grouping, &amp; Color (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.21.3 X-Ray 3D Acquisition Modules</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.21.html" title="C.8.21 X-Ray 3D" />
+      <link rel="prev" href="sect_C.8.21.2.3.html" title="C.8.21.2.3 Breast Tomosynthesis Contributing Sources Module" />
+      <link rel="next" href="sect_C.8.21.3.2.html" title="C.8.21.3.2 X-Ray 3D Angiographic Acquisition Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.21.3 X-Ray 3D Acquisition Modules <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.21.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.21.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.21 X-Ray 3D</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.21.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.21.html" shape="rect">X-Ray 3D</a>
+         </span> &gt; <span class="breadcrumb-node">X-Ray 3D Acquisition Modules</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.21.3" shape="rect"></a>C.8.21.3 X-Ray 3D Acquisition Modules</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_2901619d-97cf-4d7f-9520-258c2aa63c1a" shape="rect"></a>This section describes the X-Ray 3D Acquisition Modules and Macros to specify the acquisition context information used as input for one or more reconstructions. The Macros in this section define the Attributes that are common for all modalities. The Macros are used in the modality specific Modules.</p>
+         <p>
+            <a id="para_1d89f09b-51be-4d20-90ae-e0cbfe6f685e" shape="rect"></a>The Attributes of each Item in the X-Ray 3D Acquisition Sequence (0018,9507) define the acquisition characteristics of the projection images that were used to create one or more reconstructions.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_890d87d2-8f5d-4068-a0c4-a5592c60d385" shape="rect"></a>The intention of this Sequence is to supply acquisition information without the need to have access to all the contributing SOP Instances or when these SOP Instances do not exist.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e7718a37-7ace-4980-9627-fa3972609553" shape="rect"></a>The number of frames referenced in this Sequence is not necessarily the same as the number of projection images.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_8f836345-71e7-44c6-b159-454d3b50abd6" shape="rect"></a>For each Item of the X-Ray 3D Reconstruction Sequence (0018,9530) in the <a class="xref" href="sect_C.8.21.4.html" title="C.8.21.4 X-Ray 3D Reconstruction Module" shape="rect">X-Ray 3D Reconstruction Module</a>, the values of Acquisition Index (0020,9518) specify the Items in the X-Ray 3D Acquisition Sequence (0018,9507) that contribute to the reconstruction.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_bb314144-1eeb-4070-8139-f95d9f7e3798" shape="rect"></a>For example, a SOP Instance consists of two volumes in two sets of frames. The first volume is calculated from an acquisition without contrast and a second volume is calculated from the acquisitions with and without contrast. In this case the X-Ray 3D Acquisition Sequence (0018,9507) contains two Items. The first Item describes the acquisition details of the frames that are acquired without contrast. The second Item describes the acquisition details of the frames that are acquired with contrast. For the frames of the second volume both acquisitions contribute to the calculation. See <a class="xref" href="sect_C.8.21.3.html#figure_C.8.21.3-1" title="Figure C.8.21.3-1. Example of Usage Acquisition" shape="rect">Figure C.8.21.3-1</a>, <a class="xref" href="sect_C.8.21.3.html#figure_C.8.21.3-2" title="Figure C.8.21.3-2. Example of Contents of Contributing Sources Sequence" shape="rect">Figure C.8.21.3-2</a>, <a class="xref" href="sect_C.8.21.3.html#figure_C.8.21.3-3" title="Figure C.8.21.3-3. Example of Contents of X-Ray 3D Acquisition Sequence" shape="rect">Figure C.8.21.3-3</a>, <a class="xref" href="sect_C.8.21.3.html#figure_C.8.21.3-4" title="Figure C.8.21.3-4. Example of Contents of X-Ray 3D Reconstruction Sequence" shape="rect">Figure C.8.21.3-4</a> and <a class="xref" href="sect_C.8.21.3.html#figure_C.8.21.3-5" title="Figure C.8.21.3-5. Example of Contents of X-Ray 3D Frame Type Sequences" shape="rect">Figure C.8.21.3-5</a>.</p>
+         </div>
+         <p>
+            <a id="para_a59a99ce-3e01-4e68-ba48-5086a7fb8a18" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_C.8.21.3-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.3_C.8.21.3-1.svg" alt="Example of Usage Acquisition" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure C.8.21.3-1. Example of Usage Acquisition</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_7c25e880-7a58-445c-ab60-e8ab20e58579" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_C.8.21.3-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.3_C.8.21.3-2.svg" alt="Example of Contents of Contributing Sources Sequence" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure C.8.21.3-2. Example of Contents of Contributing Sources Sequence</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_7411ddb7-7635-4a74-8cb6-e448ecbf86e3" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_C.8.21.3-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.3_C.8.21.3-3.svg" alt="Example of Contents of X-Ray 3D Acquisition Sequence" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure C.8.21.3-3. Example of Contents of X-Ray 3D Acquisition Sequence</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_7fffa625-4b4c-4f67-8f91-a7a89738a3c2" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_C.8.21.3-4" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.3_C.8.21.3-4.svg" alt="Example of Contents of X-Ray 3D Reconstruction Sequence" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure C.8.21.3-4. Example of Contents of X-Ray 3D Reconstruction Sequence</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_a8d7f642-c571-4cb0-9cfa-a49d6cfeea89" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_C.8.21.3-5" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.3_C.8.21.3-5.svg" alt="Example of Contents of X-Ray 3D Frame Type Sequences" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure C.8.21.3-5. Example of Contents of X-Ray 3D Frame Type Sequences</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.21.3.1" shape="rect"></a>C.8.21.3.1 X-Ray 3D General Acquisition Macros</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_fd133a6f-5bb2-4bde-bc71-18b2abe600f2" shape="rect"></a>This section describes the X-Ray 3D General Acquisition Macros. These Macros specify the Attributes of the acquisition context common for the family of X-Ray 3D image SOP Classes.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.21.3.1.1" shape="rect"></a>C.8.21.3.1.1 X-Ray 3D General Shared Acquisition Macro</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b7782b32-a861-4abb-95e4-ebaad6639e3a" shape="rect"></a>
+                                <a class="xref" href="sect_C.8.21.3.html#table_C.8.21.3.1.1-1" title="Table C.8.21.3.1.1-1. X-Ray 3D General Shared Acquisition Macro Attributes" shape="rect">Table C.8.21.3.1.1-1</a> specifies the Attributes of the <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.1" title="C.8.21.3.1.1 X-Ray 3D General Shared Acquisition Macro" shape="rect">X-Ray 3D General Shared Acquisition Macro</a>, which specify the Attributes that are applicable for all the projection images belonging to this acquisition context.</p>
+               <div class="table">
+                  <a id="table_C.8.21.3.1.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8.21.3.1.1-1. X-Ray 3D General Shared Acquisition Macro Attributes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_3fb8615d-aab6-4ee4-8d8d-fd7ab2618cae" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_fc1d1f06-0e0c-4445-8fc3-0eb23c29da4d" shape="rect"></a>Tag</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_57ef8126-7099-413f-87a0-e7c905bf2fc4" shape="rect"></a>Type</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_6de72042-9a1c-4034-851c-dd68029a2c17" shape="rect"></a>Attribute Description</p>
+                                        </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d86ce38f-33dc-42a8-88c7-f324a5ace77a" shape="rect"></a>Source Image Sequence</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_09e03ad1-e758-4306-8db1-d96b442b6e2d" shape="rect"></a>(0008,2112)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_eca800cc-b6ed-4190-9d84-47eaf2da4974" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_37ac2803-7bd6-4547-977c-4f6be49c0ea9" shape="rect"></a>A Sequence that identifies the set of Images that constitute this acquisition context.</p>
+                                            <p>
+                                    <a id="para_1dc35efb-830d-4331-b5c9-80a42baaa970" shape="rect"></a>Required if the reconstruction is created from DICOM SOP Instances.</p>
+                                            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_4ffea095-2654-4910-bcdb-828cadd7b154" shape="rect"></a>The Attribute is absent in the case where the images used to create the volume are not available as SOP Instances, e.g., the volume was directly generated by acquisition system.</p>
+                                 </div>
+                                            <p>
+                                    <a id="para_580882de-2d58-4ba6-a73e-ff59b6d8d34a" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                            <p>
+                                    <a id="para_3c06572f-faac-4a33-b252-0f735e275422" shape="rect"></a>
+                                                <span class="italic">&gt;Include <a class="xref" href="sect_10.3.html#table_10-3" title="Table 10-3. Image SOP Instance Reference Macro Attributes" shape="rect">Table 10-3 “Image SOP Instance Reference Macro Attributes”</a>
+                                                </span>
+                                            </p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c612875d-c868-49d7-9a63-2a5273d9f951" shape="rect"></a>Field of View Dimension(s) in Float</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c7c243e7-59fd-4a28-9b3f-e734ee81b973" shape="rect"></a>(0018,9461)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e5386319-98fe-4de2-a7bb-721c1bcd9127" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e2f1ebf5-e09c-4db9-9c1a-eb3ebacac196" shape="rect"></a>Dimensions in mm of the Field of View in the source projection images. If Field of View Shape (0018,1147) is:</p>
+                                            <p>
+                                    <a id="para_8f512fcd-4599-46db-9b56-6a00f7d2c663" shape="rect"></a>RECTANGLE: row dimension followed by column.</p>
+                                            <p>
+                                    <a id="para_39aba0f9-c785-4417-bc25-2c6d7a307bcf" shape="rect"></a>ROUND: diameter.</p>
+                                            <p>
+                                    <a id="para_18c61423-71db-4d26-8999-9962a8377e9f" shape="rect"></a>HEXAGONAL: diameter of the circle circumscribing the hexagon.</p>
+                                            <p>
+                                    <a id="para_644a5e01-824a-4b43-8fd3-1165b044bce9" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b2a55c78-9783-45cb-9608-ce2cd9ce045f" shape="rect"></a>Field of View Origin</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_7eb7083e-fc6e-46e3-9261-60d3e3c608ab" shape="rect"></a>(0018,7030)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2f493935-2c71-4c0b-985a-4520c2eb9849" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c4252449-f61b-42f1-8904-4365f595fc24" shape="rect"></a>Offset of the TLHC of a rectangle circumscribing the Field of View in the referenced images, before rotation or flipping, from the TLHC of the physical detector area measured in physical detector pixels as a row offset followed by a column offset.</p>
+                                            <p>
+                                    <a id="para_f6eb0e62-75fb-46d7-af24-38789bffa81e" shape="rect"></a>See <a class="xref" href="sect_C.8.11.4.html#sect_C.8.11.4.1.1" title="C.8.11.4.1.1 Physical, Active, Field of View, Exposed and Displayed Areas" shape="rect">Section C.8.11.4.1.1</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_fa553dd3-5f9d-4598-9985-7cf372c77f16" shape="rect"></a>Required if X-Ray Receptor Type (0018,9420) is present and equals DIGITAL_DETECTOR.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_fdfa295c-c11c-4304-addf-3fa564bfbb3b" shape="rect"></a>Field of View Rotation</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_6026b301-b851-4907-b257-7c7b3544e194" shape="rect"></a>(0018,7032)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8b1c2c4a-871f-45be-b4ef-7e4ebabeb99c" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_dc687f9b-e87f-4e1c-a0cd-8e4c0027e395" shape="rect"></a>Clockwise rotation in degrees of Field of View in the referenced images, relative to the physical detector.</p>
+                                            <div class="variablelist">
+                                    <p class="title">
+                                       <strong>Enumerated Values:</strong>
+                                    </p>
+                                    <dl class="variablelist compact">
+                                       <dt>
+                                          <span class="term">270</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_85a64264-21eb-4477-bc68-c9a61f72df83" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">180</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_464a5fe8-209d-4b47-b6f5-f4dca86183a4" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">90</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_34ccdd8b-13a9-4ed0-9202-df96d56e3eb3" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">0</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_c4c32156-eb59-472c-bb3f-4971cbb64efc" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                    </dl>
+                                 </div>
+                                            <p>
+                                    <a id="para_172a6d0f-9af8-4f20-9bb5-34c05dabcb8b" shape="rect"></a>See <a class="xref" href="sect_C.8.11.4.html#sect_C.8.11.4.1.1" title="C.8.11.4.1.1 Physical, Active, Field of View, Exposed and Displayed Areas" shape="rect">Section C.8.11.4.1.1</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_82f73d12-774c-484e-b072-58e00d3b20ef" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_393727f8-8a45-4b06-9906-07da326b38b0" shape="rect"></a>Field of View Horizontal Flip</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_24c39011-51ee-4dd4-8a4a-b6d1afe17a67" shape="rect"></a>(0018,7034)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_41bbada9-4e7e-4997-93c0-0a7061c74cc7" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_cfb3c635-3af7-4f05-a932-396da040af26" shape="rect"></a>Whether or not a horizontal flip has been applied to the Field of View in the referenced images, after rotation relative to the physical detector as described in Field of View Rotation (0018,7032).</p>
+                                            <div class="variablelist">
+                                    <p class="title">
+                                       <strong>Enumerated Values:</strong>
+                                    </p>
+                                    <dl class="variablelist compact">
+                                       <dt>
+                                          <span class="term">NO</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_f6578fe2-d628-412e-8314-af2c8961b633" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">YES</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_071e8f59-a4d3-4049-9964-83ea38cf34c1" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                    </dl>
+                                 </div>
+                                            <p>
+                                    <a id="para_c0a89abb-36c3-47a2-89e9-7c8c996d15ee" shape="rect"></a>See <a class="xref" href="sect_C.8.11.4.html#sect_C.8.11.4.1.1" title="C.8.11.4.1.1 Physical, Active, Field of View, Exposed and Displayed Areas" shape="rect">Section C.8.11.4.1.1</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_df9a1eaa-9824-4fc1-b8a7-6f87d2ee5eb1" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_010c4148-99ed-490f-a18e-cd0452597cd1" shape="rect"></a>Grid</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_704e4ef0-fe11-4474-aadb-1fff19dc3fbc" shape="rect"></a>(0018,1166)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d19fc96f-901b-43d9-b24e-872cab8aa9bb" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_934f8a5d-79dd-4cee-ac19-ad3e55f15181" shape="rect"></a>Identifies the grid. May be multi-valued. See Attribute Description in <a class="xref" href="sect_C.8.7.11.html" title="C.8.7.11 X-Ray Grid Module" shape="rect">Section C.8.7.11</a> for Defined Terms.</p>
+                                            <p>
+                                    <a id="para_e91b1cc9-8e59-42dd-91d2-ba0664aa4abd" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                            <p>
+                                    <a id="para_a8852c9c-ada7-403b-b654-5d93581be0a1" shape="rect"></a>
+                                                <span class="italic">Include <a class="xref" href="sect_C.8.7.11.html#table_C.8-36b" title="Table C.8-36b. X-Ray Grid Description Macro Attributes" shape="rect">Table C.8-36b “X-Ray Grid Description Macro Attributes”</a>
+                                                </span>
+                                            </p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_9496b7c2-87e2-4070-abdf-a940064e0b69" shape="rect"></a>KVP</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e2637850-50b1-4aee-a50e-41b6ac236b20" shape="rect"></a>(0018,0060)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_ce993434-91d9-4b8f-8e6e-6ce2738bf0d8" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_01217714-8033-425e-b0df-0210a9e1f64c" shape="rect"></a>Average of the peak kilo voltage outputs of the X-Ray generator used for all frames.</p>
+                                            <p>
+                                    <a id="para_d2f93647-9d39-4e85-ab1f-4b1bad5e18cf" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_340bfcc7-fc78-4cae-af02-94522de2db93" shape="rect"></a>X-Ray Tube Current in mA</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e4d47ae0-122f-447c-9654-79e799f88bcc" shape="rect"></a>(0018,9330)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_ba989a71-b4ea-4393-8825-c04db38ed80c" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_626436de-c28a-4dea-ad6c-8b17549e4704" shape="rect"></a>Average of the nominal X-Ray tube currents in milliamperes for all frames.</p>
+                                            <p>
+                                    <a id="para_d3b5969f-bcb2-4bcf-8cfb-51c6b4368515" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_764293f0-70f8-498e-a9cd-3e50a9ae9b58" shape="rect"></a>Exposure Time in ms</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e78a232a-b0a1-4384-a520-36e5c5432f19" shape="rect"></a>(0018,9328)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_306be382-4772-43e9-ab44-3381009e7380" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4b262030-f030-4e8b-9b7e-b387bd0083ca" shape="rect"></a>Total (cumulative) duration of X-Ray exposure for all frames in milliseconds. See <a class="xref" href="sect_C.8.7.2.html#sect_C.8.7.2.1.1" title="C.8.7.2.1.1 Exposure Time" shape="rect">Section C.8.7.2.1.1</a>.</p>
+                                            <p>
+                                    <a id="para_50199b53-28c3-4dd9-9caa-17f4881f7c0f" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_a9f15ae5-605f-4cc2-8148-31ba2414f026" shape="rect"></a>Exposure in mAs</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_19ced07a-2422-45ec-ba51-b511f5bf9591" shape="rect"></a>(0018,9332)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_12855439-95b3-4e60-b713-2a2dab7388c4" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e55ec80d-1f12-4fe8-a6c7-66868241a10e" shape="rect"></a>The total (cumulative) exposure for all frames expressed in milliampereseconds, for example calculated from Exposure Time and X-Ray Tube Current.</p>
+                                            <p>
+                                    <a id="para_a93f07cf-ba68-4320-b602-84fd42ca598f" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_6da21018-9f6e-485e-8d4e-3fdad9be2d29" shape="rect"></a>Contrast/Bolus Agent</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_1ccd7cff-c1cf-4638-877d-433202d62846" shape="rect"></a>(0018,0010)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c8b92ffd-6b71-40d2-8e84-18a418b3a9dd" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b66b060d-7361-4af6-8884-c64bf9522857" shape="rect"></a>Contrast or bolus agent.</p>
+                                            <p>
+                                    <a id="para_39b2d995-af9f-4ad9-b4d8-686db9dceb0e" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_f69d89cb-2f44-44a8-8d23-f5318fdd0468" shape="rect"></a>Contrast/Bolus Agent Sequence</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_3cec264f-c06c-4cc9-8c63-e5e40be32717" shape="rect"></a>(0018,0012)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8070835f-8a04-4ae4-ada0-6a4bde319705" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_894631d8-aac2-4f06-a08b-f8b7f8b7b521" shape="rect"></a>Sequence that identifies the contrast agent.</p>
+                                            <p>
+                                    <a id="para_01e78e6a-0db7-4ffd-8a26-b4fd373faab8" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                            <p>
+                                    <a id="para_1ecd5221-cdf6-4942-b063-58e3d7392258" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG and contrast media was applied.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                            <p>
+                                    <a id="para_b8e340ab-cf86-4d74-95ad-31ba41c69eb9" shape="rect"></a>
+                                                <span class="italic">&gt;Include <a class="xref" href="sect_8.8.html#table_8.8-1" title="Table 8.8-1. Code Sequence Macro Attributes" shape="rect">Table 8.8-1 “Code Sequence Macro Attributes”</a>
+                                                </span>
+                                            </p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_874f23d6-cff2-4daa-a8db-b2fde68be908" shape="rect"></a>
+                                                <span class="italic">B<a href="../part16/sect_CID_12.html" class="olink" shape="rect">CID 12 “Imaging Contrast Agent”</a>.</span>
+                                            </p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_74b70b3c-81c5-4531-92eb-90a2a0bdf0cc" shape="rect"></a>Start Acquisition DateTime</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b642f3bf-6eb0-43bc-b310-80c033b0377c" shape="rect"></a>(0018,9516)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c57a7076-472d-4839-86da-8edd866a6ea4" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8cd0856e-1185-4e1c-822a-766e5c3dc612" shape="rect"></a>Start date and time of that part of an acquisition used for this acquisition context.</p>
+                                            <p>
+                                    <a id="para_96ad01b0-d8dd-4a43-b849-899c874d237d" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_0647a5e0-3d0b-4777-b5fe-8df264dec29e" shape="rect"></a>End Acquisition DateTime</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_66a1fad4-e3f9-4390-9ca5-6b5ad4b47657" shape="rect"></a>(0018,9517)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_01b20b18-682c-404e-9aaa-959626a276fb" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_bd6b62c4-f839-41b6-963f-fe82b9ab44b3" shape="rect"></a>End date and time of that part of an acquisition used for this acquisition context.</p>
+                                            <p>
+                                    <a id="para_eb8ccc85-a3a2-412f-91b1-3c286e657c98" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.21.3.1.2" shape="rect"></a>C.8.21.3.1.2 X-Ray 3D General Per Projection Acquisition Macro</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_863fb4b2-edb6-49d9-831e-710dfae7f4b3" shape="rect"></a>
+                                <a class="xref" href="sect_C.8.21.3.html#table_C.8.21.3.1.2-1" title="Table C.8.21.3.1.2-1. X-Ray 3D General Per Projection Acquisition Macro Attributes" shape="rect">Table C.8.21.3.1.2-1</a> specifies the Attributes of the <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.2" title="C.8.21.3.1.2 X-Ray 3D General Per Projection Acquisition Macro" shape="rect">X-Ray 3D General Per Projection Acquisition Macro</a>, which specify the Attributes that are applicable for a single projection belonging to this acquisition context.</p>
+               <div class="table">
+                  <a id="table_C.8.21.3.1.2-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8.21.3.1.2-1. X-Ray 3D General Per Projection Acquisition Macro Attributes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_dc998555-03e9-4816-8100-54e54fafc279" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4dd97895-7aff-4d2b-bc65-83b93087fee7" shape="rect"></a>Tag</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d3237929-7669-4ea1-bb90-797b4b7aa2fa" shape="rect"></a>Type</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_23cedb65-8a1a-436a-a8db-8a327edc16d5" shape="rect"></a>Attribute Description</p>
+                                        </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4ecfd993-9408-4ed3-8068-445aaa329262" shape="rect"></a>KVP</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c5a64d31-9b1f-46e8-874f-1c22fbfad8e5" shape="rect"></a>(0018,0060)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_73400945-a041-4f5b-a2b4-998b6cd0ae94" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_6281b66b-0950-4286-8176-7426db8ddb28" shape="rect"></a>Exact peak kilo voltage output of the X-Ray generator used for this projection.</p>
+                                            <p>
+                                    <a id="para_a35dd67e-093d-4a57-9635-958b27381582" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8eea7a36-30b0-4ba9-8fe2-2944a52ce62a" shape="rect"></a>X-Ray Tube Current in mA</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c7853440-440a-49f2-819b-900767487a48" shape="rect"></a>(0018,9330)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_dfa09b74-fde3-42ff-9cb1-599a2d2eba48" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2a87854c-8cab-4e77-9f30-a121ae48a4f9" shape="rect"></a>Exact Nominal X-Ray tube current in milliamperes applied during the Frame Acquisition Duration (0018,9220) for this projection.</p>
+                                            <p>
+                                    <a id="para_bd0b05dd-aa95-4ee0-ab62-44d08f67549d" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b3c58474-122b-43c3-aa70-59e75c5eeaad" shape="rect"></a>Frame Acquisition Duration</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_7408fdc0-d20b-4d76-afce-f82f18498b47" shape="rect"></a>(0018,9220)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_68da2321-153e-41dd-949d-d1e8bab28008" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4f6cd83a-bb19-4682-9a3c-15d02763178d" shape="rect"></a>The actual amount of time [in milliseconds] that was used to acquire data for this projection. See <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.2.1" title="C.7.6.16.2.2.1 Timing Parameter Relationships" shape="rect">Section C.7.6.16.2.2.1</a> and <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.2.3" title="C.7.6.16.2.2.3 Frame Acquisition Duration" shape="rect">Section C.7.6.16.2.2.3</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_909bf9b7-f813-42da-b89a-340503daac9d" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_1d929d55-a302-4d91-bd1a-b1a860756944" shape="rect"></a>Collimator Shape</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8cec7abf-78fe-4da3-94a2-692b62ca1101" shape="rect"></a>(0018,1700)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b1c89d1c-99eb-4f16-b746-3aa331dfb0fd" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8424e2d4-0f8c-4e76-9cb7-8bf9ff81647f" shape="rect"></a>Shape(s) of the collimator.</p>
+                                            <div class="variablelist">
+                                    <p class="title">
+                                       <strong>Enumerated Values:</strong>
+                                    </p>
+                                    <dl class="variablelist compact">
+                                       <dt>
+                                          <span class="term">RECTANGULAR</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_689a734f-641a-42f7-8734-70325455d91d" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">CIRCULAR</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_9c131460-eff8-4d06-ad8f-ae51e5d17be3" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">POLYGONAL</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_76fc6cae-7d2c-4a28-85fb-cda88b2d94a1" shape="rect"></a>
+                                          </p>
+                                       </dd>
+                                    </dl>
+                                 </div>
+                                            <p>
+                                    <a id="para_31bff8d0-25dc-49d0-aef3-3c266df905c1" shape="rect"></a>This multi-valued Attribute shall contain at most one of each Enumerated Value.</p>
+                                            <p>
+                                    <a id="para_5abaf87c-a497-405e-a4d6-ed4621dfd8e1" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="4" rowspan="1">
+                                            <p>
+                                    <a id="para_81015c41-56d3-4b88-8c84-16fd466c7f66" shape="rect"></a>
+                                                <span class="italic">Include <a class="xref" href="sect_C.8.7.3.html#table_C.8-28b" title="Table C.8-28b. X-Ray Collimator Dimensions Macro Attributes" shape="rect">Table C.8-28b “X-Ray Collimator Dimensions Macro Attributes”</a>
+                                                </span>
+                                            </p>
+                                        </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.21.3.1.3" shape="rect"></a>C.8.21.3.1.3 X-Ray 3D General Positioner Movement Macro</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_33042f61-d0b7-42a9-976f-83162fae58c1" shape="rect"></a>
+                                <a class="xref" href="sect_C.8.21.3.html#table_C.8.21.3.1.3-1" title="Table C.8.21.3.1.3-1. X-Ray 3D General Positioner Movement Macro Attributes" shape="rect">Table C.8.21.3.1.3-1</a> specifies the Attributes of the <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.3" title="C.8.21.3.1.3 X-Ray 3D General Positioner Movement Macro" shape="rect">X-Ray 3D General Positioner Movement Macro</a>, which describe the movement of a positioner during the acquisition of more than one projection.</p>
+               <div class="table">
+                  <a id="table_C.8.21.3.1.3-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8.21.3.1.3-1. X-Ray 3D General Positioner Movement Macro Attributes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2c1ae208-2af6-473e-a500-9174dafa37be" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b66a4710-0bf5-4a4e-8f44-ae03abf19646" shape="rect"></a>Tag</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_0f163622-b895-4c1c-b34d-9a59b50522fb" shape="rect"></a>Type</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_734cfd6a-24ed-46df-bbbb-8a26073d5691" shape="rect"></a>Attribute Description</p>
+                                        </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_bb9c9362-c6b8-499a-bab2-d3d29384bc06" shape="rect"></a>Primary Positioner Scan Arc</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_ab9112fc-25a2-4365-8b9a-3a72c610833b" shape="rect"></a>(0018,9508)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_eec99fb0-d218-4545-906e-c64ede3fd9b3" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_bb51a8ca-3dd5-4699-bfc0-ef5605268a9f" shape="rect"></a>Total amount of rotation of the primary positioner in degrees.</p>
+                                            <p>
+                                    <a id="para_726dd0f7-a25a-4c6a-b96c-664a6e34cbf2" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_5751217d-552d-4909-a185-336ff964d3bd" shape="rect"></a>Primary Positioner Scan Start Angle</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_0c6111a9-c85f-47f0-a9ff-59206db75564" shape="rect"></a>(0018,9510)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_1c3ff1f8-af66-4aab-85f4-ed51bc265b5d" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_25ae1ee9-fa81-401d-9b96-613ecc377d3c" shape="rect"></a>Start position of the primary positioner in degrees. See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a>, depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_224d7b7d-4c4f-4c8a-962d-46e3c28e0cfc" shape="rect"></a>Required if present and consistent in the contributing SOP Instances. Required if Modality (0008,0060) is MG.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2127fcb3-723c-42df-8c1b-619e9190036a" shape="rect"></a>Primary Positioner Increment</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_dbd284da-c30b-429a-b1fe-2fd31805d7b8" shape="rect"></a>(0018,9514)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_6195c94b-a796-43c3-91ab-07216514099a" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d2890e35-1b5f-44e7-8777-2a376a767c0d" shape="rect"></a>Constant increment of the primary positioner angle in degrees. Positive increment indicates an increasing value of the primary positioner angle. See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a> for the sign conventions depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_40b7d9b6-ed31-4c6b-a897-e4235185f5a5" shape="rect"></a>See <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.3.1" title="C.8.21.3.1.3.1 Positioner Angle Increments" shape="rect">Section C.8.21.3.1.3.1</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_ff345bbb-7613-48df-8422-c12d5539a6f9" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_9189bc5e-c7b6-4e60-aad9-21ea7a148b65" shape="rect"></a>Primary Positioner Increment Sign</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_66803440-ccca-4363-992d-cbe005950733" shape="rect"></a>(0018,9518)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_94424f32-7b4e-4ad2-91d1-2d4b08de4507" shape="rect"></a>3</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_1efa01fe-8d12-4119-9a0a-faf7c98db400" shape="rect"></a>Direction of the primary positioner rotation.</p>
+                                            <div class="variablelist">
+                                    <p class="title">
+                                       <strong>Defined Terms:</strong>
+                                    </p>
+                                    <dl class="variablelist compact">
+                                       <dt>
+                                          <span class="term">+1</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_7a66a56a-c138-4e7e-964f-f1c391aef074" shape="rect"></a>indicates a positive primary positioner angle increment</p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">-1</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_eb759633-56fc-4519-9736-0629d0e5dfe9" shape="rect"></a>indicates a negative primary positioner angle increment</p>
+                                       </dd>
+                                    </dl>
+                                 </div>
+                                            <p>
+                                    <a id="para_df3595ee-004e-4c06-af49-500d83886cb2" shape="rect"></a>See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a> for the sign conventions depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_4f726d75-f9fa-49db-b02f-7563f3695ad2" shape="rect"></a>See <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.3.1" title="C.8.21.3.1.3.1 Positioner Angle Increments" shape="rect">Section C.8.21.3.1.3.1</a> for further explanation.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_3478ce4c-cf76-4954-80d4-80fb9d9fde20" shape="rect"></a>Secondary Positioner Scan Arc</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_bb616ceb-e2b3-4a08-96d6-1284802d7857" shape="rect"></a>(0018,9509)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_358a7012-6f27-4841-b843-20bd394baaa3" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_e6f3e1aa-4c8d-4e01-aa44-bc7c67eede95" shape="rect"></a>Total amount of rotation of the secondary positioner in degrees.</p>
+                                            <p>
+                                    <a id="para_7c534677-a303-4b6d-b512-0ef31ff73a19" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_3849903a-57cf-4510-b1dd-9c7e0bd2aa2e" shape="rect"></a>Secondary Positioner Scan Start Angle</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_378579f3-fe3f-44f0-9f10-c5390a3048cf" shape="rect"></a>(0018,9511)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_21db5846-fa84-4a01-9df3-5545fe8048a9" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2c6cfc8e-969d-403b-8494-0003ab294417" shape="rect"></a>Start position of the secondary positioner in degrees. See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a>, depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_9e9df166-ea0b-43bc-a7f0-4e82083b6e3c" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8d3ffe91-8385-4bae-9727-07183bc9f51d" shape="rect"></a>Secondary Positioner Increment</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_73906a41-0cc0-4c30-b820-d1f3be641a1f" shape="rect"></a>(0018,9515)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d29581fd-29f3-454c-aa88-d1c0847bc98f" shape="rect"></a>1C</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_92c740ca-e673-4431-9f67-fa28c791defc" shape="rect"></a>Constant increment of the secondary positioner angle in degrees. Positive increment indicates an increasing value of the secondary positioner angle. See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a> for the sign conventions depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_b4abdf91-f6c9-465a-885e-b55dd1e7e8bc" shape="rect"></a>See <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.3.1" title="C.8.21.3.1.3.1 Positioner Angle Increments" shape="rect">Section C.8.21.3.1.3.1</a> for further explanation.</p>
+                                            <p>
+                                    <a id="para_18aa4887-c488-40a0-bc18-ae3d29ac1ba1" shape="rect"></a>Required if present and consistent in the contributing SOP Instances.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_28f66ba9-6aed-46ec-bb11-fc0f07389bb6" shape="rect"></a>Secondary Positioner Increment Sign</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_20b3210f-6a96-49b7-abfe-1430b4362d0a" shape="rect"></a>(0018,9519)</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_2ee32e9f-6492-4c69-a666-550fae4a8f44" shape="rect"></a>3</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_0de38d31-35b1-4658-9a09-f50bd32d546c" shape="rect"></a>Direction of the secondary positioner rotation.</p>
+                                            <div class="variablelist">
+                                    <p class="title">
+                                       <strong>Defined Terms:</strong>
+                                    </p>
+                                    <dl class="variablelist compact">
+                                       <dt>
+                                          <span class="term">+1</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_42de44c2-a1e7-4f98-8366-55b9134ad182" shape="rect"></a>indicates a positive secondary positioner angle increment</p>
+                                       </dd>
+                                       <dt>
+                                          <span class="term">-1</span>
+                                       </dt>
+                                       <dd>
+                                          <p>
+                                             <a id="para_296022f2-d317-4830-964e-275b85077cb8" shape="rect"></a>indicates a negative secondary positioner angle increment</p>
+                                       </dd>
+                                    </dl>
+                                 </div>
+                                            <p>
+                                    <a id="para_9331216e-325a-4ae5-8fcf-4cc9a3b28129" shape="rect"></a>See <a class="xref" href="sect_C.8.7.5.html#sect_C.8.7.5.1.2" title="C.8.7.5.1.2 Positioner Primary and Secondary Angles" shape="rect">Section C.8.7.5.1.2</a> or <a class="xref" href="sect_C.8.11.7.html" title="C.8.11.7 Mammography Image Module" shape="rect">Section C.8.11.7</a> for the sign conventions depending on modality and positioner type.</p>
+                                            <p>
+                                    <a id="para_7862b021-7aea-43cf-a759-9eba2ca66109" shape="rect"></a>See <a class="xref" href="sect_C.8.21.3.html#sect_C.8.21.3.1.3.1" title="C.8.21.3.1.3.1 Positioner Angle Increments" shape="rect">Section C.8.21.3.1.3.1</a> for further explanation.</p>
+                                        </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_C.8.21.3.1.3.1" shape="rect"></a>C.8.21.3.1.3.1 Positioner Angle Increments</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_5d620c0e-37a7-409f-84c5-68cf64484dbc" shape="rect"></a>If the increments of the positioner angles are constant during the acquisition of the X-Ray projections, the Attributes Primary Positioner Increment (0018,9514) and the Secondary Positioner Increment (0018,9515) describe this angular change between projections. </p>
+                  <p>
+                     <a id="para_3a7edd47-7263-4f6e-81da-c53b5be69043" shape="rect"></a>If the change in positioner angle is not constant between the projections, omit the Positioner Angle Increment Attributes and record the individual positioner angle values in the Positioner Angle Attributes within each Item of the Per Projection Acquisition Sequence (0018,9538). In such case, the Attributes Primary Positioner Increment Sign (0018,9518) and Secondary Positioner Increment Sign (0018,9519) are used to describe the direction of the positioner rotation.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.21.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.21.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.21.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.21.2.3 Breast Tomosynthesis Contributing Sources Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.21.3.2 X-Ray 3D Angiographic Acquisition Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

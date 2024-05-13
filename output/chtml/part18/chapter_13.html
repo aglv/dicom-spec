@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>13 Storage Commitment Service and Resources</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="PS3.18.html" title="PS3.18" />
+      <link rel="prev" href="sect_12.6.3.3.html" title="12.6.3.3 Response Payload" />
+      <link rel="next" href="sect_13.2.html" title="13.2 Conformance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">13 Storage Commitment Service and Resources <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/chapter_13.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_12.6.3.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_13.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-node">Storage Commitment Service and Resources</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_13" shape="rect"></a>13 Storage Commitment Service and Resources</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_13.1" shape="rect"></a>13.1 Overview</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_1d8ef452-5a4a-432d-bac4-e594d6b5153b" shape="rect"></a>The Storage Commitment Service enables a user agent to request the safekeeping of Instances on an origin server. It corresponds to the DIMSE Storage Commitment Service Class as defined in <a href="../part04/chapter_J.html" class="olink" shape="rect">Section J “Storage Commitment Service Class (Normative)” in PS3.4</a> and has the same semantics.</p>
+            <p>
+               <a id="para_3a36113a-373c-4bad-8bea-c0b92674eb29" shape="rect"></a>As committing to storage of Instances is often a long-running operation on the origin server, the use of this service may be split into two transactions, at the discretion of the origin server: 1) requesting the commitment, and - when the origin server cannot give the result yet - 2) checking for the result, in line with the Asynchronous Request-Reply (ARR) pattern <a class="xref" href="chapter_2.html#biblio_Ekuan" title="Asynchronous Request-Reply pattern" shape="rect">[<abbr class="abbrev">Ekuan</abbr>]</a>.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_e09486fb-9f24-4301-b855-83c2eb262171" shape="rect"></a>A PACS may wait with a response to the storage commitment request it receives, for instance until the VNA that it uses for long term storage has given commitment for the referenced Instances.</p>
+            </div>
+            <p>
+               <a id="para_fcefb8fb-0f71-4489-a4bc-707c56bdaabd" shape="rect"></a>
+               <a class="xref" href="chapter_13.html#figure_13.1-1" title="Figure 13.1-1. Process of the Storage Commitment Service" shape="rect">Figure 13.1-1</a> shows the possible scenarios of requesting storage commitment.</p>
+            <p>
+               <a id="para_9b0d5278-2829-47b1-885d-d3d4f16c7ad4" shape="rect"></a>
+                </p>
+            <div class="figure">
+               <a id="figure_13.1-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.18_13.1-1.svg" alt="Process of the Storage Commitment Service" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure 13.1-1. Process of the Storage Commitment Service</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+            </p>
+            <p>
+               <a id="para_73ab00e5-59cd-4638-a5a8-ac730aeaf3d5" shape="rect"></a>This starts when the user agent sends a Request to the origin server. This requests the origin server's commitment to safekeep a set of SOP Instances, specified by their respective UIDs.</p>
+            <p>
+               <a id="para_fa3ab4de-4b6a-402b-8e8e-f4d7a1dce94e" shape="rect"></a>In case the origin server responds to the Request with Done, it behaves synchronously and returns, for each instance, whether it commits to safekeeping that instance or not. The user agent can handle this result appropriately, for example by deleting the local copies of the instances that now are safely kept by the origin server.</p>
+            <p>
+               <a id="para_aa43ddfe-1431-464f-810d-68e619f46eb5" shape="rect"></a>In case the origin server responds to the Request with Working, it behaves asynchronously, and is working on the request. In this case, the user agent needs to perform a Result Check after some time. When this check is performed, the origin server may respond with Done, and will provide the same kind of result as in the synchronous case, which can be handled in the same way by the user agent. The origin server may also respond to the Result Check with Working, which will trigger the user agent to perform a Result Check again. This process continues until the origin server responds with Done, finalizing the process.</p>
+            <p>
+               <a id="para_cf83b9a1-82a2-4b7c-a2f8-c29ca824665b" shape="rect"></a>For both the Request and the Result Check it is also possible that the origin server returns an error, and this also needs to be handled appropriately by the user agent; see <a class="xref" href="sect_13.4.3.html#table_13.4.3-1" title="Table 13.4.3-1. Status Code Meaning" shape="rect">Table 13.4.3-1</a> and <a class="xref" href="sect_13.5.3.html#table_13.5.3-1" title="Table 13.5.3-1. Status Code Meaning" shape="rect">Table 13.5.3-1</a> for more details.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_13.1.1" shape="rect"></a>13.1.1 Resource Descriptions</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_727b8f95-9adf-4b6e-92fc-9e0d49650751" shape="rect"></a>There is one resource defined by this service:</p>
+               <div class="table">
+                  <a id="table_13.1.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 13.1.1-1. Storage Commitment Service Resource Descriptions</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2a4146bf-27a8-4052-a80f-a387693b3794" shape="rect"></a>Resource</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_82a03b5e-4fba-4c0b-af3d-35fd8a30146a" shape="rect"></a>URI Template</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7a2e9eb5-7d29-44a9-86de-8680796c3105" shape="rect"></a>/commitment-requests</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_84a0686c-9276-4a5f-acb2-6d63a947943c" shape="rect"></a>Storage commitment requests managed by the origin server.</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_13.1.2" shape="rect"></a>13.1.2 Common Query Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9e966521-bffb-46ff-ba7e-996474f745f1" shape="rect"></a>The origin server shall support Query Parameters as required in <a class="xref" href="chapter_13.html#table_13.1.2-1" title="Table 13.1.2-1. Common Query Parameters" shape="rect">Table 13.1.2-1</a>.</p>
+               <p>
+                  <a id="para_9a2e88dd-8fa6-4c8c-8b19-da708e80e297" shape="rect"></a>The user agent shall supply in the request Query Parameters as required in <a class="xref" href="chapter_13.html#table_13.1.2-1" title="Table 13.1.2-1. Common Query Parameters" shape="rect">Table 13.1.2-1</a>.</p>
+               <div class="table">
+                  <a id="table_13.1.2-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 13.1.2-1. Common Query Parameters</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_3fce505e-f693-4cd1-9985-f792893d4be7" shape="rect"></a>Name</p>
+                              </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_cbea63cb-2fec-4d40-887b-f6ce561314c5" shape="rect"></a>Value</p>
+                              </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                <p>
+                                    <a id="para_a3c79a3c-f967-44a5-9153-c92930478d0f" shape="rect"></a>Usage</p>
+                              </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                <p>
+                                    <a id="para_e7615e77-93d6-4b72-8678-eacecbe786ab" shape="rect"></a>Section</p>
+                              </th>
+                           </tr>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0289d0c6-8f68-4ef8-989a-d8aebea61e7e" shape="rect"></a>User Agent</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_41f2dced-0864-45f2-9a8c-4dedf6779a51" shape="rect"></a>Origin Server</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_39ad80ab-2f1c-48d1-9925-cb22847f9a2c" shape="rect"></a>Accept</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4eeb48b4-7201-4e4f-857b-0f2d7c503be6" shape="rect"></a>media-type</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d5e6ca6e-77b2-4578-92b1-89a3ec1d8d37" shape="rect"></a>O</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c93da414-1509-4ae6-8a75-a0395137b41e" shape="rect"></a>M</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_800a10e1-fa3b-4ad6-b6c0-d8853f561af1" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.3.html#sect_8.3.3.1" title="8.3.3.1 Accept Query Parameter" shape="rect">Section 8.3.3.1</a>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d1b96055-2260-421d-83dc-25fc9b49f6bb" shape="rect"></a>Accept-Charset</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c7207a83-ef79-4ac4-ac40-0316486f96ab" shape="rect"></a>charset</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d3b48607-3bcc-4df0-8736-f363cc1dd574" shape="rect"></a>O</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8cc962fd-0c5c-43da-a070-416838f98dac" shape="rect"></a>M</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_6b92f9bb-9fe6-4f9e-9b32-8a14e057abda" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" shape="rect">Section 8.3.3.2</a>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_bf65d36e-b12d-4c83-acfc-f432764629a4" shape="rect"></a>See also <a class="xref" href="sect_8.4.html" title="8.4 Header Fields" shape="rect">Section 8.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_13.1.3" shape="rect"></a>13.1.3 Common Media Types</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_153bce21-0564-46e7-a112-70943aa90874" shape="rect"></a>The origin server shall support the media types specified as Default or Required in <a class="xref" href="chapter_13.html#table_13.1.3-1" title="Table 13.1.3-1. Default, Required, and Optional Media Types" shape="rect">Table 13.1.3-1</a>.</p>
+               <div class="table">
+                  <a id="table_13.1.3-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 13.1.3-1. Default, Required, and Optional Media Types</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_237424c6-1777-48f6-83c9-22ef1911585a" shape="rect"></a>Media Type</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7c97b9b6-e09b-4260-9a5f-1ef6932c4fc6" shape="rect"></a>Usage</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_22f9429e-6f89-49b0-bf61-9c3ad2bb29de" shape="rect"></a>Section</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2c19a42e-62d9-43ee-b7ba-7c31739f60fb" shape="rect"></a>application/dicom+json</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_690a475e-2267-4f63-9a23-60dc09ae33f6" shape="rect"></a>Default</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_35ddb9e8-7ac6-410d-a268-1581694d240b" shape="rect"></a>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1731a18d-4ddb-4596-8d8d-1676702511f3" shape="rect"></a>application/dicom+xml</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_aa40b62d-40f9-4681-b9b3-22933fd2a40c" shape="rect"></a>Required</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a07bfea8-8323-4fd2-b388-03aea6798daf" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.2.html" title="8.7.3.2 Metadata Media Types" shape="rect">Section 8.7.3.2</a>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_89c6985c-0b00-4157-8511-50f60c18953b" shape="rect"></a>multipart/related; type="application/dicom+json"</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0e2d5b68-c0fd-4fd0-bd9c-1f779213d359" shape="rect"></a>Required</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d86e97b1-7d00-44d3-85fe-e284e68d2830" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.2.html" title="8.7.3.2 Metadata Media Types" shape="rect">Section 8.7.3.2</a>
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_10afd00e-2432-4e55-b85e-2e3fc6a097df" shape="rect"></a>multipart/related; type="application/dicom+xml"</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a3380907-3106-46a5-ad0a-e684e9bc97df" shape="rect"></a>Required</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_158891ee-603f-498a-bd8b-423c166a6625" shape="rect"></a>
+                                    <a class="xref" href="sect_8.7.3.2.html" title="8.7.3.2 Metadata Media Types" shape="rect">Section 8.7.3.2</a>
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_12.6.3.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_13.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">12.6.3.3 Response Payload </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 13.2 Conformance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

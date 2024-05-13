@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>HHH Transition from WADO to RESTful Services (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="sect_GGG.3.3.html" title="GGG.3.3 Gift Subscriptions" />
+      <link rel="next" href="sect_HHH.2.html" title="HHH.2 Web Services Implementation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">HHH Transition from WADO to RESTful Services (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_HHH.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_GGG.3.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HHH.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Transition from WADO to RESTful Services (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_HHH" shape="rect"></a>HHH Transition from WADO to RESTful Services (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_6beb7cf0-3bed-4daf-82d2-6bb0a2406b08" shape="rect"></a>This annex discusses the design considerations that went into the definition of the WADO extension to Web and REST services.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_HHH.1" shape="rect"></a>HHH.1 Request and Response Parameters</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HHH.1.1" shape="rect"></a>HHH.1.1 Request Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5bf87c8c-36e5-47c9-a399-769729eb7275" shape="rect"></a>The WADO-RS and STOW-RS requests have no parameters because data is requested through well defined URLs and content negotiation through HTTP headers.</p>
+               <div class="table">
+                  <a id="table_HHH.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table HHH.1-1. Summary of DICOM/Rendered URI Based WADO Parameters</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1dc0c067-1618-4b84-93bb-494c0b2c7774" shape="rect"></a>Parameter</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_df48bd4c-b2de-4522-aafb-c62b97de9f3b" shape="rect"></a>Allowed for</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1f052c4e-6b64-4370-9dc5-ae259e9ac1c8" shape="rect"></a>Requirement in Request</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8136d18f-07f7-4e78-9af3-89d913debeef" shape="rect"></a>requestType</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_15cd82e8-5c6a-422d-8902-17bcdf41c11d" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_07c01c4b-7ea2-4795-b0f9-6dd8811dbcdc" shape="rect"></a>Required</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4e4f4434-5ae2-4dcc-87be-d084b96d683f" shape="rect"></a>studyUID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f9f6ac6c-d9ff-4f6b-8ec0-5dc55524281a" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1d232719-4fbf-44e7-b1d2-6b1b20f7dc72" shape="rect"></a>Required</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ba91fe44-3207-4c36-b570-f88b0cfad028" shape="rect"></a>seriesUID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_cb3498af-b50e-487d-8016-10dbaf2c41ef" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2a122121-b527-4129-9b49-9ec9cd91f90e" shape="rect"></a>Required</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2006bbe1-6a29-4f88-a6b2-ca28e905532f" shape="rect"></a>objectUID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2495a528-39ae-4f01-b7e0-595cc5ecd584" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_20e63ad6-17c0-42af-9451-3d896dd943d1" shape="rect"></a>Required</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c7987b66-094e-461d-af1e-6c0591048cb3" shape="rect"></a>contentType</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4745c31b-8e0f-4996-a1ed-bf424fcbe5e7" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c130ac74-ca9b-43b1-b606-b3d7fcd3c901" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f4e4079f-2e39-4d4b-bf67-1986181ff944" shape="rect"></a>charset</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ddc27ad2-4765-441d-8bb2-aed2efa6c9ec" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ae083fd6-565a-4eca-b6c8-ca90aed1b896" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9ccad50e-5b3b-44b8-ae66-116962b35541" shape="rect"></a>anonymize</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2406acdb-a6e5-40ed-9a65-ba77711bd624" shape="rect"></a>DICOM</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_86717fc5-0a71-4eea-809b-210d9b7c0405" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b9d3d738-a9d5-4080-9bd4-11d2266490c5" shape="rect"></a>annotation</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5dd0bd45-25a8-4a1f-b2fa-d4a73d9669e2" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fd50a4a1-d793-401c-b7c9-ca8514b5d8a3" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d25bdaa4-aa06-4dc6-bcaa-7415e04f471b" shape="rect"></a>Rows, columns</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_be549d84-fb13-49f7-8eea-2d88ba338c5c" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4b97c54d-b056-4f1b-a06a-7a1449450b45" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7720eb1d-ea70-46bf-8cce-9cd2f097534f" shape="rect"></a>region</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_194bfa0a-f20f-456f-bc22-78797d81fe94" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_eb3b9261-4721-4741-8dcd-75872a6d54ff" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_6b21c689-bf0f-4851-a803-d482b3f61966" shape="rect"></a>windowCenter, windowWidth</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_16654560-effb-48e8-9ac6-719ab0ccfaf9" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_24fe7e66-2483-49d2-a113-f4c14463e9d6" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_40671c7c-f462-4e72-86af-c2c7ff730e2f" shape="rect"></a>imageQuality</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c7522127-f74e-4443-b5c6-dd141aaeb4dd" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1fd59461-6c6c-4c65-83de-0cf3955fa464" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_dcd09769-de9b-46f7-901a-e552a0366d87" shape="rect"></a>presentationUID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ad0b8bda-e6dc-4214-a73c-0580e8cd64ba" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_dbad68f9-53bd-4569-8af9-c67267047bd6" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_90970c5e-ad50-40ca-8e7c-bca432a57738" shape="rect"></a>presentationSeriesUID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7d793b2d-8f0a-47ad-998c-7d10b3b4f727" shape="rect"></a>Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_cafcb197-6e2e-40bd-9418-9b4def1bef4c" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e3666d0a-0901-469a-814a-fda007685d79" shape="rect"></a>transferSyntax</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_82b152f4-a50c-452a-8053-5e938fa100c8" shape="rect"></a>DICOM</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_59b07a25-ccb3-47b2-92b4-2c1fa315d104" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_858aefca-5279-4bab-905c-47918565c477" shape="rect"></a>frameNumber</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5534e2c3-6238-464e-a527-d99ac80dd221" shape="rect"></a>DICOM &amp; Rendered</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_aa0c0b50-d8d8-4326-9450-b60b4e616247" shape="rect"></a>Optional</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HHH.1.2" shape="rect"></a>HHH.1.2 Response Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_HHH.1.2.1" shape="rect"></a>HHH.1.2.1 URI WADO-URI</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_2ab835b9-dfb3-4747-ab12-88bc003a1647" shape="rect"></a>In the URI based WADO, the response is the single payload returned in the HTTP Get response. It may be the DICOM object in a DICOM format or in a rendered format.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_HHH.1.2.2" shape="rect"></a>HHH.1.2.2 Retired</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_c7c24a36-6f76-4de2-ad8c-a5f5b46664c3" shape="rect"></a>See PS3.17-2017b.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_HHH.1.2.3" shape="rect"></a>HHH.1.2.3 WADO-RS</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_aef618f8-7a7b-46f4-9043-3ee28fc1a35f" shape="rect"></a>The WADO-RS Service is a transport service, as opposed to a rendering service, which provides resources that enable machine to machine transfers of binary instances, pixel data, bulk data, and metadata. These services are not primarily intended to be directly displayable in a browser.</p>
+                  <p>
+                     <a id="para_8a0a207d-58d7-43c7-b0c4-0e07b3f7d9b4" shape="rect"></a>In the REST Services implementation:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_13eb4752-e84f-40bf-96fe-8e44afc956cc" shape="rect"></a>For the "DICOM Requester", one or more multipart/related parts are returned containing <a href="../part10/PS3.10.html" class="olink" shape="rect">PS3.10</a> binary DICOM instances of a Study, Series, or a single Instance.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5d8a0b60-4cb0-4117-ab77-20b38405a175" shape="rect"></a>For the "Frame Pixel Data Requester", one or more multipart/related parts are returned containing the pixel data of a multi-frame SOP Instance.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_39381bac-a20e-4f33-aee3-4f341aeb9653" shape="rect"></a>For the "Bulk Data Requester", one or more multipart/related parts are returned containing the bulk data of a Study, Series or SOP Instance.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_99ee6c93-8e94-4e12-b543-159577038a1f" shape="rect"></a>For the "Metadata Requester", an item is returned containing the XML encoded metadata selected from the retrieved objects header as described in the Native DICOM Model defined in <a href="../part19/PS3.19.html" class="olink" shape="rect">PS3.19</a>.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_HHH.1.2.4" shape="rect"></a>HHH.1.2.4 STOW-RS</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_cde01cf3-476e-4360-ab6f-ea4f78ce7715" shape="rect"></a>The STOW-RS Service provides the ability to STore Over the Web using RESTful Services (i.e., HTTP based functionality equivalent to C-Store).</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2a4cf552-2661-4eec-b07a-ecf42ff60d22" shape="rect"></a>For the "DICOM Creator", one or more multipart/related parts are stored (posted to a STOW-RS Service) containing one or more DICOM Composite SOP Instances.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_55b69ce4-4c7a-4f6b-822d-947d88caae88" shape="rect"></a>For the "Metadata and Bulk Data Creator", one or more multipart/related parts are stored (posted to a STOW-RS Service) containing the XML encoded metadata defined in <a href="../part19/PS3.19.html" class="olink" shape="rect">PS3.19</a> and one or more parts containing the bulk data of a Study, Series or SOP Instance.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_GGG.3.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HHH.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">GGG.3.3 Gift Subscriptions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> HHH.2 Web Services Implementation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

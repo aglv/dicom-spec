@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7 DICOM File Format</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.10.html" title="PS3.10" />
+      <link rel="up" href="PS3.10.html" title="PS3.10" />
+      <link rel="prev" href="sect_6.2.5.html" title="6.2.5 Media Storage and The DICOM Standard Structure" />
+      <link rel="next" href="sect_7.2.html" title="7.2 Data Set Encapsulation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024b - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7 DICOM File Format <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part10/chapter_7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.10.html" shape="rect">PS3.10</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM File Format</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_7" shape="rect"></a>7 DICOM File Format</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_20a40f95-db99-43d6-ac1d-c63412d72673" shape="rect"></a>The DICOM File Format provides a means to encapsulate in a file the Data Set representing a SOP Instance related to a DICOM IOD. As shown in <a class="xref" href="chapter_7.html#figure_7-1" title="Figure 7-1. File-set and File Format" shape="rect">Figure 7-1</a>, the byte stream of the Data Set is placed into the file after the DICOM File Meta Information. Each file contains a single SOP Instance.</p>
+         <p>
+            <a id="para_34c02ea0-bd30-42e2-9944-159999d30521" shape="rect"></a>
+         </p>
+         <div class="figure">
+            <a id="figure_7-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.10_7-1.svg" alt="File-set and File Format" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 7-1. File-set and File Format</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_7.1" shape="rect"></a>7.1 DICOM File Meta Information</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_65675971-1779-4685-b9f3-4fb4b09fadab" shape="rect"></a>The File Meta Information includes identifying information on the encapsulated Data Set. This header consists of a 128 byte File Preamble, followed by a 4 byte DICOM prefix, followed by the File Meta Elements shown in <a class="xref" href="chapter_7.html#table_7.1-1" title="Table 7.1-1. DICOM File Meta Information" shape="rect">Table 7.1-1</a>. This header shall be present in every DICOM file.</p>
+            <p>
+               <a id="para_2125010b-29b3-49e9-807a-cb7a381c9261" shape="rect"></a>The File Preamble is available for use as defined by Application Profiles or specific implementations. This Part of the DICOM Standard does not require any structure for this fixed size Preamble. It is not required to be structured as a DICOM Data Element with a Tag and a Length. It is intended to facilitate access to the images and other data in the DICOM file by providing compatibility with a number of commonly used computer image file formats. Whether or not the File Preamble contains information, the DICOM File content shall conform to the requirements of this Part and the Data Set shall conform to the SOP Class specified in the File Meta Information.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_1f6e44eb-2657-44a8-a4a6-de157169d1f3" shape="rect"></a>If the File Preamble is not used by an Application Profile or a specific implementation, all 128 bytes shall be set to 00H. This is intended to facilitate the recognition that the Preamble is used when all 128 bytes are not set as specified above.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_97ee1c90-3aeb-485d-85bf-426aaf090113" shape="rect"></a>The File Preamble may for example contain information enabling a multi-media application to randomly access images stored in a DICOM Data Set. The same file can be accessed in two ways: by a multi-media application using the preamble and by a DICOM Application that ignores the preamble.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p>
+               <a id="para_fb0526d1-1b42-4ab7-8b73-b6f38a8beb96" shape="rect"></a>The four byte DICOM Prefix shall contain the character string "DICM" encoded as uppercase characters of the ISO 8859 G0 Character Repertoire. This four byte prefix is not structured as a DICOM Data Element with a Tag and a Length.</p>
+            <p>
+               <a id="para_0dcbd575-940e-4e45-8161-4cf1cb61e478" shape="rect"></a>The Preamble and Prefix are followed by a set of DICOM Meta Elements with Tags and Lengths as defined in <a class="xref" href="chapter_7.html#table_7.1-1" title="Table 7.1-1. DICOM File Meta Information" shape="rect">Table 7.1-1</a>.</p>
+            <div class="table">
+               <a id="table_7.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 7.1-1. DICOM File Meta Information</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_178a21be-0987-43bd-a566-ff5fa3cb1822" shape="rect"></a>Attribute Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e78be6a8-0c96-449f-a1ad-75403bdc5b4d" shape="rect"></a>Tag</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c0182397-da2d-496a-826c-4d235e82e9fd" shape="rect"></a>Type</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dd837042-c20f-4e01-b884-b1b91f2f70dd" shape="rect"></a>Attribute Description</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c70e2db7-2ffb-4e6a-afec-f5d06cd71291" shape="rect"></a>File Preamble</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0f1587aa-e69d-42b5-be59-8c3b0d899434" shape="rect"></a>
+                                 <span class="italic">No Tag or Length Fields</span>
+                              </p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_74012343-0f19-4c89-998b-c0e1c55661ec" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0c702bc8-14b0-4272-94dc-49e6fd819cbd" shape="rect"></a>A fixed 128 byte field available for Application Profile or implementation specified use. If not used by an Application Profile or a specific implementation all bytes shall be set to 00H.</p>
+                              <p>
+                                 <a id="para_c699c525-dd7a-4cf5-add2-714df23551ed" shape="rect"></a>File-set Readers or Updaters shall not rely on the content of this Preamble to determine that this File is or is not a DICOM File.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_505f8cd9-a865-48ee-b2a9-eed58188fb4e" shape="rect"></a>DICOM Prefix</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6ac2ebf1-e2f5-42cf-b01b-a29ed244bedc" shape="rect"></a>
+                                 <span class="italic">No Tag or Length Fields</span>
+                              </p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_58352c33-ead1-4309-a7d6-904b0e2b6ac2" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_864b9c42-a030-4f0f-bcde-f128bce4aafc" shape="rect"></a>Four bytes containing the character string "DICM". This Prefix is intended to be used to recognize that this File is or is not a DICOM File.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7e68c698-758f-4fcd-84f3-2ab9632bddd0" shape="rect"></a>File Meta Information Group Length</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a01ca80c-061b-4d36-ab52-c335838a1105" shape="rect"></a>(0002,0000)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d3d07cbd-a96a-4764-bc4c-b63c4a96a138" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_40687f14-99dd-47b6-a34d-4dfd254ad5d0" shape="rect"></a>Number of bytes following this File Meta Element (end of the Value field) up to and including the last File Meta Element of the Group 2 File Meta Information</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9ea02631-3fda-45c9-9a0c-bf311deb4658" shape="rect"></a>File Meta Information Version</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_360ca3cb-6caa-43aa-8315-74d60f9212c9" shape="rect"></a>(0002,0001)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4672be18-ba9e-4f36-8349-3782cfa2b9a6" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_33cec1f1-1563-4402-a705-189c0739bc8a" shape="rect"></a>This is a two byte field where each bit identifies a version of this File Meta Information header. In version 1 the first byte value is 00H and the second value byte value is 01H.</p>
+                              <p>
+                                 <a id="para_bd93357c-9377-452a-a162-bc7182f3ca4a" shape="rect"></a>Implementations reading Files with Meta Information where this attribute has bit 0 (lsb) of the second byte set to 1 may interpret the File Meta Information as specified in this version of PS3.10. All other bits shall not be checked.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_f471b440-2abf-4cc3-b196-2e2239561e4b" shape="rect"></a>A bit field where each bit identifies a version, allows explicit indication of the support of multiple previous versions. Future versions of the File Meta Information that can be read by version 1 readers will have bit 0 of the second byte set to 1</p>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13189a44-2b7a-4c61-91b2-afa93c5a68b2" shape="rect"></a>Media Storage SOP Class UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_541c2ee8-83cd-41af-aa54-617f665ab75e" shape="rect"></a>(0002,0002)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_799e1113-02ca-46ee-8248-aca5022643fe" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_46844727-a0af-4c28-803e-f7d1156adc3d" shape="rect"></a>Uniquely identifies the SOP Class associated with the Data Set. SOP Class UIDs allowed for media storage are specified in <a href="../part04/sect_I.4.html" class="olink" shape="rect">Section I.4 “Media Storage SOP Classes” in PS3.4</a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6e564061-c441-47e5-a034-e5ade6a37df5" shape="rect"></a>Media Storage SOP Instance UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0bef00e3-fdfb-4e4a-9b67-19d1ecc6b204" shape="rect"></a>(0002,0003)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4fa2e8fe-d1c5-4ee6-8d80-3a07d1810034" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b79f80aa-3f6f-47e6-8d83-f7bd22566c4c" shape="rect"></a>Uniquely identifies the SOP Instance associated with the Data Set placed in the file and following the File Meta Information.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a556ae11-eddd-4b3b-b26b-741322329558" shape="rect"></a>Transfer Syntax UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e184f920-0b35-4c57-bcd1-9c58d1ff4c23" shape="rect"></a>(0002,0010)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f76107cc-3414-48b6-9a6e-c4b8f0a0662e" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_219cc4ae-ec90-4ada-9138-f9765e0095b7" shape="rect"></a>Uniquely identifies the Transfer Syntax used to encode the following Data Set. This Transfer Syntax does not apply to the File Meta Information.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_5ada98ac-8d37-4bec-87d5-4593e0ca3a36" shape="rect"></a>It is recommended to use one of the DICOM Transfer Syntaxes supporting explicit Value Representation encoding to facilitate interpretation of File Meta Element Values. JPIP Referenced Pixel Data Transfer Syntaxes are not used (see <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2206bc13-be26-44e5-8d0b-4fc3c44cdaf7" shape="rect"></a>Implementation Class UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b009987b-a658-462c-b1d2-766db2d02213" shape="rect"></a>(0002,0012)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e68c1e75-2472-40aa-953c-5f06cf2688f8" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f618c01c-380a-4106-ae51-bd96c5ef47d8" shape="rect"></a>Uniquely identifies the implementation that wrote this file and its content. It provides an unambiguous identification of the type of implementation that last wrote the file in the event of interchange problems. It follows the same policies as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> (association negotiation).</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1fcadecb-9895-42d3-a0e8-3a7b15ae3c11" shape="rect"></a>Implementation Version Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ba152258-2fd2-41ba-a258-69fc43c86e2a" shape="rect"></a>(0002,0013)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c9cb015b-f303-438c-b910-0b67d2fb4daa" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cfe608d4-7ea2-47ea-88d9-c24b4f07ac14" shape="rect"></a>Identifies a version for an Implementation Class UID (0002,0012) using up to 16 characters of the ISO 646:1990 (basic G0 set) repertoire. It follows the same policies as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> (association negotiation).</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_38e767b0-dc2d-45a5-ac7a-16eb9b311684" shape="rect"></a>Source Application Entity Title</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_434afc6f-550d-459b-888e-ac3fc5c2e194" shape="rect"></a>(0002,0016)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9a6830ac-21dc-46a6-99dc-1d0ee101f6dc" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_77ff131c-a0a1-4400-961e-55ce9df54b2e" shape="rect"></a>The DICOM Application Entity (AE) Title of the AE that wrote this file's content (or last updated it). If used, it allows the tracing of the source of errors in the event of media interchange problems. The policies associated with AE Titles are the same as those defined in <a href="../part08/PS3.8.html" class="olink" shape="rect">PS3.8</a>.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_7bc0bfa5-b241-4653-943f-47ed465fdaa0" shape="rect"></a>If the Data Set was created de novo by the application writing the file, its AE Title, if it has one, may be used. If the Data Set was received over the network, there is potential ambiguity as to whether the value is the same as Sending Application Entity Title (0002,0017) or Receiving Application Entity Title (0002,0018) or some other value.</p>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_629bcf20-7422-418c-bcfa-bcb7d8c56dcc" shape="rect"></a>Sending Application Entity Title</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f7f441cb-7cec-4f70-b39f-35922b128310" shape="rect"></a>(0002,0017)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7122df75-bcf0-4a9e-a798-02abbad76e89" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7d19704f-4a61-4206-a73f-9d54006dbc5a" shape="rect"></a>The DICOM Application Entity (AE) Title of the AE that sent this file's content over a network.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_70f92a9d-5f85-4fe2-af0d-3f8c4234e65c" shape="rect"></a>This is the AE that was the sender (source) of the content (the Data Set), in the case of a Data Set sent over the network (i.e., the Calling AET of the SCU for a C-STORE operation). If the Data Set was instead created de novo by the application writing the file, it should not be present.</p>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_338f87cc-fa4d-47be-9629-8b352dc2b7e9" shape="rect"></a>Receiving Application Entity Title</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fed2ad89-6088-47c4-9ea4-c6958806c256" shape="rect"></a>(0002,0018)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c349f5c3-3de7-4749-a8ee-9c43900669e9" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0f90227a-d348-4186-aa9d-04f33d60cf1e" shape="rect"></a>The DICOM Application Entity (AE) Title of the AE that received this file's content over a network.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_1e7670d8-1009-4032-899f-78fc71dc1898" shape="rect"></a>This is the AE that was the recipient (destination) of the content (the Data Set), in the case of a Data Set received over the network (i.e., the Called AET of the SCP for a C-STORE operation). If the Data Set was instead created de novo by the application writing the file, it should not be present.</p>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_451f015b-6825-4b1a-91f7-4c5eeceec080" shape="rect"></a>Source Presentation Address</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_03d476b0-f21b-4fa1-8db7-86850467bda8" shape="rect"></a>(0002,0026)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_46b246bd-cbab-4273-b01b-6efd06092f4c" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bbd2cd4f-7c02-4d5b-a403-d4d4cea1654a" shape="rect"></a>The DICOM Presentation Address corresponding to the Source Application Entity Title (0002,0016).</p>
+                              <p>
+                                 <a id="para_09fb7c3d-a875-4417-b514-6d8a4bf1dee3" shape="rect"></a>See <a class="xref" href="chapter_7.html#sect_7.1.1.1" title="7.1.1.1 Presentation Address Attributes" shape="rect">Section 7.1.1.1</a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_52f33b5f-967c-474d-a38a-b454c4448be6" shape="rect"></a>Sending Presentation Address</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8da2a369-4dcb-42ee-af03-2236769c2751" shape="rect"></a>(0002,0027)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ea5527f1-44a4-4591-9c04-e665fc5997c9" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5c100735-0408-4dac-a6eb-835890abc63a" shape="rect"></a>The DICOM Presentation Address corresponding to the Sending Application Entity Title (0002,0017).</p>
+                              <p>
+                                 <a id="para_6b5e1fdc-8190-46c2-9c6c-7edea6e99105" shape="rect"></a>See <a class="xref" href="chapter_7.html#sect_7.1.1.1" title="7.1.1.1 Presentation Address Attributes" shape="rect">Section 7.1.1.1</a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8e56788c-835a-4a66-b74a-4ec6b85f7d20" shape="rect"></a>Receiving Presentation Address</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f6a8370b-fd18-49ef-8ad9-5abe25cd2896" shape="rect"></a>(0002,0028)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b3fa801f-b72c-4cad-b0f8-424c0ecfe1e2" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d46c80b3-c784-4c92-9487-c4e122a48844" shape="rect"></a>The DICOM Presentation Address corresponding to the Receiving Application Entity Title (0002,0018).</p>
+                              <p>
+                                 <a id="para_d6249ba5-5acd-4237-8a8e-6901600e55b0" shape="rect"></a>See <a class="xref" href="chapter_7.html#sect_7.1.1.1" title="7.1.1.1 Presentation Address Attributes" shape="rect">Section 7.1.1.1</a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c3eb0e4a-53af-4704-9417-20ff2552eed1" shape="rect"></a>Private Information Creator UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e60b8dc8-555e-496f-abeb-a3151d6c3d62" shape="rect"></a>(0002,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_054aa912-7c5d-4091-ab8d-c5dbe075c50e" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1c5f6ac1-a43b-42eb-b2f6-530d55918d13" shape="rect"></a>The UID of the creator of the private information (0002,0102).</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_04a5aa2c-d487-4f1c-8906-20cf4f964bff" shape="rect"></a>Private Information</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_73ede04a-2aab-49cb-b1f6-eecde6e32e7e" shape="rect"></a>(0002,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23f5c7b0-45e2-4037-8b44-f74443e580ca" shape="rect"></a>1C</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_267148a3-410e-4f76-aba9-cc89fff549f0" shape="rect"></a>Contains Private Information placed in the File Meta Information. The creator shall be identified in (0002,0100). Required if Private Information Creator UID (0002,0100) is present.</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_30c3d0e1-5179-42cb-b61a-3b59e6cfa5dd" shape="rect"></a>Except for the 128 byte preamble and the 4 byte prefix, the File Meta Information shall be encoded using the Explicit VR Little Endian Transfer Syntax (UID=1.2.840.10008.1.2.1) as defined in DICOM <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. Values of each File Meta Element shall be padded when necessary to achieve an even length, as specified in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> by their corresponding Value Representation. The Unknown (UN) Value Representation shall not be used in the File Meta Information. For compatibility with future versions of this Standard, any Tag (0002,xxxx) not defined in <a class="xref" href="chapter_7.html#table_7.1-1" title="Table 7.1-1. DICOM File Meta Information" shape="rect">Table 7.1-1</a> shall be ignored.</p>
+            <p>
+               <a id="para_c820193f-7a41-4470-a0f4-98b88433b403" shape="rect"></a>Values of all Tags (0002,xxxx) are reserved for use by this Standard and later versions of DICOM. Data Elements with a group of 0002 shall not be used in Data Sets other than within the File Meta Information.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_51694a2b-6e02-4730-b0f1-c2707e7fe5e2" shape="rect"></a>
+                  <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> specifies that Elements with Tags (0001,xxxx), (0003,xxxx), (0005,xxxx), and (0007,xxxx) shall not be used.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.1" shape="rect"></a>7.1.1 DICOM File Meta Information Attributes</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.1" shape="rect"></a>7.1.1.1 Presentation Address Attributes</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_ecf2b50c-ab8c-4bd3-9d84-40adbb448229" shape="rect"></a>The encoding of the presentation address depends on the network transport protocol.</p>
+                  <p>
+                     <a id="para_982cbac5-60d6-47fe-9f78-dcd7261475d9" shape="rect"></a>For objects exchanged using the <a href="../part08/PS3.8.html" class="olink" shape="rect">PS3.8</a> DICOM Upper Layer Protocol for TCP/IP, the presentation address shall be encoded as a URI consisting of the scheme "dicom" followed by a colon, then either the fully qualified host name or IP address, followed by a colon and then the port number. E.g., "dicom:127.0.0.1:104", "dicom:myhost.mydomain.com:104".</p>
+                  <p>
+                     <a id="para_cd20c210-174a-4bdf-ab61-6466aaf80e65" shape="rect"></a>For objects exchanged using the <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a> Web Services, the presentation address shall be encoded as the absolute URL of the endpoint of the base of the resource or service, sufficient to identify the system. E.g., "http://myhost.mydomain.com:80/wado-rs/". The presentation address is not expected to be the complete address of the resource. The scheme shall be "http", regardless of whether secure transport was actually used or not.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_ae1ddfd8-c840-433e-92a5-6a4398ba6625" shape="rect"></a>For security reasons, care should be taken to assure that no access credentials such as usernames, passwords or authentication token parameters are encoded in the presentation address.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">6.2.5 Media Storage and The DICOM Standard Structure </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.10.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.2 Data Set Encapsulation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024b - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

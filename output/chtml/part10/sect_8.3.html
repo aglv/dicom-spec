@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3 File Management Roles and Services</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.10.html" title="PS3.10" />
+      <link rel="up" href="chapter_8.html" title="8 DICOM File Service" />
+      <link rel="prev" href="sect_8.2.html" title="8.2 File IDs" />
+      <link rel="next" href="sect_8.4.html" title="8.4 File Content Access" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024b - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3 File Management Roles and Services <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part10/sect_8.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 DICOM File Service</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.10.html" shape="rect">PS3.10</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">DICOM File Service</a>
+         </span> &gt; <span class="breadcrumb-node">File Management Roles and Services</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.3" shape="rect"></a>8.3 File Management Roles and Services</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_822b3d7e-7a03-45f1-89d4-112f3caeb180" shape="rect"></a>When DICOM Application Entities participate in the exchange of information by the interchange of Storage Media, they perform through the DICOM File Service a number of Media Storage Services:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_261e464f-ac3a-49d1-850f-08e11f86acbc" shape="rect"></a>M-WRITE, to create new files in a File-set and assign them a File ID;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_79c19021-c754-4fa9-9c0f-2bb6d9836a62" shape="rect"></a>M-READ to read existing files based on their File ID;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fbca05c2-34cb-4ac8-870a-e212053ff821" shape="rect"></a>M-DELETE to delete existing files based on their File ID;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4ee86094-d617-435b-975b-64e8f768be56" shape="rect"></a>M-INQUIRE FILE-SET to inquire free space available for creating new files within the File-set;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_33fe75b6-ab60-4927-aca2-79239d2aafb5" shape="rect"></a>M-INQUIRE FILE to inquire date and time of file creation (or last update if applicable) for any file within the File-set.</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_7c941347-06a9-4aa1-a472-bfeeaef48d9a" shape="rect"></a>A DICOM Application Entity may take one or more of the following three roles:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_0be1723a-9b6e-4afd-b408-cd740ef37179" shape="rect"></a>File-set Creator (FSC). Such an Application Entity, exercises this role by means of M-WRITE Operations to create the DICOMDIR File (see <a class="xref" href="sect_8.6.html" title="8.6 Reserved DICOMDIR File ID" shape="rect">Section 8.6</a>) and zero or more DICOM Files;</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_3b15e411-226c-4c9e-b1d5-50d870d48b2d" shape="rect"></a>File-set Reader (FSR). Such an Application Entity, exercises this role by means of M-READ Operations to access one or more Files in a File-set. A File-set Reader shall not modify any of the files of the File-set (including the DICOMDIR File);</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_445c564f-0bf5-4e3b-be6c-c1de32f88bc2" shape="rect"></a>File-set Updater (FSU). Such an Application Entity, exercises this role by means of M-READ, M-WRITE, and M-DELETE Operations. It reads, but shall not modify, the content of any of the DICOM files in a File-set except for the DICOMDIR File. It may create additional Files by means of an M-WRITE or delete existing Files in a File-set by means of an M-DELETE.</p>
+               </li>
+            </ol>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_266abf1e-d013-489f-8944-2247fa7a63bc" shape="rect"></a>Although a File-set Updater (FSU) may include the functions corresponding to a File-set Creator (FSC) and a File-set Reader (FSR), it is not required that implementations supporting an FSU role also support an FSC or an FSR role.</p>
+         </div>
+         <p>
+            <a id="para_f9c42d57-114d-4b02-a6b9-f306c9b16380" shape="rect"></a>The use of the concept of roles in DICOM Conformance Statements will result in a more precise expression of the capabilities of implementations supporting DICOM Media Storage. Conforming implementations shall support one of the following choices:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_7541305b-e1bf-4154-9af0-8e781f362cf3" shape="rect"></a>File-set Creator,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_051aac4d-f8b1-4a76-9d3b-9ce52fd0cffa" shape="rect"></a>File-set Reader,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_66695cdd-ac70-4e17-9953-51e61ca74fb9" shape="rect"></a>File-set Creator and File-set Reader,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_3b428b97-ea44-4476-ad12-dd914483939f" shape="rect"></a>File-set Updater,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_70bd5fd6-83c3-4aa6-81aa-98a22e9ed262" shape="rect"></a>File-set Updater and File-set Creator,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_76ed3b71-0b03-4ba5-9562-6aaf85670c53" shape="rect"></a>File-set Updater and File-set Reader,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_aa2a58ea-fe7e-4e51-8390-596437b720cd" shape="rect"></a>File-set Updater, File-set Creator and File-set Reader.</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_2204c82f-5244-45d0-90e1-85f6faf8b5d0" shape="rect"></a>Based on the roles supported by a DICOM Application Entity, the DICOM File Service shall support the Media Operations defined in <a class="xref" href="sect_8.3.html#table_8.3-1" title="Table 8.3-1. Media Operations and Roles" shape="rect">Table 8.3-1</a>.</p>
+         <div class="table">
+            <a id="table_8.3-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8.3-1. Media Operations and Roles</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acf43f1b-5f6b-465a-9c31-b485240e9e32" shape="rect"></a>Media Operations Roles</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2ddee323-ccf9-4fe0-9c3f-3b6a2b6a0f4e" shape="rect"></a>M-WRITE</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7427fe45-3617-4f9d-bb2f-ae1ed20c1f1d" shape="rect"></a>M-READ</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d7697e4f-7d3e-43d6-945c-4996615ece5d" shape="rect"></a>M-DELETE</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4f942014-d476-4a64-a327-98a9c7c8aa79" shape="rect"></a>M-INQUIRE FILE-SET</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c61b8804-d16d-4ab3-b1e0-3ce2e0718beb" shape="rect"></a>M-INQUIRE FILE</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d5d5db3c-70a2-482f-8500-8413e24cec9d" shape="rect"></a>FSC</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ca9fb657-e26a-4e0e-bdc1-9e5793d96b1f" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2c69175b-a68c-4ab9-9b5f-2ba03c2278b6" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_421aec8e-b053-4266-952e-e69fe1146716" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa700ffa-7434-40bc-9a5b-3310d46320fb" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0ca571d1-9c84-49c5-965e-712d13aa90ea" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f5c2196a-5c05-4f74-a687-53a1a6dfec78" shape="rect"></a>FSR</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6f5e07d0-3e91-4110-8809-6d0d23263c2c" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_039fb3d7-8df6-405b-b8e4-81fe4d07e2e6" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2ba33009-beb4-4e7b-ae35-5a11d9e715cc" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e5e220ac-62b2-46ca-a44b-54a46ee072e3" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e9118527-da37-4813-96c0-8f79f5685c80" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_69d67286-0217-4905-934f-2156e7b43c35" shape="rect"></a>FSC+FSR</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e639d245-a05f-4122-a42e-42965490f0e9" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1edd0d97-ab0f-440c-b51e-177e7b297d17" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3113914d-18e0-4458-983d-910822e164a7" shape="rect"></a>
+                              <span class="italic">Not required</span>
+                           </p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5214d444-d6a5-405c-a0b8-16b7260d1fdb" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_02225da0-d9f0-4158-932a-6c811e43e21e" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fca52f34-09f0-495f-ba3f-fee75b95ac6e" shape="rect"></a>FSU</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_60988b32-76d4-48f4-94de-54dd05a35243" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fce4c7c8-2099-4ae8-803d-5100ec575229" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_33c2df96-5f58-473f-addf-f41616e3fa66" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a4289ed8-dad7-4529-aa66-36e28c7dc06e" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ffd518ba-3ded-4bb0-b124-bf8ef39ffd13" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_21bc5025-69f8-431f-9075-81e1ec2cc7b9" shape="rect"></a>FSU+FSC</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_52aa6bce-73d8-4e07-b6f0-1bc14c98e197" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_11880c91-29b3-47c5-84cd-3ddb443045b0" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1da35373-de0d-42a8-9598-ca0f6d3f1e81" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c46e0a0a-4ab9-40ce-adfb-7a76ec4808bb" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_daca8935-e23b-455b-ae5e-206f1dc87b3c" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e1e5612a-3b8a-4ced-94f7-ab83ab894d4a" shape="rect"></a>FSU+FSR</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e6dac645-0901-4730-bd91-d2839bcd6275" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e59d5a67-0d20-4a85-8113-89d648aadd38" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_de00025e-6449-43fa-aa08-7479de23b8e7" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_490cb34d-ec60-4b68-bdde-a4b2216da1d4" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_40234da9-c00c-4be1-acb5-150e2ec7fb3a" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a601bed8-5ef3-4b15-a64f-fb5f30f87d50" shape="rect"></a>FSU+FSC+FSR</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ec4468fb-61eb-483c-88f3-b6255e9a8742" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6ab05148-722f-420e-8134-22e98e2636af" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1b109744-7665-4c43-8e03-a6d79363660e" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_31df8422-9911-4325-b85f-37cdddb66d2d" shape="rect"></a>Mandatory</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b902473f-3ce1-45d2-8108-5b7e2c25d83d" shape="rect"></a>Mandatory</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8622cb3e-8c57-4f05-aeb6-0c8442477214" shape="rect"></a>Media Preparation is outside the scope of this Part of the DICOM Standard. However it is assumed to be performed by the FS Creator.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b64d14dd-fea0-4d3b-8daa-3838220d6b43" shape="rect"></a>The DICOM File Service does not require that file update capabilities (e.g., append) be supported by every Media Format Definition selected. The non-support of such file update capabilities to the DICOMDIR File may simply result in having to delete and create a new file in order to keep the directory information consistent.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b8541e0c-50bd-4330-a349-34a50d28577a" shape="rect"></a>If the content of a file needs to be updated or changed by an FSU, it is considered by this Part of the DICOM Standard as an M-DELETE Operation followed by an M-WRITE Operation. The FSU is responsible for ensuring the internal consistency of the File and its conformance to PS3.10 and the specific SOP Class stored, exactly as if the FSU was creating a new File. In particular, if an FSU implementation needs to update the file content but is not able to recognize and fully process the content of the File Preamble (see <a class="xref" href="chapter_7.html#sect_7.1" title="7.1 DICOM File Meta Information" shape="rect">Section 7.1</a>), it may consider setting the first four bytes of the Preamble to "DICM" followed by 124 bytes to 00H. This would avoid introducing inconsistencies between the content of the File Preamble and the remainder of the file content. An example of this situation may occur when a TIFF IFD 0 Offset in the File Preamble points at a further TIFF IFD embedded in the DICOM Data Set, and the update operation changes the location of this embedded TIFF IFD.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2 File IDs </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.10.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.4 File Content Access</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.10 2024b - Media Storage and File Format for Media Interchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

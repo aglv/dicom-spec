@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>E.3.6 Retain Longitudinal Temporal Information Options</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.15.html" title="PS3.15" />
+      <link rel="up" href="sect_E.3.html" title="E.3 Basic Application Level Confidentiality Options" />
+      <link rel="prev" href="sect_E.3.5.html" title="E.3.5 Clean Descriptors Option" />
+      <link rel="next" href="sect_E.3.7.html" title="E.3.7 Retain Patient Characteristics Option" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024b - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">E.3.6 Retain Longitudinal Temporal Information Options <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_E.3.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">E.3 Basic Application Level Confidentiality Options</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_E.3.7.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.15.html" shape="rect">PS3.15</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_E.html" shape="rect">Attribute Confidentiality Profiles (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_E.3.html" shape="rect">Basic Application Level Confidentiality Options</a>
+         </span> &gt; <span class="breadcrumb-node">Retain Longitudinal Temporal Information Options</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_E.3.6" shape="rect"></a>E.3.6 Retain Longitudinal Temporal Information Options</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_e7eb7427-5fea-4b7b-a219-d4e9a0f8ec56" shape="rect"></a>Dates and times are recognized as having a potential for leakage of identity because they constrain the number of possible individuals that could be the imaging subject, though only if there is access to other information about the individuals concerned to match it against.</p>
+         <p>
+            <a id="para_030cf9a3-f89e-4c57-b94a-842db3aecea1" shape="rect"></a>However, there are applications that require dates and times to be present to able to fulfill the objective. This is particularly true in therapeutic clinical trials in which the objective is to measure change in an outcome measure over time. Further, it is often necessary to correlate information from images with information from other sources, such as clinical and laboratory data, and dates and times need to be consistent.</p>
+         <p>
+            <a id="para_8bfa03c7-fa72-4888-ad34-c8ded393c10b" shape="rect"></a>Two mutually exclusive Options are specified to address these requirements:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_714a3d71-cfae-43a6-9b0a-b80d12c4dd50" shape="rect"></a>Retain Longitudinal Temporal Information With Full Dates Option</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_576d373f-bc21-4225-a5fd-45f2b31bed59" shape="rect"></a>Retain Longitudinal Temporal Information With Modified Dates Option</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_389c7767-f03f-4716-970d-72a2766aabfa" shape="rect"></a>When the Retain Longitudinal Temporal Information With Full Dates Option is specified in addition to the Basic Application Level Confidentiality Profile, any dates and times present in the Attributes shall be retained, as described in <a class="xref" href="chapter_E.html#table_E.1-1" title="Table E.1-1. Application Level Confidentiality Profile Attributes" shape="rect">Table E.1-1</a>. The Attribute Longitudinal Temporal Information Modified (0028,0303) shall be added to the Dataset with a Value of "UNMODIFIED".</p>
+         <p>
+            <a id="para_b71081d0-569f-4426-aa01-b0765ce1ab32" shape="rect"></a>When the Retain Longitudinal Temporal Information With Modified Dates Option is specified in addition to the Basic Application Level Confidentiality Profile, any dates and times present in the Attributes listed in <a class="xref" href="chapter_E.html#table_E.1-1" title="Table E.1-1. Application Level Confidentiality Profile Attributes" shape="rect">Table E.1-1</a> shall be modified. The modification of the dates and times shall be performed in a manner that:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_04a9122d-b1f6-4f16-96e3-46b3f1ee6165" shape="rect"></a>aggregates or transforms dates so as to reduce the possibility of matching for re-identification</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_82eae777-e9eb-4445-9b6c-bd47b153329c" shape="rect"></a>preserves the gross longitudinal temporal relationships between images obtained on different dates to the extent necessary for the application</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c4869466-f8bb-4da5-8a7c-dd59fbb7a974" shape="rect"></a>preserves the fine temporal relationships between images and real-world events to the extent necessary for analysis of the images for the application</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_eb42e924-3cfc-4d91-aa01-0f153b41b88c" shape="rect"></a>The Attribute Longitudinal Temporal Information Modified (0028,0303) shall be added to the Dataset with a Value of "MODIFIED".</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_45e31969-dc33-493e-b413-36a407968cff" shape="rect"></a>Aggregation of dates may be performed by various means such as setting all dates to the first day of the month, all months to the first month of the year, etc., depending on the precision required for the application.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_cee62190-61bc-47ba-bf0b-23e3aefc6f74" shape="rect"></a>It is possible to modify all dates and times to dummy values by shifting them relative to an arbitrary event, and hence retain the precise longitudinal temporal relationships amongst a set of studies, when either de-identification of the entire set is performed at the same time, or some sort of mapping or database is kept to repeat this process on separate occasions. It may also be desirable to record the type of event and the temporal offset from that event, and Attributes are provided for that purpose; see Longitudinal Temporal Offset from Event (0012,0052) and Longitudinal Temporal Event Type (0012,0053) in the <a href="../part03/sect_C.7.2.3.html" class="olink" shape="rect">PS3.3 Section C.7.2.3 Clinical Trial Study Module</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_022291d8-0c4d-4725-b43f-a195028dbdcd" shape="rect"></a>Transformation of dates and times should be considered together, in order to address studies that span midnight.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_9a0d80b4-2672-4fa3-871b-4b5668016946" shape="rect"></a>Any transformation of times should be performed in such a manner as to not disrupt computations needed for analysis, such as comparison of start of injection time to the acquisition time for PET SUV, or extraction of time-intensity values from dynamic contrast enhanced studies.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_cc45149e-ac5e-4b26-bb5f-b8af861cc54d" shape="rect"></a>The manner of date modification shall be described in the Conformance Statement.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_E.3.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_E.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_E.3.7.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">E.3.5 Clean Descriptors Option </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.15.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> E.3.7 Retain Patient Characteristics Option</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024b - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

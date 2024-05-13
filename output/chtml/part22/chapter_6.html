@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>6 Data Communication Requirements</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.22.html" title="PS3.22" />
+      <link rel="up" href="PS3.22.html" title="PS3.22" />
+      <link rel="prev" href="chapter_5.html" title="5 Conventions" />
+      <link rel="next" href="sect_6.2.html" title="6.2 Transport" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.22 2024b - Real-Time Communication</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">6 Data Communication Requirements <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part22/chapter_6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.22.html" shape="rect">PS3.22</a>
+         </span> &gt; <span class="breadcrumb-node">Data Communication Requirements</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_6" shape="rect"></a>6 Data Communication Requirements</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3583cd14-2f94-4044-99a7-8ee413e25981" shape="rect"></a>
+            <a href="../part01/chapter_5.html#figure_5-1" class="olink" shape="rect">Figure 5-1 in <span class="olinkdocname">PS3.1</span>
+            </a> presents the general communication model of the DICOM Standard,
+            which spans both network (on-line) and storage media interchange (off-line) communications.
+            Application Entities may utilize any of the following transport mechanisms:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_601028de-126a-4e39-b927-c87d3569cade" shape="rect"></a>the DICOM Message Service and Upper Layer Service, which provides independence from specific physical networking communication support and protocols such as TCP/IP,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2f01cf2f-2ce0-414b-9163-2015c594a9ad" shape="rect"></a>the DICOM Web Service API and HTTP Service, which allows use of common hypertext and associated protocols for transport of DICOM services,</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d25c09bc-8f73-470e-8945-7cec689c9d53" shape="rect"></a>the Basic DICOM File Service, which provides access to Storage Media independently from specific physical media storage formats and file structures, or</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_45757436-d777-4bfc-8129-c72aa0c9251f" shape="rect"></a>DICOM Real-Time Communication, which provides real-time transport of DICOM metadata based on SMPTE and RTP.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_94f4a76a-a430-41d1-80da-968f802217db" shape="rect"></a>This Part describes the DICOM Real-Time Communication, which uses the RTP protocol as defined in <a class="xref" href="chapter_2.html#biblio_SMPTE_ST2110-10" title="Professional Media over IP Networks: System Timing and Definitions" shape="rect">[<abbr class="abbrev">SMPTE ST 2110-10</abbr>]</a>, as depicted in <a class="xref" href="chapter_6.html#figure_6-1a" title="Figure 6-1a. DICOM Communication Model for Real-Time Communication" shape="rect">Figure 6-1a</a>.</p>
+         <div class="figure">
+            <a id="figure_6-1a" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.22_6-1a.svg" alt="DICOM Communication Model for Real-Time Communication" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 6-1a. DICOM Communication Model for Real-Time Communication</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_6.1" shape="rect"></a>6.1 Interaction</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_afc40fdb-7965-4e02-b62a-b6eee290674d" shape="rect"></a>As shown in <a class="xref" href="chapter_6.html#figure_6-1" title="Figure 6-1. Real World diagram of DICOM-RTV" shape="rect">Figure 6-1</a>, a device can have multiple Sources, one for each Essence which corresponds of the type of bulk data (video, audio or medical metadata), each Source producing one or multiple Flows representing the same content in different formats (high definition, low definition, uncompressed, compress with or without loss, …).</p>
+            <p>
+               <a id="para_5926b24d-4af6-4f13-a957-e006a3378bb7" shape="rect"></a>Several Sources may be grouped in a Source Group. A concrete experience of a Source Group is a Rendition, defined as a collection of time-synchronized Flows intended for simultaneous presentation (e.g., the audio channel of a surgical camera).</p>
+            <div class="figure">
+               <a id="figure_6-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.22_6-1.svg" alt="Real World diagram of DICOM-RTV" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure 6-1. Real World diagram of DICOM-RTV</strong>
+               </p>
+            </div>
+            <br class="figure-break" clear="none" />
+            <p>
+               <a id="para_781581ba-098e-457a-8a57-4ac026367ab2" shape="rect"></a>DICOM Real-Time Video standard specifies the communication mechanism for metadata, associated with real-time video and/or audio, originated from a medical imaging device. The mechanism involves one Source and one Flow of "DICOM Video Metadata Essence" for each video Flow and one Source and one Flow of "DICOM Audio Metadata Essence" for each audio Flow. Optionally, there is one Source and one Flow for the "DICOM Rendition Metadata" associating multiple Flows produced by the same device.</p>
+            <p>
+               <a id="para_8bbbcb37-ac29-4afb-abef-ca7fb038f788" shape="rect"></a>The interaction shall be as shown in <a class="xref" href="chapter_6.html#figure_6-2" title="Figure 6-2. Interaction Diagram" shape="rect">Figure 6-2</a>.</p>
+            <div class="figure">
+               <a id="figure_6-2" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.22_6-2.svg" alt="Interaction Diagram" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure 6-2. Interaction Diagram</strong>
+               </p>
+            </div>
+            <br class="figure-break" clear="none" />
+            <p>
+               <a id="para_599581f8-7828-4b0b-b638-6d176446d214" shape="rect"></a>
+               <a class="xref" href="chapter_2.html#biblio_SMPTE_ST2110-10" title="Professional Media over IP Networks: System Timing and Definitions" shape="rect">[<abbr class="abbrev">SMPTE ST 2110-10</abbr>]</a> provides end-to-end network transport functions for applications transmitting real-time data. Content is transmitted in RTP sessions using RTP packets respecting <a class="xref" href="chapter_2.html#biblio_SMPTE_ST2110-10" title="Professional Media over IP Networks: System Timing and Definitions" shape="rect">[<abbr class="abbrev">SMPTE ST 2110-10</abbr>]</a>.</p>
+            <p>
+               <a id="para_fd39e5ab-b09a-4ed3-92f4-702cb4a8e5bd" shape="rect"></a>A device can provide and/or consume content. A device that provides content has one or more Sources that can be of different Essences (e.g., Video and Audio). A Source is the origin of one or more Flows. Multiple Flows coming from the same Source are representations of the same content in different resolutions and/or codings. This is a broadcast/multicast protocol, so a device provides content whether or not a consuming device is present. A device that consumes content can subscribe/unsubscribe to available Flows.</p>
+            <p>
+               <a id="para_402b8cd5-ccf9-4b96-9735-f3403546dd2b" shape="rect"></a>The context and content of a video and/or audio Flow is described by a DICOM Metadata Flow, which is associated with each Flow. However the same DICOM Metadata Flow may be used to describe more than one Flow if their content is the same and their coding are close enough not to affect professional interpretation. A DICOM Rendition Metadata Flow may be used to associate multiple Flows provided by one device.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">5 Conventions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.22.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 6.2 Transport</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.22 2024b - Real-Time Communication</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

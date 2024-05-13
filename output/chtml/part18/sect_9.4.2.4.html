@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9.4.2.4 Transfer Syntax UID</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_9.4.2.html" title="9.4.2 Behavior" />
+      <link rel="prev" href="sect_9.4.2.3.html" title="9.4.2.3 Anonymize" />
+      <link rel="next" href="sect_9.4.3.html" title="9.4.3 Response" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9.4.2.4 Transfer Syntax UID <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_9.4.2.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.4.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">9.4.2 Behavior</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_9.html" shape="rect">URI Service</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.4.html" shape="rect">Retrieve DICOM Instance Transaction</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.4.2.html" shape="rect">Behavior</a>
+         </span> &gt; <span class="breadcrumb-node">Transfer Syntax UID</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_9.4.2.4" shape="rect"></a>9.4.2.4 Transfer Syntax UID</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0fd4e247-0515-4031-b91e-901287c2b228" shape="rect"></a>If this Query Parameter is supported and present with a value that is a valid Transfer Syntax UID, the response payload shall be encoded in the specified Transfer Syntax.</p>
+         <p>
+            <a id="para_b936aefe-c163-47c9-bdac-959e78e1eafd" shape="rect"></a>If it is not present, the response payload shall be encoded in the default Transfer Syntax for DICOM Web Services, which is Explicit VR Little Endian Uncompressed.</p>
+         <p>
+            <a id="para_5aeb45a6-257b-4206-b2bb-b1c340811420" shape="rect"></a>If the Query Parameter is supported and present, and if any of the following are true:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_bde8dd0e-798d-478b-b414-636f1a0e5ec2" shape="rect"></a>the number of parameter values is not equal to one, or</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d8903f65-29b4-4ad9-89cf-1e448b0320f4" shape="rect"></a>the parameter value is not a valid UID</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_caef7e0d-58d2-41a8-8953-376bb9cb478e" shape="rect"></a>then the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+         <p>
+            <a id="para_f34b1968-6fa3-49b5-816d-fabc49ca07c1" shape="rect"></a>If the parameter value is a valid Transfer Syntax UID, but is not supported by the origin server, the response shall be 406 (Not Acceptable), and may include a payload containing a list of the Transfer Syntaxes supported by the origin server.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_92b459c1-20f2-4fa9-ba59-c1c75521f60f" shape="rect"></a>The origin server may not be able to convert all Instances to all the Transfer Syntaxes it supports.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.4.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_9.4.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.4.2.3 Anonymize </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.4.3 Response</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

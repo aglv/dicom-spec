@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>D.3.3.5 Service-Object Pair (SOP) Class Extended Negotiation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.7.html" title="PS3.7" />
+      <link rel="up" href="sect_D.3.3.html" title="D.3.3 DICOM Application Association Information" />
+      <link rel="prev" href="sect_D.3.3.4.2.html" title="D.3.3.4.2 SCP/SCU Role Selection Sub-Item Structure (A-ASSOCIATE-AC)" />
+      <link rel="next" href="sect_D.3.3.5.2.html" title="D.3.3.5.2 SOP Class Extended Negotiation Sub-Item Structure (A-ASSOCIATE-AC)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024b - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">D.3.3.5 Service-Object Pair (SOP) Class Extended Negotiation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part07/sect_D.3.3.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.3.3.4.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">D.3.3 DICOM Application Association Information</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.3.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.7.html" shape="rect">PS3.7</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_D.html" shape="rect">Association Negotiation (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_D.3.html" shape="rect">Association Establishment</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_D.3.3.html" shape="rect">DICOM Application Association Information</a>
+         </span> &gt; <span class="breadcrumb-node">Service-Object Pair (SOP) Class Extended Negotiation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_D.3.3.5" shape="rect"></a>D.3.3.5 Service-Object Pair (SOP) Class Extended Negotiation</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d7b0078e-e3d6-4e48-b472-1d4084889eac" shape="rect"></a>The SOP Class Extended Negotiation allows, at Association establishment, peer DICOM AEs to exchange application information defined by specific Service Class specifications. This is an optional feature that various Service Classes may or may not choose to support.</p>
+         <p>
+            <a id="para_667f0bfd-e0ef-43a5-b213-aa3a72bfab54" shape="rect"></a>Each Service Class specification is required to document, as part of its SOP Class or Meta SOP Class, the application information it supports and how this information is negotiated between SCUs and SCPs. Service Class specifications shall specify, for both the SCU and SCP roles, the following:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_1e60196c-e65e-4ad5-b6d4-ab4772fb44fd" shape="rect"></a>semantics of the application information (including the negotiation rules)</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_25431786-b5b5-41cc-bb6b-b5da80ab28d2" shape="rect"></a>encoding of the application information</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_dbe018b8-1cee-4c0e-a9bf-9f9707c867fa" shape="rect"></a>conditions for which the application information is mandatory and/or optional</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e347003c-1bbc-4376-a09b-681ebbb72325" shape="rect"></a>default conditions of the application information</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_3a13094c-f617-4958-a275-f1c849b804f9" shape="rect"></a>The use of the SOP Class Extended Negotiation is not limited to Service Classes defined by this Standard. It may also be used for privately defined Service Classes.</p>
+         </div>
+         <p>
+            <a id="para_3d0d0aec-0c16-45dc-97ee-f1a49f3f3c1a" shape="rect"></a>The Association-requestor may only offer one SOP Class Extended Negotiation Sub-Item for each SOP Class UID or Meta SOP Class that is present in the A-ASSOCIATE request.</p>
+         <p>
+            <a id="para_f401f31e-34f0-46fb-83d1-4975d488ff15" shape="rect"></a>If the SOP Class Extended Negotiation Sub-Items do not exist in the A-ASSOCIATE indication they shall be omitted in the A-ASSOCIATE response.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_D.3.3.5.1" shape="rect"></a>D.3.3.5.1 SOP Class Extended Negotiation Sub-Item Structure (A-ASSOCIATE-RQ)</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_b4b2a3ff-b867-46d3-a89f-cac960f09a7b" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item shall be made of a sequence of mandatory fields followed by the Service-class-application-information field (specific for each Service Class specification). This Sub-Item is required per the specific Service Class specifications. Multiple SOP Class Extended Negotiation Sub-Items may be present in the User Data Item of the A-ASSOCIATE-RQ, however, only one Sub-Item per SOP Class UID shall be present. <a class="xref" href="sect_D.3.3.5.html#table_D.3-11" title="Table D.3-11. SOP Class Extended Negotiation Sub-Item Fields (A-ASSOCIATE-RQ and A-ASSOCIATE-AC)" shape="rect">Table D.3-11</a> shows the sequence of mandatory fields.</p>
+            <div class="table">
+               <a id="table_D.3-11" shape="rect"></a>
+               <p class="title">
+                  <strong>Table D.3-11. SOP Class Extended Negotiation Sub-Item Fields (A-ASSOCIATE-RQ and A-ASSOCIATE-AC)</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1412599c-ac1b-43f9-9804-61e55bd0d495" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Item Bytes</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_18758c3b-fd6a-4bf5-badd-08f36b365df4" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Field Name</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ae42f77a-8f48-4389-b854-6fa51c6a95cd" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Description of Field</strong>
+                                 </span>
+                              </p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ced2acaf-0a22-47af-b107-92f9e53d7dc3" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1af1ef36-d48a-4f6b-a290-9629a918bca0" shape="rect"></a>Item-type</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_99efd992-10e5-428b-9790-a0df1bc42ab9" shape="rect"></a>56H</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1778aebf-be4d-4955-b523-cc33b43b630e" shape="rect"></a>2</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f0e2bb86-e7ab-458a-846e-e262dd4f16ed" shape="rect"></a>Reserved</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_abee2e98-5c30-4fdf-91bf-9db9d2220a34" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5216705b-23ee-460d-84b4-48e601be533d" shape="rect"></a>3-4</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5c33ea9c-70f4-4425-bbcc-1082b7fa81fa" shape="rect"></a>Item-Length</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_20413e4f-8f0c-462a-90c4-24b008ef7c2d" shape="rect"></a>This Item-length shall be the number of bytes from the first byte of the following field to the last byte of the Service-class-application-information field. It shall be encoded as an unsigned binary number.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5e5d1795-88b2-4a3a-a79b-b907ea297b42" shape="rect"></a>5-6</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ee58c92a-1a26-4a84-b200-4d32a72d940f" shape="rect"></a>SOP-class-uid-length</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e7b886e3-13bd-46f1-a1bd-691fa25f3ac2" shape="rect"></a>The SOP-class-uid-length shall be the number of bytes from the first byte of the following field to the last byte of the SOP-class-uid field. It shall be encoded as an unsigned binary number.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a70241c9-54a4-4f5f-91c5-c3a426128c45" shape="rect"></a>7-xxx</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_46041e4e-5439-4115-9f3f-bff0ccb31581" shape="rect"></a>SOP-class-uid</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_80d0f1f3-bd27-4969-9d18-124d3e24366d" shape="rect"></a>The SOP Class or Meta SOP Class identifier encoded as a UID as defined in <a href="../part05/chapter_9.html" class="olink" shape="rect">Section 9 “Unique Identifiers (UIDs)” in PS3.5</a>.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3354e654-f1d6-4867-9180-f519b5162ac6" shape="rect"></a>xxx-xxx</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_05c32409-57cc-4ff2-a613-caf143887ff9" shape="rect"></a>Service-class-application-information</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bdf326ea-b4f3-4d97-871d-672b5ddc22f8" shape="rect"></a>This field shall contain the application information specific to the Service Class specification identified by the SOP-class-uid. The semantics and value of this field is defined in the identified Service Class specification.</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.3.3.4.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_D.3.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.3.3.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">D.3.3.4.2 SCP/SCU Role Selection Sub-Item Structure (A-ASSOCIATE-AC) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.7.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> D.3.3.5.2 SOP Class Extended Negotiation Sub-Item Structure (A-ASSOCIATE-AC)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024b - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

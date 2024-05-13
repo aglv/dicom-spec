@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>RRRR.3 Manufacturing Model Grouping, Color &amp; Opacity</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_RRRR.html" title="RRRR Encapsulated OBJ, 3D Model Grouping, &amp; Color (Informative)" />
+      <link rel="prev" href="sect_RRRR.2.html" title="RRRR.2 Example Encoding of OBJ &amp; MTL" />
+      <link rel="next" href="chapter_SSSS.html" title="SSSS Neurophysiology Waveforms" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">RRRR.3 Manufacturing Model Grouping, Color &amp; Opacity <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_RRRR.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_RRRR.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">RRRR Encapsulated OBJ, 3D Model Grouping, &amp; Color (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_SSSS.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_RRRR.html" shape="rect">Encapsulated OBJ, 3D Model Grouping, &amp; Color (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Manufacturing Model Grouping, Color &amp; Opacity</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_RRRR.3" shape="rect"></a>RRRR.3 Manufacturing Model Grouping, Color &amp; Opacity</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0d3d50a8-d98e-41e9-b788-30ccc0367f45" shape="rect"></a>This example explains how to group manufacturing models together to indicate that they are intended to be assembled into a single unit (either after production, or as part of production on a multi-material printer). As shown in <a class="xref" href="sect_RRRR.3.html#figure_RRRR.3-1" title="Figure RRRR.3-1. Example of Model Group UID Usage" shape="rect">Figure RRRR.3-1</a>, a group of models can include a mix of both STL and OBJ encapsulations (CardiacAnatomy.obj, ThoracicSkeleton.obj, and Thyroid.stl). All that is required to indicate grouping is that the Model Group UID (0068,7004) be set to the same UID value for all objects in the group. In this example the optional material file was not needed by the OBJ.</p>
+         <p>
+            <a id="para_9a4f3c73-9ca5-4ac9-a39f-107582c614b6" shape="rect"></a>
+                </p>
+         <div class="figure">
+            <a id="figure_RRRR.3-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="360">
+                     <tr>
+                        <td rowspan="1" colspan="1">
+                           <img src="figures/PS3.17_RRRR.3-1.png" width="360" alt="Example of Model Group UID Usage" />
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure RRRR.3-1. Example of Model Group UID Usage</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+            </p>
+         <p>
+            <a id="para_ad14b127-d4cb-42b6-801e-761d7135eb01" shape="rect"></a>It is possible to specify preferred color and opacity of Manufacturing 3D Models using Recommended Display CIELab Value (0062,000D) and Recommended Presentation Opacity (0066,000C). One particular use of these attributes is in combination with model grouping, as it allows the use of non-opaque materials to allow viewing of interior parts of the grouped assembly. An example of such use is shown in <a class="xref" href="sect_RRRR.3.html#figure_RRRR.3-2" title="Figure RRRR.3-2. Example of Model Color and Opacity" shape="rect">Figure RRRR.3-2</a>, where the AorticCalcifications.obj model is intended to be assembled inside the Aorta.stl model. Therefore, the DICOM Encapsulated STL of the aorta is designated as having a recommended presentation of semi-transparent red, while DICOM Encapsulated OBJ of the calcifications is fully opaque white.</p>
+         <p>
+            <a id="para_378ee3e5-2d34-4b36-a317-f4aa3bc65802" shape="rect"></a>
+         </p>
+         <p>
+            <a id="para_b8d23cfe-6a05-4fb6-945b-eeffea53ebdb" shape="rect"></a>
+                </p>
+         <div class="figure">
+            <a id="figure_RRRR.3-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="360">
+                     <tr>
+                        <td rowspan="1" colspan="1">
+                           <img src="figures/PS3.17_RRRR.3-2.png" width="360" alt="Example of Model Color and Opacity" />
+                        </td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure RRRR.3-2. Example of Model Color and Opacity</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+            </p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_RRRR.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_RRRR.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_SSSS.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">RRRR.2 Example Encoding of OBJ &amp; MTL </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> SSSS Neurophysiology Waveforms</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

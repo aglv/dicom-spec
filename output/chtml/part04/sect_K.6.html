@@ -1,0 +1,2747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>K.6 SOP Class Definitions</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_K.html" title="K Basic Worklist Management Service Class (Normative)" />
+      <link rel="prev" href="sect_K.5.html" title="K.5 Association Negotiation" />
+      <link rel="next" href="sect_K.6.2.html" title="K.6.2 General Purpose Worklist SOP Class (Retired)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">K.6 SOP Class Definitions <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_K.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_K.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">K Basic Worklist Management Service Class (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_K.6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_K.html" shape="rect">Basic Worklist Management Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">SOP Class Definitions</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_K.6" shape="rect"></a>K.6 SOP Class Definitions</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_K.6.1" shape="rect"></a>K.6.1 Modality Worklist SOP Class</h3>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_K.6.1.1" shape="rect"></a>K.6.1.1 Modality Worklist SOP Class Overview</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8989f1bc-b000-434a-8673-dc5cf86f3924" shape="rect"></a>The Modality Worklist SOP Class defined within the Basic Worklist Management Service Class defines an application-level class of service that facilitates the communication of information to the imaging modality about Scheduled Procedure Steps, and entities related to the Scheduled Procedure Steps. As will be detailed below, part of the information carried by the worklist mechanism is intended to be used by the imaging modality itself, but much of the information is intended to be presented to the modality operator.</p>
+               <p>
+                  <a id="para_e402eb5b-432b-4f01-bb03-86fa4be83a79" shape="rect"></a>This worklist is structured according to Scheduled Procedure Steps. A procedure step is a unit of service in the context of a requested imaging procedure.</p>
+               <p>
+                  <a id="para_fc51c498-e79d-471a-b335-c147796c9783" shape="rect"></a>The Modality Worklist SOP Class supports the following requirements:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_08b99cdd-1f46-4d58-b23d-4d14abd61a05" shape="rect"></a>Verify patient (e.g., download patient demographic information from IS to Modality, to verify that the person to be examined is the intended subject).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_ee33a914-d104-4d7b-a13a-6fa0f7a1d787" shape="rect"></a>Select a Scheduled Procedure Step from the IS (e.g., download procedure step information from the IS to the Modality). The Modality Worklist SOP Class supports two alternatives for the realization of this requirement, supporting different organization methods of the department:</p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_49f59e0b-f874-4fc8-88bf-7216d013a9db" shape="rect"></a>The Modality may obtain the list of Scheduled Procedure Steps from the IS. Display of the list and selection from the list is done at the Modality.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_c3161ec5-86a8-4c33-9594-cfc214af1a22" shape="rect"></a>The list is displayed and selection is performed on the IS. This implies, that the information is obtained by the Modality just before the Scheduled Procedure Step starts.</p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_4db05ac8-5476-410d-999e-9d995bb32f44" shape="rect"></a>Prepare the performance of a Scheduled Procedure Step.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_d303182d-2d25-485f-b0e7-b63f3d5bbea4" shape="rect"></a>Couple DICOM images unambiguously with related information from the IS (e.g., patient demographics, procedure description, ID data structure from the IS, contextual IS information).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_04551c0d-dab7-4fbe-94d9-5c444cac1493" shape="rect"></a>Capture all the Attributes from the IS, that are mandatory to be inserted into the DICOM Image Object</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_1b6d93c5-8b75-4bd3-bab3-91b04a9c8c3b" shape="rect"></a>The Modality Worklist SOP Class is not intended to provide access to all IS information and services that may be of interest to a Modality operator or attending physician. Its primary focus is the efficient operation of the image acquisition equipment. DICOM SOP Classes such as the Relevant Patient Information Query SOP Class and non-DICOM Services that fall beyond the scope of the Modality Worklist SOP Class may be needed.</p>
+               <p>
+                  <a id="para_c63ad824-5d30-4eec-8437-2980ec7bd8d1" shape="rect"></a>The Modality Worklist SOP Class does not support the transmission of information from the Modality to the information system.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_K.6.1.2" shape="rect"></a>K.6.1.2 Modality Worklist Information Model</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_K.6.1.2.1" shape="rect"></a>K.6.1.2.1 E/R Model</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_19af2822-968b-43ad-ae83-8f503515e525" shape="rect"></a>In response to a given C-FIND request, the SCP might have to send several C-FIND responses, (i.e., one C-FIND response per matching worklist item). Each worklist item focuses on one Scheduled Procedure Step and the related information. The E-R diagram presented in <a class="xref" href="sect_K.6.html#figure_K.6-1" title="Figure K.6-1. Modality Worklist Information Model E-R Diagram" shape="rect">Figure K.6-1</a> depicts the content of one C-FIND request, that is:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_381a634f-9e93-40ed-bc34-2673b95c4324" shape="rect"></a>the matching Scheduled Procedure Step, the Requested Procedure to which the Scheduled Procedure Step contributes, the Imaging Service Request in which the associated Requested Procedure is ordered, any associated Visit, and the Patient who is to be the subject of the Procedure.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_0cb798f6-d68f-4e82-9639-79641b9197c1" shape="rect"></a>Therefore, for a given C-FIND request, a given Scheduled Procedure Step will appear in only one of the resulting C-FIND responses. Obviously, information about the Requested Procedure, Imaging Service Request, Visit and Patient may be mentioned in several of these C-FIND responses.</p>
+                  <p>
+                     <a id="para_85deae0d-47e5-4793-b065-5609720c0780" shape="rect"></a>The Modality Worklist Information Model is represented by the Entity Relationship diagram shown in figure <a class="xref" href="sect_K.6.html" title="K.6 SOP Class Definitions" shape="rect">Section K.6</a> -1.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_aea2a54e-8416-4614-8340-1e42a37d8d00" shape="rect"></a>The entities appearing in messages related to the Modality Worklist SOP Class are required to comply to the Modality Worklist model. However, DICOM does not define the internal structure of the database.</p>
+                  </div>
+                  <p>
+                     <a id="para_8e01bfad-fddc-42d6-af4d-7d6edb048712" shape="rect"></a>The entry point of the Modality Worklist is the Scheduled Procedure Step entity.</p>
+                  <p>
+                     <a id="para_a0d40102-a790-42b3-bd83-7fceb138ed7c" shape="rect"></a>The Attributes of a Scheduled Procedure Step Worklist can be found in the following Modules in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>.</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4559495d-ef9d-4ac0-a9c7-22e4a13b9cca" shape="rect"></a>Patient Relationship Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c4322dfe-fb04-4f2d-b275-038d685049a7" shape="rect"></a>Patient Identification Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5529d159-2a24-4f6d-82a8-2b6588ab6c4b" shape="rect"></a>Patient Demographic Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_708ecf14-c5ee-45f2-a262-cb438d3503be" shape="rect"></a>Patient Medical Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a374f2f0-0283-4fbf-8ee6-523591531314" shape="rect"></a>Visit Relationship Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_923ee733-f29f-4627-8feb-67f197b73355" shape="rect"></a>Visit Identification Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_cbd25a9f-c91d-4feb-b8a5-17216846a8d6" shape="rect"></a>Visit Status Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_91158a6f-3ad8-4253-b8b3-e4e742c40b83" shape="rect"></a>Visit Admission Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7fdb3134-a9e6-44eb-8193-7febaa64404a" shape="rect"></a>Scheduled Procedure Step Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_cd0178f1-49f2-4f6c-8cf2-a05dee316c6a" shape="rect"></a>Requested Procedure Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fadedb2e-f033-4a0a-bcae-56b55bdb7239" shape="rect"></a>Imaging Service Request Module</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_71d193e7-1b23-425f-8d54-02019aea7281" shape="rect"></a>
+                            </p>
+                  <div class="figure">
+                     <a id="figure_K.6-1" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.4_K.6-1.svg" alt="Modality Worklist Information Model E-R Diagram" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure K.6-1. Modality Worklist Information Model E-R Diagram</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                        </p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_K.6.1.2.2" shape="rect"></a>K.6.1.2.2 Modality Worklist Attributes</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9d041dd9-1856-47bb-ab1c-ba9c55a86d77" shape="rect"></a>
+                            <a class="xref" href="sect_K.6.html#table_K.6-1" title="Table K.6-1. Attributes for the Modality Worklist Information Model" shape="rect">Table K.6-1</a> defines the Attributes of the Modality Worklist Information Model:</p>
+                  <div class="table">
+                     <a id="table_K.6-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table K.6-1. Attributes for the Modality Worklist Information Model</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d873e2c1-f696-4606-b9b7-fc2c3780557f" shape="rect"></a>Description / Module</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f3dcf5c6-1eca-44cd-9aa4-236e71f5863c" shape="rect"></a>Tag</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5077506c-2a86-498d-b977-155049c4cc60" shape="rect"></a>Matching Key Type</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f8ce7d5f-f789-4fd3-8d2e-9ac9f03779ce" shape="rect"></a>Return Key Type</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b5cf387f-6e33-43a4-abe5-f56524a6641f" shape="rect"></a>Remark / Matching Type</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_1cbdb186-35ef-409c-9d15-9a9c262c7362" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Scheduled Procedure Step</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_da9d6d2a-ec25-42aa-81a2-17034af99b2f" shape="rect"></a>Scheduled Procedure Step Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_58ee3f0b-5339-4ed2-9c20-4a21a6306eec" shape="rect"></a>(0040,0100)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1ab8464d-2af6-4a78-918c-c30d9b966f0b" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6d682a80-bff3-4527-ab93-2d765952e339" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63c8a441-ff06-4252-8196-15d33ad15466" shape="rect"></a>The Attributes of the Scheduled Procedure Step shall only be retrieved with Sequence Matching.</p>
+                                        <p>
+                                       <a id="para_7ca2421f-2a24-40b3-9be6-18c1fef28075" shape="rect"></a>The Scheduled Procedure Step Sequence shall contain only a single Item.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5ddb048a-3f66-41e7-bbe5-a1abd66c91c4" shape="rect"></a>&gt;Scheduled Station AE Title</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6ce9d587-32cc-434f-90d3-f3fa2956a75c" shape="rect"></a>(0040,0001)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d3646a25-860e-4bd8-9126-94f7d6327333" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a123c160-7a76-4552-8d0b-207bc9d741f7" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6843b14d-ebd8-40bf-82e0-953b5afed8b7" shape="rect"></a>Scheduled Station AE Title shall be retrieved with Single Value Matching only.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_746e4073-7207-45e2-b28e-58c48e72896b" shape="rect"></a>&gt;Scheduled Procedure Step Start Date</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7f2e36ed-d300-43cd-9a00-5ce6c50d0ab1" shape="rect"></a>(0040,0002)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_54352011-d555-457d-8f1c-304683b4ab35" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3b75227f-4464-4425-b59a-2e2e9b82bf37" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_df99ac7e-c979-4887-bee6-4752cdb4cb55" shape="rect"></a>Scheduled Procedure Step Start Date (0040,0002) shall be retrieved with Single Value Matching or Range Matching.</p>
+                                        <p>
+                                       <a id="para_017ee031-0247-4679-8b3c-dd6f9b84b3fb" shape="rect"></a>See remark under Scheduled Procedure Step Start Time (0040,0003).</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8f21bc79-0bc7-41d0-b2b0-a24f4f6daa11" shape="rect"></a>&gt;Scheduled Procedure Step Start Time</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_403105f7-6dc1-4977-94a2-86c8db817c8d" shape="rect"></a>(0040,0003)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f99a2279-dd31-4445-83b5-330538fe7278" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_be978a2b-0201-42bc-9c5a-8c8810f53d8e" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e37a4603-60b5-4545-8835-e534b52c6717" shape="rect"></a>Scheduled Procedure Step Start Time (0040,0003) shall be retrieved with Single Value Matching or Range Matching. Scheduled Procedure Step Start Date (0040,0002) and Scheduled Procedure Step Start Time (0040,0003) are subject to Range Matching. If both keys are specified for Range Matching, e.g., the date range July 5 to July 7 and the time range 10am to 6pm specifies the time period starting on July 5, 10am until July 7, 6pm.</p>
+                                        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                       <h3 class="title">Note</h3>
+                                       <p>
+                                          <a id="para_bf2cc1fb-2de8-482d-881e-b2306b5b833d" shape="rect"></a>If the Information System does not provide scheduling for individual Procedure Steps, it may use the closest scheduling information it possesses (e.g., Procedures are subject to scheduling instead of Procedure Steps).</p>
+                                    </div>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ee4d451e-a8da-46e7-ae5a-3030a6c5e42f" shape="rect"></a>&gt;Modality</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea35e814-4a0e-49ab-86b9-4de85600033f" shape="rect"></a>(0008,0060)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0630979a-ef6c-4070-b6ec-3d2dad4f7e92" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7934cebb-e010-449f-9a22-01f895ccab29" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_252c3978-b288-4dbf-8f33-434d6546d88e" shape="rect"></a>The Modality shall be retrieved with Single Value Matching.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8c4e3d7b-9ef2-4bac-9ff2-05bc90d19b66" shape="rect"></a>&gt;Scheduled Performing Physician's Name</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a54d85e4-0915-42d3-8315-33d7f1626208" shape="rect"></a>(0040,0006)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0c8542a4-e6d4-41cc-af35-bea30c6ef9a7" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_164c1a07-2221-4887-bc8c-9fc3a3245e71" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cdb6f1ff-25ce-444c-ac15-8f6f6c492489" shape="rect"></a>Scheduled Performing Physician's Name shall be retrieved with Single Value Matching or Wild Card Matching.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c94d21f0-2aa2-47cf-851f-ef950e80ad9e" shape="rect"></a>&gt;Scheduled Procedure Step Description</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_657e1f85-8738-468a-a884-0e6bfe406a32" shape="rect"></a>(0040,0007)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eae6bcb5-ca7e-41e4-92e2-cccab0d59a8f" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7f7be9a7-3c3f-4256-a05c-98e7b7c602c2" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_89a717ad-19d0-4cd4-9f30-dddcbb90e3ee" shape="rect"></a>The Scheduled Procedure Step Description (0040,0007) and/or the Scheduled Protocol Code Sequence (0040,0008) shall be supported by the SCP.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_93b82791-683e-4087-a5f0-edd1e7fe007c" shape="rect"></a>&gt;Scheduled Station Name</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7ce987f5-8e14-4e10-9565-8e4f0b7f6b70" shape="rect"></a>(0040,0010)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_054c5493-9bb0-4cf6-86bf-0ca53b0d6b14" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b84d2c7a-e9cd-4256-a8dd-920d70d8ec71" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_586a8911-55a0-4bfb-9638-bab4402eaf84" shape="rect"></a>&gt;Scheduled Procedure Step Location</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0c753cf0-e254-4ab1-859c-640ab7cd5cb2" shape="rect"></a>(0040,0011)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_768aa262-8794-417b-a1c8-4eb053924b56" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5d03c258-745b-4aa2-8f90-f4411fa7c407" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c097dfc6-a42d-4eae-9e89-5a53b6b692f9" shape="rect"></a>&gt;Referenced Defined Protocol Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6d60ad34-28da-4baa-839b-4f0ddb49e392" shape="rect"></a>(0018,990C)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_54d5face-6ec3-4bf0-b3db-e1b77443b8ed" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_061287b0-19ab-42a8-ac99-ef4a4d72ccac" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_44589e70-317f-47bb-a4a4-dcd1c1e9a634" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_54c54b20-c81f-4e8a-8bce-fac41482c7b8" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bf2c0b5e-8502-4b91-964e-37b17488fce4" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30f437e2-5122-41df-aa1f-ffaf9299cb6e" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d19b9d58-c70e-41fd-8b02-21e562a71062" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8f2c596a-76a4-44e4-adcc-cd5cd222f675" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_32f83656-efda-4b4b-aa39-bdb284ff2fac" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c1e90ec5-de13-49e6-b2f1-9ef54e00aad3" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3acd5216-5e10-44d5-873d-e9ca33791361" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4af09f26-c0f7-456b-bb61-238992b6b8e2" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_81ee4fe7-360b-44bc-8a1f-a57862d59fcb" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9a7db1a6-3b54-462c-ba40-34fc3b77eda9" shape="rect"></a>&gt;Referenced Performed Protocol Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4c4d7ecc-2de4-42a9-8f48-d9f97b10cd9c" shape="rect"></a>(0018,990D)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2186b658-ce63-403b-b4db-e57ddc6a899b" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_474bab44-93af-41ff-98f2-d8481bcc3f33" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5bac0a20-d13c-459a-985e-c33bac6dec47" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_59a52d12-d1d1-4594-b776-4f5c930d8b1f" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_876a0f92-7af6-4b52-a030-7205e9cd3df2" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fb4879d0-643a-4002-854f-f2c663f155af" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c6c97a31-ba93-4a25-87d7-8152b18ea299" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_de58a87a-70b9-4bc6-b9bb-7dfc15622803" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0a7d0f2a-3a51-4408-9eaa-bab0d55ea770" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_72416cf0-f1e8-42ad-b1d7-34552020462d" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7f6ba79e-9119-43c6-aa06-095171bea314" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_378a2a78-aadf-4f16-a5b9-5f91cead2275" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_474313e3-6f67-4370-b299-64ca1829246b" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b6ec37f4-c6ce-467b-afbd-d24b28ba0c08" shape="rect"></a>&gt;Scheduled Protocol Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5bb6ad5b-697f-496f-984c-2bce4ebd19bc" shape="rect"></a>(0040,0008)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c8cecbbe-2f0f-47ef-a3a6-03d3e5811b14" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a296037c-54b1-42e3-8e5e-ce445599ce56" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d679cf3d-0f4c-4914-8957-3c417e385cf0" shape="rect"></a>The Scheduled Procedure Step Description (0040,0007) and/or the Scheduled Protocol Code Sequence (0040,0008) shall be supported by the SCP.</p>
+                                        <p>
+                                       <a id="para_f38647f1-fcd0-4310-932b-33a4e1f12642" shape="rect"></a>The Scheduled Protocol Code Sequence contains one or more Items.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_8010863d-08e4-4daf-ba99-922b934a4aad" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-2a" title="Table 8-2a. Enhanced Coded Entry Macro with Optional Matching Key Support and Optional Meaning" shape="rect">Table 8-2a “Enhanced Coded Entry Macro with Optional Matching Key Support and Optional Meaning”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_65ce496e-41bd-4a7f-b19a-50916e66463d" shape="rect"></a>&gt;&gt;Protocol Context Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a871564b-c381-4e5a-a953-8b5d145acc38" shape="rect"></a>(0040,0440)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_96375366-471f-416c-a459-2bedf59542f3" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f419720a-9830-4625-b45e-486f1f36c0e7" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_120e5a86-c108-4c7b-8546-bb69ce9eea7a" shape="rect"></a>The Protocol Context Sequence and its Items shall not be used for matching</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a4b68954-a0b2-4a55-83cc-a52c9b551661" shape="rect"></a>&gt;&gt;&gt;Value Type</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_167e4bef-251d-457f-8c32-26297daa46bd" shape="rect"></a>(0040,A040)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cbd8b23a-f2ef-4274-a2e5-2aac804f5dbe" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea553df2-a97d-4208-9b82-550fef2f1812" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7830c29b-b799-487b-83fc-8c278f4bff2e" shape="rect"></a>&gt;&gt;&gt;Concept Name Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0789a6c3-7690-48f6-901e-ededd52addcc" shape="rect"></a>(0040,A043)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9e842be8-6f95-4b46-b44a-4d5f038962e3" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0904befb-be67-434e-be0d-6fe8821c41c8" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_a7090aa8-dc85-4c2a-9109-ba1ac62efc27" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e9feeaa2-dc98-4b79-ad0d-65a867e0cc8e" shape="rect"></a>&gt;&gt;&gt;DateTime</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_80492645-1667-4fbd-b61f-aeb0f3cf98e8" shape="rect"></a>(0040,A120)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4b24b42b-5bdc-4281-ac01-4f561c3cf640" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ffdea306-83ed-437a-9661-cbfd93927de2" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7f6fbde0-772c-401b-83ba-874560d88675" shape="rect"></a>Required if Value Type (0040,A040) is DATETIME.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_624d5558-75d8-49de-b13f-cac8da4856a9" shape="rect"></a>&gt;&gt;&gt;Person Name</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eff2b99b-9166-48de-b775-5de2484da81e" shape="rect"></a>(0040,A123)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2b972a54-1082-4608-ad8a-ab972d661268" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c5f82917-361f-45ff-97c7-2a0703d2c38a" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1f17cd40-c1f1-47ef-afce-1b7e09f26253" shape="rect"></a>Required if Value Type (0040,A040) is PNAME.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_046bc705-6bd7-42a2-8573-6c256d2c5da8" shape="rect"></a>&gt;&gt;&gt;Text Value</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e445c518-05e9-436b-8d74-36fa6bb7ea7c" shape="rect"></a>(0040,A160)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_be648a49-8c68-4442-aaca-a2e27b6b92b8" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63884db7-e8c2-4fb5-9355-567c45ce0516" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_81a214b8-e6cf-495a-b4c5-ba30423b3853" shape="rect"></a>Required if Value Type (0040,A040) is TEXT.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3c1fee40-bf02-4162-af13-cafdca100fc5" shape="rect"></a>&gt;&gt;&gt;Concept Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1f92b11d-060e-4f46-9b04-125be70fa1ac" shape="rect"></a>(0040,A168)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_976b163d-a2d5-42ee-99e2-9abfbc0af7ac" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c8871461-a715-481b-962b-412ac4034f66" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_43fd1231-4836-4c9b-b695-6e2fa727f581" shape="rect"></a>Required if Value Type (0040,A040) is CODE.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_f4f98e1c-ecc7-44c4-8ca7-aefb13b83354" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e43d936c-ead1-4560-8358-fa131c810327" shape="rect"></a>&gt;&gt;&gt;Numeric Value</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_66b1e86d-0478-42c4-8b6a-232c564844df" shape="rect"></a>(0040,A30A)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_35f4e1dc-3693-4d83-9e98-7f5a8d934d59" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a5c17de4-0398-4712-a8b3-9d827e7f344a" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7c33b8e7-672f-4010-8313-ed317be4bd52" shape="rect"></a>Required if Value Type (0040,A040) is NUMERIC.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63ce371e-bd25-47f7-a9cd-06712e5b191c" shape="rect"></a>&gt;&gt;&gt;Measurement Units Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4f536edb-f561-4861-be6a-d6dba6bdf3d6" shape="rect"></a>(0040,08EA)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ef0f58cf-8840-4d48-b5ef-e51eaad62d49" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_28658b1f-7160-46c8-bcf6-a5b57dab56ae" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c513ac59-44b5-49c4-95d8-ea6d0b7679d7" shape="rect"></a>Required if Value Type (0040,A040) is NUMERIC.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_889b91c6-7da1-4584-b3c9-06abba913bf3" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_97ef79d0-fd2d-4777-bffe-71d5e4549073" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;&gt;All other Attributes of the Protocol Context Sequence</span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a256f1ff-884d-4c12-881c-8e5269de4f17" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ae5e7d20-4be1-4832-aa70-439ddbb46099" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7de16c8c-447f-41e1-ae37-73c9e017e569" shape="rect"></a>&gt;Pre-Medication</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c3b272ee-e73d-46d6-a2a1-74c02d0bfb21" shape="rect"></a>(0040,0012)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30603038-e5a0-47ec-acd8-ccc73ddeecb0" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_81c8aabd-df79-4032-9cfd-55f980ba8b39" shape="rect"></a>2C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f9f1fc4e-777d-40a5-9d13-ce3921555246" shape="rect"></a>Required if Pre-Medication is to be applied to that Scheduled Procedure Step.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fceac28c-24ff-4ad3-ae41-da653dbd5d22" shape="rect"></a>&gt;Scheduled Procedure Step ID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4f440341-a6f2-4ee1-bc33-2cccfcadccd5" shape="rect"></a>(0040,0009)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ac44e70f-701d-481b-899b-5a245c160708" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f9aff339-69d0-45e6-8045-1d0446f51cde" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0533989d-8cf7-4b46-92c0-640792206691" shape="rect"></a>&gt;Requested Contrast Agent</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_37b943fb-26b2-484f-a9b1-a3402056c900" shape="rect"></a>(0032,1070)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0b58450e-db72-4720-8d3d-05945c0002e8" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cfc7e23b-990a-4c71-9487-c076e808fe4c" shape="rect"></a>2C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea838005-84fc-46f4-ace6-4447f9387fa3" shape="rect"></a>Required if Contrast Media is to be applied to that Scheduled Procedure Step.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c4cc2a70-60ef-483c-b60b-fe631f7f6aac" shape="rect"></a>&gt;Scheduled Procedure Step Status</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cc7c1897-2e8c-42b1-999c-6017d2e1510a" shape="rect"></a>(0040,0020)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_04f15319-a263-4f8e-8c3f-1a899f66ffe4" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6f732fc3-7d44-4341-93ff-8759f53c2d59" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1005c3f1-7608-49c2-a92c-9f7372bdb7be" shape="rect"></a>
+                                            <span class="italic">&gt;All other Attributes of the Scheduled Procedure Step Sequence</span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_23cc1e59-c94a-4d35-8150-bb64eb5e9fee" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eae9f9c9-b479-484b-9151-a9405e0f0a54" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e93a7ae0-e441-4a9e-8b10-528fbe059f32" shape="rect"></a>Scheduled Specimen Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8ae25c88-b970-409f-abfe-57f17c398be5" shape="rect"></a>(0040,0500)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f5506a31-64f2-4816-8fe7-a16e32270851" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c52c8bba-cc6e-423a-a236-a580a159fe95" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_025ecb71-71e5-48fc-bb01-58ec58e54bc9" shape="rect"></a>One or more Items may be returned in this Sequence.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6549cc1e-5cf4-4d8b-a482-477159110576" shape="rect"></a>&gt;Container Identifier</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9bc8628f-0494-403c-b7c9-b39c37c7db1e" shape="rect"></a>(0040,0512)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c9881985-52c9-4ec1-82ce-c6488f6d3943" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7c761831-e2ba-4272-ac22-d3a8b98724ed" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fd5dd809-40d0-4b53-a891-823f92459110" shape="rect"></a>&gt;Container Type Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2cd2e91e-98e4-4309-bf62-60b73d8a4792" shape="rect"></a>(0040,0518)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1d3a366a-2716-425c-922b-b0a20b321e0d" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c01a93b2-e1b6-454f-a341-c55c694e2a58" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56ad4ce3-b5cd-471a-87d0-c7ef33786880" shape="rect"></a>Zero or one Item shall be returned in this Sequence.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_2fd6a329-58f6-4462-b818-59d1c4d20dc2" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_35eef8a8-15fb-4b6a-be0a-56707ad861a3" shape="rect"></a>&gt;Specimen Description Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_499cff0a-bcef-4bfe-b615-e207015d2f82" shape="rect"></a>(0040,0560)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a2c464d7-da29-40ab-886c-eedfb76b0723" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b01600c0-6f68-4a53-b316-79e001a3b79e" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_63f64049-136f-46a5-861e-625ac6bcda52" shape="rect"></a>One or more Items shall be returned in this Sequence.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6f64b9b3-d580-4e22-aa36-955ad4d213f6" shape="rect"></a>&gt;&gt;Specimen Identifier</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e285fb79-206e-4455-8555-f4a7a00ca6f8" shape="rect"></a>(0040,0551)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cce2c371-6f81-4f5d-9f11-585b31cf1fba" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eae9afa8-42f9-4a6a-a6b7-e9592b07795b" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_da2032e5-d1f1-4411-80f9-980ef4f2e028" shape="rect"></a>&gt;&gt;Specimen UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b70cb352-2a4d-4692-bf8f-727aff9bdab7" shape="rect"></a>(0040,0554)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_13e897d0-505b-4df8-afad-1b3dde91d95d" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4bcbc324-d16b-4cac-aebd-5484d1d3125d" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b0784418-faae-480a-a154-5b667ee2377b" shape="rect"></a>
+                                            <span class="italic">&gt;&gt;All other Attributes of the Specimen Description Sequence</span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6c00dec5-7f63-4a1e-9ade-f8278cdcafca" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b1182bcc-2345-4d1e-92b1-307c935ac91b" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6b17b636-4898-442e-a69e-5dce8f7e34c0" shape="rect"></a>Specimen Preparation Sequence (0040,0610), if present, describes preparation steps already performed, not scheduled procedure steps</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_feab43ec-acc0-4a25-a345-04d3615b39b1" shape="rect"></a>
+                                            <span class="italic">&gt;All other Attributes of the Scheduled Specimen Sequence</span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b2be37e4-351c-478b-a982-e01c1f52ad97" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0743370b-689c-457d-8c58-783a49ad6187" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_70db86ab-5735-41f8-b19a-1f3c42cd9c4a" shape="rect"></a>Barcode Value</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1d18a8ec-9ba8-4a86-b29c-b88acbc8d9bb" shape="rect"></a>(2200,0005)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ee9d903b-27d4-4a51-ad9e-b4c37c17cab2" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b5c3bc17-a6e3-45cc-8a08-1c0a8a4fd4df" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b654e21a-d366-49bd-9d71-4fbb51926c3c" shape="rect"></a>This may be the same as Container Identifier (0040,0512).</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_fec09262-4457-4c8a-b654-29ac003bf3e0" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Requested Procedure</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_919851c0-f828-4fe1-a16d-bd29fcaf57ec" shape="rect"></a>Requested Procedure ID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_526c50e2-3b1a-498e-a5bc-7291d148df40" shape="rect"></a>(0040,1001)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4f5ac454-73ad-4ae5-b5ec-ee0b0add9118" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0d68c7ba-fd12-47cd-aa68-8f355418ac37" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9c1b416a-876f-4f9d-ac82-f8dda298c8a2" shape="rect"></a>Requested Procedure Description</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d97e9069-2ce1-4d39-9314-8f55b815f254" shape="rect"></a>(0032,1060)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5e881e36-c7c4-4c5f-9dfb-cb59131652d4" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_219b08e6-542b-45e7-bb65-72fe99c0d20a" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_28ec49c7-b781-4c15-93a2-0ea848d74978" shape="rect"></a>The Requested Procedure Description (0032,1060) or the Requested Procedure Code Sequence (0032,1064) or both shall be supported by the SCP.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_499f2a97-6a97-4a80-8599-98b8b44217d2" shape="rect"></a>Requested Procedure Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0f76a5ad-d177-4679-842a-7e29aa567a08" shape="rect"></a>(0032,1064)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30deeb64-02f6-4cad-a7a6-901a64665f62" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2be70cfc-0e4e-4703-b658-002e40b49ad0" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6b7ca280-30d0-4266-9699-74e381b32ab5" shape="rect"></a>The Requested Procedure Description (0032,1060) or the Requested Procedure Code Sequence (0032,1064) or both shall be supported by the SCP.</p>
+                                        <p>
+                                       <a id="para_f8244e21-aaa2-4f77-985f-81c64c834c1d" shape="rect"></a>The Requested Procedure Code Sequence shall contain only a single Item.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_ce992fb5-6d27-4d7e-a17c-d9f7c10f0e51" shape="rect"></a>
+                                       <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-2a" title="Table 8-2a. Enhanced Coded Entry Macro with Optional Matching Key Support and Optional Meaning" shape="rect">Table 8-2a “Enhanced Coded Entry Macro with Optional Matching Key Support and Optional Meaning”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6ef6a820-088e-44d0-92b2-be2e0192f034" shape="rect"></a>Requested Laterality Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1321b001-a8e7-40f3-8775-78e200af4ed4" shape="rect"></a>(0032,1065)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4c370594-301a-4f50-80c2-091aa95b1576" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_865a334a-ba79-490b-be96-6f280fdc4afb" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eb7cd78d-d60f-4221-bf8c-3af7465b6158" shape="rect"></a>Only a single Item may be returned in this Sequence.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_7b3528b9-94d7-4fb6-b7af-fd863acff2a8" shape="rect"></a>
+                                            <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-2b" title="Table 8-2b. Basic Coded Entry Macro with Optional Matching Key Support and Optional Meaning" shape="rect">Table 8-2b “Basic Coded Entry Macro with Optional Matching Key Support and Optional Meaning”</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_57699965-84db-4fe0-acf3-119c9799d262" shape="rect"></a>Study Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d8411cad-4c9f-4679-89e5-d296b91be21e" shape="rect"></a>(0020,000D)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0786be4d-464e-483f-9d50-115ba07b9a21" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5f6fe2ec-fffc-489d-8342-479d9c8d15f1" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9f710d51-6530-4694-88ec-dbe5fd63cf74" shape="rect"></a>Study Date</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9bd5ecc3-7d22-42ba-bce4-15a675129651" shape="rect"></a>(0008,0020)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_59d0c5f2-c5ba-45d9-a8e9-365189edcd0a" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_31f9ff80-96e9-454b-bf64-faaea6f92f40" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_736d377b-f3a1-4afe-9d17-542d2365e301" shape="rect"></a>See note 5.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_648c75dc-8602-4b0f-91c9-d24ec107534d" shape="rect"></a>Study Time</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3788d0da-0b28-4170-97fa-11d10dc7af97" shape="rect"></a>(0008,0030)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8e5556c3-e98f-4c09-9241-d1a980f1f091" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4c01df96-2d26-4c95-a753-7b8af8653160" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9b60f5ae-6cf2-4539-bded-8c1b87b37e9a" shape="rect"></a>See note 5.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2dc81102-1a29-4516-a71d-f26c31c2837d" shape="rect"></a>Referenced Study Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_08b1ed25-745e-4a03-b9e6-df4eda5aacc4" shape="rect"></a>(0008,1110)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6dbfda8e-c8c3-4735-b5ef-a25e29d0d7fe" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b82b0956-5fb0-4218-912a-9e51dc6bbdca" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a29ae995-9033-4438-a69d-35dd98c17281" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3827a77c-b059-4c3e-a73d-483143dae94c" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f4f59498-22f4-4ada-8fe8-0084c4fb2d55" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d390e2c1-3f97-4b4d-8dfa-f57bd8aae0cf" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7948ae0e-bb35-41e9-a4a8-0561e68ed510" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_89bb88af-7d53-45ac-961a-85a092bc6027" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_12060166-0f21-4068-9ccd-a378cf0cc87c" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8589e27d-e95b-4891-9624-3017d42b32de" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cc8d08dd-1441-4077-b3f4-e7d60bd015b7" shape="rect"></a>Requested Procedure Priority</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b4fe523b-baf2-4021-91fa-1e1e706358e6" shape="rect"></a>(0040,1003)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_12d0cc39-9657-4429-ab10-601dc64be50e" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f790585b-74cc-41ab-970d-2307b72f69c6" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5e087707-47b8-42d1-a0a2-62d2dd326275" shape="rect"></a>Patient Transport Arrangements</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6ce1e812-b338-49c2-abcc-33b99ad19311" shape="rect"></a>(0040,1004)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b2d0808f-de1e-457b-b120-51eb2e955e8e" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4e7c88f8-4cab-471c-acdb-b6138adc3e32" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_657e9829-bc28-4f6f-bf87-5c22c1cba629" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.4.11.html" class="olink" shape="rect">Requested Procedure Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3b0ae1a0-21ad-43c0-af97-aae333463bf9" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7405436a-5f49-486b-bda2-063103bdb7bf" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_fd855adc-336d-41c5-9ddd-624c5a109cb2" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Imaging Service Request</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cef159e7-5cc1-4479-8c62-b97aaac82549" shape="rect"></a>Accession Number</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d7f67c6d-d873-418b-ba40-db06c3c77de3" shape="rect"></a>(0008,0050)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7e627e23-05ae-4d04-ab86-001e7d6614c9" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e95bc6ff-e371-4378-bc71-1c0dca1240dd" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_814df009-0f3c-427f-ad90-bc7199d3d6c2" shape="rect"></a>Issuer of Accession Number Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7bb0ff87-9fb0-4875-9d51-b0a4d802d6f8" shape="rect"></a>(0008,0051)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f91dee58-e864-49fe-96af-6ba45489baad" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a06e2046-63fc-41d6-b5dc-72b8741031e7" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5f4cca41-1d89-4f15-b3d2-c6fc97614aa5" shape="rect"></a>Requesting Physician</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3da00a2c-9791-41f7-b461-2aac8f020fdf" shape="rect"></a>(0032,1032)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5ce002d3-bfac-437a-91ad-5d25635feb6f" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5044b98b-39ac-4139-9658-b985c2f7726f" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9dad609c-e6c6-4bf1-9421-ae6df223ffa1" shape="rect"></a>Referring Physician's Name</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2a39ee2e-d551-49b0-ac31-96064e4668a7" shape="rect"></a>(0008,0090)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6a263e51-c47a-4a18-a353-2bf4aa051c71" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d435670d-228d-4e33-b77e-4b7dda40a0cf" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_53fab6a0-942d-477e-8db5-1ffc7ef346f6" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.4.12.html" class="olink" shape="rect">Imaging Service Request Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_34f518ef-f1c7-4eba-bd10-1df6d08cf48c" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cb7c5eaa-7895-4574-b7c3-36a868e35fab" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_27bcfb52-1a3f-47a2-bb3b-38820cbca8b5" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Visit Identification</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c3f84c1b-5d01-42cb-8235-e34fd7e73d53" shape="rect"></a>Admission ID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_25708a05-6381-4064-b624-9a7e106a6d8e" shape="rect"></a>(0038,0010)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3a0b4733-cb90-4537-8ef2-c4120de23b07" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_17e5f066-323e-4a87-8dce-86db363d07e4" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a2140e88-8897-471c-8b15-554a7ef15034" shape="rect"></a>Issuer of Admission ID Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_67d21770-fbd5-4099-a531-58b2f16b0fe4" shape="rect"></a>(0038,0014)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_aec6edcc-2c24-43c8-9606-a3e94ce6d3b6" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0f90e230-e63e-4100-8a1d-cf96f9144b7d" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f11f6b7c-4227-465b-8295-707f5b69a9b6" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.3.2.html" class="olink" shape="rect">Visit Identification Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3a4c9873-f241-43ae-b438-e971ebe2912e" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7a2c1dc9-cab7-41a0-8f80-8614b57a532a" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_7a2788ae-d5f3-41a3-a3c8-0baf415825d3" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Visit Status</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3b0d17c8-cc7f-4707-9882-0a9af648415b" shape="rect"></a>Current Patient Location</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_05c3f080-c186-4af9-9290-53bc9f22b1d3" shape="rect"></a>(0038,0300)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_50dc65cc-9fa5-4007-9973-15ef10ca4903" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0d63e801-bae2-419e-9681-afca2cd130fe" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2432d6eb-618d-4b59-89ab-1fdd1da0158d" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.3.3.html" class="olink" shape="rect">Visit Status Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cc525b07-7f74-4097-95a1-a2906fb5e6c9" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f59f2744-3964-40a1-ac8e-d96a2581d105" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_4ebd02d5-ed7f-4cfb-9b45-ef7fcd4bea63" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Visit Relationship</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30657bc4-219d-4ed9-bf79-65033f4492ae" shape="rect"></a>Referenced Patient Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_585fda0e-0900-46a3-81c2-1a4da2500168" shape="rect"></a>(0008,1120)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7813815-0a63-480b-96e4-423d1cec68ca" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_904c245d-45da-42e9-8926-ca3c9ffd3719" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c57fca97-641e-4039-9576-08a9bb88fc3c" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7a13812e-0561-474d-9dc7-9232c7af52d0" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e3051133-f1f7-478e-a51a-46804a4cf5e8" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_03378795-c94f-46ac-a42d-e45e1fdf6597" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0edfec8e-66e1-4aec-bc9d-834cbc265bcb" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1dce16ed-2b81-42c9-89d9-9c39e6ecc58b" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5c3c716e-ea05-4578-ac1a-caabf1f0d86a" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_07522520-4351-4166-a8d9-e19402b3d386" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30cb4279-c49d-49d6-ac5c-d06c21d47c7d" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.3.html#sect_C.3.1" class="olink" shape="rect">Visit Relationship Module</a> except those explicitly included in this table (see Note 3)</span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f516c276-525d-463d-b29f-5eb65eb0951b" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_750582f7-ca74-4827-941c-34ccf00182ef" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_65233354-08c8-459a-a175-c76d2e1f7320" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Visit Admission</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_03c2e7c8-109a-434f-9d27-6ad44ed66b0c" shape="rect"></a>All Attributes from the Visit Admission Module</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fd726779-e70b-4be7-9a29-f6d9df945818" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c293e398-cc84-424c-88f2-7518ba9bdad5" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_fbf89a2d-9446-48b6-ad5d-34069f7fe2d9" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Patient Relationship</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_df9499f8-ec64-443c-8ba2-3dba599df773" shape="rect"></a>All Attributes from the Patient Relationship Module except those explicitly included in this table (see Note 3)</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_029f8474-ca29-4797-90f0-50588f508537" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3801fdf9-a6d7-4a82-9fa4-8b9cb1333b97" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_a484af32-0ecb-405e-853e-b98bb26a26b7" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Patient Identification</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_03ea42a5-c182-41bc-9309-96b51b5bdaa2" shape="rect"></a>Patient's Name</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d96d0b49-96ad-49c3-bdcd-5e27bb4e0d55" shape="rect"></a>(0010,0010)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9a1a8b78-0732-4530-b8ba-498a18ecd10e" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1bdb18b5-b911-45a0-8d27-fbc6f548cf71" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_929488e1-8571-4b1b-9f56-0ce411173b83" shape="rect"></a>Patient Name shall be retrieved with Single Value Matching or Wild Card Matching.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_88c3c333-462e-4bfe-bd89-357d9b2ce555" shape="rect"></a>Patient ID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_68b533f6-c0a9-4d73-8357-f8c440bfa668" shape="rect"></a>(0010,0020)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_47d67411-4a60-419c-843e-a2a098bc6a3e" shape="rect"></a>R</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f45dbead-38fd-40c8-91e8-ecec4ed5fbd6" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5e352aec-91cb-4850-ab8a-8cf7b082e43d" shape="rect"></a>Patient ID shall be retrieved with Single Value Matching.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_43317220-2918-43f9-b048-fb730d24222c" shape="rect"></a>Issuer of Patient ID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7108691b-f570-4a48-9b05-2cb73a513ca4" shape="rect"></a>(0010,0021)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0a91407d-6b05-482a-a883-ccf7fd05ac5d" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9c693419-a822-4408-9572-641bc57c94fc" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ac104f3e-8070-48e9-94d1-05fa8dc48e6c" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2bab7c8b-cf52-4294-b22c-9a255ae1e85d" shape="rect"></a>Issuer of Patient ID Qualifiers Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_676a4d7b-5076-4544-b2e5-ac95766cb885" shape="rect"></a>(0010,0024)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d370fc77-697b-4aa6-95b6-eee6630069df" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c1dceff8-ca40-41be-93c3-a8278f246185" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_23b35b36-c6db-45b7-91a7-5d1966f0f5b8" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea187a5b-240d-44fe-894c-4932b1cef289" shape="rect"></a>Other Patient IDs Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e7abcb48-8b54-4245-a69d-b5fc452e451e" shape="rect"></a>(0010,1002)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c18109c0-fa1d-4b1e-b697-9f2bb9078e80" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7da9fcf5-60c0-464d-b1cf-d3ef2552e9f0" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_567bb450-5c7b-4fca-ae56-6547c8f44c1e" shape="rect"></a>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_df5e709b-b84d-405e-8779-2ae55c9066da" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.2.2.html" class="olink" shape="rect">Patient Identification Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8cc07428-34a5-4734-ba4a-dd1cd0036f97" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eb0c2ace-ace6-4dd3-be0a-cfd7e2fd80ce" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_029af34c-4b96-486e-aee9-6b53ae67a837" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Patient Demographic</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56363a15-5471-438e-b532-7c79ed6a614c" shape="rect"></a>Patient's Birth Date</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c04813c1-2cb1-4475-bf05-8d914ed024d2" shape="rect"></a>(0010,0030)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fed05fb8-b909-4951-90db-b542db944970" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b45000f3-5f5f-40e2-b947-b5b43cfd33a7" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f48b479e-d74c-4a6b-883f-0b40b4ec57fd" shape="rect"></a>Patient's Sex</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e7f29451-f33e-4bd0-ba02-ba2f64b26833" shape="rect"></a>(0010,0040)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_007609f9-cf04-4ef3-afd1-bbd1e1290ea4" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_40e60dee-958f-436b-90c8-3adbd0d4cb57" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_006b2774-7092-4010-bf34-df30ec839eb2" shape="rect"></a>Patient's Primary Language Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f59e8b9c-05de-4f3f-8fcc-34acd346508f" shape="rect"></a>(0010,0101)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fb745221-67f9-40dc-b503-d4f0a563beef" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_53bee0db-f283-433a-bb18-08eac94e4c8b" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_596f716b-c971-43d4-a057-0248062a244a" shape="rect"></a>The languages that can be used to communicate with the patient.</p>
+                                        <p>
+                                       <a id="para_383cc3ed-94c8-495e-bbbf-020d8b59868c" shape="rect"></a>If returned, the Patient's Primary Language Code Sequence shall contain one or more Items. The items are ordered by preference (most preferred language to least preferred language).</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_50fc818d-7550-433e-a46f-8bb8d1a79732" shape="rect"></a>
+                                       <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-4a" title="Table 8-4a. Enhanced Coded Entry Macro with Optional Matching Key Support and Mandatory Meaning" shape="rect">Table 8-4a “Enhanced Coded Entry Macro with Optional Matching Key Support and Mandatory Meaning”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c1311eec-3933-47da-9c02-c5e91af243e3" shape="rect"></a>&gt;Patient's Primary Language Modifier Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2ddad221-7248-4b6f-8356-03a028764d58" shape="rect"></a>(0010,0102)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2ff4840b-0652-4359-8065-863012bb3acc" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_df6b748d-d267-4b9b-b1b1-984b06c6e42a" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b033e491-1d12-4519-8f49-a799ecfd0cae" shape="rect"></a>A modifier for a Patient's Primary Language. Can be used to specify a national language variant.</p>
+                                        <p>
+                                       <a id="para_3b0998f3-a895-4096-9dee-0e62c39253bc" shape="rect"></a>If returned, the Patient's Primary Language Modifier Code Sequence shall contain only a single Item.</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_7f5e2bda-93ea-4ed4-9452-2ee6dddf3d54" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-4a" title="Table 8-4a. Enhanced Coded Entry Macro with Optional Matching Key Support and Mandatory Meaning" shape="rect">Table 8-4a “Enhanced Coded Entry Macro with Optional Matching Key Support and Mandatory Meaning”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_34f91484-eef2-45ae-951d-1786355fdb4c" shape="rect"></a>Patient's Weight</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b56f2f96-9c38-4250-a9e2-f4602191f1ed" shape="rect"></a>(0010,1030)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_af9758a5-e37e-4168-905c-eb62f3f4af98" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8e4c69cf-aee6-49c8-81f4-6b2c04efb271" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_afa1602c-c306-4a4e-83c6-affeee044fd7" shape="rect"></a>Patient's Size</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4fb5f87d-3e6f-4e5d-868c-d0f7dad88592" shape="rect"></a>(0010,1020)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e1d36854-345c-4d41-b694-1a64e7f582c4" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_495d77de-35d1-40f4-8a0d-462f794cc054" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ad1681e7-d420-41a9-8f49-56d0093e9f42" shape="rect"></a>Confidentiality constraint on patient data</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_86f34a8d-f292-4830-b905-e89449e5bb94" shape="rect"></a>(0040,3001)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a1a997f7-e863-49e6-85a7-b9d0a7a004d1" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_621e4c09-cd2a-4533-8a02-c37d90d9fcab" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d96312aa-d865-4ced-bf16-f4a4a3863b1e" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.2.3.html" class="olink" shape="rect">Patient Demographic Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fbdaa9df-3660-48f2-b8f6-b0c88611c35d" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_18ab9586-e4fd-4cb1-bc1c-ec2f4ae0e718" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_dea6bdcb-7a00-4694-98b5-d54edb1515c2" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Patient Medical</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_319c8c66-7cf8-408a-aca0-d81bd28c1af3" shape="rect"></a>Patient State</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5557e3d1-c5ac-4526-b4ef-17a2b6fd981c" shape="rect"></a>(0038,0500)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e0720289-0153-42e2-8af2-15dff0881389" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_728698a8-25a8-4cea-ae31-61891a31eebe" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6ee19616-1a9b-4b87-9166-64c9eb97b64a" shape="rect"></a>Pregnancy Status</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_32e3a583-2c66-49c1-b205-b015279ae31c" shape="rect"></a>(0010,21C0)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_28a71ed7-1116-401b-8bb8-b2459224709e" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_67945556-3bd2-46de-b2d4-5bbc29ea928b" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5d9f6cf9-c190-4415-8cdb-1b8c521aeba8" shape="rect"></a>Medical Alerts</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9f968ff0-0a14-4a11-8a41-10cf4e564973" shape="rect"></a>(0010,2000)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5593f562-be20-4c28-8823-f4326ff281a2" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0a8c4a3d-cc84-4117-808a-dc4e4b759bc5" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_16def34b-81cd-40ca-a996-9e4b6458ac54" shape="rect"></a>Allergies</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cb546a02-576c-4566-a86e-e5a6c980b936" shape="rect"></a>(0010,2110)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a792fe6f-5eac-4eb8-86a7-e95b63c4b8e5" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_44793abf-96f2-4ada-8591-1ff305820158" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c478a001-6962-456a-9d1f-f90c66ebaa2d" shape="rect"></a>Special Needs</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_71b00a2b-5e1a-4ba0-bfa9-5108f800194a" shape="rect"></a>(0038,0050)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f21e669a-4bcd-46f0-8265-c05045fe66d5" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cc712ac0-2012-430c-97f4-ae5a2843f4d3" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7b35101-4096-4410-a5f9-9ab216866873" shape="rect"></a>Pertinent Documents Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30641e4a-6843-4ec7-8627-e1f3c860dcfc" shape="rect"></a>(0038,0100)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_823513fa-886f-49ac-90b6-eb241f98e16d" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c30d5158-a736-4439-a7e5-e220f9648165" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_28dc5a7d-ffa5-4ce4-bac7-81ebb548b739" shape="rect"></a>Pertinent Documents Sequence shall be retrieved with Universal Matching only</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cb9731aa-0dfe-45d9-aa1b-1b6c33bff581" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7fe73e66-d22a-4c47-9771-4267f8945683" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d8070cb1-5597-43c5-bede-d9ef9da023bf" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_adc8d5fc-ac1e-49d7-962e-377926ea58a8" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56df9ac2-0411-4bb8-9c8f-f5a9b6e5d771" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2f7a68ef-4e77-4687-af7a-124b27a75d0c" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f0002c86-b71b-4b0b-92ca-529dac281e52" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_32dd0dfb-0049-441f-bb17-5adc8e9d80ff" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_be17c4a9-80a9-4f8f-89f1-01e6c72aeb24" shape="rect"></a>&gt;Purpose of Reference Code Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_76fd98ae-8846-498d-8e3a-13f27c793d02" shape="rect"></a>(0040,A170)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_aae7a982-a042-4d07-bc5d-a15ab70744ff" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f06adb4f-40dc-49e3-9c1a-80396dd30d4a" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="5" rowspan="1">
+                                        <p>
+                                       <a id="para_93b50908-537c-4697-9f25-27193d90716c" shape="rect"></a>
+                                       <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                       </span>
+                                    </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_725d6069-d8fa-4f1d-b7fb-7502d4ae348b" shape="rect"></a>&gt;Document Title</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1f4cfcc4-5141-4d50-a089-7602a75e2fd9" shape="rect"></a>(0042,0010)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_48f3c042-e970-4208-ac26-b72a817898df" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_db6a52a4-0d8a-42c0-8b87-02c21d29d8b3" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_27436a87-33de-4453-929c-099fd9c49e61" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.2.4.html" class="olink" shape="rect">Patient Medical Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5b02a983-6a12-4283-a65b-515f396ffbb7" shape="rect"></a>O</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7a40e345-555f-4208-8012-6a31b80e21c0" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_a9909580-6946-46fa-80ed-3d7315bdb304" shape="rect"></a>Just like Series and Image Entities specified in the Query/Retrieve Service Class either an SCU or an SCP may support optional Matching Key Attributes and/or Type 3 Return Key Attributes that are not included in the Worklist Information Model (i.e., Standard or Private Attributes). This is considered a Standard Extended SOP Class (see <a href="../part02/PS3.2.html" class="olink" shape="rect">PS3.2</a>).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_5ff01d96-a3b4-4a52-aaee-aa4c5ce77020" shape="rect"></a>Each Module contains a Comment Attribute. This may be used to transmit non-structured information, which may be displayed to the operator of the Modality.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_eabd4a77-4e29-4d2a-acfd-918dfb5d977e" shape="rect"></a>The reason for this exclusion is to assure that the Attributes that may be present in multiple Modules are included only once with the meaning pertaining to only one Module (for example, Referenced Study Sequence (0008,1110) shall be included once with the meaning as defined in the Requested Procedure Module).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_e9a6ba9f-888f-4117-af27-b0393d7f77a1" shape="rect"></a>The use of Specific Character Set is discussed in <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3.1" title="K.4.1.1.3.1 Request Identifier Structure" shape="rect">Section K.4.1.1.3.1</a> and <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3.2" title="K.4.1.1.3.2 Response Identifier Structure" shape="rect">Section K.4.1.1.3.2</a>.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_783467a4-a2e6-4a8e-af2b-f476bc6e0b27" shape="rect"></a>The values of Study Date (0008,0020) and Study Time (0008,0030) may be provided in order to achieve consistency of Study level Attributes in composite instances generated in multiple performed procedure steps on different devices, and the worklist values may be updated by the SCP based on information received from Modality Performed Procedure Steps or by examining the composite instances generated.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_8401ec80-8be6-4611-9471-eb0ddcb322ee" shape="rect"></a>The Attributes in <a class="xref" href="sect_K.6.html#table_K.6-1a" title="Table K.6-1a. Attributes for the Modality Worklist C-FIND Identifier" shape="rect">Table K.6-1a</a> are not part of the Worklist Information Model; their inclusion in the C-FIND request and response identifier are governed by rules in sections <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3.1" title="K.4.1.1.3.1 Request Identifier Structure" shape="rect">Section K.4.1.1.3.1</a> and <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3.2" title="K.4.1.1.3.2 Response Identifier Structure" shape="rect">Section K.4.1.1.3.2</a>, respectively.</p>
+                  <div class="table">
+                     <a id="table_K.6-1a" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table K.6-1a. Attributes for the Modality Worklist C-FIND Identifier</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f896e730-c41a-47f9-a9e3-421e4f17805e" shape="rect"></a>Attribute Name</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_70d15656-78e4-496c-86e8-9946017e6d45" shape="rect"></a>Tag</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4efbd0a2-b001-4e10-9802-9efcbb18e163" shape="rect"></a>Request Identifier</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_05302ab7-e9ea-4f01-a906-fd5988ba214f" shape="rect"></a>Response Identifier</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2b4fdca8-4592-4606-a83e-7fba0dc487f3" shape="rect"></a>Remark Type</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f0b50605-1209-438b-86a5-7fb35b133cfa" shape="rect"></a>Specific Character Set</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a23dbdb9-cb8e-4c9d-b1de-da56774ca9c7" shape="rect"></a>(0008,0005)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f896f5e2-9ce4-48a2-929b-6164b9200e29" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e76c9e51-95c1-45ae-af1e-6bea6be4c686" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d76519e8-6848-4da4-948a-79e5a1ed1c7d" shape="rect"></a>This Attribute is required if expanded or replacement character sets are used. See <a class="xref" href="sect_C.2.2.2.html" title="C.2.2.2 Attribute Matching" shape="rect">Section C.2.2.2</a> and <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3" title="K.4.1.1.3 Identifier" shape="rect">Section K.4.1.1.3</a>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2225a9d8-05d6-46b6-a187-723183bec1f9" shape="rect"></a>Timezone Offset From UTC</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4a72a158-c38d-4ea8-95a4-8b951bb3d489" shape="rect"></a>(0008,0201)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1eaf1993-be69-4da6-83a3-fbe56921863c" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3b240c1e-0d73-4faa-bf61-792b9c0beb47" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4fbb8f91-01f2-4da3-8c10-33bf8ac80e6b" shape="rect"></a>This Attribute is required if times are to be interpreted explicitly in the designated local timezone. See <a class="xref" href="sect_C.2.2.2.html" title="C.2.2.2 Attribute Matching" shape="rect">Section C.2.2.2</a> and <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3" title="K.4.1.1.3 Identifier" shape="rect">Section K.4.1.1.3</a>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_45cc5090-9b2f-40bf-a930-c125608c8a7b" shape="rect"></a>HL7 Structured Document Reference Sequence</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b1a2a06d-5a4e-4130-96eb-94fee5914441" shape="rect"></a>(0040,A390)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_10ea483f-d4c6-44c6-b447-b63a980fbc31" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_11cef7ea-24b1-41f2-84e4-c00810286f29" shape="rect"></a>1C</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0b38520c-8d7a-4932-9f0e-38a9561ca5f4" shape="rect"></a>One or more Items may be included in this sequence.</p>
+                                        <p>
+                                       <a id="para_b43aebe5-6541-4050-89f5-be973df88314" shape="rect"></a>Required if HL7 Structured Documents are referenced within the Identifier. See <a class="xref" href="sect_K.4.html#sect_K.4.1.1.3" title="K.4.1.1.3 Identifier" shape="rect">Section K.4.1.1.3</a>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1983644d-e21a-4fd6-8547-0fd93c0d00a6" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b9403db3-63ee-4205-a7af-a1fc4cc31389" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_68d0a1fc-8354-4646-bfb3-c7cdc47297e2" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea8e378a-9523-4222-acd1-ad7b9deeb970" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f7549f4f-5197-4cfe-a32d-9596763894f7" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c9f32888-6f31-4620-afb1-d460a7348c08" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fde1ab79-1c7f-4b23-9c92-607beab565a7" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c7c53c55-3199-4574-af2a-49b3ff2943a2" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_03d5c22e-8d19-4560-af18-0e05bf8c3607" shape="rect"></a>&gt;HL7 Instance Identifier</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_33f7c2b5-727a-468f-8548-7c75cbbe1893" shape="rect"></a>(0040,E001)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_dd6164ef-f63a-4e41-996f-2d79952e618a" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_438131f7-93f0-40ec-ad85-045ff6c11ce7" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bd4460a6-59e3-4297-863d-b1af7b2dd0dd" shape="rect"></a>&gt;Retrieve URI</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7bf48831-1b95-4065-a121-fda00c5bca9d" shape="rect"></a>(0040,E010)</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6dea5c03-cf07-4a15-a8ec-8f0177477fb8" shape="rect"></a>-</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_774ce572-3bcd-4eb2-9b7d-27aa2f1e5cd0" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1"></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_K.6.1.3" shape="rect"></a>K.6.1.3 Conformance Requirements</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9e27232b-9d8b-461f-8d85-823a52bfe917" shape="rect"></a>An implementation may conform to the Modality Worklist SOP Class as an SCU or an SCP. The Conformance Statement shall be in the format defined in <a href="../part02/PS3.2.html" class="olink" shape="rect">PS3.2</a>.</p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_K.6.1.3.1" shape="rect"></a>K.6.1.3.1 SCU Conformance</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_f63f443f-6c2a-4cba-91a8-e9ca056956a0" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCU shall support queries against the Worklist Information Model described in <a class="xref" href="sect_K.6.html#sect_K.6.1.2" title="K.6.1.2 Modality Worklist Information Model" shape="rect">Section K.6.1.2</a> of this Annex using the baseline C-FIND SCU Behavior described in <a class="xref" href="sect_K.4.html#sect_K.4.1.2" title="K.4.1.2 C-FIND SCU Behavior" shape="rect">Section K.4.1.2</a> of this Part.</p>
+                  <p>
+                     <a id="para_7ea9375a-41ad-4fc0-a6d4-f31828b8662d" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCU shall state in its Conformance Statement whether it requests matching on Optional Matching Key Attributes. If it requests Type 3 Return Key Attributes, then it shall list these Optional Return Key Attributes. It shall identify any Templates it supports for the Protocol Context Sequence.</p>
+                  <p>
+                     <a id="para_52ad3f98-b73c-4f9d-9afe-521f6c6fc864" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCU shall state in its Conformance Statement whether or not it supports Extended Negotiation of fuzzy semantic matching of person names.</p>
+                  <p>
+                     <a id="para_060d71f4-42ed-415d-8f46-08ff9a2b22e4" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCU shall state in its Conformance Statement how it makes use of Specific Character Set (0008,0005) and Timezone Offset From UTC (0008,0201) when encoding queries and interpreting responses.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_K.6.1.3.2" shape="rect"></a>K.6.1.3.2 SCP Conformance</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_f2eee66e-b749-4d45-9880-c35c736f2812" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall support queries against the Worklist Information Model described in <a class="xref" href="sect_K.6.html#sect_K.6.1.2" title="K.6.1.2 Modality Worklist Information Model" shape="rect">Section K.6.1.2</a> of this Annex using the C-FIND SCP Behavior described in <a class="xref" href="sect_K.4.html#sect_K.4.1.3" title="K.4.1.3 C-FIND SCP Behavior" shape="rect">Section K.4.1.3</a> of this Part.</p>
+                  <p>
+                     <a id="para_99afdf29-053c-4421-bba2-e973653c1d1a" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall state in its Conformance Statement whether it supports matching on Optional Matching Key Attributes. If it supports Type 3 Return Key Attributes, then it shall list the Optional Return Key Attributes that it supports. It shall identify any Templates it supports for the Protocol Context Sequence (0040,0440).</p>
+                  <p>
+                     <a id="para_c428af41-8c9b-44af-a13c-768f2215f71b" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall state in its Conformance Statement whether it supports case-insensitive matching for PN VR Attributes and list the Attributes for which this applies.</p>
+                  <p>
+                     <a id="para_88627096-fd1d-4b0b-b8f7-069c62b116c4" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall state in its Conformance Statement whether or not it supports Extended Negotiation of fuzzy semantic matching of person names. If fuzzy semantic matching of person names is supported, then the mechanism for fuzzy semantic matching shall be specified.</p>
+                  <p>
+                     <a id="para_9b4d5b94-64f1-4b88-84a2-a85552d5e3ed" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall state in its Conformance Statement how it makes use of Specific Character Set (0008,0005) and Timezone Offset From UTC (0008,0201) when interpreting queries, performing matching and encoding responses.</p>
+                  <p>
+                     <a id="para_81ced3a2-852a-4715-a80a-c8d872b2cf09" shape="rect"></a>An implementation that conforms to the Modality Worklist SOP Class as an SCP shall state in its Conformance Statement the manner in which Single Value Matching is performed for DS and IS VR Attributes (if supported) and list the Attributes for which this applies.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_K.6.1.4" shape="rect"></a>K.6.1.4 SOP Class</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_2fc92b01-e1e6-4d96-acbf-17e9184473ec" shape="rect"></a>The Modality Worklist SOP Class in the Basic Worklist Service Class identifies the Modality Worklist Information Model, and the DIMSE-C operations supported. The following Standard SOP Class is identified:</p>
+               <div class="table">
+                  <a id="table_K.6.1.4-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table K.6.1.4-1. Modality Worklist SOP Class</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6ac82b01-9de9-4986-8567-5b359be97b1a" shape="rect"></a>SOP Class Name</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f52871d1-b70e-4f1f-8b3b-781a99e72157" shape="rect"></a>SOP Class UID</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_47ef6c52-27cc-464f-b867-77247c66953b" shape="rect"></a>Modality Worklist Information Model - FIND</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_83552d50-ad22-4d0d-8f6b-8c104cecabe8" shape="rect"></a>1.2.840.10008.5.1.4.31</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_K.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_K.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_K.6.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">K.5 Association Negotiation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> K.6.2 General Purpose Worklist SOP Class (Retired)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

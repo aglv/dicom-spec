@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>X Dictation-based Reporting With Image References (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="chapter_W.html" title="W Digital Signatures in Structured Reports Use Cases (Informative)" />
+      <link rel="next" href="sect_X.2.html" title="X.2 Transcribed Diagnostic Imaging SR Instance Content" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">X Dictation-based Reporting With Image References (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_X.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_W.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_X.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Dictation-based Reporting With Image References (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_X" shape="rect"></a>X Dictation-based Reporting With Image References (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7b20fbbe-d4d9-4e39-a10f-99ce8d0b5aa5" shape="rect"></a>This Annex describes a use of Key Object Selection (KO) and Grayscale Softcopy Presentation State (GSPS) SOP Instances, in conjunction with a typical dictation/transcription process for creating an imaging clinical report. The result is a clinical report as a Basic Text Structured Report (SR) SOP Instance that includes annotated image references (see <a class="xref" href="sect_X.2.html" title="X.2 Transcribed Diagnostic Imaging SR Instance Content" shape="rect">Section X.2</a>). This report may also (or alternatively) be encoded as an HL7 Clinical Document Architecture (CDA) document (see <a class="xref" href="sect_X.3.html" title="X.3 Transcribed Diagnostic Imaging CDA Instance Content" shape="rect">Section X.3</a>).</p>
+         <p>
+            <a id="para_511120bd-bb8b-48bc-876d-88842d90ef20" shape="rect"></a>Similar but more complex processes that include, for instance, numeric measurements and Enhanced or Comprehensive SR, are not addressed by this Annex. This Annex also does not specifically address the special issues associated with reporting across multiple studies (e.g., the "grouped procedures" case).</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_X.1" shape="rect"></a>X.1 Basic Data Flows</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_X.1.1" shape="rect"></a>X.1.1 Dictation/transcription Reporting</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_df1610c9-35d2-48ef-b244-5f37a0607bd9" shape="rect"></a>During the softcopy reading of an imaging study, the physician dictates the report, which is sent to a transcription service or is processed by a voice recognition system. The transcribed dictation arrives at the report management system (typically a RIS) by some mechanism not specified here. The report management system enables the reporting physician to correct, verify, and "sign" the transcribed report. See <a class="xref" href="chapter_X.html#figure_X.1-1" title="Figure X.1-1. Dictation/Transcription Reporting Data Flow" shape="rect">Figure X.1-1</a>. This data flow applies to reports stored in a proprietary format, reports stored as DICOM Basic Text SR SOP Instances, or reports stored as HL7 CDA instances.</p>
+               <p>
+                  <a id="para_e1d7d9da-ce76-4135-9a99-150285ea35a8" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_X.1-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_X.1-1.svg" alt="Dictation/Transcription Reporting Data Flow" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure X.1-1. Dictation/Transcription Reporting Data Flow</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+               <p>
+                  <a id="para_eb5afb5f-643d-48c2-b86b-6fc8df0a2f21" shape="rect"></a>The report management system has flexibility in encoding the report title. For example, it could be any of the following:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_c96d9e4c-b843-4623-b919-23d9d8cf83c1" shape="rect"></a>the generic title "Diagnostic Imaging Report",</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_8fb8a5d0-f6fd-43f2-9a80-55d5f8d520a7" shape="rect"></a>a report title associated with the department (e.g., "Radiology Report"),</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_f5ab9723-8785-473b-b5ac-993254bf024a" shape="rect"></a>a report title associated with the imaging modality or procedure (e.g., "Ultrasound Report"), or</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_343444e1-7de8-4d2a-8334-8cf0fd0fa52b" shape="rect"></a>a report title pre-coordinated with the modality and body part (e.g., "CT Chest Report").</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_17961f89-09f9-4f7b-a295-199ccade1193" shape="rect"></a>There are LOINC codes associated with each of these types of titles, if a coded title is used on the report (see <a href="../part16/sect_CID_7000.html" class="olink" shape="rect">CID 7000 “Diagnostic Imaging Report Document Title”</a>).</p>
+               <p>
+                  <a id="para_e271a6aa-c81f-45dd-94f1-31c8ae3cea41" shape="rect"></a>The transcribed dictation may be either a single text stream, or a series of text sections each with a title. Division of reports into a limited number of canonically named sections may be done by the transcriptionist, or automated division of typical free text reports may be possible with voice recognition or a natural language processing algorithm.</p>
+               <p>
+                  <a id="para_2fc06ff2-9f84-44f8-8a79-256a10a171fa" shape="rect"></a>For an electronically stored report, the signing function may or may not involve a cryptographic digital signature; any such cryptographic signature is beyond the scope of this description.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_X.1.2" shape="rect"></a>X.1.2 Reporting With Image References</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1dbbed4d-f4a7-4806-b266-293e52da61a0" shape="rect"></a>To augment the basic dictation/transcription reporting use case, it is desired to select significant images to be attached (by reference) to the report. During the softcopy reading, the physician may select images from those displayed on his workstation (e.g., by a point-and-click function through the user interface). The selection of images is conveyed to the image repository (PACS) through a DICOM Key Object Selection (KO) document. When the report management system receives the transcribed dictation, it queries the image repository for any KO documents, and appends the image references from the KO to the transcription. In this process step, the report management system does not need to access the referenced images; it only needs to copy the references into the draft report. The correction and signature function potentially allows the physician to retrieve and view the referenced images, correct and change text,
+                    and to delete individual image references. See <a class="xref" href="chapter_X.html#figure_X.1-2" title="Figure X.1-2. Reporting Data Flow with Image References" shape="rect">Figure X.1-2</a>.</p>
+               <p>
+                  <a id="para_2deef1ac-ce2f-4ed9-93e7-98ba84f0f07d" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_X.1-2" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_X.1-2.svg" alt="Reporting Data Flow with Image References" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure X.1-2. Reporting Data Flow with Image References</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+               <p>
+                  <a id="para_d46dc024-f6a0-486e-b73c-dea53ebf216c" shape="rect"></a>The transcribed dictation must have associated with it sufficient key Attributes for the report management system to query for the appropriate KO documents in the image repository (e.g., Study ID, or Accession Number).</p>
+               <p>
+                  <a id="para_14c757ec-6a88-4c91-b894-1cc397c5c8ca" shape="rect"></a>Each KO document in this process includes a specific title "For Report Attachment", a single optional descriptive text field, plus a list of image references using the SR Image Content Item format. The report management system may need to retrieve all KO documents of the study to find those with this title, since the image repository might not support the object title as a query return key.</p>
+               <p>
+                  <a id="para_9d8184b7-d560-40b5-9e24-daca8ef550e8" shape="rect"></a>Multiple KO instances may be created for a study report, e.g., to facilitate associating different descriptive text (included in the KO document) with different images or image sets. All KOs with the title "For Report Attachment" in the study are to be attached to the dictated report by copying their content into the draft report (see <a class="xref" href="sect_X.2.html" title="X.2 Transcribed Diagnostic Imaging SR Instance Content" shape="rect">Section X.2</a> and <a class="xref" href="sect_X.3.html" title="X.3 Transcribed Diagnostic Imaging CDA Instance Content" shape="rect">Section X.3</a>). (There may also be KOs with other titles, such as "For Teaching", that are not to be attached to the report.)</p>
+               <p>
+                  <a id="para_6abcc12a-31e7-4975-9ca9-ae7d756738ca" shape="rect"></a>The nature of the image reference links will differ depending on the format of the report. A DICOM SR format report will use DICOM native references, and other formats may use a hyperlink to the referenced images using the Web Access to DICOM Persistent Objects (WADO) service (see <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a>).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_X.1.3" shape="rect"></a>X.1.3 Reporting With Annotated Images</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5d17a55e-6db8-479b-a4f3-75a4ce7163f2" shape="rect"></a>The KO also allows the referencing of a Grayscale Softcopy Presentation State (GSPS) instance for each selected image. A GSPS instance can be created by the workstation for annotation ("electronic grease pencil") of the selected image, as well as to set the window width/window level, rotation/flip, and/or display area selection of the image attached to the report. The created GSPS instances are transferred to the image repository (PACS) and are referenced in the KO document.</p>
+               <p>
+                  <a id="para_da8b8996-968f-4a9d-9554-e4b08c7f629c" shape="rect"></a>As with image references, the report management system may include the GSPS instance references in the report. When the report is subsequently displayed, the reader may retrieve the referenced images together with the referenced GSPS, so that the image is displayed with the annotations and other GSPS display controls. See <a class="xref" href="chapter_X.html#figure_X.1-3" title="Figure X.1-3. Reporting Data Flow with Image and Presentation/Annotation References" shape="rect">Figure X.1-3</a>.</p>
+               <p>
+                  <a id="para_4d487bd0-7df3-4741-80ec-4b5b52d125cc" shape="rect"></a>Note that the GSPS display controls can also be included in WADO hyperlinks and invoked from non-DICOM display stations.</p>
+               <p>
+                  <a id="para_e963eff0-9965-41bc-bdb1-7326de65d54a" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_X.1-3" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_X.1-3.svg" alt="Reporting Data Flow with Image and Presentation/Annotation References" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure X.1-3. Reporting Data Flow with Image and Presentation/Annotation References</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_W.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_X.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">W Digital Signatures in Structured Reports Use Cases (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> X.2 Transcribed Diagnostic Imaging SR Instance Content</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

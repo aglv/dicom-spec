@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>B.13 Modified BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.15.html" title="PS3.15" />
+      <link rel="up" href="chapter_B.html" title="B Secure Transport Connection Profiles (Normative)" />
+      <link rel="prev" href="sect_B.12.html" title="B.12 BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile" />
+      <link rel="next" href="chapter_C.html" title="C Digital Signature Profiles (Normative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024b - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">B.13 Modified BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_B.13.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_B.12.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">B Secure Transport Connection Profiles (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_C.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.15.html" shape="rect">PS3.15</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_B.html" shape="rect">Secure Transport Connection Profiles (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Modified BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_B.13" shape="rect"></a>B.13 Modified BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_6d462f1d-11ba-4b65-80c4-55bffa1f6d52" shape="rect"></a>An implementation that supports the Modified BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile shall utilize the framework and negotiation mechanism specified by the Transport Layer Security protocol.
+            It shall comply with <a class="xref" href="chapter_2.html#biblio_BCP_195" title="Information on BCP 195" shape="rect">[<abbr class="abbrev">BCP 195</abbr>]</a> which includes <a class="xref" href="chapter_2.html#biblio_RFC_8996" title="Deprecating TLS 1.0 and TLS 1.1" shape="rect">[<abbr class="abbrev">RFC 8996</abbr>]</a>, and <a class="xref" href="chapter_2.html#biblio_RFC_9325" title="Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)" shape="rect">[<abbr class="abbrev">RFC 9325</abbr>]</a> with the additional restrictions enumerated below.
+            In the context of this profile, “client” refers to the entity initiating the TLS connection and “server” refers to the entity that is responding to that TLS connection initiation request.
+            This may differ from the role that the entity might play in any DICOM transactions over the TLS connection.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_50eef9d3-d19f-483b-ac19-4bf86a993f36" shape="rect"></a>A device may support multiple TLS profiles.
+                        DICOM does not specify how such devices are configured in the field or how different TLS profile-related rules are specified.
+                        The site will determine what configuration is appropriate.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_716c4c45-ff68-41ef-a1a1-6905685ddc5f" shape="rect"></a>The DICOM profiles for TLS describe the capabilities of a product.
+                        Product configuration may permit selection of a particular profile and/or additional negotiation rules.
+                        The specific cipher suite used is negotiated by the TLS implementation based on these rules.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_209446fb-8662-4b1f-a540-5552e146a781" shape="rect"></a>A client shall attempt to negotiate TLS even if the above indications are not communicated by the server.</p>
+         <p>
+            <a id="para_6af1c310-9ec0-417e-af4e-460d5b87535d" shape="rect"></a>The following cryptographic algorithms, grouped by function, shall not be used:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_c6a99ef8-a468-46f2-8155-3750c1abfcae" shape="rect"></a>Key Exchange</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_ba8998cd-d37c-46b2-a1ac-cf20c9eff738" shape="rect"></a>DH</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e22f4a6c-d3fa-4199-a3ec-10e7e3550b6f" shape="rect"></a>ECDH</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_52a58eee-d053-407b-b64f-e7b731ce7f4c" shape="rect"></a>RSAES PKCS#1 v1.5 (RSA)</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6539a262-6c48-44d4-b8fb-d2efb660c44b" shape="rect"></a>Signature</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6d66d49b-eb2e-4999-9ffc-7f785aa209d3" shape="rect"></a>GOST R 34.10-2012</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a99dec7f-5b92-44cc-88bd-8fab988a84f1" shape="rect"></a>Block Cipher</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_cf5e3630-42d3-4f07-95d9-93ca6c92ae8c" shape="rect"></a>RC2</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_dc90d1a3-8077-4a87-8644-393d5f3e5390" shape="rect"></a>EXPORT-RC2</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_46214196-9628-4766-9bce-7e0944a45024" shape="rect"></a>IDEA</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f4725074-d3f7-4be9-b416-61467c938c9b" shape="rect"></a>DES</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2551b4c8-64b0-4f64-8921-e118f189eb9f" shape="rect"></a>EXPORT-DES</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6ee40545-647b-4b29-8359-2739efd603e2" shape="rect"></a>GOST 28147-89</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5d7dc15d-0f36-40d9-ab2b-c4810683029a" shape="rect"></a>Magma</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c6d9b426-0cc0-4d22-8e62-abb966152690" shape="rect"></a>3-key Triple DES</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4313b88b-5a9e-4a9a-877c-9af1a560bdb8" shape="rect"></a>Kuznyechik</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e064ebe7-73e1-4230-addf-0863be0df7fd" shape="rect"></a>ARIA</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_352e678f-8d95-4ec6-af13-382f8fd2b553" shape="rect"></a>SEED</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1131e70e-b212-4985-8d92-67bc1866ead2" shape="rect"></a>Block Cipher Mode of Operation</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5202a2e4-41e6-42ca-9dc3-e658871f6216" shape="rect"></a>CBC</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e771162c-9476-4088-bd86-5248af5b9a54" shape="rect"></a>CTR-OMAC</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_12abc62d-a3a1-4614-93e6-cf44b0332f0e" shape="rect"></a>Stream Cipher</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_bb0669ad-eeae-428a-9ba2-887720d33513" shape="rect"></a>RC4</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3b135b00-d625-4018-b80b-6d1542e5a020" shape="rect"></a>EXPORT-RC4</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_c4cffe96-c7ad-47fd-84ca-e5dff54af6a6" shape="rect"></a>Hash Function</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_eb6ccd4e-cf65-4aa3-a0e7-925a00ac1566" shape="rect"></a>MD5</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c80f394c-4e63-4ce2-991e-fa66f145b926" shape="rect"></a>SHA-1</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f9d39772-da39-4170-9e75-13b1db891e28" shape="rect"></a>GOST R 34.11-2012</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_b2462ae3-12d9-46ee-91d7-e5e91ec49d3f" shape="rect"></a>Only the following cryptographic algorithms, grouped by function, are permitted:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_571b19a4-0b29-4f05-bbdb-e4133c439e9b" shape="rect"></a>Key Exchange</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_1a610e67-47f9-4988-8f64-65bc84e717e3" shape="rect"></a>ECDHE</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_212dd98a-7438-4182-aaa7-a8a24b16c6e4" shape="rect"></a>DHE</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d85617e4-51c3-4491-b37f-18a572eeecd2" shape="rect"></a>Signature</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_07ba0b38-781f-4f16-8f5c-eef4277ea2c4" shape="rect"></a>ECDSA</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_96082e3e-3b4b-47a3-afc1-7e8cbe6be331" shape="rect"></a>RSASSA PKCS#1 v1.5 (RSA)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_aac1ce43-1f35-4784-9cf2-91f25049f9ce" shape="rect"></a>RSASSA-PSS</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_480e0712-cd05-473b-9bf2-25feff4a93d6" shape="rect"></a>Block Cipher</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a985d489-d807-4b69-95be-6c5a830dc6a4" shape="rect"></a>AES</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_411cedd5-6331-4dda-9a3e-9a6335eb78dc" shape="rect"></a>Camellia</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_48217513-a536-4e94-af1d-91f67d9dbbb0" shape="rect"></a>Block Cipher Mode of Operation</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_819f4ef8-6615-49f6-9887-79084ad3a55c" shape="rect"></a>GCM</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fe94d70b-2e1c-4577-9050-911b0faad707" shape="rect"></a>CCM</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_d258e369-f53a-4aa2-a2b8-9406a8909da5" shape="rect"></a>CCM_8</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1eda4d4c-f84b-4774-b0b7-76a564aa9dd8" shape="rect"></a>Stream Cipher</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_9429457f-ee63-4c86-add4-8b01e255a322" shape="rect"></a>ChaCha20-Poly 1305</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_7a7b6e4d-9bb3-4ed1-84f5-6eb36b11ca5c" shape="rect"></a>Hash Function</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: circle; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fe10206e-ea74-4f7c-ad34-6be6ed1ac12f" shape="rect"></a>SHA-256</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a7b0c1b7-8141-4700-8f93-ca4e100195bb" shape="rect"></a>SHA-384</p>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_fd9862fd-4afb-4b92-a824-036db8f8c0a0" shape="rect"></a>When DHE is used for Key Exchange, the key length shall be 2048 bits or more.
+            Cipher suites containing DHE shall not be selected when using implementations that do not allow explicit setting of the DHE key length.</p>
+         <p>
+            <a id="para_d8f70a33-5f96-478b-ba4a-28d4dcacdaf3" shape="rect"></a>When ECDHE is used for Key Exchange, the key length shall be 256 bits or more.</p>
+         <p>
+            <a id="para_72d12447-7a6a-40ff-9722-52e790cd3897" shape="rect"></a>Servers shall support all of the following cipher suites for TLS 1.3.
+            Clients that support TLS 1.3 shall support at least one of the following cipher suites.</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_c16f7954-a295-40b1-afb5-92e101b9be67" shape="rect"></a>TLS_AES_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_644a6c11-b843-4367-9b65-b082204f1a8d" shape="rect"></a>TLS_CHACHA20_POLY1305_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4751b6b4-4914-4f8f-88c4-847e90999a37" shape="rect"></a>TLS_AES_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_94d65ea4-8a9a-4a51-942c-f2ab869e4019" shape="rect"></a>TLS_AES_128_CCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4688658c-11c5-4c4e-9a5c-f7c818b0d101" shape="rect"></a>TLS_AES_128_CCM_8_SHA256</p>
+               </li>
+            </ul>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_93413f5c-f1df-432f-9e09-dcc6a79f2d59" shape="rect"></a>In TLS 1.3 Key Exchange and Signature, algorithms are not specified in the cipher suite negotiation.
+                Implementations may choose from the list above of permitted algorithms.</p>
+         </div>
+         <p>
+            <a id="para_929d1648-48b1-4ea9-b408-871c9e6d2d80" shape="rect"></a>Servers shall support all of the following cipher suites for TLS 1.2.</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_8b739ff0-2707-4730-a134-f8ee027f6cdd" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1ef852b7-8b6b-44d9-bb61-425ea09a9a99" shape="rect"></a>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_40bc17f5-a781-4895-9d44-574e5dab18fe" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e28715b9-388d-4477-89c6-e8d6d28e5544" shape="rect"></a>TLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d320d262-15a5-471e-83af-6f33fc8b96a5" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_256_CCM</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_5864d3eb-c5c8-4605-a39b-b179a1c227ef" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_199fb931-7848-4ef5-9607-0494f0db56b6" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0d78fc24-3991-48b7-a806-95db6190f345" shape="rect"></a>TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4d018084-0a29-45a3-9d2f-ce76d3e3fc8f" shape="rect"></a>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e909c885-129a-4dc5-8ddd-bcd5a3000f1d" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0ba9f993-3a5e-416e-91a7-46bb3b562c74" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e63cb3a8-ed3a-45ff-b56a-66dc1260159d" shape="rect"></a>TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_791b6e63-bcf4-4ebb-a918-d9c88c0c74eb" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_128_CCM</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_09697186-e5a8-4192-a63d-89fd2285d89e" shape="rect"></a>TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_4f822d8f-fc2d-4ce1-b8aa-0fcd6e169bd3" shape="rect"></a>The above cipher suites are preferred for TLS 1.2.
+            Clients that support TLS 1.2 shall support at least one of the cipher suites listed above or below.
+            Servers may support the following cipher suites as a fallback for TLS 1.2 but are not required to do so.</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_d9212e18-9384-4f0d-a913-8f2469d4a888" shape="rect"></a>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_28cf5ee6-3225-4364-8f63-0b45860f9935" shape="rect"></a>TLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_748cef4a-594e-4f27-a88e-14fe0854fe65" shape="rect"></a>TLS_DHE_RSA_WITH_AES_256_CCM</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_37b35aad-0cd7-4f3b-a208-a04a9f6d614e" shape="rect"></a>TLS_DHE_RSA_WITH_AES_256_GCM_CCM_8</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_690dc78e-1c97-440f-8649-a374ebe287ac" shape="rect"></a>TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_66bec7d9-23e0-4646-a466-5ab6a27dd555" shape="rect"></a>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fcd8a195-4cde-4bb2-8a6d-551fade1028d" shape="rect"></a>TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_411ef910-b0c5-4e8d-9087-8ffdc4f24839" shape="rect"></a>TLS_DHE_RSA_WITH_AES_128_CCM</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_d6d516dc-5489-4c2e-9b38-005a90903ff0" shape="rect"></a>TLS_DHE_RSA_WITH_AES_128_CCM_8</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_fcf62f05-4fa6-41f4-9c0f-088c15580f44" shape="rect"></a>When using TLS 1.2, cipher suites other than those listed in either list above are not permitted.</p>
+         <p>
+            <a id="para_ad36c380-03ee-46a7-bc22-ecb3e6034218" shape="rect"></a>The following requirements apply to Certificates within TLS:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_4c5105fd-dd87-459e-a5a2-2f1cba2456c1" shape="rect"></a>If the subject public key algorithm is RSA, the key length shall be 2048 bits or more.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_bda7f7b5-08b1-4454-99a0-528ab3e8d596" shape="rect"></a>If the subject public key algorithm is ECC, the key length shall be 256 bits or more.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_cdca8146-5b7a-407c-a9d6-0cae009fc95a" shape="rect"></a>If the certificate signature algorithm is RSA, the key length shall be 2048 bits or more.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_dce81645-df77-4ee4-8353-022ac2a1e9f4" shape="rect"></a>If the certificate signature algorithm is ECDSA, the key length shall be 256 bits or more.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_fab68599-5a61-4d0e-96ac-3bf6bd879373" shape="rect"></a>The hash function shall be SHA-256 or greater.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_b0a8d104-bb98-4d2d-b88d-8e795c423311" shape="rect"></a>Servers shall support both TLS 1.2 and TLS 1.3.
+            Clients shall support at least one of TLS 1.2 or TLS 1.3.
+            Clients shall attempt to negotiate TLS 1.3 if it is supported.
+            Servers shall prefer TLS 1.3 if offered by the client.
+            Implementations may fall back to TLS 1.2 if the client does not negotiate TLS 1.3.</p>
+         <p>
+            <a id="para_f8e5e85e-77c1-4b72-90e0-a1374c2fb2fb" shape="rect"></a>In cases where an application protocol allows implementations or deployments a choice between strict TLS configuration and dynamic upgrade from unencrypted to TLS-protected traffic (such as STARTTLS), clients and servers shall prefer strict TLS configuration.</p>
+         <p>
+            <a id="para_17eb3943-44a7-4a4c-b246-f5a1ac69121a" shape="rect"></a>Application protocols typically provide a way for the server to offer TLS during an initial protocol exchange, and sometimes also provide a way for the server to advertise support for TLS (e.g., through a flag indicating that TLS is required); unfortunately, these indications are sent before the communication channel is encrypted.</p>
+         <p>
+            <a id="para_c9dcfe41-49a2-429b-a8b4-cef559c5226a" shape="rect"></a>Servers shall support bi-directional mutual authentication. Clients are not required, but are encouraged, to support and use bi-directional mutual authentication. The server may be configured to not use bi-directional mutual authentication.</p>
+         <p>
+            <a id="para_05aa7db2-a05d-4e5f-bb41-38315ca5f17f" shape="rect"></a>The TCP ports on which an implementation accepts TLS connections for DICOMweb shall be different from those on which an implementation accepts TLS connections for DIMSE. The HTTP/HTTPS connection for DICOMweb can be shared with other HTTP/HTTPS traffic.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_85d19904-4274-49df-9275-9a5e88f95581" shape="rect"></a>It is recommended that systems supporting this Profile use the registered port number "2762 dicom-tls" for the DICOM Upper Layer Protocol on TLS.</p>
+         </div>
+         <p>
+            <a id="para_a066a77a-eef3-4662-9faa-1e97f0c3d028" shape="rect"></a>The Conformance Statement shall indicate:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_aa963fa1-4538-4f08-bc1f-d3352d39939d" shape="rect"></a>TCP ports on which an implementation accepts TLS connections, or the mechanism by which these port numbers are selected or configured </p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_691458aa-518c-4f32-8be7-459e7a7db4b6" shape="rect"></a>What mechanisms the implementation supports for Key Management.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1bc637e8-1b39-4f70-8488-ac5e83408c88" shape="rect"></a>Which key exchange algorithms, cipher suites, and signature algorithms the implementation supports.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_ff867b19-4ab8-4f14-aaa9-a3a6c5fe609c" shape="rect"></a>When an integrity check fails, the connection shall be dropped per the TLS protocol, causing both the sender and the receiver to issue an A-P-ABORT indication to the upper layers with an implementation-specific provider reason.
+            The Conformance Statement shall document the provider reasons issued by the implementation.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_B.12.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_B.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_C.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">B.12 BCP 195 RFC 8996, 9325 TLS Secure Transport Connection Profile </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.15.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C Digital Signature Profiles (Normative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024b - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

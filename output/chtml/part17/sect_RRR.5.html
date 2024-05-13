@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>RRR.5 Measurement Report SR Document Volumetric ROI with RECIST Linear Distance Specified by Coordinates on CT Example</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="chapter_RRR.html" title="RRR Measurement Report SR Document for Planar and Volumetric ROI (Informative)" />
+      <link rel="prev" href="sect_RRR.4.html" title="RRR.4 Measurement Report SR Document Volumetric and SUV ROI on FDG PET Example" />
+      <link rel="next" href="chapter_SSS.html" title="SSS Use of Image Libraries in SR Documents (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">RRR.5 Measurement Report SR Document Volumetric ROI with RECIST Linear Distance Specified by Coordinates on CT Example <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_RRR.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_RRR.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">RRR Measurement Report SR Document for Planar and Volumetric ROI (Informative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_SSS.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_RRR.html" shape="rect">Measurement Report SR Document for Planar and Volumetric ROI (Informative)</a>
+         </span> &gt; <span class="breadcrumb-node">Measurement Report SR Document Volumetric ROI with RECIST Linear Distance Specified by Coordinates on CT Example</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_RRR.5" shape="rect"></a>RRR.5 Measurement Report SR Document Volumetric ROI with RECIST Linear Distance Specified by Coordinates on CT Example</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_822e76f6-ac2f-4c53-8dca-54f9b91a242f" shape="rect"></a>This CT example describes a set of measurements (volume, long axis (RECIST), short axis (WHO bi-dimensional) and mean attenuation coefficient) made from a single volumetric ROI encoded as a single segment, including specification of the end points of the line segment used to make the linear distance measurements.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_4677fb22-52fb-483f-8d43-8c21cab16cf8" shape="rect"></a>The lengths of the long axis and the short axis of the lesion are not encoded as characteristics of the volumetric ROI, but rather the long axis and the short axis are encoded explicitly as the end points of line segments used to make those measurements. The commonality of the Tracking Unique Identifier establishes that they are measurements of the same ROI. If multiple measurements were to be made of the same ROI over time or by different observers, other Content Items such as those related to Timepoint, Activity Session and Observer may be used. For an alternative encoding, see <a class="xref" href="sect_RRR.2.html" title="RRR.2 Measurement Report SR Document Volumetric ROI on CT Example" shape="rect">Section RRR.2</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1ad94703-da5a-4e53-86aa-ea641b220b78" shape="rect"></a>The pattern of using multiple sibling linear distance measurements within <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419 “ROI Measurements”</a> is similar to and not incompatible with the pattern used for length, width and height in the OB/GYN Ultrasound template <a href="../part16/sect_TID_5016.html" class="olink" shape="rect">TID 5016 “LWH Volume Group”</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a3f422e2-f4dd-4250-a713-100936aff69f" shape="rect"></a>The Finding Site information is duplicated in the second measurement template invocation in this example, though it is not required to be.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="table">
+            <a id="table_RRR.5-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table RRR.5-1. Volumetric ROI on CT Example</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2ed22066-6694-4537-a1bd-a1caf2f92103" shape="rect"></a>Node</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d3c78775-ae5c-4dcb-9195-246437ef71be" shape="rect"></a>Code Meaning of Concept Name</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3f9c7901-63c7-41ad-842c-c519f8ad99f8" shape="rect"></a>Code Meaning or Example Value</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_9e2b352f-4879-4a0e-9e4a-5873fd86d20b" shape="rect"></a>TID</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_9cff8f36-708e-4da1-96b8-a8b7b056e62f" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bbb9c518-12ce-413c-baaf-4ac6f170bb31" shape="rect"></a>Oncology Measurement Report</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_dead22f0-b210-4c3c-835a-78de3edc5e86" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1500" class="olink" shape="rect">TID 1500</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_202d312f-46bc-4bae-a145-c53079ea6a51" shape="rect"></a>...</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_308ec807-6a45-4e22-92d3-7ed0819f1aeb" shape="rect"></a>...</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bbfc7f79-5a0a-4fe0-a291-3b2e78d41435" shape="rect"></a>...</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e4e80cac-0a7c-4a89-bbe3-d92c76051474" shape="rect"></a>...</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_4093ad88-4147-4c28-bc8c-06f8665fdfae" shape="rect"></a>1.5</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_334a516a-7e4d-4d7d-9343-ee5b46860c09" shape="rect"></a>Measurements</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fbc5ab10-c29f-4b3e-9f59-6aca10d9a9ac" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_65f127a6-b0b1-4ea6-b476-2b9cac93e4b4" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1500" class="olink" shape="rect">TID 1500</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_1d939ac1-598b-41ba-bc7d-b0e9738dd9b2" shape="rect"></a>1.5.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ae59cfc9-40ec-4bc7-8926-90a2bff6f0de" shape="rect"></a>Measurement Group</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3813c2e1-4eb9-4d7e-8260-616ce5f2dd27" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e8df73c3-867e-453f-8010-873cbcf9d072" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_6415c07f-0f2d-40e9-9453-b7d520b77ee1" shape="rect"></a>1.5.1.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e2a84c85-4407-463b-ba68-1268dcf7d424" shape="rect"></a>Tracking Identifier</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_0a7c2e5d-7654-451b-9865-901c0a6d3fb8" shape="rect"></a>Object1 (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_06e4e073-fd30-41a7-943b-9b43d2b0e3f6" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f488f7e8-6b58-4bb9-8ac3-b651c4c50862" shape="rect"></a>1.5.1.2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fbd52c3d-c8c8-4c97-a851-4ba09c959339" shape="rect"></a>Tracking Unique Identifier</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_285f7e30-6773-4320-aaac-dab12841109a" shape="rect"></a>1.2.276.0.7230010... (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8973de90-ac7c-43bc-ad42-97e283707ab3" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_042a6d41-bb15-45a3-9d76-54df5362ebf0" shape="rect"></a>1.5.1.3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_5468ec5a-8ce1-43b2-a2cf-7425d76f5129" shape="rect"></a>Referenced Segment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_cc5e49eb-9ec4-4acc-903e-74c62e13de6e" shape="rect"></a>IMAGE - Segmentation, Segment #1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_39339d76-ae0c-4d7a-9e08-8dd7c5e38f28" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ea5ed655-8a07-4e15-b653-91d1731dec99" shape="rect"></a>1.5.1.4</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_20507641-d6e2-4a7a-a36c-fbe5643da57d" shape="rect"></a>Source image for segmentation</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_b962d0f7-370e-4f81-ab9e-59d59f9db6e5" shape="rect"></a>IMAGE - CT image #1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_6be352eb-cbaa-4160-ab64-2699d594ba14" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3bb9f3a2-3cba-40d6-8d23-f2dcd62050c6" shape="rect"></a>1.5.1.5</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_31924b90-ae53-4dfc-a79e-d032e1b404f4" shape="rect"></a>Source image for segmentation</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ecd076b3-a995-48b4-81f0-331738fbd84a" shape="rect"></a>IMAGE - CT image #2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_c18f7f27-775a-41be-87ea-67840c4c6019" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1411" class="olink" shape="rect">TID 1411</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_23888e44-782e-43ee-b4b3-f9c254a00c88" shape="rect"></a>1.5.1.6</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_40d8dd56-bbab-4c16-9ea2-5344e5058ba5" shape="rect"></a>Finding Site</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_5d93af37-34a1-47d2-b06a-79882f236564" shape="rect"></a>Adrenal Gland (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_22b74d40-034e-4326-9330-ab88c62f4b56" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bed6cfd4-638c-41b8-a607-bb3847460e6d" shape="rect"></a>1.5.1.6.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_cf1b50d1-de22-4e57-9a83-079e1c78980e" shape="rect"></a>Laterality</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_c9946ca9-8396-4bb5-99a1-46420824fc60" shape="rect"></a>Right (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bd6139fa-9853-4bd6-8cef-cd9f2aa2716e" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_9a36d8fa-3d4c-4641-9702-c336a68fdc11" shape="rect"></a>1.5.1.7</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_cfdd631c-5bd4-4638-83cd-a803b504cd58" shape="rect"></a>Volume</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_527ccb57-4750-4e98-b752-bc0c0d8d22e0" shape="rect"></a>3267.46 mm3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_18a45c05-6c02-4a37-97a9-a9c13f52d163" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a91a391b-e39d-406b-b570-09f14055b90a" shape="rect"></a>1.5.1.7.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_77e3c0d0-1441-43ad-8134-4e031f626002" shape="rect"></a>Measurement Method</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7d715b4a-0875-498f-9c22-64b306af8517" shape="rect"></a>Sum of segmented voxel volumes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f26fff94-8d4a-4297-a6ad-a5f4f0cddec0" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                            <p>
+                              <a id="para_0b4eea2f-cc66-4787-ad5d-41574dbb526f" shape="rect"></a>
+                                <a href="../part16/sect_CID_7474.html" class="olink" shape="rect">CID 7474</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7bd607ef-edfa-4cb1-ba7a-fa6f34c9f844" shape="rect"></a>1.5.1.8</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_20ada925-48b8-4b08-aca7-9833ed05f614" shape="rect"></a>Attenuation Coefficient</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_149fc831-bd38-4fdd-a6e3-f9a82020f42b" shape="rect"></a>70.978 Hounsfield unit</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7dc24050-084c-4894-b440-25bee57e604b" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d7f4c0aa-624b-4c83-9704-03c2662d8eaf" shape="rect"></a>1.5.1.8.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a0743967-8957-4cff-a02d-bfc3f427bd5d" shape="rect"></a>Derivation</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d1513d72-7989-425f-97f7-0b729395ccb4" shape="rect"></a>Mean</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ee8a147b-13d7-4bd9-9f17-85247718ab76" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1419" class="olink" shape="rect">TID 1419</a>
+                            </p>
+                            <p>
+                              <a id="para_aba6965a-9504-43c2-bffd-158bcba0d1aa" shape="rect"></a>
+                                <a href="../part16/sect_CID_7464.html" class="olink" shape="rect">CID 7464</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e69f97a9-f07d-4472-a31e-ca1f4f5bc8a0" shape="rect"></a>1.6.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a2ba4ca0-c085-46ed-9e8d-3169c349086e" shape="rect"></a>Measurement Group</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8722795b-8b22-4d17-9e8b-971f78953e9c" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fd1b6c67-82e5-41b7-a22e-72bac04cf99e" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1501" class="olink" shape="rect">TID 1501</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2f45eb59-23a1-4d52-b263-575144a80b98" shape="rect"></a>1.6.1.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d0500c03-4b6e-473b-a512-ffd93b2fd555" shape="rect"></a>Tracking Identifier</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_6733ef48-d270-415c-a6ff-b5190505fdec" shape="rect"></a>Object1 (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_baca1a0b-e48e-451e-b56d-734a502e94cc" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1501" class="olink" shape="rect">TID 1501</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_49121bfe-d163-4b93-b9a3-6fc68f4927d8" shape="rect"></a>1.6.1.2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_c6f7cdf7-9a69-43b8-a1ea-673d498b53fd" shape="rect"></a>Tracking Unique Identifier</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bdd2dce1-82e2-4386-9aa2-e0a9470f1c37" shape="rect"></a>1.2.276.0.7230010... (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_162dcd06-715a-432a-ae64-9cd3b0f044dd" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1501" class="olink" shape="rect">TID 1501</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_dab64e6e-4933-4b58-92f8-794bfc783957" shape="rect"></a>1.6.1.3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_75c0c166-e55b-43b0-b402-3b4abe365e49" shape="rect"></a>Finding Site</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_23dd38ce-c02f-4194-b8fe-d1559768be6f" shape="rect"></a>Adrenal Gland (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_24ad169d-b5fc-40c6-b01f-a618ebc3461a" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1501" class="olink" shape="rect">TID 1501</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_69301ade-a966-4d1c-936b-a9dc13063e86" shape="rect"></a>1.6.1.3.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fa8e3768-b8f4-4d73-93f5-2a3ea57e3f23" shape="rect"></a>Laterality</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2691990a-0915-4b18-8a3e-0fece915e45d" shape="rect"></a>Right (same for both Measurement Groups)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_45be0f13-1613-4950-89a4-46f5eb3037db" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_1501" class="olink" shape="rect">TID 1501</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ffeed3c6-0cd3-48ba-91fc-8fec7f68d7d3" shape="rect"></a>1.6.1.4</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_38da9bb1-0b71-497c-902e-51af23485579" shape="rect"></a>Long Axis</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_6f9e5873-1315-4c04-a656-82df18cc4662" shape="rect"></a>9.21 mm</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_28cb0c79-0b75-401a-8e5b-464b5c6d55f3" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_300" class="olink" shape="rect">TID 300</a>
+                            </p>
+                            <p>
+                              <a id="para_b25557f1-1957-4e19-93db-3f136edf8c4a" shape="rect"></a>
+                                <a href="../part16/sect_CID_7470.html" class="olink" shape="rect">CID 7470</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8c9b0da9-35a6-4743-8275-e68031a72d49" shape="rect"></a>1.6.1.4.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e7ccdaca-301e-4607-8c2f-ae0089a4bb33" shape="rect"></a>Measurement Method</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3f7934da-eb7c-4139-9cf0-37f59c795278" shape="rect"></a>RECIST 1.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2de647b4-68d9-453f-b3df-533639290c1f" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_300" class="olink" shape="rect">TID 300</a>
+                            </p>
+                            <p>
+                              <a id="para_a0bc65cc-f6fa-4f14-b050-97805dbc6f39" shape="rect"></a>
+                                <a href="../part16/sect_CID_6147.html" class="olink" shape="rect">CID 6147</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8a5a44ea-bcc0-42be-9ba1-fcb866324e44" shape="rect"></a>1.6.1.4.2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_dea7a8a7-e43a-4a10-b00b-d31d6bdf3b5a" shape="rect"></a>Source of Measurement</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2fd4e25e-6ce1-4a93-882a-241fce823062" shape="rect"></a>SCOORD GraphicType POLYLINE with two coordinates, the beginning and end of a line segment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fdb638ed-8d5c-4757-824b-f1bcdb4546cb" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_320" class="olink" shape="rect">TID 320</a>
+                            </p>
+                            <p>
+                              <a id="para_85e4dc82-b2e5-45c3-a133-f68e996fcdc9" shape="rect"></a>
+                                <a href="../part16/sect_CID_7470.html" class="olink" shape="rect">CID 7470</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a6f7f907-0300-40ad-9c15-2eb6be8bc636" shape="rect"></a>1.6.1.4.2.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3bd0758b-c1a7-448f-9187-0e75e8812d04" shape="rect"></a>(none)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2c69312a-3bca-4a1f-8035-03ed482d93cc" shape="rect"></a>IMAGE - CT image #1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_4ac5ab51-fdf1-4440-9a44-d01de1f9f41d" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_320" class="olink" shape="rect">TID 320</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f65e8eb2-b0b1-40bb-b0c4-e3e91b82e925" shape="rect"></a>1.6.1.5</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_76139927-54b0-4afa-909b-95aa8ca54800" shape="rect"></a>Short Axis</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2f5b5a4f-bcc8-4e4f-8200-d26f0ce0e13a" shape="rect"></a>6.8 mm</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_4f656f8d-b6fc-461a-a272-cb2929079551" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_300" class="olink" shape="rect">TID 300</a>
+                            </p>
+                            <p>
+                              <a id="para_52b2af89-b56e-4735-b80c-9657d2f8b222" shape="rect"></a>
+                                <a href="../part16/sect_CID_7470.html" class="olink" shape="rect">CID 7470</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_852055f1-80c6-4529-a47f-cf91dbbf8311" shape="rect"></a>1.6.1.5.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_c1195bdb-938c-4673-be42-7f61f25fff19" shape="rect"></a>Measurement Method</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ba89ca82-a279-45f3-bff8-085d2f5c74c0" shape="rect"></a>WHO</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ffb96b6d-68ce-4709-9635-c1228ec1b703" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_300" class="olink" shape="rect">TID 300</a>
+                            </p>
+                            <p>
+                              <a id="para_fc4d55c3-7322-4a19-9d89-1079c9093cc2" shape="rect"></a>
+                                <a href="../part16/sect_CID_6147.html" class="olink" shape="rect">CID 6147</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_cd139370-54e1-408a-a955-7e1d0eac0004" shape="rect"></a>1.6.1.5.2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_53852f24-9465-4bae-bb3d-5fb147a0318e" shape="rect"></a>Source of Measurement</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_aa64c086-674f-45f0-9210-1197980859bd" shape="rect"></a>SCOORD GraphicType POLYLINE with two coordinates, the beginning and end of a line segment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3e19711b-d25f-4074-9409-f7bdf3aa54d0" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_320" class="olink" shape="rect">TID 320</a>
+                            </p>
+                            <p>
+                              <a id="para_5797686e-0394-4f5e-bc69-ea8c3ec6e22c" shape="rect"></a>
+                                <a href="../part16/sect_CID_7470.html" class="olink" shape="rect">CID 7470</a>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f23f75f9-3480-4d3e-9798-00cf433d4f3f" shape="rect"></a>1.6.1.5.2.1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_33ce9a5b-931e-40f6-ae20-5affc8c5449a" shape="rect"></a>(none)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f911375e-8194-44d8-a07b-d7f6a3203d83" shape="rect"></a>IMAGE - CT image #1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_63a9ab72-778d-49e0-97c7-47bb11c59166" shape="rect"></a>
+                                <a href="../part16/chapter_A.html#sect_TID_320" class="olink" shape="rect">TID 320</a>
+                            </p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_RRR.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_RRR.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_SSS.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">RRR.4 Measurement Report SR Document Volumetric and SUV ROI on FDG PET Example </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> SSS Use of Image Libraries in SR Documents (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024b - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

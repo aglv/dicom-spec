@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>J.3.3 Notifications</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_J.3.html" title="J.3 Storage Commitment Push Model SOP Class" />
+      <link rel="prev" href="sect_J.3.2.html" title="J.3.2 Operations" />
+      <link rel="next" href="sect_J.3.4.html" title="J.3.4 Storage Commitment Push Model SOP Class UID" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">J.3.3 Notifications <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_J.3.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_J.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">J.3 Storage Commitment Push Model SOP Class</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_J.3.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_J.html" shape="rect">Storage Commitment Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_J.3.html" shape="rect">Storage Commitment Push Model SOP Class</a>
+         </span> &gt; <span class="breadcrumb-node">Notifications</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_J.3.3" shape="rect"></a>J.3.3 Notifications</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3388f836-44ae-446e-b22a-7304de41bf78" shape="rect"></a>The DICOM AEs that claim conformance to this SOP Class as an SCP shall invoke the N-EVENT-REPORT request. The DICOM AEs that claim conformance to this SOP Class as an SCU shall be capable of receiving the N-EVENT-REPORT request.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_J.3.3.1" shape="rect"></a>J.3.3.1 Storage Commitment Result</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d30d6d8d-ba61-4ee5-8242-3f67bb1be5ef" shape="rect"></a>The Storage Commitment Result notification allows an SCP to inform the SCU whether or not it has accepted storage commitment responsibility for the SOP Instances referenced by a Storage Commitment Request. This notification is also used to convey error information (i.e., storage commitment could not be achieved for one or more of the referenced SOP Instances). This notification shall be invoked through the N-EVENT-REPORT primitive.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_J.3.3.1.1" shape="rect"></a>J.3.3.1.1 Event Information</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_adc55ca5-ec3f-4ac9-bb8a-856f82cd46e2" shape="rect"></a>The DICOM AEs that claim conformance to this SOP Class as an SCU and/or an SCP shall support the Event Types and Event Information as specified in <a class="xref" href="sect_J.3.3.html#table_J.3-2" title="Table J.3-2. Storage Commitment Result - Event Information" shape="rect">Table J.3-2</a>.</p>
+               <div class="table">
+                  <a id="table_J.3-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table J.3-2. Storage Commitment Result - Event Information</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5be71409-ef0a-4e66-9d40-52352c3cddf6" shape="rect"></a>Event Type Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_be6a2b4c-5c88-48fb-ac1a-4ae0fde05fc4" shape="rect"></a>Event Type ID</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5afe9067-4cb4-45bb-a448-50b622fcaac0" shape="rect"></a>Attribute Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_598a64c8-17a8-464d-9a01-7a11cd2608cb" shape="rect"></a>Tag</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b6cc7405-2823-4434-b3c1-67da1078dc66" shape="rect"></a>Requirement Type SCU/SCP</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_84c41fd9-6f3f-4b9b-bfe9-c38d343d3ec6" shape="rect"></a>Storage Commitment Request Successful</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_af8c6005-7415-480a-ac3c-b99d1763d3ac" shape="rect"></a>1</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7b1cf584-f9fa-490e-84e9-1ca70e0f5ad4" shape="rect"></a>Transaction UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c2b53221-0f8a-4978-89d0-d76aabd0e1aa" shape="rect"></a>(0008,1195)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fd2ff014-3a49-41dd-9878-44256ae90369" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_65e4c1de-6c68-41a2-b315-50760fcace83" shape="rect"></a>Retrieve AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d890a992-5236-44ce-a4fd-f88432becdf8" shape="rect"></a>(0008,0054)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_606733e3-f1fc-45b1-971e-9cb444fbaefb" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_9346b30c-8f60-4604-a8eb-f3f033f7672c" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.1" title="J.3.3.1.1.1 Retrieve AE Title Attribute" shape="rect">Section J.3.3.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9de1fe3e-e106-40b9-99bc-67ff1576f166" shape="rect"></a>Storage Media File-Set ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_30a8139b-9035-4003-b638-ae137a06f7b3" shape="rect"></a>(0088,0130)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_579ac862-0000-46f8-b135-9fbd5fe7933f" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_7b7af544-9edf-4f80-a42a-1035103a3f91" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0eb65505-dbe4-4945-a51f-3b30a0ef4ef2" shape="rect"></a>Storage Media File-Set UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_176bdbad-126f-4def-bdf4-aad9f0fcedf6" shape="rect"></a>(0088,0140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_518d3c4c-3717-4cfa-87b4-bf348e1f3ae1" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_a8321787-a3b2-48bf-b930-384cc3317256" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9e8c2518-100c-45df-bbd7-d83d49a71bd4" shape="rect"></a>Referenced SOP Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dfe25a0a-8918-46a2-9941-1b37286cc88a" shape="rect"></a>(0008,1199)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f00580bb-04ba-466b-8516-b43a97f942f8" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2d2aded8-0240-4967-8cd8-008ffa9e1dff" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7b11a233-0e3b-4ef4-806f-dbfda28c17d0" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_269e01e6-3574-4304-b3e0-794950ef4053" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_32dc8233-fcb5-4822-a50c-b8c605394b91" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_61dcabcc-33c9-47ce-ab41-87c7dba0b15a" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ab4f7831-0a1d-4759-b2e2-d416c87548eb" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7df1170c-fe9f-43fd-aabe-3d59d263752a" shape="rect"></a>&gt;Retrieve AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_15a9734b-0cd0-44ef-86d8-8fa6cffca257" shape="rect"></a>(0008,0054)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2a85a1b8-ad55-4bc7-af2b-1f4651098f6d" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_2e93f70f-5181-4ca4-94ca-b4a4c5f0cfd9" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.1" title="J.3.3.1.1.1 Retrieve AE Title Attribute" shape="rect">Section J.3.3.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_98430a09-a6eb-4a10-b4a6-656ff62a447c" shape="rect"></a>&gt;Storage Media File-Set ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_31efaf12-c817-45d3-80ed-24ba36200f90" shape="rect"></a>(0088,0130)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ec94b561-b8cc-43d0-98c5-500976310eba" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_18a4847a-a6a9-439b-a6b8-1a40006d3ef5" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9fcca67b-fbc1-4f49-8e54-cc87c19fbbc7" shape="rect"></a>&gt;Storage Media File-Set UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_800782a8-45df-4cd6-8062-03a13de17956" shape="rect"></a>(0088,0140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2db7954d-5a57-4144-9b15-255e2c55adae" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_08a43c5e-ab1a-46a4-abda-4935a14c3753" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ac8d48ba-9bbb-4ba5-a997-59a505827982" shape="rect"></a>Storage Commitment Request Complete - Failures Exist</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1d63d119-3cd0-442d-9c88-ec7f1ee3f44b" shape="rect"></a>2</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c9e67522-4c05-431c-a1e8-7349f6ace9e5" shape="rect"></a>Transaction UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1be71bca-493d-4ef2-a6d9-08c0dbfba2ff" shape="rect"></a>(0008,1195)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_64338db7-8ebe-40e5-95ae-6786add71cee" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_16b67358-cbce-44c8-ba12-9d5963dfd6b7" shape="rect"></a>Retrieve AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b867c43f-ad87-461e-837c-0eaa0a54b6e6" shape="rect"></a>(0008,0054)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8416d3ca-5757-42b4-9aaa-ba6ee34571ad" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_1fb2eba4-b695-47ae-9385-be2bb0d74530" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.1" title="J.3.3.1.1.1 Retrieve AE Title Attribute" shape="rect">Section J.3.3.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7b89ba1c-b9b5-49d1-9821-fcb07e1f79a2" shape="rect"></a>Storage Media File-Set ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_df77f6d2-7b78-4839-9ac4-8292a5373920" shape="rect"></a>(0088,0130)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c9d41658-26b7-4078-b120-c58a39fbc6d8" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_1bdc7bc8-3cf5-46a2-b661-a840783dbcae" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c86a46f6-26c8-4c20-9d7b-c1de1f6d25d7" shape="rect"></a>Storage Media File-Set UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_19e84324-cdb7-466f-bd53-a45ef24c4cb8" shape="rect"></a>(0088,0140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_acaa5a40-7832-4bc3-83df-522e1b364a1b" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_fe6bebd9-9f69-4dac-ae75-34c7325d571c" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_83f4145b-94ec-41fa-9622-95f1eb87ddbf" shape="rect"></a>Referenced SOP Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a99c9787-a513-413e-9b11-fd3590233251" shape="rect"></a>(0008,1199)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3ca9b188-f39d-456b-b45c-ffeb90b92fee" shape="rect"></a>-/1C</p>
+                                        <p>
+                                    <a id="para_96804c28-e873-47d1-bbf7-c47b3320bee7" shape="rect"></a>This Attribute shall be provided if storage commitment for one or more SOP Instances has been successful</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a8d0583e-b215-4737-84f8-51bd568576a7" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7301bc01-06f4-4386-8471-2cb8b6b60be1" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_52fecaf2-bdce-4dcb-8354-9578e22efb27" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_baaea8f4-dad1-4e5b-8954-c6863f10d7ec" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1569112c-6547-4001-a6f5-f99c42911bee" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c4243c8b-a8c7-423a-b5ff-a5ba5af71ffd" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bf1649bb-0007-4b9b-b5fb-d31989a23bcf" shape="rect"></a>&gt;Retrieve AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ba2a7ade-fe4d-418d-9385-7d06e0105b3f" shape="rect"></a>(0008,0054)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c7c4505b-4f90-4119-8de2-5cd04ba029f2" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_7c3b240c-3d8e-4247-b867-75b96ca028b3" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.1" title="J.3.3.1.1.1 Retrieve AE Title Attribute" shape="rect">Section J.3.3.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_99da654f-4b24-4eae-97e5-9c40093e208e" shape="rect"></a>&gt;Storage Media File-Set ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_be7bcab4-664a-41d5-a6f5-a49ebe9239f3" shape="rect"></a>(0088,0130)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_327b2024-39d1-4ea0-9b87-6ff2895d3de1" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_6f0e4e82-d8a6-44a1-8a72-a2a6160ea60a" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_62229e82-5880-4091-ad19-247987a13cf8" shape="rect"></a>&gt;Storage Media File-Set UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_58b9c225-ae25-437d-add0-562c86a9385b" shape="rect"></a>(0088,0140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fe75b4df-4f3b-4bb3-b402-37551d443e31" shape="rect"></a>-/3</p>
+                                        <p>
+                                    <a id="para_03805a60-3d22-4fbc-9ecc-f59e1dfd17ab" shape="rect"></a>See <a class="xref" href="sect_J.3.3.html#sect_J.3.3.1.1.2" title="J.3.3.1.1.2 Storage Media File Set ID Attributes" shape="rect">Section J.3.3.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2b26e336-df86-4d7a-8f5f-0bec8cd3e664" shape="rect"></a>Failed SOP Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aa661c5b-e9cb-4aa1-82f3-a60c826900d0" shape="rect"></a>(0008,1198)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_06a70154-58c0-4034-9196-9399d49182ec" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cdeccddf-3006-4b19-9e31-63b2d0a15087" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_45a637a7-0732-41ce-b124-4f76ba3ae0ba" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7ba7aba6-daaa-4941-bbc7-aa57964e3c3f" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d77c775f-09d7-4199-93c7-0672e31edc68" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ca91d1a1-3f5f-46bb-933c-de07a49c94a9" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a59de456-b81d-4265-b552-8749f88ebec8" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5152627a-a70d-4db2-a397-39b86c5a796b" shape="rect"></a>&gt;Failure Reason</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9a0732a0-cc07-4e63-9488-8b3c564916aa" shape="rect"></a>(0008,1197)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a6fcbd26-783d-4ee2-9ee7-594c9c733a4e" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_J.3.3.1.1.1" shape="rect"></a>J.3.3.1.1.1 Retrieve AE Title Attribute</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_116878d1-5c77-4923-844e-0cbaf04296bd" shape="rect"></a>If present, the Retrieve AE Title (0008,0054) shall appear either outside the Referenced SOP Sequence (0008,1199), or within one or more Items within that sequence, but not both. If they appear outside of the sequence, then all of the SOP Instances within the sequence shall be retrievable from the specified Retrieve AE Title. If they appear within an Item of that sequence, then the SOP Instance referenced to by that Item shall be retrievable from the specified Retrieve AE Title.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_J.3.3.1.1.2" shape="rect"></a>J.3.3.1.1.2 Storage Media File Set ID Attributes</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_2089b5c5-ae32-4a02-8edf-99df4cf5a770" shape="rect"></a>If present, the Storage Media File-Set ID (0088,0130) and Storage Media File-Set UID (0088,0140) shall appear either outside the Referenced SOP Sequence (0008,1199), or within one or more Items within that sequence, but not both. If they appear outside of the sequence, then all of the SOP Instances within the sequence shall be retrievable from the specified Storage Media File-Set. If they appear within an Item of that sequence, then the SOP Instance referenced to by that Item shall be retrievable from the specified Storage Media File-Set.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_J.3.3.1.2" shape="rect"></a>J.3.3.1.2 Service Class Provider Behavior</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8f3bc150-b284-422c-a4f9-1313ff2d707d" shape="rect"></a>If the SCP determines that it has successfully completed storage commitment for all the SOP Instances referenced by a Storage Commitment Request,
+                            the SCP shall issue an N-EVENT-REPORT with the Event Type ID set to 1 (Storage Commitment Request Successful).
+                            This event shall include references to the successfully stored SOP Instances.
+                            The SCP shall store the referenced SOP Instances in accordance with Storage Level 2 (Full) as defined in the Storage Service Class (i.e., shall store all Attributes, including Private Attributes). The Storage Service Class is defined in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>. After the N-EVENT-REPORT has been sent, the Transaction UID is no longer active and shall not be reused for other transactions.</p>
+               <p>
+                  <a id="para_3787ae39-ace9-4dff-a1cb-c3bcf90fa303" shape="rect"></a>If it is determined that storage commitment could not be achieved for one or more referenced SOP Instances,
+                            the SCP shall issue an N-EVENT-REPORT with the Event Type ID set to 2 (Storage Commitment Request Complete - failure exists) conveying that the SCP does not commit to store all SOP Instances.
+                            This event shall include references to the failed SOP Instances together with references to those SOP Instances that have been successfully stored. For each failed SOP Instance the reason for failure shall be described by the Failure Reason Attribute.
+                            After the N-EVENT-REPORT has been sent, the Transaction UID is no longer active and shall not be reused for other transactions.</p>
+               <p>
+                  <a id="para_acc67773-1a1a-49eb-a122-be9fefd7faad" shape="rect"></a>The complete set of SOP Instances referenced by the Referenced SOP Sequence (0008,1199) Attribute, in the initiating N-ACTION, shall be present in both Event Types either in the Referenced SOP Sequence (0008,1199) or in the Failed SOP Sequence (0008,1198).</p>
+               <p>
+                  <a id="para_bae6a916-67b6-42fd-b340-1e9e0ecdd6c0" shape="rect"></a>The N-EVENT-REPORT shall include the same Transaction UID (0008,1195) Attribute Value as contained in the initiating N-ACTION.</p>
+               <p>
+                  <a id="para_2b64a541-0419-4b5b-9e91-8e5e8d62c9e1" shape="rect"></a>An SCP shall be capable of issuing the N-EVENT-REPORT on a different association than the one on which the N-ACTION operation was performed.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_bf756025-bc45-4d26-85ae-bae0cf6583df" shape="rect"></a>The SCP may attempt to issue the N-EVENT-REPORT on the same Association, but this operation may fail because the SCU is free to release at any time the Association on which it sent the N-ACTION request. As DICOM defaults the association requestor to the SCU role, the SCP (i.e., the association requestor) negotiates an SCP role using the SCU/SCP Role Selection Negotiation (see <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_383622cd-f8d7-492b-a9f9-7d6619938133" shape="rect"></a>When responding on a different Association, the SCP must use the same AE Title as it used on the original Association, because the DICOM Standard defines a Service between two peer applications, each identified by an AE Title. Thus the SCP should be consistently identified for all Associations in the particular instance of the Storage Commitment Service.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e3b5314c-45d2-4527-a2ac-70255ac9c7a0" shape="rect"></a>The optional Attributes Retrieve AE Title (0008,0054), Storage Media File-Set ID (0088,0130) and Storage Media File-Set UID (0088,0140) within the Event Information allows an SCP to indicate the location where it has stored SOP Instances for safekeeping. For example, the SCP could relay SOP Instances to a third Application Entity using this Service Class, in which case it can use the Retrieve AE Title Attribute to indicate the real location of the data. Another example is if the SCP stores data on media, it can indicate this using the Storage Media File-Set ID and UID Attributes.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_J.3.3.1.3" shape="rect"></a>J.3.3.1.3 Service Class User Behavior</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_61f9cdea-fcbe-4e2b-bfa3-f3d62f14118a" shape="rect"></a>An SCU shall be capable of receiving an N-EVENT-REPORT on a different association than the one on which the N-ACTION operation was performed.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_a6d7c675-4ad9-40c8-90d8-1b52bb003f57" shape="rect"></a>To receive this N-EVENT-REPORT, the SCU accepts an association where the SCP role is proposed by the Storage Commitment SCP acting as an association requestor.</p>
+               </div>
+               <p>
+                  <a id="para_ddd0496d-dea0-4848-817a-70d35e3bf566" shape="rect"></a>The SCU shall return, via the N-EVENT-REPORT response primitive, the N-EVENT-REPORT Response Status Code applicable to the associated request. The actions taken by the SCU upon receiving the N-EVENT-REPORT are beyond the scope of this Standard but are stated in its Conformance Statement.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_9abf471d-577c-452c-81bf-51a76187066e" shape="rect"></a>In the case where the SCP indicates that it cannot achieve storage commitment for some SOP Instances, the SCU might, for example, re-send the failed SOP Instances to the SCP (via the Storage Service Class) and then re-transmit the N-ACTION request. However, this behavior is beyond the scope of this Standard.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_J.3.3.1.4" shape="rect"></a>J.3.3.1.4 Status Codes</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_d1131574-32b7-4a55-8224-b94e573b08e4" shape="rect"></a>No Service Class specific status values are defined for the N-EVENT-REPORT Service. See <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for general response Status Codes.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_12a670ec-e97e-4018-aedc-05fef0da02e7" shape="rect"></a>This Section refers to Status Codes returned by the N-EVENT-REPORT response primitive. The Failure Reason Attribute returned in the Storage Commitment Result - Event Information (see <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>) are described in the Storage Commitment IOD.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_J.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_J.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_J.3.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">J.3.2 Operations </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> J.3.4 Storage Commitment Push Model SOP Class UID</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

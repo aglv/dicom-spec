@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10.33 Conceptual Volume Macro</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="chapter_10.html" title="10 Miscellaneous Macros" />
+      <link rel="prev" href="sect_10.32.html" title="10.32 Entity Long Labeling Macro" />
+      <link rel="next" href="sect_10.34.html" title="10.34 Conceptual Volume Segmentation Reference and Combination Macro" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10.33 Conceptual Volume Macro <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_10.33.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.32.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">10 Miscellaneous Macros</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.34.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_10.html" shape="rect">Miscellaneous Macros</a>
+         </span> &gt; <span class="breadcrumb-node">Conceptual Volume Macro</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_10.33" shape="rect"></a>10.33 Conceptual Volume Macro</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_515dd2c1-c86c-4d31-a403-a872799bed0f" shape="rect"></a>
+                <a class="xref" href="sect_10.33.html#table_10.33-1" title="Table 10.33-1. Conceptual Volume Macro Attributes" shape="rect">Table 10.33-1</a> specifies the Attributes of the <a class="xref" href="sect_10.33.html" title="10.33 Conceptual Volume Macro" shape="rect">Conceptual Volume Macro</a>. A Conceptual Volume is an abstract entity used to identify an anatomic region (such as a planning target volume or a combination of multiple anatomic volumes) or non-anatomic volumes such as a bolus or a marker. A Conceptual Volume can be established without necessarily defining its spatial extent (for example a Conceptual Volume for a tumor can be established prior to segmenting it). The spatial extent of a Conceptual Volume may change over time (for example as treatment proceeds the tumor volume corresponding to the Conceptual Volume will change).</p>
+         <p>
+            <a id="para_5891f02e-681e-452d-ad39-db5384705cd6" shape="rect"></a>The spatial extent of a Conceptual Volume may be defined by any general-purpose entity that represents geometric information (such as Segmentation, Surface Segmentation, RT Structure Set SOP Instance and alike) or a combination thereof, although the Conceptual Volume does exist independently of a specific definition of its spatial extent.</p>
+         <p>
+            <a id="para_620132a7-a4be-46fb-84e3-605b6884bb42" shape="rect"></a>A Conceptual Volume may also be defined as a combination of other Conceptual Volumes.</p>
+         <p>
+            <a id="para_6fcb8991-0ca7-4036-9c2b-f812ac06b8d6" shape="rect"></a>Examples for Conceptual Volumes:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="1">
+               <li class="listitem">
+                  <p>
+                     <a id="para_de0621e1-555f-4dbd-be77-7743d3c16744" shape="rect"></a>A Conceptual Volume (with a Conceptual Volume UID (3010,0006) can be used to represent the treatment target in an RT Physician Intent SOP Instance based upon a diagnostic image set, although the actual delineation of a specific target volume has not yet taken place. Later, the target volume is contoured. The RT Segment Annotation SOP Instance references the volume contours and associates it with the Conceptual Volume via the Conceptual Volume UID (3010,0006).</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_ee96bcb4-e9fe-42ef-a7c4-0fb55503f61a" shape="rect"></a>In an adaptive workflow, the anatomic volume may change over time. The Conceptual Volume on the other hand does not change. Multiple RT Segment Annotation SOP Instances, each referencing different Segmentation Instances, can be associated with the same Conceptual Volume via the Conceptual Volume UID (3010,0006), making it possible to track the volume over time.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_cd73c217-155c-4588-93cb-3127fb809419" shape="rect"></a>A Conceptual Volume may represent targets and/or anatomic regions for which manually calculated doses are tracked (for example, in emergency treatments). In this case, Conceptual Volumes may be instantiated first in an RT Physician Intent SOP Instance and subsequently used in RT Radiation SOP Instances, or may be first instantiated in the Radiation SOP Instances. After treatment, these Conceptual Volumes will be used in RT Radiation Records to track the delivered dose. Such Conceptual Volumes may never reference a segmentation, but serve as a key for referencing the Conceptual Volume across these different SOP Instances.</p>
+               </li>
+            </ol>
+         </div>
+         <div class="table">
+            <a id="table_10.33-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 10.33-1. Conceptual Volume Macro Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f2f1d508-e1eb-4f48-bbba-d5788661074f" shape="rect"></a>Attribute Name</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7aa7e01c-bdde-4b91-9d5c-4ca2f4b26948" shape="rect"></a>Tag</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e88c2bef-75ef-4e2f-8ebc-b374560f4e8d" shape="rect"></a>Type</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_06f245ae-5a3c-4c50-8d7d-8f32047eb700" shape="rect"></a>Attribute Description</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_bbab5a56-db2b-4b41-8fbf-02a81b177c4d" shape="rect"></a>Conceptual Volume UID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_0e8961db-61ea-4c00-82ee-dfb3010afc83" shape="rect"></a>(3010,0006)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_c8673aac-b50e-4a16-a7de-7e085dd5a4de" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_063994f9-8e86-45f8-9660-c16165d60438" shape="rect"></a>A UID identifying the Conceptual Volume.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_339182f1-6d38-4864-ab36-9ca49af29a63" shape="rect"></a>Originating SOP Instance Reference Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7e432f83-b472-4344-bfbd-9ce9d4ddfff5" shape="rect"></a>(3010,0007)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_34bba6de-84ff-40de-90a9-9d479b869e03" shape="rect"></a>1C</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2ba08a9c-bfa2-4478-ba92-9f575a420a9d" shape="rect"></a>Reference to the SOP Instance that contains the original definition of this Conceptual Volume identified by Conceptual Volume UID (3010,0006).</p>
+                            <p>
+                              <a id="para_fc875676-59b4-4d7a-97e6-e70ee7c9f07b" shape="rect"></a>Required when Conceptual Volume UID (3010,0006) was not issued in the current SOP Instance, but read from another SOP Instance.</p>
+                            <p>
+                              <a id="para_4882ab7c-eddb-4134-aa2b-2971cc733f65" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                            <p>
+                              <a id="para_0664bd4a-19a7-4f0a-b702-578c33a4bbf0" shape="rect"></a>
+                                <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                </span>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d0a3c6f0-82c0-4849-ac7a-2c6ff7cabc27" shape="rect"></a>Equivalent Conceptual Volumes Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8f681a1b-b2ea-4729-bb7f-17526800724d" shape="rect"></a>(3010,000A)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_da5802ae-9e1f-41df-810c-f989afd08403" shape="rect"></a>3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d33c17a3-c976-483a-a349-18c54c79377f" shape="rect"></a>References one or more existing Conceptual Volumes that represent the same concept as the current Conceptual Volume.</p>
+                            <p>
+                              <a id="para_96156c56-3e3f-4677-9c2c-09b9979d86b9" shape="rect"></a>This Sequence might be used when Conceptual Volume references of existing SOP Instances are retrospectively identified as representing the same entity.</p>
+                            <p>
+                              <a id="para_e6375d80-539f-4c93-817d-6d6cadd359a9" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                            <p>
+                              <a id="para_bc9e2f2a-4c40-4a90-8f8c-6e1c5a12ceb5" shape="rect"></a>See <a class="xref" href="sect_10.33.html#sect_10.33.1.1" title="10.33.1.1 Equivalent Conceptual Volumes" shape="rect">Section 10.33.1.1</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_de17c564-25c0-4b49-833f-6ea047d64c46" shape="rect"></a>&gt;Referenced Conceptual Volume UID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_edc1b2ba-97c6-4bb0-9d28-6c90059f7110" shape="rect"></a>(3010,000B)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_19dc452e-4b0e-4354-b997-c73c1c282b46" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_8c09c15f-1567-416e-a0e7-fb6190f22b32" shape="rect"></a>A UID identifying the Conceptual Volume.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_38066ad3-3e0e-41fb-85b5-76c5bb2061c4" shape="rect"></a>&gt;Equivalent Conceptual Volume Instance Reference Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ae576a6a-8201-4092-a613-9cff74409378" shape="rect"></a>(3010,0009)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_317e0444-c39d-4fed-a3bd-c6ec6ad4b69b" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_08eabe27-4eff-48be-80c3-328ee33f4833" shape="rect"></a>Reference to a SOP Instance that contains the Referenced Conceptual Volume UID (3010,000B) of the Equivalent Conceptual Volume.</p>
+                            <p>
+                              <a id="para_088e8c84-7b33-44d4-96f8-b732c618bb14" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                            <p>
+                              <a id="para_e9c48c98-8a9b-4d1f-bcf2-2816558d8b4c" shape="rect"></a>
+                                <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                </span>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_5eec6437-c31a-4520-a55f-8ed2dab92285" shape="rect"></a>Derivation Conceptual Volume Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_1b3bdb57-44d9-4867-911f-03f9e3c62dd0" shape="rect"></a>(3010,0014)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_4cc73080-2fa9-4e77-8528-4947424f604d" shape="rect"></a>3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_35012ad1-b735-44b5-9048-b9efb26c1e56" shape="rect"></a>Description of a Conceptual Volume that was used to derive this Conceptual Volume.</p>
+                            <p>
+                              <a id="para_c4b2b803-b952-4e56-92f1-cc5a9adc6fe6" shape="rect"></a>Only a single Item is permitted in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_edc3dc06-c825-4067-bf7a-556cd75a52c1" shape="rect"></a>&gt;Derivation Description</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d9c4b56e-9500-40b6-98ec-160745c71276" shape="rect"></a>(0008,2111)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_7906310e-14fb-410b-a3c2-cf622f23adeb" shape="rect"></a>3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_629857ca-f5c6-44ca-8bf7-5d2940a2135a" shape="rect"></a>A user-readable text description of how this Conceptual Volume was derived.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_5500b4d7-52c8-4e06-99d2-a8cec8ee046f" shape="rect"></a>&gt;Source Conceptual Volume Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_acc98960-7e2e-4956-b843-afc03de7f004" shape="rect"></a>(3010,0018)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_fbed8d29-0cce-4079-8b14-c4f577c9d27d" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a0faeb00-8c86-47f1-9c33-bdebad8dc3e1" shape="rect"></a>The set of Conceptual Volumes that were used to derive this Conceptual Volume.</p>
+                            <p>
+                              <a id="para_69247678-e929-49e8-a948-825f781c7947" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_28ceae2b-6df0-4c7b-8f5e-7624874994d3" shape="rect"></a>&gt;&gt;Source Conceptual Volume UID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_1f8556ae-7f2b-4697-af26-9d4c9b41ec7b" shape="rect"></a>(3010,0015)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_0dec8c14-d1b7-41f4-8771-59b1d2cc26e6" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_5e471123-0cf3-4210-95b5-f3c5b878e33a" shape="rect"></a>UID identifying the Conceptual Volume that was used to derive this Conceptual Volume.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a36374d1-88da-44e0-9551-17a84adcad3d" shape="rect"></a>&gt;&gt;Conceptual Volume Constituent Index</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_13a27edf-9cf1-4a36-b105-d3be648b0a44" shape="rect"></a>(3010,000D)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_1a597458-e4a0-416f-bf50-23414ee0f1c8" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_71f320fc-ec80-4421-bb49-ee798fe9df50" shape="rect"></a>Index of the constituent in the Source Conceptual Volume Sequence.</p>
+                            <p>
+                              <a id="para_728befe4-2542-4325-b705-072376719c2e" shape="rect"></a>The value shall start at 1 and increase monotonically by 1.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_a47917b1-5f01-4ef7-94c0-2bcb178d01ed" shape="rect"></a>&gt;&gt;Conceptual Volume Constituent Segmentation Reference Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_d2abfb99-a771-4c3c-b92f-f3ab5e3a7e9d" shape="rect"></a>(3010,0012)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_236bafc8-cbed-4de4-b5b7-e1c44df74b26" shape="rect"></a>2</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e93a8919-0ad7-4d08-99c3-97af99855695" shape="rect"></a>Contains the reference to the constituents of the RT Segment Annotation Instance from which Conceptual Volume is derived.</p>
+                            <p>
+                              <a id="para_3266a574-3661-46bd-8a58-5c4bd887a338" shape="rect"></a>Zero or one Item shall be included in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_0e9a46cc-afd7-4079-8c4b-e64bbd97cc4b" shape="rect"></a>&gt;&gt;&gt;Referenced Direct Segment Instance Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ad298e07-a921-4c94-89a9-be362efdc7d9" shape="rect"></a>(3010,004A)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_6c0952b0-4cf9-4d25-bb5c-de33b302a0fd" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_f8651c43-fba9-4680-8e5a-6c5f484d820e" shape="rect"></a>Reference to the SOP Instance that contains the Direct Segment Reference Sequence (3010,0023).</p>
+                            <p>
+                              <a id="para_180d15c4-6734-4400-94e9-283eb95580ed" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                            <p>
+                              <a id="para_b790bd8d-1022-429a-943e-798522a3fbfb" shape="rect"></a>See <a class="xref" href="sect_10.34.html#sect_10.34.1.3" title="10.34.1.3 Referenced Direct Segment Instance Sequence" shape="rect">Section 10.34.1.3</a>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                            <p>
+                              <a id="para_7f2951b3-3057-412a-bfcd-3bc0aada8089" shape="rect"></a>
+                                <span class="italic">&gt;&gt;&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                </span>
+                            </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_351cc2ab-5b28-42d2-8d9f-58e3c1a68077" shape="rect"></a>&gt;&gt;&gt;Referenced Segment Reference Index</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_3430ad33-e1cc-4b10-a438-04568913060c" shape="rect"></a>(3010,0020)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_ae04a74e-ad3d-418b-b32d-38b3e9261840" shape="rect"></a>1</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_26ccd17f-66ba-40ac-8f80-8b1f8469b939" shape="rect"></a>The Segment Reference Index (3010,0022) in the Segment Reference Sequence (3010,0021) corresponding to the segment representing this Conceptual Volume.</p>
+                            <p>
+                              <a id="para_9966e926-84e9-49d5-8130-28adc7476f94" shape="rect"></a>Shall reference only segment Items that contain the Direct Segment Reference Sequence (3010,0023).</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_2b112bd8-d39c-4d5b-bed9-2fcd650156dd" shape="rect"></a>&gt;Conceptual Volume Derivation Algorithm Sequence</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_4a3d0b40-45d9-4d99-b57c-1ee3b9bb6e54" shape="rect"></a>(3010,0016)</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_400c8fa4-63c5-467a-a066-d4a7adfcd8cf" shape="rect"></a>3</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                            <p>
+                              <a id="para_e1a95ecc-8352-4a26-99dd-1257f5b7fc8d" shape="rect"></a>Algorithm used to derive this Conceptual Volume.</p>
+                            <p>
+                              <a id="para_d9d1a13d-7e89-4ebd-8e21-00010a3f90be" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                            <p>
+                              <a id="para_257fe2d1-eee4-4db2-913f-71fcbbb782f5" shape="rect"></a>
+                                <span class="italic">&gt;&gt;Include <a class="xref" href="sect_10.16.html#table_10-19" title="Table 10-19. Algorithm Identification Macro Attributes" shape="rect">Table 10-19 “Algorithm Identification Macro Attributes”</a>
+                                </span>
+                            </p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_10.33.1" shape="rect"></a>10.33.1 Conceptual Volume Macro Attribute Descriptions</h3>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.33.1.1" shape="rect"></a>10.33.1.1 Equivalent Conceptual Volumes</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_fdf43acb-6bbd-47fe-9f25-39fe57acc56b" shape="rect"></a>Conceptual Volumes can be declared to be equivalent to other Conceptual Volumes. In such cases, the Equivalent Conceptual Volumes Sequence (3010,000A) is used in derived SOP Instances which are aware of other SOP Instances defining a semantically equivalent volume, but using different Conceptual Volume UIDs (3010,0006).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_10.33.1.2" shape="rect"></a>10.33.1.2 Derivation Conceptual Volume Sequence</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6a7e7cab-2def-4e14-9b1b-9b935f9ca8c4" shape="rect"></a>The Derivation Conceptual Volume Sequence (3010,0014) may be used to describe how a Conceptual Volume is derived from one or more other Conceptual Volumes in cases where it may not be possible to describe the method of the derivation completely. Since the Conceptual Volume cannot be mathematically constructed from a derivation description, it will be defined explicitly by a segmentation.</p>
+               <p>
+                  <a id="para_da83b7a5-715b-499d-9c57-bac64c8d2cea" shape="rect"></a>The specification of derivation is different from combining Conceptual Volumes as defined in <a class="xref" href="sect_10.34.html" title="10.34 Conceptual Volume Segmentation Reference and Combination Macro" shape="rect">Section 10.34 “Conceptual Volume Segmentation Reference and Combination Macro”</a>.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.32.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_10.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.34.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.32 Entity Long Labeling Macro </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.34 Conceptual Volume Segmentation Reference and Combination Macro</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

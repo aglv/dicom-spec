@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>6.3 Enumerated Values and Defined Terms</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_6.html" title="6 Value Encoding" />
+      <link rel="prev" href="sect_6.2.3.html" title="6.2.3 URI/URL (UR) Value Representation" />
+      <link rel="next" href="sect_6.4.html" title="6.4 Value Multiplicity (VM) and Delimitation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">6.3 Enumerated Values and Defined Terms <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_6.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">6 Value Encoding</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_6.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_6.html" shape="rect">Value Encoding</a>
+         </span> &gt; <span class="breadcrumb-node">Enumerated Values and Defined Terms</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_6.3" shape="rect"></a>6.3 Enumerated Values and Defined Terms</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ca7f1018-865e-4ea0-a2c5-48586a698999" shape="rect"></a>The Value of certain Data Elements may be chosen among a set of explicit Values satisfying its VR. These explicit Values are either Enumerated Values or Defined Terms and are specified in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> and <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>.</p>
+         <p>
+            <a id="para_aaec2946-2db3-4f4c-bbd2-28d4d36cc5b0" shape="rect"></a>Enumerated Values are used when the specified explicit Values are the only Values allowed for a Data Element. A Data Element with Enumerated Values that does not have a Value equivalent to one of the Values specified in this Standard has an invalid Value within the scope of a specific Information Object/SOP Class definition.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f9f7637e-7246-41e0-936c-b003acf5ca49" shape="rect"></a>Patient Sex (0010, 0040) is an example of a Data Element having Enumerated Values. It is defined to have a Value that is either "M", "F", or "O" (see <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>). No other Value shall be given to this Data Element.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_930ffd7a-0156-4af2-9a5e-2bdba06d5f9d" shape="rect"></a>Future modifications of this Standard may add to the set of allowed Values for Data Elements with Enumerated Values. Such additions by themselves may or may not require a change in SOP Class UIDs, depending on the semantics of the Data Element.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_329fe8da-b961-448e-b9c7-d995d8a12884" shape="rect"></a>Defined Terms are used when the specified explicit Values may be extended by implementers to include additional new Values. These new Values shall be specified in the Conformance Statement (see <a href="../part02/PS3.2.html" class="olink" shape="rect">PS3.2</a>) and shall not have the same meaning as currently defined Values in this Standard. A Data Element with Defined Terms that does not contain a Value equivalent to one of the Values currently specified in this Standard shall not be considered to have an invalid Value. An empty (zero length) Value is not a valid new Value for a Defined Term; empty Values shall be considered invalid unless the Standard specifically permits empty Values. New Values shall not have a meaning of unknown, since that concept, if permitted by the Standard, shall be conveyed explicitly either by allowing the Data Element to be zero length or by provision of a standard Defined Term with such a meaning.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_34c891b9-f039-4f66-822c-7eefa47e635d" shape="rect"></a>Reporting Priority (0040,1009) is an example of a Data Element having Defined Terms. It is defined to have a Value that may be one of the set of standard Values; HIGH, ROUTINE, MEDIUM, or LOW (see <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>). Because this Data Element has Defined Terms other reporting priorities may be defined by the implementer.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_bf1e465e-c87e-4984-9d45-48b5165a68d4" shape="rect"></a>The validity of empty Values is usually specified by the Attribute being defined as Type 2 (see <a class="xref" href="sect_7.4.3.html" title="7.4.3 Type 2 Required Data Elements" shape="rect">Section 7.4.3</a>). However, in the context of a required Type 1 Attribute with multiple Values, some (but not all) Values may be allowed to be empty (see <a class="xref" href="sect_7.4.html#sect_7.4.1" title="7.4.1 Type 1 Required Data Elements" shape="rect">Section 7.4.1</a>); in this case the Standard explicitly specifies the validity of empty Values in the list of Defined Terms for each Value. Specific Character Set (0008,0005) is an example of a Data Element for which the Standard specifically permits the first Value to be empty when multiple Values are present. Image Type (0008,0008) is an example of a Data Element that in some IODs defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> is required to be present with multiple Values, but if an empty Value is not explicitly listed in the Defined Terms for Value 3 by an IOD an empty Value is invalid.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_785721f4-e576-4b06-a4fe-b135cb42bcc3" shape="rect"></a>The Value Representation may affect the interpretation of Defined Terms and Enumerated Values for numeric Values. For binary Value Representations, the textual representation of the Value in the Standard does not affect the interpretation. For string Value Representations (IS and DS), the meaning of the Value in the Standard shall be used, not the literal string.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_0468f369-8286-4e32-bbd6-91fb57827ea2" shape="rect"></a>For example, an Enumerated Value of "1" expressed in the text of the Standard matches an IS or DS Value encoded as "001", or a DS Value encoded as "1.0" or "1." or "1.0000E+00" or any permitted encoding. Leading and trailing spaces are defined in <a class="xref" href="sect_6.2.html#table_6.2-1" title="Table 6.2-1. DICOM Value Representations" shape="rect">Table 6.2-1</a> not to be significant and hence do not affect the interpretation.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_6.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_6.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">6.2.3 URI/URL (UR) Value Representation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 6.4 Value Multiplicity (VM) and Delimitation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7 OSI Upper Layer Service for DICOM Application Entities</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.8.html" title="PS3.8" />
+      <link rel="up" href="PS3.8.html" title="PS3.8" />
+      <link rel="prev" href="chapter_6.html" title="6 Network Communication Support Environment" />
+      <link rel="next" href="sect_7.2.html" title="7.2 A-RELEASE Service" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024b - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7 OSI Upper Layer Service for DICOM Application Entities <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part08/chapter_7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.8.html" shape="rect">PS3.8</a>
+         </span> &gt; <span class="breadcrumb-node">OSI Upper Layer Service for DICOM Application Entities</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_7" shape="rect"></a>7 OSI Upper Layer Service for DICOM Application Entities</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_bb355d4a-f133-471b-86d4-e95d1777b51b" shape="rect"></a>This section provides a description of how to use the OSI Association Control Service Element (ACSE) and OSI Presentation Layer to provide the Upper Layer Service necessary to support the communication of DICOM Application Entities. This Upper Layer Service is a fully conformant subset of the services offered by the ACSE and the OSI Presentation Layer.</p>
+         <p>
+            <a id="para_798cf344-b591-42b7-a760-567f0604e6d6" shape="rect"></a>The UL Services are listed in <a class="xref" href="chapter_7.html#table_7-1" title="Table 7-1. Upper Layer Services" shape="rect">Table 7-1</a>.</p>
+         <div class="table">
+            <a id="table_7-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7-1. Upper Layer Services</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4db6d375-f06e-4559-bde2-637e5ff30eb6" shape="rect"></a>SERVICE</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c6110caa-624c-47f9-ae73-f3bb91818f42" shape="rect"></a>TYPE</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_87f0b632-6bb4-45fc-b260-3fc177d0f151" shape="rect"></a>A-ASSOCIATE</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14c146ce-1ae3-45e1-bc19-02f220d4e8a7" shape="rect"></a>Confirmed</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_811a4e84-7cc6-41d6-b486-495c6e7eba85" shape="rect"></a>A-RELEASE</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_759f4b5c-135d-4a57-bf4d-4a7322a83045" shape="rect"></a>Confirmed</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_862ee0ae-9e8a-4fdc-9736-c54eb1b73776" shape="rect"></a>A-ABORT</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7acda240-aa31-440c-8207-ce6f0c029cac" shape="rect"></a>Non-Confirmed</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_421dc6be-f5cc-4a09-ad3f-8a17b42b0d4b" shape="rect"></a>A-P-ABORT</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bae9d3a0-f96b-4a8f-a1d8-fcc129607521" shape="rect"></a>Provider-initiated</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a468fc0-fa23-4c4d-83f7-c3d0b68baa85" shape="rect"></a>P-DATA</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c1eb5cde-5597-4d23-bf3a-a1fd8740d34f" shape="rect"></a>Non-Confirmed</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_de5a8b4e-2618-4901-bd98-e6dd8b30df55" shape="rect"></a>In addition to the Upper Layer Service specification, this section defines at the parameter level the use of each element of this Upper Layer Service by DICOM Application Entities. The rules guiding the use of this Upper Layer Service by the DICOM Application Entities are addressed in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_7.1" shape="rect"></a>7.1 A-ASSOCIATE Service</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_567cc376-0c06-4c77-9c77-7904433d443b" shape="rect"></a>The establishment of an association between two AEs shall be performed through ACSE A-ASSOCIATE request, indication, response and confirmation primitives. The initiator of the service is hereafter called a requestor and the service-user that receives the A-ASSOCIATE indication is hereafter called the acceptor. It shall be a confirmed service.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_2ade15fd-9c82-4db5-bab6-1156655df4df" shape="rect"></a>The A-ASSOCIATE service supports the equivalent of a channel establishment in a point-to-point interface (see the retired PS3.9).</p>
+            </div>
+            <p>
+               <a id="para_6c75c795-a1fd-40f9-ba2c-580e25810034" shape="rect"></a>
+                <a class="xref" href="chapter_7.html#figure_7-1" title="Figure 7-1. Associate Request" shape="rect">Figure 7-1</a> illustrates the association establishment between two AEs.</p>
+            <p>
+               <a id="para_f0518379-545f-4dc1-bff4-538d3011ec95" shape="rect"></a>
+                </p>
+            <div class="figure">
+               <a id="figure_7-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.8_7-1.svg" alt="Associate Request" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure 7-1. Associate Request</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+            </p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.1" shape="rect"></a>7.1.1 A-ASSOCIATE Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9de52ff8-2a0d-4e92-b476-cacbb30a32a0" shape="rect"></a>
+                    <a class="xref" href="chapter_7.html#table_7-2" title="Table 7-2. Key A-ASSOCIATE Service Parameters" shape="rect">Table 7-2</a> lists the parameters that shall be required for the A-ASSOCIATE service used by DICOM Application Entities in this Standard.</p>
+               <div class="table">
+                  <a id="table_7-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 7-2. Key A-ASSOCIATE Service Parameters</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_609cf8c6-1c5f-477f-a220-88fb451d09ed" shape="rect"></a>A-ASSOCIATE parameter name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_63173311-d4d8-4f57-84bb-4e330f2ebe1f" shape="rect"></a>Request</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_92a6240e-7214-4154-bf8d-75e2684e2af1" shape="rect"></a>Indication</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c2f67370-4ef5-44e6-8137-6827743dff16" shape="rect"></a>Response</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ffc0c3fd-4973-45f6-9476-0ba5a2cdb6dd" shape="rect"></a>Confirmation</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_460904ca-a879-4a86-b00f-bfeb677ea1a9" shape="rect"></a>application context name</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8bd4d569-27c3-4c69-817e-da2ca9c981b5" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0cd6d787-daa4-4bf4-8bfd-27fd687a14b3" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a91ab713-f037-4d5a-bcf8-559baa1eb886" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7beca794-1430-4997-ad4f-0f936930de5c" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_df37ea79-c738-4e23-835a-308b7eda9549" shape="rect"></a>calling AE title</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_bfeb25e0-7cf0-4a49-9aca-326a750f7e81" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_da00ff30-1afa-4296-bd5a-c100abe59fd3" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1f6a06b4-d57e-48cf-9ca1-ebe06559d145" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2b345e16-1773-4762-a75c-25cf056a8cb0" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fb7d0cfd-c5c4-41a2-9d55-7e5c755d3c17" shape="rect"></a>called AE title</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fe1c5eb5-b8a6-4338-83df-c532faaa7124" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_16db23b1-6e38-42cf-b20b-a583cf6c62fd" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f2b66102-182a-451c-9e67-ab3537feaaf8" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_065552d5-221c-4958-b5cd-4c730698b472" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5aee805c-8dc0-4dd0-a68c-73ced52f4245" shape="rect"></a>user information</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7c23533d-d17b-4457-b7de-218e5d2c284d" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_db89d72b-81b9-4f41-b9fc-59b1759073ce" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_962306b0-6c63-4a70-8f48-7a16b39213de" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1cf1e29e-64ff-43af-ae16-6c9e7b34d6dc" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_315a333f-3036-4ddf-b306-dc5477c07bfa" shape="rect"></a>result</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2982d41b-f6a6-451f-9c0d-406bda5f6949" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a56aa5d7-2b0b-4d63-86bd-b6cead869814" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_21736cc4-7302-478f-9815-d8b7d16190bb" shape="rect"></a>result source</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_99ea5a76-b3dd-4c76-9bb9-408423d0f999" shape="rect"></a>M</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c8ffd34f-3d6b-482d-a946-877401d40718" shape="rect"></a>diagnostic</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3dda6de6-de1f-4824-9ecf-bf84de5e0e11" shape="rect"></a>U</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_55f4946d-b14f-4265-a06c-9e9c8a457e2d" shape="rect"></a>C(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a1d2c5a5-12af-4c30-a55d-980b906f7f27" shape="rect"></a>calling presentation address</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1ead04cd-5452-44f8-8a78-d48f3fb54560" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_17e23bcb-c04f-48d8-8d7f-781202091b4f" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e7e252b3-3964-4c20-8743-f4aec341283e" shape="rect"></a>called presentation address</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_241eca89-8859-4cd4-a6d0-54e2e3ed9eb6" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d7b41472-5ed9-468c-9179-ddf108ec07f7" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2ef5155d-79a3-4cd4-87f5-f6770c340355" shape="rect"></a>presentation context definition list</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_dd1a01d4-56be-464e-8504-d0dd37ca4bb3" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5f4da0c4-4d2e-4633-98fa-82b5484e82a0" shape="rect"></a>M(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1b0d1b33-1779-453b-97e4-9a88cdf1af2b" shape="rect"></a>presentation context definition list result</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e8d0ec26-d26c-4947-a422-e699291e2444" shape="rect"></a>M</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c23f3195-f35b-46cf-a33c-58d989139752" shape="rect"></a>M(=)</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_7859e116-8629-4043-8f0d-d9b99ab0e422" shape="rect"></a>See Section 5 of this Part for table conventions.</p>
+               </div>
+               <p>
+                  <a id="para_0e3a8b8d-7e35-42fe-80b5-9129e3cad776" shape="rect"></a>
+                    <a class="xref" href="chapter_7.html#table_7-3" title="Table 7-3. A-ASSOCIATE Service Parameter (Fixed or Not Used)" shape="rect">Table 7-3</a> lists the parameters for the A-ASSOCIATE service that shall contain fixed values or shall not be used by DICOM Application Entities in this Standard.</p>
+               <div class="table">
+                  <a id="table_7-3" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 7-3. A-ASSOCIATE Service Parameter (Fixed or Not Used)</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f00385ce-a48d-434f-91a3-d95d80c8b3c3" shape="rect"></a>A-ASSOCIATE parameter name</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_86cc4a1d-a3db-482d-98b8-02795fb8678a" shape="rect"></a>Request</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_857832ab-ba8f-4b84-9e9a-cc7c327b20ba" shape="rect"></a>Indication</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_56ac254a-49e1-42a2-854f-b133e19c0eaf" shape="rect"></a>Response</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2c36589c-aa64-486b-b9dc-85086ff5bd66" shape="rect"></a>Confirmation</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_48db2451-4171-4e8f-81ee-2232c1b4544c" shape="rect"></a>mode</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2ce5e89f-087c-43f3-b5bc-ee144469eeb3" shape="rect"></a>UF</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_502e28d8-c631-40f8-aa71-d8e9211876b5" shape="rect"></a>MF(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_623aee69-5c76-4a6d-84b6-72875a184f26" shape="rect"></a>responding AE title</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3a1b2309-45f6-4c54-b780-a74b7e7315d8" shape="rect"></a>MF</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7d09c2fd-c607-4ba9-b8f4-bb309916a01c" shape="rect"></a>MF(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2fac9c06-409c-443d-b0d4-125bbad0ffaf" shape="rect"></a>calling/called/responding AE qualifier</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2bbe7d7a-82bb-4ad7-a8c7-f2c8577969a9" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3cf6058d-0c8a-4d4d-b3e6-77edd75ec550" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_690f164e-88e5-4455-afe6-e37cd26936b5" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a936d9fa-c3c8-41bb-b6c8-b744b46ce178" shape="rect"></a>NU</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ae071f71-6a62-4e69-bbc6-f5c9d98d7f75" shape="rect"></a>calling/called/responding AP invoc-id</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ebd96650-0f60-47c2-ac73-39d9ef397a38" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fc18df27-caa9-4e80-9c0f-6dfaa3e915c3" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3f4da86a-841c-450b-8077-b650c328b218" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4c5898e6-79b9-41fe-9579-6b2e046205a8" shape="rect"></a>NU</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c135915b-e501-4031-b4f9-38fba13e78d2" shape="rect"></a>calling/called/responding AE invoc-id</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_94ae9f13-b64b-41cc-a011-9d4e689a658a" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_4234d9d0-072d-4bd0-82b3-9b80dbba11f4" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_6cf3b901-80f3-46c9-95bd-57c24204dc42" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_26b3a58b-61e9-4f8a-8887-d148a0d71cbd" shape="rect"></a>NU</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5a42f911-fe55-4a8a-917c-14eb805859c0" shape="rect"></a>responding presentation address</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_3ba30ff3-5c80-464c-b131-4c1f43a68d18" shape="rect"></a>MF</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7036317e-b93b-4f8f-b3cc-0a3cfa958447" shape="rect"></a>MF(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_151a80ac-7647-44f9-a883-9d2877b35526" shape="rect"></a>default context name/result</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9d9b727c-bf26-48c4-8e58-906dec95f5d9" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_731c0d5b-93a7-4d3a-ad12-65f8a8a328ff" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_aa6e95ff-4f1f-4bb7-817c-3277721e5314" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_829e4dd5-0578-4524-a3b9-eb2d3de31475" shape="rect"></a>NU</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_87af8fd4-e76a-4e6a-ab0e-f486f604e02a" shape="rect"></a>presentation &amp; session requirements</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f4bb3cdf-c8d6-4926-a86c-849ff045f81c" shape="rect"></a>UF</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5797e1cb-5037-4276-83f5-a1f59a463b62" shape="rect"></a>UF(=)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_54e18e1d-4045-4906-a502-a3aad599522e" shape="rect"></a>UF</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e97f7116-d5e9-4c42-a6b9-fb6c9969635c" shape="rect"></a>UF(=)</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8387deac-b2c5-4010-907f-af7ad6aacf75" shape="rect"></a>other parameters (see ISO 8822 &amp; 8649)</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_249d303d-315b-4671-9848-32608b9abe1f" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_fa3193d3-7f49-4059-a386-0a1ceb219cfe" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b8f6d07d-04c8-4b23-b31b-e6e034e88b77" shape="rect"></a>NU</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_21a79032-ec28-422a-8112-d5d366731e48" shape="rect"></a>NU</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.1" shape="rect"></a>7.1.1.1 Mode (Fixed)</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_721cb39f-154e-4ae6-9d58-a80ee8338622" shape="rect"></a>This parameter allows the negotiation of the optional Mode OSI-ACSE Service parameter. Only the default value of "normal" is used by DICOM Application Entities. Therefore, this parameter shall always specify the value "normal".</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.2" shape="rect"></a>7.1.1.2 Application Context Name</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_e03e3aae-afe7-4f4c-8532-3288dfc7d693" shape="rect"></a>This parameter identifies the application context proposed by the requestor. The acceptor shall return either the same or a different name. The returned name shall specify the application context to be used for this association. Further discussion on Application Context Names can be found in <a class="xref" href="chapter_A.html" title="A Application Context Names (Informative)" shape="rect">Annex A</a>.</p>
+                  <p>
+                     <a id="para_69f10b1b-c028-460c-9541-5d777dffa2f2" shape="rect"></a>An application context is an explicitly defined set of application service elements, related options, and any other information necessary for the interworking of application entities on an association.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_d862c7f3-6397-49b6-98a2-8f8a558235f9" shape="rect"></a>The offer of an alternate application context by the acceptor provides a mechanism for limited negotiation. If the requestor cannot operate in the acceptor's application context, it shall issue an A-Abort request primitive. Application Context Names for the DICOM Application Entity as well as Application Context Names usage rules are defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.3" shape="rect"></a>7.1.1.3 Calling AE Title</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_94e7d1d9-0646-44f8-906a-1a56a2306537" shape="rect"></a>This parameter identifies the Application Entity (AE) that shall contain the requestor of the A-ASSOCIATE service. It is based on the Source DICOM Application Name. The relationship between DICOM Application Names and AE titles is specified in <a class="xref" href="chapter_C.html" title="C DICOM Addressing (Normative)" shape="rect">Annex C</a>. The Calling AE title may or may not be the same as the Initiator Address present in DICOM Messages exchanged over the association.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_5af80de9-d896-408b-a8e9-319f0923409b" shape="rect"></a>It is the responsibility of the UL User that received the A-ASSOCIATE-RQ to verify whether the Calling AE Title is one of its known remote DICOM Application Names.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.4" shape="rect"></a>7.1.1.4 Called AE Title</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9f5eef28-a719-41df-9142-703241c73dbf" shape="rect"></a>This parameter identifies the Application Entity that shall contain the intended acceptor of the A-ASSOCIATE service. It is based on the Destination DICOM Application Name. The relationship between DICOM Application Name and AE titles is specified in <a class="xref" href="chapter_C.html" title="C DICOM Addressing (Normative)" shape="rect">Annex C</a>. The Called AE title may or may not be the same as the Receiver Address present in DICOM Messages exchanged over the association.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_fc119953-7080-435e-bb1f-208cbeda0a0d" shape="rect"></a>It is the responsibility of the UL User that received the A-ASSOCIATE-RQ to verify whether the Called AE Title is its (or one of its) DICOM Application Name(s).</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.5" shape="rect"></a>7.1.1.5 Responding AE Title (Fixed)</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_dde8e63d-8f01-4a9c-a502-6f29298e6cdd" shape="rect"></a>This parameter identifies the AE that shall contain the actual acceptor of the A-ASSOCIATE service. In this Standard it shall always contain the same value as the Called AE Title of the A-ASSOCIATE indication.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.6" shape="rect"></a>7.1.1.6 User Information</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_dcb5c2bd-61d3-4daa-8725-efdb17bcdc99" shape="rect"></a>This parameter shall be used by the requestor and the acceptor of the association to include DICOM Application Entity user information. Its meaning shall depend on the application context that accompanies the primitive. The usage of this parameter is specified in <a class="xref" href="chapter_D.html" title="D Use and Format of the A-ASSOCIATE User Information Parameter (Normative)" shape="rect">Annex D</a>.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_b33ba4bf-2951-4e4a-bf24-06ded9d5c952" shape="rect"></a>This parameter is used to carry initialization information for the DICOM Application Entities as defined in the application context specified by the value of the accompanying Application Context Name parameter.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_b9a3ceb4-4e98-48b2-afbd-cfff4551530b" shape="rect"></a>
+                                    <a class="xref" href="chapter_D.html" title="D Use and Format of the A-ASSOCIATE User Information Parameter (Normative)" shape="rect">Annex D</a> specifies some user information sub-items, and references <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for the specification of additional sub-items. <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>, in turn, references <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a> for the specification of Service-class-application-information used in some sub-items.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.7" shape="rect"></a>7.1.1.7 Result</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_b4b8f925-1e02-462e-a0fc-a10bdb22caad" shape="rect"></a>This parameter shall be provided either by the acceptor of the A-ASSOCIATE request, by the UL service-provider (ACSE related function), or by the UL service-provider (Presentation related function). It shall indicate the result of using the A-ASSOCIATE service. It shall take one of the following symbolic values:</p>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="a">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_0501c25d-cc6b-4780-9472-97f3b8fd76cd" shape="rect"></a>accepted;</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a1962a35-101d-40db-b183-ab9cb05611f1" shape="rect"></a>rejected (permanent);</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_fe1770b2-78fd-4ef9-9741-ed9ed2f59e0b" shape="rect"></a>rejected (transient).</p>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_bcb2a57c-dd79-4c10-b982-518ac343eeef" shape="rect"></a>The rejected (permanent) implies that the association calling UL user (when returning such a result to an association request) does not need to "call later". A permanent situation exists that prevents the association establishment (e.g., remote DICOM Application Name unknown).</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.8" shape="rect"></a>7.1.1.8 Result Source</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_ae02b361-ce0c-4afa-a0be-5eaaf9b18332" shape="rect"></a>The value of the parameter is supplied by the UL service-provider. It identifies the creating source of the Result parameter and the Diagnostic parameter, if present. It shall take one of the following symbolic values:</p>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="a">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_1aefe64c-2a5c-47c0-8350-34a55a9d5814" shape="rect"></a>UL service-user;</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_305660f9-8382-4130-af10-5b613905a941" shape="rect"></a>UL service-provider (ACSE related function);</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4acb1370-4878-479d-87e7-c6090d296b12" shape="rect"></a>UL service-provider (Presentation related function).</p>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_70e94b0a-0710-41b4-a0ca-4c2683754e47" shape="rect"></a>If the Result parameter has the value "accepted", the value of this parameter is "UL service-user".</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.9" shape="rect"></a>7.1.1.9 Diagnostic</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_d27eadc7-b6c9-44dc-881c-252569ea0418" shape="rect"></a>This parameter shall only be used if the Result parameter has the value of "rejected (permanent)" or "rejected (transient)". It shall be used to provide diagnostic information about the result of the A-ASSOCIATE service.</p>
+                  <p>
+                     <a id="para_866fdd1d-ffa0-4388-a898-e2b8cb87e880" shape="rect"></a>If the Result Source parameter has the value "UL service-user", it shall take one of the following symbolic values:</p>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="a">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_e331e6e5-743c-4345-acc4-9969a3f88c17" shape="rect"></a>no-reason-given</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_274b40b5-09f2-4295-aec9-678f1f566d61" shape="rect"></a>application-context-name not supported</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f3e3a55b-70bb-4f29-97c6-fe77f1edd12a" shape="rect"></a>calling-AE-title not recognized</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f650a049-a01f-41e2-884c-8871dc86ce8a" shape="rect"></a>called-AE-title not recognized</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_603bc30e-e875-4ca0-8a5c-c96eab091f4b" shape="rect"></a>calling-AE-qualifier not recognized (see note)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f5a55024-c1c9-4efe-850a-148a11e4abed" shape="rect"></a>calling-AP-invocation-identifier not recognized (see note)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c524a2a9-3a26-417c-acd9-68c53cf2616d" shape="rect"></a>calling-AE-invocation-identifier not recognized (see note)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3ad40d57-378f-456d-a1c2-f9075fae3e0a" shape="rect"></a>called-AE-qualifier not recognized (see note)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a255e5c1-93ba-4c72-8d54-4737c956c2b2" shape="rect"></a>called-AP-invocation-identifier not recognized (see note)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3a670915-1caa-4e51-9541-737dfb602a4c" shape="rect"></a>called-AE-invocation-identifier not recognized (see note)</p>
+                        </li>
+                     </ol>
+                  </div>
+                  <p>
+                     <a id="para_99a19d2f-4709-45c5-81f1-9c366935c408" shape="rect"></a>If the Result Source parameter has the value "UL service-provider" (ACSE related function), it shall take one of the following symbolic values:</p>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="a">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_674c964e-1f8c-4463-b8fa-8c7e771bfa35" shape="rect"></a>no-reason-given</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_af2e02b1-c006-42a0-a047-c5da288634a1" shape="rect"></a>no-common-UL version</p>
+                        </li>
+                     </ol>
+                  </div>
+                  <p>
+                     <a id="para_7ae08ba7-3e26-4200-9d06-5b9481f698f7" shape="rect"></a>If the result source has the value "UL service-provider" (Presentation related function), it shall take the following symbolic values:</p>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="a">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2b64cabb-b3b4-449f-98bc-ee2d2384600b" shape="rect"></a>no-reason-given</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_884d1400-a168-48ed-bb66-4e2df9a8b781" shape="rect"></a>temporary-congestion</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4b75e225-6e36-4f80-a5f8-f2ac7a2aa19f" shape="rect"></a>local-limit-exceeded</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2c66ff3a-db2c-41d6-a823-968b3b8255fd" shape="rect"></a>called-(Presentation) -address-unknown</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_46be317a-387d-4144-ac6e-874941afbfba" shape="rect"></a>Presentation-protocol version not supported</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_07ff9239-5864-443c-9a42-abbf6f54f7f9" shape="rect"></a>no-(Presentation) Service Access Point (SAP) available</p>
+                        </li>
+                     </ol>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_1f72bb93-1992-4a29-bbe1-868276524f69" shape="rect"></a>Even though some of the above symbolic values correspond to parameter errors not used in this Standard, they are included to allow the notification of errors resulting from the unauthorized use of these parameters.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.10" shape="rect"></a>7.1.1.10 Calling Presentation Address</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_aafa86a2-0312-46a6-a014-be237d925a72" shape="rect"></a>This parameter shall contain a structured destination address unambiguous within the global network address structure. This shall be a TCP/IP Address. See <a class="xref" href="chapter_C.html" title="C DICOM Addressing (Normative)" shape="rect">Annex C</a>.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.11" shape="rect"></a>7.1.1.11 Called Presentation Address</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_939c53c5-3f75-49d7-b5d9-a1d2b39224da" shape="rect"></a>This parameter shall contain a structured destination address unambiguous within the global network address structure. This shall be a TCP/IP Address. See <a class="xref" href="chapter_C.html" title="C DICOM Addressing (Normative)" shape="rect">Annex C</a>.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.12" shape="rect"></a>7.1.1.12 Responding Presentation Address</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9b7a1067-1eb3-426c-904d-bbdcc6bbaba9" shape="rect"></a>In this Standard, a responding presentation address shall always contain the same value as the called Presentation Address of the A-ASSOCIATE indication. This parameter shall contain a structured destination address unambiguous within the global network address structure.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.13" shape="rect"></a>7.1.1.13 Presentation Context Definition List</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_86554153-8288-40be-a2dc-5674bf54bda8" shape="rect"></a>This parameter used in an A-ASSOCIATE request or indication shall consist of a list containing one or more presentation contexts. Each item shall contain three components, a presentation context identification, an Abstract Syntax Name, and a list of one or more Transfer Syntax Names.</p>
+                  <p>
+                     <a id="para_246a91dc-2c96-40cb-a681-aa564f2c7c56" shape="rect"></a>The presentation context identification components of this parameter exist to distinguish presentation contexts in communication. Such an identification of presentation context(s) applies only within the context of a given association (i.e., different presentation contexts may be identified by the same presentation context identification on different associations). It is the association-requestor's responsibility to assign an arbitrary, but unused identifier for each proposed presentation context on a given association. There is no restriction on the ordering of the presentation contexts in relation to their identifiers.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_e1988979-c006-4533-9ad8-883bef90fa48" shape="rect"></a>A separate presentation context will be associated with each Abstract Syntax Name in each of the elements of the Presentation Context Definition List parameter. If the same Abstract Syntax Name occurs more than once, a separate and distinctly identified presentation context will be generated for each occurrence (as only one Transfer Syntax per presentation context can be accepted).</p>
+                  </div>
+                  <p>
+                     <a id="para_d1eaf481-679e-47f7-9c48-e73756aa6fbd" shape="rect"></a>Abstract Syntaxes defined by this Standard and used by DICOM Application Entites are defined in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>. Transfer Syntaxes defined by this Standard and used by DICOM Application Entities are defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>. Further discussion on Abstract Syntaxes and Transfer Syntaxes can be found in <a class="xref" href="chapter_B.html" title="B Abstract and Transfer Syntaxes (Informative)" shape="rect">Annex B</a>.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.14" shape="rect"></a>7.1.1.14 Presentation Context Definition Result List</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_78da6f65-2d84-4169-a704-a80b1c166e89" shape="rect"></a>This parameter used in the A-ASSOCIATE Response and Confirmation indicates the acceptance or rejection of each of the presentation context definitions proposed in the presentation context definition list parameter (<a class="xref" href="chapter_7.html#sect_7.1.1.13" title="7.1.1.13 Presentation Context Definition List" shape="rect">Section 7.1.1.13</a>). The Presentation Context Definition Result List parameter shall take the form of a list of result values. There is a one to one correspondence between each one of these result values and each of the presentation contexts proposed in the Presentation Context Definition List parameter. Each result value represents either "acceptance", "user-rejection", or "provider-rejection". The values of the results are assigned by the UL user on the response service primitive. The result values may be sent in any order.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_68a74ba7-b553-4eb0-8ac5-5f3b7fa4de30" shape="rect"></a>The order of the results may be different than the order proposed. The order need not be sorted by identifier, and the Initiator may not assume or depend upon any particular order.</p>
+                  </div>
+                  <p>
+                     <a id="para_e0e70fb8-d78f-49b9-a79d-859f25b75cbf" shape="rect"></a>In this Standard only one Transfer Syntax per presentation context shall be agreed to, even though more than one choice of Transfer Syntaxes may have been offered in a specific presentation context of the Presentation Context Definition list.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.15" shape="rect"></a>7.1.1.15 Presentation Requirements (Fixed Value)</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_5f8ecedd-d9cb-4faa-bc51-c34686676fa4" shape="rect"></a>This parameter allows the negotiation of optional presentation functional units beyond the Presentation Kernel. Only the Kernel Functional Unit is used by DICOM Application Entities. Therefore, this parameter shall always specify "Presentation Kernel".</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.16" shape="rect"></a>7.1.1.16 Session Requirements (Fixed Value)</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_440493db-3ca2-4621-aa74-4a8dfd2a62ef" shape="rect"></a>This parameter allows the negotiation of optional session Functional Units beyond the Session Kernel. Only the Kernel functional unit with the Full Duplex Functional Unit shall be used by DICOM Application Entities.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_7.1.1.17" shape="rect"></a>7.1.1.17 Other Parameters</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_94dfd80b-01b0-42bb-a851-d4b8a46ad460" shape="rect"></a>A few optional parameters defined in the OSI ACSE (ISO 8649) and OSI Presentation Service (ISO 8822) Standards are not identified here. They are not necessary for the communication of DICOM Application Entities and shall not be used in this Standard.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.2" shape="rect"></a>7.1.2 A-ASSOCIATE Service Procedure</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4642277f-f5cb-4f0c-b536-446616705326" shape="rect"></a>A DICOM Application Entity (which includes the Upper Layer service-user) that desires to establish an association shall issue an A-ASSOCIATE request primitive. The called AE is identified by parameters of the request primitive. The requestor shall not issue any primitives except an A-ABORT request primitive until it receives an A-ASSOCIATE confirmation primitive.</p>
+               <p>
+                  <a id="para_8ac7125f-94bd-4078-93b7-bb640545513f" shape="rect"></a>The Upper Layer (UL) service-provider shall issue an A-ASSOCIATE indication primitive to the called AE.</p>
+               <p>
+                  <a id="para_86c27f9c-a0df-4d28-9a4a-d66131381974" shape="rect"></a>The called AE shall accept or reject the association by sending an A-ASSOCIATE response primitive with an appropriate Result parameter. The Upper layer service-provider shall issue an A-ASSOCIATE confirmation primitive having the same Result parameter. The Result Source parameter shall be assigned the symbolic value of "UL service-user".</p>
+               <p>
+                  <a id="para_aeb5671c-1128-4308-a676-f60691d7e4b1" shape="rect"></a>If the acceptor accepts the association, the association is available for use. Both AEs may now use any service provided by the DICOM application context that is in effect (with the exception of A-ASSOCIATE).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_b8b65c5f-e262-49d4-811a-1feecc58f2ff" shape="rect"></a>This implies that once the association has been established, DICOM Messages can be exchanged as defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+               </div>
+               <p>
+                  <a id="para_9d70938e-e13d-4ef5-ae51-b5f7f718d677" shape="rect"></a>If the called AE rejects the association, the association shall not be established.</p>
+               <p>
+                  <a id="para_16db10c3-c41d-4604-ac71-f00c32607d25" shape="rect"></a>The UL service-provider may not be capable of supporting the requested association. In this situation, it shall return an A-ASSOCIATE confirmation primitive to the requestor with an appropriate Result parameter (rejected). The Result Source parameter shall be appropriately assigned either the symbolic value of "UL service-provider (ACSE related function)" or "UL service-provider (Presentation related function)". The indication primitive shall not be issued. The association shall not be established.</p>
+               <p>
+                  <a id="para_bece1805-0863-4b0d-bae0-04b1b0a43eba" shape="rect"></a>Either an association-requestor or acceptor may disrupt the A-ASSOCIATE service procedure by issuing an A-ABORT request primitive (see <a class="xref" href="sect_7.3.html" title="7.3 A-ABORT Service" shape="rect">Section 7.3</a>). The remote AE receives an A-ABORT indication primitive. The association shall not be established.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">6 Network Communication Support Environment </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.8.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.2 A-RELEASE Service</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024b - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

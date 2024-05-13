@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9.3.2.3 User Information Item Structure</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.8.html" title="PS3.8" />
+      <link rel="up" href="sect_9.3.2.html" title="9.3.2 A-ASSOCIATE-RQ PDU Structure" />
+      <link rel="prev" href="sect_9.3.2.2.2.html" title="9.3.2.2.2 Transfer Syntax Sub-Item Structure" />
+      <link rel="next" href="sect_9.3.3.html" title="9.3.3 A-ASSOCIATE-AC PDU Structure" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024b - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9.3.2.3 User Information Item Structure <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part08/sect_9.3.2.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.3.2.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">9.3.2 A-ASSOCIATE-RQ PDU Structure</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.8.html" shape="rect">PS3.8</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_9.html" shape="rect">DICOM Upper Layer Protocol for TCP/IP</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.3.html" shape="rect">DICOM Upper Layer Protocol for TCP/IP Data Units Structure</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_9.3.2.html" shape="rect">A-ASSOCIATE-RQ PDU Structure</a>
+         </span> &gt; <span class="breadcrumb-node">User Information Item Structure</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_9.3.2.3" shape="rect"></a>9.3.2.3 User Information Item Structure</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f9de6d67-9176-42ee-9fdd-9d912c4168cf" shape="rect"></a>The User Information Item shall be made of a sequence of mandatory fixed length fields followed by a variable field. <a class="xref" href="sect_9.3.2.3.html#table_9-16" title="Table 9-16. User Information Item Fields" shape="rect">Table 9-16</a> shows the sequence of the mandatory fields.</p>
+         <p>
+            <a id="para_9d791b0a-f7ff-48da-82fc-7caaef43d08b" shape="rect"></a>The variable field shall consist of one or more User-Data Sub-Items.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_3fcd5965-1502-4619-a2a7-cf99b09dcc5b" shape="rect"></a>The User-Data Sub-Items may be present in any order within the User-Information Item. No significance should be placed on the order of User-Data Sub-Items within the User Information Item. Sending applications should be aware that some older applications might expect Sub-Items to be encoded in ascending order of Item-type within the enclosing Item.</p>
+         </div>
+         <div class="table">
+            <a id="table_9-16" shape="rect"></a>
+            <p class="title">
+               <strong>Table 9-16. User Information Item Fields</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ba6f0bb3-6b65-4a35-be40-23ab3afb66f6" shape="rect"></a>
+                                        <span class="bold">
+                                 <strong>Item bytes</strong>
+                              </span>
+                                    </p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f33a5591-9907-46f6-84ac-f4af5870a55b" shape="rect"></a>
+                                        <span class="bold">
+                                 <strong>Field name</strong>
+                              </span>
+                                    </p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a3bfb2ce-a93f-473f-b98b-bcdfe0fdae88" shape="rect"></a>
+                                        <span class="bold">
+                                 <strong>Description of field</strong>
+                              </span>
+                                    </p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a3d7b87-d7ed-4261-bedf-fcdeb31aad9d" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b9d928b9-d34c-4d6f-8a84-887ababfa109" shape="rect"></a>Item-type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ce755383-92e1-4d3d-bcce-909312244864" shape="rect"></a>50H</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5ebf99d7-5b02-44d0-9d64-17d7e4405bbd" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_04c474b2-7847-4452-8766-930f1aa0ea74" shape="rect"></a>Reserved</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8a71ae25-e6d2-4191-9a38-080a9ef02954" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6dc0d29e-9fca-4aee-aa35-d5e2db08b41a" shape="rect"></a>3-4</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f33fdef-a55b-46ce-9215-d9d1abb39f0e" shape="rect"></a>Item-length</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9bd93a09-7172-4a85-ad90-00bd0f8da020" shape="rect"></a>This Item-length shall be the number of bytes from the first byte of the following field to the last byte of the User-data field(s). It shall be encoded as an unsigned binary number.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c0f042dc-2643-4086-ad7b-66c3ffffee98" shape="rect"></a>5-xxx</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b25883dc-56c7-4c33-a3e8-6564e4cc6550" shape="rect"></a>User-data</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_857183f1-1fc9-494c-a718-221d303c7682" shape="rect"></a>This variable field shall contain User-data sub-items as defined by the DICOM Application Entity. The structure and content of these sub-items is defined in <a class="xref" href="chapter_D.html" title="D Use and Format of the A-ASSOCIATE User Information Parameter (Normative)" shape="rect">Annex D</a>.</p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.3.2.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_9.3.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.3.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.3.2.2.2 Transfer Syntax Sub-Item Structure </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.8.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.3.3 A-ASSOCIATE-AC PDU Structure</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.8 2024b - Network Communication Support for Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

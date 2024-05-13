@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>KK.2 Inventory Creation SOP Class</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_KK.html" title="KK Storage Management Service Class" />
+      <link rel="prev" href="chapter_KK.html" title="KK Storage Management Service Class" />
+      <link rel="next" href="sect_KK.2.2.html" title="KK.2.2 Operations" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">KK.2 Inventory Creation SOP Class <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_KK.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_KK.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">KK Storage Management Service Class</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_KK.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_KK.html" shape="rect">Storage Management Service Class</a>
+         </span> &gt; <span class="breadcrumb-node">Inventory Creation SOP Class</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_KK.2" shape="rect"></a>KK.2 Inventory Creation SOP Class</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_KK.2.1" shape="rect"></a>KK.2.1 Overview</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_ea8d4921-3ea9-4e6c-986a-21266cf557c5" shape="rect"></a>The Inventory Creation SOP Class allows an SCU Application Entity to request a peer SCP Application Entity to produce an Inventory of the Studies, Series, and Instances that it manages.
+                    The request for the Inventory may include a set of matching keys to limit the Scope of Inventory to Studies with corresponding Attribute values.
+                    The Inventory produced is encoded in one or more SOP Instances of the Inventory SOP Class (see <a class="xref" href="chapter_GG.html" title="GG Non-Patient Object Storage Service Class" shape="rect">Annex GG</a>).
+                    Success or failure of Inventory production is indicated by a notification from the SCP to the SCU.
+                    The SCU may then access the Inventory SOP Instances by a mechanism supported by the SCP, including Query/Retrieve (see <a class="xref" href="chapter_JJ.html" title="JJ Inventory Query/Retrieve Service Class" shape="rect">Annex JJ</a>), Non-Patient Instance Services (see <a href="../part04/sect_C.6.2.html#sect_C.6.2.1" class="olink" shape="rect">Section C.6.2.1 in PS3.4</a>), or a non-DICOM file access protocol.
+                    See additional explanatory information in <a href="../part17/chapter_YYYY.html" class="olink" shape="rect">Annex YYYY “Inventories (Informative)” in PS3.17</a>.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_KK.2.1.1" shape="rect"></a>KK.2.1.1 Inventory Production States</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_7f231344-f008-4a0f-a064-0d1ce4f70c40" shape="rect"></a>The SOP Class defines five states for the Inventory production with associated state transitions (see <a class="xref" href="sect_KK.2.html#figure_KK.2-1" title="Figure KK.2-1. Inventory Production States and State Transitions" shape="rect">Figure KK.2-1</a>).
+                        Some of the transitions are associated with receipt and processing of N-ACTION requests (labeled arrows in the figure).</p>
+               <p>
+                  <a id="para_442f2dfa-af1c-466a-af31-a5a786fdcad2" shape="rect"></a>
+                        </p>
+               <div class="figure">
+                  <a id="figure_KK.2-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.4_KK.2-1.svg" alt="Inventory Production States and State Transitions" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure KK.2-1. Inventory Production States and State Transitions</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                    </p>
+               <p>
+                  <a id="para_02cd14d1-b6cf-467c-9b85-05838047c926" shape="rect"></a>After the Initiate request, production is in the PROCESSING state.
+                        Production will proceed and reach one of two terminal states without further N-ACTION operations - COMPLETE or FAILURE.</p>
+               <p>
+                  <a id="para_c686079a-3860-4ae4-a3ca-dcc81c9ad85a" shape="rect"></a>Production may be PAUSED, either due to an N-ACTION request or due to conditions internal to the SCP, for example, a temporary shortage of resources.
+                        Production may be returned to the PROCESSING state by a Resume request or by SCP internal actions.</p>
+               <p>
+                  <a id="para_d834f014-f52c-4893-bee2-9f079641122f" shape="rect"></a>From either the PROCESSING or PAUSED state the production may be changed to the CANCELED terminal state by a Cancel request or by SCP internal actions.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_KK.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_KK.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_KK.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">KK Storage Management Service Class </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> KK.2.2 Operations</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

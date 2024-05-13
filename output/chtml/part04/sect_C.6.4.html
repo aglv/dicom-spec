@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.6.4 Repository Query SOP Class</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_C.6.html" title="C.6 SOP Class Definitions" />
+      <link rel="prev" href="sect_C.6.3.html" title="C.6.3 Patient/Study Only SOP Class Group (Retired)" />
+      <link rel="next" href="sect_C.6.4.2.html" title="C.6.4.2 Repository Query Request Identifier Attributes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.6.4 Repository Query SOP Class <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.6.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.6.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.6 SOP Class Definitions</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.6.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.6.html" shape="rect">SOP Class Definitions</a>
+         </span> &gt; <span class="breadcrumb-node">Repository Query SOP Class</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.6.4" shape="rect"></a>C.6.4 Repository Query SOP Class</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_cc75288b-fb16-4aef-910f-12c8725568c0" shape="rect"></a>The Repository Query SOP Class uses the C-FIND Service and the Study Root Query/Retrieve Information Model.
+                    The SOP Class specifies additional semantics and behaviors for the SCU and SCP beyond those defined for the Study Root Query/Retrieve Information Model - FIND SOP Class.</p>
+         <p>
+            <a id="para_5aca886e-c61b-45a2-9d85-97399b65fd80" shape="rect"></a>In particular, the Repository Query SOP Class supports incremental query/response for a large number of entities using the following features:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_a5254ecd-dbd3-44b0-8aa6-81b26223f202" shape="rect"></a>Both the SCU and SCP may set limits on the number of entity records (Pending status responses) returned in a C-FIND transaction.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a0e9555d-fb6f-4ebd-9a70-259a86562478" shape="rect"></a>If the number of responses would exceed the SCU or SCP limit, the C-FIND query processing is terminated with a defined Warning status response indicating an incomplete set of responses.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_728da84e-ed34-4645-ae1c-cca3080069fb" shape="rect"></a>If requested by the SCU, each response returns a unique Record Key (0008,041B) value by which the SCP orders the C-FIND responses.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_8d42c996-9e67-4268-aaa7-c444eb4ecfc1" shape="rect"></a>The SCU may include a Record Key (0008,041B) value it received in one C-FIND transaction as the Prior Record Key (0008,041C) in the C-FIND Request for a subsequent transaction.
+                            The SCP processes that subsequent C-FIND beginning with the record following that Prior Record Key (0008,041C).</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_e2a02e58-8687-484f-8e80-e829cfac632e" shape="rect"></a>The Repository Query SOP Class also supports return of URI links for access to stored SOP Instances using a non-DICOM file access protocol.
+                    Since stored SOP Instances accessed through a non-DICOM protocol might not include all current metadata Attributes (such as updated patient names or IDs), the Repository Query SOP Class also supports return of current metadata Attributes whose values might differ from those in the stored SOP Instance.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_021d556a-df93-453a-8956-e8ca7425a0d6" shape="rect"></a>See additional explanatory information in <a href="../part17/chapter_YYYY.html" class="olink" shape="rect">Annex YYYY “Inventories (Informative)” in PS3.17</a>, including discussion of the use of the Repository Query SOP Class to produce an Inventory SOP Instance.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_C.6.4.1" shape="rect"></a>C.6.4.1 Additional Query Information Model Attributes</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_b640f6d1-ab78-4f7c-b85e-f134fd3a35c5" shape="rect"></a>The Repository Query SOP Class uses the Study Root Query/Information model specified in <a class="xref" href="sect_C.6.2.html#sect_C.6.2.1" title="C.6.2.1 Study Root Query/Retrieve Information Model" shape="rect">Section C.6.2.1</a>, but specifies additional Key Attributes.
+                        These Key Attributes, like those defined in <a class="xref" href="sect_C.3.4.html" title="C.3.4 Additional Query/Retrieve Attributes" shape="rect">Section C.3.4</a>, are not specified in the Composite IODs of <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>, but represent information that may be used by a repository system for managing stored SOP Instances.
+                        <a class="xref" href="sect_C.6.4.html#table_C.6.4.1-1" title="Table C.6.4.1-1. Additional Keys for Repository Query" shape="rect">Table C.6.4.1-1</a> defines the additional Key Attributes.</p>
+            <div class="table">
+               <a id="table_C.6.4.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.6.4.1-1. Additional Keys for Repository Query</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_fee76f59-496e-46ed-bcb2-7691879d580d" shape="rect"></a>Attribute Name</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_29791820-3b92-41da-b5e8-938fef6a7a06" shape="rect"></a>Tag</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_22d96261-0a8a-4c2e-b65f-a32e99d586b3" shape="rect"></a>Type</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_70264277-09bd-4b76-8f63-692c7b2f59dd" shape="rect"></a>Attribute Description</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c5a49061-1db4-41cd-994b-391857a42497" shape="rect"></a>Record Key</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ad7a865d-1b57-46df-82ac-06194f632b39" shape="rect"></a>(0008,041B)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7334d47c-5e3e-4196-bf57-cfa44bc34fcc" shape="rect"></a>R</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6f274e8b-c8b6-477c-9de3-ee2296123806" shape="rect"></a>Implementation-specific unique identifier of the entity record. This Attribute is supported only with Universal Matching. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.1" title="C.6.4.1.1 Record Key" shape="rect">Section C.6.4.1.1</a>.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_69714ab5-82aa-449f-9714-ca900a74cffb" shape="rect"></a>Removed from Operational Use</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_186d1535-515b-4ad6-85ea-5639b6243dfc" shape="rect"></a>(0008,0405)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_292e94d1-3a5b-46d2-8695-99b488e48962" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f5eedf79-dc89-413f-a559-dcd246a7df2d" shape="rect"></a>Flag that the entity at the Query/Retrieve Level specified in the Identifier of the C-FIND, and its set of Composite Object Instances, have been removed from operational use related to patient care. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.2" title="C.6.4.1.2 Removed From Operational Use" shape="rect">Section C.6.4.1.2</a>.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_edd01109-e15b-402a-82f5-4edb74771604" shape="rect"></a>Reason for Removal Code Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_fbfb6ee4-aaed-4c78-84e3-73fb8f217294" shape="rect"></a>(0008,0406)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2cf6f073-3f8d-4233-a6ec-6f12f8d8a333" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0a786e6b-7844-466d-b2ea-ec5f1b034ca4" shape="rect"></a>Reason the entity at the Query/Retrieve Level specified in the Identifier of the C-FIND was removed from operational use.</p>
+                                    <p>
+                                 <a id="para_c2a771d2-9937-49a1-84eb-ded14ddc420d" shape="rect"></a>Zero or one Item may be included in this Sequence.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="3" rowspan="1">
+                                    <p>
+                                 <a id="para_1ebcd875-cd0b-4f94-a32e-22676efa106c" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_C.6.html#table_C.6-2b" title="Table C.6-2b. Basic Code Value Keys Macro with Optional Keys" shape="rect">Table C.6-2b “Basic Code Value Keys Macro with Optional Keys”</a>
+                                 </span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_40f0b621-7708-4bef-accb-3c0bf9d14468" shape="rect"></a>
+                                 <span class="italic">D<a href="../part16/sect_CID_7031.html" class="olink" shape="rect">CID 7031 “Reason for Removal from Operational Use”</a>.</span>
+                              </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d48f1152-5e40-48be-b183-1784945c59e9" shape="rect"></a>File Set Access Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_79ee578f-c7d7-4ba1-bef4-aa791159ba07" shape="rect"></a>(0008,0419)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_99eefbd9-835c-4c49-a4fd-de02eb1d5dda" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b697e4f5-e481-451f-a2d1-2c033c6a2b9c" shape="rect"></a>Description of non-DICOM protocol access to sets of stored SOP Instances. This Attribute is defined only at the Study and Series levels. This Attribute is supported only with Universal Matching, i.e., if present in the Request Identifier it is zero-length or has only a zero-length Item. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.3" title="C.6.4.1.3 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.1.3</a>.</p>
+                                    <p>
+                                 <a id="para_30514d18-788a-4233-9e1f-dee7a40f5329" shape="rect"></a>See <a class="xref" href="sect_C.6.4.5.5.html" title="C.6.4.5.5 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.5.5</a> for additional SCP requirements.</p>
+                                    <p>
+                                 <a id="para_1fb15433-3729-4428-84de-a074af65bac7" shape="rect"></a>Zero or one Item may be included in this Sequence in a Response Identifier.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_58cbed9e-702f-467a-8b6b-0dc1b9fec59e" shape="rect"></a>&gt;Stored Instance Base URI</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a413fb56-45dd-42c7-868d-4e577e92fbf0" shape="rect"></a>(0008,0407)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_04a0f459-91eb-4349-95c9-e9eb3434da1f" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_799cfbc2-feb0-442c-859e-35871239dd6f" shape="rect"></a>Base URI for accessing SOP Instances through a non-DICOM protocol.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d9f3706e-415a-4e8e-abee-ed4d3ba0cd29" shape="rect"></a>&gt;Folder Access URI</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ec30713d-38cf-4029-974b-094ba0645380" shape="rect"></a>(0008,0408)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2777e6eb-deab-4073-857b-0d81928bbc45" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_aa67a0d9-3498-4790-8c18-a8881f15e605" shape="rect"></a>Access URI for a folder containing all SOP Instances for this Study or Series.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_32712e0b-41a0-4656-a1bc-b470ad415606" shape="rect"></a>&gt;File Access URI</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_868d21de-c247-4268-990c-48feb403c51f" shape="rect"></a>(0008,0409)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_fe4c4248-a6ed-41c2-adea-28c81de5c384" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d1476b89-2974-4cb6-8953-6f0eaa274c07" shape="rect"></a>Access URI for a container file containing all the SOP Instances for this Study or Series.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_879267e1-97e6-4860-9eee-2bca866c7f4b" shape="rect"></a>&gt;Container File Type</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b0fe5471-dcdc-4bce-a113-1eff47da0c85" shape="rect"></a>(0008,040A)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_15813660-034c-4046-80d2-3d428ebf3e4e" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_171b04c4-8dba-48ce-8455-787a76b797f5" shape="rect"></a>Type of container file.</p>
+                                    <div class="variablelist">
+                                 <p class="title">
+                                    <strong>Defined Terms:</strong>
+                                 </p>
+                                 <dl class="variablelist compact">
+                                    <dt>
+                                       <span class="term">ZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_ec2a6f58-6ee7-4686-b0f9-665c2e759bd7" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">TAR</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_b5a1de34-cf0d-47f9-8897-299e367997df" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">GZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_b2ffd45d-2edb-4932-984f-0caabf9b572f" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">TARGZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_c408ed06-c1a0-4be0-90c7-9c040cd3ff46" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">BLOB</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_d26ebe99-f374-4d58-9a8b-a04c17adafcc" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                 </dl>
+                              </div>
+                                    <p>
+                                 <a id="para_f1184393-971e-420a-8a0f-b07bdbd04bd3" shape="rect"></a>See <a href="../part03/chapter_P.html#sect_P.1.2" class="olink" shape="rect">Section P.1.2 “Container File Formats” in PS3.3</a> for definitions of Defined Terms.</p>
+                                    <p>
+                                 <a id="para_53535575-5c98-406c-bf6b-dc011429c8d6" shape="rect"></a>Required in Response Identifier if File Access URI (0008,0409) is present.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1640f571-b939-46ae-8654-89261d6c929a" shape="rect"></a>File Access Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6273ad93-156a-4da4-beef-73d30536e3e8" shape="rect"></a>(0008,041A)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4ab6d8bb-2b8f-4dd4-a268-99e07b849387" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f7d3cfc1-27c0-4d2b-954c-6682d1a85411" shape="rect"></a>Description of non-DICOM protocol access to a stored SOP Instance. This Attribute is defined only at the Composite Instance level. This Attribute is supported only with Universal Matching, i.e., if present in the Request Identifier it is zero-length or has only a zero-length Item. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.3" title="C.6.4.1.3 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.1.3</a>.</p>
+                                    <p>
+                                 <a id="para_cd9779f9-c86e-4b8e-a2ce-dbe5b9d981df" shape="rect"></a>See <a class="xref" href="sect_C.6.4.5.5.html" title="C.6.4.5.5 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.5.5</a> for additional SCP requirements.</p>
+                                    <p>
+                                 <a id="para_a207c3a4-6a6e-4621-abe8-1ec13987e62b" shape="rect"></a>Zero or more Items may be included in this Sequence in a Response Identifier.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e961588f-5a5b-48a0-9446-b6fc87216207" shape="rect"></a>&gt;File Access URI</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ebafbfb4-a454-452e-a720-b26e0aae147f" shape="rect"></a>(0008,0409)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b00b39e9-d312-4a22-9109-b6ea9f067c96" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ae05406d-16b9-4fc3-82d8-4e7f4cf60fe8" shape="rect"></a>Access URI for file containing the SOP Instance.</p>
+                                    <p>
+                                 <a id="para_87b79ca5-d1a9-478c-bbd4-5649c1d9dac3" shape="rect"></a>Required in Response Identifier if File Access Sequence (0008,041A) has an Item.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d4b09ca8-6c2c-46d3-bf15-aaded03b6f72" shape="rect"></a>&gt;Container File Type</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6f0de285-bba0-4ebc-a4ac-d6b6b9931b5c" shape="rect"></a>(0008,040A)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_878c3768-fa4c-4e90-9df7-38ae50efabc4" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a30b2c28-af1d-44c4-89ba-cddca65c9976" shape="rect"></a>Type of container file.</p>
+                                    <div class="variablelist">
+                                 <p class="title">
+                                    <strong>Defined Terms:</strong>
+                                 </p>
+                                 <dl class="variablelist compact">
+                                    <dt>
+                                       <span class="term">ZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_51f20946-3ba1-4311-a698-3563c4bf4889" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">TAR</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_9b26b8ac-b56c-4164-a73b-365663b57012" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">GZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_dc90b30c-d054-4853-a5bf-a2f98df5dc70" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">TARGZIP</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_ba8d14e1-d7e7-4e9e-9667-7178f4370d81" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">DICM</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_946e07a8-4bf8-4b2c-8139-0c19abc06c35" shape="rect"></a>Single SOP Instance in DICOM File Format</p>
+                                    </dd>
+                                 </dl>
+                              </div>
+                                    <p>
+                                 <a id="para_e1b8aed3-d079-4bf2-aa56-352dc08dd09b" shape="rect"></a>See <a href="../part03/chapter_P.html#sect_P.1.2" class="olink" shape="rect">Section P.1.2 “Container File Formats” in PS3.3</a> for definitions of Defined Terms not described here.</p>
+                                    <p>
+                                 <a id="para_5cd7c27e-bcaa-4ce8-947c-fd3763684960" shape="rect"></a>Required in Response Identifier if File Access URI (0008,0409) is present.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f97f7a58-237a-4aa5-b015-e5b69c91ce0c" shape="rect"></a>&gt;Filename in Container</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_31a58c44-9051-4891-b943-a0e80db70c0a" shape="rect"></a>(0008,040B)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ab2536be-3fb7-4268-acc6-471bfaeedd2c" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_996c4670-a387-4cff-a6cd-e0cf7ece7c1a" shape="rect"></a>Filename within a container file of the file containing the SOP Instance.</p>
+                                    <p>
+                                 <a id="para_bc3b7c7f-f788-4420-89c0-15225625eb47" shape="rect"></a>Required in Response Identifier if Container File Type (0008,040A) is ZIP, TAR, or TARGZIP.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1f268da2-2c5d-4824-ae73-da990bd0e511" shape="rect"></a>&gt;File Offset in Container</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2fea2402-59e8-4da2-99fd-f862afafe65c" shape="rect"></a>(0008,040C)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1b32d1ee-3dd9-40ec-af7c-79636c4c2374" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e61b9c32-2847-47e0-8cee-9a31253edb6c" shape="rect"></a>Byte offset (zero-based) within a container file for the start of the SOP Instance file.</p>
+                                    <p>
+                                 <a id="para_bc1ce885-fc64-4748-96a5-f82cbb8bae48" shape="rect"></a>Required in Response Identifier if Container File Type (0008,040A) is BLOB, may be present otherwise.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7f817699-f6f7-4596-b875-dca4bac9baba" shape="rect"></a>&gt;File Length in Container</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2560b2c4-77ad-4dd8-b26e-5b43785f3967" shape="rect"></a>(0008,040D)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d0865183-2a62-4b5a-a58f-005009d8a18a" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4aa0861d-218f-4333-8645-b3c40433f628" shape="rect"></a>Length of the SOP Instance file within a container file.</p>
+                                    <p>
+                                 <a id="para_8e9d97e0-870c-4783-acee-e303eb72f472" shape="rect"></a>Required in Response Identifier if Container File Type (0008,040A) is BLOB, may be present otherwise.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_28687c86-9f39-4aa0-b4fd-406f7f0bda49" shape="rect"></a>&gt;Stored Instance Transfer Syntax UID</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8a2cdb1c-59f7-48da-ba8d-9f8e11e97462" shape="rect"></a>(0008,040E)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6c371679-e32a-4034-b459-fb65f01b8deb" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_28813b3f-0503-40e8-bdac-aa1b0d07a6c0" shape="rect"></a>Transfer Syntax of SOP Instance encoded in DICOM File Format. Equal to Transfer Syntax UID (0002,0010) in File Meta Information header.</p>
+                                    <p>
+                                 <a id="para_8a9455a1-9c07-4a99-9412-2543146492e4" shape="rect"></a>Required in Response Identifier if File Access Sequence (0008,041A) has an Item.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6f5870e7-1b6a-4b8b-a69a-5682de91abd5" shape="rect"></a>&gt;Lossy Image Compression Ratio</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_75155bcf-feff-4348-9736-40986ede4154" shape="rect"></a>(0028,2112)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a62dcb7c-c4ce-4f94-bff5-ef97ab0bd6a4" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f6327be8-3681-492c-b58c-92a3580eb6c8" shape="rect"></a>Describes the approximate lossy compression ratio(s) that have been applied to this image.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_45d505ce-642d-4940-ac15-7df95e4c92b6" shape="rect"></a>&gt;MAC Algorithm</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7a903502-3ad4-4ae2-8222-2deff844d431" shape="rect"></a>(0400,0015)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5bf57b48-e2a2-447d-bb87-1b6d4b224949" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_395a933f-d66b-45b1-8072-f5c199dcc5a3" shape="rect"></a>The algorithm used for generating a Message Authentication Code. See <a href="../part03/sect_C.12.html#sect_C.12.1.1.3.1.2" class="olink" shape="rect">Section C.12.1.1.3.1.2 “Signature” in PS3.3</a> for Defined Terms.</p>
+                                    <p>
+                                 <a id="para_d501f9a9-a19e-4e25-94d4-503f4d8ade1f" shape="rect"></a>Required in Response Identifier if MAC (0400,0404) is present.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1e6b79e0-236b-461f-a4fe-7b7f613f2617" shape="rect"></a>&gt;MAC</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e672ed50-0020-482c-9027-4077af9feee5" shape="rect"></a>(0400,0404)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_490b8bb6-a910-42c7-9e74-647ee8a900a1" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_894d8000-cf8c-4cbc-be90-98c21427dc7d" shape="rect"></a>Message Authentication Code computed across stored instance file for verification of file integrity.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5eff95d8-6c60-4185-9614-62b28ab49f38" shape="rect"></a>Metadata Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_76883cde-3390-4e94-b2b8-a14817d409f6" shape="rect"></a>(0008,041D)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4d802e78-7778-48db-ba7b-4662408ce50e" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_672e8dc8-7b42-4a58-8b7c-c543845cb8b7" shape="rect"></a>All non-bulk data Attributes at the Query/Retrieve Level that are managed by the SCP. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.4" title="C.6.4.1.4 Metadata Sequence and Updated Metadata Sequence" shape="rect">Section C.6.4.1.4</a>.</p>
+                                    <p>
+                                 <a id="para_4c06131d-9b0f-4664-8bf8-f107cb4f2d4a" shape="rect"></a>See <a class="xref" href="sect_C.6.4.5.5.html" title="C.6.4.5.5 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.5.5</a> for additional SCP requirements.</p>
+                                    <p>
+                                 <a id="para_4a3f89a5-7cc7-4141-8823-6b949ad9b56b" shape="rect"></a>This Attribute is supported only with Universal Matching, i.e., if present in the Request Identifier it is zero-length or has only a zero-length Item.</p>
+                                    <p>
+                                 <a id="para_f7a3a37c-a68c-4896-8274-2e05be8f74af" shape="rect"></a>Zero or one Item may be included in this Sequence in a Response Identifier.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="2" rowspan="1">
+                                    <p>
+                                 <a id="para_bd7e5ce4-400d-449f-8faa-fec36c2d0bd3" shape="rect"></a>
+                                        <span class="italic">&gt;Any non-bulk data Attributes</span>
+                                    </p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_dd16d4e9-b50f-4816-b6bc-9b0d2522431e" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e2d68d11-8165-4785-a9fa-08b28d1b3389" shape="rect"></a>
+                                 <span class="italic">Multiple Attributes may be present in the Response Identifier.</span>
+                              </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_9c658c9b-1b43-44a6-ac05-ca0adaa82bae" shape="rect"></a>Updated Metadata Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_697c1e1a-1dec-4047-a484-92b49aeabcc0" shape="rect"></a>(0008,041E)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_caeb80a2-4b6e-429b-a718-594b2d16f49b" shape="rect"></a>O</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1c257da2-8913-4ba2-be32-055d7c9fb10f" shape="rect"></a>Non-bulk data Attributes at the Query/Retrieve Level that are managed by the SCP, for which values are different from the values contained in stored SOP Instance files. See <a class="xref" href="sect_C.6.4.html#sect_C.6.4.1.4" title="C.6.4.1.4 Metadata Sequence and Updated Metadata Sequence" shape="rect">Section C.6.4.1.4</a>.</p>
+                                    <p>
+                                 <a id="para_92724343-bf3d-4aaa-873c-9908ddfe465a" shape="rect"></a>See <a class="xref" href="sect_C.6.4.5.5.html" title="C.6.4.5.5 File Set Access Sequence and File Access Sequence" shape="rect">Section C.6.4.5.5</a> for additional SCP requirements.</p>
+                                    <p>
+                                 <a id="para_4cd56191-026f-49ac-b4e6-b254cf5e74ea" shape="rect"></a>This Attribute is supported only with Universal Matching, i.e., if present in the Request Identifier it is zero-length or has only a zero-length Item.</p>
+                                    <p>
+                                 <a id="para_35da2dff-eb9c-4786-8b8c-990ea1d3b24e" shape="rect"></a>Zero or one Item may be included in this Sequence in a Response Identifier.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="2" rowspan="1">
+                                    <p>
+                                 <a id="para_e2f370b2-e512-4dfa-919c-f1761ad80261" shape="rect"></a>
+                                        <span class="italic">&gt;Any non-bulk data Attributes</span>
+                                    </p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7a52b80c-ac9d-44c7-9a3e-4fc7895ac61d" shape="rect"></a>-</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3ffa6a0a-e16d-4e8a-bb31-0f5c47d42b21" shape="rect"></a>
+                                 <span class="italic">Multiple Attributes may be present in the Response Identifier.</span>
+                              </p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_57dd1320-1171-448b-a36d-ef27e7eaabc5" shape="rect"></a>The character "-" in the Type column is used to indicate Attributes that are within a Sequence that is defined only with Universal Matching.
+                            These Attributes therefore will not be present in a Request Identifier; hence they are not Key Attributes for matching and the Type column does not apply.
+                            If the SCP supports the Sequence Attribute, and it is requested by the SCU, the SCP returns these "-" Attributes in accordance with their Attribute Description.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.6.4.1.1" shape="rect"></a>C.6.4.1.1 Record Key</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6757b580-8ac8-4c8a-8197-80c758af12ef" shape="rect"></a>Record Key (0008,041B) is defined at the Study, Series, and Instance query levels.
+                            It is an implementation-specific unique identifier within the level of the entity record in the SCP.
+                            The SCP of the Repository Query SOP Class shall return non-zero length values of Record Key (0008,041B).
+                            The content of Record Key (0008,041B) is opaque to applications other than the SCP.</p>
+               <p>
+                  <a id="para_4aeb0a52-6833-450c-8ec9-ff2bd10d42d1" shape="rect"></a>The SCP shall construct the Record Key (0008,041B) value such that for each value the SCP can determine its order with respect to all other such values.
+                            C-FIND Response Identifiers shall be returned in the ordering of Record Key (0008,041B) values.
+                            The SCP shall be able to determine from a given value the next entity record to be returned that matches the given Query Request Identifier, without repeating any records.</p>
+               <p>
+                  <a id="para_0724a88b-0e22-475d-bd45-51ce79e5883a" shape="rect"></a>Record Key (0008,041B) values are used as the Prior Record Key (0008,041C) value in a subsequent Query Request (see <a class="xref" href="sect_C.6.4.5.3.html" title="C.6.4.5.3 Prior Record Key and Subsequent Response" shape="rect">Section C.6.4.5.3</a>).
+                            The SCP may establish implementation specific conditions after which a Record Key (0008,041B) value is not valid, i.e., will no longer allow continuation of a sequence of Query operations.
+                            The SCP shall be able to determine from a given Prior Record Key (0008,041C) value whether that value is still valid for determining the next record to be returned.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_9481f4f1-e7ff-4da0-9638-c728020f851e" shape="rect"></a>The structure, content, and ordering method of Record Key (0008,041B) values is SCP implementation-specific, and is opaque to the SCU, i.e., the SCU should not attempt to parse those values for components or semantics.
+                                        Values may be permanent, or may be constructed dynamically during query processing.
+                                        Only the SCP can determine from the value of one Record Key (0008,041B) what would be the next appropriate record to return.
+                                        For example, an SCP may use encrypted representations of an internal database primary key as the Record Key (0008,041B), and such may appear to the SCU to be random unordered values.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3c08c769-3fa1-4388-940d-60df91a1bf34" shape="rect"></a>The intention of the ordering and use requirements for the Record Key (0008,041B) is to allow an SCU to obtain the complete inventory matching the Key Attributes in a sequence of Queries.
+                                        See <a href="../part17/sect_YYYY.2.2.html" class="olink" shape="rect">Section YYYY.2.2 “Record Key and Continuation” in PS3.17</a>.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.6.4.1.2" shape="rect"></a>C.6.4.1.2 Removed From Operational Use</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f4e510c2-a18f-48fd-b28c-b5b120be142d" shape="rect"></a>The Removed from Operational Use (0008,0405) Attribute is defined at the Study, Series, and Instance query levels.</p>
+               <div class="variablelist">
+                  <p class="title">
+                     <strong>Enumerated Values:</strong>
+                  </p>
+                  <dl class="variablelist compact">
+                     <dt>
+                        <span class="term">Y</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_1d76171f-5652-472f-983e-e215db70bd06" shape="rect"></a>The instances are not to be used for operational purposes.</p>
+                     </dd>
+                     <dt>
+                        <span class="term">N</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_e4283433-ffa7-4197-8f45-057d96e71efe" shape="rect"></a>The instances may be used for operational purposes.</p>
+                     </dd>
+                  </dl>
+               </div>
+               <p>
+                  <a id="para_86594b05-98ea-4cbc-a230-52a2dd8868b3" shape="rect"></a>A value of Y indicates the Study, Series, or Instance has been removed from operational use related to patient care, although it may be retained in the repository system for other reasons (e.g., for audit of patient radiation exposure).
+                            At the Study and Series level, the Attribute indicates whether the entire Study or Series has been removed from operational use.
+                            A value of Y at the Study level supersedes any value specified for subsidiary Series and Instances, and a value of Y at the Series level supersedes any value specified for subsidiary Instances.</p>
+               <p>
+                  <a id="para_1063e0cf-0aca-40dd-9ea8-caf45ead7afc" shape="rect"></a>While defined at the Study, Series, and Instance levels, an SCP might not support this Attribute at some, or any, of those levels.
+                            E.g., an SCP may only manage this Attribute at the Instance level, and is not required to infer a value for the Series or Study level.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_d3df5613-436a-4083-b074-a17649494fb8" shape="rect"></a>The meaning of "operational userelated to patient care" is implementation or site specific, but generally includes diagnostic, clinical, and therapeutic uses, as well as administrative uses necessary for providing care (e.g., insurance authorization).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a6e971da-ff19-4665-b8dd-451667df143b" shape="rect"></a>Studies, Series, or Instances might be marked removed from operational use by actions associated with the processing of specific Key Object Selection Document SOP Instances, e.g., in accordance with <a class="xref" href="chapter_2.html#biblio_IHE_RAD_TF_1" title="Integrating the Healthcare Enterprise Radiology Technical Framework Volume 1 Integration Profiles" shape="rect">[<abbr class="abbrev">IHE RAD TF-1</abbr>]</a>.Image Object Change Management Integration Profile (IOCM).
+                                        Those Key Object Selection Document SOP Instances, and their Series, may themselves be marked as removed from operational use.
+                                        The Context Group for Reason for Removal Code Sequence (0008,0406) includes the Key Object Selection Concept Codes specified in IOCM.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_1ec96410-aef6-44e7-b164-b0857276cac5" shape="rect"></a>The semantics of the Removed from Operational Use (0008,0405) Attribute allows the SCP to include such entities in the Repository Query response without constraint. An SCP might exclude entities marked as removed from operational use from the C-FIND Responses of other Query/Retrieve SOP Classes (e.g., see <a class="xref" href="chapter_2.html#biblio_IHE_RAD_TF_2" title="Integrating the Healthcare Enterprise Radiology Technical Framework Volume 2 Transactions" shape="rect">[<abbr class="abbrev">IHE RAD TF-2</abbr>]</a> Section 4.66.4.1.3.1 Access to Rejected Instances).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_18464d37-7ce1-421e-afe3-0235783524b2" shape="rect"></a>Removed from Operational Use (0008,0405) is independent of Instance Availability (0008,0056).
+                                        A composite instance may have been removed from operational use but is still accessible at the rapidity specified by Instance Availability (0008,0056).
+                                        Conversely, an instance may not have been removed from operational use but is UNAVAILABLE for retrieval.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_d25de3f5-bafd-4851-bd58-15de26785dbd" shape="rect"></a>If the SCP retains records of deleted Studies, Series, or Instances, even though the actual Instances are physically deleted, it may include those entities in the C-FIND Response with an appropriate Reason for Removal Code Sequence (0008,0406) value.
+                                        Such instances may have an Instance Availability (0008,0056) value "UNAVAILABLE" (see <a class="xref" href="sect_C.4.html#sect_C.4.1.1.3.2" title="C.4.1.1.3.2 Response Identifier Structure" shape="rect">Section C.4.1.1.3.2</a>).</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.6.4.1.3" shape="rect"></a>C.6.4.1.3 File Set Access Sequence and File Access Sequence</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_e08dca1f-afda-4e45-8cd1-f3dd769a1479" shape="rect"></a>The SCP may support optional Attributes providing a URI link to SOP Instances stored in the DICOM File Format (see <a href="../part10/chapter_7.html" class="olink" shape="rect">Section 7 “DICOM File Format” in PS3.10</a>) and accessible through a non-DICOM file access protocol (see <a href="../part03/chapter_P.html" class="olink" shape="rect">Annex P “Stored File Access Through Non-DICOM Protocols (Normative)” in PS3.3</a>).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_26edaaca-6e0f-4096-b224-a37caab10fd1" shape="rect"></a>See <a href="../part17/sect_YYYY.3.4.html" class="olink" shape="rect">Section YYYY.3.4 “Access Mechanisms For Repository Data” in PS3.17</a>
+                           </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_b50081d9-da6e-4c92-a358-28e00a52459f" shape="rect"></a>"File Set" as used here may not be identical to the File-set concept defined in <a href="../part10/PS3.10.html" class="olink" shape="rect">PS3.10</a> and used in Storage Media File-set ID (0088,0130).</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_14251ca8-27fb-4686-ad41-8b8c4311af00" shape="rect"></a>For a query at the Study or Series level, Stored Instance Base URI (0008,0407) within the File Set Access Sequence (0008,0419) establishes an <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> base URI that is merged with relative path reference URIs for non-DICOM protocol access to SOP Instances of the Study or Series.
+                            If all of the stored SOP Instance files of that Study or Series entity are catalogued in a single folder, Folder Access URI (0008,0408) provides the URI for protocol operations on that folder.
+                            If all of the stored SOP Instance files are in a single container file, File Access URI (0008,0409) provides the URI for accessing that file.
+                            Folder Access URI (0008,0408) and/or File Access URI (0008,0409) may be a relative path reference URI beginning with the single-dot-segment "./", and the URI is merged with the Stored Instance Base URI (0008,0407) in accordance with <a href="../part03/sect_P.2.html#sect_P.2.1" class="olink" shape="rect">Section P.2.1 “URI Format” in PS3.3</a>.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_d336b162-7599-41e3-a329-e7d78c4e3d56" shape="rect"></a>Stored Instance Base URI (0008,0407) is optional.
+                                If not present, the values of Folder Access URI (0008,0408) and File Access URI (0008,0409) will be complete URIs.
+                                If Stored Instance Base URI (0008,0407) is present, those other Attributes may still provide complete URIs, rather than relative paths to be merged with the Base URI.
+                                A complete path specified in Folder Access URI (0008,0408) or File Access URI (0008,0409) may have a different scheme and authority than is specified in Stored Instance Base URI (0008,0407).</p>
+               </div>
+               <p>
+                  <a id="para_5ec1e259-178b-4164-acb9-3e5cfc8027be" shape="rect"></a>For a query at the Instance level, Items of the File Access Sequence (0008,041A) in the Response Identifier each provide an <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> URI to access the stored SOP Instance.
+                            File Access URI (0008,0409) may be a URI relative path reference beginning with the single-dot-segment "./", and the URI is merged with the Stored Instance Base URI (0008,0407) specified within the File Set Access Sequence (0008,0419) at the Series level, if present, or otherwise to the Stored Instance Base URI (0008,0407) specified within the File Set Access Sequence (0008,0419) at the Study level.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_79ebaf77-cbe7-4c85-9164-b7ab7ad227ad" shape="rect"></a>The SCP may store a SOP Instance on multiple storage devices (e.g., fast short-term media and slower long-term media), or with different Transfer Syntaxes.
+                                        The SOP Instance may therefore be accessible through a non-DICOM protocol at multiple URIs.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_98caa756-43d8-489a-b805-a7bdb229dc9f" shape="rect"></a>If the File Access URI (0008,0409) for a SOP Instance is a relative path reference URI, the SCU will need to have obtained the Stored Instance Base URI (0008,0407) from the hierarchically superior STUDY and SERIES level queries.
+                                        I.e., the Study and Series level queries will have included a request for the File Set Access Sequence (0008,0419).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_59228a3a-b54b-43c2-81e5-14c0dd0aa51a" shape="rect"></a>See <a href="../part17/sect_YYYY.7.2.html" class="olink" shape="rect">Section YYYY.7.2 “Using Non-DICOM Protocols” in PS3.17</a>.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.6.4.1.4" shape="rect"></a>C.6.4.1.4 Metadata Sequence and Updated Metadata Sequence</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5a0df767-b757-4334-b0cb-175efa934ffe" shape="rect"></a>An SCP may manage a set of metadata Attributes of the SOP Instances in the repository for response to Query requests.
+                            Metadata Sequence (0008,041D) in a Response Identifier shall contain all SOP Instance Attributes at the Query level that are managed by the SCP, excluding bulk data elements (such as pixel, waveform, and surface mesh data) and non-SOP Instance Attributes specified in <a class="xref" href="sect_C.3.4.html" title="C.3.4 Additional Query/Retrieve Attributes" shape="rect">Section C.3.4</a> or in <a class="xref" href="sect_C.6.4.html#table_C.6.4.1-1" title="Table C.6.4.1-1. Additional Keys for Repository Query" shape="rect">Table C.6.4.1-1</a>.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_2d76b4da-3f33-4c36-b790-0662b619d6b3" shape="rect"></a>The set of Attributes managed by the SCP is implementation dependent.
+                                In some implementations the managed set of Attributes might include only those few required to be supported for Query Key matching, while in other implementations the set might include every non-bulk data Attribute.
+                                See <a href="../part04/sect_C.6.2.html#sect_C.6.2.1" class="olink" shape="rect">Section C.6.2.1 in PS3.4</a>.</p>
+               </div>
+               <p>
+                  <a id="para_8da5b8f0-bb63-492f-8e5d-8b894243047e" shape="rect"></a>An SCP may manage a set of metadata Attributes whose "updated" values differ from those in a stored SOP Instance accessible through a non-DICOM protocol specified in the File Access URI (0008,0409) or Folder Access URI (0008,0408).
+                            Although a stored SOP Instance shall be conformant to its IOD (per the requirements of the DICOM File Format), some Attributes in the file might not have current values (e.g., Patient Name may have been corrected or changed after the Instance was stored).
+                            Updated Metadata Sequence (0008,041E) in a Response Identifier shall contain all Attributes at the Query level whose values are different from the values contained in the stored SOP Instance file.</p>
+               <p>
+                  <a id="para_bdd35c47-9c25-4c3d-a934-bc2f31def1d2" shape="rect"></a>An SCP that supports non-DICOM protocol URI references to stored SOP Instances shall support either the Metadata Sequence (0008,041D) or the Updated Metadata Sequence (0008,041E), or both, to provide current metadata values for SOP Instances accessed through the non-DICOM protocol.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_51e62a05-58f8-46a7-8807-aba76d9c8b04" shape="rect"></a>SOP Instances accessed through DICOM protocols are expected to have current values in all Attributes.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3306ef25-dd44-4a98-a7b3-3044b0ae978c" shape="rect"></a>The SCP might not track whether Attribute values have changed, or which specific Attributes have changed values, and would therefore not support Updated Metadata Sequence (0008,041E).
+                                        In this case, the SCU may request the Metadata Sequence (0008,041D) that contains all current Attribute values managed by the SCP, whether or not they have been updated.
+                                        Determination of differences, if any, between those returned Attribute values and values in the stored SOP Instance would be the responsibility of the SCU.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_74d70489-9f5e-4a2a-8226-3255a6ae3514" shape="rect"></a>At any Query level,Metadata Sequence (0008,041D) or Updated Metadata Sequence (0008,041E) may include the Original Attributes Sequence (0400,0561) describing the provenance of changes to Attributes at that level or at higher Query levels.</p>
+               <p>
+                  <a id="para_062c6f29-55c2-48e1-8a0e-0b1b87a06fae" shape="rect"></a>If Metadata Sequence (0008,041D) and/or Updated Metadata Sequence (0008,041E) are present in a Request Identifier, their absence in the Response Identifier indicates they are not supported by the SCP (see <a class="xref" href="sect_C.2.2.html#sect_C.2.2.1.3" title="C.2.2.1.3 Optional Keys" shape="rect">Section C.2.2.1.3</a>).</p>
+               <p>
+                  <a id="para_731662a6-a723-4a88-b5c1-d5077bbf6612" shape="rect"></a>A zero-length value or a single empty Item in Updated Metadata Sequence (0008,041E) in a Response Identifier indicates support by the SCP, but that there are no differing metadata Attribute values.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.6.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.6.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.6.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.6.3 Patient/Study Only SOP Class Group (Retired) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.6.4.2 Repository Query Request Identifier Attributes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

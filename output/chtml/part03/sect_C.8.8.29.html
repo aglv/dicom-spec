@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.29 RT Beams Delivery Instruction Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.html" title="C.8.8 Radiotherapy Modules" />
+      <link rel="prev" href="sect_C.8.8.28.html" title="C.8.8.28 Patient Support Identification Macro" />
+      <link rel="next" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.29 RT Beams Delivery Instruction Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.29.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.28.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8 Radiotherapy Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.29.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-node">RT Beams Delivery Instruction Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.8.29" shape="rect"></a>C.8.8.29 RT Beams Delivery Instruction Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ec50eaf1-322d-4179-90a5-75be9750ee67" shape="rect"></a>The RT Beams Delivery Instruction Module contains additional information required by a Treatment Delivery System (TDS) when specifying delivery of an external beam radiotherapy treatment. This information is supplied by a Treatment Management System (TMS) when it creates an RT Beams Delivery Instruction SOP Instance, a composite SOP Instance in turn referenced by a Unified Procedure Step (UPS) in the Unified Procedure Step model.</p>
+         <p>
+            <a id="para_6fceab65-4029-4533-b7b0-6f322fce3163" shape="rect"></a>The RT Beams Delivery Instruction Module consists of a sequence of one or more beam tasks, where each beam task may also specify one or more Delivery Verification images to be acquired prior to, during, or after the treatment delivery.</p>
+         <div class="table">
+            <a id="table_C.8.8.29-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8.8.29-1. RT Beams Delivery Instruction Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5deb339a-bc6b-47ac-b744-ff9fdeed6431" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6bf184ce-98ca-45d3-9a95-139bcddccfad" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a9d97e4e-5102-467c-a4b2-bab3e8ba3fcc" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_deb91aa3-412a-45cd-9b09-278fed759b02" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e6487b21-547a-4ad8-9f95-0d1b8aa8554f" shape="rect"></a>Referenced RT Plan Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_524f158a-1586-402c-929e-77110996370e" shape="rect"></a>(300C,0002)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a10e9e89-35f9-4149-85d3-13df7c4bdf96" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ba516bee-9fd6-4202-9ebc-e20e2931de25" shape="rect"></a>Reference to a single RT Plan or RT Ion Plan SOP Instance (whose UID is also supplied in the Input Information Sequence - see <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>) containing all the Beams and the Fraction Group referenced in this SOP Instance.</p>
+                                    <p>
+                              <a id="para_539b083d-494c-47a4-a5aa-9656d54d0225" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_805ee4e4-39d7-4030-98e6-e41ce88b3ee5" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_27cd9d99-0c6e-465e-9621-3202ee0340ea" shape="rect"></a>Beam Task Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bf9f7ce2-5ffd-46b4-8b1d-e65a44993ea8" shape="rect"></a>(0074,1020)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7347a23-0e05-4867-b8ac-bcc6fc560f30" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ce6fcaaa-6602-4f56-8d0c-f6992d40de31" shape="rect"></a>Specification of beams to be delivered and/or used for verification of the patient position.</p>
+                                    <p>
+                              <a id="para_5a9d5cad-1ec2-4a34-9149-c34862d7e8e4" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_23a839e5-9bdc-4708-b206-814211fddb51" shape="rect"></a>&gt;Beam Task Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_acb11a21-7105-41cf-b802-266282382381" shape="rect"></a>(0074,1022)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7e76ae49-98a0-4dfc-8d3a-324e9769427a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_606c248a-b592-46b5-b7c2-8dea4e971436" shape="rect"></a>Whether the beam is used to verify patient position, deliver treatment, or both.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">VERIFY</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_e8313daa-6530-4e29-85a9-3002336719e3" shape="rect"></a>Verification of the patient position</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">TREAT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5a1694d2-3c58-4d3c-9c3a-c1eaec452322" shape="rect"></a>Beam treatment only</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">VERIFY_AND_TREAT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_12190820-9b43-498c-8af2-d842748390e5" shape="rect"></a>Patient position verification and treatment</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d8e8756b-46bb-4733-a481-3fdeaa40eb91" shape="rect"></a>&gt;Treatment Delivery Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2a4920b7-1f5e-4111-ab30-500a95d5a792" shape="rect"></a>(300A,00CE)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5673b02a-4d6b-48ac-9600-9bcf73237b08" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bf4bfeca-33c2-4740-a41b-56ff08d8011c" shape="rect"></a>Delivery Type of treatment.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">TREATMENT</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9f553011-ca49-4bbb-ba8e-50bccc0223db" shape="rect"></a>normal patient treatment</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">CONTINUATION</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_2119f082-0017-49c5-ba03-0ff88d092240" shape="rect"></a>continuation of interrupted treatment</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9efffef9-69c5-4530-95a8-f401cc53967a" shape="rect"></a>&gt;Primary Dosimeter Unit</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_455bd6c4-de89-43e7-9265-593552140004" shape="rect"></a>(300A,00B3)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4b31aa9d-b676-4d31-96fd-eeb15298b736" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a0aaa512-c1be-40f7-a640-8bace52ca534" shape="rect"></a>Measurement unit of machine dosimeter.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">MU</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_1e41875b-be29-4fd3-a01d-8217bd6e885a" shape="rect"></a>Monitor Unit</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">MINUTE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_384506d0-184c-4009-ba2c-61a49af991ae" shape="rect"></a>minute</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NP</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_6a0d719d-c8d0-466a-abf7-b1b69e9483d9" shape="rect"></a>Number of Particles</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                    <p>
+                              <a id="para_b52a968d-e85f-4065-bd85-3a04894d46ea" shape="rect"></a>This value shall be the same as in the referenced RT Plan. It applies only to the Continuation Start Meterset (0074,0120) and Continuation End Meterset (0074,0121).</p>
+                                    <p>
+                              <a id="para_8a5311ba-cded-4236-814b-4af52e7b404e" shape="rect"></a>Required if Treatment Delivery Type (300A,00CE) is CONTINUATION.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3e594902-1f66-4984-8556-0f9276816163" shape="rect"></a>&gt;Continuation Start Meterset</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9e2faffa-6ca7-497b-93ea-37739571a3dc" shape="rect"></a>(0074,0120)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0dd82844-74dd-4a6f-92f6-7946e39cc50b" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_46d00bbb-6f8f-4f83-9aa4-1220caac1fcf" shape="rect"></a>Meterset within Beam referenced by Referenced Beam Number (300C,0006) at which treatment delivery starts, in units specified by Primary Dosimeter Unit (300A,00B3).</p>
+                                    <p>
+                              <a id="para_28373975-816a-4a8c-ae7c-b1d7be9bbf6b" shape="rect"></a>Required if Treatment Delivery Type (300A,00CE) is CONTINUATION.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_54f29cd6-1793-47d1-8053-3cb64600d7e2" shape="rect"></a>&gt;Continuation End Meterset</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d1c30554-41be-45c4-a840-1aacd2ff3a60" shape="rect"></a>(0074,0121)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e052a353-4be5-4dcf-896b-742b371bec56" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8ac452eb-231c-4c61-89c7-6981bc4e8ddc" shape="rect"></a>Meterset within Beam referenced by Referenced Beam Number (300C,0006) at which treatment delivery ends, in units specified by Primary Dosimeter Unit (300A,00B3).</p>
+                                    <p>
+                              <a id="para_acad8998-dafb-4823-9b15-33f60bc3e02b" shape="rect"></a>Required if Treatment Delivery Type (300A,00CE) is CONTINUATION.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c85f0f9a-ffd8-4df9-998c-a492076f87af" shape="rect"></a>&gt;Current Fraction Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f3a00752-f141-43ea-b58c-b5fc64437693" shape="rect"></a>(3008,0022)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_35c2658f-910a-4345-ab1f-261849c76617" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3bf5ae01-8f69-4462-a4e1-de88dbd18ebb" shape="rect"></a>The index of the fraction that is to be delivered or completed in this session. See <a class="xref" href="sect_C.8.8.29.html#sect_C.8.8.29.1" title="C.8.8.29.1 Current Fraction Number" shape="rect">Section C.8.8.29.1</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_51928cfd-b104-4547-8e5c-9c4854ccb422" shape="rect"></a>&gt;Referenced Fraction Group Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_52a1c066-4d4a-4970-b544-87469821f4bb" shape="rect"></a>(300C,0022)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e2c7d6fa-9951-4779-902c-46848a36c4d7" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c24b0f31-33e6-417e-8d88-615f4f11abe6" shape="rect"></a>Indicates which fraction group of the referenced plan is to be treated in the treatment session. Only one Fraction Group shall be specified per Delivery Instruction SOP Instance.</p>
+                                    <p>
+                              <a id="para_3c4cef6b-c014-477c-88fe-332f2aa6a97d" shape="rect"></a>Required if the referenced plan has more than one Fraction Group Sequence (300A,0070) Item.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_79083da6-a710-4f4c-a2eb-083a292f28e5" shape="rect"></a>&gt;Referenced Beam Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a787bd5f-1bf0-471a-9510-67454f75a2d4" shape="rect"></a>(300C,0006)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c8354167-4f74-4dbd-a617-330634ee2a01" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2c33edef-9b3a-4a35-b4ff-a0f37c910096" shape="rect"></a>Uniquely identifies the Beam that is specified by Beam Number (300A,00C0) within Beam Sequence (300A,00B0) in <a class="xref" href="sect_C.8.8.14.html" title="C.8.8.14 RT Beams Module" shape="rect">RT Beams Module</a> of referenced RT Plan or within Ion Beam Sequence (300A,03A2) in <a class="xref" href="sect_C.8.8.25.html" title="C.8.8.25 RT Ion Beams Module" shape="rect">RT Ion Beams Module</a> of the referenced RT Ion Plan.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_204c77a5-41b7-42db-b73b-f49d899a0bd9" shape="rect"></a>&gt;Beam Order Index</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_634d2bbc-4eb6-43f4-8bab-8b3f1da10a08" shape="rect"></a>(0074,1324)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1887e4d3-13aa-4238-a8ea-3b4356d308a4" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6eda36e7-9898-4b4b-8487-c86904fce1b6" shape="rect"></a>Identifies required ordering of beam delivery, monotonically increasing by 1, starting from 1. See <a class="xref" href="sect_C.8.8.29.5.html" title="C.8.8.29.5 Beam Order Index" shape="rect">Section C.8.8.29.5</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cbec3e1e-b7b5-42e9-91e0-01ce30eeb691" shape="rect"></a>&gt;Autosequence Flag</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_774a3bea-b9c5-4351-9625-95d2f4a57384" shape="rect"></a>(0074,1025)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_46186dc5-8b87-4d8f-9666-fcd9fabf0c00" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">YES</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_3055573b-39fc-43c3-a7ad-0c413c79c26d" shape="rect"></a>The current beam shall be automatically treated following the preceding beam as defined by the Beam Order Index (0074,1324).</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">NO</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_229fb7bc-4f80-4bff-a8c2-a04c5b416c85" shape="rect"></a>The current beam shall not be auto-sequenced.</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                    <p>
+                              <a id="para_7df87ce3-1002-483d-8642-af786bae2ceb" shape="rect"></a>See <a class="xref" href="sect_C.8.8.29.6.html" title="C.8.8.29.6 Autosequence Flag" shape="rect">Section C.8.8.29.6</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cba2d65f-c9f1-4e06-86ea-34984dc0603c" shape="rect"></a>&gt;Table Top Vertical Adjusted Position</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f02e1308-8856-4ebb-ab7a-22023ef68e09" shape="rect"></a>(0074,1026)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c32bd2d6-40f8-438e-aa27-fa1789b5672e" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e9523a54-06a9-4a9b-acd5-76579c581da8" shape="rect"></a>Adjusted Table Top Vertical position in the IEC TABLE TOP coordinate system in mm for patient setup. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7b55a506-7f29-4470-8a3b-35c61448b8c9" shape="rect"></a>&gt;Table Top Longitudinal Adjusted Position</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dffb0334-4df6-4c18-b201-9cda4189c7c3" shape="rect"></a>(0074,1027)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_230d9e01-0d9f-4422-a83d-4dbf3a91f248" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4554506a-da9b-4dd8-8ef8-054c5d6270fa" shape="rect"></a>Adjusted Table Top Longitudinal position in the IEC TABLE TOP coordinate system in mm for patient setup. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bf27c87d-ee2e-4b0e-974b-c32370bf162c" shape="rect"></a>&gt;Table Top Lateral Adjusted Position</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5d5e81be-1f7c-43e1-864e-1038655c976d" shape="rect"></a>(0074,1028)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c8d0089e-e741-4503-9ea8-cff1475061a2" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b84d1d32-cc20-4d2d-9dbf-45b542361d0e" shape="rect"></a>Adjusted Table Top Lateral position in the IEC TABLE TOP coordinate system in mm for patient setup. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f5e6832d-9506-403d-96d3-9cd52544c185" shape="rect"></a>&gt;Patient Support Adjusted Angle</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_10950a7c-dd73-4cf2-ae98-d329849d7683" shape="rect"></a>(0074,102A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_61fc4067-dbfa-4725-8f60-22d17cabf26c" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7f5c6325-b1a2-4b70-b184-86ac88288694" shape="rect"></a>Adjusted Patient Support angle for patient setup, i.e., orientation of the IEC PATIENT SUPPORT coordinate system with respect to the IEC FIXED REFERENCE coordinate system in degrees. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2bf692a8-7140-4d94-86e5-05ce47f3535d" shape="rect"></a>&gt;Table Top Eccentric Adjusted Angle</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cb149f0a-fdcd-4e0e-8cea-9919f4f17437" shape="rect"></a>(0074,102B)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3a79a93b-dc3f-4320-b4e8-e54e5fb91331" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0d67e36d-cb98-4cd1-9396-831fb3a698ff" shape="rect"></a>Adjusted Table Top (non-isocentric) angle for patient setup, i.e., orientation of the IEC TABLE TOP ECCENTRIC coordinate system with respect to the IEC PATIENT SUPPORT system in degrees. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_08c5c59b-625f-4b77-a126-b7e955f32516" shape="rect"></a>&gt;Table Top Pitch Adjusted Angle</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f2cf6985-9f84-4714-acc7-5cbfba7ac829" shape="rect"></a>(0074,102C)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_259db940-a3d0-4de5-aa88-8bb1af734c48" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c466083-e18a-44f1-97b4-14cb64271217" shape="rect"></a>Adjusted Table Top Pitch Angle for patient setup, i.e., the rotation of the IEC TABLE TOP coordinate system about the X-axis of the IEC TABLE TOP coordinate system in degrees. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_54160822-29f2-423c-90e2-b9b92f36f3d5" shape="rect"></a>&gt;Table Top Roll Adjusted Angle</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dcd226e1-2db6-4039-a0f1-95ba3ff728bf" shape="rect"></a>(0074,102D)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_dabba5e4-0d66-484b-8535-e0ea971aa3e3" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a2de9594-633c-4087-b7d9-dd1c0a9da612" shape="rect"></a>Adjusted Table Top Roll Angle for patient setup, i.e., the rotation of the IEC TABLE TOP coordinate system about the Y-axis of the IEC TABLE TOP coordinate system in degrees. See <a class="xref" href="sect_C.8.8.29.2.html" title="C.8.8.29.2 Adjusted Table Positions and Angles" shape="rect">Section C.8.8.29.2</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1e2f5996-239f-4a36-ba46-83c807a67dfe" shape="rect"></a>&gt;Table Top Vertical Setup Displacement</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d840cf8c-9056-4098-b10f-d0542496057f" shape="rect"></a>(300A,01D2)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1fc784fc-8072-459f-b11e-e50cec1a2293" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a40df3c-eb01-462e-91d8-af8baa5f2e87" shape="rect"></a>Vertical Displacement in the IEC TABLE TOP coordinate system in mm relative to initial Setup Position, i.e., vertical offset between patient positioning performed using setup and treatment position.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b67af254-8f1b-4fad-8987-81a5b5330f7f" shape="rect"></a>&gt;Table Top Longitudinal Setup Displacement</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6e34f53a-35e8-428a-9939-966a56a5240e" shape="rect"></a>(300A,01D4)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_684e05ac-d9d4-43a8-ac03-19cb0d619216" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_848e935d-d585-4e4a-b23d-3fe4b523d234" shape="rect"></a>Longitudinal Displacement in the IEC TABLE TOP coordinate system in mm relative to initial Setup Position, i.e., longitudinal offset between patient positioning performed using setup and treatment position.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2b85bbbc-b8e6-41fb-b188-2eb6af9287df" shape="rect"></a>&gt;Table Top Lateral Setup Displacement</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_55368c5e-3ab8-4b80-bfb9-84071b503e89" shape="rect"></a>(300A,01D6)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_55b98583-e9ef-4e26-b925-11efd22d38de" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_04b87ca2-b152-484d-aa31-bdf18363cd61" shape="rect"></a>Lateral Displacement in the IEC TABLE TOP coordinate system in mm relative to initial Setup Position, i.e., lateral offset between patient positioning performed using setup and treatment position.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_e7b66ec4-24fa-4c5e-a148-dcbacfad1ca4" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.24.html#table_10-28" title="Table 10-28. Device Motion Control Macro Attributes" shape="rect">Table 10-28 “Device Motion Control Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6f964454-6c7d-448f-8d3e-459b99698991" shape="rect"></a>&gt;Delivery Verification Image Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3f4d34db-6d94-4b46-8758-09e5ae719547" shape="rect"></a>(0074,1030)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7998883b-b5d5-433b-b56c-10040878dc29" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_164b7836-bdca-4773-b1b5-ad29707702f9" shape="rect"></a>Patient position verification images to be acquired for current beam.</p>
+                                    <p>
+                              <a id="para_64324d23-3de9-4412-bc23-5e8937a82e29" shape="rect"></a>Required if Beam Task Type (0074,1022) is VERIFY or VERIFY_AND_TREAT.</p>
+                                    <p>
+                              <a id="para_5276c4f9-cde8-4d14-9d72-53281be124a9" shape="rect"></a>Zero or one Item shall be included in this Sequence if Beam Task Type (0074,1022) is VERIFY. Zero or more Items shall be included in this Sequence if Beam Task Type (0074,1022) is VERIFY_AND_TREAT.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_39c9e84a-8125-4a2e-bacc-4e531906aba2" shape="rect"></a>&gt;&gt;Verification Image Timing</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_710063ba-f9b8-4d9b-86be-91dc07a8a6e1" shape="rect"></a>(0074,1032)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ec8b1478-14e9-4cea-8ac5-50f94b4f3b31" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a7e8b90c-1df3-446c-879b-1d38368193d6" shape="rect"></a>Indicates the temporal relationship of the verification image with respect to the current treatment beam delivery. Value shall be DURING_BEAM for Beams with a Beam Task Type (0074,1022) of VERIFY.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">BEFORE_BEAM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_2554eb00-9215-4fc7-be3f-73929640d4e1" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">DURING_BEAM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_971235ad-4688-4843-abc7-36b83f929a74" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">AFTER_BEAM</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_9289add7-8856-4b84-a7cb-70f46c4fda83" shape="rect"></a>
+                                    </p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_89be4940-f868-476a-bf0a-bf647e1ed017" shape="rect"></a>&gt;&gt;Start Cumulative Meterset Weight</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0c25ac1e-183a-4272-b62a-3cc87e1e8f52" shape="rect"></a>(300C,0008)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f8b3bfa7-cd7c-4bf9-8ef3-796698875fa3" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_500712ce-b3dd-46a9-8c13-5c42838104f9" shape="rect"></a>Cumulative Meterset Weight within current Beam at which image acquisition will start. Required if Verification Image Timing (0074,1032) is DURING_BEAM.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2e784c90-63dc-40d4-8de9-a4bf70da2024" shape="rect"></a>&gt;&gt;Meterset Exposure</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_aa1cef5b-a918-4d00-b691-fef041db8429" shape="rect"></a>(3002,0032)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_067dea17-b3fd-4985-81c9-af1d91968882" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4b9d92c0-bde2-4b39-af6a-3480ee8e060f" shape="rect"></a>Treatment machine Meterset duration over which image is to be acquired, specified in Monitor units (MU) or minutes as defined by Primary Dosimeter Unit (300A,00B3) specified in the Referenced RT Plan Sequence (300C,0002).</p>
+                                    <p>
+                              <a id="para_12c081cf-8eb8-499f-8adf-380f70620216" shape="rect"></a>Required if Verification Image Timing (0074,1032) is BEFORE_BEAM or AFTER_BEAM.</p>
+                                    <p>
+                              <a id="para_f17ecf01-8391-40bf-a1b2-5fa7ffea4f3e" shape="rect"></a>See <a class="xref" href="sect_C.8.8.29.3.html" title="C.8.8.29.3 Meterset Exposure" shape="rect">Section C.8.8.29.3</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8486f127-1f2f-4064-9f2b-4390572388cd" shape="rect"></a>&gt;&gt;End Cumulative Meterset Weight</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2c83de35-c48f-4d2c-9813-43eed6392bd2" shape="rect"></a>(300C,0009)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f98eb7e9-f6d4-42eb-82ab-a870a560295b" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_d99ecbf0-3eb8-4166-8bc3-dac683a59789" shape="rect"></a>Cumulative Meterset Weight within current Beam at which image acquisition will end.</p>
+                                    <p>
+                              <a id="para_4f23425c-d4b0-4f68-8e6a-c8aa2f218b74" shape="rect"></a>Required if Verification Image Timing (0074,1032) is DURING_BEAM.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a4283d13-3def-42a2-9dba-70f727d2d0a0" shape="rect"></a>&gt;&gt;Double Exposure Flag</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c7d2654b-6a82-4319-8293-e1802b26144b" shape="rect"></a>(0074,1034)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_cfdfd317-886b-4f06-974b-92614e5c0f2f" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_463ff3c3-eb66-4125-9431-a71a977f7096" shape="rect"></a>Indicates whether the current verification image is a single or double exposure.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Enumerated Values:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">SINGLE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_41f75100-b76b-429f-ae27-37655817fd12" shape="rect"></a>single exposure</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">DOUBLE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_b8bbea49-50c6-45bc-8d17-03210397264c" shape="rect"></a>double exposure</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f56fbeb3-8add-4c77-a871-f01ac9ba05b7" shape="rect"></a>&gt;&gt;Double Exposure Ordering</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ad653719-b261-4998-94e1-c1b1dc450cf3" shape="rect"></a>(0074,1036)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fc65d507-cfe1-42fc-97b1-1d1db528897b" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ddff4fda-ba74-4ef3-b4f3-1b11fcfba918" shape="rect"></a>Indicates the ordering of the open (double exposure) field with respect to the primary (collimated) field in a double exposure.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">OPEN_FIRST</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_5f511b94-0e13-494e-af2b-bdda108d21c4" shape="rect"></a>Open field first</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">OPEN_SECOND</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_2c1c7448-aa9e-4357-a826-1dc430a42380" shape="rect"></a>Open field second</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                    <p>
+                              <a id="para_02f5bb3c-7970-4195-ad60-f69f56c0d7f1" shape="rect"></a>Required if Double Exposure Flag (0074,1034) is DOUBLE.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fedfe5d2-1858-4975-895a-2c3535662da2" shape="rect"></a>&gt;&gt;Double Exposure Meterset</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_28436761-3e06-423a-b41c-a8a00c28a0b9" shape="rect"></a>(0074,1338)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_daf3124c-3982-47ee-8065-d901cb22a3e9" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_da55bd48-7419-4532-bdb3-6d3a9247b896" shape="rect"></a>If this field is present, an additional exposure with the indicated Meterset is requested.</p>
+                                    <p>
+                              <a id="para_d7baed4a-1a99-4726-a6ad-33b2e7e09f25" shape="rect"></a>Required if Double Exposure Flag (0074,1034) is DOUBLE.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_80827d60-b659-4668-a71c-236203ca9db0" shape="rect"></a>&gt;&gt;Double Exposure Field Delta</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3b332591-fb1e-4efd-8b41-a95a960dec70" shape="rect"></a>(0074,133A)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c5eff83f-fbb4-4b43-93b7-88b24280f2e3" shape="rect"></a>2C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4696c672-c370-40b2-9980-5ccfce79ff69" shape="rect"></a>Offsets of field-defining edges in mm for the double exposure in the IEC BEAM LIMITING DEVICE coordinate system in the IEC order X1, X2, Y1, Y2. Negative values for X1 and Y1 indicate an enlarged field, negative values for X2 and Y2 indicate a reduced field.</p>
+                                    <p>
+                              <a id="para_e8e28ace-3fe9-4b91-bffa-0d77a903f2e6" shape="rect"></a>Required if Double Exposure Flag (0074,1034) is DOUBLE.</p>
+                                    <p>
+                              <a id="para_a2f080ff-d921-46d5-9350-cde468e90ad2" shape="rect"></a>See <a class="xref" href="sect_C.8.8.29.4.html" title="C.8.8.29.4 Double Exposure Field Delta" shape="rect">Section C.8.8.29.4</a>.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3b5e0218-e9c8-4562-8819-d1c4482eb945" shape="rect"></a>&gt;&gt;X-Ray Image Receptor Translation</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8661cac4-6b86-443c-926b-c677c9df3d77" shape="rect"></a>(3002,000D)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_906346a4-4c62-4c70-9aff-3788af872b68" shape="rect"></a>2</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e346537a-ee96-4b73-b78c-1f1468447080" shape="rect"></a>Position in (x,y,z) coordinates in mm of origin of the IEC X-RAY IMAGE RECEPTOR System in the IEC GANTRY coordinate system.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2e152032-b0d2-4615-8688-c68672d5d87c" shape="rect"></a>&gt;&gt;Related Reference RT Image Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_997f6463-1ca4-4317-9137-2b2437a04d1f" shape="rect"></a>(0074,1040)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_151c9dba-8036-494a-9b65-ee5e08c3d2cd" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a23f3e8e-16d3-4013-95fe-09cd078498eb" shape="rect"></a>Uniquely identifies Reference Images to which planned verification image is related. All Items in this Sequence shall be RT Image SOP Instances.</p>
+                                    <p>
+                              <a id="para_26130492-6f3c-42e4-abb4-f0db2830d8df" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                              <a id="para_96079bb6-5028-4677-8f1b-a9a459aba5ff" shape="rect"></a>
+                                        <span class="italic">&gt;&gt;&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_8d3e657f-580c-43d6-a316-89cc9b49fbc8" shape="rect"></a>Omitted Beam Task Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7ed730ad-1635-43c8-83ee-d9ab70c5a11d" shape="rect"></a>(300C,0111)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f8172ae8-0f64-4fed-b123-604eb76f1f6f" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_59d28e18-f7f8-4707-b2fe-38a37879aaef" shape="rect"></a>Beams not to be delivered and/or used for patient position verification.</p>
+                                    <p>
+                              <a id="para_623a5110-e2f1-447f-9384-bbc7b9fca209" shape="rect"></a>One or more Items are permitted in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_df247b8a-5b25-4055-b368-7b1b682371bf" shape="rect"></a>&gt;Referenced Beam Number</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_af00a478-6069-49e2-8194-b6abbe7fadfc" shape="rect"></a>(300C,0006)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a94630fa-0a62-4917-be83-a647b7189f87" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_46a8e097-15ba-47e5-9f08-483edfaa9384" shape="rect"></a>Uniquely identifies the Beam that is specified by Beam Number (300A,00C0) within Beam Sequence (300A,00B0) in <a class="xref" href="sect_C.8.8.14.html" title="C.8.8.14 RT Beams Module" shape="rect">RT Beams Module</a> of referenced RT Plan or within Ion Beam Sequence (300A,03A2) in <a class="xref" href="sect_C.8.8.25.html" title="C.8.8.25 RT Ion Beams Module" shape="rect">RT Ion Beams Module</a> of the referenced RT Ion Plan.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1b495ff7-a3bb-46e0-91ed-eb1440d234ff" shape="rect"></a>&gt;Reason for Omission</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b17ca99e-6408-436b-ba17-24ef03d37fb9" shape="rect"></a>(300C,0112)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_41ba684e-7ae7-44e1-8ce6-f2bcdd1e6b0f" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2d834a2e-241c-4eb9-b280-587ffcf173a7" shape="rect"></a>Reason why the referenced beam is not to be delivered and/or verified:</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">ALREADY_TREATED</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ecb3914b-7c5f-4aaa-90d4-9b9e1f377e8b" shape="rect"></a>The beam has been already treated in an earlier treatment session</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6cb86029-4762-44ad-874b-6d2f967ba30d" shape="rect"></a>&gt;Reason for Omission Description</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ea8acca9-55d9-40a8-a6d1-031d8398e521" shape="rect"></a>(300C,0113)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ebba45c4-f675-42fe-a990-792a3d388f61" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_981bef8b-9315-4ce4-9348-f46d104435c3" shape="rect"></a>Description of reason for omission.</p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.8.29.1" shape="rect"></a>C.8.8.29.1 Current Fraction Number</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_30a6cde6-21e6-4ae6-aa02-d08cf4ea2d46" shape="rect"></a>For beams with a Treatment Delivery Type (300A,00CE) of CONTINUATION, the Current Fraction Number (3008,0022) is that of the original fraction to be completed by the current beam.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.28.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.29.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.28 Patient Support Identification Macro </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.29.2 Adjusted Table Positions and Angles</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024b - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

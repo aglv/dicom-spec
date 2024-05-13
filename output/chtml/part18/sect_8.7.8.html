@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.7.8 Selected Media Type and Transfer Syntax</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.7.html" title="8.7 Media Types" />
+      <link rel="prev" href="sect_8.7.7.html" title="8.7.7 Accept Header Field" />
+      <link rel="next" href="sect_8.7.8.2.html" title="8.7.8.2 Selected Transfer Syntax" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.7.8 Selected Media Type and Transfer Syntax <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.7.8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.7.7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.7 Media Types</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.7.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.7.html" shape="rect">Media Types</a>
+         </span> &gt; <span class="breadcrumb-node">Selected Media Type and Transfer Syntax</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.7.8" shape="rect"></a>8.7.8 Selected Media Type and Transfer Syntax</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_d2d438aa-dd55-4e2e-998d-e5fc079fd233" shape="rect"></a>The selection of the media type and transfer syntax by the origin server are interrelated.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_8.7.8.1" shape="rect"></a>8.7.8.1 Selected Media Type</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_c731bc98-3e86-4634-94fa-da9d918bcc6f" shape="rect"></a>The Selected Media Type is the media type selected by the origin server for the representation in the response payload. The media types in the Accept Query Parameter and the media ranges in the Accept header field shall each be separately prioritized according to the rules defined in <a class="xref" href="chapter_2.html#biblio_RFC_7231" title="Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content" shape="rect">[<abbr class="abbrev">RFC7231</abbr>]</a>
+                        <a class="link" href="http://tools.ietf.org/html/rfc7231#section-5.3.1" target="_top" shape="rect">Section 5.3.1</a>.</p>
+            <p>
+               <a id="para_bde75e89-a80f-4cb9-afd2-903136e6c200" shape="rect"></a>For multipart payloads, the Selected Media Type is determined independently for each message part in the response.</p>
+            <p>
+               <a id="para_08adee12-529d-495a-8696-9e06d1003aad" shape="rect"></a>The Selected Media Type of each message part depends on the Resource Category of the Instance and the Acceptable Media Types for that Resource Category.</p>
+            <p>
+               <a id="para_5b452ebd-4f9d-41c4-a026-df0dcd707ef8" shape="rect"></a>The Selected Media Type is chosen as follows:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_676fbbbb-b4b8-420b-9287-579b2a03844f" shape="rect"></a>Identify the target's Resource Category</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f95d9864-a7f0-4f65-8402-3803c598d1f1" shape="rect"></a>Select the representation with the highest priority supported media type for that category in the Accept Query Parameter.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2eabd52e-1697-4421-af16-fbd9cf6040d6" shape="rect"></a>If no media type in the Accept Query Parameter is supported, select the highest priority supported media type for that category in the Accept header field, if any.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_086d930d-d547-47b2-b58c-a3c025c6e908" shape="rect"></a>Otherwise, select the default media type for the category, if the Accept header field contains a wildcard media range matching the category, if any.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1cdb69d4-2592-4da3-a4a8-eeee70dbe62f" shape="rect"></a>Otherwise, return a 406 (Not Acceptable).</p>
+                  </li>
+               </ol>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_21c17207-0bae-4f8b-89c6-ae71b432d05d" shape="rect"></a>If the Selected Media Type is the Explicit VR Little Endian and the pixel data is compressed and when uncompressed is of such length that it cannot contained in a value field, then the origin server will respond with a 406 (Not Acceptable), and the user agent may try again with a different set of Acceptable Media Types.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_af94e7af-169c-4ab9-83e9-0ae6bd4b590f" shape="rect"></a>If transcoding to the Explicit VR Little Endian Transfer Syntax, a VR of UN may be needed for the encoding of Data Elements with explicit VR whose value length exceeds 65534 (2<sup>16</sup>-2) (FFFEH, the largest even length unsigned 16-bit number) but which are defined to have a 16-bit explicit VR length field. See <a href="../part05/sect_6.2.2.html" class="olink" shape="rect">Section 6.2.2 “Unknown (UN) Value Representation” in PS3.5</a>.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p>
+               <a id="para_f72a26fb-31e5-4d0e-9c91-84d67949fdcf" shape="rect"></a>For a set of media types in the Accept Query Parameter (step 2 above), or for a set of media ranges in the Accept header field (step 3 above), the highest priority supported media type is determined as follows:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_7ea1a41d-c360-4d2b-9f91-9a43c4e22925" shape="rect"></a>Assign a qvalue of 1 to any member of the set that does not have a one.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_4e911745-65c9-4f38-ba0b-bca01dcfb480" shape="rect"></a>Assign each representation supported by the origin server the qvalue of the most specific media type that it matches.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_03a3f88a-4312-49c8-a69c-aa1d27cfbb98" shape="rect"></a>Select the representation with the highest qvalue. If there is a tie, the origin server shall determine which is returned.</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_e9b8ba10-459a-483d-a107-da2d8f90df5f" shape="rect"></a>For example, consider an origin server which receives a request with the following Accept header field:</p>
+            <pre class="programlisting" xml:space="preserve">Accept: text/*; q=0.5, text/html; q=0.4, text/html; level=1, text/html; level=2; q=0.7,</pre>
+            <pre class="programlisting" xml:space="preserve">        image/png, */*; q=0.4</pre>
+            <p>
+               <a id="para_f31e5238-a4a0-492f-9e6a-494dffc22000" shape="rect"></a>Suppose that for the resource indicated in the request, the origin server supports representations for the following media types:</p>
+            <pre class="programlisting" xml:space="preserve">text/html (regular, level 1 and level 2)</pre>
+            <pre class="programlisting" xml:space="preserve">text/rtf</pre>
+            <pre class="programlisting" xml:space="preserve">text/plain</pre>
+            <pre class="programlisting" xml:space="preserve">text/x-latex</pre>
+            <p>
+               <a id="para_08295ad1-8f93-4bf8-8b08-813384fb606a" shape="rect"></a>These media types are assigned the following qvalues, based on the media ranges above:</p>
+            <div class="table">
+               <a id="table_8.7.8-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 8.7.8-1. Media Type QValue Example</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e1de57ae-f60a-401a-8989-07d3c7cdde36" shape="rect"></a>Media Type</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b4d96d49-7da3-465e-ade4-090e78a5b3ff" shape="rect"></a>qvalue</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_cf68eb6f-8aa3-4ead-b028-b4c8a504d320" shape="rect"></a>Determining Media Range</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a4232ef1-90e0-4bef-b69f-6c3c516783bd" shape="rect"></a>text/html; level=1</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_744fab55-7011-42f9-84b6-818db4ff122d" shape="rect"></a>1.0</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a5a28dc6-cb0a-47ea-b746-8d76dc3c0d7d" shape="rect"></a>text/html; level=1</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_df6429b4-c2ce-4329-802f-4abb215437c1" shape="rect"></a>text/html; level=2</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_238cd4a4-ede5-4b86-883c-9f9622cf6135" shape="rect"></a>0.7</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d8c1d773-67d7-4b59-bf0f-e5fa082dd55a" shape="rect"></a>text/html; level=2</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_57dd9ebb-50a6-42d7-a2b9-bdc3dcfe96d3" shape="rect"></a>text/plain</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_60013b99-7857-4059-83a9-baadc0123986" shape="rect"></a>0.5</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0e4878c0-7ba8-4353-a7fc-45593be97853" shape="rect"></a>text/*</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f4273610-11b7-463b-8e4c-14ee598e4360" shape="rect"></a>text/rtf</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8bc28f3a-9ab5-425a-a15a-768590c55bab" shape="rect"></a>0.5</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_e7e20839-34b4-4785-927a-109e0632d812" shape="rect"></a>text/*</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d06f3fc2-1a92-494f-8142-e524a67ee909" shape="rect"></a>text/html</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8b05b7d3-99ab-44d8-86c6-9587778e102a" shape="rect"></a>0.4</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_89ab15ea-37b5-42d3-aaa0-fda3815503ff" shape="rect"></a>text/html</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b99c5127-56a2-4f06-bc53-fdd8e41e6cde" shape="rect"></a>text/x-latex</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f590c038-4906-4847-9063-acc09400e9b4" shape="rect"></a>0.4</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d4a7cc8c-3232-4ee7-a738-ab38750deb1e" shape="rect"></a>*/*</p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_8619645a-9469-475f-9663-a505b8fe3c02" shape="rect"></a>Although "image/png" has been assigned a default qvalue of 1.0, it is not among the supported media types for this resource, and thus is not listed.</p>
+            <p>
+               <a id="para_6ac4b036-95f5-4632-8898-d0eef5cf7c81" shape="rect"></a>The selected media type is 'text/html; level=1' since it is the supported media type in the Text Category with the highest qvalue.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.7.7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.7.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.7.7 Accept Header Field </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.7.8.2 Selected Transfer Syntax</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

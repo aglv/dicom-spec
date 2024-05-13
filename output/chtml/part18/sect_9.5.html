@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9.5 Retrieve Rendered Instance Transaction</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_9.html" title="9 URI Service" />
+      <link rel="prev" href="sect_9.4.3.3.html" title="9.4.3.3 Response Payload" />
+      <link rel="next" href="sect_9.5.2.html" title="9.5.2 Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9.5 Retrieve Rendered Instance Transaction <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_9.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.4.3.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">9 URI Service</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_9.html" shape="rect">URI Service</a>
+         </span> &gt; <span class="breadcrumb-node">Retrieve Rendered Instance Transaction</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_9.5" shape="rect"></a>9.5 Retrieve Rendered Instance Transaction</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_6af3ecea-fe1b-4754-b86a-7d297a21b31e" shape="rect"></a>This transaction returns a single Instance in a Rendered Media Type. See <a class="xref" href="sect_8.7.4.html" title="8.7.4 Rendered Media Types" shape="rect">Section 8.7.4</a>.</p>
+         <p>
+            <a id="para_fec0a852-06c2-4b36-b4c4-40c929870884" shape="rect"></a>The Acceptable Media Type shall not be application/dicom. If it is, the response should be 406 (Not Acceptable) response.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_9.5.1" shape="rect"></a>9.5.1 Request</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_ee176833-c0af-40d4-8dd9-317e1c6f37fd" shape="rect"></a>The request shall have the following syntax:</p>
+            <pre class="programlisting" xml:space="preserve">GET SP /?{requestType}&amp;{study}&amp;{series}&amp;{instance}{&amp;frameNumber}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;accept}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;charset}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;annotation}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;rows}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;columns}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;region}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;windowCenter}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;windowWidth}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;imageQuality}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;annotation}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;presentationSeriesUID}</pre>
+            <pre class="programlisting" xml:space="preserve">         {&amp;presentationUID}</pre>
+            <pre class="programlisting" xml:space="preserve">SP HTTP/1.1 CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">Accept: 1#media-type CRLF</pre>
+            <pre class="programlisting" xml:space="preserve">*(header-field CRLF)</pre>
+            <pre class="programlisting" xml:space="preserve">CRLF</pre>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_9.5.1.1" shape="rect"></a>9.5.1.1 Target Resource</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_aedb8553-bda8-450c-9332-f3a613f143f3" shape="rect"></a>The Target Resource shall be an Instance of a Composite SOP Class as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_9.5.1.2" shape="rect"></a>9.5.1.2 Query Parameters</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5306f5c1-8f7a-4661-9804-67ce53637c75" shape="rect"></a>The Query Parameters in this section shall only be included in a request if the DICOM Category of the Target Resource is Single Frame, Multi-Frame, or Video as defined in <a class="xref" href="sect_8.7.2.html" title="8.7.2 DICOM Resource Categories" shape="rect">Section 8.7.2</a>.</p>
+               <p>
+                  <a id="para_6c6b0330-fc61-48c5-b204-32056b71f31c" shape="rect"></a>The origin server shall support Query Parameters as required in <a class="xref" href="sect_9.5.html#table_9.5.1-1" title="Table 9.5.1-1. Query Parameters" shape="rect">Table 9.5.1-1</a>.</p>
+               <p>
+                  <a id="para_c8f9593a-369c-4b2a-8d92-62bbc4dad6e3" shape="rect"></a>The user agent shall supply in the request Query Parameters as required in <a class="xref" href="sect_9.5.html#table_9.5.1-1" title="Table 9.5.1-1. Query Parameters" shape="rect">Table 9.5.1-1</a>.</p>
+               <div class="table">
+                  <a id="table_9.5.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 9.5.1-1. Query Parameters</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_1a99acbe-6ac5-4fc6-a6c9-748b036dd2c7" shape="rect"></a>Key</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_9ea70198-eb4a-4d48-8fe0-257c14a35cfa" shape="rect"></a>Values</p>
+                                </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                    <a id="para_09839e2a-8e2a-48d9-ba4b-d8be6de335ba" shape="rect"></a>Usage</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_a063301b-b158-453c-8327-3eeabfb7e4be" shape="rect"></a>Section</p>
+                                </th>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8376ebbe-4940-40fe-aad4-232d1d4b779a" shape="rect"></a>User Agent</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_20b4078c-ec97-4388-84db-a65b21146263" shape="rect"></a>Origin Server</p>
+                                </td>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c37776d8-2acd-46f0-a8c3-2e72f6e1b229" shape="rect"></a>contentType</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f85543a2-ccfb-4cfa-b72d-8196c6494927" shape="rect"></a>rendered-media-type</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0bd439e9-0724-4e4f-b00d-7ed7f08ec7f7" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_66841c0a-4272-4566-9a2a-170b6bed6f78" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b254129e-18ae-4f82-a56b-ddfd4da3d281" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.2.1" title="9.1.2.2.1 Acceptable Media Types" shape="rect">Section 9.1.2.2.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_958a9550-b0d6-4db3-af0f-4e2faa0059ea" shape="rect"></a>charset</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5a91e7ba-3146-4d31-b8db-a075557caab0" shape="rect"></a>charset</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ab5dac60-8b43-4b11-8fc2-e6785b916f52" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ebc4b6e3-7752-4e6e-8742-17868f11c9db" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4813c34c-2544-404e-8cf4-ae9c2108a921" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.2.2" title="9.1.2.2.2 Acceptable Character Sets" shape="rect">Section 9.1.2.2.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_aa08afcc-924d-409d-b3bb-39b3f60db423" shape="rect"></a>frameNumber</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_170d16f4-2af3-450e-b36f-6608380a3395" shape="rect"></a>uint</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_de37e912-1dd8-48c0-8aac-ffbbec30d1ee" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7ed83816-16b1-46ac-94f8-2bd62b92c8f4" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_25a9a457-d69f-4b11-924c-c71f779fb223" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.1" title="9.5.1.2.1 Frame Number" shape="rect">Section 9.5.1.2.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_da4fbdc5-8d85-4c0a-af5b-53ddb5437b38" shape="rect"></a>imageAnnotation</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7a0067e0-9724-477f-b992-0ea378c1413a" shape="rect"></a>"patient" / "technique"</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9ff25a28-2d56-404c-a2f9-0570bda2697b" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_21fdf6e5-45ba-41e7-81f0-75f8f1c86187" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4300aecf-edc6-436b-a8b4-c4bf68a2c3d5" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.2" title="9.5.1.2.2 Image Annotation" shape="rect">Section 9.5.1.2.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0314ea3e-2335-4df9-90dc-e36fb3fa8106" shape="rect"></a>imageQuality</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_90ed089b-c7ef-4a50-9b0d-87ab6a3d1a1c" shape="rect"></a>uint</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b0925164-b514-41e2-bbff-5c76293376f7" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6375442e-a2db-46eb-8d22-58e870866891" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9cb8bc6e-4c47-4cae-989e-f9d1c63594d2" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.3" title="9.5.1.2.3 Image Quality" shape="rect">Section 9.5.1.2.3</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_38ea8b6e-5808-41b1-af60-4bb71030b1da" shape="rect"></a>rows</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d6becaea-b4bf-4ab1-9f52-d83ad7a9c8a2" shape="rect"></a>uint</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_71dde8b0-9de4-4562-b659-93aebca0d94e" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_feab7d14-bdd8-4d72-8d2d-4bebe8ef97b9" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_413b3b0c-4935-43f3-8a61-af8dca795845" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.4.1" title="9.5.1.2.4.1 Viewport Rows" shape="rect">Section 9.5.1.2.4.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_bb7eaa03-af63-4d42-b1b3-3e961aac6da9" shape="rect"></a>columns</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ac89f3ce-8048-4799-b814-cb17f83468de" shape="rect"></a>uint</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_81354bdf-170a-4eb3-896b-659cb9968bb2" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d7d59b4f-8f0b-43f9-9a28-58b595d28008" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e768f90f-10d8-43b2-9230-41b873b57e83" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.4.2" title="9.5.1.2.4.2 Viewport Columns" shape="rect">Section 9.5.1.2.4.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_19b78828-134a-43a9-8519-4d6db71d157e" shape="rect"></a>region</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_15b6f75b-c2c3-4828-829d-015288b8b393" shape="rect"></a>4decimal</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d653e876-1047-4a70-97f8-3cd5b5c1c7fc" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_19ee7a25-48e1-4d40-8705-e454df795201" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e9ec284b-f7e6-4ff9-b4f9-4003b343b23c" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.5" title="9.5.1.2.5 Source Image Region" shape="rect">Section 9.5.1.2.5</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e03af271-1efb-402b-8d7e-b15e6fcd8303" shape="rect"></a>windowCenter</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_65557a39-1b2e-4d78-ba57-5060c715c636" shape="rect"></a>decimal</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_307e0905-1815-49ae-9310-65875d215564" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_079735b9-831d-4867-b518-ff3b6d6f7c0f" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_78946428-0946-4ca5-8772-f0ceff9d360c" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.6.1" title="9.5.1.2.6.1 Window Center" shape="rect">Section 9.5.1.2.6.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8cd29f04-047e-4717-b44e-576847f5b5c0" shape="rect"></a>windowWidth</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0254d33f-4d28-4990-a953-75df5b75db81" shape="rect"></a>decimal</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f9c58e04-60f5-4048-986e-c0825fb3ccc5" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8cc45a59-3060-436a-9c4f-c3174d48b905" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e3cf1429-ebcd-4545-b34b-e903cac3889a" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.6.2" title="9.5.1.2.6.2 Window Width" shape="rect">Section 9.5.1.2.6.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_971dd8b7-8aec-47aa-b202-676e4a778355" shape="rect"></a>presentationSeriesUID</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9a185589-5772-42be-ba35-a90d5246bbc5" shape="rect"></a>uid</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6d564407-ee05-4d2d-a263-cdbcaa5d29f0" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7f984595-294d-407e-9251-e388d0a03dfe" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a20af0a4-fc25-43a9-ae83-43fa7ab223a6" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.7.1" title="9.5.1.2.7.1 Presentation Series UID" shape="rect">Section 9.5.1.2.7.1</a>
+                                    </p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e9750c52-506a-4f46-bc7b-abe158ca71c2" shape="rect"></a>presentationUID</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7e96f2c8-106a-49cd-8e1d-5c2037ac518f" shape="rect"></a>uid</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_43b83b5d-98ec-4a47-9123-46a85f5d0e58" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ce8402d7-863a-43d6-b59c-f196e963bb10" shape="rect"></a>O</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_bf31668d-60d7-45f9-baff-1878f2b15662" shape="rect"></a>
+                                        <a class="xref" href="sect_9.5.html#sect_9.5.1.2.7.2" title="9.5.1.2.7.2 Presentation UID" shape="rect">Section 9.5.1.2.7.2</a>
+                                    </p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.1" shape="rect"></a>9.5.1.2.1 Frame Number</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <pre class="programlisting" xml:space="preserve">frame-number = %s"frameNumber" "=" uint</pre>
+                  <p>
+                     <a id="para_6ac315c3-cfdf-41ca-9147-5f7cee2fb144" shape="rect"></a>This parameter specifies a single frame within a multi-frame image Instance, as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> that shall be returned. Its name is "frameNumber" and its value shall be a positive integer (i.e., starts at 1 not 0).</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.2" shape="rect"></a>9.5.1.2.2 Image Annotation</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_4fefaf22-90f2-4e5b-a0c6-479b986b567e" shape="rect"></a>See <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.1" title="8.3.5.1.1 Image Annotation" shape="rect">Section 8.3.5.1.1</a>.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.3" shape="rect"></a>9.5.1.2.3 Image Quality</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_f30856e1-de44-4101-8c0a-f4a73740bb8b" shape="rect"></a>See <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.2" title="8.3.5.1.2 Image Quality" shape="rect">Section 8.3.5.1.2</a>.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.4" shape="rect"></a>9.5.1.2.4 Viewport</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_da3543df-27bb-43fb-b2ef-34ffe16f97be" shape="rect"></a>The Viewport Query Parameters specify the dimensions of the user agent's viewport. The Viewport Rows and Columns parameters specify the height and width, in pixels, of the returned image. If either parameter is present, both shall be present.</p>
+                  <p>
+                     <a id="para_ecd30cdd-8a95-4042-a383-12c388c315a0" shape="rect"></a>The Viewport parameters syntax in this Section overrides that described in <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.3" title="8.3.5.1.3 Viewport Scaling" shape="rect">Section 8.3.5.1.3</a>; however, the scaling behavior described in that section still applies.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.4.1" shape="rect"></a>9.5.1.2.4.1 Viewport Rows</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">rows = %s"rows" "=" uint</pre>
+                     <p>
+                        <a id="para_8916a252-c8c7-4f94-a9dc-120ef5e7387f" shape="rect"></a>This parameter specifies the number of pixel rows in the returned image. It corresponds to the height in pixels of the user agent's viewport. Its name is "rows" and its value shall be a positive integer.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.4.2" shape="rect"></a>9.5.1.2.4.2 Viewport Columns</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">columns = %s"columns" "=" uint</pre>
+                     <p>
+                        <a id="para_0fe51ab1-b070-41e5-b314-66b4f764c781" shape="rect"></a>This parameter specifies the number of pixel columns in the returned image. It corresponds to the width, in pixels, of the user agent's viewport. Its name is "columns" and its value shall be a positive integer.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.5" shape="rect"></a>9.5.1.2.5 Source Image Region</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <pre class="programlisting" xml:space="preserve">region = %s"region" "=" xmin "," ymin "," xmax "," ymax</pre>
+                  <pre class="programlisting" xml:space="preserve">xmin = decimal</pre>
+                  <pre class="programlisting" xml:space="preserve">ymin = decimal</pre>
+                  <pre class="programlisting" xml:space="preserve">xmax = decimal</pre>
+                  <pre class="programlisting" xml:space="preserve">ymax = decimal</pre>
+                  <p>
+                     <a id="para_348dc752-0242-41a6-a0bc-4b915402f654" shape="rect"></a>This parameter specifies a rectangular region of the Target Resource. Its name is "region" and its values shall be a comma-separated list of four positive decimal numbers:</p>
+                  <div class="variablelist">
+                     <dl class="variablelist">
+                        <dt>
+                           <span class="term">xmin</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_0508148a-0f3b-490c-bfd9-f696ff596049" shape="rect"></a>the left column of the region</p>
+                        </dd>
+                        <dt>
+                           <span class="term">ymin</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_9d69cada-7ddd-446e-93e1-9a19a3413a0f" shape="rect"></a>the top row of the region</p>
+                        </dd>
+                        <dt>
+                           <span class="term">xmax</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_2f1f3a9f-3d8d-4eee-8a98-59d6a4cda15f" shape="rect"></a>the right column of the region</p>
+                        </dd>
+                        <dt>
+                           <span class="term">ymax</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_37f3a0ba-4546-4399-9389-bf1bb7a494ac" shape="rect"></a>the bottom row of the region</p>
+                        </dd>
+                     </dl>
+                  </div>
+                  <p>
+                     <a id="para_5efc74d2-c7c5-4db6-b134-ee22b14433c4" shape="rect"></a>The region is specified using a normalized coordinate system relative to the size of the original image matrix, measured in rows and columns. Where</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_94a3b580-0c15-461b-989a-e83cbbf84e7a" shape="rect"></a>0.0, 0.0 corresponds to the top row and left column of the image</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_355bd89a-a929-4577-a9de-a7ded24ddd63" shape="rect"></a>1.0, 1.0 corresponds to the bottom row and right column of the image</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_edfc1bc5-1b4d-4279-8f94-7c35e5613fa8" shape="rect"></a>and</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_47df9865-f9ec-4471-b669-ab13986c805f" shape="rect"></a>0.0 &lt;= xmin &lt; xmax &lt;= 1.0</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_dcf4835c-e04e-4714-b2fe-318bb80ff3ca" shape="rect"></a>0.0 &lt;= ymin &lt; ymax &lt;= 1.0</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_1facc1d5-f160-4196-9264-4eb68ad5cf1e" shape="rect"></a>This parameter when used in conjunction with one of the viewport parameters, allows the user agent to map a selected area of the source image into its viewport.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.6" shape="rect"></a>9.5.1.2.6 Windowing</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_29f01be7-224c-40fd-a457-f596cb125869" shape="rect"></a>The Windowing parameters (Window Center and Window Width) are optional; however, if either is present, both shall be present. If only one is present the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+                  <p>
+                     <a id="para_1cc40c18-edb0-4d36-bbff-c32457103257" shape="rect"></a>The URI Service does not support the "function" Query Parameter, which is described in <a class="xref" href="sect_8.3.5.html#sect_8.3.5.1.4" title="8.3.5.1.4 Windowing" shape="rect">Section 8.3.5.1.4</a>.</p>
+                  <p>
+                     <a id="para_348bd8c2-f8a4-49d1-a1e5-2a615877a9c3" shape="rect"></a>The Windowing and Presentation State parameters shall not be present in the same request. If both are present the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+                  <p>
+                     <a id="para_3ec4f617-2f37-4267-ae16-97b556ea0167" shape="rect"></a>The Windowing parameters shall not be present if contentType is application/dicom; if either is present the origin server shall return a 400 (Bad Request) response and may include a payload containing an appropriate error message.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.6.1" shape="rect"></a>9.5.1.2.6.1 Window Center</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">window-center = %s"windowCenter" "=" decimal</pre>
+                     <p>
+                        <a id="para_bffa0ce7-0389-429f-9bba-74427c16fdd7" shape="rect"></a>This parameter specifies the Window Center of the returned image as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Its name is "windowCenter" and its value shall be a decimal number.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.6.2" shape="rect"></a>9.5.1.2.6.2 Window Width</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">window-width = %s"windowWidth" "=" decimal</pre>
+                     <p>
+                        <a id="para_1a8ddcd9-d8ae-4e11-99da-38312a8c97a0" shape="rect"></a>This parameter specifies the Window Width of the returned image as defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Its name is "windowWidth" and its value shall be a decimal number.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_9.5.1.2.7" shape="rect"></a>9.5.1.2.7 Presentation State</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_6b4a60f3-9d85-4670-ac01-21f1d5c60566" shape="rect"></a>The parameters below specify the Series and SOP Instance UIDs of a Presentation State. They are optional. However, if one is present, they shall both be present.</p>
+                  <p>
+                     <a id="para_40a2f91d-3b26-4bff-b394-8cb1a6c62a73" shape="rect"></a>If the Presentation State parameters are present, then the only other optional parameters that may be present are Annotation, Image Quality, Region, and Viewport.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.7.1" shape="rect"></a>9.5.1.2.7.1 Presentation Series UID</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">presentation-series = %s"presentationSeriesUID" "=" uid</pre>
+                     <p>
+                        <a id="para_01d71208-4463-4956-8103-3e415d7ae6ac" shape="rect"></a>This parameter specifies the Series containing the Presentation State Instance to be used to render the image. Its name shall be "presentationSeriesUID" and its value shall be a Series Instance UID.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_9.5.1.2.7.2" shape="rect"></a>9.5.1.2.7.2 Presentation UID</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">presentation-instance = %s"presentationUID" "=" uid</pre>
+                     <p>
+                        <a id="para_bc92232f-cd8b-4b50-88b1-9f981d96a368" shape="rect"></a>This parameter identifies the Presentation State Instance, which is used to render the image. Its name is "presentationUID" and its value shall be a Presentation State Instance UID of a Presentation State Instance.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_9.5.1.3" shape="rect"></a>9.5.1.3 Request Header Fields</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f9210e62-f066-44da-85ec-466170ff73c9" shape="rect"></a>The origin server shall support header fields as required in <a class="xref" href="sect_9.5.html#table_9.5.1-2" title="Table 9.5.1-2. Request Header Fields" shape="rect">Table 9.5.1-2</a>.</p>
+               <p>
+                  <a id="para_554a7017-7b60-4d82-ac46-2a10f236ca45" shape="rect"></a>The user agent shall supply in the request header fields as required in <a class="xref" href="sect_9.5.html#table_9.5.1-2" title="Table 9.5.1-2. Request Header Fields" shape="rect">Table 9.5.1-2</a>.</p>
+               <div class="table">
+                  <a id="table_9.5.1-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 9.5.1-2. Request Header Fields</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_cec02aa3-b1e0-475d-b24f-07a09f4de14c" shape="rect"></a>Name</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_a3f02eef-0ece-4d8f-85ab-5ed7ccf29525" shape="rect"></a>Values</p>
+                                </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                    <a id="para_91aa2de3-95eb-4ab2-9cca-590de5110588" shape="rect"></a>Usage</p>
+                                </th>
+                              <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_f0047842-d34d-47e4-92cf-895047957ac1" shape="rect"></a>Description</p>
+                                </th>
+                           </tr>
+                           <tr valign="top">
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5fc559ae-2280-4694-920e-34ad62740310" shape="rect"></a>User Agent</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7546272b-3191-4b8b-991c-9f22c7f251b8" shape="rect"></a>Origin Server</p>
+                                </td>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ffdfd11b-6789-4444-a942-64e45e43c516" shape="rect"></a>Accept</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_8c5f6019-33a0-4571-a64a-613f3a8e1c25" shape="rect"></a>media-type</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f85ce6c5-2807-45fb-9a68-f90922b3d5fb" shape="rect"></a>M</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7a138652-f632-4a06-abc0-b3c1e534deb0" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_053f44cc-d7d6-46e4-908d-c8fa61116a25" shape="rect"></a>The Acceptable Media Types for the response payload</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_efc98745-9103-4653-92b6-a3211878f877" shape="rect"></a>Accept-Charset</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c43a13fd-832d-4c38-818d-e32ee1b9b3ff" shape="rect"></a>charset</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_92fcad92-e603-483f-a632-a80b8118436e" shape="rect"></a>O</p>
+                                </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_10440444-25d2-4a6a-b363-b0de9bfd9369" shape="rect"></a>M</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_adc341a6-c366-4b20-9b1c-c0428519d049" shape="rect"></a>List of one or more character sets</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_90c10058-bc19-4dfa-8092-a005168b3fdf" shape="rect"></a>The Acceptable Media Types shall contain only Rendered Media Types. See <a class="xref" href="sect_8.7.4.html" title="8.7.4 Rendered Media Types" shape="rect">Section 8.7.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_9.5.1.4" shape="rect"></a>9.5.1.4 Request Payload</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8ff92a77-31e6-4749-b27d-88366ec90670" shape="rect"></a>The request has no payload.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_9.4.3.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_9.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">9.4.3.3 Response Payload </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.5.2 Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024b - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

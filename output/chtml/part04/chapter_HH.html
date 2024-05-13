@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>HH Defined Procedure Protocol Query/Retrieve Service Classes</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="PS3.4.html" title="PS3.4" />
+      <link rel="prev" href="sect_GG.6.6.html" title="GG.6.6 Inventory Storage SOP Class" />
+      <link rel="next" href="sect_HH.2.html" title="HH.2 Defined Procedure Protocol Information Models Definitions" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">HH Defined Procedure Protocol Query/Retrieve Service Classes <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/chapter_HH.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_GG.6.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HH.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-node">Defined Procedure Protocol Query/Retrieve Service Classes</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_HH" shape="rect"></a>HH Defined Procedure Protocol Query/Retrieve Service Classes</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_HH.1" shape="rect"></a>HH.1 Overview</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HH.1.1" shape="rect"></a>HH.1.1 Scope</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3132cd9d-4088-47a2-afdd-e4d8a5c37889" shape="rect"></a>The Defined Procedure Protocol Query/Retrieve Service Classes define application-level classes-of-service that facilitate access to Defined Procedure Protocol composite objects.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HH.1.2" shape="rect"></a>HH.1.2 Conventions</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3f36cd11-3e9c-4dc5-b3b0-32fc71ad6119" shape="rect"></a>Key Attributes serve two purposes; they may be used as Matching Key Attributes or as Return Key Attributes. Matching Key Attributes may be used for matching (criteria to be used in the C-FIND request to determine whether an entity matches the query). Return Key Attributes may be used to specify desired return Attributes (what elements in addition to the Matching Key Attributes have to be returned in the C-FIND response).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_d5725fea-156a-4228-8ae5-5b15a00385a2" shape="rect"></a>Matching Keys are typically used in an SQL 'WHERE' clause. Return Keys are typically used in an SQL 'SELECT' clause to convey the Attribute Values.</p>
+               </div>
+               <p>
+                  <a id="para_88e711f1-173e-40aa-9da3-5f1df46cfe7a" shape="rect"></a>Matching Key Attributes may be of Type "required" (R) or "optional" (O). Return Key Attributes may be of Type 1, 1C, 2, 2C, 3 as defined in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5 Data Structure and Semantics</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HH.1.3" shape="rect"></a>HH.1.3 Query/Retrieve Information Model</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_94101d52-9fc4-4b30-aa3f-465273dc999c" shape="rect"></a>In order to serve as an SCP of the Defined Procedure Protocol Query/Retrieve Service Class, a DICOM AE possesses information about the Attributes of a number of Defined Procedure Protocol composite SOP Instances. The information is organized into an Information Model. The Information Models for the different SOP Classes specified in this Annex are defined in <a class="xref" href="sect_HH.6.html" title="HH.6 SOP Class Definitions" shape="rect">Section HH.6</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_HH.1.4" shape="rect"></a>HH.1.4 Service Definition</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3a264f0a-33d8-4804-b017-32c86afbddcb" shape="rect"></a>Two peer DICOM AEs implement a SOP Class of a Defined Procedure Protocol Query/Retrieve Service Class with one serving in the SCU role and one serving in the SCP role. SOP Classes of the Defined Procedure Protocol Query/Retrieve Service Classes are implemented using the DIMSE-C C-FIND, C-MOVE and C-GET services as defined in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7 Message Exchange Protocol</a>.</p>
+               <p>
+                  <a id="para_8e883599-6fca-4221-a9cd-70b982310b5c" shape="rect"></a>An SCP of this SOP Class shall support Storage Level 2 (Full) as defined in <a class="xref" href="sect_B.4.html#sect_B.4.1" title="B.4.1 Conformance as an SCP" shape="rect">Section B.4.1</a>.</p>
+               <p>
+                  <a id="para_df018e4b-9d51-4235-a4de-2f83e90db03f" shape="rect"></a>The semantics of the C-FIND service are the same as those defined in the Service Definition of the Basic Worklist Management Service Class.</p>
+               <p>
+                  <a id="para_c043ea61-21e2-4923-9436-11960c54c90b" shape="rect"></a>The semantics of the C-MOVE service are the same as those defined in the Service Definition of the Query/Retrieve Service Class, with the exception that there is only one level of retrieval.</p>
+               <p>
+                  <a id="para_403a6af5-12af-44a7-8ba7-b44cf80ec9e5" shape="rect"></a>The semantics of the C-GET service are the same as those defined in the Service Definition of the Query/Retrieve Service Class, with the exception that there is only one level of retrieval.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_GG.6.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HH.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">GG.6.6 Inventory Storage SOP Class </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> HH.2 Defined Procedure Protocol Information Models Definitions</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024b - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

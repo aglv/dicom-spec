@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7 DICOM Real-Time Format</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.22.html" title="PS3.22" />
+      <link rel="up" href="PS3.22.html" title="PS3.22" />
+      <link rel="prev" href="sect_6.2.2.html" title="6.2.2 RTP Payload" />
+      <link rel="next" href="sect_7.2.html" title="7.2 Standard SOP Classes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.22 2024b - Real-Time Communication</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7 DICOM Real-Time Format <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part22/chapter_7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.22.html" shape="rect">PS3.22</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM Real-Time Format</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_7" shape="rect"></a>7 DICOM Real-Time Format</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ae9f3a15-03c5-4409-9a11-9c054e1c6956" shape="rect"></a>The DICOM Real-Time Format provides a means to encapsulate in an RTP session the Data Set representing a SOP Instance.</p>
+         <p>
+            <a id="para_20876eff-c7a3-4402-b217-aa6d04a6362c" shape="rect"></a>
+            <a class="xref" href="chapter_7.html#figure_7-1" title="Figure 7-1. DICOM Dataset Encapsulation Within RTP" shape="rect">Figure 7-1</a> illustrates the encapsulation of a DICOM audio or video dataset in RTP. The byte stream of the Data Set is placed into the RTP Payload after the DICOM-RTV Meta Information. Each RTP session corresponds to a single SOP Instance.</p>
+         <div class="figure">
+            <a id="figure_7-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.22_7-1.svg" alt="DICOM Dataset Encapsulation Within RTP" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 7-1. DICOM Dataset Encapsulation Within RTP</strong>
+            </p>
+         </div>
+         <br class="figure-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_7.1" shape="rect"></a>7.1 RTV Meta Information</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_933099db-47a7-41e8-8126-980659afa530" shape="rect"></a>The RTV Meta Information includes identifying information on the encapsulated DICOM Data Set.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_497a67bc-18ae-420e-981e-4085a7e91754" shape="rect"></a>The group number of the RTV Meta Information attributes (0002,xxxx) is lower than the one of other attributes in order to place the RTV Meta Information at the beginning of the payload, as is done in <a href="../part10/PS3.10.html" class="olink" shape="rect">PS3.10</a>.</p>
+            </div>
+            <div class="table">
+               <a id="table_7.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 7.1-1. RTV Meta Information</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bbcbd6d5-0353-4404-b83e-54c0a7f715ef" shape="rect"></a>Attribute Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bc4a8380-3397-4dde-8423-0c8b3a442c98" shape="rect"></a>Tag</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c382e686-df2b-4676-b372-7395a630bff0" shape="rect"></a>Type</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6f946dfd-22e5-499b-a516-39ff318de9a5" shape="rect"></a>Attribute Description</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6402b7a9-87bf-4f77-bac0-7605eef2c3e7" shape="rect"></a>Header Preamble</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_da20afa3-b933-4c7d-95f8-51b933e658a6" shape="rect"></a>
+                                <span class="italic">No Tag or Length Fields</span>
+                              </p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4b917666-3cb9-4d03-8f9e-3807411144d3" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_70b33c29-314c-41c2-843f-625f67f29abf" shape="rect"></a>A fixed 128 byte field available for Application Profile or implementation specified use. If not used by an Application Profile or a specific implementation, all bytes shall be set to 00H.</p>
+                              <p>
+                                 <a id="para_ed5b035a-f4f3-4de9-8bd1-0c2665f0258e" shape="rect"></a>Receivers shall not rely on the content of this Preamble to determine that this payload is or is not a DICOM payload.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7376164d-7e4a-456d-9bcd-60f61648a5fe" shape="rect"></a>DICOM Prefix</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cdf57685-9be2-4b27-a12d-ac2e645933d3" shape="rect"></a>
+                                <span class="italic">No Tag or Length Fields</span>
+                              </p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_18db1463-ed96-444a-af3a-ef9f5949f3c2" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2007690b-dbfb-4558-b600-76c8eba36432" shape="rect"></a>Four bytes containing the character string "DICM". This Prefix is intended to be used to recognize that this payload is or is not a DICOM payload.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_41482db0-b341-437b-8137-4aac20ac8351" shape="rect"></a>File Meta Information Group Length</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_229da25f-570a-4b2c-b908-d0c2e8210050" shape="rect"></a>(0002,0000)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a4f7ef7c-00eb-4c5a-aad8-7e539b58c11b" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ade3d47d-5a45-41a0-aac9-086b39829bc6" shape="rect"></a>Number of bytes following this RTV Meta Element (end of the Value field) up to and including the last RTV Meta Element of the Group 2 RTV Meta Information</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3bc692a1-6112-424e-b71c-ef167f872ecb" shape="rect"></a>Transfer Syntax UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_17f18438-4042-4b11-aa15-25f5ff608baf" shape="rect"></a>(0002,0010)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_166c8069-8f16-4d61-bc97-919e75a7d6b8" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fc1e6370-1cb4-44f7-9296-04cbf805c1c3" shape="rect"></a>Uniquely identifies the Transfer Syntax used to encode the referred bulk-data Flow. This Transfer Syntax does not apply to the RTV Metadata which is encoded using the Explicit VR Little Endian Transfer Syntax.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0e8e17b4-c127-4d57-9a52-4cf79ac7bf26" shape="rect"></a>RTV Meta Information Version</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eb95b6b0-f82a-45aa-a759-800d8306761d" shape="rect"></a>(0002,0031)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_09d33701-ef9d-4703-b164-3f65721a26f0" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_74b0d542-fd2c-4da9-87e5-801ca146e506" shape="rect"></a>This is a two byte field where each bit identifies a version of this RTV Meta Information header. In version 1 the first byte value is 00H and the second byte value is 01H.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5a08e345-6d50-46b5-9195-0654d9a6aee3" shape="rect"></a>RTV Communication SOP Class UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_36897e27-dcf6-46b3-829b-6e020b291556" shape="rect"></a>(0002,0032)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e3539353-ccd1-4134-9a73-890a42bab4ed" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13852351-092a-4fdd-ba05-4fc4db1a2473" shape="rect"></a>Uniquely identifies the SOP Class associated with the Data Set. SOP Class UIDs allowed for RTV Communication are specified in section 7.2 STANDARD SOP CLASSES.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b77cbc9e-5d49-4bfe-9f14-c8cf5d1ae1d5" shape="rect"></a>RTV Communication SOP Instance UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_acef297b-ab6d-4798-987b-605032fa4a15" shape="rect"></a>(0002,0033)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_378d85a3-a9cc-409c-9094-ce60339526be" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d5cebc76-2988-401e-bdfa-5ebc10435a2d" shape="rect"></a>Uniquely identifies the SOP Instance associated with the Data Set placed in the RTP Payload and following the RTV Meta Information.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8b582cd8-cfca-4964-b7bd-75a6b3f93234" shape="rect"></a>RTV Source Identifier</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9416a62f-5a62-40c4-8c86-89ee857c4d15" shape="rect"></a>(0002,0035)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fe973f12-194e-4af0-9b1e-e5b2e00bd21b" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c7ae2415-7977-4332-b089-ea069a843ae2" shape="rect"></a>The UUID of the RTP source that sends the RTV Metadata Flow.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7509ffc4-94a4-4caa-8dbb-7ebd5b3b2f39" shape="rect"></a>RTV Flow Identifier</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_497e3df3-fb76-4b20-bdcd-b96064679df2" shape="rect"></a>(0002,0036)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5165d954-61d4-4de0-9778-9564da7629da" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e864cca3-fc27-4c75-9574-da4a971094ec" shape="rect"></a>The UUID of the RTV Metadata Flow.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bad4da3c-5b20-4e65-affd-774c7cdd1246" shape="rect"></a>RTV Flow RTP Sampling Rate</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_80085556-a91c-4665-a3bc-8ccaa1d02425" shape="rect"></a>(0002,0037)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_608e0bb3-a7f8-4ecf-8396-e5d6739608cf" shape="rect"></a>1C</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4b04d39f-2765-423d-ab61-01a5b6747d01" shape="rect"></a>The rate of the dynamic part of the RTV Metadata Flow, the same as the bulk-data Flow rate.</p>
+                              <p>
+                                 <a id="para_83d0b441-5d71-4563-9226-7d40304009e2" shape="rect"></a>Required if RTV Metadata Flow includes a dynamic part.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4f1e546e-77cd-49e3-91e3-005b32fd976f" shape="rect"></a>RTV Flow Actual Frame Duration</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_118cad21-d613-4f81-a6e3-4c2aa9fba876" shape="rect"></a>(0002,0038)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8ba045a5-447b-4dfa-bb73-f03cbc013528" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ede71fab-46ae-428e-8f73-c4cb5dca7191" shape="rect"></a>Duration of image capture in msec.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_91c3a928-0d4b-43ea-b08c-cc6a6089f885" shape="rect"></a>Private Information Creator UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f6961e94-a757-4dd2-a9da-de4409c768ac" shape="rect"></a>(0002,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9137a217-0221-421c-a570-71582cc0a1e4" shape="rect"></a>3</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aef4b65b-b401-4c72-8457-b5f8a62b28f4" shape="rect"></a>The UID of the creator of the private information (0002,0102).</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_39f1ee95-022e-40ee-b60f-aa4cbd1ea0a1" shape="rect"></a>Private Information</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_339b675d-81dc-4de7-bb11-7690d35e4746" shape="rect"></a>(0002,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9fa85a8d-ef6c-46f0-a6e1-295350a2cb97" shape="rect"></a>1C</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7823de3b-aabe-4bd3-888b-6f5fcbf456fc" shape="rect"></a>Contains Private Information placed in the RTV Meta Information. The creator shall be identified in (0002,0100). Required if Private Information Creator UID (0002,0100) is present.</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">6.2.2 RTP Payload </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.22.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.2 Standard SOP Classes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.22 2024b - Real-Time Communication</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

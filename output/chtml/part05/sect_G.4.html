@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>G.4 Organization of RLE Compressed Frame</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_G.html" title="G Encapsulated RLE Compressed Images (Normative)" />
+      <link rel="prev" href="sect_G.3.2.html" title="G.3.2 The RLE Decoder" />
+      <link rel="next" href="sect_G.5.html" title="G.5 RLE Header Format" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">G.4 Organization of RLE Compressed Frame <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_G.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_G.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">G Encapsulated RLE Compressed Images (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_G.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_G.html" shape="rect">Encapsulated RLE Compressed Images (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Organization of RLE Compressed Frame</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_G.4" shape="rect"></a>G.4 Organization of RLE Compressed Frame</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_b56b359b-dc5c-47ad-bcd2-4b9a44d2b922" shape="rect"></a>The RLE Segments are ordered as described in <a class="xref" href="sect_G.2.html" title="G.2 Byte Segments" shape="rect">Section G.2</a>. They are preceded by the RLE Header, which contains offsets to the start of each RLE Segment. The RLE Header is described in G.5.</p>
+         <p>
+            <a id="para_4118e0f6-d9d2-4013-b1af-85d9f9246294" shape="rect"></a>The first RLE Segment immediately follows the RLE Header and the remaining RLE Segments immediately follow each other. This is illustrated in the diagram below.</p>
+         <div class="table">
+            <a id="table_G.4-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table G.4-1. Organization of RLE Compressed Frame</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f859be56-f455-4f25-8f08-cc31e9c9f6b5" shape="rect"></a>Header</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_06775d64-bbfb-4917-ab31-daf6b0275fc4" shape="rect"></a>RLE Segment 1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a83ef7ca-68bc-4339-b7aa-a4d5c64ff9b9" shape="rect"></a>RLE Segment 2</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_775fa9e8-5353-430f-bfde-0739b8db5724" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>. . .</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9e5850dd-a328-47d0-990b-2ac30641c918" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>. . .</strong>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_45d0becf-0367-4b8b-a852-e3db3498f5d2" shape="rect"></a>RLE Segment n</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_G.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_G.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_G.5.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">G.3.2 The RLE Decoder </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> G.5 RLE Header Format</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024b - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>
