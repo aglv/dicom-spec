@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Z.4.2 C-GET Operation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_Z.4.html" title="Z.4 DIMSE-C Service Groups" />
+      <link rel="prev" href="sect_Z.4.html" title="Z.4 DIMSE-C Service Groups" />
+      <link rel="next" href="sect_Z.4.2.2.html" title="Z.4.2.2 C-GET SCU and C-STORE SCP Behavior" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">Z.4.2 C-GET Operation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_Z.4.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Z.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">Z.4 DIMSE-C Service Groups</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Z.4.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_Z.html" shape="rect">Composite Instance Retrieve Without Bulk Data Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_Z.4.html" shape="rect">DIMSE-C Service Groups</a>
+         </span> &gt; <span class="breadcrumb-node">C-GET Operation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_Z.4.2" shape="rect"></a>Z.4.2 C-GET Operation</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7e557702-1b3f-48eb-bed4-d5162e421129" shape="rect"></a>SCUs of the Composite Instance Retrieve Without Bulk Data Service shall generate retrievals using the C-GET operation as described in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. The C-GET operation allows an application entity to instruct another application entity to transfer SOP Instances without the Attributes as described in <a class="xref" href="chapter_Z.html#sect_Z.1.3" title="Z.1.3 Attributes Not Included" shape="rect">Section Z.1.3</a> to the initiating application entity using the C-STORE operation. Support for the C-GET service shall be agreed upon at Association establishment time by both the SCU and SCP of the C-GET in order for a C-GET operation to occur over the Association. The C-STORE Sub-operations shall be accomplished on the same Association as the C-GET operation. Hence, the SCP of the Query/Retrieve Service Class serves as the SCU of the Storage Service Class.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_2a92b079-48ff-4db9-858b-070653dac233" shape="rect"></a>The Application Entity that receives the stored SOP Instances is always the originator of the C-GET operation.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_Z.4.2.1" shape="rect"></a>Z.4.2.1 C-GET Service Parameters</h4>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.1" shape="rect"></a>Z.4.2.1.1 SOP Class UID</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_650c5c25-d0bc-44df-b21c-3709372bc22d" shape="rect"></a>The SOP Class UID identifies the Query/Retrieve Information Model against which the C-GET is to be performed. Support for the SOP Class UID is implied by the Abstract Syntax UID of the Presentation Context used by this C-GET operation.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.2" shape="rect"></a>Z.4.2.1.2 Priority</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_7dc1a789-b8d5-422d-8aef-61a19d34a197" shape="rect"></a>The Priority Attribute defines the requested priority of the C-GET operation and corresponding C-STORE sub-operations with respect to other DIMSE operations being performed by the same SCP.</p>
+               <p>
+                  <a id="para_3da51c4e-8999-4700-a3cd-b086c78fe681" shape="rect"></a>Processing of priority requests is not required of SCPs. Whether or not an SCP supports priority processing, and the meaning of the different priority levels shall be stated in the Conformance Statement of the SCP. The same priority shall be used for all C-STORE sub-operations.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.3" shape="rect"></a>Z.4.2.1.3 Identifier</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1ab3b6e0-407c-4cdd-8622-13e4cc930c4c" shape="rect"></a>The C-GET request shall contain an Identifier. The C-GET response shall conditionally contain an Identifier as required in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.3.2" title="C.4.3.1.3.2 Response Identifier Structure" shape="rect">Section C.4.3.1.3.2</a>.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_c83dac41-2289-4372-8fb8-7ce064583847" shape="rect"></a>The Identifier is specified as U in the definition of the C-GET primitive in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> but is specialized for use with this service.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_Z.4.2.1.3.1" shape="rect"></a>Z.4.2.1.3.1 Request Identifier Structure</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_14fe0c5d-f87d-49ff-bf78-a434b7ee1927" shape="rect"></a>An Identifier in a C-GET request shall contain:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8be1497a-4460-408d-9381-9ea510c903fd" shape="rect"></a>the Query/Retrieve Level (0008,0052) that defines the level of the retrieval</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3ba27156-34ba-4311-8a98-58a657904613" shape="rect"></a>SOP Instance UID(s) (0008,0018)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7069a0df-308f-40d3-9120-3ed588b0b3e1" shape="rect"></a>Conditionally, the Attribute Query/Retrieve View (0008,0053). This Attribute may be included if Enhanced Multi-Frame Image Conversion has accepted during Association Extended Negotiation. It shall not be included otherwise.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_549abb17-34b5-4463-aaac-ab4ae0b71c70" shape="rect"></a>Query/Retrieve Level (0008,0052) shall be IMAGE.</p>
+                  <p>
+                     <a id="para_1342ca60-9214-468e-bd11-86e877a8b46e" shape="rect"></a>Specific Character Set (0008,0005) shall not be present.</p>
+                  <p>
+                     <a id="para_d7760757-4387-4f40-b60e-b01bd2d08499" shape="rect"></a>The Keys at each level of the hierarchy and the values allowable for the level of the retrieval are defined in the SOP Class definition for the Query/Retrieve Information Model.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.4" shape="rect"></a>Z.4.2.1.4 Status</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_f49891d6-3809-42cb-be26-547e3585d022" shape="rect"></a>
+                            <a class="xref" href="sect_Z.4.2.html#table_Z.4-1" title="Table Z.4-1. C-GET Response Status Values for Composite Instance Retrieve Without Bulk Data" shape="rect">Table Z.4-1</a> defines the Status Code values that might be returned in a C-GET response. General Status Code values and fields related to Status Code values are defined for C-GET DIMSE Service in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+               <div class="table">
+                  <a id="table_Z.4-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table Z.4-1. C-GET Response Status Values for Composite Instance Retrieve Without Bulk Data</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5ba727bd-a152-46e4-ab53-0938623a4f29" shape="rect"></a>Service Status</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6a5062ff-4023-4759-9aff-edf26132a5dc" shape="rect"></a>Further Meaning</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5ef019b6-a03c-4247-8724-f32d4a341b46" shape="rect"></a>Status Codes</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_472ef69f-4881-464e-8ede-f57f51d7c1d0" shape="rect"></a>Related Fields</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="4" colspan="1">
+                                        <p>
+                                    <a id="para_340b8953-3213-47a4-ba50-deed479e31f1" shape="rect"></a>Failure</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b5c64494-8892-464a-86e4-f5678edcbdd8" shape="rect"></a>Refused: Out of resources - Unable to calculate number of matches</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ea4bfb65-67b8-4b15-b751-89bd0bc41c94" shape="rect"></a>A701</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3923e5a0-9e7b-4689-9804-897e3551cf5b" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_22581152-9679-4060-9278-8ddebdeafd6d" shape="rect"></a>Refused: Out of resources - Unable to perform sub-operations</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2c863dd3-3c97-48ee-917d-7ec0deb2d17b" shape="rect"></a>A702</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f7c76601-4c91-4fad-8124-6c5acf2f294a" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                    <a id="para_4fc0a637-d4ed-4e80-b980-b7632258114e" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                    <a id="para_10e16320-28c2-49ee-b81f-da64de96eb56" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                    <a id="para_34621645-03be-4d71-9004-75bc45e3c978" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e46337fe-b278-4b98-a8bf-b73caf146746" shape="rect"></a>Error: Data Set does not match SOP Class</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_03d044b3-09f4-4978-8e2b-060b78e5b8ca" shape="rect"></a>A900</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_da0e111c-c25d-488d-8846-ac3a8e568550" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                    <a id="para_750a571f-b257-4088-af73-fdd8d36b5f27" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aaca8faf-b3da-4f4b-86e5-787802dffcc7" shape="rect"></a>Failed: Unable to process</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_11430438-3fdf-4056-bf35-225434d37402" shape="rect"></a>Cxxx</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_daf01942-64b7-464b-b3ad-09b88e8e614a" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                    <a id="para_53402555-1328-42b4-bb21-fcae6da977df" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_77b68cbd-50cb-4683-a52a-3f0eb21570e2" shape="rect"></a>Cancel</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_922fc43c-70a1-4b14-83ab-75042b167caf" shape="rect"></a>Sub-operations terminated due to Cancel Indication</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_89be174a-fddf-4166-96f2-159b26950d5d" shape="rect"></a>FE00</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_86c0290b-55bb-4ecd-ae5a-c0c6ae56ecab" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                    <a id="para_1e11a27f-b02e-4497-bec0-91bcd8692916" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                    <a id="para_6def54cb-ae27-4434-955a-dc70fbae9bd5" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                    <a id="para_19d34d17-4e2d-43ec-b6e0-03ecfba1f759" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b8f5b1d1-2e1e-4f26-96c8-8cdd75af7982" shape="rect"></a>Warning</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_af6211e6-d83a-4e91-b19b-da7d51eac1e2" shape="rect"></a>Sub-operations Complete - One or more Failures or Warnings</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ef1084d9-0405-4938-901e-fec4c907503b" shape="rect"></a>B000</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2668d64c-229f-4674-abe8-c493e5b2027b" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                    <a id="para_6872e463-3798-4f7d-a253-42c4800cd44e" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                    <a id="para_535282f1-5b0e-4ba6-9a40-9651ed0c8ece" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                    <a id="para_f684935f-b1a0-4860-bed0-cfa94da03c50" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ee770154-1568-4862-9dfa-c9f5cc78492f" shape="rect"></a>Success</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_882e3918-a2bc-4647-aedc-8c40be9dadcf" shape="rect"></a>Sub-operations Complete - No Failures or Warnings</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fbf84e0c-3fea-454b-b616-cfb1b5e1856b" shape="rect"></a>0000</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_48bf99bc-20d8-4289-addd-c3d2b6811195" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                    <a id="para_6c321402-b1d9-45a6-ab20-440e24b621b5" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                    <a id="para_d2f8287a-2a16-444a-a03b-bcc1f1c2a005" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                    <a id="para_46c5dde9-8adb-458f-b6d4-dc61ae5ae7e7" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b9c9372c-df2d-4047-8353-f215dce15557" shape="rect"></a>Pending</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_87f4a196-6006-4ef6-b585-5fe3cf343d3e" shape="rect"></a>Sub-operations are continuing</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_15731b76-54d6-47a4-8c49-af2d13052e90" shape="rect"></a>FF00</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1f00f208-d044-4199-9a4f-e2abfb7624c8" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                    <a id="para_dadc39a9-f544-4be3-8340-215be4e3b992" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                    <a id="para_d0bedd30-1ec4-482c-856b-2330973f9989" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                    <a id="para_dbce2e72-4816-4629-8f1e-7ad597d8a715" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_602ebf99-a82d-4f7d-a1d9-439152670707" shape="rect"></a>Some Failure Status Codes are implementation specific.</p>
+               <p>
+                  <a id="para_bd08348e-509e-4efc-adb0-51966fa743b6" shape="rect"></a>An SCP implementation shall assign specific Failure Status Codes by replacing each 'x' symbol with a hexadecimal digit in the range from 0 to F. An SCP implementation wishing to differentiate between causes of "Failed: Unable to process" Failure Meaning shall assign those causes specific Status Code Values within valid range specified in <a class="xref" href="sect_Y.4.2.html#table_Y.4-2" title="Table Y.4-2. C-GET Response Status Values for Composite Instance Root Retrieve" shape="rect">Table Y.4-2</a>.</p>
+               <p>
+                  <a id="para_65048e47-af8d-49e4-a748-33a97ed7f7ca" shape="rect"></a>An SCU implementation shall recognize any Failure Status Code within the value range specified in <a class="xref" href="sect_Y.4.2.html#table_Y.4-2" title="Table Y.4-2. C-GET Response Status Values for Composite Instance Root Retrieve" shape="rect">Table Y.4-2</a> as an indicator of the Failure Meaning stated in the table. There is no requirement for an SCU implementation to differentiate between specific Status Codes within the valid range.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.5" shape="rect"></a>Z.4.2.1.5 Number of Remaining Sub-Operations</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6ec7f04e-f61d-42ab-8eb3-8a70992c4d78" shape="rect"></a>Inclusion of the Number of Remaining Sub-operations shall be as specified in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.5" title="C.4.3.1.5 Number of Remaining Sub-Operations" shape="rect">Section C.4.3.1.5</a>
+                        </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.6" shape="rect"></a>Z.4.2.1.6 Number of Completed Sub-Operations</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_a63f4aa1-6613-46ad-a4e2-8d620269295d" shape="rect"></a>Inclusion of the Number of Completed Sub-operations shall be as specified in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.6" title="C.4.3.1.6 Number of Completed Sub-Operations" shape="rect">Section C.4.3.1.6</a>
+                        </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.7" shape="rect"></a>Z.4.2.1.7 Number of Failed Sub-Operations</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_802ef154-adcb-4e35-a39b-664862b4fc2e" shape="rect"></a>Inclusion of the Number of Failed Sub-operations shall be as specified in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.7" title="C.4.3.1.7 Number of Failed Sub-Operations" shape="rect">Section C.4.3.1.7</a>
+                        </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_Z.4.2.1.8" shape="rect"></a>Z.4.2.1.8 Number of Warning Sub-Operations</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b66aae57-ef7c-4313-bba2-5ecd6feabd9e" shape="rect"></a>Inclusion of the Number of Warning Sub-operations shall be as specified in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.8" title="C.4.3.1.8 Number of Warning Sub-Operations" shape="rect">Section C.4.3.1.8</a>.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Z.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_Z.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Z.4.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">Z.4 DIMSE-C Service Groups </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> Z.4.2.2 C-GET SCU and C-STORE SCP Behavior</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

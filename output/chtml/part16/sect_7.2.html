@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7.2 Special Conventions for Context Group Tables</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.16.html" title="PS3.16" />
+      <link rel="up" href="chapter_7.html" title="7 DCMR Context Group Specifications" />
+      <link rel="prev" href="chapter_7.html" title="7 DCMR Context Group Specifications" />
+      <link rel="next" href="sect_7.2.2.html" title="7.2.2 Measurement Unit" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024c - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7.2 Special Conventions for Context Group Tables <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_7.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">7 DCMR Context Group Specifications</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.16.html" shape="rect">PS3.16</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_7.html" shape="rect">DCMR Context Group Specifications</a>
+         </span> &gt; <span class="breadcrumb-node">Special Conventions for Context Group Tables</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_7.2" shape="rect"></a>7.2 Special Conventions for Context Group Tables</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_7.2.1" shape="rect"></a>7.2.1 Include Context Group</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_cf95ca57-a2cb-40ab-8e0f-cf073f74cc34" shape="rect"></a>The 'Include Context Group' macro is a concise mechanism for including (by-reference) all of the rows of a specified Context Group in the invoking Context Group, effectively substituting the specified Context Group for the row where the macro is invoked. If an 'Include Context Group' is specified, it shall be specified in the Concept Name column of a Context Group Table. Table 7.2.1-1 specifies the syntax of the 'Include Context Group macro. Inclusion may be nested, in that included Context Groups may themselves include other Context Groups. This gives rise to the possibility of circular inclusion and multiple inclusion, in which case the Context Group shall consist of the transitive closure of the set of all coded concepts within the included Context Groups.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_6699c5fc-4656-4b83-97b7-4d6966261442" shape="rect"></a>For example, it is reasonable to have the following definitions for Context Groups:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_0580d732-e65a-4762-967b-b436fab46f3a" shape="rect"></a>Context ID 1, includes Context IDs 2 and 3</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_e45facec-72de-4c9d-b93a-aa9df1e249ea" shape="rect"></a>Context ID 2, includes Context IDs 4 and 5</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_5c60aa13-6e32-4ef9-bd5a-add0ebd0056a" shape="rect"></a>Context ID 3, includes Context IDs 5 and 6</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_62b15e7f-8701-4541-b124-325a4278ecf3" shape="rect"></a>Context ID 4 contains a, b, c</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_aaf06a8d-193e-4187-925a-432f1dda5546" shape="rect"></a>Context ID 5 contains e, f, g</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_714dfb87-8b5e-4432-8df5-b1fd85ae5463" shape="rect"></a>Context ID 6 contains a, h, i</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_4adf1bfc-80db-440d-9d20-28b36339fa0a" shape="rect"></a>The contents of Context ID 1 will be a, b, c, e, f, g, h, i.</p>
+            </div>
+            <div class="table">
+               <a id="table_7.2.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 7.2.1-1. Include Context Group Macro</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c815472b-1fad-40e8-95a3-e63496f81841" shape="rect"></a>Coding Scheme Designator</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_83b35564-2f46-4fbc-adcf-7598e5d79a82" shape="rect"></a>Code Value</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d467c67f-6b3a-493c-82c6-4d5ddfd41bee" shape="rect"></a>Code Meaning</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8bd8183e-15e2-4f4a-a89d-bc00509a0c86" shape="rect"></a>…</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cdd934cd-972f-4395-b54d-f6418891db02" shape="rect"></a>…</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1eeb525c-1da7-49e4-a275-449efab110eb" shape="rect"></a>…</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="3" rowspan="1">
+                              <p>
+                                 <a id="para_a18d52db-d96e-4052-8c95-1a331ab8b1cf" shape="rect"></a>
+                                 <span class="italic">Include CID nnn</span>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d4991b09-fb3f-4ebe-8c2c-354479d4845c" shape="rect"></a>…</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_34f13335-f7c3-4a7c-b98a-1d6d81c0ba0a" shape="rect"></a>…</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_83e566a7-e4a4-49fa-aa53-1a6020aec64f" shape="rect"></a>…</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7 DCMR Context Group Specifications </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.16.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.2.2 Measurement Unit</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024c - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

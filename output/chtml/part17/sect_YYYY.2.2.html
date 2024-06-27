@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.2.2 Record Key and Continuation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.2.html" title="YYYY.2 Repository Query" />
+      <link rel="prev" href="sect_YYYY.2.html" title="YYYY.2 Repository Query" />
+      <link rel="next" href="sect_YYYY.2.3.html" title="YYYY.2.3 Key Matching Attributes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.2.2 Record Key and Continuation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.2 Repository Query</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.2.html" shape="rect">Repository Query</a>
+         </span> &gt; <span class="breadcrumb-node">Record Key and Continuation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.2.2" shape="rect"></a>YYYY.2.2 Record Key and Continuation</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_14794c71-876b-49dc-a1e6-5b7db316af7f" shape="rect"></a>Deterministic behavior is achieved by the SCP imposing a sorting order on the returned records that is based on a unique value for each entry, the Record Key (0008,041B). In the query, the SCU can request return of the Record Key (0008,041B) in each response. When a "partially completed" status is returned, or if there is a communications failure during the transaction, the value in the last received response can be used in the next query to request the SCP to continue returning responses for matching entities with next higher unique value as per the sorting order.</p>
+         <p>
+            <a id="para_7b74eb97-8ba6-404d-a585-fb332c09f31c" shape="rect"></a>The structure and content of Record Key (0008,041B) values is totally SCP implementation-specific, and opaque to the SCU. Values may be permanent, or may be constructed dynamically during query processing. For SCPs that use a relational database, the database primary record key might be used as the unique Record Key (0008,041B) value, although an implementation might choose to use some other element or some type of session-oriented key. The intention is that the SCP manage record keys such that the SCU will be able to use them to obtain a complete inventory in a sequence of Queries in a reasonable time period, recognizing that for large inventories that time period may be substantial. If there are limitations on the lifetime of the Record Key (0008,041B), they should be documented in the SCP Conformance Statement.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.2 Repository Query </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.2.3 Key Matching Attributes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

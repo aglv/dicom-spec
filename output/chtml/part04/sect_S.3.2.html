@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>S.3.2 Operations</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_S.3.html" title="S.3 Media Creation Management SOP Class" />
+      <link rel="prev" href="sect_S.3.html" title="S.3 Media Creation Management SOP Class" />
+      <link rel="next" href="sect_S.3.2.2.html" title="S.3.2.2 Initiate Media Creation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">S.3.2 Operations <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_S.3.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_S.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">S.3 Media Creation Management SOP Class</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_S.3.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_S.html" shape="rect">Media Creation Management Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_S.3.html" shape="rect">Media Creation Management SOP Class</a>
+         </span> &gt; <span class="breadcrumb-node">Operations</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_S.3.2" shape="rect"></a>S.3.2 Operations</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_05f04bd3-7a37-484c-b5a3-2d38f3879a36" shape="rect"></a>The DICOM AEs that claim conformance to this SOP Class as an SCU shall invoke the N-CREATE and the N-ACTION operations. The DICOM AEs that claim conformance to this SOP Class as an SCP shall support the N-CREATE, the N-ACTION and the N-GET operations.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_S.3.2.1" shape="rect"></a>S.3.2.1 Create a Media Creation Request</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_1a2c720e-5c14-4c8c-88dd-a373b542ab91" shape="rect"></a>The Create a Media Creation Request operation allows an SCU to create an instance of the Media Creation Management SOP Class and initialize Attributes of the SOP Class. The SCP uses this operation to create a new media creation request containing the set of SOP Instances that shall be included in the Interchange Media. This operation shall be invoked through the N-CREATE primitive</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_S.3.2.1.1" shape="rect"></a>S.3.2.1.1 Attributes</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_caaa6441-5265-4afb-961c-01c141d1dd6f" shape="rect"></a>The DICOM AEs that claim conformance to this SOP Class as an SCU may choose to provide a subset of the Attributes maintained by the SCP. The DICOM AEs that claim conformance to this SOP Class as an SCP shall support a subset of the Media Creation Management specified in <a class="xref" href="sect_S.3.2.html#table_S.3.2.1.1-1" title="Table S.3.2.1.1-1. Media Creation Management - N-CREATE Attributes" shape="rect">Table S.3.2.1.1-1</a>.</p>
+               <div class="table">
+                  <a id="table_S.3.2.1.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table S.3.2.1.1-1. Media Creation Management - N-CREATE Attributes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ec849c03-02e9-44e7-bd3e-89aadfde5617" shape="rect"></a>Attribute Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8a6e5395-d9bd-4bff-8780-c67cf37add5d" shape="rect"></a>Tag</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c3661d29-4d96-4436-9967-aeddb717d231" shape="rect"></a>Requirement Type SCU/SCP</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ea183ba5-043b-49ae-ba9c-d75388932847" shape="rect"></a>Specific Character Set</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4194c8ef-b7b1-4750-80b0-48020b8aa7e0" shape="rect"></a>(0008,0005)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4fb5eedf-e8af-4616-8eba-a2727edbd498" shape="rect"></a>1C/1C (Required if expanded or replacement character set is used)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aa918e94-8e7f-4ae6-85ed-fb02d5d81a03" shape="rect"></a>Storage Media File-Set ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bfa205c1-b3af-4be0-9154-99dceb53d9db" shape="rect"></a>(0088,0130)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2fd32a08-7130-4e46-b840-8077e5774d10" shape="rect"></a>3/3</p>
+                                        <p>
+                                    <a id="para_7cbf39d6-5856-4f59-a530-4f94415e6e0c" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.1" title="S.3.2.1.1.1 Storage Media File-Set Attributes" shape="rect">Section S.3.2.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ae4624a0-ab99-4e7a-9d58-771f50fc47ed" shape="rect"></a>Storage Media File-Set UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_077f2b4b-81a5-4dc3-824d-4bc9d4b7ae55" shape="rect"></a>(0088,0140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_558dc7a6-9098-46ee-8b77-2caf7bc504fc" shape="rect"></a>3/3</p>
+                                        <p>
+                                    <a id="para_8d736c14-0cf1-4d0a-82df-6fd374bc33d7" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.1" title="S.3.2.1.1.1 Storage Media File-Set Attributes" shape="rect">Section S.3.2.1.1.1</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_92c92c6e-ec1b-4a4b-ad10-55a6328cc55a" shape="rect"></a>Label Using Information Extracted From Instances</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_596ccbf7-5693-41e2-bba9-4ff203859368" shape="rect"></a>(2200,0001)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ecfae02c-c323-4ac5-81e3-ad4509b028ea" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_9302abeb-3a1b-4777-81a1-09e59e9f6040" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.4" title="S.3.2.1.1.4 Labeling" shape="rect">Section S.3.2.1.1.4</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_92f41c82-23f0-44bc-a320-4174ccfcb50c" shape="rect"></a>Label Text</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_79a960e6-9402-4026-8f5b-b16861c0f404" shape="rect"></a>(2200,0002)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f9b3401d-ed5e-4e66-91ff-ad2812e8e44b" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_e1de2824-98e5-45dc-b9b1-a0b666854728" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.4" title="S.3.2.1.1.4 Labeling" shape="rect">Section S.3.2.1.1.4</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5edc1b69-4f6a-4ecd-8332-6d2d4650e88c" shape="rect"></a>Label Style Selection</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9618ece9-d8a0-483d-afb1-9988a5c8d4d3" shape="rect"></a>(2200,0003)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8068222a-c0eb-47e5-918a-733141145aab" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_011a221c-c785-4840-855e-1989e5b0a623" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.4" title="S.3.2.1.1.4 Labeling" shape="rect">Section S.3.2.1.1.4</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f82bc846-2e26-4d00-8c1b-5ff669efcae6" shape="rect"></a>Barcode Value</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4c1f6251-d081-49d8-809b-74e3700cd926" shape="rect"></a>(2200,0005)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f76f1b37-95e4-4062-a030-8802ad9a03c3" shape="rect"></a>3/3</p>
+                                        <p>
+                                    <a id="para_e83f8a23-b5de-49c9-a783-a9eaddc5410e" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.4" title="S.3.2.1.1.4 Labeling" shape="rect">Section S.3.2.1.1.4</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ec85c9e2-b442-430b-9122-327d6750ad4b" shape="rect"></a>Barcode Symbology</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f7bb321e-6e58-4f1c-b1a2-a178a0e38cc5" shape="rect"></a>(2200,0006)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_34d3dd02-fb37-4d6f-98d4-d37ce8dd9d4b" shape="rect"></a>3/3</p>
+                                        <p>
+                                    <a id="para_bf2f2732-0dfa-47f3-ac53-387037c9c6ce" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.4" title="S.3.2.1.1.4 Labeling" shape="rect">Section S.3.2.1.1.4</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7983e4d8-4cfd-4ab8-8b99-311b51628f6b" shape="rect"></a>Media Disposition</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_42c9526c-44d5-488a-b7eb-7c501546d6e1" shape="rect"></a>(2200,0004)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3aa4cd10-de30-4964-bfe2-a78cdafe16e3" shape="rect"></a>3/3</p>
+                                        <p>
+                                    <a id="para_776e42e9-d332-4bda-9acf-ab51f180e684" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.5" title="S.3.2.1.1.5 Media Disposition" shape="rect">Section S.3.2.1.1.5</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_083ce4c5-76d5-4db2-a2db-abd5302adcdf" shape="rect"></a>Allow Media Splitting</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3edf1a04-5247-4bdc-b708-0604b4dcccce" shape="rect"></a>(2200,0007)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_671e99a4-7e6d-4a06-a5d8-dd0ca6c0429a" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_69cc9e20-281b-46ea-a6c5-a2bdfe528bbf" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.6" title="S.3.2.1.1.6 Allow Media Splitting" shape="rect">Section S.3.2.1.1.6</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4c2d9664-b4bd-448e-a3ce-b504ab19edb9" shape="rect"></a>Allow Lossy Compression</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f790ef40-c624-4ae1-b259-5a80a2fa8dbc" shape="rect"></a>(2200,000F)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b3e96aad-b406-4f72-8a1f-48d3958bc58a" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_aee63718-4fb0-4812-a18e-304379dc0e4e" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.9" title="S.3.2.1.1.9 Allow Lossy Compression" shape="rect">Section S.3.2.1.1.9</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_61ddab38-57de-4a9b-a216-a8c569b259fa" shape="rect"></a>Include Non-DICOM Objects</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_90b4f99a-244c-429c-8084-df2752b310e8" shape="rect"></a>(2200,0008)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dd148cb9-27d3-4cdd-b178-6b3652e8aaea" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_4820afb9-7248-434f-9ae2-19e2ade4c4b0" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.7" title="S.3.2.1.1.7 Include Non-DICOM Objects" shape="rect">Section S.3.2.1.1.7</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e1931931-7b1f-4057-9169-e07b26ddce09" shape="rect"></a>Include Display Application</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ab914370-da24-4306-b08d-dd102a83a322" shape="rect"></a>(2200,0009)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7326ae7a-e098-49ee-bc18-f7a2d00843f7" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_f0928569-84c8-4b1f-bb73-8e933c85fa18" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.8" title="S.3.2.1.1.8 Include Display Application" shape="rect">Section S.3.2.1.1.8</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_516bd0c4-025d-490a-a7cc-7a35ded283e0" shape="rect"></a>Preserve Composite Instances After Media Creation</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_62d1e669-9b1c-4635-aef1-0ac1a4e8dde5" shape="rect"></a>(2200,000A)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f49e6e82-d7d3-4547-877f-5c8b1884576c" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3153ecfc-b056-4f5c-9efe-94b878d46157" shape="rect"></a>Referenced SOP Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f4bde47f-f8f0-47a6-a113-364fb37dea97" shape="rect"></a>(0008,1199)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8f561b90-ca86-4789-8ff1-a91ae1f025d3" shape="rect"></a>1/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c26c5d1b-b263-473d-958e-b5e0521a527f" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_38a9f1e9-fdc2-451a-81ee-17ce3e8eb268" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_20947b7a-9d04-439b-a38d-c267d7c76987" shape="rect"></a>1/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2f9db6fb-0311-49a5-a746-36b1f3b4092d" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_195c1b8f-6c73-4b12-b7af-157eb63fc26a" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4f187127-1c9d-47ed-9958-0cd10c0e25ee" shape="rect"></a>1/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f09c09b1-2178-4185-a75f-1f0325f5a73d" shape="rect"></a>&gt;Requested Media Application Profile</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3c40ceba-f41d-4b92-a692-50410b68ff51" shape="rect"></a>(2200,000C)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4e4d8048-8e85-4e32-b797-026ad31f72eb" shape="rect"></a>3/1</p>
+                                        <p>
+                                    <a id="para_45203069-1627-43df-bf1c-a45024901f91" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.2" title="S.3.2.1.1.2 Requested Media Application Profile" shape="rect">Section S.3.2.1.1.2</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4774f919-db12-48f4-bcf8-4780f755234c" shape="rect"></a>&gt;Icon Image Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e2da2b35-1828-486e-ab68-c1a5b7425d42" shape="rect"></a>(0088,0200)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0e49f8fc-eb4f-4cf5-9090-f7e83aafe39a" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_070d8d65-1881-477d-914e-bdfd5e1fff66" shape="rect"></a>See <a class="xref" href="sect_S.3.2.html#sect_S.3.2.1.1.3" title="S.3.2.1.1.3 Icon Image Sequence" shape="rect">Section S.3.2.1.1.3</a>.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.1" shape="rect"></a>S.3.2.1.1.1 Storage Media File-Set Attributes</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_96b46299-d628-419e-9bc6-50669a8cbd7f" shape="rect"></a>If present, the Storage Media File-Set ID (0088,0130) and Storage Media File-Set UID (0088,0140) shall be used on the media created. If absent, the media shall contain values generated by the SCP.</p>
+                  <p>
+                     <a id="para_286d8686-0e14-4e4c-aab1-efc6402edc83" shape="rect"></a>If the media request will not fit on a single volume (single piece or side of media), then whether or not the SCP ignores Storage Media File-Set ID (0088,0130), or uses it as a prefix and appends information to distinguish volumes, is implementation dependent. Different values of Storage Media File-Set UID (0088,0140) shall be used for different volumes.</p>
+                  <p>
+                     <a id="para_62e0ea71-9a5b-44d7-acf7-858fdce1ae72" shape="rect"></a>If multiple copies are requested, the same Storage Media File-Set ID (0088,0130) and Storage Media File-Set UID (0088,0140) shall be used on all copies.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_d44b2d34-5370-4a41-815c-3e8e0d9cd8cb" shape="rect"></a>Care should be taken with multiple copies written to rewritable media that their contents do not diverge even though their identifiers are identical.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.2" shape="rect"></a>S.3.2.1.1.2 Requested Media Application Profile</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_28abebc3-6d40-4a76-a121-be880e78b72a" shape="rect"></a>The Requested Media Application Profile (2200,000C), if present, shall be used by the SCP for the specified SOP Instance. If absent for a particular instance, the choice of Media Application Profile for that instance shall be at the discretion of the SCP.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_5d5de480-f0de-4a87-b1d6-f8d46786a34e" shape="rect"></a>Different Media Application Profiles may be used for different instances on the same piece of media.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_f0a97dc9-9f0c-4408-97c2-05a340ff583e" shape="rect"></a>The form of the DICOMDIR directory records that the SCP must create may be significantly influenced by the media application profiles used.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.3" shape="rect"></a>S.3.2.1.1.3 Icon Image Sequence</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_be43e1e1-f852-48cd-80fa-b8ed2442687a" shape="rect"></a>The Icon Image Sequence (0088,0200), if present:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a4274044-aa3e-465e-8c43-66a7283e48e2" shape="rect"></a>shall be used by the SCP for inclusion in the instance-level DICOM Directory Record for the specified SOP Instance, if the Media Application Profile requires its inclusion, and the icon supplied by the SCU meets the requirements of the profile</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2e16236c-1396-4058-a5ac-88868dcd42d8" shape="rect"></a>may be used by the SCP for inclusion in the instance-level DICOM Directory Record for the specified SOP Instance, if the Media Application Profile does not require its inclusion</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_a1948718-7289-4306-9b59-04e233de5db7" shape="rect"></a>If absent for a particular instance, the choice of Media Application Profile for that instance dictates whether or not the SCP is required to create its own Icon Image Sequence (0088,0200) from the contents of the SOP Instance.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_f95a583e-38cc-4d06-b836-17aa7b2da836" shape="rect"></a>Some Media Application Profiles require the inclusion of an Icon Image Sequence (0088,0200) in the directory records.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_ed7b6921-b414-40f0-b6e6-4e69dfaf4969" shape="rect"></a>Some Media Application Profiles specify constraints on the form of the Icon Image Sequence (0088,0200).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_0f34bd98-a787-48ea-8948-fac2a7bd7796" shape="rect"></a>The SCP may choose to extend the Media Application Profile by generating and including icons anyway.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.4" shape="rect"></a>S.3.2.1.1.4 Labeling</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_669f76d4-1d37-43b5-abaf-987ef45b721d" shape="rect"></a>The SCP may or may not have the capability to print a label on (or for) the media. If it does, then the following SCP behavior shall apply and the specified Attributes are required to be supported by the SCP.</p>
+                  <p>
+                     <a id="para_7a4cbaa5-5ee4-479d-8312-8a7bb382d41e" shape="rect"></a>The Label Using Information Extracted From Instances (2200,0001) Attribute is a flag that instructs the SCP whether or not to create any label using the Patient and Study information contained within the instances themselves.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_1f3ca0b6-a067-40f2-aea8-c57c8f7958c2" shape="rect"></a>The SCP may implement whatever it considers to be an appropriate subset of any Attributes of any Modules at the Patient, Specimen and Study entities in the DICOM Information Model specified in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Typically included are such Attributes as Patient Name (0010,0010), Patient ID (0010,0020), Study ID (0020,0010), and Study Date (0008,0020).</p>
+                  </div>
+                  <p>
+                     <a id="para_18d7cfe3-a6a5-4629-8abb-4a5878057599" shape="rect"></a>The Label Text (2200,0002) Attribute is additional text that the SCP shall include on any label, either in addition to or instead of any extracted demographics, depending on the value of Label Using Information Extracted From Instances (2200,0001).</p>
+                  <p>
+                     <a id="para_741235e3-218c-4ce5-8fc0-6249c9509acc" shape="rect"></a>The Label Style Selection (2200,0003) Attribute is a code string, which if present, may be used by the SCP to choose one or more implementation-dependent styles of labeling.</p>
+                  <p>
+                     <a id="para_25b4bef0-7eea-41db-8b0c-a024b84e27b0" shape="rect"></a>The Barcode Value (2200,0005) and the Barcode Symbology (2200,0006), if present, may be used by the SCP to print a barcode on the label.</p>
+                  <p>
+                     <a id="para_3dfaaf05-a50e-442e-b04a-7f31fb343202" shape="rect"></a>Note It is SCU responsibility to convey a value for the Barcode Value (2200,0005) Attribute consistent in length and content with the requested Barcode Symbology (2200,0006).</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.5" shape="rect"></a>S.3.2.1.1.5 Media Disposition</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_1e2cd494-32dd-4bef-b647-02009980520d" shape="rect"></a>The Media Disposition (2200,0004), if present, may be used by the SCP to determine where and to whom to send the media when completed.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_7f54a87d-2e2e-4b18-901a-66524f25b12e" shape="rect"></a>For example, it may contain the name and address of a referring doctor, and be used to print a label for an envelope or mailer, or as additional material to be printed on the media label.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.6" shape="rect"></a>S.3.2.1.1.6 Allow Media Splitting</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_93e770ec-46a0-4754-934a-7b3798db5889" shape="rect"></a>The SCP may or may not have the capability to split a request over more than one piece of media (e.g., if it doesn't fit on one). If it does, then the following SCP behavior shall apply and the specified Attributes are required to be supported by the SCP.</p>
+                  <p>
+                     <a id="para_fd125ff0-e645-4558-aa46-9668608fcd19" shape="rect"></a>The Allow Media Splitting (2200,0007) Attribute shall be used by the SCP to determine if it is permitted to split this request over more than one piece of media.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_849ebf18-9d17-40a3-9928-4d11b292884c" shape="rect"></a>If the file-set size exceeds the media storage capacity, and this flag has been set to NO, the SCP shall refuse to process the request.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_68199998-d39b-4a88-8bfd-500d3fd81bd0" shape="rect"></a>If the requested Media Application Profile allows for lossless compression, and images are not already compressed, such compression may be applied by the SCP in order to fit all instances on a single piece of media. This also applies to lossy compression if it has not been allowed by the value of Allow Lossy Compression (2200,000F).</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.7" shape="rect"></a>S.3.2.1.1.7 Include Non-DICOM Objects</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_80287dd3-5ca8-4fa3-8e39-0415b46215c5" shape="rect"></a>The SCP may or may not have the capability to include on the created media additional Non-DICOM objects (e.g., HTML files, JPEG images) that are a rendering of the DICOM instances. If it does, then the following SCP behavior shall apply and the specified Attributes are required to be supported by the SCP.</p>
+                  <p>
+                     <a id="para_7743d986-906a-46d5-9036-a295abbd70e1" shape="rect"></a>The Include Non-DICOM Objects (2200,0008) shall be used to request the SCP to add additional Non-DICOM objects onto the created media.</p>
+                  <p>
+                     <a id="para_6de0b69f-cacb-44b8-8e96-eb9eff0ab4e8" shape="rect"></a>An SCP is not required to be able to add such files. Inability to add Non-DICOM objects is not an error.</p>
+                  <p>
+                     <a id="para_381f2dac-bbba-4e68-a780-2c74a7d9a4d0" shape="rect"></a>If Include Non-DICOM Objects (2200,0008) is set to NO, the SCP shall not include additional non-DICOM objects on the media.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.8" shape="rect"></a>S.3.2.1.1.8 Include Display Application</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_3a1a0771-c46a-4791-8447-ba7e7b3953c6" shape="rect"></a>The SCP may or may not have the capability to include on the created media an application for displaying DICOM instances. If it does, then the following SCP behavior shall apply and the specified Attributes are required to be supported by the SCP.</p>
+                  <p>
+                     <a id="para_e2e2973d-253d-4226-b48e-11ae81bdda29" shape="rect"></a>The Include Display Application (2200,0009) shall be used to request the SCP to add an application for displaying DICOM instances onto the created media.</p>
+                  <p>
+                     <a id="para_4d1fde69-f5a8-4b7c-a646-354662ebf364" shape="rect"></a>An SCP is not required to be able to add such an application. Inability to add a display application is not an error.</p>
+                  <p>
+                     <a id="para_aaa9cb61-4918-45a6-b506-63147958c493" shape="rect"></a>Whether the display application is capable of displaying all stored instances is beyond the scope of the Standard.</p>
+                  <p>
+                     <a id="para_c180d9b6-4321-481a-a410-26f4668f8732" shape="rect"></a>Whether the display application automatically executes when media is inserted for reading is beyond the scope of the Standard.</p>
+                  <p>
+                     <a id="para_891d7352-9183-409c-ad90-64ad99ca0bc8" shape="rect"></a>Which platforms are supported by the display application(s) is beyond the scope of the Standard.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_e323d2e1-5ea9-4369-a53e-3da08efe61fc" shape="rect"></a>Multiple files may need to be included in the media to support the display application, rather than a single executable file, and these may be present, even if the Include Non-DICOM Objects (2200,0008) Attribute has a value of NO.</p>
+                  </div>
+                  <p>
+                     <a id="para_d89d85aa-e639-48fc-92a2-6d5de06634c7" shape="rect"></a>If Include Display Application (2200,0009) is set to NO, the SCP shall not include a display application on the media.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_S.3.2.1.1.9" shape="rect"></a>S.3.2.1.1.9 Allow Lossy Compression</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_65db80ab-fba2-4c5e-9f09-746f5ab0eb32" shape="rect"></a>If Allow Lossy Compression (2200,000F) has a value of YES, the SCP is allowed to perform lossy compression under the following circumstances:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f0756871-fb16-4a01-b7fd-bd7ac6075b8c" shape="rect"></a>if it receives uncompressed or lossless compressed images yet is requested to use a profile that requires lossy compression, or</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_ac1ef97d-9b83-4a62-a7e4-7f1d7b516ed1" shape="rect"></a>if Allow Media Splitting (2200,0007) is NO, and the request would otherwise need to be split across media.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_8d2b396a-e2ab-43dc-b03a-45f6ebacbd27" shape="rect"></a>If Allow Lossy Compression (2200,000F) has a value of YES but the requested profile does not permit lossy compression, lossy compression shall not be performed.</p>
+                  <p>
+                     <a id="para_89352d4a-7125-4f4c-8f61-18a31cd40d58" shape="rect"></a>The level of compression is at the SCP's discretion.</p>
+                  <p>
+                     <a id="para_cafb3b38-c2c2-49e7-80eb-98ae86af3c95" shape="rect"></a>The SCP shall not decompress and recompress already lossy compressed images, but may use images that have already been lossy compressed.</p>
+                  <p>
+                     <a id="para_7a33d958-56fe-4463-9ee8-e7c090a8bee5" shape="rect"></a>The SCP is never required to perform lossy compression.</p>
+                  <p>
+                     <a id="para_7ce54862-7267-402d-b754-2830273e672f" shape="rect"></a>If Allow Lossy Compression (2200,000F) has a value of NO, the SCP is not allowed to perform lossy compression. If Allow Lossy Compression (2200,000F) has a value of NO and the requested profile requires lossy compression, an error shall be returned.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_S.3.2.1.2" shape="rect"></a>S.3.2.1.2 Service Class User Behavior</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3046d6ff-63db-4454-8791-ec02d2a84bb7" shape="rect"></a>The SCU shall use the N-CREATE primitive to inform the SCP that a new media creation request has been placed and to convey the proprieties of this request. The request proprieties (e.g., the set of SOP Instances that the creating interchange media shall contain) are referenced in the IOD Attributes as specified in <a class="xref" href="sect_S.3.2.html#table_S.3.2.1.1-1" title="Table S.3.2.1.1-1. Media Creation Management - N-CREATE Attributes" shape="rect">Table S.3.2.1.1-1</a>.</p>
+               <p>
+                  <a id="para_4959cc4d-c4d3-4b15-b3a8-40a3e6b3eea9" shape="rect"></a>Upon receipt of a successful N-CREATE Response Status Code from the SCP, the SCU now knows that the SCP has received the N-CREATE request and a new media creation request has been created.</p>
+               <p>
+                  <a id="para_95789954-310e-4d39-9379-0495cfe3201d" shape="rect"></a>Upon receipt of a failure N-CREATE Response Status Code from the SCP, the SCU now knows that the SCP will not process the request. The actions taken by the SCU upon receiving the status is beyond the scope of this Standard.</p>
+               <p>
+                  <a id="para_cdca7d70-a18f-4dff-a2d0-7b5053d530a1" shape="rect"></a>At any time after receipt of the N-CREATE response, the SCU may release the association on which it sent the N-CREATE request.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_f52aba79-25df-4e34-b16d-f6e8729e432a" shape="rect"></a>An N-GET of the corresponding of the Media Creation Management SOP Class may be performed on the same or subsequent associations.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_S.3.2.1.3" shape="rect"></a>S.3.2.1.3 Service Class Provider Behavior</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8a907dc6-30a7-48fb-bc1b-90be13e2d534" shape="rect"></a>Upon receipt of the N-CREATE request, the SCP shall return, via the N-CREATE response primitive, the N-CREATE Response Status Code applicable to the associated request. A success status conveys that the SCP has successfully received the N-CREATE request.</p>
+               <p>
+                  <a id="para_6378f142-cb35-46fd-a2bb-a47c93d830ea" shape="rect"></a>Warning statuses shall not be returned.</p>
+               <p>
+                  <a id="para_206aff3c-bea7-43ce-b380-c12bad4657a9" shape="rect"></a>Any other status (i.e., a failure status) conveys that the SCP is not processing the media creation request.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a2beae18-16e8-403c-a94a-f187f627711d" shape="rect"></a>It is not specified by the Standard what checks the SCP shall accomplish after the N-CREATE request primitive reception and before returning the N-CREATE response. Implementations are discouraged from performing extended validation of the contents of the N-CREATE request, such as availability of the referenced Composite SOP Instances, support for the requested profiles, etc. In case of N-CREATE failure, the SCU would not be able to perform an N-GET to determine the detailed reasons for failure, and allow operators to apply suitable correction actions to make the request processable (e.g., resending any missing Composite SOP Instances). Such checks are better deferred until after receipt of the N-ACTION request, after which an N-GET may be performed.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2fb5661f-da56-4bbf-a603-4b8b391a7ae2" shape="rect"></a>The Standard does not require the SCP to queue multiple requests, though implementations are encouraged to do so. As a consequence, a new request before a previous request has been completed may fail immediately, or may return a successful response and be queued. The size of any such queue is beyond the scope of the Standard.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_17db5d0a-7d52-41ed-98f0-5fe3270cfb1e" shape="rect"></a>How long the instance of the Media Creation Management SOP Class persists once the Execution Status (2100,0020) has been set to IDLE is beyond the scope of the Standard.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b1117885-933c-49d5-af09-52e58da7e31a" shape="rect"></a>The N-CREATE implicitly creates the Execution Status (2100,0020) and Execution Status Info (2100,0030) Attributes, which may subsequently be retrieved by an N-GET.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_S.3.2.1.4" shape="rect"></a>S.3.2.1.4 Status Codes</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0d472dfa-f6f1-4507-85a5-cfd262e3bc85" shape="rect"></a>
+                            <a class="xref" href="sect_S.3.2.html#table_S.3.2.2.4-1" title="Table S.3.2.2.4-1. SOP Class Status Values" shape="rect">Table S.3.2.2.4-1</a> defines the specific Status Code values that might be returned in a N-CREATE response. See <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for general response Status Codes.</p>
+               <div class="table">
+                  <a id="table_S.3.2.2.4-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table S.3.2.2.4-1. SOP Class Status Values</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_65c58c16-d8f7-4ae6-becc-66e789875a62" shape="rect"></a>Service Status</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e38075c7-ac0e-44ab-aedd-cd7f6d6afb76" shape="rect"></a>Further Meaning</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0a152112-00bf-4d2b-b9ca-c441e5f2095d" shape="rect"></a>Status Code</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6db7c66f-e91b-4f92-8bcb-eaba88ec67a8" shape="rect"></a>Failure</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7bc87b23-d98d-49ca-982f-bae2352ee53e" shape="rect"></a>Failed: An Initiate Media Creation action has already been received for this SOP Instance.</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_006ed840-e072-4196-8e4f-75f348a60960" shape="rect"></a>A510</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_S.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_S.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_S.3.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">S.3 Media Creation Management SOP Class </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> S.3.2.2 Initiate Media Creation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

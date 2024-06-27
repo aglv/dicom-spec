@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.4 DIMSE-C Service Groups</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_C.html" title="C Query/Retrieve Service Class (Normative)" />
+      <link rel="prev" href="sect_C.3.5.html" title="C.3.5 New Instance Creation for Enhanced Multi-Frame Image Conversion" />
+      <link rel="next" href="sect_C.4.2.html" title="C.4.2 C-MOVE Operation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.4 DIMSE-C Service Groups <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C Query/Retrieve Service Class (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">DIMSE-C Service Groups</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_C.4" shape="rect"></a>C.4 DIMSE-C Service Groups</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_a05b7423-48ca-4cad-9d9e-4a0a88f86711" shape="rect"></a>Three DIMSE-C Services are used in the construction of SOP Classes of the Query/Retrieve Service Class. The following DIMSE-C operations are used:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_c3a3eae3-f4ae-46d9-9a82-89cd01045adb" shape="rect"></a>C-FIND</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_2bfbd078-140a-43cc-947c-bf3c5cf0f1bd" shape="rect"></a>C-MOVE</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_a8ec59c4-6d3d-4abe-bc49-241810a8327b" shape="rect"></a>C-GET</p>
+               </li>
+            </ul>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_C.4.1" shape="rect"></a>C.4.1 C-FIND Operation</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_b9e90f38-f79a-48aa-a660-75037dde053f" shape="rect"></a>SCPs of some SOP Classes of the Query/Retrieve Service Class may be capable of processing queries using the C-FIND operation as described in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. The C-FIND operation is the mechanism by which queries are performed. Matches against the keys present in the Identifier are returned in C-FIND responses.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.1" shape="rect"></a>C.4.1.1 C-FIND Service Parameters</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.1.1" shape="rect"></a>C.4.1.1.1 SOP Class UID</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_7d4383af-f574-44fa-be0e-4dda1f7ebde8" shape="rect"></a>The SOP Class UID identifies the Query/Retrieve Information Model against which the C-FIND is to be performed. Support for the SOP Class UID is implied by the Abstract Syntax UID of the Presentation Context used by this C-FIND operation.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.1.2" shape="rect"></a>C.4.1.1.2 Priority</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_c3061a72-2e44-4f9c-a0ea-8135667d5dea" shape="rect"></a>The Priority Attribute defines the requested priority of the C-FIND operation with respect to other DIMSE operations being performed by the same SCP.</p>
+                  <p>
+                     <a id="para_52017421-9b55-4fba-9ea3-a0ed864d616b" shape="rect"></a>Processing of priority requests is not required of SCPs. Whether or not an SCP supports priority processing and the meaning of the different priority levels shall be stated in the Conformance Statement of the SCP.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.1.3" shape="rect"></a>C.4.1.1.3 Identifier</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_69d24cbe-0602-4799-8ba0-5408f7eb76c3" shape="rect"></a>Both the C-FIND request and response contain an Identifier encoded as a Data Set (see <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>).</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_d9b847fc-eb01-489d-9e74-5bbb08bd0cb9" shape="rect"></a>The definition of a Data Set in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a> specifically excludes the range of groups below group 0008, and this includes in particular Meta Information Header elements such as Transfer Syntax UID (0002,0010). The C-FIND request and identifier do not support a mechanism for ascertaining the manner in which an SCP might have encoded a stored image whether it be by requesting Transfer Syntax UID (0002,0010) or by any other mechanism.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.1.3.1" shape="rect"></a>C.4.1.1.3.1 Request Identifier Structure</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_682adae7-4e88-4c13-b512-e6ccbdd06184" shape="rect"></a>An Identifier in a C-FIND request shall contain:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_e69bb334-5ceb-4045-a0ac-efbbfbe86652" shape="rect"></a>Key Attributes values to be matched against the values of storage SOP Instances managed by the SCP.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_31b120ed-020e-41a6-b2e3-61d54f751f3a" shape="rect"></a>Query/Retrieve Level (0008,0052), which defines the level of the query.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_c639c97c-c765-497c-840d-eec3851ebd26" shape="rect"></a>Conditionally, the Attribute Query/Retrieve View (0008,0053). This Attribute may be included if Enhanced Multi-Frame Image Conversion has been accepted during Association Extended Negotiation. It shall not be included otherwise.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_cdc6faf3-6efc-499f-a2e5-1cf28030de21" shape="rect"></a>Conditionally, the Attribute Specific Character Set (0008,0005). This Attribute shall be included if expanded or replacement character sets may be used in any of the Attributes in the Request Identifier. It shall not be included otherwise.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_431e9647-a742-4801-9b6b-50a83529f4bb" shape="rect"></a>Conditionally, the Attribute Timezone Offset From UTC (0008,0201). This Attribute shall be included if Key Attributes of time are to be interpreted explicitly in the designated local time zone. It shall not be present otherwise, i.e., it shall not be sent with a zero-length value.</p>
+                           </li>
+                        </ul>
+                     </div>
+                     <p>
+                        <a id="para_a62d7892-0832-4758-9c1f-0019b5a46500" shape="rect"></a>The Key Attributes and values allowable for the level of the query shall be defined in the SOP Class definition for the Query/Retrieve Information Model.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.1.3.2" shape="rect"></a>C.4.1.1.3.2 Response Identifier Structure</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_2b3eb73a-665c-4b1b-b76d-e6d774b3b7b2" shape="rect"></a>The C-FIND response shall not contain Attributes that were not in the request or specified in this section.</p>
+                     <p>
+                        <a id="para_e261a880-06d3-4abe-9d17-3240f0c915ed" shape="rect"></a>An Identifier in a C-FIND response shall contain:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_07f0d5a7-737e-478d-8502-bc0fa3493cdf" shape="rect"></a>Key Attributes with values corresponding to Key Attributes contained in the Identifier of the request.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <div class="orderedlist">
+                                    <ol class="orderedlist" type="1">
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_59638d5d-fc39-4375-a71d-8a8c2a57ca2c" shape="rect"></a>All Required Keys in the Request Identifier, as well as all Optional Keys specified in the Information Model for the SOP Class (e.g., in <a class="xref" href="sect_C.6.html#sect_C.6.1.1" title="C.6.1.1 Patient Root Query/Retrieve Information Model" shape="rect">Section C.6.1.1</a>, <a class="xref" href="sect_C.6.2.html#sect_C.6.2.1" title="C.6.2.1 Study Root Query/Retrieve Information Model" shape="rect">Section C.6.2.1</a>) in the Request Identifier that are supported by the SCP, will therefore be present in the Response Identifier.</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_aaf43235-57ad-4c30-9289-c0b957b303f0" shape="rect"></a>Required Keys and supported Optional Keys in the Response Identifier will have zero length if the SCP has no value to send; i.e., there is no requirement that the SCP have a value for these, or create a dummy value.</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_423ebd14-c71d-473b-af19-4b88a76f7133" shape="rect"></a>The requirement that unsupported Optional Keys present in the Request Identifier not be included in the Response Identifier is specified in <a class="xref" href="sect_C.2.2.html#sect_C.2.2.1.3" title="C.2.2.1.3 Optional Keys" shape="rect">Section C.2.2.1.3</a>.</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_2f704199-5db5-42be-83a1-264c67e58069" shape="rect"></a>Private Attributes present in the Request Identifier may be ignored by the SCP if unrecognized (as defined for a <a href="../part02/chapter_3.html#glossentry_StandardExtendedSOPClass" class="olink" shape="rect">Standard Extended SOP Class in <span class="olinkdocname">PS3.2</span>
+                                             </a>), hence may or may not be present in the Response Identifier.</p>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_e3971aec-46be-4df2-b36a-0ca133fabafe" shape="rect"></a>Query/Retrieve Level (0008,0052), which defines the level of the query. The Query/Retrieve level shall be equal to the level specified in the request.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_9c02cd1d-4ef1-4463-97af-c365764a34b1" shape="rect"></a>Conditionally, the Attribute Specific Character Set (0008,0005). This Attribute shall be included if expanded or replacement character sets may be used in any of the Attributes in the Response Identifier. It shall not be included otherwise. The C-FIND SCP is not required to return responses in the Specific Character Set requested by the SCU if that character set is not supported by the SCP. The SCP may return responses with a different Specific Character Set.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_0f0b9175-a84a-4779-bd3f-082f8ab9ad51" shape="rect"></a>Conditionally, the Attribute Timezone Offset From UTC (0008,0201). This Attribute shall be included if any Attributes of time in the Response Identifier are to be interpreted explicitly in the designated local time zone. It shall not be present otherwise, i.e., it shall not be sent with a zero-length value.</p>
+                           </li>
+                        </ul>
+                     </div>
+                     <p>
+                        <a id="para_a806f9e0-cc2b-4dc9-b4a8-5069a9d263e1" shape="rect"></a>The C-FIND SCP is required to support either or both the Retrieve AE Title Data Element or the Storage Media File-Set ID/Storage Media File Set UID Data Elements. An Identifier in a C-FIND response shall contain:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_2f215ad1-44b8-4b94-815c-b850a9f563cb" shape="rect"></a>Storage Media File-Set ID (0088,0130), which defines a user or implementation specific human readable Identifier that identifies the Storage Media on which the Composite Object Instance(s); reside. This element pertains to the set of Composite Object Instances available at the Query/Retrieve Level specified in the Identifier of the C-FIND request (e.g., Patient, Study, Series, Composite Object Instance). This Attribute shall be present if the Retrieve AE Title Data Element is not present. A null value (Data Element length of 0) is valid for all levels except the lowest level in the Information Model as defined by the SOP Class.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_068f6b71-3e63-457a-9986-fa1cd203ec8f" shape="rect"></a>Storage Media File-Set UID (0088,0140), which uniquely identifies the Storage Media on which the Composite Object Instance(s) reside. This element pertains to the set of Composite Object Instances available at the Query/Retrieve Level specified in the Identifier of the C-FIND request (e.g., Patient, Study, Series, Composite Object Instance). This Attribute shall be present if the Retrieve AE Title Data Element is not present. A null value (Data Element length of 0) is valid for all levels except the lowest level in the Information Model as defined by the SOP Class.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_f2f8e523-e46b-478f-bef5-6440b3e10cd4" shape="rect"></a>The File-Set concepts are used in <a href="../part10/PS3.10.html" class="olink" shape="rect">PS3.10</a>.</p>
+                              </div>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1643bf5c-3271-46b5-bb55-e5ee801e712b" shape="rect"></a>Retrieve AE Title (0008,0054), which defines a list of DICOM Application Entity Title(s) that identify the location from which the Composite Object Instance(s) may be retrieved on the network. This element pertains to the set of Composite Object Instances available at the Query/Retrieve Level specified in the Identifier of the C-FIND request (e.g., Patient, Study, Series, Composite Object Instance). This Attribute shall be present if the Storage Media File-Set ID and Storage Media File-Set UID elements are not present. The Application Entity named in this field shall support either the C-GET or C-MOVE SOP Class of the Query/Retrieve Service Class. A null value (Data Element length of 0) is valid for all levels except the lowest level in the Information Model as defined by the SOP Class.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <div class="orderedlist">
+                                    <ol class="orderedlist" type="1">
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_d9e01ef2-7ad6-4ce0-9487-af3089d43891" shape="rect"></a>For example, a DICOM AE with the AE Title of "A" performs a C-FIND request to a DICOM AE with the AE Title of "B" with the Query/Retrieve level set to "STUDY". DICOM AE "B" determines that the Composite Object Instances for each matching study may be retrieved by itself and sets the Data Element Retrieve AE Title to "B".</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_0074ebc6-540c-4d1b-b3fe-417766569ba9" shape="rect"></a>File-Sets may not be defined at every Query/Retrieve Level. If the SCP supports the File-Set ID/File-Set UID option but does not define these Attributes at the Query/Retrieve Level specified in the C-FIND request it may return these Data Elements with a length of 0 to signify that the value is unknown. An SCU should reissue a C-FIND at a Query/Retrieve Level lower in the hierarchy.</p>
+                                       </li>
+                                       <li class="listitem">
+                                          <p>
+                                             <a id="para_de5bc198-c9fe-4888-af41-5b286f45cf9b" shape="rect"></a>The fact that the value of the Key Attribute is unknown to the SCP of the Query/Retrieve Service Class does not imply that it is not present in the underlying Information Object. Thus, a subsequent retrieval may cause a Storage of a SOP Instance that contains the value of the Attribute.</p>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                     <p>
+                        <a id="para_6953df65-7aa1-411b-a898-31f0aa9f064f" shape="rect"></a>The C-FIND SCP may also, but is not required to, support the Instance Availability (0008,0056) Data Element. This Data Element shall not be included in a C-FIND request. An Identifier in a C-FIND response may contain:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_20385c0c-04f5-418c-8f7d-4fc2125202b3" shape="rect"></a>Instance Availability (0008,0056), which defines how rapidly Composite Object Instance(s); become available for transmission after a C-MOVE or C-GET retrieval request. This element pertains to the set of Composite Object Instances available at the Query/Retrieve Level specified in the Identifier of the C-FIND request (e.g., Patient, Study, Series, Composite Object Instance). When some composite instances are less rapidly available than others, the availability of the least rapidly available shall be returned. If this Data Element is not returned, the availability is unknown or unspecified. A null value (Data Element length of 0) is not permitted. The Enumerated Values for this Data Element are:</p>
+                              <div class="itemizedlist">
+                                 <ul class="itemizedlist" style="list-style-type: circle; ">
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_63802fe6-145e-4d60-b663-a1807576f485" shape="rect"></a>"ONLINE", which means the instances are immediately available,</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_c5e40f39-beaf-4b76-9932-f2703fa4c4b9" shape="rect"></a>"NEARLINE", which means the instances need to be retrieved from relatively slow media such as optical disk or tape, or require conversion that takes time,</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_3dce1712-8c95-4d03-88b0-4b2cb9c4c214" shape="rect"></a>"OFFLINE", which means the instances need to be retrieved by manual intervention,</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_c4fb20c9-f4bf-45a8-b7ee-c46f033d3c5b" shape="rect"></a>"UNAVAILABLE", which means the instances cannot be retrieved. Note that SOP Instances that are unavailable may have an alternate representation that is available (see <a class="xref" href="sect_C.6.html#sect_C.6.1.1.5.1" title="C.6.1.1.5.1 Alternate Representation Sequence" shape="rect">Section C.6.1.1.5.1</a>).</p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.1.4" shape="rect"></a>C.4.1.1.4 Status</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_c9f7aed1-ea55-4d15-9425-c3ae18ee5cef" shape="rect"></a>
+                            <a class="xref" href="sect_C.4.html#table_C.4-1" title="Table C.4-1. C-FIND Response Status Values" shape="rect">Table C.4-1</a> defines the specific Status Code values that might be returned in a C-FIND response. General Status Code values and fields related to Status Code values are defined for C-FIND DIMSE Service in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+                  <div class="table">
+                     <a id="table_C.4-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table C.4-1. C-FIND Response Status Values</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b76652bb-4d7c-4995-b106-76df1d391ddb" shape="rect"></a>Service Status</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7f4b7eb7-e47b-4e56-ae6d-08811e242328" shape="rect"></a>Further Meaning</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_82c32b9f-6f82-4f96-b83c-1667ab3c8e50" shape="rect"></a>Status Codes</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_88e3223a-f327-49b0-baf1-5d0a5c555327" shape="rect"></a>Related Fields</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="3" colspan="1">
+                                        <p>
+                                       <a id="para_8ff19e62-f4c9-4489-b8d2-6377c3324676" shape="rect"></a>Failure</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_136dc33a-7840-4881-8c16-641bb115ca43" shape="rect"></a>Refused: Out of resources</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e4efb8c4-c8f2-4e0b-8f9e-ea7cd690af70" shape="rect"></a>A700</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b412fcac-5582-4941-b6f1-f8cbf816e6b3" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_982dbc49-dc62-456c-9b29-1ba3762c42a7" shape="rect"></a>Error: Data Set does not match SOP Class</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5515ebc9-6dce-48e6-834b-95a04a57d02d" shape="rect"></a>A900</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_895815b6-ff7e-4047-a588-2c82ac03f344" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                       <a id="para_cad18ee9-08a9-4e1b-b006-33bf0dc31ffe" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_54617503-f4d0-457a-a5e5-068a8948a7db" shape="rect"></a>Failed: Unable to process</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_06ae996b-1d0d-4cde-8ee2-f57053dd2ac5" shape="rect"></a>Cxxx</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1b581e54-2124-479f-9a5e-039d3be27dcb" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                       <a id="para_6117693b-a06d-4afe-bafc-fe23f44d790d" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b2fe89d0-9a20-452e-81e3-bb418bcbf3b1" shape="rect"></a>Cancel</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0cb81407-eb17-4bfe-a003-6c33ec789cce" shape="rect"></a>Matching terminated due to Cancel request</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_66de0894-8456-4b6f-9a9a-49559c774e0a" shape="rect"></a>FE00</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_585d8daf-3038-4749-985a-0c2ad4dce9af" shape="rect"></a>None</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e51bd08e-2f31-4721-903f-b2e8cf841f15" shape="rect"></a>Success</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6d6f1c6c-cd6a-42b9-8591-fee78f98402e" shape="rect"></a>Matching is complete - No final Identifier is supplied.</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a809970e-04fa-4ecb-aa04-0dd6c32d4e71" shape="rect"></a>0000</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9a129e2a-2a82-4c22-a5d2-10dc916f506b" shape="rect"></a>None</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_713bf13f-c0e3-4a86-bb93-82a42f229233" shape="rect"></a>Pending</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d511767e-695c-4178-a617-2712845d6982" shape="rect"></a>Matches are continuing - Current Match is supplied and any Optional Keys were supported in the same manner as Required Keys.</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_60acd66b-0e8e-4bc7-b155-675ac8de0dc6" shape="rect"></a>FF00</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_87ec7658-7562-4cf8-8c08-b0953b0e8192" shape="rect"></a>Identifier</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_307dd287-86e7-4889-9675-082f3e13f15c" shape="rect"></a>Matches are continuing - Warning that one or more Optional Keys were not supported for existence and/or matching for this Identifier.</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_db873a12-7c7f-4917-aef6-9b7c887657fe" shape="rect"></a>FF01</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f4bed044-9f39-4c30-93a5-a0522df63f7c" shape="rect"></a>Identifier</p>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_0319bd44-d9fd-40a9-b930-faca67fb16cf" shape="rect"></a>Some Failure Status Codes are implementation specific.</p>
+                  <p>
+                     <a id="para_1f1cc1cc-85a8-40f7-830f-ed07d0f5bf94" shape="rect"></a>An SCP implementation shall assign specific Failure Status Codes by replacing each 'x' symbol with a hexadecimal digit in the range from 0 to F. An SCP implementation wishing to differentiate between causes of “Failed: Unable to process” Failure Meaning shall assign those causes specific Status Code Values within valid range specified in <a class="xref" href="sect_C.4.html#table_C.4-1" title="Table C.4-1. C-FIND Response Status Values" shape="rect">Table C.4-1</a>. </p>
+                  <p>
+                     <a id="para_4cc20629-3513-4298-a4f4-56768a5d69c7" shape="rect"></a>An SCU implementation shall recognize any Failure Status Code within the value range specified in <a class="xref" href="sect_C.4.html#table_C.4-1" title="Table C.4-1. C-FIND Response Status Values" shape="rect">Table C.4-1</a> as an indicator of the Failure Meaning stated in the table. There is no requirement for an SCU implementation to differentiate between specific Status Codes within the valid range.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.2" shape="rect"></a>C.4.1.2 C-FIND SCU Behavior</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0bea2be4-33ed-44b4-b2bd-60ee997d5f4a" shape="rect"></a>This Section discusses both the baseline and extended behavior of the C-FIND SCU.</p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.2.1" shape="rect"></a>C.4.1.2.1 Baseline Behavior of SCU</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_318ba65a-5f3c-4958-af1c-484f4a4e6071" shape="rect"></a>All C-FIND SCUs shall be capable of generating query requests that meet the requirements of the Hierarchical Search.</p>
+                  <p>
+                     <a id="para_148f5bd9-394f-42f8-9179-4aeada5ef074" shape="rect"></a>The Identifier contained in a C-FIND request shall contain a single value in the Unique Key Attribute for each level above the Query/Retrieve level. No Required or Optional Keys shall be specified that are associated with levels above the Query/Retrieve level.</p>
+                  <p>
+                     <a id="para_88873b0e-2c7e-4c3e-a244-7b474e93d8f0" shape="rect"></a>The Unique Key Attribute associated with the Query/Retrieve level shall be contained in the C-FIND request and may specify Single Value Matching, Universal Value Matching, or List of UID Matching. In addition, Required and Optional Keys associated with the Query/Retrieve level may be contained in the Identifier.</p>
+                  <p>
+                     <a id="para_ee351783-8c55-4464-ab16-bd53803880f4" shape="rect"></a>An SCU conveys the following semantics using the C-FIND request:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_400875ed-8b2d-431e-b985-345effabff68" shape="rect"></a>The SCU requests that the SCP perform a match of all keys specified in the Identifier of the request against the information it possesses down to the Query/Retrieve level specified in the request.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <div class="orderedlist">
+                                 <ol class="orderedlist" type="1">
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_e62450dd-26d0-4222-b7ff-af96158136dd" shape="rect"></a>The SCU may not assume the SCP supports any Optional Keys. Hence, Optional Keys serve only to reduce network related overhead when they are supported by the SCP.</p>
+                                    </li>
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_7133aeab-f486-4d76-b8c1-8a86fdfed4ce" shape="rect"></a>The SCU must be prepared to filter C-FIND responses when the SCP fails to support an Optional Key specified in the C-FIND request.</p>
+                                    </li>
+                                 </ol>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_54282c2f-0761-4161-a8d7-3419221c696e" shape="rect"></a>The SCU shall interpret Pending responses to convey the Attributes of a match of an Entity at the level of the query.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8d313f77-cbb4-4e9a-ab90-fb68a3db4640" shape="rect"></a>The SCU shall interpret a response with a status equal to Success, Failed or Refused to convey the end of Pending responses.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_bc17d4ce-0852-45dc-96da-4b297fed0031" shape="rect"></a>The SCU shall interpret a Refused or Failed response to a C-FIND request as an indication that the SCP is unable to process the request.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c1f550a3-19f2-49f9-98be-a38baf40d350" shape="rect"></a>The SCU may cancel the C-FIND service by issuing a C-CANCEL-FIND request at any time during the processing of the C-FIND. The SCU shall recognize a status of Canceled to indicate that the C-CANCEL-FIND was successful.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_1c1d4d71-ce86-40ae-8a7e-cab7d08d731b" shape="rect"></a>The SCU needs to be prepared to receive C-FIND responses sent by the SCP until the SCP finally processed the C-CANCEL-FIND request.</p>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.2.2" shape="rect"></a>C.4.1.2.2 Extended Behavior of SCU</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_36249b21-799c-4d9e-a900-148567883e89" shape="rect"></a>Extended SCU behavior shall be negotiated at Association establishment time. If an option within the extended behavior is not agreed upon in the negotiation, then only baseline SCU behavior shall be performed with respect to that option. Extended SCU behavior includes all baseline behavior with the following option:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_edec9e0d-71d4-4262-896f-6f2cae81d690" shape="rect"></a>Relational-queries</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_17bd1d52-8f74-4bdb-883b-d9d5d799b40b" shape="rect"></a>Enhanced Multi-Frame Image Conversion</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_946fd320-0f68-4eb1-9665-dac67adb8a11" shape="rect"></a>More than one option may be agreed upon.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.2.2.1" shape="rect"></a>C.4.1.2.2.1 Relational-Queries</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_d21cbf5f-ab1b-420b-9f83-8a68235a4e9c" shape="rect"></a>The C-FIND Service with relational-queries allows any combination of keys at any level in the hierarchy. The Unique Key Attribute associated with the Query/Retrieve level shall be contained in the C-FIND request and may specify Single Value Matching, Universal Value Matching, or List of UID Matching. Support for relational-queries removes the baseline restriction that a Unique Key shall be specified for all levels above the Query/Retrieve level in the C-FIND request.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.2.2.2" shape="rect"></a>C.4.1.2.2.2 Enhanced Multi-Frame Image Conversion</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_4a7dd942-0d90-4489-be20-d5d195e9fcc0" shape="rect"></a>The C-FIND Service with Enhanced Multi-Frame Image Conversion allows for selection of the default or an alternative view of the instances represented by the Information Model.</p>
+                     <p>
+                        <a id="para_a3194648-ad64-4190-9245-63bb273afcce" shape="rect"></a>Support for Enhanced Multi-Frame Image Conversion allows the SCU to specify the Query/Retrieve View (0008,0053) in the Request Identifier with a value of either "CLASSIC" or "ENHANCED".</p>
+                     <p>
+                        <a id="para_a4d1c754-7514-4dd0-9767-1c65204e1582" shape="rect"></a>If Query/Retrieve View (0008,0053) is not present in the Request Identifier, then the SCU requests that the SCP perform a match of all keys specified in the Identifier of the request against the information about the instances that it possesses, as received.</p>
+                     <p>
+                        <a id="para_56ae0d5b-0c39-4dc0-a563-53c919d04720" shape="rect"></a>If Query/Retrieve View (0008,0053) is present with a value of "CLASSIC", then the SCU requests that the SCP perform a match of all keys specified in the Identifier of the request against the information about Classic single frame Instances (converted from Enhanced multi-frame Instances if required), as well as any instances that were converted to preserve referential integrity, and any that did not need to be converted.</p>
+                     <p>
+                        <a id="para_745588d9-6350-4a79-a010-5ea7a2227966" shape="rect"></a>If Query/Retrieve View (0008,0053) is present with a value of "ENHANCED", then the SCU requests that the SCP perform a match of all keys specified in the Identifier of the request against the information about Enhanced multi-frame Instances (converted from Classic single frame Instances if required), as well as any instances that were converted to preserve referential integrity, and any that did not need to be converted.</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <div class="orderedlist">
+                           <ol class="orderedlist" type="1">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_71c57db0-8416-4775-b6db-9e4d1786c5e4" shape="rect"></a>The SCU may assume that no duplicate information will be returned. For example, if an entire series of single frame instances can be converted to a separate series of converted instances, a STUDY level C-FIND will not return both series.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_95dcaad1-c1d8-4fcd-b48c-9501a4c104bb" shape="rect"></a>The Query Information Model is unchanged, and the same unique, required and optional keys are equally applicable to both views, except that the values for the SERIES and IMAGE level queries will be different and will depend on the converted instance content.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_47d83cd8-0e93-4b21-b4be-ed9e77e46eb4" shape="rect"></a>Unconverted instances, such as for other modalities like Ultrasound, will appear identical regardless of view.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_856a123b-a25f-40ef-a0d5-46e29fbc2d4a" shape="rect"></a>Implementations may apply performance optimizations, such as pre-computing or caching the potential information against which CLASSIC and ENHANCED queries may be performed, in order to minimize significant delays between the query request and response caused by converting "on demand", but SCUs may need to consider the potential for a delayed response when configuring timeouts, etc.</p>
+                              </li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.4.1.3" shape="rect"></a>C.4.1.3 C-FIND SCP Behavior</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_c9f07729-0729-40f9-8480-f0d482e8971e" shape="rect"></a>This Section discusses both the baseline and extended behavior of the C-FIND SCP.</p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.3.1" shape="rect"></a>C.4.1.3.1 Baseline Behavior of SCP</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_da74a352-41a4-4807-9908-262ee08eca9a" shape="rect"></a>All C-FIND SCPs shall be capable of processing queries that meet the requirements of the Hierarchical Search.</p>
+                  <p>
+                     <a id="para_80d344af-48f8-4009-b727-812b138c7bfb" shape="rect"></a>An SCP conveys the following semantics with a C-FIND response:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_1766b6cf-495e-4283-959d-27b658339c0a" shape="rect"></a>The SCP is requested to perform a match of all the keys specified in the Identifier of the request, against the information it possesses, to the level specified in the request. Attribute matching is performed using the key values specified in the Identifier of the C-FIND request as defined in <a class="xref" href="sect_C.2.html" title="C.2 Query/Retrieve Information Model Definition" shape="rect">Section C.2</a>.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6e8e567a-d04d-4e96-9b60-0b992d5a996d" shape="rect"></a>The SCP generates a C-FIND response for each match using the Hierarchical Search method. All such responses shall contain an Identifier whose Attributes contain values from a single match. All such responses shall contain a status of Pending.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_9dacf0dc-f518-4a47-828a-0f67ffb237b4" shape="rect"></a>When all matches have been sent, the SCP generates a C-FIND response that contains a status of Success. A status of Success shall indicate that a response has been sent for each match known to the SCP.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_889537a7-1adc-4785-a0fd-c71636983d4f" shape="rect"></a>When there are no matches, then no responses with a status of Pending are sent, only a single response with a status of Success.</p>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7c505f02-b4e2-4b8d-9967-37c9aeed8b48" shape="rect"></a>The SCP shall generate a response with a status of Refused or Failed if it is unable to process the request. A Refused or Failed response shall contain no Identifier.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f3f98d6d-2d23-4b0e-8cd1-cd5582f360b6" shape="rect"></a>If the SCP receives C-CANCEL-FIND indication before it has completed the processing of the matches it shall interrupt the matching process and return a status of Canceled.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5737423b-f905-4b91-bcb8-46d6ef7e816b" shape="rect"></a>If the SCP manages images in multiple alternate encodings (see <a class="xref" href="sect_C.6.html#sect_C.6.1.1.5.1" title="C.6.1.1.5.1 Alternate Representation Sequence" shape="rect">Section C.6.1.1.5.1</a>), only one of the alternate encodings of an image shall be included in the set of matches for a C-FIND request at the Instance level.</p>
+                           <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                              <h3 class="title">Note</h3>
+                              <p>
+                                 <a id="para_8a57f25d-8c37-478e-b981-6d1c1b346368" shape="rect"></a>For query of images with alternate encodings, the SCP may select the appropriately encoded Instance for the request response based on identity of the SCU or other factors.</p>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.3.1.1" shape="rect"></a>C.4.1.3.1.1 Hierarchical Search Method</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_4d838aee-c06c-4b9c-b83a-95d0439ed3c7" shape="rect"></a>Starting at the top level in the Query/Retrieve Information Model, continuing until the level specified in the C-FIND request is reached, the following procedures are used to generate matches:</p>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="a">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_ba8e6800-cf70-49ca-bb95-d6587fd24ecf" shape="rect"></a>If the current level is the level specified in the C-FIND request, then the key match strings contained in the Identifier of the C-FIND request are matched against the values of the Key Attributes for each entity at the current level. For each entity for which the Attributes match all of the specified match strings, construct an Identifier. This Identifier shall contain all of the Unique Keys at higher levels and all of the values of the Attributes for this entity that match those in the C-FIND request. Return a response for each such Identifier. If there are no matching keys, then there are no matches, return a response with a status equal to Success and with no Identifier.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_16ebfb19-3027-434b-89cd-8851491694f1" shape="rect"></a>Otherwise, if the current level is not the level specified in the C-FIND request and there is an entity matching the Unique Key Attribute Value for this level specified in the C-FIND request, perform this procedure at the next level down in the hierarchy.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_874d6f6a-2497-4705-a3d3-d86d262dafa5" shape="rect"></a>Otherwise there are no matches; return a response with a status equal to Success.</p>
+                              <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                 <h3 class="title">Note</h3>
+                                 <p>
+                                    <a id="para_a4f377a6-802c-4e9f-b7f0-217b01e04c0f" shape="rect"></a>The above description specifies a recursive procedure. It may recur upon itself multiple times as it goes down the hierarchical levels, but at each level it recurs only once.</p>
+                              </div>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.4.1.3.2" shape="rect"></a>C.4.1.3.2 Extended Behavior of SCP</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_f51d80fa-4761-4e09-bedb-d559034fb9f9" shape="rect"></a>Extended SCP behavior shall be negotiated at Association establishment time. If an option within the extended behavior is not agreed upon in the negotiation, then only baseline SCP behavior shall be performed with respect to that option. Extended SCP behavior includes all baseline behavior with the following option:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5d53dab6-fb77-4d49-b852-d009dd91dd61" shape="rect"></a>Relational-queries</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c4f5d7e0-cfdd-4842-a7a4-ca67a4c29b3e" shape="rect"></a>Enhanced Multi-Frame Image Conversion</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_9121674b-1eba-4abd-bca2-22a61760245a" shape="rect"></a>More than one option may be agreed upon.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.3.2.1" shape="rect"></a>C.4.1.3.2.1 Relational-Queries</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_f14b1872-270b-4deb-99da-d7e6ed8ccbb6" shape="rect"></a>The C-FIND Service with relational-queries allows any combination of keys at any level in the hierarchy. At the lowest level, a query using the relational-queries shall contain the Unique Key for that level with either Single Value Matching, Wild Card Matching, or Universal Matching. Support for relational-queries removes the baseline restriction that a Unique Key shall be specified for all levels above the Query/Retrieve level in the C-FIND request.</p>
+                     <p>
+                        <a id="para_661d5f1f-5388-47b5-951f-e40d39d0c4b2" shape="rect"></a>The C-FIND SCP shall perform matching based on all keys specified in the C-FIND request regardless of the Query/Retrieve level.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.3.2.2" shape="rect"></a>C.4.1.3.2.2 Relational Search Method</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_a58959dd-a960-4876-8df7-1a98d5504865" shape="rect"></a>A query using the relational method may contain any combination of keys at any level in the hierarchy. Starting at the top level in the Query/Retrieve Information Model, continuing until the Query/Retrieve level specified in the C-FIND request is reached, the following procedures are used to generate matches:</p>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="a">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_28784582-21f8-4627-8978-55c12f83b823" shape="rect"></a>The key match strings contained in the Identifier of the C-FIND request are matched against the values of the Key Attributes for each entity at the current level.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_9c19abe7-9f0b-4d6b-81e0-1da2abcf32b1" shape="rect"></a>If no Key Attribute is specified at the current level and the current level is not the level specified in the C-FIND request, the match shall be performed as if a wild card were specified for the Unique Key Attribute for the current level (i.e., all entities at the current level shall match).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_01463b54-97e6-4cbb-a0fe-e7c16fb34c3f" shape="rect"></a>If the current level is the level specified in the C-FIND request, then for each matching entity (a matching entity is one for which the Attributes match all of the specified match strings in the Key Attributes), construct an Identifier. This Identifier shall contain all of the Attributes generated by this procedure at higher levels on this recursion path and all of the values of the Key Attributes for this entity that match those in the C-FIND request.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1082b1a7-decc-4107-b32b-278cbf95044e" shape="rect"></a>Otherwise, if the current level is not the level specified in the C-FIND request, then for each matching entity construct a list of Attributes containing all of the matching Key Attributes and all Attributes that were prepared at the previous level for this entity. Then perform this procedure at the next level down in the hierarchy for each matching entity.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_d898ca5e-785f-4913-af51-4cfb2c917ddb" shape="rect"></a>Otherwise, if there are no matches, return a response with status equal to Success and no Identifier.</p>
+                           </li>
+                        </ol>
+                     </div>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <div class="orderedlist">
+                           <ol class="orderedlist" type="1">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_d0513815-ff96-4af9-98f3-d596329ebd0c" shape="rect"></a>The above description specifies a recursive procedure. It may recur upon itself multiple times as it goes down the hierarchical levels, and at each level, it may recur multiple times (one for each matching entity). This may result in a large number of Identifiers being generated.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_211ffbce-b8b2-484a-9975-53da3e5291db" shape="rect"></a>It is not required that the above defined procedure be used to generate matches. It is expected that implementations will incorporate different algorithms for performing searches of the databases. For a given query, the set of matches shall be equivalent to that which would be generated by the above procedure.</p>
+                              </li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_C.4.1.3.2.3" shape="rect"></a>C.4.1.3.2.3 Enhanced Multi-Frame Image Conversion</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_24f285ef-7e4a-40d2-bd40-7e08d4cbffe1" shape="rect"></a>If Query/Retrieve View (0008,0053) is not present in the Request Identifier, then the SCP shall perform a match of all keys specified in the Identifier of the request against the information about the instances that it possesses, as received.</p>
+                     <p>
+                        <a id="para_77964118-341f-4e03-8d83-56afecefbdc6" shape="rect"></a>If Query/Retrieve View (0008,0053) is present with a value of "CLASSIC", then the SCP shall perform a match of all keys specified in the Identifier of the request against the information about Classic single frame Instances (converted from Enhanced multi-frame Instances if required), as well as any instances that were converted to preserve referential integrity, and any that did not need to be converted.</p>
+                     <p>
+                        <a id="para_742977a7-73a8-4d3e-a54e-35ecd953b314" shape="rect"></a>If Query/Retrieve View (0008,0053) is present with a value of "ENHANCED", then the SCP shall perform a match of all keys specified in the Identifier of the request against the information about Enhanced multi-frame Instances (converted from Classic single frame Instances if required), as well as any instances that were converted to preserve referential integrity, and any that did not need to be converted.</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <div class="orderedlist">
+                           <ol class="orderedlist" type="1">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_e64a821e-3e37-48dc-b250-fcf2ccdc8981" shape="rect"></a>The SCP will not return information that is duplicated. For example, if an entire series of single frame instances can be converted to a separate series of converted instances, a STUDY level C-FIND will not return both series.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_a8a050b4-a799-4033-9b91-859b1605358e" shape="rect"></a>The Query Information Model is unchanged, and the same unique, required and optional keys are equally applicable to both views, except that the values for the SERIES and IMAGE level queries will be different and will depend on the converted instance content.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_610935cc-4782-4fe8-a351-ddefa9bbd5d8" shape="rect"></a>Unconverted instances, such as for other modalities like Ultrasound, will appear identical regardless of view.</p>
+                              </li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.3.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_C.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.3.5 New Instance Creation for Enhanced Multi-Frame Image Conversion </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.4.2 C-MOVE Operation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

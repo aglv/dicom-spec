@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A.5.3.6 DICOM Instances Accessed</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.15.html" title="PS3.15" />
+      <link rel="up" href="sect_A.5.3.html" title="A.5.3 DICOM Specific Audit Messages" />
+      <link rel="prev" href="sect_A.5.3.5.html" title="A.5.3.5 Data Import" />
+      <link rel="next" href="sect_A.5.3.7.html" title="A.5.3.7 DICOM Instances Transferred" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024c - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A.5.3.6 DICOM Instances Accessed <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.3.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.5.3.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A.5.3 DICOM Specific Audit Messages</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.5.3.7.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.15.html" shape="rect">PS3.15</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Secure Use Profiles (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_A.5.html" shape="rect">Audit Trail Message Format Profile</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_A.5.3.html" shape="rect">DICOM Specific Audit Messages</a>
+         </span> &gt; <span class="breadcrumb-node">DICOM Instances Accessed</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_A.5.3.6" shape="rect"></a>A.5.3.6 DICOM Instances Accessed</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_63d61577-37e5-416f-9f50-59d4a1f4c5ac" shape="rect"></a>This message describes the event of DICOM SOP Instances being viewed, utilized, updated, or deleted. This message shall only include information about a single patient and can be used to summarize all activity for several studies for that patient. This message records the studies to which the instances belong, not the individual instances.</p>
+         <p>
+            <a id="para_7f622f1a-c948-4fce-bf06-0445172f75fd" shape="rect"></a>If all instances within a study are deleted, then the EV<a href="../part16/chapter_D.html#DCM_110105" class="olink" shape="rect">(110105, DCM, "DICOM Study Deleted")</a> event shall be used, see <a class="xref" href="sect_A.5.3.8.html" title="A.5.3.8 DICOM Study Deleted" shape="rect">Section A.5.3.8</a>.</p>
+         <div class="table">
+            <a id="table_A.5.3.6-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.5.3.6-1. Audit Message for DICOM Instances Accessed</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_11c0e0bc-5e43-4926-9296-940db91a050f" shape="rect"></a>Real World Entities</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_628286b7-1894-46af-8e72-d7919aeb263b" shape="rect"></a>Field Name</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3704cce1-00c1-40e0-97ab-b445540b508e" shape="rect"></a>Opt.</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ff158bde-0312-4bf1-b066-0d7e6f24efc1" shape="rect"></a>Value Constraints</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="5" colspan="1">
+                           <p>
+                              <a id="para_4cbfadda-9345-4268-b86a-b7c7ddb9bd56" shape="rect"></a>Event</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d60edc13-a4b8-47cd-acbd-e2471f66117a" shape="rect"></a>EventID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d772302f-4e63-4be8-99b4-b6142b1eb285" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_50781651-8080-4421-9b3e-9303672cb776" shape="rect"></a>EV <a href="../part16/chapter_D.html#DCM_110103" class="olink" shape="rect">(110103, DCM, "DICOM Instances Accessed")</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ac788f0-810c-464b-999e-4e732efbf5bb" shape="rect"></a>EventActionCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_94f0b47a-feed-473c-84e9-f217d053b26c" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_183779d0-db05-4d6a-ad12-74c4dcb2bf50" shape="rect"></a>Enumerated value:</p>
+                           <p>
+                              <a id="para_12554267-dd79-4f1b-a785-743e794dee15" shape="rect"></a>C = create</p>
+                           <p>
+                              <a id="para_7d9b485c-180d-4d44-9fbd-56de7ae1dcea" shape="rect"></a>R = read</p>
+                           <p>
+                              <a id="para_0f23c156-fc17-43bc-9ed2-000b0a7e43fb" shape="rect"></a>U = update</p>
+                           <p>
+                              <a id="para_eb749fd9-b810-4a75-99fe-fa254fe0ac29" shape="rect"></a>D = delete</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1345672e-88cf-4857-bea8-8c15693c1211" shape="rect"></a>EventDateTime</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c0afa53e-b9fc-4c9f-80e4-4c4f3f56864d" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d77a98fe-22c3-461f-b857-7118e5abc939" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_22d0487f-f50e-4fe5-b3d2-49e2d589e71f" shape="rect"></a>EventOutcomeIndicator</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba083c36-111a-427b-966b-b72518eef81f" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0772bd28-f652-48eb-b235-6bf476679e35" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0247be14-89a6-473f-97fe-bbd6a9574d22" shape="rect"></a>EventTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_344047bc-f103-44b5-9ba5-7ad02e386cb2" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_71a71e61-cf60-4c32-a0c9-6fbe6199e150" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="7" colspan="1">
+                           <p>
+                              <a id="para_2aaf5a32-0122-4658-95b1-02df5d13fcec" shape="rect"></a>Active Participant:</p>
+                           <p>
+                              <a id="para_76ec49eb-6e05-4339-8bae-c0db6a6b778d" shape="rect"></a>Person and or Process manipulating the data</p>
+                           <p>
+                              <a id="para_8d5f6a25-50e2-40ad-97a6-29b7f1d653fd" shape="rect"></a>(1..2)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6251632d-0afb-41ba-825f-2e523c55d82b" shape="rect"></a>UserID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d6c410a9-8661-46de-b5ec-e7c85c9f7d0d" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_95d625ac-7f21-41ff-8baf-5efe613d9950" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4273b914-e9a1-4850-ad2e-b6363410da0b" shape="rect"></a>AlternativeUserID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1638159e-976b-4353-a7c8-93de13dd7042" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e141d027-829d-489e-88c2-8e4f34c2fc91" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3e6f3d9b-e442-4535-be61-b78410ee2f98" shape="rect"></a>UserName</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dd960437-92cc-4213-9e30-43224d6a36f8" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e71d122f-c1e3-4340-aa56-85fb81a95a2e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dce3d8b6-d6b2-4c6f-97e5-f7ae26578eef" shape="rect"></a>UserIsRequestor</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ecdcec80-eb52-4d02-a0ec-a5f499a5d2dd" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a7c2a2a4-ecfc-417f-85dd-ba0981575d3e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_17d12391-ab36-4edb-9790-5f9ef3e7f2ec" shape="rect"></a>RoleIDCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3e58a7fd-0fda-44fa-a639-8f1deb5fafdd" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6e4eb45d-d262-4651-ad1c-69fc0dc50c7e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_54bd41b5-c21b-46ba-94be-8037c5d528d8" shape="rect"></a>NetworkAccessPointTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_72ba0680-83e3-4fe3-a0a8-24d8fcbc9149" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_87bfbc0e-5a9e-4914-972d-3218ee50aa2a" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_efd809e7-80ed-4f3f-ae50-8a19ef9361f9" shape="rect"></a>NetworkAccessPointID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e8160d2b-ca14-434a-9e81-365beac136e7" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8821ea78-2536-481a-9de3-71c772e64164" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="16" colspan="1">
+                           <p>
+                              <a id="para_9eed06b6-d31f-41a4-a7a7-9cb3350ca23c" shape="rect"></a>Participating Object:</p>
+                           <p>
+                              <a id="para_dd3b8918-0063-4f35-83de-83d813119ba6" shape="rect"></a>Studies (1..N)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9813b70-0e8e-4598-8525-8a0d4f8265ad" shape="rect"></a>ParticipantObjectTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70525768-0b10-4b39-9909-09fdaff0c043" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ff78c94-c2aa-4106-a7c2-a0405876c144" shape="rect"></a>Shall be: 2 = System Object</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_32642b05-3ef5-46c0-baaf-e60f4f514146" shape="rect"></a>ParticipantObjectTypeCodeRole</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8ff99dc2-b9a5-40a8-b917-87c55b62a3d2" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7217825f-41e1-48d5-8fce-b59d8db62e61" shape="rect"></a>Shall be: 3 = Report</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9cf68c56-bf4a-4bbc-9ac0-bffa3abf02e1" shape="rect"></a>ParticipantObjectDataLifeCycle</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_63e8d2a3-f9b0-4ec8-9410-0252ccbfe052" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a6756679-a767-4920-950a-f60144d428cb" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d960758b-8334-4894-a452-dd3adc6e6725" shape="rect"></a>ParticipantObjectIDTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2a5d4379-bca1-43a0-8fea-4747781331cf" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_681a4b2c-0afd-4689-acde-abe3487f5021" shape="rect"></a>EV <a href="../part16/chapter_D.html#DCM_110180" class="olink" shape="rect">(110180, DCM, "Study Instance UID")</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7992c4b9-e38c-4ed1-9149-7c19e504a5d9" shape="rect"></a>ParticipantObjectSensitivity</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e1fa5aec-aa3a-417d-8839-eb29bd7098fb" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8082b0f5-b3bc-45c4-b783-1ea8497fbc5e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5fa581c7-d13d-426b-b738-562c4fedae17" shape="rect"></a>ParticipantObjectID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_277c14f2-ed8e-4746-b9e6-c18618202795" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cc4309d4-5adf-4c21-934c-13c4c2ad763c" shape="rect"></a>The Study Instance UID</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_945d024c-bb77-4b68-a8dd-c5841b69aeef" shape="rect"></a>ParticipantObjectName</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68f6ab7e-f7f7-44a9-98f6-d2b78795a59f" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b5907d79-b613-49f7-8133-ab07230abf19" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d29dbdc-6f5f-4ad0-bade-0233a43fad3f" shape="rect"></a>ParticipantObjectQuery</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1b761046-508d-4d26-8c3e-abcf3836350e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6070efc1-8b4d-4b0b-b93c-a67ef5db709c" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1bbdc814-f024-4cfe-a1d3-54520bb3ffed" shape="rect"></a>ParticipantObjectDetail</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad5a32e3-aba6-4f03-9b53-527e5f5d60a0" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f55a9ed8-a725-4f35-b3c0-d52d88a5d1b6" shape="rect"></a>Not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e917265d-b985-41ad-afdf-0489e3447401" shape="rect"></a>ParticipantObjectDescription</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9429d391-e6b3-4a90-9e75-16ba15c5e188" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_be857769-91b1-4a8f-9bfc-ffddf77331ea" shape="rect"></a>Not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9c3b9458-af12-43b2-ba6b-3edc13c6688a" shape="rect"></a>SOPClass</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_027a40cb-67a7-4b6d-b5b7-cb65445313f0" shape="rect"></a>MC</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3d4f2168-01df-4022-a5bd-a14b63cba8d6" shape="rect"></a>See <a class="xref" href="sect_A.5.2.html#table_A.5.2-1" title="Table A.5.2-1. General Message Format" shape="rect">Table A.5.2-1</a>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_503628c0-1590-49b6-88b0-6a892f29d626" shape="rect"></a>Accession</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_584216e4-4143-447f-8fdf-067f0e980361" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c34145a9-5805-4cd1-a757-a22f3f83fec8" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ae00a0b2-91c6-4e85-a31d-3a08fb871dab" shape="rect"></a>NumberOfInstances</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_949a1560-075d-4947-b108-116ebf1f3dba" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_56cd456f-caa1-47da-a3fd-478bb793040e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8a2a6ece-5686-4d2a-ba3a-4fa0dd5b77ee" shape="rect"></a>Instances</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e52af99c-b603-4922-838c-5592681dbc8e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59196a33-4a1b-4ea9-9634-5a079bfa6c3d" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fb8d3501-0d2c-41ca-9e6b-60c24caaf972" shape="rect"></a>Encrypted</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_77ab95de-50aa-449b-832b-2a12395d6cd8" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a4d17a77-b8cb-4530-8d6a-90ed648503f8" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_42ec3e78-c562-4f9b-8a40-26e76c1fcdd9" shape="rect"></a>Anonymized</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa24d0fe-563d-4868-aa96-632cce7b10fb" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8a5c5e8f-2d34-4478-aca0-696d3a83cb01" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="10" colspan="1">
+                           <p>
+                              <a id="para_36086137-20ef-4fc9-b916-7abd8b2bd77b" shape="rect"></a>Participating Object:</p>
+                           <p>
+                              <a id="para_3acf69fb-da47-49f2-991e-e5b640a1bce9" shape="rect"></a>Patient (1)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7ec13a53-aa79-49cd-a7c3-0bcda716ad4a" shape="rect"></a>ParticipantObjectTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a32050d5-c36f-46d9-a91c-ccb3d965c5ac" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ff6445b3-7081-4aec-83d1-93d451b165cb" shape="rect"></a>Shall be: 1 = Person</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_62a779cd-65cf-4643-a1a5-e35ce275bd39" shape="rect"></a>ParticipantObjectTypeCodeRole</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_754063d7-75ee-47cb-9a59-79b34cba22ea" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_84b8aceb-b3a7-4b04-a81b-e67a7a656724" shape="rect"></a>Shall be: 1 = Patient</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59d16812-606a-4031-8a5d-7f7ec8dff547" shape="rect"></a>ParticipantObjectDataLifeCycle</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_105267e6-acee-49ac-9f73-e257a29fca44" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e21be082-4b32-412e-a81b-c70d3dca393e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_10ae5ef1-5999-4bd0-9716-53176b7c92e3" shape="rect"></a>ParticipantObjectIDTypeCode</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_72bc3b88-e720-4fb9-8921-23a57165fe18" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2daa6dde-1ee2-42fd-a676-8f7859f9c2ce" shape="rect"></a>Shall be: 2 = Patient Number</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e08c9569-8089-4316-bf14-180b7d25b63b" shape="rect"></a>ParticipantObjectSensitivity</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c3eb9c66-4394-4f02-931f-b9a235144045" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9af21396-4477-4288-ab16-fa512c0cd462" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_55c061be-9d5e-4a92-b93b-9fead5ff2b2c" shape="rect"></a>ParticipantObjectID</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ed8582b9-087a-490a-8851-dc5cf5f227d0" shape="rect"></a>M</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_21b8f15a-975a-416e-94f2-ab649b69ca17" shape="rect"></a>The patient ID</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8fa3657c-e5cc-4b93-8d59-f0626d7973f9" shape="rect"></a>ParticipantObjectName</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2e620d1c-7430-43c2-834d-2757b5b68f6a" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_27dc29ed-aafc-4a37-91cf-1c9fadd6088c" shape="rect"></a>The patient name</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6285f815-7987-406f-83c9-7218d4876304" shape="rect"></a>ParticipantObjectQuery</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_883a4442-cdb9-4ec7-bf62-1abcf55f3e3e" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2179422d-56e8-4fd8-85b7-01efc334bac0" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_60af6379-b53c-40f5-aa85-e2da31505f35" shape="rect"></a>ParticipantObjectDetail</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5f387080-f834-4396-b2ac-0f591e77dc27" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_530d3b62-f3a4-4575-bca9-b176eb6fd100" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c1b4a40e-8bf1-41f8-a074-0a16c255b69b" shape="rect"></a>ParticipantObjectDescription</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acd6ab6a-384e-4507-9bde-3bb523927148" shape="rect"></a>U</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c284fce5-39df-4763-aa8a-e3757cc4914e" shape="rect"></a>not specialized</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.5.3.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_A.5.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.5.3.7.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">A.5.3.5 Data Import </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.15.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.5.3.7 DICOM Instances Transferred</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.15 2024c - Security and System Management Profiles</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

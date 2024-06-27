@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8 Encoding of Pixel, Overlay and Waveform Data</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="PS3.5.html" title="PS3.5" />
+      <link rel="prev" href="sect_7.8.2.html" title="7.8.2 Encoding of Private Elements" />
+      <link rel="next" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8 Encoding of Pixel, Overlay and Waveform Data <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/chapter_8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.8.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-node">Encoding of Pixel, Overlay and Waveform Data</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_8" shape="rect"></a>8 Encoding of Pixel, Overlay and Waveform Data</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_8.1" shape="rect"></a>8.1 Pixel and Overlay Data, and Related Data Elements</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_55a4d726-165f-4db4-9994-5943fec5e49b" shape="rect"></a>Pixel Data (7FE0,0010), Float Pixel Data (7FE0,0008), Double Float Pixel Data (7FE0,0009) and Overlay Data (60xx,3000) shall be used for the exchange of encoded graphical image data. These Data Elements along with additional Data Elements, specified as Attributes of the Image Information Entities defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>, shall be used to describe the way in which the Pixel Data and Overlay Data are encoded and shall be interpreted. Finally, depending on the negotiated Transfer Syntax (see <a class="xref" href="chapter_10.html" title="10 Transfer Syntax" shape="rect">Section 10</a> and <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>), Pixel Data may be compressed.</p>
+            <p>
+               <a id="para_94ef8b24-cfd9-4ed7-ae3b-06991da2e04f" shape="rect"></a>Pixel Data (7FE0,0010) and Overlay Data (60xx,3000) have a VR of OW or OB, depending on the negotiated Transfer Syntax (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>). The only difference between OW and OB being that OB, an octet-stream, shall be unaffected by Byte Ordering (see <a class="xref" href="sect_7.3.html" title="7.3 Little Endian Byte Ordering" shape="rect">Section 7.3</a>).</p>
+            <p>
+               <a id="para_7f5d54ad-95d5-4677-803e-8c6cfde0ff09" shape="rect"></a>Float Pixel Data (7FE0,0008) has a
+        Value Representation of OF.</p>
+            <p>
+               <a id="para_dc7e0fa3-521b-4f1b-96f8-cf5f2289ec6b" shape="rect"></a>Double Float Pixel Data (7FE0,0009)
+        has a Value Representation of OD.</p>
+            <p>
+               <a id="para_35bcda83-361f-4467-b797-f5f12680a0bf" shape="rect"></a>For Pixel Data Values encoded in OF
+        and OD, any value that is permitted by <a class="xref" href="chapter_2.html#biblio_IEEE754" title="IEEE Standard for Floating Point Arithmetic" shape="rect">[<abbr class="abbrev">IEEE 754</abbr>]</a> may be used, including NaN,
+        Positive Infinity and Negative Infinity. See <a class="xref" href="sect_6.2.html#table_6.2-1" title="Table 6.2-1. DICOM Value Representations" shape="rect">Table 6.2-1</a>
+            </p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_50adba5d-92d9-4425-a763-e911ffa35190" shape="rect"></a>Floating point binary32 and binary64 pixel data values are
+        not arbitrarily constrained to finite numbers, since it may be important for the
+        application to signal that the result of a calculation that produced a pixel is an
+        infinite value or not a number.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_8.1.1" shape="rect"></a>8.1.1 Pixel Data Encoding of Related Data Elements</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_ab605359-6207-40cd-ae3b-71c880eb664f" shape="rect"></a>Encoded Pixel Data of various bit depths shall be accommodated. The following three Data Elements shall define the Pixel structure:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_b377af08-67df-453b-96cd-5c04a0bdb569" shape="rect"></a>Bits Allocated (0028,0100)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_0ab917ae-65ea-4456-96d8-73a1576f921d" shape="rect"></a>Bits Stored (0028,0101)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_f4e18bb1-2722-4709-a83b-f437034eb8b4" shape="rect"></a>High Bit (0028,0102)</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_4681e9e2-8cb1-428f-8011-0e624437e351" shape="rect"></a>Each Pixel Cell shall contain a single Pixel Sample Value. The size of the Pixel Cell shall be specified by Bits Allocated (0028,0100). Bits Stored (0028,0101) defines the total number of these allocated bits that will be used to represent a Pixel Sample Value. Bits Stored (0028,0101) shall never be larger than Bits Allocated (0028,0100). High Bit (0028,0102) specifies where the high order bit of the Bits Stored (0028,0101) is to be placed with respect to the Bits Allocated (0028,0100) specification. Bits Allocated (0028,0100) shall either be 1, or a multiple of 8. High Bit (0028,0102) shall be one less than Bits Stored (0028,0101).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_457cf9ae-46b5-42a7-8096-9f5673d96c07" shape="rect"></a>For example, in Pixel Data with 16 bits (2 bytes) allocated, 12 bits stored, and bit 11 specified as the high bit, one pixel sample is encoded in each 16-bit word, with the 4 most significant bits of each word not containing Pixel Data. See <a class="xref" href="chapter_D.html" title="D Examples of Various Pixel Data and Overlay Encoding Schemes (Informative)" shape="rect">Annex D</a> for other examples of the basic encoding schemes.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7ef27e5b-1166-49be-b782-688deb51aa97" shape="rect"></a>Formerly, bits not used for Pixel Sample
+              Values were described as being usable for overlay planes, but this usage has
+              been retired. See <a class="link" href="http://medical.nema.org/MEDICAL/Dicom/2004/printed/04_05pu.pdf" target="_top" shape="rect">PS3.5-2004</a>.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f777ac20-cdc7-41ba-9e81-128c7eba5bf8" shape="rect"></a>Formerly, High Bit
+                (0028,0102) was not restricted to be one less than Bits Stored (0028,0101)
+                in this Part, or in the general case, though almost all Information Object
+                Definitions in PS3.3 imposed such a restriction. See PS3.5
+                2014c.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_752250e9-20fd-460e-b2c3-823bded25a57" shape="rect"></a>Receiving applications may not assume
+                anything about the contents of unused bits, and in particular may not assume
+                that they are zero, or that they contain sign extension
+                bits.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0486e172-df22-40c4-a38f-9286022646c3" shape="rect"></a>Additional restrictions that are placed on acceptable Values for Bits Allocated (0028,0100), Bits Stored (0028,0101), and High Bit (0028,0102) for Pixel Data (7FE0,0010) are specified in the Information Object Definitions in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>.</p>
+               <p>
+                  <a id="para_aa6d49ab-498a-42a9-a432-5282587040e2" shape="rect"></a>Restrictions are placed on acceptable Values for Bits Allocated (0028,0100) for Float Pixel Data (7FE0,0008) and Double Float Pixel Data (7FE0,0009), such that only a single Pixel Cell entirely occupies the allocated bits specified by Bits Allocated (0028,0100), hence Bits Stored (0028,0101) and High Bit (0028,0102) are not sent.</p>
+               <p>
+                  <a id="para_5ac3a1cc-12f7-4303-86fc-33bf4c34f3c1" shape="rect"></a>Also, the Value Field containing Pixel Data, like all other Value Fields in DICOM, shall be an even number of bytes in length. This means that the Value Field may need to be padded with data that is not part of the image and shall not be considered significant. If needed, the padding bits shall be appended to the end of the Value Field, and shall be used only to extend the data to the next even byte increment of length.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_23a52e85-e9ea-41b8-9cd5-5c6eeec077bc" shape="rect"></a>The 32-bit Value Length Field limits the maximum size of large data Value Fields such as Pixel Data sent in a Native Format (encoded in Transfer Syntaxes that use only the unencapsulated form).</p>
+               </div>
+               <p>
+                  <a id="para_3e55e85c-a189-418d-a160-3837b41c7240" shape="rect"></a>In a multi-frame object that is transmitted in Native Format, the individual frames are not padded. The individual frames shall be concatenated and padding bits (if necessary) applied to the complete Value Field. At least one frame shall be present.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_362cebd6-ea8c-4a91-a674-3cd2a3097ad2" shape="rect"></a>Receiving applications should be aware that some older applications may send Pixel Data with excess padding, which was not explicitly prohibited in earlier versions of the Standard. Applications should be prepared to accept such Pixel Data Data Elements, but may delete the excess padding. In no case should a sending application place private data in the padding data.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_215a0d6f-cf95-4bf0-b78d-a0d1f273fec5" shape="rect"></a>In a multi-frame object with a Bits Allocated (0028,0100) of 1 that is transmitted in Native Format, the individual frames are not padded, therefore successive bits are packed into bytes or words as described in <a class="xref" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" shape="rect">8.2</a>.
+                          I.e., a frame other than the first frame may start in the middle of a byte or word.
+                          This is consistent with the historical encoding of Multi-frame Overlays described in <a class="xref" href="chapter_8.html#sect_8.1" title="8.1 Pixel and Overlay Data, and Related Data Elements" shape="rect">8.1</a>.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_25fc57a8-3784-49d6-97be-4eabf94b65fc" shape="rect"></a>The field of bits representing the value of a Pixel Sample shall be a binary 2's complement integer or an unsigned integer, as specified by the Data Element Pixel Representation (0028,0103). The sign bit shall be the High Bit in a Pixel Sample Value that is a 2's complement integer. The minimum actual Pixel Sample Value encountered in the Pixel Data is specified by Smallest Image Pixel Value (0028,0106) while the maximum Value is specified by Largest Image Pixel Value (0028,0107).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_8.1.2" shape="rect"></a>8.1.2 Overlay Data Encoding of Related Data Elements</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_af5777c4-44f0-48a0-9af6-5754e7f56489" shape="rect"></a>Encoded Overlay Planes always have a bit depth of 1, and are encoded separately from the Pixel Data in Overlay Data (60xx,3000). The following two Data Elements shall define the Overlay Plane structure:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_64cf4aae-7817-4673-9cf0-7afd7eb40eb2" shape="rect"></a>Overlay Bits Allocated (60xx,0100)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_74cd439e-c311-487a-9c9f-11594b59733d" shape="rect"></a>Overlay Bit Position (60xx,0102)</p>
+                     </li>
+                  </ul>
+               </div>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_090350ab-3413-4d1e-b0ba-5453c346f9e8" shape="rect"></a>There is no Data Element analogous to Bits Stored (0028,0101) since Overlay Planes always have a bit depth of 1.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5e4c79f2-35d2-4315-bfb0-4a668b3732b2" shape="rect"></a>Restrictions on the allowed Values for these Data Elements are defined in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>. Formerly overlay data stored in unused bits of Pixel Data (7FE0,0010) was described, and these Attributes had meaningful Values but this usage has been retired. See <a class="link" href="http://medical.nema.org/MEDICAL/Dicom/2004/printed/04_05pu.pdf" target="_top" shape="rect">PS3.5-2004</a>. For overlays encoded in Overlay Data (60xx,3000), Overlay Bits Allocated (60xx,0100) is always 1 and Overlay Bit Position (60xx,0102) is always 0.</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_58b4f1a2-07ee-4e09-abf5-d99388f13d38" shape="rect"></a>For Overlay Data (60xx,3000), the Value Representation OW is most often required. The Value Representation OB may also be used for Overlay Data in cases where the Value Representation is explicitly conveyed (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_b5a3fd56-1954-49ab-a334-41ce059eae4d" shape="rect"></a>The DICOM Default Little Endian Transfer Syntax (Implicit VR Little Endian) does not explicitly convey Value Representation and therefore the VR of OB may not be used for Overlay Data when using the Default Transfer Syntax.</p>
+               </div>
+               <p>
+                  <a id="para_e5bcf268-0b7d-4b21-b495-84b330046490" shape="rect"></a>Overlay Data is encoded as the direct concatenation of the bits of a single Overlay Plane, where the first bit of an Overlay Plane is encoded in the least significant bit, immediately followed by the next bit of the Overlay Plane in the next most significant bit.
+            For a Multi-frame Overlay, the individual frames are not padded.
+            The individual frames shall be concatenated and padding bits (if necessary) applied to the complete Value Field. 
+            When the Overlay Data crosses a word boundary in the OW case, or a byte boundary in the OB case, it shall continue to be encoded, least significant bit to most significant bit, in the next word, or byte, respectively (see <a class="xref" href="chapter_D.html" title="D Examples of Various Pixel Data and Overlay Encoding Schemes (Informative)" shape="rect">Annex D</a>). For Overlay Data encoded with the Value Representation OW, the byte ordering of the resulting 2-byte words is defined by the Little Endian Transfer Syntaxes negotiated at the Association Establishment (see <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_a7ef1ac3-5a2d-4db2-a26c-885be2db7d91" shape="rect"></a>For Overlay Data encoded with the Value Representation OB, the Overlay Data encoding is unaffected by byte ordering.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.8.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7.8.2 Encoding of Private Elements </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2 Native or Encapsulated Format Encoding</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7.2 States</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="chapter_7.html" title="7 Hosted Application Life Cycle" />
+      <link rel="prev" href="chapter_7.html" title="7 Hosted Application Life Cycle" />
+      <link rel="next" href="chapter_8.html" title="8 Interfaces" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024c - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7.2 States <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/sect_7.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">7 Hosted Application Life Cycle</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_7.html" shape="rect">Hosted Application Life Cycle</a>
+         </span> &gt; <span class="breadcrumb-node">States</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_7.2" shape="rect"></a>7.2 States</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_cf7706cf-625b-4333-9868-10cef85eb325" shape="rect"></a>
+            <a class="xref" href="sect_7.2.html#figure_7.2-1" title="Figure 7.2-1. State Diagram of Hosted Applications." shape="rect">Figure 7.2-1</a> shows the state diagram for a Hosted Application. The states are defined in <a class="xref" href="sect_7.2.html#table_7.2-1" title="Table 7.2-1. States" shape="rect">Table 7.2-1</a>.</p>
+         <div class="table">
+            <a id="table_7.2-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7.2-1. States</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f9b1385c-36f4-4087-a7cf-a3be65d139ad" shape="rect"></a>State</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_06bf0470-b200-4408-99ee-d1bc52c89690" shape="rect"></a>Description</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a1ef5706-ee33-4828-8678-8ed943439551" shape="rect"></a>IDLE</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_57dbdafe-b5b7-458f-94e4-22a15025b0ce" shape="rect"></a>In IDLE state the Hosted Application is waiting for a new task assignment from the Hosting System. This is the initial state when the Hosted Application starts.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_043c11bd-440f-483e-b0d6-8296743bcc67" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3d15eeb8-6512-4eac-8bb7-ecc64204dccf" shape="rect"></a>The Hosted Application is performing the assigned task.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f2c8ee3f-05bc-4e58-b10a-a9f4d5701b1a" shape="rect"></a>SUSPENDED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_44ee17de-ed9a-49eb-bf94-6c1f08fe13c3" shape="rect"></a>The Hosted Application is stopping processing and is releasing as many resources as it can, while still preserving enough state to be able to resume processing.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a414de0b-91c8-45ce-8849-cc4968a841ec" shape="rect"></a>COMPLETED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d193420d-af31-4877-bd5e-2a3f900179aa" shape="rect"></a>The Hosted Application has completed processing, and is waiting for the Hosting System to access and release any output data from Hosted Application.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3533e16c-ec8b-4b02-827f-c3d352765e80" shape="rect"></a>CANCELED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e8252a73-c9d3-4599-bc63-2b70f8121309" shape="rect"></a>The Hosted Application is stopping processing, and is releasing all resources with no chance to resume processing.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_95962938-78fa-4fee-9e3c-acb9da136deb" shape="rect"></a>EXIT</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5b203c7c-10e9-483e-8644-c38a7c42fe65" shape="rect"></a>The terminal state of the Hosted Application.</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_46a37bc6-c989-4f69-b40b-3e5056fd003a" shape="rect"></a>The transitions between states are described in <a class="xref" href="sect_7.2.html#table_7.2-2" title="Table 7.2-2. Transitions Between States" shape="rect">Table 7.2-2</a>.</p>
+         <div class="table">
+            <a id="table_7.2-2" shape="rect"></a>
+            <p class="title">
+               <strong>Table 7.2-2. Transitions Between States</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_79a2a252-58ea-4921-95e0-b60f78630b51" shape="rect"></a>State</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9593169e-1974-40cb-bc0f-286ba01b34b8" shape="rect"></a>Trigger</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_592ca29d-8b60-447d-a5bb-dd582bac5de2" shape="rect"></a>New State</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_235df627-dd20-4f6a-83ee-02dd58d8f16e" shape="rect"></a>not started</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5f387009-e398-4e35-bfb5-5c8f5a6baa97" shape="rect"></a>Hosting System launches the Hosted Application (e.g., run, exec).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_29995d68-e646-4c3c-a12c-9b021060ede9" shape="rect"></a>IDLE</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6e9abdd9-27f7-409b-9fc7-65df0362427c" shape="rect"></a>IDLE</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_43c3790d-6377-4289-8973-0225a92eb823" shape="rect"></a>Hosting System calls Application.setState (EXIT).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ce3db93e-c2ae-48fd-9aa6-de7748f7c3e4" shape="rect"></a>EXIT</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aad9fbed-c984-44c4-b089-5af643282001" shape="rect"></a>IDLE</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9db11932-8d60-4ffe-931c-1ad22a507f59" shape="rect"></a>Hosting System calls Application.setState (INPROGRESS).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f8a6fb5b-8531-45df-8da7-e314a631bb71" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_847b1798-048c-468d-8a09-a87f880c1ab3" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9495a1e-c098-410c-bf22-733143bb6903" shape="rect"></a>Hosting System calls Application.setState (SUSPENDED).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fec76d16-205a-4d54-857c-d4403223ed71" shape="rect"></a>SUSPENDED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_94bcfb29-bf61-4cd7-8deb-57af88b0bf1f" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fbb096ca-6b07-4e21-83e3-4733dc1af589" shape="rect"></a>Hosting System calls Application.setState (CANCELED).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7e0c7d8d-7045-476b-a9c5-44cb5ad6608f" shape="rect"></a>CANCELED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_049ff52d-c06a-4035-80cd-3102bbff409c" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_22af1ea9-77fb-4a81-afb5-69963a5d7d85" shape="rect"></a>Hosted Application encounters an error that prevents further processing, but is still healthy enough to perhaps start another task. The Hosted Application shall report this error through a call to notifyStatus() with a statusType of FATALERROR prior to transitioning to the CANCELED state.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_83c57f7e-1280-486a-a0c9-f65a47069abf" shape="rect"></a>CANCELED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a0a642f8-7993-4501-bda8-ec4a17c240c2" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1bf92147-148c-494d-98db-fe34a32b1926" shape="rect"></a>Hosted Application finishes its processing.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c3c090d8-529d-4a0e-8fce-1bd696d99dd8" shape="rect"></a>COMPLETED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cebfc724-56e4-44df-b1e9-5206ec39a118" shape="rect"></a>SUSPENDED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa494ecf-f6ff-41d2-aa89-f9ef9ebbac95" shape="rect"></a>Hosting System calls Application.setState (INPROGRESS).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3f978737-e5d5-4f25-8fb6-dff666177e4e" shape="rect"></a>INPROGRESS</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8742343d-c74f-44d1-8fdf-c8b3581d1f17" shape="rect"></a>SUSPENDED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_27b05cb7-d3af-42d7-bed2-b3a4493ac70b" shape="rect"></a>Hosted Application encounters an error (e.g., during suspension) that prevents further processing, but is still healthy enough to perhaps start another task. The Hosted Application shall report this error through a call to notifyStatus() with a statusType of FATALERROR prior to transitioning to the CANCELED state.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_54438197-f0ce-4eae-875d-28b2a45ba8dd" shape="rect"></a>CANCELED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_861dce81-0f1d-47dd-b648-737ae5830e40" shape="rect"></a>SUSPENDED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_069427b8-cee6-44c9-9c31-00ba9b293947" shape="rect"></a>Hosting System calls Application.setState (CANCELED).</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f5bae716-577b-4e62-bc9e-79a72f40c9a1" shape="rect"></a>CANCELED</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1f2fd4ec-f0d7-435c-9e87-041107fb68cd" shape="rect"></a>COMPLETED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f9d70d15-58d5-44e6-aafe-cb7fbf85de84" shape="rect"></a>Hosting System calls Application.setState (IDLE), after capturing all pertinent output data from the Hosted Application.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a381b5b5-b334-4b08-b54a-6070c5f79d7f" shape="rect"></a>IDLE</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b4ae7389-3efb-4ba3-8253-3ef1d9cc51e6" shape="rect"></a>CANCELED</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2de220ed-5ba0-4d5b-a897-2195caca5466" shape="rect"></a>Hosted Application releases all resources and is ready for the next task.</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_472c283a-de99-4341-a50b-fc072d7a3dda" shape="rect"></a>IDLE</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_ce473f9f-bcaa-430c-965f-234d6e885a0a" shape="rect"></a>The Hosted Application notifies the Hosting System of all state transitions by calling the notifyStateChanged() method.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_09dd7fb1-a735-49ff-aa19-efe582fa2c23" shape="rect"></a>If a Hosted Application does not respond to state change requests made by the Hosting System, the Hosting System may 'hard abort' the Hosted Application in some implementation specific manner, such as by killing the process in which the Hosted Application is executing.</p>
+         </div>
+         <p>
+            <a id="para_702bb76e-dc46-4687-8afb-ad0f5eb79649" shape="rect"></a>
+        </p>
+         <div class="figure">
+            <a id="figure_7.2-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.19_7.2-1.svg" alt="State Diagram of Hosted Applications." />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 7.2-1. State Diagram of Hosted Applications.</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_8.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7 Hosted Application Life Cycle </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8 Interfaces</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024c - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

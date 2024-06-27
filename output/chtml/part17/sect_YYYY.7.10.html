@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.7.10 Study Record Reconciliation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.7.html" title="YYYY.7 Operational Considerations" />
+      <link rel="prev" href="sect_YYYY.7.9.html" title="YYYY.7.9 Metadata Updates" />
+      <link rel="next" href="sect_YYYY.7.11.html" title="YYYY.7.11 Key Attributes Unsupported For Matching" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.7.10 Study Record Reconciliation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.7.10.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.9.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.7 Operational Considerations</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.11.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.7.html" shape="rect">Operational Considerations</a>
+         </span> &gt; <span class="breadcrumb-node">Study Record Reconciliation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.7.10" shape="rect"></a>YYYY.7.10 Study Record Reconciliation</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_2fbece29-1b35-4962-ae00-57fcf8c1721b" shape="rect"></a>Within the tree of linked Inventory SOP Instances, a given Study may be referenced multiple times among the Inventoried Studies Sequence Items. The Items may have different content, but each Item is a complete record of the contents of the Study as known by the creator of that Item.</p>
+         <p>
+            <a id="para_ebbc872d-e51b-4355-8651-1234b6c23554" shape="rect"></a>Differences in content may occur due to changes to the metadata or content (SOP Instances) of the Study during the production of the Inventory, or due to different Series of a Study being stored on different media or storage subsystems, or for other reasons. The application using an Inventory may need to reconcile such multiple occurrences.</p>
+         <p>
+            <a id="para_3d313049-4537-429b-a94f-2836eea1a6a9" shape="rect"></a>DICOM is not prescriptive regarding methods of reconciliation, but the Inventory IOD does provide Attributes that can assist in the process, in particular the various timestamps associated with the Study content and the process of Inventory creation, as shown in <a class="xref" href="sect_YYYY.7.10.html#table_YYYY.7-3" title="Table YYYY.7-3. Timestamp Attributes Assisting in Reconciliation" shape="rect">Table YYYY.7-3</a>. These timestamp Attributes might be used to establish a timeline of changes to Study content and metadata, and of record extraction for inclusion in the Inventory. For example, a Study record may differ from a record with an earlier Item Inventory DateTime (0008,0404) only with the presence of an additional Series whose Series Date (0008,0021) is after the prior Item Inventory DateTime (0008,0404). The later record might reasonably be considered to be a more current replacement. However, two Study records might have entirely different sets of Series, and in that case simply choosing one record
+                    based on timestamp is probably not correct; the Study records would have to be further evaluated for the underlying reason for the difference, and the records potentially merged in some way.</p>
+         <div class="table">
+            <a id="table_YYYY.7-3" shape="rect"></a>
+            <p class="title">
+               <strong>Table YYYY.7-3. Timestamp Attributes Assisting in Reconciliation</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2c4ded5a-9eaf-4b87-9aa4-6bc572a3c357" shape="rect"></a>Attribute</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b4acf5c3-01b6-483f-9ccb-da21919fcbac" shape="rect"></a>Tag</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e1fb96c6-a9d1-488f-a7bb-d12b1352279f" shape="rect"></a>Content Date</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_63dea2d1-852b-4e28-b947-f65d49c00069" shape="rect"></a>(0008,0023)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1d9b19fd-f7fa-499d-b6d2-27dd9ca9a231" shape="rect"></a>Content Time</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4ff91597-bdf7-469e-ae83-c20c7e3d20bb" shape="rect"></a>(0008,0033)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5edd324a-9762-4328-8036-6dc3b0abc9ac" shape="rect"></a>
+                                    <span class="italic">Inventoried Studies Sequence</span>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_959e48c8-8a33-4d6f-a09c-968ab0f4ed04" shape="rect"></a>
+                                    <span class="italic">(0008,0423)</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_aa32f234-4ad9-4a2d-897f-7f43744e8520" shape="rect"></a>&gt;Item Inventory DateTime</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_33d19ea5-1f33-4595-bc52-5fe1bb46e7f0" shape="rect"></a>(0008,0404)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e6f21978-cd3a-49f8-b8da-b94d348a5da3" shape="rect"></a>&gt;Study Update DateTime</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e58a662e-087e-43ba-abb3-767644a26510" shape="rect"></a>(0008,041F)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a4e2c3e9-b22e-4fe3-bd8a-d74aece71b72" shape="rect"></a>
+                                    <span class="italic">&gt;Original Attributes Sequence</span>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_86ac1e00-ad59-45cb-9514-325bdd027e75" shape="rect"></a>
+                                    <span class="italic">(0400,0561)</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5d7d4283-1faa-460d-9a8b-7aa6f1dc3a52" shape="rect"></a>&gt;&gt;Attribute Modification DateTime</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c3054b00-6bbb-49e6-9591-1fedf8298f9b" shape="rect"></a>(0400,0562)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_30c37e06-7a58-4bbe-ab55-968d37c37b77" shape="rect"></a>
+                                    <span class="italic">&gt;Inventoried Series Sequence</span>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0cb6c426-ff36-4523-a795-ef30f824847d" shape="rect"></a>
+                                    <span class="italic">(0008,0424)</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_59b538fd-741a-46a3-a9f0-b8c8fcab21a0" shape="rect"></a>&gt;&gt;Series Date</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_76b49488-5679-497b-8e83-8b62ffc8576e" shape="rect"></a>(0008,0021)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_52a7e866-3d6d-4fb8-be9b-33aa91e088cc" shape="rect"></a>&gt;&gt;Series Time</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_34ecffe1-0f47-469b-852a-b28187ecbef9" shape="rect"></a>(0008,0031)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f93b10c6-3172-4201-a459-b64bede057ce" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Original Attributes Sequence</span>
+                                </p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_750d8595-ac41-4081-a01b-21a9e10ab763" shape="rect"></a>
+                                    <span class="italic">(0400,0561)</span>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9dd3a8c5-099c-40b4-9511-fa3316f1acf6" shape="rect"></a>&gt;&gt;&gt;Attribute Modification DateTime</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_4de4fc36-f14b-4804-b39a-d669c9355b7f" shape="rect"></a>(0400,0562)</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_aa7257be-e762-4496-a9a3-427b6e12f9b9" shape="rect"></a>In general, a major factor in reconciling diverse records is a full understanding of how the repository system manages the storage of Studies, and which timestamps and change auditing data it actually records. The reconciliation process will typically need to account for such system design features, which are not conveyed in Inventory SOP Instance Attributes or in DICOM Conformance Statements.</p>
+         <p>
+            <a id="para_4d03f9d7-2a7b-419b-b9f0-6b0c0563afe7" shape="rect"></a>Note that a task for Study record merge is reconciliation of access paths to stored SOP Instances of the Study. This may present challenges if the Study records link to different access methods, target folders, or container files. In the case of conflicting information, it may be necessary to disregard Study or Series level access specifications, and use only the access links to each SOP Instance of the Study as recorded in the Instance level record.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_YYYY.7.10.1" shape="rect"></a>YYYY.7.10.1 Example - Deleted Study</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_49f90762-ddd7-4eab-935a-f54a46334de5" shape="rect"></a>An example will show the dependency on system design for Study record reconciliation. Consider two Inventories, a baseline made at time A and an increment made at a later time B, and during the intervening time a Study is deleted (perhaps because it was assigned to the wrong patient). The migration source storage system might have taken one of several approaches, with the associated result in the time B inventory (this is not an exhaustive list) :</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c4d89cea-b3c9-49cb-8293-7daaef6a0533" shape="rect"></a>It marks the Study as deprecated, but otherwise retains the data - the time B incremental inventory includes the entire set of Study, Series, and Instance records, each with the Removed from Operational Use (0008,0405) Attribute value Y.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_8bbafc4e-a0c8-4286-a49b-74d32b3a3ec0" shape="rect"></a>It marks the Study as deprecated, and deletes all the Series and Instance data - the time B incremental inventory includes only the Study record with the Removed from Operational Use (0008,0405) Attribute value Y.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2d2b85e9-1935-4dee-9b43-2b5ef3f6a0c2" shape="rect"></a>It deletes the references to the Series and SOP Instances of the Study in the database, retains the Study level database record, but does not support a deprecation flag - the time B incremental inventory includes a Study item, but no Series items.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d71d6a44-58c3-4a0e-bf92-29906981259f" shape="rect"></a>It deletes all Study information, with only a record in an audit trail - the time B incremental inventory simply does not record the Study.</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_dfa6a62d-4972-49fc-b62b-207b0e789924" shape="rect"></a>In cases 1) and 2), the consumer application knows exactly what has happened, and can make a determination whether to move the deprecated Study data to the migration target repository. That determination would be based, among other factors, on the data retention policies of the organization, and on the technical approach the target system takes to identifying and managing deleted Studies.</p>
+            <p>
+               <a id="para_720efb88-a7ff-4ce5-82f2-5d25c26ce01b" shape="rect"></a>In case 3), it might not be clear just from the content of the Inventories what is the appropriate status of the Study. This is further complicated if the SOP Instance files listed in the time A baseline inventory are still accessible from storage, perhaps indicating that the Study was not supposed to be empty. If the consumer application knows that this is the expected behavior of the source system for Study deletion, it might proceed with migration in accordance with organizational policy. However, the application may need to consult external information, such as audit trails or human authorization, before proceeding.</p>
+            <p>
+               <a id="para_e1ff5e66-b59a-461f-84d5-b3716ef2e361" shape="rect"></a>In case 4), without an explicit Study record indicating deletion, the incremental Inventory record for a deleted Study is identical to a record for an unchanged Study (i.e., no record in the Inventory). The migration application would have no reason to suspect that the Study was deleted until it tries to migrate the SOP Instances, and cannot find them. Studies that have gone missing are a patient safety issue, as opposed to Studies that are known to have been deleted for a valid reason, and this situation may trigger an audit investigation.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.9.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.11.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.7.9 Metadata Updates </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.7.11 Key Attributes Unsupported For Matching</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

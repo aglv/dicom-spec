@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.11 DX Modules</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.html" title="C.8 Modality Specific Modules" />
+      <link rel="prev" href="sect_C.8.10.html" title="C.8.10 Hardcopy Modules (Retired)" />
+      <link rel="next" href="sect_C.8.11.2.html" title="C.8.11.2 DX Anatomy Imaged Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.11 DX Modules <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.11.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.10.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8 Modality Specific Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.11.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-node">DX Modules</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.8.11" shape="rect"></a>C.8.11 DX Modules</h3>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_C.8.11.1" shape="rect"></a>C.8.11.1 DX Series Module</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_4768f321-693a-45c0-9d7c-ea36e27741e4" shape="rect"></a>The Digital X-Ray IODs use the General Series Module described in <a class="xref" href="sect_C.7.3.html#sect_C.7.3.1" title="C.7.3.1 General Series Module" shape="rect">Section C.7.3.1</a>, specialized by the DX Series Module, to describe the DICOM Series Entity described in <a class="xref" href="chapter_A.html#sect_A.1.2.3" title="A.1.2.3 Series IE" shape="rect">Section A.1.2.3</a>, and to define what constitutes a Series for the context of projection Digital X-Ray.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_635d4a09-b0bb-4ed5-a6b3-0cdfcf6ae473" shape="rect"></a>In an abstract sense, a Series may be viewed from the perspective of an acquisition device or a display device.</p>
+            </div>
+            <p>
+               <a id="para_d6789bd9-c6c5-449d-8550-478952a36d97" shape="rect"></a>In the former case, it is convenient to group images related by commonality of acquisition parameters, such as the imaging subject's physical relationship to the equipment (such as a patient lying in a particular position with respect to the equipment), a single acquisition initiation (such as an MR pulse sequence or spiral CT run), or a single workflow action on the part of the operator (such as the reading of a collection of CR plates from the same examination).</p>
+            <p>
+               <a id="para_fa0ac42f-1bf9-49af-825b-667ccd83d619" shape="rect"></a>In the latter case, it is often convenient to organize images for viewing or browsing into Series based upon other criteria such as physical or temporal proximity that may not necessarily correspond with the order or grouping in which the images were acquired.</p>
+            <p>
+               <a id="para_246b54dd-dc11-46cd-8b23-0e11153d6a35" shape="rect"></a>This conflict is most apparent in the existing <a class="xref" href="sect_C.8.html#sect_C.8.1" title="C.8.1 Computed Radiography Modules" shape="rect">Section C.8.1 Computed Radiography Modules</a>, where the definition of View Position at the Series Level in CR Series <a class="xref" href="sect_C.8.html#sect_C.8.1.1" title="C.8.1.1 CR Series Module" shape="rect">Section C.8.1.1</a> implies, for example, that a Lateral and PA Chest X-Ray may not be grouped into a single Series. While this may be in keeping with the traditional CT and MR notions that a change in an imaging subject's physical orientation with respect to the imaging equipment implies a new Series, it is most unnatural from the point of view of a reader viewing or browsing a collection of projection radiographic images.</p>
+            <p>
+               <a id="para_9a530c33-9a1d-472b-9902-928f983a9945" shape="rect"></a>A similar example pertains in the case of the traditional set of views of the maxillary and mandibular dentition, in which all the images are logically grouped in one sequence, but the imaging equipment moves with respect to the imaging subject, and the size of the detector may vary between images.</p>
+            <p>
+               <a id="para_115f00e4-26e0-4f9d-8c67-5f3463ee6c5b" shape="rect"></a>Accordingly, the constraint (apparent from the <a class="xref" href="sect_A.3.html" title="A.3 CT Image IOD" shape="rect">CT Image IOD</a>, <a class="xref" href="sect_A.4.html" title="A.4 MR Image IOD" shape="rect">MR Image IOD</a> and <a class="xref" href="sect_A.2.html" title="A.2 Computed Radiography Image IOD" shape="rect">Computed Radiography Image IOD</a>) that a change in position, detector, body part or laterality implies a new Series has been relaxed in the Digital X-Ray IODs, through the use of the DX Anatomy Imaged Module and the <a class="xref" href="sect_C.8.11.5.html" title="C.8.11.5 DX Positioning Module" shape="rect">DX Positioning Module</a>, which define Attributes at the Image level that specify these concepts with finer granularity. This approach is consistent with that used in the XA, XRF, US and NM IODs.</p>
+            <p>
+               <a id="para_86c0cdd0-8050-4e3d-a47c-79b5a7a1d8c3" shape="rect"></a>Images within a Series are still required, if the Condition for the inclusion of the <a class="xref" href="sect_C.7.4.html#sect_C.7.4.1" title="C.7.4.1 Frame of Reference Module" shape="rect">Frame of Reference Module</a> is met, to be relative to the same Frame of Reference.</p>
+            <p>
+               <a id="para_d7918311-d3fa-4ead-8e45-9ac2f6036990" shape="rect"></a>
+                        <a class="xref" href="sect_C.8.11.html#table_C.8-68" title="Table C.8-68. DX Series Module Attributes" shape="rect">Table C.8-68</a> specifies the Attributes that identify and describe general information about the DX Series.</p>
+            <div class="table">
+               <a id="table_C.8-68" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.8-68. DX Series Module Attributes</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_815e0b93-2e6f-4289-a379-d49612f75968" shape="rect"></a>Attribute Name</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_013669cc-54f9-489f-bdff-ed0ac0ae6f41" shape="rect"></a>Tag</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d9a5f7b0-4aeb-48b3-abf6-779ac99a1234" shape="rect"></a>Type</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a5d74833-a3b7-44d2-b313-b97b1d6863b3" shape="rect"></a>Attribute Description</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d5dfd65c-366f-4bc9-bc41-c371b527dda3" shape="rect"></a>Modality</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_52b7db38-9269-4186-a456-ece39894af26" shape="rect"></a>(0008,0060)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3855b085-4b70-4f6a-92df-a39e0c503dac" shape="rect"></a>1</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_64f54dc5-69b0-48f9-9b9a-0773b8960c1e" shape="rect"></a>Type of device, process or method that originally acquired the data used to create the images in this Series.</p>
+                                    <div class="variablelist">
+                                 <p class="title">
+                                    <strong>Enumerated Values:</strong>
+                                 </p>
+                                 <dl class="variablelist compact">
+                                    <dt>
+                                       <span class="term">DX</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_5e1158b0-6c83-4e56-87c8-cbb140cc39d6" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">PX</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_7ecd85f0-5112-4ae2-a1fd-e9c74f8479ed" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">IO</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_1b70778a-913f-4029-93f3-26dbc9a760d9" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">MG</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_4fbcc8da-8278-49d4-842a-bbfd1be0c672" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                 </dl>
+                              </div>
+                                    <p>
+                                 <a id="para_bcce6965-8bf3-479b-9e09-ef11db5703d0" shape="rect"></a>See <a class="xref" href="sect_C.7.3.html#sect_C.7.3.1.1.1" title="C.7.3.1.1.1 Modality" shape="rect">Section C.7.3.1.1.1</a> for further explanation.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_64239dd4-e67f-4eab-98de-ac6996fbc07b" shape="rect"></a>Referenced Performed Procedure Step Sequence</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4ea453b3-a5fb-4832-84af-fc4ad9a23b96" shape="rect"></a>(0008,1111)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a9f74e85-0f78-4db8-ad44-752e6b214bf4" shape="rect"></a>1C</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_22e7e00a-9abf-4c4b-a351-86e7716d8f43" shape="rect"></a>Uniquely identifies the Performed Procedure Step SOP Instance to which the Series is related.</p>
+                                    <p>
+                                 <a id="para_ac322371-76d8-4d24-b4bf-5e1350b29495" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                    <p>
+                                 <a id="para_8dfcbaeb-ee1d-4577-885f-cdbb76e0473b" shape="rect"></a>Required if a Performed Procedure Step SOP Class was involved in the creation of this Series.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                                    <p>
+                                 <a id="para_988e0bf4-a28a-4971-8fcc-3e1d3fadadca" shape="rect"></a>
+                                        <span class="italic">&gt;Include <a class="xref" href="sect_10.8.html#table_10-11" title="Table 10-11. SOP Instance Reference Macro Attributes" shape="rect">Table 10-11 “SOP Instance Reference Macro Attributes”</a>
+                                        </span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8dd57011-feae-437b-a251-74bd6269e0fe" shape="rect"></a>Presentation Intent Type</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ee93cede-8c2b-4d9a-ba7c-f5b373dd22f9" shape="rect"></a>(0008,0068)</p>
+                                </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_417d2ff0-7ff6-4709-a320-485c01edeb10" shape="rect"></a>1</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2c577857-9ba2-49a2-9134-06024c3c0fbe" shape="rect"></a>Identifies the intent of the images that are contained within this Series.</p>
+                                    <div class="variablelist">
+                                 <p class="title">
+                                    <strong>Enumerated Values:</strong>
+                                 </p>
+                                 <dl class="variablelist compact">
+                                    <dt>
+                                       <span class="term">FOR PRESENTATION</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_2f47f7a8-0b9b-44d9-b27c-e005c2ddfb58" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                    <dt>
+                                       <span class="term">FOR PROCESSING</span>
+                                    </dt>
+                                    <dd>
+                                       <p>
+                                          <a id="para_a4de9a23-a2e4-49b4-af47-11b0b6ec6976" shape="rect"></a>
+                                       </p>
+                                    </dd>
+                                 </dl>
+                              </div>
+                                    <p>
+                                 <a id="para_feba2f64-9819-4634-93eb-ad14623f1559" shape="rect"></a>See <a class="xref" href="sect_C.8.11.html#sect_C.8.11.1.1.1" title="C.8.11.1.1.1 Presentation Intent Type" shape="rect">Section C.8.11.1.1.1</a> for further explanation.</p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.8.11.1.1" shape="rect"></a>C.8.11.1.1 DX Series Module Attribute Descriptions</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_C.8.11.1.1.1" shape="rect"></a>C.8.11.1.1.1 Presentation Intent Type</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_7bb1355f-de30-4ab5-9de4-2377fdd018cc" shape="rect"></a>Presentation Intent Type (0008,0068) shall identify the intent for the purposes of display or other presentation of all Images within this Series.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_70a15e58-c37a-48f1-a581-78690b992b45" shape="rect"></a>Since this is a Series level Attribute, all Images within a Series have the same value for this Attribute.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_19193a69-0386-4710-81ea-0720d555b84c" shape="rect"></a>The intent of this restriction is to ensure that FOR PRESENTATION and FOR PROCESSING images are placed in separate Series, so that no confusion can arise as to which images are suitable for diagnostic reading as determined by local policy.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_027eecc3-6ae7-4386-bd0c-b04cff736fc0" shape="rect"></a>A Series of Images intended for viewing by an observer, after application of any grayscale transformations specified in the image object such as VOI LUT, shall have an Enumerated Value of FOR PRESENTATION.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_598bb556-0e05-4124-a7a6-444065e503bc" shape="rect"></a>These images may still be of Image Type (0008,0008) ORIGINAL rather than DERIVED despite the possibility that they may have undergone some processing, such as unsharp masking. In this case a DERIVED image would have undergone yet further processing to make it substantially different from the original. See <a class="xref" href="sect_C.8.11.html#figure_C.8-13" title="Figure C.8-13. Explanation of Presentation Intent Type" shape="rect">Figure C.8-13</a>.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_86c9776a-18c8-4222-a71e-add7b9ec20bf" shape="rect"></a>These images may still be subjected to processing or further processing, if appropriate, depending on the application.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_deafd597-c792-459a-bf59-c1ae615c2392" shape="rect"></a>These images are intended for display on a device, without (further) processing, since that device may not be capable of image processing. The quality of the displayed image or its suitability for any purpose is beyond the scope of the DICOM Standard.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_7391c83e-40d3-4f3f-82ec-7a3d8a2458e3" shape="rect"></a>Images that have been corrected to account for characteristics of the detector but are intended to be further processed before being displayed, shall have an Enumerated Value of FOR PROCESSING.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_5e5e03fd-a237-4f50-ba98-f7eaac4b6f10" shape="rect"></a>This type is provided to allow the functions of image acquisition and image processing for presentation to be separated and yet have images conveyed between the two processes using a DICOM object. Individual sites or users may choose to substitute their own specialized processing in place of that supplied by the implementer.</p>
+                  </div>
+                  <p>
+                     <a id="para_e8cb2239-052e-442f-895c-5caf62395750" shape="rect"></a>Images available at this stage of processing may be useful for quality control and problem solving purposes, as well as academic research.</p>
+                  <p>
+                     <a id="para_3084fc39-0e30-49e8-a032-7e2fff201a9c" shape="rect"></a>Images of this type may also be archived, retrieved and processed with different algorithms or parameters in order to alter the appearance of specific features for clinical purposes.</p>
+                  <p>
+                     <a id="para_9e4fadc9-f65b-41cc-934a-7e7ea080eab4" shape="rect"></a>The nature of the detector correction that may have been applied before sending an image of type FOR PROCESSING is not specified. In particular, acquisitions that acquire several sets of matrices of pixel values (such as image data, gain offset and a defect map) must perform some processing (detector correction) before a DX Image object can be instantiated.</p>
+                  <p>
+                     <a id="para_75b2f4fb-22f2-4c8e-9e1e-5e31ae0d3741" shape="rect"></a>The nature of the processing that may have been applied before sending an image of type FOR PRESENTATION is also not specified.</p>
+                  <p>
+                     <a id="para_d26a90d2-c8e1-42e2-8cd5-b87a9457495e" shape="rect"></a>It is expected that individual implementers will use Private Attributes to convey specifics of the processing applied that may be of use for further processing by those aware of the parameters and algorithms. The diversity of detector types and processing algorithms make it undesirable to standardize such parameters.</p>
+                  <p>
+                     <a id="para_afdaa9a0-354a-4be1-9354-e88a8d8e3399" shape="rect"></a>Whether or not the spatial locations of all pixels are preserved during the processing of the source image that resulted in the current image can be indicated by Spatial Locations Preserved (0028,135A) in a Source Image Sequence (0008,2112) reference from the FOR PRESENTATION image to a FOR PROCESSING predecessor.</p>
+                  <p>
+                     <a id="para_fc5718f4-4768-41ea-a649-8e7957e475b7" shape="rect"></a>If images from the same exposure exist with different Values of Presentation Intent Type (0008,0068), then they shall have different SOP Instance UIDs.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_2b982c38-d70c-4112-a587-7abb09a90e06" shape="rect"></a>Source Image Sequence (0008,2112) may be used to relate these images.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_acfa2425-2f4d-4e86-b50d-2945fb504b06" shape="rect"></a>The SOP Class UIDs of the two images will also be different.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_755d4134-99a9-45ab-8905-c5d6fb77ea08" shape="rect"></a>
+                                </p>
+                  <div class="figure">
+                     <a id="figure_C.8-13" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.3_C.8-13.svg" alt="Explanation of Presentation Intent Type" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure C.8-13. Explanation of Presentation Intent Type</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                            </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.10.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.11.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.10 Hardcopy Modules (Retired) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.11.2 DX Anatomy Imaged Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

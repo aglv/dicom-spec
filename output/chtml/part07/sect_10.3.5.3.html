@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10.3.5.3 N-CREATE Protocol Procedures</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.7.html" title="PS3.7" />
+      <link rel="up" href="sect_10.3.5.html" title="10.3.5 N-CREATE Protocol" />
+      <link rel="prev" href="sect_10.3.5.2.html" title="10.3.5.2 N-CREATE-RSP" />
+      <link rel="next" href="sect_10.3.6.html" title="10.3.6 N-DELETE Protocol" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024c - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10.3.5.3 N-CREATE Protocol Procedures <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part07/sect_10.3.5.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.3.5.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">10.3.5 N-CREATE Protocol</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.3.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.7.html" shape="rect">PS3.7</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_10.html" shape="rect">DIMSE-N</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_10.3.html" shape="rect">Protocol</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_10.3.5.html" shape="rect">N-CREATE Protocol</a>
+         </span> &gt; <span class="breadcrumb-node">N-CREATE Protocol Procedures</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_10.3.5.3" shape="rect"></a>10.3.5.3 N-CREATE Protocol Procedures</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_2cd4ea57-7d66-4c5d-9441-a67ede641191" shape="rect"></a>The N-CREATE procedures are initiated by the invoking DIMSE Service User issuing an N-CREATE request primitive. On receipt of the N-CREATE request primitive the DIMSE-N protocol machine shall:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_ec970bd1-6572-47a8-8729-22e6904a0d1f" shape="rect"></a>construct a Message conveying the N-CREATE-RQ</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_739ea1dc-56fe-4594-a242-285df55f85dd" shape="rect"></a>send the Message using the P-DATA request service (see 8.1)</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_61ee714a-bef1-413b-86dd-50a6353cf7bb" shape="rect"></a>On receipt of a Message conveying an N-CREATE-RQ the DIMSE-N protocol machine shall issue an N-CREATE indication primitive to the performing DIMSE Service User.</p>
+         <p>
+            <a id="para_7f3ef43b-05be-4382-8e23-40704e5f40e4" shape="rect"></a>On receipt of the N-CREATE response primitive, issued by the performing DIMSE Service User, the DIMSE-N protocol machine shall:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_4f1087ac-c747-4b14-9672-007b941f2aad" shape="rect"></a>construct a Message conveying the N-CREATE-RSP</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_93a6f802-2e5a-4b68-ac58-ee09e4111755" shape="rect"></a>send the Message using the P-DATA request service (see 8.1)</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_5973c9f7-7ddf-4edf-933b-7c018342ab73" shape="rect"></a>On receipt of a Message conveying an N-CREATE-RSP the DIMSE-N protocol machine shall issue an N-CREATE confirmation primitive to the invoking DIMSE Service User, thus completing the N-CREATE procedure.</p>
+         <p>
+            <a id="para_5f9e9d51-bc3c-4961-8185-ff194cb2c28f" shape="rect"></a>The performing DIMSE Service User may return an N-CREATE-RSP with the status of Failed or Refused before the complete N-CREATE-RQ request Message has been completely transmitted by the invoking DIMSE Service User (this is called an early failed response). Upon receipt of this Failed or Refused N-CREATE-RSP the invoking DIMSE Service User may terminate the Message before it is completely sent (i.e., set the Last Fragment bit to 1 in a Data PDV for this Message, see <a class="xref" href="chapter_F.html" title="F Usage of the P-DATA Service By the DICOM Application Entity (Normative)" shape="rect">Annex F</a>). Following this, it may invoke another operation or notification. It is a protocol violation for an invoking DIMSE Service User to set the Last Fragment bit to 1 before an N-CREATE-RQ Message has been completely transmitted if it has not received a Failed or Refused N-CREATE-RSP to that request.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_794c3336-508c-42ae-8f12-78acd25778ca" shape="rect"></a>When an Association is operating in asynchronous mode, it is possible for an invoking DIMSE Service User to transmit several Messages before a response. Therefore, while sending a Message it may receive a response to a previously transmitted Message. In this case this response is not an early failed response because the related Message has already been sent.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.3.5.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_10.3.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.3.6.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.3.5.2 N-CREATE-RSP </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.7.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.3.6 N-DELETE Protocol</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024c - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

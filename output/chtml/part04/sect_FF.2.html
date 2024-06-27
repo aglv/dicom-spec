@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>FF.2 Volume Transformation Processes</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_FF.html" title="FF Volumetric Presentation State Storage SOP Classes (Normative)" />
+      <link rel="prev" href="chapter_FF.html" title="FF Volumetric Presentation State Storage SOP Classes (Normative)" />
+      <link rel="next" href="sect_FF.2.2.html" title="FF.2.2 Volumetric Inputs, Registration and Cropping" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">FF.2 Volume Transformation Processes <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_FF.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_FF.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">FF Volumetric Presentation State Storage SOP Classes (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FF.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_FF.html" shape="rect">Volumetric Presentation State Storage SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Volume Transformation Processes</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_FF.2" shape="rect"></a>FF.2 Volume Transformation Processes</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_FF.2.1" shape="rect"></a>FF.2.1 Volumetric Transformations</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_108110ec-84f7-4d8f-b004-f7a3aa5bced9" shape="rect"></a>The transformations defined in the Volumetric Presentation State Storage SOP Classes replace those that may be defined in the Referenced Image SOP Instances. If a particular transformation is absent in a Volume Rendering Volumetric Presentation State Storage SOP Instance, then it shall be assumed to be an identity transformation and any equivalent transformation, if present, in the Referenced Image SOP Instances shall not be used.</p>
+            <p>
+               <a id="para_60484cfc-9b04-4695-8344-de12b9a58cc6" shape="rect"></a>The presentation-related Attributes of the Volume Rendering Volumetric Presentation State Storage SOP Classes are immutable. They shall never be modified or updated; only a derived SOP Instance with a new SOP Instance UID may be created to represent a different presentation.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_FF.2.1.1" shape="rect"></a>FF.2.1.1 Planar MPR Volumetric Transformations</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1ada99dc-255a-4f0d-a727-40012b303653" shape="rect"></a>The Planar MPR Volumetric Presentation State Storage SOP Classes support a set of transformations to produce derived volumetric views of volume input data.</p>
+               <p>
+                  <a id="para_d8a7631d-50f3-4ad2-9591-eb088fd0e415" shape="rect"></a>The Grayscale Planar MPR Volumetric Presentation State Storage SOP Class defines a grayscale volumetric view from a single volume input. The sequence of transformations from volumetric inputs into P-Values is explicitly defined in the reference pipeline described in <a class="xref" href="sect_FF.2.html#figure_FF.2-1" title="Figure FF.2-1. Grayscale Planar MPR Volumetric Pipeline" shape="rect">Figure FF.2-1</a>.</p>
+               <p>
+                  <a id="para_4f310dda-39cf-43b6-bd75-2c553f151d82" shape="rect"></a>
+                        </p>
+               <div class="figure">
+                  <a id="figure_FF.2-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.4_FF.2-1.svg" alt="Grayscale Planar MPR Volumetric Pipeline" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure FF.2-1. Grayscale Planar MPR Volumetric Pipeline</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                    </p>
+               <p>
+                  <a id="para_2c53f26d-bc7c-42ed-bae6-807d398a3db5" shape="rect"></a>The Compositing Planar MPR Volumetric Presentation State Storage SOP Class defines a true color volumetric view from one or more volume inputs. The sequence of transformations from volumetric inputs into PCS-Values is explicitly defined in the reference pipeline described in <a class="xref" href="sect_FF.2.html#figure_FF.2-2" title="Figure FF.2-2. Compositing Planar MPR Volumetric Pipeline" shape="rect">Figure FF.2-2</a>. The actual sequence implemented may differ (such as classifying and compositing prior to creating the MPR view) but must result in similar appearance.</p>
+               <p>
+                  <a id="para_5e4e77d6-fa68-453d-8ed4-5a37eb5d08b7" shape="rect"></a>
+                        </p>
+               <div class="figure">
+                  <a id="figure_FF.2-2" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.4_FF.2-2.svg" alt="Compositing Planar MPR Volumetric Pipeline" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure FF.2-2. Compositing Planar MPR Volumetric Pipeline</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                    </p>
+               <p>
+                  <a id="para_896d3c23-b0ff-4768-8c67-9ad60fb22ed6" shape="rect"></a>The planar MPR transformation requires a volume that is in the Volumetric Presentation State Reference Coordinate System (VPS-RCS).</p>
+               <p>
+                  <a id="para_8a69b7a0-93d8-4658-aa36-32481f3a2b72" shape="rect"></a>MPR generation is based on the Attributes of the Multi-Planar Reconstruction Geometry Module (see <a href="../part03/sect_C.11.26.html#sect_C.11.26.1.1" class="olink" shape="rect">Section C.11.26.1.1 “Planar Style” in PS3.3</a>). If the MPR Thickness Type (0070,1502) is SLAB then the Rendering Method (0070,120D) is also used.</p>
+               <p>
+                  <a id="para_fbde1ebf-ec2b-45fb-9e91-0669b78d84b2" shape="rect"></a>If Pixel Presentation (0008,9205) is MONOCHROME, then Presentation LUT Shape (2050,0020) provides the transform to output P-Values.</p>
+               <p>
+                  <a id="para_0c187e48-749c-4e83-813b-3bd6a7e08a04" shape="rect"></a>If Pixel Presentation (0008,9205) is TRUE_COLOR, then Presentation State Classification Component Sequence (0070,1801) describes the conversion of each processed input into an RGB data stream, and Presentation State Compositor Component Sequence (0070,1805) describes the compositing of these separate RGBA data streams into a single RGB data stream. This single RGB data stream is then processed as described by ICC Profile (0028,2000) to produce output PCS-Values.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_FF.2.1.2" shape="rect"></a>FF.2.1.2 Volume Rendering Volumetric Transformations</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_FF.2.1.2.1" shape="rect"></a>FF.2.1.2.1 Volume Rendering Pipelines</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_26ac20da-f208-4a02-a1d7-996c0911774f" shape="rect"></a>The Volume Rendering Volumetric Presentation State Storage SOP Classes support a set of transformations to produce derived volumetric views of volume input data. Attributes comprising the Volume Rendering Volumetric Presentation States are defined in the context of the reference pipelines described in this section. While the reference pipelines imply a certain order of the volume rendering operations of classification, resampling, shading, and compositing, the specific order in which these operations are applied by any device claiming conformance to this Standard are implementation-dependent and beyond the scope of this Standard. It is the responsibility of the viewing application to transform the Standard Attributes into parameters appropriate for the particular order of operations implemented in the viewing application.</p>
+                  <p>
+                     <a id="para_2077b9b9-7e4a-440e-9f7d-c331d2e87df2" shape="rect"></a>The Volume Rendering Volumetric Presentation State Storage SOP Class defines a volumetric view from a single volume input to produce a volume rendered view. The sequence of transformations from volumetric inputs into PCS-Values is explicitly defined in the reference pipeline described in <a class="xref" href="sect_FF.2.html#figure_FF.2.1.2.1-1" title="Figure FF.2.1.2.1-1. Volume Rendering Volumetric Pipeline" shape="rect">Figure FF.2.1.2.1-1</a>.</p>
+                  <p>
+                     <a id="para_020885ac-94a6-43fe-a86d-5ce87f2c30ae" shape="rect"></a>
+                            </p>
+                  <div class="figure">
+                     <a id="figure_FF.2.1.2.1-1" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.4_FF.2.1.2.1-1.svg" alt="Volume Rendering Volumetric Pipeline" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure FF.2.1.2.1-1. Volume Rendering Volumetric Pipeline</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                        </p>
+                  <p>
+                     <a id="para_39a9f254-811c-476f-ac4d-7cc001ed416c" shape="rect"></a>The Segmented Volume Rendering Volumetric Presentation State Storage SOP Class defines a volumetric view from a single volume dataset with optional segmentation croppings, each colored separately and blended into the volume to be rendered. The sequence of transformations from volumetric inputs into PCS-Values is explicitly defined in the reference pipeline described in <a class="xref" href="sect_FF.2.html#figure_FF.2.1.2.1-2" title="Figure FF.2.1.2.1-2. Segmented Volume Rendering Volumetric Pipeline" shape="rect">Figure FF.2.1.2.1-2</a>.</p>
+                  <p>
+                     <a id="para_01bbd711-c30e-4f5c-98c1-7feb8a6460bf" shape="rect"></a>There is a single item in the Volume Stream Sequence (0070,1A08) for instances of this SOP Class.</p>
+                  <p>
+                     <a id="para_3e323f29-0a84-47f4-b8f7-2ec235185fc1" shape="rect"></a>The classified segmented volumes shall be blended in lowest to highest priority order using B-over-A blending of the RGB data and the corresponding opacity (alpha) data. The first item in the Presentation State Classification Component Sequence (0070,1801) is the base upon which subsequent items are cropped and B-over-A blended with it.</p>
+                  <p>
+                     <a id="para_472cec37-0819-4b69-9cb0-e4d8435004fc" shape="rect"></a>
+                            </p>
+                  <div class="figure">
+                     <a id="figure_FF.2.1.2.1-2" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.4_FF.2.1.2.1-2.svg" alt="Segmented Volume Rendering Volumetric Pipeline" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure FF.2.1.2.1-2. Segmented Volume Rendering Volumetric Pipeline</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                        </p>
+                  <p>
+                     <a id="para_b6fe6008-781d-4db0-a0fb-c8620045d0e6" shape="rect"></a>The Multiple Volume Rendering Volumetric Presentation State Storage SOP Class defines a volumetric view from more than one volume input. The sequence of transformations from volumetric inputs into PCS-Values is explicitly defined in the reference pipeline described in <a class="xref" href="sect_FF.2.html#figure_FF.2.1.2.1-3" title="Figure FF.2.1.2.1-3. Multiple Volume Rendering Volumetric Pipeline" shape="rect">Figure FF.2.1.2.1-3</a>. The specific algorithms for volume rendering may differ, but must result in a similar appearance.</p>
+                  <p>
+                     <a id="para_1ffc1e75-06d7-4ab7-8859-134f56c51bed" shape="rect"></a>It is expected that all volume inputs are spatially registered to the Volumetric Presentation State - Reference Coordinate System. The specific step in the processing at which resampling is performed to achieve this spatial registration is an implementation decision.</p>
+                  <p>
+                     <a id="para_f5e19c0f-92b8-41a8-b17c-d243a69d303d" shape="rect"></a>Each item in the Volume Stream Sequence (0070,1A08) produces one input to a RGBA Compositor.</p>
+                  <p>
+                     <a id="para_69a864f9-f679-4862-bbe4-96f80c42f776" shape="rect"></a>
+                            </p>
+                  <div class="figure">
+                     <a id="figure_FF.2.1.2.1-3" shape="rect"></a>
+                     <div class="figure-contents">
+                        <div class="mediaobject">
+                           <img src="figures/PS3.4_FF.2.1.2.1-3.svg" alt="Multiple Volume Rendering Volumetric Pipeline" />
+                        </div>
+                     </div>
+                     <p class="title">
+                        <strong>Figure FF.2.1.2.1-3. Multiple Volume Rendering Volumetric Pipeline</strong>
+                     </p>
+                  </div>
+                  <p>
+                     <br class="figure-break" clear="none" />
+                        </p>
+                  <p>
+                     <a id="para_80157e9d-f236-4d97-a994-053f5b893654" shape="rect"></a>Transformation to PCS-Values is performed after Volume Rendering.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_FF.2.1.2.2" shape="rect"></a>FF.2.1.2.2 Volume Rendering Component</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a8a33ccc-64ec-426f-9723-1549fe2b6829" shape="rect"></a>This component transforms an RGBA volume into a volume rendered view according to the parameters in the Render Geometry Module. This component is implementation dependent, but generally includes processing steps such as gradient computation to find normals of use in the shading operation, resampling of volume data, shading according to the parameters in the Render Shading Module, and compositing of the resampled data to produce the final volume rendered view.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_FF.2.1.2.3" shape="rect"></a>FF.2.1.2.3 Graphic Projection Component</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_e19d0ee3-41d4-4f27-9b35-d477c8991604" shape="rect"></a>This component converts the volumetric annotation specified in the Volumetric Graphic Annotation module into a graphic overlay for the 2D volume rendered view. It is the role of this component to evaluate the volumetric graphic annotations, determine which graphics are visible in the volume rendered view, and provide graphics that are layered on the view.</p>
+                  <p>
+                     <a id="para_36921d7e-afcf-409b-b194-4e01eb37a6f8" shape="rect"></a>Inputs to the Graphic Projection component are:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5b23395a-c616-4a68-8c1d-5d833255f9df" shape="rect"></a>Volumetric Graphic Annotation Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_4ae6838c-d95f-4042-8376-5761d42afb9b" shape="rect"></a>RGBA volume input to the Volume Rendering component</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_adb457a1-aca1-4c8d-b856-609e3d2ac8d0" shape="rect"></a>Volume Render Geometry Module</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_ab3099f8-37ac-4360-bf4c-b6b19763bbfa" shape="rect"></a>Input-specific Cropping Specification Index (0070,1205) values</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_43a3a62e-5ba2-4ea7-adba-c9893e68c8d3" shape="rect"></a>Volume Cropping Module Attributes</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_5a2d46f6-61cc-4fbb-a290-45833a8d7389" shape="rect"></a>The Graphic Projection transform algorithm considers whether each volumetric graphic annotation is visible in the current volume rendered view, considering the volume data, Volume Render Geometry, and the value of Annotation Clipping (0070,1907).</p>
+                  <p>
+                     <a id="para_315762d0-eff1-499c-91f8-a8b2c6845800" shape="rect"></a>If Annotation Clipping (0070,1907) is YES, then the annotation shall be visible only if it is present in the field of view and not obscured by opaque structures that may lie between the annotation and the viewpoint. In the case of the Volumetric Presentation Input Annotation Sequence (0070,1905), annotation text shall be visible only if some part of the specified segmentation is visible.</p>
+                  <p>
+                     <a id="para_0826b865-ff66-4938-b38a-0ffe685cddb4" shape="rect"></a>If Annotation Clipping (0070,1907) is NO, then the annotation shall always be visible. A particular implementation may display annotations that lie behind opaque structures in a different style (such as a softer gray), but the decision to provide such display style is outside the scope of this Standard.</p>
+                  <p>
+                     <a id="para_38174934-9ed1-48fe-b386-1459662b9094" shape="rect"></a>The output of the Graphic Projection component is displayed on the 2D presentation view in the graphic layers specified by the corresponding values of Graphic Layer (0070,0002).</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_FF.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_FF.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FF.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">FF Volumetric Presentation State Storage SOP Classes (Normative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> FF.2.2 Volumetric Inputs, Registration and Cropping</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

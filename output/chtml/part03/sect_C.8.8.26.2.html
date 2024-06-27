@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.8.26.2 Scan Spot Prescribed Indices</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.8.26.html" title="C.8.8.26 RT Ion Beams Session Record Module" />
+      <link rel="prev" href="sect_C.8.8.26.html" title="C.8.8.26 RT Ion Beams Session Record Module" />
+      <link rel="next" href="sect_C.8.8.27.html" title="C.8.8.27 Beam Limiting Device Position Macro" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.8.26.2 Scan Spot Prescribed Indices <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.8.26.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.26.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.8.26 RT Ion Beams Session Record Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.27.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.html" shape="rect">Radiotherapy Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.8.26.html" shape="rect">RT Ion Beams Session Record Module</a>
+         </span> &gt; <span class="breadcrumb-node">Scan Spot Prescribed Indices</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_C.8.8.26.2" shape="rect"></a>C.8.8.26.2 Scan Spot Prescribed Indices</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_210e8146-e3dc-43f4-82c7-94479b7a6a2b" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391) are used to associate each delivered spot with its corresponding prescribed spot. If the ordering information is unknown, both Scan Spot Reordered (300A,0393) and Scan Spot Prescribed Indices (300A,0391) shall be absent.</p>
+         <p>
+            <a id="para_aedd5ca4-cc36-46a5-82bf-e7c17653318a" shape="rect"></a>There are various cases how the scan spots are delivered in comparison with the prescribed spot order.</p>
+         <p>
+            <a id="para_09b24dca-1491-4a18-bcd7-af971edc2813" shape="rect"></a>Following are various examples specifying how the scan spot prescribed index shall be used.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.1" shape="rect"></a>C.8.8.26.2.1 Content of RT Ion Plan for following Use Cases</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d16d346d-28f9-4d6d-bde5-fc14d204057e" shape="rect"></a>It is assumed that the RT Ion Plan contains the following spot positions in the Scan Spot Position Map (300A,0394) and related Scan Spot Meterset Weights (300A,0396).</p>
+            <p>
+               <a id="para_b7347873-0215-47ba-a7c5-e4cd47b59764" shape="rect"></a>The following table is a representation of the prescription where "w" represents the Scan Spot Meterset Weight.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_ae48ff70-20cf-4204-95fc-e47adbc31dfc" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_5716d5e9-c154-4dba-9d5a-aba3212aa1fc" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e50bde07-fb57-43b4-b40e-15694e08c046" shape="rect"></a>x0,y0</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3b960903-18a0-45ee-ba0a-927aec473ccb" shape="rect"></a>w0</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8ef1c19c-a2fb-473b-a277-dc05f587e71e" shape="rect"></a>x1,y1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_5a17303f-c77e-47e6-a83a-44f3c0a037f2" shape="rect"></a>w1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_fba44407-9d20-4844-b9d5-f71c22fd11c6" shape="rect"></a>x2,y2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9ea0332b-2651-4786-a2e3-8be85b81f146" shape="rect"></a>w2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_fa8197b7-4317-4479-9601-a69fcc25f449" shape="rect"></a>x3,y3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_5c8aa61d-ca33-407b-8707-bdf5e4d1ff29" shape="rect"></a>w3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d344eec3-f7bc-4b56-8093-b1ad2b28a23c" shape="rect"></a>x4,y4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a3b3ffe9-fb83-4ea6-8a53-9e568df363cc" shape="rect"></a>w4</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_2b2abc72-12e0-46c6-9a56-9ffb863bf4ea" shape="rect"></a>The prescription does not contain an explicit index for the scan spot order. The index is defined implicitly by the order of the spots within the prescribed map. The implicit index starts at 0.</p>
+            <p>
+               <a id="para_0fe3ecf7-af56-4b8d-ab78-568d2810d0b0" shape="rect"></a>The following examples specify some different cases of delivered scan spot order that can then be supported using the spot index in the RT Ion Beams Treatment Record.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.2" shape="rect"></a>C.8.8.26.2.2 Treatment Recording Use Cases</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_8f48a1cb-8eba-476c-8ee3-37504d4d3b17" shape="rect"></a>The following tables contain 3 columns as follows:</p>
+            <p>
+               <a id="para_361d8f7a-f7cb-44e1-b820-d4da9f0176aa" shape="rect"></a>First column: The delivered Scan Spot Position in the Scan Spot Position Map (300A,0394). In this column the spot positions are annotated as they have been delivered. The index following the coordinate character refers to the index in the RT Ion Plan. If the index is appended, it shows that 2 or more delivered scan spots refer to the same Scan Spot Position in the RT Ion Plan.</p>
+            <p>
+               <a id="para_445469c6-7740-4524-b570-33370552af52" shape="rect"></a>Second column: The Scan Spot Meterset Delivered (3008,0047). The Meterset Delivered is indicated by 'm'.</p>
+            <p>
+               <a id="para_51816368-7b11-485d-acee-9a43de5ce357" shape="rect"></a>Third column: The Scan Spot Prescribed Indices (300A,0391) referring to the position in the Scan Spot Meterset Weights (300A,0396) of the referenced RT Ion Plan are indicated as they are recorded in the RT Ion Beams Treatment Record.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.3" shape="rect"></a>C.8.8.26.2.3 Use Case 1: No pause, no spot reordering, no spot splitting, no repainting</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_90ca0746-aab6-4911-84eb-87deebe28a48" shape="rect"></a>This use case is an example where the spots are treated in the exact order as prescribed in the RT Ion Plan.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3ba144fd-3d3b-46bb-abd2-14883fd4b7ee" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d8ea75f4-3443-4f98-9c95-5f1e2c596845" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_ef1795df-793b-4bc8-ab66-2f2c174f900a" shape="rect"></a>x1,y1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a54666f5-fa10-4278-9cc0-faf145539e8d" shape="rect"></a>m1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c24e3bfd-2787-40b2-bb2f-e33bb53a5b31" shape="rect"></a>x2,y2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9fb77016-dd2f-4d37-b9a3-1669dfe9a9be" shape="rect"></a>m2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_be2256db-c0ea-4c6f-9ed2-e3c97b6cb391" shape="rect"></a>x3,y3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e4ea5318-5671-4f02-b3f6-f027da58c25f" shape="rect"></a>m3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_50c74289-69a6-463f-bda6-a190406c570a" shape="rect"></a>x4,y4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_017707ff-4414-4060-99dc-95c15d130ef7" shape="rect"></a>m4</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_d941fd1b-a322-4309-a862-5e44ec5f2b14" shape="rect"></a>Since there was no re-ordering, Scan Spot Reordered (300A,0393) is absent or NO and Scan Spot Prescribed Indices (300A,0391) shall be absent.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.4" shape="rect"></a>C.8.8.26.2.4 Use Case 2: Pause</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_e6fde351-31f6-4c66-b91d-07a6364bb490" shape="rect"></a>This use case is an example of a spot broken up into two reported spots due to a pause in the middle of treatment.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_cc0d30f5-de91-478c-8b5f-fd5d772e812c" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_698a9611-ffd9-4fb0-a4b9-8cf89be13764" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_63813140-0ec3-4e63-aace-d800ba0df79a" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_46f28aca-0c9d-43a7-8259-e047a825cbb2" shape="rect"></a>x1,y1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_045f52d7-9ba1-42f4-b03c-5e778bb0bc01" shape="rect"></a>m1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_51a98bb7-7b48-4edb-ba39-6f3caf76c8c6" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2fc8cb3f-dd3e-41ec-a014-8c31dedbdc11" shape="rect"></a>x2,y2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e8b78f8d-cdb1-4e6a-a189-48ae1a74518e" shape="rect"></a>m2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d088a8ce-6894-4398-898e-be7dd285c1e1" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8ca8b0ea-4c18-43d3-92b2-460d8f639cb6" shape="rect"></a>x3a,y3a</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_40681c9b-a1aa-4b02-82c3-177a7080a0de" shape="rect"></a>m3a</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_4cc971f6-878a-428e-b296-9e02304f0af2" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a2ea16c0-2f1f-4c75-9554-7891e524d0ea" shape="rect"></a>x3b,y3b</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_740f697d-0a7d-4f8a-8403-f93ec3bbfe0c" shape="rect"></a>m3b</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_be1978fd-300f-44de-959a-239734504446" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_02dd04d4-8e87-4bdc-bc65-133cf47a0017" shape="rect"></a>x4,y4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d4d80b24-d639-42c1-b815-468b547937ce" shape="rect"></a>m4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c289f797-669f-4156-9990-487dc0ce2818" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_a7693e96-7d02-4c06-93c7-83b01ca06fb5" shape="rect"></a>The pause occurred during the delivery of the 3<sup>rd</sup> spot. When the delivery resumed, the spot was not located at the same position prior to the pause. The notations x3a,y3a represent the position of the spot prior to the pause. x3b,y3b represent the position of the resumed spot. Both spots refer to the same prescribed spot. The Meterset m3a represents the measured Meterset prior to the pause and m3b represents the measured Meterset after resumption.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.5" shape="rect"></a>C.8.8.26.2.5 Use Case 3: Tuning Spot</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_516a7dfb-52f5-4301-a32f-fefc2baa92a3" shape="rect"></a>Some delivery systems use a tuning spot (aka pulse) to adjust the different beam parameters. This tuning spot can be delivered at the beginning of the beam or at any time during the beam. The tuning spot may not reach exactly the same position as a prescribed spot.</p>
+            <p>
+               <a id="para_0faf18db-f28a-4724-a894-a4b2d7cea016" shape="rect"></a>The suffix 't' indicates a tuning spot.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9e7d06a1-c8e8-4a1c-bf61-fd752aa45d18" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_901eb7c2-1990-4da9-9185-73e3e6bca569" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_465c2135-6828-4eb6-a489-4e03f555f8d6" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_ef6ee66a-4492-4f7c-b0d1-4d299bbd4996" shape="rect"></a>x4t,y4t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_387aec5e-eaf8-4115-ae73-369d1b6d86ee" shape="rect"></a>m4t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_00e0cb01-440a-4368-b999-ffc24daa7e4c" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_51afe5db-0a7c-4ea6-aa6f-0f6421f4318d" shape="rect"></a>x1,y1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9f05d7e2-30de-4b62-9469-f01c4f2e8799" shape="rect"></a>m1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e34d7b61-00fc-404f-955b-043293f9ef0b" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c41419f5-d9c0-43eb-91cd-e795c2f166bd" shape="rect"></a>x2,y2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_01478b18-01b0-47c5-99a7-0d6564cf3f11" shape="rect"></a>m2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_68492dd9-34f4-425b-8441-8a5994a37b79" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8cf88c91-357e-463e-8a61-70151c46cfcb" shape="rect"></a>x3,y3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_5d4e6b76-ece4-42d7-a3ad-2be97cd198e6" shape="rect"></a>m3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_24404888-11fe-4c92-8e7b-5bb735fa7569" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_dad466d6-b6f7-4b1d-bc76-a5c1fb59b3b9" shape="rect"></a>x4,y4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_013419ee-32bc-44a4-86d3-4698bb186217" shape="rect"></a>m4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b8f1c1a4-9ba4-484e-b04d-2930c19af3b6" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b7c1e790-3f7c-4368-a863-5a70259bd4b8" shape="rect"></a>x5,y5</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_61bd6c34-66e0-4e24-8613-c2cfb4c7ba49" shape="rect"></a>m5</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d52bc0ab-5356-48a8-b76c-ac8b5840bf30" shape="rect"></a>5</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_5424ef4e-ef48-4552-939a-5963fc6980df" shape="rect"></a>A tuning spot was delivered at the beginning of a control point. The tuning spot will be present in the treatment record. As it is the first one being delivered for that control point, it will be the first one in the record.</p>
+            <p>
+               <a id="para_933f06f2-889b-4c55-949f-7c2b3aeff765" shape="rect"></a>The tuning spot in this example was targeting the 4<sup>th</sup> spot of the prescription. In the record the Scan Spot Prescribed Indices will refer to the 4<sup>th</sup> position. As the tuning spot may not match the prescribed position, it will have its own coordinates represented by the suffix 't'.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.6" shape="rect"></a>C.8.8.26.2.6 Use Case 4: Repainting</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_f32987e4-bfef-45b1-bb3b-1e28395b1115" shape="rect"></a>Use case demonstrating how re-paints of the spot map within the same control point can be represented.</p>
+            <p>
+               <a id="para_9013fbe7-352b-4b1f-b819-681e9c1f2f93" shape="rect"></a>The suffix 'p&lt;n&gt;' indicates a painting iteration.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_42202a5f-8afc-435d-a64f-8737be05af38" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9850e9de-7884-488e-a3cb-8a80385e22db" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7ce5dc20-bfe5-4e99-8377-2972c7c4a02e" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b4d8681a-3f11-4b51-9a70-b77f08ba5871" shape="rect"></a>x1p1,y1p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_973fc415-aa0f-45c0-a061-0b7faa6e4cfc" shape="rect"></a>m1p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a61825f8-7af0-4507-945c-18dbba5416ac" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e693ea16-63f8-4985-ba73-08fb923fe1fe" shape="rect"></a>x2p1,y2p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_bf077296-4e0f-49ed-8e60-2ae398dbaab0" shape="rect"></a>m2p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_812320b6-b861-4560-be7e-6a1b7ad6f0f2" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_ee4644e6-efa5-452e-ae1a-f28e0305d218" shape="rect"></a>x3p1,y3p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_16e9e688-4626-4c19-947c-58bc7550fc7b" shape="rect"></a>m3p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f5070caf-0460-4ba2-bfc6-eafa442e50b8" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8dab5d51-ebb0-4040-bd17-f34bbaf3b2d0" shape="rect"></a>x4p1,y4p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_26b9e1b5-423c-42a6-bcd3-9151fbb8f5ae" shape="rect"></a>m4p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_af8d8bca-3f99-4b10-80e5-89778f1a95b6" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a31c424e-b533-4308-a0b8-69d104bcd883" shape="rect"></a>x5p1,y5p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_85b7f47a-4cec-46c2-a47f-0746b8a04523" shape="rect"></a>m5p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9b90c6c3-11fb-4b78-bf4a-b81b3581462f" shape="rect"></a>5</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8f241a9a-c68a-4add-ac5e-ec693546f5a3" shape="rect"></a>x1p2,y1p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7d0e31ea-099f-46b4-af9e-5870d751b89c" shape="rect"></a>m1p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f19ac4e5-20fe-46b8-b138-8dbaa347576e" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8b4f2bf0-d2da-4c57-a828-3a67463c601d" shape="rect"></a>x2p2,y2p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_01f20029-2e1d-4fb6-8ed3-845c548bdbd4" shape="rect"></a>m2p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_48cd104c-a062-463c-a4c9-7680fc4edd16" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_87525056-095a-4e74-a3e3-97eae51a3ad6" shape="rect"></a>x3p2,y3p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_cd37d3a2-e8e7-4c1e-971e-ff982a3805b1" shape="rect"></a>m3p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_08a703ea-12f3-425f-a6ed-5e68932e64d7" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3d398d24-9b02-48c3-b646-e7a053a80ad8" shape="rect"></a>x4p2,y4p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_0e9953c0-b9da-4910-888e-274043297471" shape="rect"></a>m4p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2cd7ae73-e646-4f67-98d7-4acdce58309b" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_182a449d-e72b-4b71-a51d-b2bd5aabf752" shape="rect"></a>x5p2,y5p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_077cbceb-1c2b-4415-989a-36a9afba17b9" shape="rect"></a>m5p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8713f17c-4245-4f65-9d67-1fc27978736c" shape="rect"></a>5</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b8a796a1-398b-4e87-b70e-9ad71667c37a" shape="rect"></a>x1p3,y1p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2d9439b8-1bb8-4632-9ced-50407e600e37" shape="rect"></a>m1p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f7dd2627-0137-4ea4-b534-7b58bd848ad5" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_19705479-91d7-4048-b910-3a46af806d4d" shape="rect"></a>x2p3,y2p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8f24ce13-a204-43d4-8f44-ee9efd799555" shape="rect"></a>m2p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_94e98895-a41c-453e-a762-d8b86de7f62a" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_74e904ef-ba39-4e58-b7e3-d967d02b59c4" shape="rect"></a>x3p3,y3p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7289b567-b8a0-400f-9de0-da22c1334229" shape="rect"></a>m3p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_400ba6bf-582e-4a1b-85ea-b8153097af6d" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_857acf9f-50b0-418c-91a4-ac0fbbce09f8" shape="rect"></a>x4p3,y4p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_36676bb1-adc9-49ed-b5be-1bf858133328" shape="rect"></a>m4p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3507790a-7d1d-4b41-b1d0-d9758524e15d" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_664086fa-9583-4be0-83b0-3afdb9d5ea39" shape="rect"></a>x5p3,y5p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d8a2c12f-6348-4551-94d7-226ce0de0895" shape="rect"></a>m5p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_31c0d1ec-e91e-4584-b349-eaa87c7232fe" shape="rect"></a>5</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_48b43340-4b07-4361-9bff-019fed0f8d1c" shape="rect"></a>When repainting is requested (Number of Paintings (300A,039A) is greater than 1), the record shall contain each of the delivered paintings.</p>
+            <p>
+               <a id="para_0dcbac81-013a-4654-b9e3-5c2b0704b0e3" shape="rect"></a>In the example, painting was performed three times. Each repainted spot is described by the Scan Spot Position, the Delivered Metersets of the specific painting, and the Scan Spot Prescribed Indices.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.7" shape="rect"></a>C.8.8.26.2.7 Use Case 5: Spot Reordering</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_5edd3446-887d-4afb-9e76-17c49f00feeb" shape="rect"></a>In this use case, the number of spots remains the same, but they are simply treated in a different order than planned.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_de466af3-4534-437f-83e4-1f375dd12a69" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7f38350a-75d9-488b-82d7-afff5eeda4b5" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_643d6335-d0d1-4140-a9a4-9b02e3728963" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a9399c0e-dacc-45d4-b825-c89b3d3e09e1" shape="rect"></a>x4,y4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_38320d66-dba1-4e76-90d0-7f163be4ae48" shape="rect"></a>m4</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_05003ec9-acb2-4683-a2b8-7ef3f4debfc3" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_d80e68dc-442d-4a15-ab4a-92754e116530" shape="rect"></a>x2,y2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_47101f09-4396-4bb1-bd8e-76202cab8230" shape="rect"></a>m2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f5f9b285-a63f-4b38-b44c-89548ae77bac" shape="rect"></a>2</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_aa5b8101-ff56-431d-980a-428b040193e6" shape="rect"></a>x5,y5</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_1951a872-1960-4107-8685-01582d786f73" shape="rect"></a>m5</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3cc44083-e7f4-44b3-a132-dcd296fd76b9" shape="rect"></a>5</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_1d65e1ba-e030-409f-8e98-275f6908ec90" shape="rect"></a>x3,y3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f3bbc319-6052-4f1e-8ce6-5dfab91dc880" shape="rect"></a>m3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2af46cd5-c577-4e7d-92ae-47613de11ae5" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e4adc381-5db6-41a2-9c6b-dae2f28e4baf" shape="rect"></a>x1,y1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e030f5cd-be53-45c1-8561-061a5a80df58" shape="rect"></a>m1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b6d1f24f-be10-49d7-bf5c-d2a0d4436115" shape="rect"></a>1</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_0873b227-cb22-4a33-88d9-1604db2ba064" shape="rect"></a>When Scan Spot Re-Ordering is allowed, the spots are listed in the order of the delivery and reference the Scan Spot Prescribed Indices.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_C.8.8.26.2.8" shape="rect"></a>C.8.8.26.2.8 Use Case 6: Combination</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_e10b6163-f353-458f-b7b8-cfdf806c22e6" shape="rect"></a>This use case is a combination of all the above including tuning spots, repaints, and additional re-ordering.</p>
+            <p>
+               <a id="para_ec64c06f-680b-4a29-bb70-685a4e27acc5" shape="rect"></a>The suffix 't' indicates a tuning spot.</p>
+            <p>
+               <a id="para_c6f7f34a-7ae0-4bf2-8e9c-fe3eac67276b" shape="rect"></a>The suffix 'p&lt;n&gt;' indicates a painting iteration.</p>
+            <p>
+               <a id="para_2a549226-4355-4c6a-ae05-5282723311e3" shape="rect"></a>The suffix '(r)' in Scan Spot Prescribed Indices (300A,0391) indicates that the spot has been re-ordered.</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c7a5bf9c-1cd3-4ad0-b062-799ac7bbf3f8" shape="rect"></a>Scan Spot Position Map (300A,0394)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_1d9ed434-5a12-4b6c-b04c-58e71525c551" shape="rect"></a>Scan Spot Metersets Delivered (3008,0047)</p>
+                                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_81ad9283-ac01-4fda-9fb8-71064b4ae23b" shape="rect"></a>Scan Spot Prescribed Indices (300A,0391)</p>
+                                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_40641880-9d9d-4ef6-9274-71434fa6b56e" shape="rect"></a>x4t,y4t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_6edc102d-93c4-41dc-9707-13f03c4f9bca" shape="rect"></a>m4t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_433adcfa-b059-4a9e-9701-367ac5ebb886" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3e073814-b569-4a55-b8ff-b8120de380b8" shape="rect"></a>x2p1,y2p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_84364f62-0a23-4a93-817b-707ed856138a" shape="rect"></a>m2p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_465c831d-4b03-4da5-9152-227fc4454c4f" shape="rect"></a>2 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f568b98e-90bf-4fd5-9cfe-84e767e85d91" shape="rect"></a>x5p1,y5p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7eed6971-7bd1-46bd-ad4b-e0cba92189ed" shape="rect"></a>m5p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f5a9d8b4-5252-41dc-ab77-df5c1fcfee39" shape="rect"></a>5 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3db6cde6-ee36-40ea-b680-8a55216aba11" shape="rect"></a>x1p1,y1p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_ba4185f2-b562-401c-8dec-fdcbce53a3d2" shape="rect"></a>m1p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_654567b2-a70c-476a-a42a-d611dd0a21c4" shape="rect"></a>1 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2d7ae291-b2ea-4cf3-bd26-c86d49b3d149" shape="rect"></a>x4p1,y4p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_cb38f31f-d989-4f61-8788-b3cd367d8585" shape="rect"></a>m4p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_08b078d7-c4c6-4988-b99f-b8233178bc60" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_bd17dc1d-1119-447a-8314-4e5886094081" shape="rect"></a>x3p1,y3p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c1319763-facd-42ee-af9d-7ad8fc22a319" shape="rect"></a>m3p1</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_72ef5316-5de8-4e92-bf16-b71b2324a5c6" shape="rect"></a>3 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_21343e8f-84bb-4d3f-9d2b-0cafd061601b" shape="rect"></a>x3t,y3t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_8e91cb07-8b5e-44c8-b930-501d0f88b2fe" shape="rect"></a>m3t</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_99f3d9bf-ad6b-4fc3-b90f-f5cfbbf416a4" shape="rect"></a>3</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f6b86421-5d26-43e9-81d9-f9fbfb918445" shape="rect"></a>x2p2,y2p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_eeb95e32-0291-4196-ae91-2347ecb480ee" shape="rect"></a>m2p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_3f42b2c1-a94f-4ac0-85fb-13c1e9b80186" shape="rect"></a>2 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_af0d87e3-210b-40bb-b410-000a4d294cd1" shape="rect"></a>x5p2,y5p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_33e04d7e-b728-42e5-96df-d122620d8a82" shape="rect"></a>m5p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b85134c4-8dc7-498f-98e2-e2600dcb0271" shape="rect"></a>5 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_073d3b06-d2a7-4198-ace9-b23a3ada6573" shape="rect"></a>x1p2,y1p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_5d56664a-dd52-4510-9616-53a236744f40" shape="rect"></a>m1p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_fe94f5e6-7d9b-4d27-9812-b8756bde2cc3" shape="rect"></a>1 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_c4b11381-e55f-441d-bab1-76bd05bfe2ce" shape="rect"></a>x4p2,y4p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_6e175e89-1f92-48d7-864a-6932d40d2631" shape="rect"></a>m4p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_9e8100de-e6a6-4366-abc6-a937dd98803f" shape="rect"></a>4</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_4290f78a-a297-4cbd-9dfc-fc3e8d05275e" shape="rect"></a>x3p2,y3p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_e431fe37-d073-48d3-901f-dbf358996055" shape="rect"></a>m3p2</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_7ed0d32a-b643-41b2-b596-e82285b39b9b" shape="rect"></a>3 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_1402d750-9330-4a4f-b273-ae2cada94d8c" shape="rect"></a>x2p3,y2p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_65aa6ab8-09bf-4ef4-9dee-4b6478bd5f44" shape="rect"></a>m2p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_aaeefd9d-9a95-4df7-9e7f-3d9457a4a16e" shape="rect"></a>2 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_2172558d-6fab-4df9-98c2-c7e723c3802c" shape="rect"></a>x5p3,y5p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_97d12639-becd-4b34-815d-785eb912459f" shape="rect"></a>m5p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_506f192f-6786-4fb2-898d-daaced4a95ad" shape="rect"></a>5 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_15cb1008-75f4-4ff6-835c-2b640d982d48" shape="rect"></a>x1p3,y1p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_68ee4f65-672d-4bbd-8895-b964afd49722" shape="rect"></a>m1p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_b34a014c-f854-4d40-afd5-748aebf9f17d" shape="rect"></a>1 (r)</p>
+                                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_f71e9603-e552-4722-abf2-647aeb4f0ab4" shape="rect"></a>x3p3,y3p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_a7a46555-e939-419f-9c3d-dc19590268af" shape="rect"></a>m3p3</p>
+                                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                              <a id="para_cc38870c-0493-45a9-91b4-a499c097f9ac" shape="rect"></a>3 (r)</p>
+                                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_4c4a9b24-43f9-48c9-86e7-75748bdb5a1e" shape="rect"></a>The repainting is represented by recording the spot multiple times and referencing to the same scan spot prescribed index.</p>
+            <p>
+               <a id="para_0ccffbb2-d91a-4633-b688-3d6a919fccd0" shape="rect"></a>The tuning pulse is recorded for the first two paintings and references the scan spot prescribed index of the spot being used for tuning.</p>
+            <p>
+               <a id="para_6cb9d7da-9918-4015-99eb-dc894c8a4061" shape="rect"></a>The order of the spots is the spot order actually delivered.</p>
+            <p>
+               <a id="para_dc195eb3-ebdd-41e1-ad55-4a86824b3492" shape="rect"></a>The third painting did not deliver all the prescribed spots because some of the spot Metersets were below the minimum deliverable Meterset of the machine.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.8.26.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.8.26.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.8.27.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.8.26 RT Ion Beams Session Record Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.8.27 Beam Limiting Device Position Macro</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

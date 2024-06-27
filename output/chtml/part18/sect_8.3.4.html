@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3.4 Search Query Parameters</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_8.3.html" title="8.3 Query Parameters" />
+      <link rel="prev" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" />
+      <link rel="next" href="sect_8.3.4.2.html" title="8.3.4.2 Fuzzy Matching of Person Names" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3.4 Search Query Parameters <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.3 Query Parameters</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Common Aspects of DICOM Web Services</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.3.html" shape="rect">Query Parameters</a>
+         </span> &gt; <span class="breadcrumb-node">Search Query Parameters</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.3.4" shape="rect"></a>8.3.4 Search Query Parameters</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4aaf6893-6af9-4dba-874a-ec41f445a1d9" shape="rect"></a>
+                    <a class="xref" href="sect_8.3.4.html#table_8.3.4-1" title="Table 8.3.4-1. Query Parameter Syntax" shape="rect">Table 8.3.4-1</a> contains the syntax for the names and values of search parameters, along with a reference to the section where their meaning is defined. Search transactions shall support these parameters. The ABNF for the various search parameters is:</p>
+         <div class="table">
+            <a id="table_8.3.4-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 8.3.4-1. Query Parameter Syntax</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_79ee5b1b-878a-43ab-8f54-faa648e073de" shape="rect"></a>Term</p>
+                            </th>
+                        <th align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_60ecb959-0deb-457b-b250-399e6aed3c92" shape="rect"></a>Value</p>
+                            </th>
+                        <th align="center" colspan="2" rowspan="1">
+                                <p>
+                              <a id="para_4feaa20c-3fb5-4e6f-be2f-01dab31c72b8" shape="rect"></a>Usage</p>
+                            </th>
+                        <th align="center" rowspan="2" colspan="1">
+                                <p>
+                              <a id="para_1f1a83cb-b63d-42b2-a46b-fa87c64e9804" shape="rect"></a>Description</p>
+                            </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f481f7ba-d93e-4e12-b80e-60b3ed92e964" shape="rect"></a>User Agent</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_58aae736-9595-4292-a458-986612d549aa" shape="rect"></a>Origin Server</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">search</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= match / fuzzymatching / includefield</pre>
+                                <pre class="programlisting" xml:space="preserve">/ limit / offset / emptyvaluematching / multiplevaluematching</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">match</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">; See attribute matching rules below</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f46edab8-3926-4b4a-8963-bfa7acfe21e0" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b4ae92ca-8073-4b6d-ade0-2e26571bc2d8" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1a6e2104-053a-4898-b8e8-9827d6bd3dfb" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.html#sect_8.3.4.1" title="8.3.4.1 Attribute Matching" shape="rect">Section 8.3.4.1</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">fuzzymatching</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "fuzzymatching" "=" true / false</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bac2c874-cd9a-4253-82c6-c4da1b74ae25" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a809caea-5309-475d-9450-109960b26870" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0660c8f9-7a1b-42dc-9bfd-b6bd511af645" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.2.html" title="8.3.4.2 Fuzzy Matching of Person Names" shape="rect">Section 8.3.4.2</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">includefield</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "includefield" "=" 1#attribute / "all"</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_13c9a02e-f63c-49a8-9dd2-5f55c6c46fed" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_13f502a3-548a-4ec5-b942-c07a2f0600a3" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_9ca58015-9d2f-412c-95a4-c6af9f6a16ea" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.3.html" title="8.3.4.3 Attributes Included in the Response" shape="rect">Section 8.3.4.3</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">limit</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "limit" "=" uint ; Maximum number of results</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_851f43d0-20ff-4ff8-a875-8f5acb919a24" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_42073d09-c155-49a3-a6a4-cc927d61310b" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ba0372e9-56a5-462d-8446-e3f8a37453e6" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.4.html" title="8.3.4.4 Response Pagination" shape="rect">Section 8.3.4.4</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">offset</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "offset" "=" uint ; Number of skipped results</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a789f4b7-b02b-478e-9e33-c9a150182ac1" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_246d76bc-12c7-4ce3-a9cf-fac9a701daef" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c51fc40a-5d53-4ffd-ba4b-6cc02c1a1260" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.4.html" title="8.3.4.4 Response Pagination" shape="rect">Section 8.3.4.4</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">emptyvaluematching</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "emptyvaluematching" "=" true / false</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0a909f43-dbe1-4619-8254-4d9c674db314" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_145203c2-7cb1-4f09-8fe1-572f76700f6f" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_ee6302fa-fa33-4e23-8e7d-35ae63f77a9a" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.5.html" title="8.3.4.5 Empty Value Matching" shape="rect">Section 8.3.4.5</a>
+                                </p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">multiplevaluematching</pre>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <pre class="programlisting" xml:space="preserve">= "multiplevaluematching" "=" true / false</pre>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_48e118db-104c-40e2-823e-a572916abad8" shape="rect"></a>O</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b0058bdc-4765-4eec-8ca8-27dcaccc3320" shape="rect"></a>M</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6908d7e1-bb68-47cf-aa0b-0d9372c545f9" shape="rect"></a>
+                                    <a class="xref" href="sect_8.3.4.6.html" title="8.3.4.6 Multiple Value Matching" shape="rect">Section 8.3.4.6</a>
+                                </p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_ac9dbb3b-bf27-4b54-8724-a706334db4b7" shape="rect"></a>The following sections describe these parameters in detail.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_8.3.4.1" shape="rect"></a>8.3.4.1 Attribute Matching</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_a831c943-46cf-4e9b-a6d7-a84e20b859b4" shape="rect"></a>The syntax of the match Query Parameter shall be:</p>
+            <pre class="programlisting" xml:space="preserve">
+match          = normal-match / uid-list-match
+normal-match   = 1*("&amp;" attribute "=" value)
+uid-list-match = 1*("&amp;" attribute "=" 1#value)
+attribute      = (attribute-id) *("." attribute-id)
+attribute-id   = tag *("." tag) / keyword *("." keyword)
+tag            = 8HEXDIG
+</pre>
+            <pre class="programlisting" xml:space="preserve">keyword= ;A keyword from <a href="../part06/chapter_6.html#table_6-1" class="olink" shape="rect">Table 6-1 “Registry of DICOM Data Elements” in PS3.6</a>.</pre>
+            <p>
+               <a id="para_1977e49c-c679-44f7-a0c4-ac8a7d420542" shape="rect"></a>One or more DICOM Attribute/Values pairs specify the matching criteria for the search.</p>
+            <p>
+               <a id="para_53fdb605-0a86-4ec9-9638-7f7fa92b200e" shape="rect"></a>Each search transaction defines which Attributes are required or permitted.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_c0ec027b-ea71-4ca3-8de4-bb99bc583f85" shape="rect"></a>DICOM Attributes should not be confused with XML attributes. The Tags and Keywords for DICOM Attributes are defined in <a href="../part06/chapter_6.html#table_6-1" class="olink" shape="rect">Table 6-1 “Registry of DICOM Data Elements” in PS3.6</a>.</p>
+            </div>
+            <p>
+               <a id="para_a1ab8615-2be7-45d5-9acc-04c0b71a9cb3" shape="rect"></a>DICOM Attribute/Values pairs shall satisfy the following requirements:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_607bee0b-85e5-4fda-bd2c-000269a89d4e" shape="rect"></a>Each attribute-id shall be a Data Element Tag or Keyword.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_782c65b4-f2cd-44fe-ad56-f723532f141f" shape="rect"></a>Each attribute in the Query Parameter shall be not be repeated.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2bb886d8-d7d2-4f78-b518-c5f84d49d7ee" shape="rect"></a>Each attribute in the Query Parameter shall have a single value, unless the associated DICOM Attribute allows UID List matching (see <a href="../part04/sect_C.2.2.2.2.html" class="olink" shape="rect">Section C.2.2.2.2 in <span class="olinkdocname">PS3.4</span>
+                        </a>), in which case the value is a comma-separated list of UIDs.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_9e977efe-506d-4353-ab46-8e7b0c22f426" shape="rect"></a>If a tag represents a Private Data Element the query shall also include a corresponding Private Creator Element (see <a href="../part05/sect_7.8.html#sect_7.8.1" class="olink" shape="rect">Section 7.8.1 in <span class="olinkdocname">PS3.5</span>
+                        </a>).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_72e5413a-2f15-4736-b514-54275c68e6f8" shape="rect"></a>The acceptable values are determined by the types of matching allowed by C-FIND for its associated attribute. See <a href="../part04/sect_C.2.2.2.html" class="olink" shape="rect">Section C.2.2.2 in <span class="olinkdocname">PS3.4</span>
+                        </a>. All characters in values that are not qp-chars shall be percent-encoded. All non-ASCII characters shall be percent encoded. See <a class="xref" href="chapter_2.html#biblio_RFC_3986" title="Uniform Resource Identifiers (URI): Generic Syntax" shape="rect">[<abbr class="abbrev">RFC3986</abbr>]</a> for details.</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_dbb6a498-1557-472c-bc63-325e5df8602d" shape="rect"></a>The following US-ASCII characters"#", "[", "]", "&amp;", "=", and "," shall be percent encoded in any Query Parameter.</p>
+            <p>
+               <a id="para_f2ada6b0-9ecc-4dc3-9ae3-652d5d011e72" shape="rect"></a>The match Query Parameter corresponds to DIMSE Matching Keys. See <a href="../part04/sect_K.2.2.html#sect_K.2.2.1.1" class="olink" shape="rect">Section K.2.2.1.1 in <span class="olinkdocname">PS3.4</span>
+               </a>.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_8.3.4.1.1" shape="rect"></a>8.3.4.1.1 Matching Rules</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_53c30afc-351b-4609-a52c-ad679ea26602" shape="rect"></a>The matching semantics for each attribute are determined by the types of matching allowed by C-FIND. See <a href="../part04/sect_C.2.2.2.html" class="olink" shape="rect">Section C.2.2.2 “Attribute Matching” in PS3.4</a>.</p>
+               <p>
+                  <a id="para_72e5ff3d-2910-4dc2-bedc-d886059698c4" shape="rect"></a>Matching results shall be generated according to the Hierarchical Search Method described in <a href="../part04/sect_C.4.html#sect_C.4.1.3.1.1" class="olink" shape="rect">Section C.4.1.3.1.1 “Hierarchical Search Method” in PS3.4</a>.</p>
+               <p>
+                  <a id="para_d2f0d5f2-9b0a-49da-a8a0-86d87e672f5a" shape="rect"></a>Combined date-time matching shall be performed as specified in <a href="../part04/sect_C.2.2.2.5.html" class="olink" shape="rect">Section C.2.2.2.5 “Range Matching” in PS3.4</a>.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_4d20f63d-2969-41d9-b177-1e5084a08269" shape="rect"></a>If an origin server is acting as a proxy for a C-FIND SCP that does not support combined date-time matching, it shall perform a C-FIND request using only the date and filter any results that are outside the time range before returning a response.</p>
+               </div>
+               <p>
+                  <a id="para_09990f89-bb95-4285-a9bd-28e216eaac11" shape="rect"></a>If the Timezone Offset From UTC (0008,0201) Attribute is specified in the request, dates and times in the request are to be interpreted in the specified time zone. See <a href="../part04/sect_C.4.html#sect_C.4.1.1" class="olink" shape="rect">Section C.4.1.1 in <span class="olinkdocname">PS3.4</span>
+                  </a>.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.3.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.3.3.2 Character Set Query Parameter </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3.4.2 Fuzzy Matching of Person Names</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

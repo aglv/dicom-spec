@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A.8 Secondary Capture Image IODs</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="chapter_A.html" title="A Composite Information Object Definitions (Normative)" />
+      <link rel="prev" href="sect_A.7.4.2.2.html" title="A.7.4.2.2 Active Image Area Overlays" />
+      <link rel="next" href="sect_A.8.2.html" title="A.8.2 Multi-frame Single Bit Secondary Capture Image IOD" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A.8 Secondary Capture Image IODs <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_A.8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.7.4.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A Composite Information Object Definitions (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Composite Information Object Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Secondary Capture Image IODs</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_A.8" shape="rect"></a>A.8 Secondary Capture Image IODs</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3fb938aa-ae84-46c4-b7c3-8429cd8ed096" shape="rect"></a>The <a class="xref" href="sect_A.8.html" title="A.8 Secondary Capture Image IODs" shape="rect">Secondary Capture Image IODs</a> specify images that are converted from a non-DICOM format to a modality independent DICOM format.</p>
+         <p>
+            <a id="para_68118ee9-6165-40d6-9a84-439cd51b353e" shape="rect"></a>Examples of types of equipment that create Secondary Capture (SC) Images include:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_4c38a789-0701-40d4-939d-c49d431f3323" shape="rect"></a>Video interfaces that convert an analog video signal into a digital image</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4ac3786a-56a3-4d2d-b783-05f9b931e1e6" shape="rect"></a>Digital interfaces that are commonly used to transfer non-DICOM digital images from an imaging device to a laser printer</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_75fc022c-194f-486e-92bd-2bc20a0bca1d" shape="rect"></a>Film digitizers that convert an analog film image to digital data</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_75b86abf-70df-4708-a3d0-aaec0bbbce6a" shape="rect"></a>Workstations that construct images that are encoded as a screen dump</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_51313343-8571-4938-9af6-c8b9a318d2ac" shape="rect"></a>Scanned documents and other bitmap images including hand-drawings</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_3c0e775a-046c-4043-b6b7-acaea7a35258" shape="rect"></a>Synthesized images that are not modality-specific, such as cine-loops of 3D reconstructions</p>
+               </li>
+            </ol>
+         </div>
+         <p>
+            <a id="para_762b7113-c819-430d-bc17-fe68cb9139d7" shape="rect"></a>Originally, a single, relatively unconstrained, single-frame <a class="xref" href="sect_A.8.html" title="A.8 Secondary Capture Image IODs" shape="rect">Secondary Capture Image IODs</a> was defined in the DICOM Standard. Though this IOD is retained and not retired since it is in common use, more specific IODs for particular categories of application are also defined.</p>
+         <p>
+            <a id="para_64b31180-a2b9-4b96-8b4d-d2790ab6ffa5" shape="rect"></a>The following IODs are all multi-frame. A single-frame image is encoded as a multi-frame image with only one frame. The multi-frame SC IODs consist of:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_45aaf1b4-9193-4dd5-a928-a36b378f03c3" shape="rect"></a>
+                     <a class="xref" href="sect_A.8.2.html" title="A.8.2 Multi-frame Single Bit Secondary Capture Image IOD" shape="rect">Multi-frame Single Bit Secondary Capture Image IOD</a>
+                  </p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_6949af5a-4494-4f7b-b0af-ffccb4044862" shape="rect"></a>
+                     <a class="xref" href="sect_A.8.3.html" title="A.8.3 Multi-frame Grayscale Byte Secondary Capture Image IOD" shape="rect">Multi-frame Grayscale Byte Secondary Capture Image IOD</a>
+                  </p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_600e092d-7598-4ed5-8d26-7b73cdbe6a18" shape="rect"></a>
+                     <a class="xref" href="sect_A.8.4.html" title="A.8.4 Multi-frame Grayscale Word Secondary Capture Image IOD" shape="rect">Multi-frame Grayscale Word Secondary Capture Image IOD</a>
+                  </p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_abbee8b5-f550-49af-88aa-bf7547b95c61" shape="rect"></a>
+                     <a class="xref" href="sect_A.8.5.html" title="A.8.5 Multi-frame True Color Secondary Capture Image IOD" shape="rect">Multi-frame True Color Secondary Capture Image IOD</a>
+                  </p>
+               </li>
+            </ul>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_A.8.1" shape="rect"></a>A.8.1 Secondary Capture Image IOD</h3>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_A.8.1.1" shape="rect"></a>A.8.1.1 Secondary Capture Image IOD Description</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6fe699d1-83d1-49be-b0ad-a8525c06b308" shape="rect"></a>The <a class="xref" href="sect_A.8.html#sect_A.8.1" title="A.8.1 Secondary Capture Image IOD" shape="rect">Secondary Capture Image IOD</a> specifies single-frame images that are converted from a non-DICOM format to a modality independent DICOM format, without any constraints on pixel data format.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_A.8.1.2" shape="rect"></a>A.8.1.2 Secondary Capture Image IOD Entity-Relationship Model</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_e2898a34-b168-41ef-936f-ac53570362b5" shape="rect"></a>This IOD uses the E-R Model in <a class="xref" href="chapter_A.html#sect_A.1.2" title="A.1.2 IOD Entity-Relationship Model" shape="rect">Section A.1.2</a>, with only the Image IE below the Series IE. The Frame of Reference IE is not a component of this IOD.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_A.8.1.3" shape="rect"></a>A.8.1.3 Secondary Capture Image IOD Module Table</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_21d63567-d82e-46f6-8c28-cad42abb6c6c" shape="rect"></a>
+                        <a class="xref" href="sect_A.8.html#table_A.8-1" title="Table A.8-1. Secondary Capture Image IOD Modules" shape="rect">Table A.8-1</a> specifies the Modules of the <a class="xref" href="sect_A.8.html#sect_A.8.1" title="A.8.1 Secondary Capture Image IOD" shape="rect">Secondary Capture Image IOD</a>.</p>
+               <div class="table">
+                  <a id="table_A.8-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table A.8-1. Secondary Capture Image IOD Modules</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_63e943e1-6db9-4448-833d-2c51d12f72b6" shape="rect"></a>IE</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_df4644ac-9426-498c-bea2-0abcd54a4dc0" shape="rect"></a>Module</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_c0a053fa-eaae-4dc9-a74b-ccee602c4bd0" shape="rect"></a>Reference</p>
+                                </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f51956f0-5224-4b83-b064-285528936220" shape="rect"></a>Usage</p>
+                                </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_d22c10ec-08e2-444c-924b-74c119bcc99d" shape="rect"></a>Patient</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_097779b7-42ea-4c65-88d0-76328abb9eef" shape="rect"></a>Patient</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0ff4e9be-c699-4670-a1fd-9762ed756b24" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.html#sect_C.7.1.1" title="C.7.1.1 Patient Module" shape="rect">C.7.1.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f7705f1f-0bf9-45c7-9daf-937049e13c0b" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_882d7392-f204-4359-8f52-b1e30a49f5f7" shape="rect"></a>Clinical Trial Subject</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_92acf924-f7f4-4953-b137-6b68289a49ab" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.html#sect_C.7.1.3" title="C.7.1.3 Clinical Trial Subject Module" shape="rect">C.7.1.3</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_01b069de-57c6-4867-bf59-5ddd106d1403" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="3" colspan="1">
+                                    <p>
+                                    <a id="para_38b39df6-9242-47ad-9f25-52d269fddfea" shape="rect"></a>Study</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_438eb3b4-a5ac-4c1f-90f5-8fd8ed271dc7" shape="rect"></a>General Study</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2b44a48a-dd8b-4b4a-ab23-8c0162c4468e" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.2.html#sect_C.7.2.1" title="C.7.2.1 General Study Module" shape="rect">C.7.2.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_488650c6-3a6b-4697-9ed8-aec1ca514896" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_d4e56f45-d8c8-4d48-be6a-bc23d8b50461" shape="rect"></a>Patient Study</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e314b66a-ab12-4363-98c1-d0d4c6c620d1" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.2.2.html" title="C.7.2.2 Patient Study Module" shape="rect">C.7.2.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_adf9304f-0d11-4d6c-bbc6-17d39061f034" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cc3a40b8-ddd8-4eb3-a009-90108f68f3fe" shape="rect"></a>Clinical Trial Study</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_dd00aa11-9a8e-4576-bad1-455ffb7cd162" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.2.3.html" title="C.7.2.3 Clinical Trial Study Module" shape="rect">C.7.2.3</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_56f36e82-4948-429e-a2aa-6f6b37bb9521" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_073a71a6-064e-40b8-b872-7e885fcbf985" shape="rect"></a>Series</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3ed2d6d8-49f4-496e-934f-52d6e9e7253b" shape="rect"></a>General Series</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_aa2dfec2-781a-412a-a98b-371c8cafccd9" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.3.html#sect_C.7.3.1" title="C.7.3.1 General Series Module" shape="rect">C.7.3.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e47ba8fa-9925-469e-bd52-eab82b6207f8" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2a1de3b3-7369-4f0c-8d7e-cfe8b8e9fc3e" shape="rect"></a>Clinical Trial Series</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_609995bb-3e2e-40d6-b655-9d8a35699bc8" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.3.2.html" title="C.7.3.2 Clinical Trial Series Module" shape="rect">C.7.3.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f1bd2599-9b9a-496d-9a66-b01d8500b110" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_84fec54d-c41e-4977-9814-8d77af4eb879" shape="rect"></a>Frame of Reference</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_428d9c7b-b1d4-45b6-b7bc-876f0f255448" shape="rect"></a>Frame of Reference</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3128b6d5-54a1-4b56-abef-6fa823f18a1e" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.4.html#sect_C.7.4.1" title="C.7.4.1 Frame of Reference Module" shape="rect">C.7.4.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1de49a3d-06b3-4ca1-b625-eee16e85b7c8" shape="rect"></a>C - Required if Image Position (Patient) (0020,0032) or Image Orientation (Patient) (0020,0037) are present. May be present otherwise.</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_41fe0dc0-572f-470a-8924-cc82ebd45f37" shape="rect"></a>Synchronization</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_a2c46b3b-b8bb-468f-90dc-bf994815cdf0" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.4.2.html" title="C.7.4.2 Synchronization Module" shape="rect">C.7.4.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1f4d4e5e-3802-4b25-a2fa-1059a8ba218e" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="2" colspan="1">
+                                    <p>
+                                    <a id="para_ee06ccf5-efe9-45bd-8868-f1042d1c306a" shape="rect"></a>Equipment</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6c12d79c-326b-47bf-ada7-36ba7e91574f" shape="rect"></a>General Equipment</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_107a18b1-fcc3-4c47-b7d5-cf365dcc6757" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.5.html#sect_C.7.5.1" title="C.7.5.1 General Equipment Module" shape="rect">C.7.5.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_39ac0829-0b11-4250-8faa-0aeb0964dd15" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6b9ed7c3-6ca9-42c8-a2fb-cc2d77201f6a" shape="rect"></a>SC Equipment</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5e5a9aa3-549e-453f-92bd-fc32d3327ea3" shape="rect"></a>
+                                        <a class="xref" href="sect_C.8.6.html#sect_C.8.6.1" title="C.8.6.1 SC Equipment Module" shape="rect">C.8.6.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6c7c9347-15b5-42a0-94d7-eb8998497864" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_ed0e5cd5-5e93-4e3a-9261-1806e9c47bf5" shape="rect"></a>Acquisition</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_9ba00ae1-4b1a-4e7d-a256-219e81dfdb71" shape="rect"></a>General Acquisition</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f918945d-7710-4685-902f-345138dca6c2" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.10.html#sect_C.7.10.1" title="C.7.10.1 General Acquisition Module" shape="rect">C.7.10.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_64b7af2f-2529-49f2-94bd-f7001765ad23" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="13" colspan="1">
+                                    <p>
+                                    <a id="para_a90da1e5-bdc3-49db-8a3b-b7709c56492d" shape="rect"></a>Image</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_2f2fc6e0-7adb-49aa-92dd-cba38c18d502" shape="rect"></a>General Image</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7eeaf308-16c5-45e4-a087-035cdec10b33" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.6.html#sect_C.7.6.1" title="C.7.6.1 General Image Module" shape="rect">C.7.6.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f4689bfe-9bf8-4c62-babf-265757b6866d" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_228fd454-0ae0-4994-959c-4dc32eb266e4" shape="rect"></a>General Reference</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_79ca3745-4dc0-4a60-b344-11b6af402d2a" shape="rect"></a>
+                                        <a class="xref" href="sect_C.12.4.html" title="C.12.4 General Reference Module" shape="rect">C.12.4</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_cb012cdc-237e-4233-becb-6e35c25d0eec" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_59fa451a-4fe3-4692-9da3-bf1c210f0b24" shape="rect"></a>Image Plane</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_0bdfa6ea-6019-47b9-81ee-c657303d95d6" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.6.2.html" title="C.7.6.2 Image Plane Module" shape="rect">C.7.6.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_75ea9118-6e28-470d-9208-95bb7090317f" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_82be4f17-af80-412d-a356-45c149930886" shape="rect"></a>Image Pixel</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_99539d63-da6e-4f2c-8514-a0efcde4cd8b" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.6.3.html" title="C.7.6.3 Image Pixel Module" shape="rect">C.7.6.3</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_efdf0645-b53d-43b5-8ce9-a8e7bc4b4273" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_b345b2f2-6fee-4fbf-bd7c-02693e514820" shape="rect"></a>Device</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_18db7738-a734-4cb6-934a-1f4ed8fe7980" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.6.12.html" title="C.7.6.12 Device Module" shape="rect">C.7.6.12</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5db98c0c-d6e0-492a-a2e9-b9f583b04530" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_309f03aa-773f-4a59-8e4a-c5b45d61752d" shape="rect"></a>Specimen</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e72e0659-25ac-451b-8095-f61ba8b591eb" shape="rect"></a>
+                                        <a class="xref" href="sect_C.7.6.22.html" title="C.7.6.22 Specimen Module" shape="rect">C.7.6.22</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_40a4150a-e4fe-40ca-9960-0c8ec0876971" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_26b5d065-95c2-421a-92aa-e286af9023b9" shape="rect"></a>SC Image</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_55a142a8-a91b-41ba-8b5a-db3d58a21748" shape="rect"></a>
+                                        <a class="xref" href="sect_C.8.6.2.html" title="C.8.6.2 SC Image Module" shape="rect">C.8.6.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_f3cae139-5ba0-459b-807d-c9208d8a60a1" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_dd2499a8-38c4-41b7-a5e5-22d60753029b" shape="rect"></a>Overlay Plane</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_7c314a43-c565-4f13-8f1f-54a10962c77e" shape="rect"></a>
+                                        <a class="xref" href="sect_C.9.2.html" title="C.9.2 Overlay Plane Module" shape="rect">C.9.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_87b2707f-74f9-4ec5-bae2-0bee753be958" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_71afe214-cef7-4a96-85a8-7194e8d5a459" shape="rect"></a>Modality LUT</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_efb3b046-11dd-4d22-88c5-39c59804d34e" shape="rect"></a>
+                                        <a class="xref" href="sect_C.11.html#sect_C.11.1" title="C.11.1 Modality LUT Module" shape="rect">C.11.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_13c6e35b-f445-4252-8ab7-36f8eeb7420c" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_5927cab7-f2ce-441b-b8ee-c436c4167e2f" shape="rect"></a>VOI LUT</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_507bfb6e-95fe-4a96-832c-8dc2f5533682" shape="rect"></a>
+                                        <a class="xref" href="sect_C.11.2.html" title="C.11.2 VOI LUT Module" shape="rect">C.11.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_eb7de1f0-d861-4054-b4c3-974d849f817f" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_3a633b2e-3a56-4297-b55f-f3b4416382a7" shape="rect"></a>ICC Profile</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_77940310-64d4-4115-ae60-c13947dfcf85" shape="rect"></a>
+                                        <a class="xref" href="sect_C.11.15.html" title="C.11.15 ICC Profile Module" shape="rect">C.11.15</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_98421c02-9cd2-47c0-98c0-3ddd1e22f70c" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_6be8583d-e156-49ef-96b9-e4aaf72c4f7b" shape="rect"></a>SOP Common</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_eb78295f-2f96-4b5e-86b1-eed24d28e730" shape="rect"></a>
+                                        <a class="xref" href="sect_C.12.html#sect_C.12.1" title="C.12.1 SOP Common Module" shape="rect">C.12.1</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_1405705b-ba83-4d51-96c1-98fae005206c" shape="rect"></a>M</p>
+                                </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_e881f951-6fff-4f9f-907a-b51ee1814430" shape="rect"></a>Common Instance Reference</p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_57753d7e-5788-4808-b9e6-21e8de51e3d5" shape="rect"></a>
+                                        <a class="xref" href="sect_C.12.2.html" title="C.12.2 Common Instance Reference Module" shape="rect">C.12.2</a>
+                                    </p>
+                                </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                    <a id="para_4e117f9f-7147-41a0-8c49-2f1615144cba" shape="rect"></a>U</p>
+                                </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_9b7c2c5e-6e3b-41df-9261-f3cd38f9862f" shape="rect"></a>If Image Position (Patient) (0020,0032) and Image Orientation (Patient) (0020,0037)
+                            (from the <a class="xref" href="sect_C.7.6.2.html" title="C.7.6.2 Image Plane Module" shape="rect">Image Plane Module</a>) are present,
+                            then the values of Pixel Spacing (0028,0030) (from the <a class="xref" href="sect_C.7.6.2.html" title="C.7.6.2 Image Plane Module" shape="rect">Image Plane Module</a>
+                            and the <a class="xref" href="sect_10.7.html" title="10.7 Basic Pixel Spacing Calibration Macro" shape="rect">Basic Pixel Spacing Calibration Macro</a>
+                            included from the <a class="xref" href="sect_C.8.6.2.html" title="C.8.6.2 SC Image Module" shape="rect">SC Image Module</a>)
+                            are intended to be used for 3D spatial computations, rather than any values of Nominal Scanned Pixel Spacing (0018,2010)
+                            (from the <a class="xref" href="sect_C.8.6.2.html" title="C.8.6.2 SC Image Module" shape="rect">SC Image Module</a>), which may also be present.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.7.4.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_A.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">A.7.4.2.2 Active Image Area Overlays </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.8.2 Multi-frame Single Bit Secondary Capture Image IOD</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

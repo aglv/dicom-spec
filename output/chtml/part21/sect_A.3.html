@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A.3 Structure of DICOM SR Documents</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.21.html" title="PS3.21" />
+      <link rel="up" href="chapter_A.html" title="A Transformation Between AIM and DICOM SR" />
+      <link rel="prev" href="sect_A.2.html" title="A.2 Use Cases" />
+      <link rel="next" href="sect_A.3.2.html" title="A.3.2 Document Body" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.21 2024c - Transformations between DICOM and other Representations</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A.3 Structure of DICOM SR Documents <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part21/sect_A.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A Transformation Between AIM and DICOM SR</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.21.html" shape="rect">PS3.21</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Transformation Between AIM and DICOM SR</a>
+         </span> &gt; <span class="breadcrumb-node">Structure of DICOM SR Documents</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_A.3" shape="rect"></a>A.3 Structure of DICOM SR Documents</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0b54e54b-69a8-4d5c-b41c-a6e39d454d7b" shape="rect"></a>DICOM SR documents can be thought of as consisting of a document header and a document body. The header metadata Attribute values are grouped into Modules such as "Patient", "General Study" in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>.</p>
+         <p>
+            <a id="para_96bafad4-f8af-42e2-82f1-7e19a866837e" shape="rect"></a>The SR Document Content Module (<a href="../part03/sect_C.17.3.html" class="olink" shape="rect">Section C.17.3 in <span class="olinkdocname">PS3.3</span>
+            </a>) contains the Attributes for the root Content Item, which includes the coded report title. The Content Tree (structured content) of the document body is contained in the nested Content Sequence Items of that Module. "Container" Content Items are part of the Content Sequence. They are structural elements of the SR document body structure. Content items are DICOM SR document nodes within the Content Tree that are connected through "by-value" relationships (for Enhanced SR IODs). The transformations defined in this Part do not support the use of "by-reference" relationships between Content Items.</p>
+         <p>
+            <a id="para_1878e5b7-f633-4d87-a6a0-266a9751b98c" shape="rect"></a>
+        </p>
+         <div class="figure">
+            <a id="figure_A.3-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.21_A.3-1.svg" alt="SR Document Structure" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure A.3-1. SR Document Structure</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_A.3.1" shape="rect"></a>A.3.1 Header</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_d647dfce-6b37-4e1d-a7e2-bce1c40bb5eb" shape="rect"></a>The Modules used in a DICOM SR are defined by the Information Object Definition (IOD). A particular DICOM SR template may be encoded using a variety of DICOM SR IODs, depending on the features supported by the template and used by a particular instance. Each SR IOD constrains the Value Types and Relationship Types that are permitted. The Enhanced SR IOD is sufficient to encode TID 1500 instances unless 3D patient-relative coordinates (rather than 2D image-relative coordinates or segmentations) are used to define regions of interest on images, in which case use of the Comprehensive 3D SR IOD or Extensible SR IOD would be required.</p>
+            <p>
+               <a id="para_b616016e-a08a-47a1-8b49-aa007a3eabb5" shape="rect"></a>
+               <a class="xref" href="sect_A.3.html#table_A.3.1-1" title="Table A.3.1-1. Transformation of DICOM SR IOD Modules" shape="rect">Table A.3.1-1</a> summarizes the Modules common to the SR IODs that can encode the <a href="../part16/chapter_A.html#sect_TID_1500" class="olink" shape="rect">TID 1500</a> as specified in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>.</p>
+            <div class="table">
+               <a id="table_A.3.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table A.3.1-1. Transformation of DICOM SR IOD Modules</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3e777db3-e94e-4866-b4de-5f8d806087d3" shape="rect"></a>IE</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2be9472c-e183-43b8-ad77-57fbfcd2dc67" shape="rect"></a>Module</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5bc0652f-be8a-4c1e-b538-61397ec9fe05" shape="rect"></a>Reference</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5bfa355b-977e-41ed-8fb0-a9b0f98e2ea8" shape="rect"></a>Usage</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_134f2893-4f59-47ed-b797-0e7a5348584f" shape="rect"></a>Transformation</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="2" colspan="1">
+                              <p>
+                                 <a id="para_9bf5e87d-2307-440b-9686-b2079774e792" shape="rect"></a>Patient</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_856f86eb-dd51-4fa9-b1e8-5316c9651965" shape="rect"></a>Patient</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.html#sect_C.7.1.1" class="olink" shape="rect">C.7.1.1</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_93e2acb5-4a07-494c-ab5d-58b433164a27" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2c479045-4e55-4fe9-a2c0-e0dd92a89adf" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.1" title="A.6.1.1.1 Mapping of DICOM Patient Module" shape="rect">Section A.6.1.1.1</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fbaf5335-8bfd-4fa3-a14e-38d99d85bc80" shape="rect"></a>Clinical Trial Subject</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.html#sect_C.7.1.3" class="olink" shape="rect">C.7.1.3</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9820108c-d97a-4e92-bf88-7e2352f891c9" shape="rect"></a>U</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_465be742-b413-4cbb-afb9-4c2a22efa542" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.2" title="A.6.1.1.2 Mapping of DICOM Clinical Trial Subject Module" shape="rect">Section A.6.1.1.2</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="3" colspan="1">
+                              <p>
+                                 <a id="para_c1b8565a-4334-47ba-b736-f0fe67d8c8dd" shape="rect"></a>Study</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d5e329f7-cfba-4641-8d69-aa3080e28813" shape="rect"></a>General Study</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.2.html#sect_C.7.2.1" class="olink" shape="rect">C.7.2.1</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bd4d28cd-02e4-4ed1-9a44-2a5668414768" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b4822b26-faf6-4ebe-baef-9bd0d40cdebf" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.3" title="A.6.1.1.3 Mapping of DICOM General Study Module" shape="rect">Section A.6.1.1.3</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4ee5d7b2-4f2b-45ae-b65e-864c8196a482" shape="rect"></a>Patient Study</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.2.2.html" class="olink" shape="rect">C.7.2.2</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3982e2dd-257a-4bbd-98c5-74f0d60964ea" shape="rect"></a>U</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a2c30ba1-1653-43ba-8526-8581fa2bc2cb" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.4" title="A.6.1.1.4 Mapping of DICOM Patient Study Module" shape="rect">Section A.6.1.1.4</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8d0146bb-117c-404c-9f79-352962651a99" shape="rect"></a>Clinical Trial Study</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.2.3.html" class="olink" shape="rect">C.7.2.3</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cf265905-e7d9-4204-9dee-3eea60815ffa" shape="rect"></a>U</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_45f30666-dbbf-43f0-be63-b2757c0db400" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.5" title="A.6.1.1.5 Mapping of DICOM Clinical Trial Study Module" shape="rect">Section A.6.1.1.5</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="2" colspan="1">
+                              <p>
+                                 <a id="para_c8ce99b1-2ef8-48b7-8352-1d151af886c9" shape="rect"></a>Series</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c8626815-e749-4565-8437-b7259692fad6" shape="rect"></a>SR Document Series</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.17.html#sect_C.17.1" class="olink" shape="rect">C.17.1</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_902fea94-0fe3-499e-ba7f-878610a96415" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a21876e7-da14-4932-91e8-3a3bf275fcd0" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.6" title="A.6.1.1.6 Mapping of DICOM SR Document Series Module" shape="rect">Section A.6.1.1.6</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_354b8e6e-c804-4a0b-95bf-e7da6971cd6f" shape="rect"></a>Clinical Trial Series</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.3.2.html" class="olink" shape="rect">C.7.3.2</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_34c2b825-65b0-4754-b4c2-1c6ebab546b3" shape="rect"></a>U</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3406ca12-78fa-4d2c-8f81-f35e94fec2b4" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.7" title="A.6.1.1.7 Mapping of DICOM Clinical Trial Series Module" shape="rect">Section A.6.1.1.7</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4fde8886-1c47-4e70-a332-0d1c984ac25a" shape="rect"></a>Equipment</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_431916db-f68a-4d30-ad8e-9d8ed777201b" shape="rect"></a>General Equipment</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.7.5.html#sect_C.7.5.1" class="olink" shape="rect">C.7.5.1</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f198c49d-ce2d-41fe-9016-5bf44b9e6784" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_940e4855-2eca-4836-bd6f-0b8ec4ca528e" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.8" title="A.6.1.1.8 Mapping of DICOM General Equipment Module" shape="rect">Section A.6.1.1.8</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="3" colspan="1">
+                              <p>
+                                 <a id="para_ac6dfaef-3236-4777-9197-f597512e86c5" shape="rect"></a>Document</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d32f26ff-9c7c-438d-8a09-9c94c0efeb6c" shape="rect"></a>SR Document General</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.17.2.html" class="olink" shape="rect">C.17.2</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5dd4094b-8bcb-4d09-a9c6-39c28f234723" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_de2beac5-6fd0-446e-80f3-d52914db3117" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.9" title="A.6.1.1.9 Mapping of DICOM SR Document General Module" shape="rect">Section A.6.1.1.9</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f054174b-72f4-4d36-b539-a76426c112ca" shape="rect"></a>SR Document Content</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.17.3.html" class="olink" shape="rect">C.17.3</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_40f0dd9a-384d-4de8-a0c9-9eee4c2f20df" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8f6cc8d5-9e16-4a3e-b499-2490adc62d6c" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.10" title="A.6.1.1.10 Mapping of DICOM SR Document Content Module" shape="rect">Section A.6.1.1.10</a>
+                              </p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_922d2e4f-dd5c-4644-afbb-ba80bbcb2e58" shape="rect"></a>SOP Common</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <a href="../part03/sect_C.12.html#sect_C.12.1" class="olink" shape="rect">C.12.1</a>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6ae3a085-effc-4bf2-92c9-4babd21be29e" shape="rect"></a>M</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_05147fe1-b923-479f-8cb6-6a0005483766" shape="rect"></a>
+                                 <a class="xref" href="sect_A.6.html#sect_A.6.1.1.11" title="A.6.1.1.11 Mapping of DICOM SOP Common Module" shape="rect">Section A.6.1.1.11</a>
+                              </p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_a4684a4f-4225-44a9-ade2-0f05331fd2b9" shape="rect"></a>
+               <span class="bold">
+                  <strong>Patient Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_4a4503cf-d5ab-408c-a9ba-08026cfa06d9" shape="rect"></a>The Patient Module specifies the Attributes of the Patient that describe and identify the Patient who is the subject of a Study. This Module contains Attributes of the patient that are needed for interpretation of the Image and are common for all studies performed on the patient.</p>
+            <p>
+               <a id="para_cc3dd948-33df-44ec-a9d4-a0fa309ee42e" shape="rect"></a>
+               <span class="bold">
+                  <strong>Clinical Trial Subject Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_bd881b8d-e865-4359-9b74-1ec1625fd056" shape="rect"></a>The Clinical Trial Subject Module contains Attributes that identify a Patient as a clinical trial Subject.</p>
+            <p>
+               <a id="para_bac05a58-5239-4b02-b2f5-7cb6b9dcf459" shape="rect"></a>
+               <span class="bold">
+                  <strong>General Study Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_18a847b8-1d2f-42d6-a6df-7b4b63504267" shape="rect"></a>The General Study Module specifies the Attributes that describe and identify the Study performed upon the Patient.</p>
+            <p>
+               <a id="para_f4841a00-128d-4376-9cce-a0576bc0c72a" shape="rect"></a>
+               <span class="bold">
+                  <strong>Patient Study Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_abae20db-738b-4a1b-b9b8-712e4a03d279" shape="rect"></a>The Patient Study Module defines the Attributes that provide information about the Patient at the time the Study was performed.</p>
+            <p>
+               <a id="para_a4e8449d-c441-4904-9369-d6187cae8d39" shape="rect"></a>
+               <span class="bold">
+                  <strong>Clinical Trial Study Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_b704835e-e852-475b-bbec-6272e3b5aa23" shape="rect"></a>The Clinical Trial Study Module contains Attributes that identify a Study in the context of a clinical trial.</p>
+            <p>
+               <a id="para_1920305a-e653-4359-9dc7-f2fcbe8c8bc7" shape="rect"></a>
+               <span class="bold">
+                  <strong>SR Document Series Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_ae9cc063-9439-4ff2-8a81-e8e2fd9161dd" shape="rect"></a>The SR Document Series Module defines the Attributes of the SR Document Series. A Series of SR Documents may contain any number of SR Documents.</p>
+            <p>
+               <a id="para_0930b332-4d5d-457a-b841-e2b3fbf0f81a" shape="rect"></a>
+               <span class="bold">
+                  <strong>Clinical Trial Series Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_1c6f9b06-0dc0-4118-b374-d08161df8339" shape="rect"></a>The Clinical Trial Series Module contains Attributes that identify a Series in the context of a clinical trial.</p>
+            <p>
+               <a id="para_7c33d933-de82-4a11-ba4f-966795b0b07b" shape="rect"></a>
+               <span class="bold">
+                  <strong>General Equipment Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_4195cd83-3f6a-4b8f-af10-3dfc0d625b70" shape="rect"></a>The General Equipment Module specifies the Attributes that identify and describe the piece of equipment that produced a Series of Composite Instances.</p>
+            <p>
+               <a id="para_696ea8fe-20f4-41a0-9e54-a6c9f122b5be" shape="rect"></a>
+               <span class="bold">
+                  <strong>SR Document General Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_7b69a286-f8c7-4ab5-a4e9-1c00986d33ec" shape="rect"></a>The SR Document General Module defines the general Attributes of an SR Document Instance. These Attributes identify the SR Document and provide context for the entire document.</p>
+            <p>
+               <a id="para_f60f4bc4-3e82-479b-bec0-fb9ea944502f" shape="rect"></a>
+               <span class="bold">
+                  <strong>SOP Common Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_7c5a3294-3a87-4f2f-93f9-ac9972c9447d" shape="rect"></a>The SOP Common Module defines the Attributes that are required for proper functioning and identification of the associated SOP Instances.</p>
+            <p>
+               <a id="para_e92ef29a-6122-49b4-96d9-6ac7a84504e1" shape="rect"></a>
+               <span class="bold">
+                  <strong>SR Document Content Module</strong>
+               </span>
+            </p>
+            <p>
+               <a id="para_d434bc98-526a-4ba7-a9b6-ffe0bfc260a1" shape="rect"></a>The Attributes in this Module convey the content of an SR Document. It specifies the root Content Item and the Content Tree (refer to <a class="xref" href="sect_A.3.html#figure_A.3-1" title="Figure A.3-1. SR Document Structure" shape="rect">Figure A.3-1</a>).</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_A.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">A.2 Use Cases </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.21.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.3.2 Document Body</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.21 2024c - Transformations between DICOM and other Representations</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

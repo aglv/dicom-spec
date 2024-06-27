@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>CC Unified Procedure Step Service and SOP Classes (Normative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="PS3.4.html" title="PS3.4" />
+      <link rel="prev" href="sect_BB.6.html" title="BB.6 SOP Class Definitions" />
+      <link rel="next" href="sect_CC.2.html" title="CC.2 DIMSE Service Groups" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">CC Unified Procedure Step Service and SOP Classes (Normative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/chapter_CC.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_BB.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-node">Unified Procedure Step Service and SOP Classes (Normative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_CC" shape="rect"></a>CC Unified Procedure Step Service and SOP Classes (Normative)</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_CC.1" shape="rect"></a>CC.1 Overview</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_bb7ee50c-b8a3-4af4-882b-12da3b4352fa" shape="rect"></a>This Annex defines the Service and SOP Classes associated with a Unified Worklist and Procedure Step.</p>
+            <p>
+               <a id="para_025b41a7-f288-45cf-8f23-a53a14da7ed2" shape="rect"></a>The Unified Procedure Step Service Class provides for management of simple worklists, including creating new worklist items, querying the worklist, and communicating progress and results.</p>
+            <p>
+               <a id="para_9266e62f-4d50-4d3d-b091-9be4ffdbe186" shape="rect"></a>A worklist is a list of Unified Procedure Step (UPS) instances. Each UPS instance unifies the worklist details for a single requested procedure step together with the result details of the corresponding performed procedure step. There is a one to one relationship between the procedure step request and the procedure step performed.</p>
+            <p>
+               <a id="para_43a11843-aec7-45e8-bdfb-013b2f23914a" shape="rect"></a>Unified Procedure Step instances may be used to represent a variety of scheduled tasks such as: Image Processing, Quality Control, Computer Aided Detection, Interpretation, Transcription, Report Verification, or Printing.</p>
+            <p>
+               <a id="para_db301bc2-26fe-4a22-8a43-6b7dbd76b44b" shape="rect"></a>The UPS instance can contain details of the requested task such as when it is scheduled to be performed or Workitem Codes describing the requested actions. The UPS may also contain details of the input information the performer needs to do the task and the output the performer produced, such as: Current Images, Prior Images, Reports, Films, Presentation States, or Audio recordings.</p>
+            <p>
+               <a id="para_e622beb3-50af-453e-bc3f-d90161f2eb68" shape="rect"></a>The Unified Worklist and Procedure Step Service Class includes five SOP Classes associated with UPS instances. The SOP Class UID for any UPS Instance always specifies the UPS Push SOP Class. The separate SOP Classes facilitate better negotiation and logical implementation groups of functionalities.</p>
+            <p>
+               <a id="para_9977ef57-e8e7-40b5-8eec-41337ab3453a" shape="rect"></a>The UPS Push SOP Class allows an SCU to instruct the SCP to create a new UPS instance, effectively letting a system push a new work item onto the SCP's worklist. It is important to note that the SCP could be a Worklist Manager that maintains the worklist for other systems that will perform the work, or the SCP could be a performing system itself that manages an internal worklist.</p>
+            <p>
+               <a id="para_5f04813b-0d4a-4c82-beb2-6857fcc1cd07" shape="rect"></a>The UPS Pull SOP Class allows an SCU to query a Worklist Manager (the SCP) for matching UPS instances, and instruct the SCP to update the status and contents of selected items (UPS instances). The SCU effectively pulls work instructions from the worklist. As work progresses, the SCU records details of the activities performed and the results created in the UPS instance.</p>
+            <p>
+               <a id="para_3f8e886c-2ca8-44fe-9081-4d4dbaf67fe5" shape="rect"></a>The UPS Query SOP Class allows an SCU to query a Worklist Manager (the SCP), but does not otherwise interact with the UPS instances.</p>
+            <p>
+               <a id="para_f5c1d13f-5698-47ed-9e82-40a52c368d3a" shape="rect"></a>The UPS Watch SOP Class allows an SCU to subscribe for status update events and retrieve the details of work items (UPS instances) managed by the SCP.</p>
+            <p>
+               <a id="para_2975d128-f773-494d-8ec6-473c3783b496" shape="rect"></a>The UPS Event SOP Class allows an SCP to provide the actual status update events for work items it manages to relevant (i.e., subscribed) SCUs.</p>
+            <p>
+               <a id="para_ad4b3a4f-873d-4eb6-ab13-a2126c9f1b00" shape="rect"></a>Each of these services has an equivalent HTTP operation defined by the UPS-RS Worklist Service (see <a href="../part18/chapter_11.html" class="olink" shape="rect">Section 11 “Worklist Service and Resources” in PS3.18</a>).</p>
+            <p>
+               <a id="para_2c9d58e2-7b4b-4e90-8c29-d6280ef4569d" shape="rect"></a>While a Unified Worklist and Procedure Step Service Class SCP is not required to support UPS-RS, an SCP may choose to support one or more of the UPS-RS services as an origin server. In this scenario, an SCP/origin server shall follow the same internal behavior for all Workitems irrespective of whether they originated with a DIMSE request or an HTTP request. A DIMSE request and its equivalent HTTP request with the same parameters shall yield the same response.</p>
+            <p>
+               <a id="para_313ae9da-2a0c-44f5-b288-9983148e9819" shape="rect"></a>For example:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a1f32f9a-8465-4b35-8744-c209f6bd9135" shape="rect"></a>A Workitem instance created via DIMSE N-CREATE can be retrieved via HTTP requests and vice-versa</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ce25da46-dfe7-4b53-98b6-bde076e23dfb" shape="rect"></a>A Workitem instance created via DIMSE N-CREATE can be updated, have its state changed or be canceled via HTTP requests and vice-versa</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_38d9acc8-6a9e-4d7f-8ec8-15bd1127e1ee" shape="rect"></a>A C-FIND request and an HTTP SearchForUPS request with the same parameters shall return the same set of results</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_dc1984d4-432e-490a-8098-acf1100c340f" shape="rect"></a>An N-EVENT-REPORT SCU that also supports HTTP subscriptions will record whether a given subscriber uses DIMSE or WebSockets and send the appropriate form of notification to that subscriber</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2be23a79-8adb-4d12-856a-7ea17d6d0756" shape="rect"></a>A change made to a Workitem instance will result in the same event notifications regardless of whether the change was requested via DIMSE or HTTP</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_85a04661-df39-4fc9-b30d-fc0faa00985c" shape="rect"></a>A Global Subscription request or a Filtered Global Subscription request will subscribe an SCU (or user agent) to instances created both via DIMSE and via HTTP requests</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_49ecf931-82f6-43d3-aeea-053475c92178" shape="rect"></a>A DIMSE event subscriber will receive notifications for relevant changes made via HTTP requests</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_303134be-a9ea-4f83-a900-44f174f66ee5" shape="rect"></a>An HTTP event subscriber will receive notifications for relevant changes made via DIMSE requests</p>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_208ad844-209b-4ce8-ba05-f147958cabe2" shape="rect"></a>The mapping between UPS DIMSE operations and UPS-RS services is defined in <a href="../part18/chapter_11.html" class="olink" shape="rect">Section 11 “Worklist Service and Resources” in PS3.18</a>.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_CC.1.1" shape="rect"></a>CC.1.1 Unified Procedure Step States</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_37723f9e-88e5-4864-bc58-3ba5c7659402" shape="rect"></a>
+                    <a class="xref" href="chapter_CC.html#figure_CC.1.1-1" title="Figure CC.1.1-1. Unified Procedure Step State Diagram" shape="rect">Figure CC.1.1-1</a>, <a class="xref" href="chapter_CC.html#table_CC.1.1-1" title="Table CC.1.1-1. Unified Procedure Step (UPS) States" shape="rect">Table CC.1.1-1</a> and <a class="xref" href="chapter_CC.html#table_CC.1.1-2" title="Table CC.1.1-2. Unified Procedure Step State Transition Table" shape="rect">Table CC.1.1-2</a> specify how changes in the state of a Unified Procedure Step shall be managed.</p>
+               <p>
+                  <a id="para_48f1617b-ab2e-4a7e-bc2d-f74e22f5b157" shape="rect"></a>
+                    </p>
+               <div class="figure">
+                  <a id="figure_CC.1.1-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.4_CC.1.1-1.svg" alt="Unified Procedure Step State Diagram" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure CC.1.1-1. Unified Procedure Step State Diagram</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                </p>
+               <p>
+                  <a id="para_2d40578e-9c53-4fb5-969d-d26d48022c0d" shape="rect"></a>The following interactions represent an example sequence of events and state transitions. Observe that the DIMSE Services described here operate on the same IOD. The multiple UPS SOP Classes thus act in a coordinated manner as specified in this Annex.</p>
+               <p>
+                  <a id="para_5081b011-0e23-4a6b-bccc-7501f29e4d04" shape="rect"></a>To create a UPS, an SCU uses an N-CREATE to push a UPS onto the SCP's worklist. The SCP responds to such requests by creating a Unified Procedure Step (UPS) with an initial state of SCHEDULED.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_b081f97e-f30f-471c-a1b2-767d67364f64" shape="rect"></a>All UPS Instances are instances of the UPS Push SOP Class, although the other three SOP Classes (UPS Pull, UPS Watch and UPS Event) may also operate on the Instance.</p>
+               </div>
+               <p>
+                  <a id="para_57b09acb-7ab9-499f-b5d6-63bfb0bf1367" shape="rect"></a>To subscribe to receive N-EVENT-REPORTs for a UPS, or to unsubscribe to stop receiving N-EVENT-REPORTS, an SCU uses an N-ACTION request. The SCU may be the system that created the UPS as a Push SCU, or may be some other system with a reason to track the progress and results of a scheduled step.</p>
+               <p>
+                  <a id="para_825418d9-1e72-4451-bb54-a103a2abbbbc" shape="rect"></a>To inform interested systems of the state of a UPS or the SCP itself, an SCP issues N-EVENT-REPORTs to SCUs that have subscribed.</p>
+               <p>
+                  <a id="para_1f7d5758-b6f9-48bf-ae5a-dc5030294720" shape="rect"></a>To find a UPS of interest, an SCU uses a C-FIND to query the SCP for relevant UPS instances.</p>
+               <p>
+                  <a id="para_5b65c28b-c785-457a-b320-c0906bd98e8a" shape="rect"></a>To "claim" and start work on a UPS, an SCU (which will be referred to here as the "Performing SCU") uses an N-ACTION Change State request to set the UPS state to IN PROGRESS and provide a transaction UID (which will be referred to here as the Locking UID). For a SCHEDULED UPS, the SCP responds by changing the UPS state to IN PROGRESS and recording the transaction UID for future use. For a UPS with another status, the SCP rejects the request.</p>
+               <p>
+                  <a id="para_94f41339-2d78-4074-8450-40c3b893f693" shape="rect"></a>The SCP does not permit the status of a SCHEDULED UPS to be set to COMPLETED or CANCELED without first being set to IN PROGRESS.</p>
+               <p>
+                  <a id="para_7e9f1aaa-a917-47bf-bb53-ad8c3deffecc" shape="rect"></a>To modify details of the performed procedure, the Performing SCU uses an N-SET request to the SCP (providing the Locking UID for the UPS). N-SET requests on an IN PROGRESS UPS where the Locking UID in the N-SET Data Set does not match the Locking UID in the UPS are rejected by the SCP.</p>
+               <p>
+                  <a id="para_6f2c5d8c-e783-4485-8a90-966692f66dcc" shape="rect"></a>To modify the status of the procedure step, the Performing SCU uses an N-ACTION Change State request to the SCP (providing the Locking UID for the UPS). N-ACTION Change State requests where the Locking UID in the N-ACTION Data Set does not match the Locking UID in the UPS are rejected by the SCP.</p>
+               <p>
+                  <a id="para_144becb7-7881-43de-94f6-a34e5caf2a1c" shape="rect"></a>The Locking UID effectively limits control of the state of an IN PROGRESS UPS to only the SCP and the Performing SCU. The SCP does not check whether IP addresses, AE-Titles, or parameters other than the Locking UID match to determine if the SCU has permission.</p>
+               <p>
+                  <a id="para_f118b164-255d-4bc2-8238-9756ce82847c" shape="rect"></a>When the Performing SCU completes work on the UPS, it N-SETs any values necessary to meet the Final State requirements in <a class="xref" href="sect_CC.2.5.html#table_CC.2.5-3" title="Table CC.2.5-3. UPS SOP Class N-CREATE/N-SET/N-GET/C-FIND Attributes" shape="rect">Table CC.2.5-3</a>, then uses an N-ACTION request (providing the Locking UID for the UPS during both steps) for the SCP to change the UPS state to COMPLETED.</p>
+               <p>
+                  <a id="para_9600cc22-c3da-416a-a5a6-ebb294f26a30" shape="rect"></a>When the Performing SCU abandons work on an incomplete UPS, it N-SETs any values necessary to meet the Final State requirements in <a class="xref" href="sect_CC.2.5.html#table_CC.2.5-3" title="Table CC.2.5-3. UPS SOP Class N-CREATE/N-SET/N-GET/C-FIND Attributes" shape="rect">Table CC.2.5-3</a>, then uses an N-ACTION request (providing the Locking UID for the UPS) for the SCP to change the UPS state to CANCELED.</p>
+               <p>
+                  <a id="para_2c02b547-5559-4cdd-9e78-edffee878a49" shape="rect"></a>To request cancellation of a UPS, non-performing SCUs use an N-ACTION Request Cancel (see <a href="../part17/sect_GGG.2.4.html" class="olink" shape="rect">Section GGG.2.4 “Third Party Cancel” in <span class="olinkdocname">PS3.17</span>
+                  </a> and <a href="../part17/sect_GGG.2.5.html" class="olink" shape="rect">Section GGG.2.5 “Radiation Therapy Dose Calculation Push Workflow” in <span class="olinkdocname">PS3.17</span>
+                  </a> for example cases).</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_6a872245-728e-4a9d-aa89-90def1a9f148" shape="rect"></a>If the UPS is still in the SCHEDULED state, the SCP first changes the UPS state to IN PROGRESS, and then to CANCELED, issuing the appropriate N-EVENT-REPORTS.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_0b9870a3-22a5-4afe-be6d-36a456a9518c" shape="rect"></a>If the UPS is already IN PROGRESS and the SCP is itself performing the UPS, it may, at its own discretion, choose to cancel the UPS as described in the previous paragraph.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_e2e417e0-7f5d-440f-a3c6-3d0fc83386c1" shape="rect"></a>If the UPS is already IN PROGRESS and the SCP is not the performer, it does not change the UPS state to CANCELED, but rather responds by issuing an N-EVENT-REPORT of the cancellation request to all subscribed SCUs. If the Performing SCU is listening to N-EVENT-REPORTs it may, at its own discretion, choose to cancel the UPS as described above.</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_d0d787f7-7479-407b-b897-b3419e85b1dc" shape="rect"></a>
+                    <a class="xref" href="chapter_CC.html#table_CC.1.1-1" title="Table CC.1.1-1. Unified Procedure Step (UPS) States" shape="rect">Table CC.1.1-1</a> describes the valid UPS states</p>
+               <div class="table">
+                  <a id="table_CC.1.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table CC.1.1-1. Unified Procedure Step (UPS) States</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1a32d55d-f3f3-44b1-b589-05b84f8a5b01" shape="rect"></a>State</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_83427b6c-7845-4208-a9d4-e5ce5b25f202" shape="rect"></a>Description</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8a6f419a-bfb9-4959-a0ab-95da371072ca" shape="rect"></a>SCHEDULED</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b2e452af-c6d5-4a2f-9ece-b7245579d8d9" shape="rect"></a>The UPS is scheduled to be performed.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0ff276b1-b00a-41a5-86c8-b87936f285eb" shape="rect"></a>IN PROGRESS</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_1d7b60b9-90f5-4771-8d27-28522de07b47" shape="rect"></a>The UPS has been claimed and a Locking UID has been set. Performance of the UPS has likely started.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9eec437e-0842-49d5-aacb-e892f9e0305e" shape="rect"></a>CANCELED</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_20241628-5901-4bda-bf4d-5073900e9810" shape="rect"></a>The UPS has been permanently stopped before or during performance of the step. This may be due to voluntary or involuntary action by a human or machine. Any further UPS-driven work required to complete the scheduled task must be performed by scheduling another (different) UPS.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_08269a66-8b8a-47da-b4e2-49e774b11569" shape="rect"></a>COMPLETED</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7b1ec622-5b75-4a68-965f-44c0657ab962" shape="rect"></a>The UPS has been completed.</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <p>
+                  <a id="para_8050260a-27d3-41cc-bd97-0aaa9d0ac3ab" shape="rect"></a>COMPLETED and CANCELED are "Final States" that involve specific requirements on the UPS as described in <a class="xref" href="sect_CC.2.5.html#sect_CC.2.5.1.1" title="CC.2.5.1.1 UPS Final State Requirements" shape="rect">Section CC.2.5.1.1</a>.</p>
+               <p>
+                  <a id="para_363d6df9-bf64-4c2b-8901-94db2380aae1" shape="rect"></a>
+                    <a class="xref" href="chapter_CC.html#table_CC.1.1-2" title="Table CC.1.1-2. Unified Procedure Step State Transition Table" shape="rect">Table CC.1.1-2</a> describes the valid state transitions (a row in the table defines what should happen in response to a certain event for each initial state). Details on how the Operations listed in the table should be carried out are described in <a class="xref" href="sect_CC.2.html" title="CC.2 DIMSE Service Groups" shape="rect">Section CC.2</a>.</p>
+               <div class="table">
+                  <a id="table_CC.1.1-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table CC.1.1-2. Unified Procedure Step State Transition Table</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1"></th>
+                              <th align="center" colspan="5" rowspan="1">
+                                <p>
+                                    <a id="para_f2c7f737-6c05-4d53-a269-3caf41b11109" shape="rect"></a>States</p>
+                              </th>
+                           </tr>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0ea1123d-1643-4a3f-86f2-2314dc3622cd" shape="rect"></a>Events</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_c1f3ee88-5925-4a9e-8ad5-f6e10cff2900" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>
+                                          <span class="italic">null</span>
+                                       </strong>
+                                    </span>
+                                </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_09dacfa5-e2f3-4dcf-9325-b8ccb5d26142" shape="rect"></a>SCHEDULEDH</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_99e27014-05ad-4991-848b-c4696507203c" shape="rect"></a>IN PROGRESS</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2615f190-561b-4cc6-bc7b-d1bb245d241d" shape="rect"></a>COMPLETEDH</p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9f015fde-bb2d-4868-9599-da8070c2cf56" shape="rect"></a>CANCELEDH</p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7570edbb-deec-43a2-b934-b15d5b9bd4c6" shape="rect"></a>N-CREATE received for this SOP Instance UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a277c0fa-2e9e-412b-bdda-0e6080a1fe2c" shape="rect"></a>Create SOP Instance with empty transaction UID, Change State to SCHEDULED</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8050fbac-5e29-4362-b6bd-948bee044ebb" shape="rect"></a>Failure Status Code 0111H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_499690ce-cf1e-4f3b-b69b-8da5118efdaa" shape="rect"></a>Failure Status Code 0111H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_863638e6-a52b-43a2-a8d9-483fb61d2a6b" shape="rect"></a>Failure Status Code 0111H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7247dac8-33d8-413a-9477-5bc277407a39" shape="rect"></a>Failure Status Code 0111H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b438315b-ccc8-4559-984d-82c21668d68e" shape="rect"></a>N-ACTION to Change State to IN PROGRESS with correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_d29e7fc9-c04e-4baa-a316-44a9a15de266" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_ea748409-f85f-4f88-bf80-6b2fbde70161" shape="rect"></a>Report state change, Record transaction UID, Change State to IN PROGRESS</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_0a12441a-35ca-46cc-8118-eef9cd5b57c0" shape="rect"></a>Failure Status Code C302H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_2c0b70f7-fa70-4d65-a801-da18720bdd95" shape="rect"></a>Failure Status Code C300H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b26fd5d9-7faf-4554-be2e-a3bc5e6b3b58" shape="rect"></a>Failure Status Code C300H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7e651cb0-0aa3-49d5-9476-7bd5be8d6fd7" shape="rect"></a>N-ACTION to Change State to IN PROGRESS without correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f7bf6381-530b-4121-9902-6b5f05d7748d" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e81a68f2-c772-4617-995d-46d3f5c9b819" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_74bba9f2-9339-4b2f-9dd5-2f1eeb33def5" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_903487ec-4e74-4d82-86ab-5ab5a03420f7" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9ddefa95-dd48-4c42-8884-bf58935c7c9f" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_897cf1e3-9b20-48e7-8393-c87fa86a6e75" shape="rect"></a>N-ACTION to Change State to SCHEDULED</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_705ee529-cde0-4dcb-bee7-b7c5af1fa35b" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_085c3975-9dc7-4419-801e-ecf0e500a0ac" shape="rect"></a>Failure Status Code C303H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_be10a270-72b3-44ce-a37b-9ec354cb62fe" shape="rect"></a>Failure Status Code C303H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_bc4c5cb0-dc7c-46ce-aba7-c5ed9aa3b50b" shape="rect"></a>Failure Status Code C303H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8f87920b-0c60-44d2-b40c-5744ebf4a1d0" shape="rect"></a>Failure Status Code C303H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_db0cc2da-8f20-4543-abbf-436a5fc8052e" shape="rect"></a>N-ACTION to Change State to COMPLETED, with correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9a57193b-2f60-4d1b-8c03-6283f678e079" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9a45ac55-2eba-4729-be1c-49bb52482383" shape="rect"></a>Failure Status Code C310H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_84a5f4e1-aeaf-47cf-8e57-26f42e7e37ee" shape="rect"></a>If Final State Requirements met, (Report state change, Change State to COMPLETED); Else Failure Status Code C304H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_7984c4b8-62b8-4816-b057-1536c04e27d5" shape="rect"></a>Warning Status Code B306H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9ae5f480-2186-4400-b1f6-02c4d79c37aa" shape="rect"></a>Failure Status Code C300H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_207b4e56-6589-4158-adb0-83bf0c3ea072" shape="rect"></a>N-ACTION to Change State to COMPLETED, without correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_b9e94d48-d437-49fc-b313-25aad0c0058e" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a7b3440f-4ba9-4807-adc8-502820f89e6e" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_f6e1f770-0adf-4910-bf42-92467d1c63f7" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_34cd5983-8324-48be-88b8-571d1e4cd33d" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_996146f1-f9d6-460a-b2d2-78e98e6ce52f" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5f1b5ec3-f8db-4e3d-ad5c-8b287286f3af" shape="rect"></a>N-ACTION to Request Cancel</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_a170e542-fe8c-4ce9-9801-0d343a480b28" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_19b7cc6b-17a4-4b68-8b8f-5bd0ea20c4ea" shape="rect"></a>Report state change to IN-PROGRESS, Report state change to CANCELED, Change State to CANCELED</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_90c9d911-8bf4-4e18-9d1d-2df9f456b82a" shape="rect"></a>Report that an Application Entity requested a cancel.</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_8e00610c-5e67-430c-bba3-939b8cd2671e" shape="rect"></a>Failure Status Code C311H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_74c7f0ac-f30c-4b54-934c-a5dfb726052e" shape="rect"></a>Warning Status Code B304H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_094b49d3-58fe-4dd8-a5c0-419bc81b9de2" shape="rect"></a>N-ACTION to Change State to CANCELED, with correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_537b10ab-9544-4eac-8204-1f9f909aaf19" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_12424172-660a-4f40-a032-830b4e05e467" shape="rect"></a>Failure Status Code C310H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5fc687a1-ff63-4ac1-af32-4d8d507b35f8" shape="rect"></a>If Final State Requirements met, (Report state change, Change State to CANCELED); Else Failure Status Code C304H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_00498c99-3e5f-4afa-a7c2-95c811a8086e" shape="rect"></a>Failure Status Code C300H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_6984009d-93de-4e5f-ae57-1281e3a497bb" shape="rect"></a>Warning Status Code B304H</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_eb7d0814-57fd-43b0-9da7-d915bed811d9" shape="rect"></a>N-ACTION to Change State to CANCELED, without correct transaction UID</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_5975ccfa-d24e-4a77-b189-44f47c773077" shape="rect"></a>Failure Status Code C307H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_02b5941c-2127-4b68-877c-78b6d41b9fee" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_50bcfc51-b6ff-43db-b1e4-27f80cff623c" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_9824eca3-4a51-4104-96a7-3e84be73e351" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                    <a id="para_e077f790-25ca-408b-ace2-f94b441a403c" shape="rect"></a>Failure Status Code C301H</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_BB.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_CC.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">BB.6 SOP Class Definitions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> CC.2 DIMSE Service Groups</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Y.4 DIMSE-C Service Groups</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_Y.html" title="Y Composite Instance Root Retrieve Service Class (Normative)" />
+      <link rel="prev" href="sect_Y.3.3.html" title="Y.3.3 New Instance Creation At the Frame Level" />
+      <link rel="next" href="sect_Y.4.2.html" title="Y.4.2 C-GET Operation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">Y.4 DIMSE-C Service Groups <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_Y.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Y.3.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">Y Composite Instance Root Retrieve Service Class (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Y.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_Y.html" shape="rect">Composite Instance Root Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">DIMSE-C Service Groups</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_Y.4" shape="rect"></a>Y.4 DIMSE-C Service Groups</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_3779024a-c658-4e95-944a-caac527836e5" shape="rect"></a>A single DIMSE-C Service is used in the construction of SOP Classes of the Composite Instance Root Retrieve Service. The following DIMSE-C operation is used:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_b96cc0b4-9c1e-4872-8893-99df4a12affc" shape="rect"></a>C-MOVE</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_22dfac64-b918-4424-8b86-0ed4720aadf3" shape="rect"></a>C-GET</p>
+               </li>
+            </ul>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_Y.4.1" shape="rect"></a>Y.4.1 C-MOVE Operation</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_3b43976c-4c52-4521-af00-3b2c67bc9e4b" shape="rect"></a>SCUs of the Composite Instance Root Retrieve Service shall generate retrievals using the C-MOVE operation as described in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.The C-MOVE operation allows an application entity to instruct another application entity to transfer stored SOP Instances or new SOP Instances extracted from such stored SOP Instances to another application entity using the C-STORE operation. Support for the C-MOVE service shall be agreed upon at Association establishment time by both the SCU and SCP of the C-MOVE in order for a C-MOVE operation to occur over the Association. The C-STORE sub-operations shall always be accomplished over an Association different from the Association that accomplishes the CMOVE operation. Hence, the SCP of the Query/Retrieve Service Class serves as the SCU of the Storage Service Class.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_db3f571a-9647-45ce-abb4-fb01f4131150" shape="rect"></a>The application entity that receives the stored SOP Instances may or may not be the originator of the C-MOVE operation.</p>
+            </div>
+            <p>
+               <a id="para_a2b567f8-3195-4f03-b874-11e5e7cd3227" shape="rect"></a>A C-MOVE request may be performed to any level of the Composite Object Instance Root Retrieve Information Model,and the expected SCP behavior depends on the level selected.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_Y.4.1.1" shape="rect"></a>Y.4.1.1 C-MOVE Service Parameters</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.1" shape="rect"></a>Y.4.1.1.1 SOP Class UID</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_5d7ed4e4-55dd-487c-a2f8-e2f9dc306554" shape="rect"></a>The SOP Class UID identifies the Query/Retrieve Information Model against which the C-MOVE is to be performed. Support for the SOP Class UID is implied by the Abstract Syntax UID of the Presentation Context used by this C-MOVE operation.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.2" shape="rect"></a>Y.4.1.1.2 Priority</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_bf2b753b-9aee-4854-8979-1e573f31fb99" shape="rect"></a>The Priority Attribute defines the requested priority of the C-MOVE operation and corresponding C-STORE sub-operations with respect to other DIMSE operations being performed by the same SCP.</p>
+                  <p>
+                     <a id="para_ad4d73bd-fedb-4cbd-8ae7-0ff7387d4cba" shape="rect"></a>Processing of priority requests is not required of SCPs. Whether or not an SCP supports priority processing, and the meaning of the different priority levels shall be stated in the Conformance Statement of the SCP. The same priority shall be used for all C-STORE sub-operations.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.3" shape="rect"></a>Y.4.1.1.3 Identifier</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a954bca7-5822-4196-a621-329383b8a97a" shape="rect"></a>The C-MOVE request shall contain an Identifier. The C-MOVE response shall conditionally contain an Identifier as required in <a class="xref" href="sect_C.4.3.html#sect_C.4.3.1.3.2" title="C.4.3.1.3.2 Response Identifier Structure" shape="rect">Section C.4.3.1.3.2</a>.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_9fbfcf5b-2ea4-4f6c-b261-6708ceca3aa2" shape="rect"></a>The Identifier is specified as U in the definition of the C-MOVE primitive in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> but is specialized for use with this service.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h6 class="title">
+                                 <a id="sect_Y.4.1.1.3.1" shape="rect"></a>Y.4.1.1.3.1 Request Identifier Structure</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_c89deb67-4168-4601-9db9-3355a2812b46" shape="rect"></a>An Identifier in a C-MOVE request shall contain:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1647f829-ab44-406e-8bc8-b54b2ff88bda" shape="rect"></a>the Query/Retrieve Level (0008,0052) that defines the level of the retrieval</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_5946556a-9f12-44b8-b2a1-a18cf3a48b78" shape="rect"></a>SOP Instance UID(s) (0008,0018)</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_871003e0-f37e-4326-934e-8a12a01de6e7" shape="rect"></a>One of the Frame Range Keys if present in the Information Model for the level of the Retrieval</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_38a051f0-9a3c-4799-bbe7-f7e126ada9fe" shape="rect"></a>Conditionally, the Attribute Query/Retrieve View (0008,0053). This Attribute may be included if Enhanced Multi-Frame Image Conversion has accepted during Association Extended Negotiation. It shall not be included otherwise.</p>
+                           </li>
+                        </ul>
+                     </div>
+                     <p>
+                        <a id="para_d71ecd7a-b7b9-47b9-ad50-644db6d47f49" shape="rect"></a>Specific Character Set (0008,0005) shall not be present.</p>
+                     <p>
+                        <a id="para_3c48e860-f05c-4e51-9f67-357fd2be1c1c" shape="rect"></a>The Keys at each level of the hierarchy and the values allowable for the level of the retrieval shall be defined in the SOP Class definition for the Query/Retrieve Information Model.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.4" shape="rect"></a>Y.4.1.1.4 Status</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9a305015-2f5a-4c8d-aab8-979e36556232" shape="rect"></a>
+                            <a class="xref" href="sect_Y.4.html#table_Y.4-1" title="Table Y.4-1. C-MOVE Response Status Values for Composite Instance Root Retrieve" shape="rect">Table Y.4-1</a> defines the Status Code values that might be returned in a C-MOVE response. General Status Code values and fields related to Status Code values are defined for C-MOVE DIMSE Service in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+                  <div class="table">
+                     <a id="table_Y.4-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table Y.4-1. C-MOVE Response Status Values for Composite Instance Root Retrieve</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_beffae9d-68e8-4be1-b07d-be87369f1592" shape="rect"></a>Service Status</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_78d02f59-1c80-4525-9e34-2367587304db" shape="rect"></a>Further Meaning</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e1457e04-7d4a-4ad7-918c-47a8c06f7108" shape="rect"></a>Status Codes</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fdeb9625-4a66-4aa8-9e6d-296bdd54e26e" shape="rect"></a>Related Fields</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="10" colspan="1">
+                                        <p>
+                                       <a id="para_0457ca62-0639-408c-8ed0-0e94b4eee391" shape="rect"></a>Failure</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_979f9178-b9cd-406e-a40b-b6d0f99caf31" shape="rect"></a>Refused: Out of resources - Unable to calculate number of matches</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_644d2720-c1f7-445a-88e1-6e205400fdf9" shape="rect"></a>A701</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7e9384c-9b7b-49f5-81c6-ab72945428e0" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e8388f48-a71d-47d9-ac12-d7ef965adf66" shape="rect"></a>Refused: Out of resources - Unable to perform sub-operations</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d7cf4553-37c8-4562-8366-6f843c7adbe2" shape="rect"></a>A702</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b95500a6-a360-48a6-a0db-890e5f250594" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                       <a id="para_a318429c-dbe8-4938-8084-fdcee3ab20b3" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                       <a id="para_40c44085-825c-46ba-8b1a-9c3a0ae439e7" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                       <a id="para_51bb4965-5dd0-4240-a343-a1e372815f55" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_eeae46bd-cc50-40f8-889f-370a2055b570" shape="rect"></a>Refused: Move Destination unknown</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4ae8c738-5ecd-47c8-bdeb-2c930894d89a" shape="rect"></a>A801</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a687e8ac-340b-4d05-b335-93bc7da6263a" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7ea1cef6-2346-4d26-b558-4541058de8f7" shape="rect"></a>Error: Data Set does not match SOP Class</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b6538ff2-5a25-4941-8cdd-6c4bdf835077" shape="rect"></a>A900</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cc2cb767-b60d-4606-b933-52511ed2cf7d" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                       <a id="para_792d9f3d-1586-4b14-b1ce-c86a3519f0c5" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2e79fea8-57a4-44de-bd73-18e0ea6d8a5a" shape="rect"></a>Failed: Unable to process</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5490a4e0-9683-4d13-ac2a-ff4580135172" shape="rect"></a>Cxxx</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2ad53f1b-7a2e-49a8-a7a8-54e56ce1ac43" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                       <a id="para_514b3de1-5e03-4e09-bf4c-f36fd41205c4" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ebfcd864-64c6-4b64-bc67-4e2009157002" shape="rect"></a>Failed: None of the frames requested were found in the SOP Instance</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bda3d18e-6853-4e22-97cc-bd0eabe19dcc" shape="rect"></a>AA00</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_dcabc19b-852b-4fe7-b0ab-a11d0d4e8a18" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_608cab29-e8bc-4628-9a93-46ee0b5bb45b" shape="rect"></a>Failed: Unable to create new object for this SOP Class</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea04e64f-e6a3-48ca-a849-aec11b0cf87b" shape="rect"></a>AA01</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_20f1c9d4-d471-4569-a0cf-c68c23329812" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_500dc1a1-3b79-4a06-9e20-7169fe981802" shape="rect"></a>Failed: Unable to extract frames</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_92e687a6-a944-44af-88ef-a9f6826a4046" shape="rect"></a>AA02</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9351ed57-8788-4f12-be13-19c99518f128" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e4e8749a-0b7a-4128-9546-da8d92fd5289" shape="rect"></a>Failed: Time-based request received for a non-time-based original SOP Instance.</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b9209000-d480-435b-a032-741b7551c091" shape="rect"></a>AA03</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2c9eff41-894b-450f-819e-5a4718b4061d" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6217b0d2-a1ff-445c-acad-2a7ac030726d" shape="rect"></a>Failed: Invalid Request</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ff5f5b94-06f9-4e45-99a3-0dec0a607a45" shape="rect"></a>AA04</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_337a03d8-b915-4b4b-a8c4-db87589b895a" shape="rect"></a>(0000,0901)</p>
+                                        <p>
+                                       <a id="para_ed4605ca-2a21-4752-88ab-e9c6678e8589" shape="rect"></a>(0000,0902)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_04197c9d-9e0d-44d8-9efc-e6ec79bf411a" shape="rect"></a>Cancel</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_728625b0-eeb7-4a41-ae13-51566e3fb643" shape="rect"></a>Sub-operations terminated due to Cancel Indication</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_676c7c5a-a9db-4497-91d1-534ebbecb6b4" shape="rect"></a>FE00</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_97eca395-55f9-47bb-bdeb-1cef4ccbceac" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                       <a id="para_8a7a1d19-751d-444c-99cf-b39e9dd75fc8" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                       <a id="para_58d15c5f-fd18-4f0c-8341-81f425112c27" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                       <a id="para_df4a46bc-560c-4915-a035-823c7f87022c" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_50598d69-fc7e-4b0e-bc4b-2d0bb2018ab8" shape="rect"></a>Warning</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f1d05af0-1f26-41f7-80b2-9ee0b23b1cf1" shape="rect"></a>Sub-operations Complete - One or more Failures or Warnings</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e96db3be-e8f0-4027-9653-43fb51ef04eb" shape="rect"></a>B000</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e1a0d12f-3c8b-4578-b10b-1cedb623bbf0" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                       <a id="para_d9819bca-75a5-43df-9787-989855c47c29" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                       <a id="para_b84ec65c-26e1-4ed2-8909-d8a0a17ef10f" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                       <a id="para_aff673c3-6689-47ab-acab-f7ea8e069bf1" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3e8b0fe8-7745-4945-9bc0-476229e94fbe" shape="rect"></a>Success</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f3543468-2cb4-4f4b-980e-5bc338e7fca0" shape="rect"></a>Sub-operations Complete - No Failures or Warnings</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_af6eb4a8-be99-4a0e-9419-d18557bdc4c5" shape="rect"></a>0000</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56530ab2-96c2-4cbc-8e5a-733c22042ee4" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                       <a id="para_fb66e4e4-f986-4d66-a7be-2f60ba9f0d53" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                       <a id="para_57a2468f-2343-4df7-bd3d-d2f408517128" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                       <a id="para_518d02ff-d120-4d23-9dc1-d7b1f87466dd" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2777e504-9d67-4ae1-bc6b-f3544ea3afbc" shape="rect"></a>Pending</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ab0f9771-f008-4db7-9f6e-bad07a12c59c" shape="rect"></a>Sub-operations are continuing</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ab3a40d9-fe8e-4dd0-9ce3-a6c798243b21" shape="rect"></a>FF00</p>
+                                    </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0ceddef9-1b5f-4ce9-aba4-b4e4c416e650" shape="rect"></a>(0000,1020)</p>
+                                        <p>
+                                       <a id="para_96d0692e-d14f-488d-b3ca-300c254a77ff" shape="rect"></a>(0000,1021)</p>
+                                        <p>
+                                       <a id="para_2015e2de-dced-4ee7-bab9-0a1de3ebabb0" shape="rect"></a>(0000,1022)</p>
+                                        <p>
+                                       <a id="para_b9822d35-41f0-4a91-9cef-15fef07bc23c" shape="rect"></a>(0000,1023)</p>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_706d1209-d02f-44e8-b323-03ee62ca4a68" shape="rect"></a>Some Failure Status Codes are implementation specific.</p>
+                  <p>
+                     <a id="para_b3ac0c9a-2611-4055-898e-6abd8a74137b" shape="rect"></a>An SCP implementation shall assign specific Failure Status Codes by replacing each 'x' symbol with a hexadecimal digit in the range from 0 to F. An SCP implementation wishing to differentiate between causes of "Failed: Unable to process" Failure Meaning shall assign those causes specific Status Code Values within valid range specified in <a class="xref" href="sect_Y.4.html#table_Y.4-1" title="Table Y.4-1. C-MOVE Response Status Values for Composite Instance Root Retrieve" shape="rect">Table Y.4-1</a>.</p>
+                  <p>
+                     <a id="para_249d7b8f-19e8-4d83-af0f-9af287d53918" shape="rect"></a>An SCU implementation shall recognize any Failure Status Code within the value range specified in <a class="xref" href="sect_Y.4.html#table_Y.4-1" title="Table Y.4-1. C-MOVE Response Status Values for Composite Instance Root Retrieve" shape="rect">Table Y.4-1</a> as an indicator of the Failure Meaning stated in the table. There is no requirement for an SCU implementation to differentiate between specific Status Codes within the valid range.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.5" shape="rect"></a>Y.4.1.1.5 Number of Remaining Sub-Operations</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_86698a09-1fc3-4822-97fb-0cab26506b7b" shape="rect"></a>Inclusion of the Number of Remaining Sub-operations shall be as specified in <a class="xref" href="sect_C.4.2.html#sect_C.4.2.1.6" title="C.4.2.1.6 Number of Remaining Sub-Operations" shape="rect">Section C.4.2.1.6</a>
+                        </p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.6" shape="rect"></a>Y.4.1.1.6 Number of Completed Sub-Operations</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_54cd194a-dc45-4762-93b3-cb517047cb1e" shape="rect"></a>Inclusion of the Number of Completed Sub-operations shall be as specified in <a class="xref" href="sect_C.4.2.html#sect_C.4.2.1.7" title="C.4.2.1.7 Number of Completed Sub-Operations" shape="rect">Section C.4.2.1.7</a>
+                        </p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.7" shape="rect"></a>Y.4.1.1.7 Number of Failed Sub-Operations</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_33233dc5-4a7d-45b0-9409-d7d421866d58" shape="rect"></a>Inclusion of the Number of Failed Sub-operations shall be as specified in <a class="xref" href="sect_C.4.2.html#sect_C.4.2.1.8" title="C.4.2.1.8 Number of Failed Sub-Operations" shape="rect">Section C.4.2.1.8</a>
+                        </p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.1.8" shape="rect"></a>Y.4.1.1.8 Number of Warning Sub-Operations</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_b3576d1b-661e-45d0-8caf-0b0382b0659a" shape="rect"></a>Inclusion of the Number of Warning Sub-operations shall be as specified in <a class="xref" href="sect_C.4.2.html#sect_C.4.2.1.9" title="C.4.2.1.9 Number of Warning Sub-Operations" shape="rect">Section C.4.2.1.9</a>.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_Y.4.1.2" shape="rect"></a>Y.4.1.2 C-MOVE SCU Behavior</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.2.1" shape="rect"></a>Y.4.1.2.1 Baseline Behavior of SCU</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_6d851713-67f6-4fef-8739-80fec8cd1642" shape="rect"></a>An SCU conveys the following semantics with a C-MOVE request:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_c101d706-76e8-4737-8b2d-0d2338b15600" shape="rect"></a>If the Retrieve Level (0000,0052) is IMAGE, the SCU shall specify one SOP Instance UID or a list of SOP Instance UIDs.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_3a98e803-2935-4545-87f1-51b1eb0f570a" shape="rect"></a>If the Retrieve Level (0000,0052) is FRAME, the SCU shall specify the single SOP Instance UID of the item from which the new Composite SOP Instance should be extracted and the requested Frame List. The Requested Frame List shall be constructed as defined in <a class="xref" href="sect_Y.3.2.html" title="Y.3.2 Construction and Interpretation of Frame Range Keys" shape="rect">Section Y.3.2</a>.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_be770dc3-4fe0-4c69-8294-c508a8d41ddf" shape="rect"></a>The SCU shall accept C-MOVE responses with status equal to Pending during the processing of the C-STORE sub-operations. These responses indicate the number of Remaining, Completed, Failed and Warning C-STORE sub-operations.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_b29fa64b-6ff8-4604-8328-d989ed45c977" shape="rect"></a>The SCU shall interpret a C-MOVE response with a status equal to Success, Warning, Failure, or Refused as a final response. The final response indicates the number of Completed sub-operations and the number of Failed C-STORE sub-operations resulting from the C-MOVE operation. The SCU shall interpret a status of:</p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: circle; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_fe773c9e-99e5-4d36-b12c-04d58160a448" shape="rect"></a>Success to indicate that all sub-operations were successfully completed</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_3efe4fd4-f43a-4c33-bc58-b365d3ff44e3" shape="rect"></a>Failure or Refused to indicate all sub-operations were unsuccessful</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_e3dd25d8-a70e-4f2b-89c0-53c37d0fd7cf" shape="rect"></a>Warning in all other cases. The Number of Completed Sub-Operations (0000,1021), Number of Warning Sub-Operations (0000,1023), Number of Failed Sub-Operations (0000,1022) can be used to obtain more detailed information.</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_22a9b2b3-9c67-4824-aee5-aaa6a4ba9891" shape="rect"></a>The SCU may cancel the C-MOVE operation by issuing a C-CANCEL-MOVE request at any time during the processing of the C-MOVE request. A C-MOVE response with a status of Canceled shall indicate to the SCU that the retrieve was canceled. Optionally, the C-MOVE response with a status of Canceled shall indicate the number of Completed, Failed, and Warning C-STORE sub-operations. If present, the Remaining sub-operations count shall contain the number of C-STORE sub-operations that were not initiated due to the C-CANCEL-MOVE request.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_1d2ba995-6085-4069-b8d5-9734515bd9bb" shape="rect"></a>For FRAME level C-MOVE operations, the application receiving the C-STORE sub-operations will receive a new SOP Instance with a different SOP Instance UID from the one included in the C-MOVE request. If it is required to link the received instance to the request, then it may be necessary to inspect the Frame Extraction Sequence of the instance received, to compare the original Instance UID and Requested Frame List to those in the request.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.2.2" shape="rect"></a>Y.4.1.2.2 Extended Behavior of SCU</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a56f6843-862f-44d7-8926-33f3b1bc883a" shape="rect"></a>The extended behavior of the SCU shall be as specified in <a class="xref" href="sect_C.4.2.2.2.html" title="C.4.2.2.2 Extended Behavior of SCU" shape="rect">Section C.4.2.2.2</a>, except that Relational-retrieve shall not be supported.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_Y.4.1.3" shape="rect"></a>Y.4.1.3 C-MOVE SCP Behavior</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.3.1" shape="rect"></a>Y.4.1.3.1 Baseline Behavior of SCP</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_5fce7310-1f59-4861-bc37-b998e16593cc" shape="rect"></a>An SCP conveys the following semantics with a C-MOVE response:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2835453e-204f-4453-bf00-3d88d8ecbce3" shape="rect"></a>If the Retrieve Level (0000,0052) is IMAGE the SCP shall identify a set of Entities at the level of the transfer based upon the values in the Unique Keys in the Identifier of the C-MOVE request.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_11523400-86a1-4547-baa5-a137e397111a" shape="rect"></a>If the Retrieve Level (0000,0052) is FRAME, the SCP shall create a new Composite Instance according to the rules in <a class="xref" href="sect_Y.3.2.html" title="Y.3.2 Construction and Interpretation of Frame Range Keys" shape="rect">Section Y.3.2</a>. The newly created SOP Instance shall be treated in the same manner as the set of Entities identified above.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_05d48c03-9743-4799-a5aa-9000777ef2a4" shape="rect"></a>The SCP shall either re-use an established and compatible Association or establish a new Association for the C-STORE sub-operations</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_7e974151-d4bb-48c7-83a4-813b68cfd0ad" shape="rect"></a>The SCP shall initiate C-STORE sub-operations over the Association for the identified or newly created SOP Instances.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_6b77386f-bf0d-4a70-a779-263e25424c5d" shape="rect"></a>A sub-operation is considered a Failure if the SCP is required to create new SOP Instance, but is unable to do so due to inconsistencies in the Frame Range Keys, or if the resulting SOP Instance would not be valid.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_584971c3-d4d1-450b-8e86-f016801ae255" shape="rect"></a>Optionally, the SCP may generate responses to the C-MOVE with status equal to Pending during the processing of the C-STORE sub-operations. These responses shall indicate the number of Remaining, Completed, Failure, and Warning C-STORE sub-operations.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_29d1afc0-43e1-4ce7-ad03-f7b36ed4e69a" shape="rect"></a>When the number of Remaining sub-operations reaches zero, the SCP shall generate a final response with a status equal to Success, Warning or Failed. The status contained in the C-MOVE response shall contain:</p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: circle; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_728df5c9-2af0-494f-a8d0-562f9b2b7279" shape="rect"></a>Success if all sub-operations were successfully completed</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_2802e80b-e541-4f68-8f05-208e359fe32d" shape="rect"></a>Failure if all sub-operations were unsuccessful</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_abe26338-3aa6-45ac-a0ed-a00b9c030cea" shape="rect"></a>Warning in all other cases.</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_91e940f0-f99e-4a8d-9895-fb97a3d16a2f" shape="rect"></a>The SCP may receive a C-CANCEL-MOVE request at any time during the processing of the C-MOVE request. The SCP shall interrupt all C-STORE sub-operation processing and return a status of Canceled in the C-MOVE response. The C-MOVE response with a status of Canceled shall contain the number of Completed, Failed, and Warning C-STORE sub-operations. If present, the Remaining sub-operations count shall contain the number of C-STORE sub-operations that were not initiated due to the C-CANCEL-MOVE request.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a89b3649-f0b2-4d81-b2e2-fc4781fbeef0" shape="rect"></a>If the SCP manages images in multiple alternate encodings (see <a class="xref" href="sect_C.6.html#sect_C.6.1.1.5.1" title="C.6.1.1.5.1 Alternate Representation Sequence" shape="rect">Section C.6.1.1.5.1</a>), only one of the alternate encodings of an image shall be used as the existing SOP Instance from which frames are to be extracted.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_Y.4.1.3.2" shape="rect"></a>Y.4.1.3.2 Extended Behavior of SCP</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_e69d0dc3-3ddd-4d4f-b4f0-24003806dce4" shape="rect"></a>The extended behavior of the SCP shall be as specified in <a class="xref" href="sect_C.4.2.3.2.html" title="C.4.2.3.2 Extended Behavior of SCP" shape="rect">Section C.4.2.3.2</a>, except that Relational-retrieve shall not be supported.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_Y.3.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_Y.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_Y.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">Y.3.3 New Instance Creation At the Frame Level </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> Y.4.2 C-GET Operation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

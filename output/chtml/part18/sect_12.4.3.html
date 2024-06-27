@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>12.4.3 Response</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_12.4.html" title="12.4 Retrieve Transaction" />
+      <link rel="prev" href="sect_12.4.2.html" title="12.4.2 Behavior" />
+      <link rel="next" href="sect_12.4.3.2.html" title="12.4.3.2 Response Header Fields" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">12.4.3 Response <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_12.4.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_12.4.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">12.4 Retrieve Transaction</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_12.4.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_12.html" shape="rect">Non-Patient Instance Service and Resources</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_12.4.html" shape="rect">Retrieve Transaction</a>
+         </span> &gt; <span class="breadcrumb-node">Response</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_12.4.3" shape="rect"></a>12.4.3 Response</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_5f550bf4-8dd6-43e5-98b8-e95d3ecf5464" shape="rect"></a>The response has the following syntax:</p>
+         <pre class="programlisting" xml:space="preserve">version SP status-code SP reason-phrase CRLF</pre>
+         <pre class="programlisting" xml:space="preserve">[Content-Type: dicom-media-type CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">[(Content-Length: uint / Transfer-Encoding: encoding) CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">[Content-Location: url CRLF]</pre>
+         <pre class="programlisting" xml:space="preserve">*(header-field CRLF</pre>
+         <pre class="programlisting" xml:space="preserve">CRLF</pre>
+         <pre class="programlisting" xml:space="preserve">[payload / status-report]</pre>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_12.4.3.1" shape="rect"></a>12.4.3.1 Status Codes</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_bbd43b87-8a73-44a7-a899-29a2ed3d11c0" shape="rect"></a>
+                        <a class="xref" href="sect_12.4.3.html#table_12.4.3-1" title="Table 12.4.3-1. Status Code Meaning" shape="rect">Table 12.4.3-1</a> shows some common status codes corresponding to this transaction. See also <a class="xref" href="sect_8.5.html" title="8.5 Status Codes" shape="rect">Section 8.5</a> for additional status codes.</p>
+            <div class="table">
+               <a id="table_12.4.3-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table 12.4.3-1. Status Code Meaning</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3e948d6d-9a07-4820-817d-56e1ca70d462" shape="rect"></a>Status</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1e91b699-14a9-4544-88d5-ec7b8ed17cff" shape="rect"></a>Code</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_8b5942d8-c6e7-46be-8f42-c051ec145f7d" shape="rect"></a>Meaning</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c2aca72f-519b-49c5-ba19-50950168a0c3" shape="rect"></a>Success</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_fb14adee-9b2a-4f43-ae5e-984ff8e47474" shape="rect"></a>200 (OK)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a7811d4e-03cc-4280-b1cb-a2e16bc9b73f" shape="rect"></a>The Instance was successfully retrieved.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="3" colspan="1">
+                                    <p>
+                                 <a id="para_513bf21d-87af-4875-bb9e-e13ff360e719" shape="rect"></a>Failure</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_12d1e200-7074-4f46-86e4-5e42eb528373" shape="rect"></a>400 (Bad Request)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_3e156870-11a7-4011-99b9-11cf6e29c283" shape="rect"></a>There was a problem with the request.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d4ef2357-1f0d-482e-b4b6-e7e5b54ddb0d" shape="rect"></a>404 (Not Found)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_97497af6-e1c1-45fc-9b42-9caa959ba2ea" shape="rect"></a>The origin server did not find a current representation for the Target Resource or is not willing to disclose that one exists. For example, an unsupported IOD, or Instance not on server.</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d2a66eeb-528f-4d3b-a690-8342b87224dd" shape="rect"></a>406 (Unsupported Media Type)</p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_04a095d5-8dae-49cc-a056-85bb74d6275f" shape="rect"></a>The origin server does not support any of the Acceptable Media Types.</p>
+                                </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_12.4.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_12.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_12.4.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">12.4.2 Behavior </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 12.4.3.2 Response Header Fields</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

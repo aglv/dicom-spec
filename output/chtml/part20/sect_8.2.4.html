@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.2.4 documentationOf/serviceEvent</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.20.html" title="PS3.20" />
+      <link rel="up" href="sect_8.2.html" title="8.2 Imaging Header" />
+      <link rel="prev" href="sect_8.2.3.html" title="8.2.3 inFulfillmentOf/Order and @ID" />
+      <link rel="next" href="sect_8.2.4.2.html" title="8.2.4.2 Performer" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024c - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.2.4 documentationOf/serviceEvent <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part20/sect_8.2.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8.2 Imaging Header</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.20.html" shape="rect">PS3.20</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Header Content Templates</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_8.2.html" shape="rect">Imaging Header</a>
+         </span> &gt; <span class="breadcrumb-node">documentationOf/serviceEvent</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_8.2.4" shape="rect"></a>8.2.4 documentationOf/serviceEvent</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_cafab180-21be-4395-b642-d628b34b0d25" shape="rect"></a>Each documentationOf/serviceEvent indicates an imaging procedure that the provider describes and interprets in the content of the report. The main activity being described by this document is both the performance of the imaging procedure and the interpretation of the imaging procedure.</p>
+         <p>
+            <a id="para_f1f563c1-e6ea-4c4f-92a5-6987278c8d10" shape="rect"></a>There may be more than one documentationOf/serviceEvent element if the report is interpreting multiple DICOM Studies. There may also be multiple reports for a single DICOM Study.</p>
+         <p>
+            <a id="para_09276d98-15ff-4984-8bfb-872b1e9b13c3" shape="rect"></a>The serviceEvent/id element contains the DICOM Study Instance UID.</p>
+         <p>
+            <a id="para_1ff3d3c4-f792-488d-bef3-6d5a5f0be395" shape="rect"></a>The date and time of the imaging procedure is indicated in the serviceEvent/effectiveTime element; the date and time of the interpretation is in the clinicalDocument/effectiveTime.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_b6992d66-3655-48b7-9704-da20f4e55930" shape="rect"></a>The serviceEvent/effectiveTime uses the IVL_TS data type with the low element required, for harmonization with Consolidated CDA release 1.1.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_8.2.4.1" shape="rect"></a>8.2.4.1 code and translation</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_dc49a94d-b7c9-4bda-9870-52087353b121" shape="rect"></a>Within each documentationOf element, there is one serviceEvent element. The type of imaging procedure may be further described in the serviceEvent/code element. This guide makes no specific recommendations about the primary vocabulary to use for describing this event, identified as Procedure Code.</p>
+            <p>
+               <a id="para_1e1789ed-3954-4886-b905-daf92454b6c9" shape="rect"></a>The serviceEvent/code/translation elements include codes representing the primary image acquisition modality using DICOM (DCM) terminology, and target anatomic region (for which SNOMED terminology is recommended).</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_1aaa8dba-ecef-413a-9eb2-48014c6186c3" shape="rect"></a>These codes may be used as health information exchange search metadata in accordance with the IHE Radiology Technical Framework Cross-Enterprise Document Sharing for Imaging (XDS-I) Profile.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_5ac84caf-df48-4d6b-9a00-f14a8b1bc1d5" shape="rect"></a>Binding of the Concept Domains ProcedureCode and AnatomicRegion to specific Value Sets may be done in a further profiling of the use of this Template.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <div class="example">
+               <a id="example_8.2.4.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Example 8.2.4.1-1. documentationOf example</strong>
+               </p>
+               <div class="example-contents">
+                  <pre class="programlisting" xml:space="preserve">&lt;documentationOf&gt;
+    &lt;serviceEvent classCode="ACT" moodCode="EVN"&gt;
+        &lt;!-- study instance UID (0020,000D) --&gt;
+        &lt;id root="1.2.840.113619.2.62.994044785528.114289542805"/&gt;
+        &lt;!-- code is DICOM (Performed) Procedure Code Seq (0008,1032) --&gt;
+        &lt;code code="71020"
+            displayName="Radiologic examination, chest, two views, frontal and lateral"
+            codeSystem="2.16.840.1.113883.6.12"
+            codeSystemName="CPT4"&gt;
+            &lt;translation code="XR"
+                displayName="XR"
+                codeSystem="1.2.840.10008.2.16.4"
+                codeSystemName="DCM"/&gt;
+        &lt;/code&gt;
+        &lt;!-- translation code is Modality (0008,0060) --&gt;
+        &lt;effectiveTime value="20060823222400+0800"/&gt;
+    &lt;/serviceEvent&gt;
+&lt;/documentationOf&gt;</pre>
+               </div>
+            </div>
+            <br class="example-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_8.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.2.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.3 inFulfillmentOf/Order and @ID </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.20.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.2.4.2 Performer</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024c - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

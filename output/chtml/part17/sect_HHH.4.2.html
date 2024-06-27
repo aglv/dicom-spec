@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>HHH.4.2 Analysis of Use Cases</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_HHH.4.html" title="HHH.4 Uses For QIDO Services" />
+      <link rel="prev" href="sect_HHH.4.html" title="HHH.4 Uses For QIDO Services" />
+      <link rel="next" href="sect_HHH.4.2.2.html" title="HHH.4.2.2 Populating FHIR Resources" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">HHH.4.2 Analysis of Use Cases <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_HHH.4.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_HHH.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">HHH.4 Uses For QIDO Services</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HHH.4.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_HHH.html" shape="rect">Transition from WADO to RESTful Services (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_HHH.4.html" shape="rect">Uses For QIDO Services</a>
+         </span> &gt; <span class="breadcrumb-node">Analysis of Use Cases</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_HHH.4.2" shape="rect"></a>HHH.4.2 Analysis of Use Cases</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0a495090-edbe-4fc9-8384-8335ae495d6d" shape="rect"></a>Examples of use cases / clinical scenarios, used as the basis for the development of the QIDO-RS requirements, include:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="a">
+               <li class="listitem">
+                  <p>
+                     <a id="para_103c0a53-6c59-4a08-b116-e1dc8c173015" shape="rect"></a>Search from EMR</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_e90ea14f-676a-41c5-8aa7-b8aba7193097" shape="rect"></a>Populating FHIR resources</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_0e6bb5f3-cbf9-4066-a430-4a2158cd84fc" shape="rect"></a>Worklist in Viewer</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1cfec7cf-e767-4a06-8949-022a9f59d8d0" shape="rect"></a>Study Import Duplication Check</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1305a6cf-46a2-4a50-8a08-0a9c84ead324" shape="rect"></a>Multiple System Query</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4484a140-2826-49e6-81c4-1d1645f61e4b" shape="rect"></a>Clinical Reconstruction</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_158c04f0-cdc0-4575-8cff-7869df5e3121" shape="rect"></a>Mobile Device Access</p>
+               </li>
+            </ol>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_HHH.4.2.1" shape="rect"></a>HHH.4.2.1 Search From EMR</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_556e0119-bb8f-492f-a6e7-2975ed89355e" shape="rect"></a>A General Practitioner (GP) in a clinic would like to check for imaging studies for the current patient. These studies are stored in a PACS, Vendor Neutral Archive (VNA) or HIE that supports QIDO functionality. The GP launches an Electronic Medical Record (EMR) application, and keys in the patient demographics to search for the patient record within the EMR. Once the record is open, the EMR, using QIDO, makes requests to the back-end systems, supplying Patient ID (including issuer) and possibly other parameters (date of birth, date range, modality, etc.). That system returns the available studies along with meta-data for each study that will help the GP select the study to open. The meta-data would include, but is not limited to, Study Description, Study Date, Modality, and Referring Physician.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_HHH.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_HHH.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_HHH.4.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">HHH.4 Uses For QIDO Services </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> HHH.4.2.2 Populating FHIR Resources</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

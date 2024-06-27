@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7.8 Private Data Elements</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_7.html" title="7 The Data Set" />
+      <link rel="prev" href="sect_7.7.html" title="7.7 Retired Data Elements" />
+      <link rel="next" href="sect_7.8.2.html" title="7.8.2 Encoding of Private Elements" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7.8 Private Data Elements <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_7.8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">7 The Data Set</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_7.html" shape="rect">The Data Set</a>
+         </span> &gt; <span class="breadcrumb-node">Private Data Elements</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_7.8" shape="rect"></a>7.8 Private Data Elements</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_e664af99-e0e2-4ea1-845d-53edb6cd7701" shape="rect"></a>Implementations may require communication of information that cannot be contained in Standard Data Elements. Private Data Elements are intended to be used to contain such information. Such Private Data Elements shall not change the semantics of the Information Object Definition or SOP Class Definition.</p>
+         <p>
+            <a id="para_5c57ea50-c49a-4aa6-bfbd-f07befbfa0b3" shape="rect"></a>Private Data Elements have the same structure as Standard Data Elements specified earlier in <a class="xref" href="chapter_7.html#sect_7.1" title="7.1 Data Elements" shape="rect">Section 7.1</a> (i.e., Data Element Tag Field, optional VR Field, Value Length Field, and Value Field). The Group Number used in the Element Tag of Private Data Elements shall be an odd number. Private Data Elements shall be contained in the Data Set in increasing numeric order of Data Element Tag. The Value Field of a Private Data Element shall have one of the VRs specified by this Standard in <a class="xref" href="sect_6.2.html" title="6.2 Value Representation (VR)" shape="rect">Section 6.2</a>.</p>
+         <p>
+            <a id="para_306e0e6f-8b81-4ed6-b11a-7fcfca5c3faa" shape="rect"></a>For each Information Object Definition or SOP Class Definition, certain Data Elements are required (Data Element Type 1, 1C, 2, or 2C) as specified in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> and <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>. Private Data Elements shall not be used in place of required Standard Data Elements.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_7.8.1" shape="rect"></a>7.8.1 Private Data Element Tags</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_7984993b-9caf-4610-be77-8fa0ed194c66" shape="rect"></a>It is possible that multiple implementers may define Private Elements with the same (odd) group number. To avoid conflicts, Private Elements shall be assigned Private Data Element Tags according to the following rules.</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="a">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_184c146b-050a-44b5-8420-fdf179f0bf0b" shape="rect"></a>Private Creator Data Elements numbered (gggg,0010-00FF) (gggg is odd) shall be used to reserve a block of Elements with Group Number gggg for use by an individual implementer. The implementer shall insert an identification code in an unused (unassigned) Element in this series to reserve a block of Private Elements. The VR of the private identification code shall be LO (Long String) and the VM shall be equal to 1. A Private Creator identifier may be used only once within a Group; reserving multiple blocks of Elements in the same Group with the same identifier is not allowed.
+              The Private Creator Data Elements shall only contain characters from the Default Character Repertoire and not an Extended or Replacement Character Repertoire, even though the LO VR is one that is affected by the Specific Character Set (0008,0005).</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <div class="orderedlist">
+                           <ol class="orderedlist" type="1">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_057b129b-322a-455e-b352-40c6c0749bb4" shape="rect"></a>If an implementer needs repetitions of a Private Data Element, a private Sequence Data Element (see <a class="xref" href="sect_7.5.html" title="7.5 Nesting of Data Sets" shape="rect">Section 7.5</a>) may be used to contain each of the repeated Private Data Elements in separate items.
+                      Each item needs to claim the corresponding private block of Elements, as described below.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_92d7dbb9-3596-4b2e-bd11-73c799bf71d2" shape="rect"></a>An implementer may use the same Private Creator identifier for multiple Groups.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_30084410-f3db-4cb5-93ee-bf4f54396122" shape="rect"></a>The first Private Creator Data Element does not have to be (gggg,0010), nor do they have to be sequentially assigned. In particular, if a block of Private Data Elements is entirely removed along with its Private Creator Data Element, such as during de-identification, the other private blocks do not need to be renumbered.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_66ca3e33-5a3b-471e-862e-f9fe5de0dd16" shape="rect"></a>A Private Creator Data Element may be present even though no corresponding Private Data Elements are used. In particular, if a block of Private Data Elements is entirely removed, such as during de-identification, the corresponding Private Creator Data Element  does not need to be removed, though it may be.</p>
+                              </li>
+                           </ol>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_167ccd9d-9024-4382-b234-56ee7ed8d38a" shape="rect"></a>Private Creator Data Element (gggg,0010) is required in order to identify Data Elements (gggg,1000-10FF) if present, Private Creator Data Element (gggg,0011) is required in order to identify Data Elements (gggg,1100-11FF) if present, through Private Creator Data Element (gggg,00FF), which identifies Data Elements (gggg,FF00-FFFF) if present.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6b1b4fe8-7eec-4749-8b0c-0a6c405bbf1a" shape="rect"></a>Encoders of Private Data Elements shall be able to dynamically assign private data to any available (unreserved) block(s) within the Private group, and specify this assignment through the blocks corresponding Private Creator Data Element(s). Decoders of Private Data shall be able to accept reserved blocks with a given Private Creator identification code at any position within the Private group specified by the blocks corresponding Private Creator Data Element.</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <div class="orderedlist">
+                           <ol class="orderedlist" type="1">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_38c1cb98-d250-4234-85cd-952956a94eef" shape="rect"></a>Older versions of this Standard described shadow groups. These were groups with a group number one greater than the standard groups. Elimination of conflicts in Private Data Element Tags have made this distinction obsolete and this terminology has been retired.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_8d59b8b6-aff4-4463-b947-e02b967a678f" shape="rect"></a>Older versions of this Standard specified private group Data Element numbers (gggg,10FF-7FFF) reserved for manufacturers and private group Data Element numbers (gggg, 8100-FFFF) reserved for users. Elimination of conflicts in Private Data Element Tags has made this distinction obsolete and this specification has been retired.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_c772d8d5-6241-40f5-83e2-0a19653d6ee9" shape="rect"></a>The requirements of this section do not allow any use of Data Elements in the ranges (gggg,0001-000F) and (gggg,0100-0FFF) where gggg is odd.</p>
+                              </li>
+                           </ol>
+                        </div>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_48211f97-fbd7-4ca7-b1c6-cdffa8604549" shape="rect"></a>Elements with Tags (0001,xxxx), (0003,xxxx), (0005,xxxx), (0007,xxxx) and (FFFF,xxxx) shall not be used.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3dfe862d-2e2f-46ad-b450-323f886feb99" shape="rect"></a>Whether or not Private Data Elements contain identifying information related to de-identification is defined by the Private Data Element Characteristics Sequence (0008,0300). See <a href="../part03/sect_C.12.html#sect_C.12.1" class="olink" shape="rect">PS3.3 Section C.12.1</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f90640db-d11d-4a4f-b224-a459c29def73" shape="rect"></a>Data Elements numbered (gggg,0000), where gggg is odd, were Group Length Elements, which have been retired, See <a class="xref" href="sect_7.2.html" title="7.2 Group Length" shape="rect">Section 7.2</a>.</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_e8d512ad-3fa1-4d18-b8d4-911673baeb0d" shape="rect"></a>Items within a sequence are self contained Data Sets (see <a class="xref" href="sect_7.5.html" title="7.5 Nesting of Data Sets" shape="rect">Section 7.5</a> on the nesting of Data Sets via Sequences of Items), any Item in the sequence that contains Private Data Elements shall also have Private Creator Data Element reserving a block of Elements for those Private Data Elements. The scope of the reservation is just within the Item. Items do not inherit the Private Data Element reservations made by Private Creator Data Elements in the Data Set in which the Item is nested.</p>
+            <p>
+               <a id="para_a132b754-8bb2-4d0e-b223-83b64e928d10" shape="rect"></a>Example:</p>
+            <div class="informaltable">
+               <table>
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_537d747c-f914-4b5c-8749-fb8b6cb24820" shape="rect"></a>Attribute Tag</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_3c02725a-9a01-4dec-b121-ed5566c88906" shape="rect"></a>Attribute Value</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_418e6130-676a-442f-8c06-d6d268ac2a04" shape="rect"></a>Attribute Meaning</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_795c3c0a-076c-4244-9038-162420b060f8" shape="rect"></a>(0029,0010)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_062a86ab-4ee4-434c-aced-b8c831f582b0" shape="rect"></a>"Acme_CT_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_b2400309-fe69-4868-9722-258932acc0d9" shape="rect"></a>Reservation of block for Acme CT Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_0ae227f0-e497-4df3-8851-e20cead626d4" shape="rect"></a>(0029,0011)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_258e4d49-bbf8-4fc7-ab76-cf7e25dd823e" shape="rect"></a>"Acme_General_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_42a6f8a2-ef09-4eb2-b037-9d234137eb4b" shape="rect"></a>Reservation of block for Acme General Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_b669c3d0-6d71-4463-9522-e3c3561b498f" shape="rect"></a>(0029,1101)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_4fc6a504-d182-40b7-b427-54d8fc12979b" shape="rect"></a>
+                           </p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_ea77a7db-54b2-4717-8ca1-7c0b72af72f9" shape="rect"></a>Sequence containing repeating Attributes</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_aeb9fd2a-b745-4a2f-ac17-051a31b070b9" shape="rect"></a>%item</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_159735cf-0b28-40b0-b4a9-fcb15a527d18" shape="rect"></a>&gt;(0029,0010)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_c9dc690d-e69d-4b89-b478-b9111decdf16" shape="rect"></a>"Acme_CT_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_015d3b10-150c-41a3-8de7-c275d89aa1e8" shape="rect"></a>Reservation of block for Acme CT Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_88c4a47e-8633-4f51-b339-af9a4a1e4b49" shape="rect"></a>&gt;(0029,0011)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_e48c49df-e3cd-42a2-87e5-ada3e1c91bab" shape="rect"></a>"Acme_General_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_8ff202c6-2147-4ed9-ab72-6d4f1102f047" shape="rect"></a>Reservation of block for Acme General Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_ce0de697-9cfd-44d5-a13b-4286d8db1dfd" shape="rect"></a>&gt;(0029,1001)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_bb456257-539c-4152-bf41-1b0f8148e932" shape="rect"></a>985</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_abd4fa25-0687-4fa1-b7f8-b5b7e9966ffb" shape="rect"></a>Acme CT Parameter 1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_c5987ed6-5c37-4f88-b38c-f57ece7514f1" shape="rect"></a>&gt;...</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_b42407dc-6567-4702-9b6c-b1c78b3f20be" shape="rect"></a>%enditem</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_e917ab2c-65d2-40c8-9de8-02c73efdbe37" shape="rect"></a>%item</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_32c19a4f-48fb-47da-9ccc-cfc4771b682c" shape="rect"></a>&gt;(0029,0010)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_7d2fc672-13c3-4e7e-9259-a6534de56697" shape="rect"></a>"Acme_CT_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_a9dc7ac1-dba8-4a0b-9242-0fc3426759d6" shape="rect"></a>Reservation of block for Acme CT Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_b876f173-2b24-4563-9db2-2d4a21d9b33a" shape="rect"></a>&gt;(0029,0011)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_3ee20956-0eba-4a28-baf5-e6b15982630d" shape="rect"></a>"Acme_General_Parameters"</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_32a2b9cc-9df3-41de-ae14-e776c59d13de" shape="rect"></a>Reservation of block for Acme General Parameters</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_532686f1-0e4c-4852-a87a-e419865529e1" shape="rect"></a>&gt;(0029,1001)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_67c0d9d7-85a8-4f17-8f95-4318c5d5a44f" shape="rect"></a>986</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                          <p>
+                              <a id="para_a319606f-a1b9-4bbf-b186-33a157e3946a" shape="rect"></a>Acme CT Parameter 1</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_2c422604-9011-4f0d-be5b-a447db5db2df" shape="rect"></a>&gt;...</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_44c10ad1-abb9-4532-af97-2f9ec6cb0283" shape="rect"></a>%enditem</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" colspan="3" rowspan="1">
+                          <p>
+                              <a id="para_c3dc5e71-f046-479d-ac50-9393179bd3e2" shape="rect"></a>%endseq</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_1d3a3082-a8ce-4ba3-9681-f4f5b614662b" shape="rect"></a>If a sequence is itself a Private Data Element and the Items within the sequence also have Private Data Elements, then there will be Private Creator Data Elements both outside the sequence and within the sequence Items.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_6cd536a0-085e-44ba-b4ec-c8aec705a572" shape="rect"></a>Different Items may reserve the same block of Private Data Elements for different private creators. This is necessary to allow the nesting of Data Sets collected from multiple sources into folders.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_9665aefa-3958-479d-a71f-ca5556376029" shape="rect"></a>The recommended convention for referencing a Private Data Element is (gggg,xxee,"pcde"), where gggg is the group number, xx is the string “xx”, ee is the element number within a reserved block, and pcde is the quoted value of the Private Creator Data Element that reserved the block, e.g., (0029,xx43,"Acme_CT_Parameters"). Alternatively, when a block of Private Data Elements is being described, one may factor out the description of the Private Creator Data Element value, e.g., Private Creator Data Element (0029,00xx) = "Acme_CT_Parameters", and (0029,xx43), (0029,xx44), etc.</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_7.7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.8.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">7.7 Retired Data Elements </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.8.2 Encoding of Private Elements</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

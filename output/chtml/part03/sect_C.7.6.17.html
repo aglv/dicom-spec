@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.7.6.17 Multi-frame Dimension Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.7.6.html" title="C.7.6 Common Image IE Modules" />
+      <link rel="prev" href="sect_C.7.6.16.2.html" title="C.7.6.16.2 Common Functional Group Macros" />
+      <link rel="next" href="sect_C.7.6.17.2.html" title="C.7.6.17.2 Dimension Organization UID" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.7.6.17 Multi-frame Dimension Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.6.17.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.7.6.16.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.7.6 Common Image IE Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.7.6.17.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.7.html" shape="rect">Common Composite IOD Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.7.6.html" shape="rect">Common Image IE Modules</a>
+         </span> &gt; <span class="breadcrumb-node">Multi-frame Dimension Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.7.6.17" shape="rect"></a>C.7.6.17 Multi-frame Dimension Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_fd19bb43-f33a-4a72-a467-b7f31e8b2ba0" shape="rect"></a>The <a class="xref" href="sect_C.7.6.17.html" title="C.7.6.17 Multi-frame Dimension Module" shape="rect">Multi-frame Dimension Module</a> contains a Sequence with Items pointing to Attributes defining a set of dimensions that are usually known prior to the acquisition commencing. It is up to the generating applications to decide what Attributes are important to describe the multi-frame dimensions.</p>
+         <p>
+            <a id="para_e823ef29-73cb-403c-a414-3047429a6ea1" shape="rect"></a>The application that generates the Concatenation or SOP Instances may use the order of Dimension Index Pointers (0020,9165) in the Dimension Index Sequence (0020,9222) to guide the receiving application in determining the order of the presentation of image frames. The first index has the highest ranking, the next index has a lower ranking, etc. Frames with higher values for the dimension with the highest ranking would only be presented after all frames that have values for Dimension Index Pointers (0020,9165) of the lower rankings have been presented.</p>
+         <p>
+            <a id="para_6d488f0d-ab4f-41f4-a0ce-1ffd234b14e6" shape="rect"></a>If the set of Dimension Index Pointers does not provide an Attribute set whose values are unique for each frame then the order for the frames with the same value set will be incompletely specified. The receiving application could use the logical frame number to resolve this ambiguity. If the Attribute set contains more dimensions than are needed to specify a unique ordering, the lower order ranking Attribute(s) will have no effect on the ordering.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_5d3aa51b-504a-4d0d-8a57-bcc556b8b7c6" shape="rect"></a>For example if there were the following indices in the following order:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_de20be72-2093-4e13-ae1e-221db5f2b1d8" shape="rect"></a>Stack ID (1-3)</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1773160c-1083-4682-96ff-9e1a89687ea8" shape="rect"></a>In-stack Position Number (1-2 for Stack ID 1, 1-4 for Stack ID 2, 1-3 for Stack ID 3)</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_476d6c3b-940b-4ccb-9afa-2e084d1b4ff4" shape="rect"></a>Effective Echo Time (1-2), i.e., every slice has been scanned with 2 different effective echo's</p>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_cca2d9b8-5e70-4072-b307-e7a92b99a505" shape="rect"></a>Then the frames could be presented in the following order:</p>
+            <p>
+               <a id="para_24084902-f4bb-4320-b1bc-6910abd2d1f2" shape="rect"></a>(Stack ID, In-stack Position, Effective Echo Time)</p>
+            <p>
+               <a id="para_a8575876-8840-484f-8752-94d53013c3e0" shape="rect"></a>(1,1,1), (1,1,2), (1,2,1), (1,2,2), </p>
+            <p>
+               <a id="para_c218b77f-84f0-4019-b5f0-1ebcc97498c6" shape="rect"></a>(2,1,1), (2,1,2), (2,2,1), (2,2,2), (2,3,1), (2,3,2), (2,4,1), (2,4,2)</p>
+            <p>
+               <a id="para_6d758172-0841-4d48-95fa-0f84329af26d" shape="rect"></a>(3,1,1), (3,1,2), (3,2,1), (3,2,2), (3,3,1), (3,3,2)</p>
+            <p>
+               <a id="para_eddf5ee5-34c0-48c3-9748-2aee0ab7e4e5" shape="rect"></a>The actual order of the frames in the object is up to the generating application.</p>
+            <p>
+               <a id="para_dc7deb4b-199f-4f08-8feb-abf6623e52f4" shape="rect"></a>If the effective echo time was not included in the Dimension Index Pointers in the above example then the order of sorting for the frames with the same indices will be undefined - in this case there would be 2 frames with the index set (Stack ID, In-stack Position) = (1,1) and the order of these frames is not specified.</p>
+            <p>
+               <a id="para_2325d07d-9971-47d0-8889-60da896a12a4" shape="rect"></a>If there were another Attribute appended to the Dimension Index Pointers, for example TR, then the TR index would not be used in determining the order of the frames. So the Index Frame Pointers would contain (Stack ID, In-stack Position, Effective Echo Time, TR) but the TR index would be irrelevant for frame ordering purposes.</p>
+         </div>
+         <p>
+            <a id="para_e1b5da57-e8e7-4265-ad0d-5b53308cbbc3" shape="rect"></a>
+                        <a class="xref" href="sect_C.7.6.17.html#table_C.7.6.17-1" title="Table C.7.6.17-1. Multi-frame Dimension Module Attributes" shape="rect">Table C.7.6.17-1</a> specifies the Attributes of the <a class="xref" href="sect_C.7.6.17.html" title="C.7.6.17 Multi-frame Dimension Module" shape="rect">Multi-frame Dimension Module</a>.</p>
+         <div class="table">
+            <a id="table_C.7.6.17-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.7.6.17-1. Multi-frame Dimension Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_52fedc83-3eba-4eb9-b710-42a6374511bd" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bb8b8a4e-884d-4d4a-8f5b-d85cd988f904" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a52154a0-b892-41ce-8072-c409e373472c" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6042c75f-8536-43cf-ada2-e55670bf8a93" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3c9fc2fc-f7cd-4f03-8913-9309af099d34" shape="rect"></a>Dimension Organization Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b142daad-8ba6-43c0-861e-dda13e684c5b" shape="rect"></a>(0020,9221)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c93cfbc9-bf03-433a-9ec6-f956e76dc3db" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_05cc2719-dd8e-4ca0-869b-6e2f74b3ddde" shape="rect"></a>Sequence that lists the Dimension Organization UIDs referenced by the containing SOP Instance. See <a class="xref" href="sect_C.7.6.17.2.html" title="C.7.6.17.2 Dimension Organization UID" shape="rect">Section C.7.6.17.2</a> for further explanation.</p>
+                                    <p>
+                              <a id="para_c0627d3d-622f-4383-bc91-77f0d75ecbd1" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5da6fb6b-19c6-4eeb-8fea-3feb297deb93" shape="rect"></a>&gt;Dimension Organization UID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b4ee974e-add5-4db7-ab7c-3ec1d0593433" shape="rect"></a>(0020,9164)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c318f3a5-9039-4037-ad24-dee213cc76af" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a12b4dc4-3b28-4d01-87e1-4b77255cd5f6" shape="rect"></a>Uniquely identifies a set of dimensions referenced within the containing SOP Instance. See <a class="xref" href="sect_C.7.6.17.2.html" title="C.7.6.17.2 Dimension Organization UID" shape="rect">Section C.7.6.17.2</a> for further explanation.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2ed4e229-86f0-49eb-a975-82e909a3bda2" shape="rect"></a>Dimension Organization Type</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_057023b5-439a-476b-b653-b891e6760ac0" shape="rect"></a>(0020,9311)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eeded002-5f74-4378-87d7-f882f59cab4c" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c658e40b-70bb-4fdd-8d65-b7c387e1b921" shape="rect"></a>Dimension organization of the Instance.</p>
+                                    <div class="variablelist">
+                              <p class="title">
+                                 <strong>Defined Terms:</strong>
+                              </p>
+                              <dl class="variablelist compact">
+                                 <dt>
+                                    <span class="term">3D</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_7f8d5062-be96-4036-9f05-f0bcf74caad8" shape="rect"></a>Spatial Multi-frame image of equally spaced parallel planes (3D volume set)</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">3D_TEMPORAL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_0d8b0c6d-db9c-4f89-8e1d-234082c4c824" shape="rect"></a>Temporal loop of equally spaced parallel-plane 3D volume sets.</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">TILED_FULL</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_bbbacde5-9240-44c7-aaae-75f23d398fe2" shape="rect"></a>Tiled image in which each frame represents a single tile and the positions of the tiles are implicitly defined as per <a class="xref" href="sect_C.7.6.17.3.html" title="C.7.6.17.3 Spatial Location and Optical Path of Tiled Images" shape="rect">Section C.7.6.17.3</a>.</p>
+                                 </dd>
+                                 <dt>
+                                    <span class="term">TILED_SPARSE</span>
+                                 </dt>
+                                 <dd>
+                                    <p>
+                                       <a id="para_ac40ae40-8977-4c43-b515-b181c773e2a3" shape="rect"></a>Tiled image in which each frame represents a single tile and the positions of tiles are explicitly defined by per-frame Functional Group Macro entries.</p>
+                                 </dd>
+                              </dl>
+                           </div>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9a948690-a5d2-499e-ab49-3354658f32eb" shape="rect"></a>Dimension Index Sequence</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c1d622aa-159e-4b26-8b77-adffb26e52e2" shape="rect"></a>(0020,9222)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fbbb37b9-09b7-4c7a-92c0-183eb09d18be" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f2c32ac7-6e56-44f9-9190-09774137ca81" shape="rect"></a>Identifies the Sequence containing the indices used to specify the dimension of the multi-frame object.</p>
+                                    <p>
+                              <a id="para_efd2454b-3e79-4f47-b24f-47d27064bd0d" shape="rect"></a>One or more Items shall be included in this Sequence.</p>
+                                    <p>
+                              <a id="para_4f7522ea-c3f7-4c65-a411-5163385cb0c6" shape="rect"></a>Required if Dimension Organization Type (0020,9311) is absent or not TILED_FULL. May be present otherwise.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1726883b-8c23-4d6d-aaf7-55a208886eb3" shape="rect"></a>&gt;Dimension Index Pointer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_23c2545b-5e21-4798-9c24-c7962f73e0d1" shape="rect"></a>(0020,9165)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_79b99d41-fc92-4149-b615-5b4b01dca460" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_47caf2ea-2efa-4fa9-b31e-90565d846468" shape="rect"></a>Contains the Data Element Tag that is used to identify the Attribute connected with the index. See <a class="xref" href="sect_C.7.6.17.html#sect_C.7.6.17.1" title="C.7.6.17.1 Dimension Indices" shape="rect">Section C.7.6.17.1</a> for further explanation.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6e2e1ef9-ffea-4295-b918-47c477add5e8" shape="rect"></a>&gt;Dimension Index Private Creator</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_eacfd1f5-6ff0-4cad-a407-fdf37eb7c3f9" shape="rect"></a>(0020,9213)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6de45546-ad43-4d94-b53e-975163afd60b" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0aae7b06-c1dd-4d3a-97d7-cda66ecb81fe" shape="rect"></a>Identification of the creator of a group of Private Data Elements.</p>
+                                    <p>
+                              <a id="para_2b1f3578-ff5a-4f1e-a6ae-9483e6b2fdb8" shape="rect"></a>Required if the Dimension Index Pointer (0020,9165) value is the Data Element Tag of a Private Attribute.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2401eda0-aeb2-44f2-9a09-8f551992fd25" shape="rect"></a>&gt;Functional Group Pointer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_87954a21-113b-4324-99dc-14b9948b7143" shape="rect"></a>(0020,9167)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1ff96635-7cfb-480e-bd7d-8b4e8728f086" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_14a8cdf9-77a9-465e-9e22-4ae66e1f02cb" shape="rect"></a>Contains the Data Element Tag of the Functional Group Sequence that contains the Attribute that is referenced by the Dimension Index Pointer (0020,9165).</p>
+                                    <p>
+                              <a id="para_818cffac-dbad-40a3-97f3-1abacc220e0d" shape="rect"></a>See <a class="xref" href="sect_C.7.6.17.html#sect_C.7.6.17.1" title="C.7.6.17.1 Dimension Indices" shape="rect">Section C.7.6.17.1</a> for further explanation.</p>
+                                    <p>
+                              <a id="para_04fe7d57-e76e-46ce-b12a-fdf6449feb20" shape="rect"></a>Required if the value of Dimension Index Pointer (0020,9165) is the Data Element Tag of an Attribute that is contained within a Functional Group Sequence.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c0e10b3a-cf37-4c42-88de-e4ebb85987ec" shape="rect"></a>&gt;Functional Group Private Creator</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_423d50d4-1f59-47fa-857d-0b5b0425acd0" shape="rect"></a>(0020,9238)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_71d18b2c-1a59-4afd-a14a-ad22eeea0421" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_09437a5e-a485-4ecf-bbdc-2c68bbad8042" shape="rect"></a>Identification of the creator of a group of Private Data Elements.</p>
+                                    <p>
+                              <a id="para_9d2bb1f6-3bc2-4e82-bcd8-40beb1d76176" shape="rect"></a>Required if the Functional Group Pointer (0020,9167) value is the Data Element Tag of a Private Attribute.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fa4969a5-2163-47a4-a169-0377fe85ea96" shape="rect"></a>&gt;Dimension Organization UID</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ef4b861b-afc0-4d45-b71d-9b2fc74d1fbc" shape="rect"></a>(0020,9164)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_65124c34-e236-4138-b300-b5f73dccffaa" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_a9bab11b-8ac5-41d7-a83f-d852e3969515" shape="rect"></a>Uniquely identifies a set of dimensions referenced within the containing SOP Instance. In particular the dimension described by this Sequence Item is associated with this Dimension Organization UID. See <a class="xref" href="sect_C.7.6.17.2.html" title="C.7.6.17.2 Dimension Organization UID" shape="rect">Section C.7.6.17.2</a> for further explanation.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_1a297275-f51b-4342-83d1-24279a1150c4" shape="rect"></a>&gt;Dimension Description Label</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0dc4acfc-565d-41a6-b98b-c3802281c16b" shape="rect"></a>(0020,9421)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_85bbb392-4042-4268-96f3-ae6bbf9ef0f8" shape="rect"></a>3</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_657bf5db-8f6f-420a-a518-ba7c6f980061" shape="rect"></a>Free text description that explains the meaning of the dimension.</p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.7.6.17.1" shape="rect"></a>C.7.6.17.1 Dimension Indices</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_ec48b38c-6499-499c-8b5f-415aee99911b" shape="rect"></a>With the Dimension Index Sequence (0020,9222), Data Element Tags are specified that identify the indices used for a particular SOP Instance.</p>
+            <p>
+               <a id="para_344a2756-2bbc-4ab9-8afd-036753ea8c71" shape="rect"></a>The actual index values for each frame in a multi-frame header are stored in a single Dimension Index Values Attribute (0020,9157) defined in the Frame Content Functional Group. For each SOP Instance this Attribute has a Value Multiplicity equal to the number of Items in the Sequence. The ordering of the Items in the Sequence defines the ordering in the Dimension Index Values Attribute: Item 1 of the Sequence relates to Value 1, Item 2 to Value 2, etc.</p>
+            <p>
+               <a id="para_624da344-1416-423e-a049-3f9ab8d250b3" shape="rect"></a>The Dimension Index Pointer (0020,9165) references a single Attribute that describes the actual values that define the dimension. Each Attribute referenced in the Dimension Index Sequence (0020,9222) will have an index stored in the Dimension Index Values (0020,9157) for each frame. Each index value is an ordinal number starting from 1 and monotonically increasing by 1 within the scope of a Dimension Organization UID (0020,9164). These values are independent of the actual values of the Attribute referenced by the Dimension Index Pointer (0020,9165), i.e., the index values are logical indices, rather than actual indices. Frames assigned the same index shall contain nominally the same value for the referenced Attribute. If the referenced Attribute is not present for some frames, or is present but has no value, then a single index shall be assigned to indicate the lack of the value (i.e., all such frames
+                            shall have the same index value, which is different from other index values). It is at the discretion of the SOP Instance creator whether the Attribute values are equivalent, and therefore appropriate for assignment to the same index value.</p>
+            <p>
+               <a id="para_0a6e280e-3d31-42e8-8100-a052c408c655" shape="rect"></a>The Dimension Index Pointer (0020,9165) shall contain the Data Element Tag (gggg,eeee) of the Attribute being indexed.</p>
+            <p>
+               <a id="para_8f6b195a-2785-4e51-8aa6-0f83673e3374" shape="rect"></a>The Dimension Index Pointer (0020,9165) shall not contain the Data Element Tag for Frame Content Sequence (0020,9111) or Dimension Index Values (0020,9157).</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_046b944e-a947-4833-ab6a-bdae58b9908f" shape="rect"></a>Dimension Index Pointer (0020,9165) may point to a Sequence containing a Functional Group. In that case all the Attributes of the Sequence are associated with the index value.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_d38392ce-fee4-4975-bcb1-85db62ed3e5d" shape="rect"></a>The Dimension Index Pointer (0020,9165) may point to a Data Element Tag (gggg,eeee) that is not present for all frames of an object, or does not have a value for all frames of an object. For such frames, index values are still assigned, as described above.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_4bdde989-58f0-4924-9119-b78d77332756" shape="rect"></a>The indices used in the Dimension Index Values (0020,9157) may or may not be identical to the value of indexed Attribute referenced by Dimension Index Pointer (0020,9165). For example, if the referenced Attribute is itself encoded in an index-like fashion (being an ordinal number starting from 1), such as In-Stack Position Number (0020,9057), then index value 1 would typically correspond to In-Stack Position Number (0020,9057) value 1. On the other hand, if the referenced Attribute encodes some physical measure, such as a time or distance, or a categorical value, such as a string describing the phase of contrast, or a more complex description such as an entire Functional Group, then the index value is independent of the encoded value.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_cdfe24bf-29e3-4e7f-b905-fdd7e69dcb18" shape="rect"></a>The scope of the values of Dimension Index Pointer (0020,9165) is defined to be within a single Dimension Organization UID (0020,9164). If the same Dimension Organization UID (0020,9164) is present in multiple Instances (whether part of a Concatenation or not), at least one of those Instances (though not necessarily every Instance) will contain a value of 1 for the Dimension Index Values (0020,9157).</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p>
+               <a id="para_d86322c7-7e01-4382-81fc-ef62ddb21d4e" shape="rect"></a>The Functional Group Pointer (0020,9167) value is the Data Element Tag (gggg,eeee) of the Functional Group Sequence that contains the Attribute being indexed. If the Dimension Index Pointer (0020,9165) contains a Data Element Tag that identifies a Functional Group Sequence then the Functional Group Pointer (0020,9167) shall not be present.</p>
+            <p>
+               <a id="para_ba5f3991-f837-4749-af75-153ab184ee4b" shape="rect"></a>If the Dimension Index Pointer (0020,9165) Attribute contains a Private Data Element, then the Dimension Index Private Creator (0020,9213) shall contain the Private Creator of the block of Private Data Elements.</p>
+            <p>
+               <a id="para_1d34cedc-dbe7-438d-a32e-0ac0414f5336" shape="rect"></a>If the Functional Group Pointer (0020,9167) Attribute contains a Private Data Element, then the Functional Group Private Creator (0020,9238) shall contain the Private Creator of the block of Private Data Elements.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_8aa75183-ebbe-4c7a-96fe-699b6ea65664" shape="rect"></a>An example of the usage of the Dimension Index Sequence (0020,9222) and Dimension Index Values (0020,9157) Attributes:</p>
+               <p>
+                  <a id="para_f9d48bb7-5bb4-407c-9396-95616cca6845" shape="rect"></a>Dimension Index Sequence (0020,9222) specifies two indices:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_bfbd5994-9b16-49da-923c-67987fdef4be" shape="rect"></a>Cardiac Trigger Delay Time (0020,9153)</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_d0972933-5bc3-4d56-a0ac-5c5d2b016df0" shape="rect"></a>Image Position (Patient) (0020,0032)</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_d6d310eb-c9bd-4f8d-8251-0325da74ac42" shape="rect"></a>The Dimension Index Sequence (0020,9222) is filled with the following contents:</p>
+               <div class="informaltable">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_3bc355cb-8b80-4744-88af-2991a3f8480b" shape="rect"></a>Item</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_8fe72c2d-8c2e-47cf-8fa9-fd133af34d62" shape="rect"></a>Attribute</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_8dbbe99b-6f2d-413f-88f7-2608906fe40d" shape="rect"></a>Value</p>
+                                        </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="3" colspan="1">
+                                            <p>
+                                 <a id="para_3a32d267-035b-4c4a-a09f-cecb9e197ce0" shape="rect"></a>1</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f7d72e55-436e-4aae-8090-b2076b860093" shape="rect"></a>Dimension Index Pointer</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_deca9509-490f-482c-b3c4-6455279feea0" shape="rect"></a>(0020,9153)</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_320d864b-04f3-437f-9b91-c1c1dc7b099f" shape="rect"></a>Functional Group Pointer</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_61e360aa-7356-4feb-a8de-5e863cfd37c9" shape="rect"></a>(0018,9118)</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_627b376e-9b7b-4e0c-b0e5-2fa3b5628bca" shape="rect"></a>…</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_3a13c218-365b-4d17-ba35-6eaa47ceb094" shape="rect"></a>
+                              </p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="3" colspan="1">
+                                            <p>
+                                 <a id="para_c728edec-6e54-4254-b294-9a44ce20344c" shape="rect"></a>2</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_e75ba369-6db6-42a5-8a39-bc3b53396d88" shape="rect"></a>Dimension Index Pointer</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_4dff5adf-50d9-4c36-b500-a52ed5defd9d" shape="rect"></a>(0020,0032)</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_d3d41ddc-7307-47f5-b1e4-374dc1006b63" shape="rect"></a>Functional Group Pointer</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f4e898a2-d673-4c1b-a8f2-bc38257e8174" shape="rect"></a>(0020,9113)</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f2565abe-2c89-49ad-93db-79d85b8f650b" shape="rect"></a>…</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_bfd89321-5db6-4b45-86f1-5440d8530fc7" shape="rect"></a>
+                              </p>
+                                        </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <p>
+                  <a id="para_b90e0c43-da0a-49d0-9c2b-048b5f71df92" shape="rect"></a>The Dimension Index Values (0020,9157) (in the Frame Content Functional Group) for each frame consists of two values:</p>
+               <p>
+                  <a id="para_5dad0fea-891d-400b-a226-4b03937355e4" shape="rect"></a>Index of Cardiac Trigger Delay Time \ Index of Image Position</p>
+               <p>
+                  <a id="para_c48c6488-6f57-447d-a785-224c80616718" shape="rect"></a>The SOP Instance creator is responsible for maintaining consistency between the actual value of the Attribute listed as the Dimension Index Pointer (0020,9165) and the corresponding value in the Dimension Index Values (0020,9157) Attribute.</p>
+               <p>
+                  <a id="para_78707ef1-5e35-4b1d-bec2-22f12ed685f2" shape="rect"></a>See <a class="xref" href="sect_C.7.6.17.html#figure_C.7.6.17-1" title="Figure C.7.6.17-1. Example of Dimension Index Sequence and Dimension Index Values Attributes" shape="rect">Figure C.7.6.17-1</a> for an illustration of this example.</p>
+               <p>
+                  <a id="para_ef4e02b0-eb9f-452a-a91e-a84e4b05a68a" shape="rect"></a>
+                                </p>
+               <div class="figure">
+                  <a id="figure_C.7.6.17-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.3_C.7.6.17-1.svg" alt="Example of Dimension Index Sequence and Dimension Index Values Attributes" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure C.7.6.17-1. Example of Dimension Index Sequence and Dimension Index Values Attributes</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                            </p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.7.6.16.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.7.6.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.7.6.17.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.7.6.16.2 Common Functional Group Macros </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.7.6.17.2 Dimension Organization UID</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.7.3 Using Referenced Inventories</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.7.html" title="YYYY.7 Operational Considerations" />
+      <link rel="prev" href="sect_YYYY.7.2.html" title="YYYY.7.2 Using Non-DICOM Protocols" />
+      <link rel="next" href="sect_YYYY.7.4.html" title="YYYY.7.4 Incremental Inventories" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.7.3 Using Referenced Inventories <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.7.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.7 Operational Considerations</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.7.html" shape="rect">Operational Considerations</a>
+         </span> &gt; <span class="breadcrumb-node">Using Referenced Inventories</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.7.3" shape="rect"></a>YYYY.7.3 Using Referenced Inventories</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4c8f16f7-f1bf-449b-8050-92f4301e181c" shape="rect"></a>
+                    <a class="xref" href="sect_YYYY.3.3.html" title="YYYY.3.3 Inventory Instance Tree" shape="rect">Section YYYY.3.3</a> describes the tree of Inventory SOP Instances whose contents are included by reference in the complete Inventory described by the root SOP Instance. A user of the Inventory may retrieve referenced Inventories in the tree through the Inventory Query/Retrieve Service (see <a class="xref" href="sect_YYYY.3.3.html" title="YYYY.3.3 Inventory Instance Tree" shape="rect">Section YYYY.3.3</a>), or the DICOM web-based Non-Patient Instance Service, if either of those is implemented in the system. The Inventory IOD may also include alternative access information for a non-DICOM file access protocol with each link to a referenced Inventory SOP Instance.</p>
+         <p>
+            <a id="para_05483750-ae62-430e-8645-daf389abdce8" shape="rect"></a>The specification of the Incorporated Inventory Instance Sequence (0008,0422), which provides the links to subsidiary SOP Instances, recursively includes itself (see <a href="../part03/sect_C.38.2.3.html" class="olink" shape="rect">Section C.38.2.3 “Inventory Reference Macro” in PS3.3</a>). This is used to encode a tree structure containing the entire set of links for the tree of which it is the root.</p>
+         <p>
+            <a id="para_a48b2822-5137-422d-8b3c-2abe3fcf99c8" shape="rect"></a>Therefore, when an application creates an Inventory and includes another Inventory by reference, it adds the access information to the referenced SOP Instance into the Incorporated Inventory Instance Sequence (0008,0422) together with a copy of the referenced object's Incorporated Inventory Instance Sequence (0008,0422) (see <a class="xref" href="sect_YYYY.7.3.html#figure_YYYY.7-2" title="Figure YYYY.7-2. Inclusion of Inventory References" shape="rect">Figure YYYY.7-2</a>). Note that including the entire tree of object references ensures that the tree is acyclic.</p>
+         <p>
+            <a id="para_6f3990fc-da4a-49c2-852d-433ab84cac43" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_YYYY.7-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_YYYY.7-2.svg" alt="Inclusion of Inventory References" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure YYYY.7-2. Inclusion of Inventory References</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <p>
+            <a id="para_d016afd2-248c-4e50-99d7-3690fa1950d5" shape="rect"></a>As described in <a href="../part03/sect_C.38.2.3.html#sect_C.38.2.3.1" class="olink" shape="rect">Section C.38.2.3.1 “Inventory Reference Macro Attribute Descriptions” in PS3.3</a>, each node in the tree may set the default network access protocol end point(s) for its sub-tree. Thus when including another Inventory by reference, an application needs to provide values for the access end points for the objects it references, and may rely on the included subtrees to provide their own access end point information. However, if the access end points are the same the application could consolidate them into the root node it creates</p>
+         <p>
+            <a id="para_5720bd3e-07cf-471f-b1be-f4d810adddeb" shape="rect"></a>The Inventory IOD also requires the SOP Instance to provide a count of the Total Number of Study Records (0008,0428), which includes Inventories included by reference. Since each Inventory SOP Instance computes the value for its tree in Total Number of Study Records (0008,0428), this simply means that when an instance includes others by reference the value is the sum of the Total Number of Study Records (0008,0428) for each of its immediately referenced instances plus its own value for the Number of Study Records in Instance (0008,0427).</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.7.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.7.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.7.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.7.2 Using Non-DICOM Protocols </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.7.4 Incremental Inventories</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

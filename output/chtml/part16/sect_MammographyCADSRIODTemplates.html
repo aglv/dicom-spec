@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Mammography CAD SR IOD Templates </title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.16.html" title="PS3.16" />
+      <link rel="up" href="chapter_A.html" title="A Structured Reporting Templates (Normative)" />
+      <link rel="prev" href="sect_TID_3990.html" title="TID 3990 Two Dimensional Measurement Graph" />
+      <link rel="next" href="sect_TID_4001.html" title="TID 4001 Mammography CAD Overall Impression/Recommendation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024c - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">Mammography CAD SR IOD Templates  <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_MammographyCADSRIODTemplates.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_3990.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A Structured Reporting Templates (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_4001.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.16.html" shape="rect">PS3.16</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Structured Reporting Templates (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node"></span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_MammographyCADSRIODTemplates" shape="rect"></a>Mammography CAD SR IOD Templates </h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_9410eb4e-0180-4272-a1cc-133162d1f49b" shape="rect"></a>The Templates that comprise the Mammography CAD SR IOD are interconnected as in <a class="xref" href="sect_MammographyCADSRIODTemplates.html#figure_A-8" title="Figure A-8. Mammography CAD SR IOD Template Structure" shape="rect">Figure A-8</a>:</p>
+         <p>
+            <a id="para_5c14bad7-4b50-4268-9671-abf653c76f4f" shape="rect"></a>
+                </p>
+         <div class="figure">
+            <a id="figure_A-8" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.16_A-8.svg" alt="Mammography CAD SR IOD Template Structure" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure A-8. Mammography CAD SR IOD Template Structure</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+            </p>
+         <p>
+            <a id="para_2a12217d-c344-4145-ab25-b40cdff2c677" shape="rect"></a>In <a class="xref" href="sect_MammographyCADSRIODTemplates.html#figure_A-8" title="Figure A-8. Mammography CAD SR IOD Template Structure" shape="rect">Figure A-8</a>, '···' indicates possible recursive application of subordinate Templates.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_TID_4000" shape="rect"></a>TID 4000 Mammography CAD Document Root</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_caf457d1-9eaf-4972-8be6-710282008101" shape="rect"></a>This Template forms the top of a Content Tree that allows a mammography CAD device to describe the results of detection and analysis of Mammographic evidence. This Template, together with its subordinate Templates, describes both the results for presentation to radiologists and partial product results for consumption by mammography CAD devices in subsequent mammography CAD reports.</p>
+            <p>
+               <a id="para_b369b940-515b-4e01-b4ef-a84f3dacd11d" shape="rect"></a>This Template defines a Container that contains an Image Library, the mammography CAD results, and summaries of the detection and analysis algorithms performed. The Image Library contains the Image SOP Class and Instance UIDs, and selected attributes for each image referenced in either the algorithm summaries or mammography CAD results.</p>
+            <p>
+               <a id="para_a3e2ce08-70cd-46a2-bf7d-4e986016ad35" shape="rect"></a>The Summary of Detections and Summary of Analyses sub-trees gather lists of algorithms attempted, grouped by success/failure status. Algorithms not attempted are not mentioned in these sub-trees. This information forms the basis for understanding why a mammography CAD report may produce no (or fewer than anticipated) results. Mammography CAD results are constructed bottom-up, starting from Single Image Findings (see <a class="xref" href="sect_TID_4006.html" title="TID 4006 Mammography CAD Single Image Finding" shape="rect">TID 4006 “Mammography CAD Single Image Finding”</a>), associated as Composite Features (see <a class="xref" href="sect_TID_4004.html" title="TID 4004 Mammography CAD Composite Feature" shape="rect">TID 4004 “Mammography CAD Composite Feature”</a>), and from which Individual and Overall Impressions are formed.</p>
+            <p>
+               <a id="para_a93d36ac-f455-49c2-97bd-b754af70e0e2" shape="rect"></a>See <a href="../part17/chapter_E.html#figure_E.1-1" class="olink" shape="rect">Figure E.1-1 “Top Levels of Mammography CAD SR Content Tree” in <span class="olinkdocname">PS3.17</span>
+               </a>.</p>
+            <div class="variablelist">
+               <dl class="variablelist compact">
+                  <dt>
+                     <span class="term">
+                            <span class="bold">
+                           <strong>Type:</strong>
+                        </span>
+                        </span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_42aca577-680e-4058-ad6d-c9b701060368" shape="rect"></a>
+                                <span class="bold">
+                           <strong>Non-Extensible</strong>
+                        </span>
+                            </p>
+                  </dd>
+                  <dt>
+                     <span class="term">
+                            <span class="bold">
+                           <strong>Order:</strong>
+                        </span>
+                        </span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_67f07515-3ea7-49a7-ac24-7cf2c15aa373" shape="rect"></a>
+                                <span class="bold">
+                           <strong>Significant</strong>
+                        </span>
+                            </p>
+                  </dd>
+                  <dt>
+                     <span class="term">
+                            <span class="bold">
+                           <strong>Root:</strong>
+                        </span>
+                        </span>
+                  </dt>
+                  <dd>
+                     <p>
+                        <a id="para_3c8c6b97-b2d1-4a8d-8e46-6f758c69a8c1" shape="rect"></a>
+                                <span class="bold">
+                           <strong>Yes</strong>
+                        </span>
+                            </p>
+                  </dd>
+               </dl>
+            </div>
+            <div class="table">
+               <a id="table_TID_4000" shape="rect"></a>
+               <p class="title">
+                  <strong>Table TID 4000. Mammography CAD Document Root</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_061301e2-ab0a-43fc-9673-f569a30a6d1d" shape="rect"></a>
+                              </p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_80558d2c-6f85-40b6-89f3-5a34731ef1b0" shape="rect"></a>NL</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_39fbece9-b814-4135-ab93-8b1800bd60fb" shape="rect"></a>Rel with Parent</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c856599a-edd3-4056-8f5f-f86457f3c314" shape="rect"></a>VT</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_49587328-6caa-4971-b05d-d8054a60d420" shape="rect"></a>Concept Name</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_7bf30e97-b245-4843-976e-fac7272b330f" shape="rect"></a>VM</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_44dd5bee-e655-472a-876d-cc793f9dd410" shape="rect"></a>Req Type</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_4715e49e-0c76-4065-9856-bb8b117e99a7" shape="rect"></a>Condition</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d9e0749e-1b8a-4d6d-90d4-7672c80d314c" shape="rect"></a>Value Set Constraint</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2241f4fe-90f0-483f-83ee-02754123f5f5" shape="rect"></a>1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a8f585f3-2d31-4ce8-99bd-21133a241591" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b0a7ed58-81f4-47bf-b533-021784a52282" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_20cd9307-b7fb-4c11-8865-d3d240ffd9d8" shape="rect"></a>CONTAINER</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0e6c0368-f46b-4c85-9dde-9a31b4935c66" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111036" shape="rect">(111036, DCM, "Mammography CAD Report")</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c3d52f8f-abbb-44d5-8710-2792e1cd0981" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f5ec4c68-1a48-4b88-b69f-d7260f47ab22" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f9f2e464-85df-45b5-b99b-16f7a1283198" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_bbf26b4e-2099-4dea-af2b-5f8403cae94d" shape="rect"></a>Root node</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c7bd01fd-c9bd-41ef-8e86-057a53c9b73a" shape="rect"></a>2</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_065aded4-d686-40b2-814b-841de3783f9c" shape="rect"></a>&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cce594cf-06bc-4481-b9b5-127578461353" shape="rect"></a>HAS CONCEPT MOD</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_679e0fc1-a3e1-4d0d-b2df-56a52837b3da" shape="rect"></a>INCLUDE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_fed3fc88-601a-466c-9ea2-975269db55bc" shape="rect"></a>D<a class="xref" href="chapter_A.html#sect_TID_1204" title="TID 1204 Language of Content Item and Descendants" shape="rect">TID 1204 “Language of Content Item and Descendants”</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2be7e0d7-00e8-4510-be94-83b0f58db782" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f1f43bf7-526a-4559-930e-f3ceaf366fd6" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ca1d12cc-bebf-4d2b-9297-fadf166efc38" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8c7a9ceb-cfcf-419b-97b5-89e63388a0a1" shape="rect"></a>
+                              </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_736310c6-c563-4f02-9f19-c0d1537cf8c9" shape="rect"></a>3</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d4afa6a4-9f8a-4137-8c62-7fc559e03887" shape="rect"></a>&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_02ed5949-6ee6-488e-828f-f81675e222af" shape="rect"></a>CONTAINS</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f0f6c961-0e0d-44f5-aec7-dbd5e6d0fede" shape="rect"></a>CONTAINER</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_068aa5f1-3530-48d1-8dff-2b61121c8739" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111028" shape="rect">(111028, DCM, "Image Library")</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_21b62bdf-7558-490a-bc30-efd95719d46a" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d0883d32-56ce-4149-b047-cae796c5b9f5" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f2e92f5a-9c0e-4c1e-a0fa-16ce847a3b4a" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_75119864-795f-46ae-b018-3a9a024f3d76" shape="rect"></a>
+                              </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f5e23413-31ef-47e5-8943-1545959ca445" shape="rect"></a>4</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c54d5e6a-2d52-4f4f-8393-b77a766d3ee4" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_48e0c5f5-f9f5-4db9-8272-f01c9c20c5a3" shape="rect"></a>CONTAINS</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_468a5728-285b-4ace-b5e8-b04d788ede2d" shape="rect"></a>INCLUDE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_29f178bc-7dae-4275-b8ce-da629f71e195" shape="rect"></a>D<a class="xref" href="sect_TID_4020.html" title="TID 4020 CAD Image Library Entry" shape="rect">TID 4020 “CAD Image Library Entry”</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_7e8ffc09-61f8-4093-94aa-efe37d2817aa" shape="rect"></a>1-n</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cc554cca-a698-43fd-8403-35ab94bddfdb" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_3e27d135-3518-4e5f-ad23-c7e953ef5d1f" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_65fec346-bbe4-4c9c-9192-997e3d03abd9" shape="rect"></a>$ImageLaterality = D<a class="xref" href="sect_CID_6022.html" title="CID 6022 Side" shape="rect">CID 6022 “Side”</a>
+                                </p>
+                                <p>
+                                 <a id="para_67c7896e-7e2b-4d2e-88f9-cec9c0a67b9d" shape="rect"></a>$ImageView = D<a class="xref" href="sect_CID_4014.html" title="CID 4014 View for Mammography" shape="rect">CID 4014 “View for Mammography”</a>
+                                </p>
+                                <p>
+                                 <a id="para_359170b7-3224-4f6e-8ecb-05f02546937b" shape="rect"></a>$ImageViewMod = D<a class="xref" href="sect_CID_4015.html" title="CID 4015 View Modifier for Mammography" shape="rect">CID 4015 “View Modifier for Mammography”</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_84b32efe-4c57-4efe-b435-37c88504209a" shape="rect"></a>5</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ea643fae-4f81-4913-b258-f577f0bb1fc9" shape="rect"></a>&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_6c1765a4-1155-41b5-867a-6cf0a8923b83" shape="rect"></a>CONTAINS</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0a5ddafa-6581-4d4b-b721-89c0874bc541" shape="rect"></a>INCLUDE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_41b76da3-ff53-4ab1-9eea-d775685b6098" shape="rect"></a>D<a class="xref" href="sect_TID_4001.html" title="TID 4001 Mammography CAD Overall Impression/Recommendation" shape="rect">TID 4001 “Mammography CAD Overall Impression/Recommendation”</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c3a25519-9cd8-4cfd-9f80-69b7db34d2c9" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2590c2ef-53c7-49f0-8b64-fc33583d2886" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_380b23d8-aed8-45d3-9b6c-4b917690f4bf" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_94915580-c413-43da-a288-3a7a3e454ba7" shape="rect"></a>
+                              </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0419143c-40c8-4594-9467-aa7839e57ee7" shape="rect"></a>6</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d95e40dc-9a3a-490f-8440-73a43a6a43e0" shape="rect"></a>&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_960e4e94-95df-4934-8e9c-5996764d0bbc" shape="rect"></a>CONTAINS</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e6548cb0-82c0-4c3f-bcd9-55d48d2b7e45" shape="rect"></a>CODE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e8b34f01-610a-4b94-83aa-81aa2ac38bb8" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111064" shape="rect">(111064, DCM, "Summary of Detections")</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d3545ecf-daff-4d54-875a-71fb4c786213" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_62c13e44-85b3-4cdb-a62e-12c54aa56623" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_96d267fa-ce1c-4a01-98dc-2d99ffd77d1f" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_87db333b-4c7a-42f4-87c0-452a667e3fa8" shape="rect"></a>D<a class="xref" href="sect_CID_6042.html" title="CID 6042 Result Status" shape="rect">CID 6042 “Result Status”</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_119df416-bdd4-45f1-b223-0cada79fc44f" shape="rect"></a>7</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_be70c130-6234-4ee9-bbe6-2919d445cf75" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_dc6668b3-5104-4969-857f-69e6dd542459" shape="rect"></a>INFERRED FROM</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_746b1dc1-322d-4bb6-ab0d-9a7713ebda36" shape="rect"></a>INCLUDE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a05d0bd0-3b4d-44a1-abf6-a4827f44281f" shape="rect"></a>D<a class="xref" href="sect_TID_4015.html" title="TID 4015 CAD Detections Performed" shape="rect">TID 4015 “CAD Detections Performed”</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_408fa2f1-0720-45bc-92c3-99e93c23aaac" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0e42b348-f030-449e-b79e-501b78350204" shape="rect"></a>MC</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_01859830-4eed-4cfd-9c65-209d87815215" shape="rect"></a>Shall be present unless the value of <a class="link" href="chapter_D.html#DCM_111064" shape="rect">(111064, DCM, "Summary of Detections")</a> is <a class="link" href="chapter_D.html#DCM_111225" shape="rect">(111225, DCM, "Not Attempted")</a>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_80701af9-b93e-4ffd-a54f-cb93aea20287" shape="rect"></a>$DetectionCode = D<a class="xref" href="sect_CID_6014.html" title="CID 6014 Mammography Single Image Finding" shape="rect">CID 6014 “Mammography Single Image Finding”</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_98cbf9e5-a779-4fdb-be76-5faf417db271" shape="rect"></a>8</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ee89deb6-901a-47f5-bbb0-a88e6507a70f" shape="rect"></a>&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c7ca8bc5-bcc6-418a-9c72-fdd0722dff82" shape="rect"></a>CONTAINS</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_619ffda0-907b-4799-bd67-81739619a463" shape="rect"></a>CODE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_45e03c29-5c1c-4481-80cc-373e40dee40f" shape="rect"></a>EV <a class="link" href="chapter_D.html#DCM_111065" shape="rect">(111065, DCM, "Summary of Analyses")</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_30264837-e582-4f73-b52a-a70a09966fd1" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b3a323e4-5ab0-4e90-978a-666eb726d5c2" shape="rect"></a>M</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_da1ed5be-d860-464f-a2a0-6c5880772412" shape="rect"></a>
+                              </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cdb08ed9-152f-4963-a5bd-c42070006728" shape="rect"></a>D<a class="xref" href="sect_CID_6042.html" title="CID 6042 Result Status" shape="rect">CID 6042 “Result Status”</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e18f2140-434f-45ed-9443-96b9c68512bf" shape="rect"></a>9</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_56f44767-f8b7-46d4-93f0-52a5a167f55a" shape="rect"></a>&gt;&gt;</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9d80c4a9-1786-4e4d-8388-5f71ae302494" shape="rect"></a>INFERRED FROM</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e7a01f5d-4c44-40c3-8178-dce23bf9953b" shape="rect"></a>INCLUDE</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8ffb8b9b-5752-4e5a-9aa3-c917c82fb843" shape="rect"></a>D<a class="xref" href="sect_TID_4016.html" title="TID 4016 CAD Analyses Performed" shape="rect">TID 4016 “CAD Analyses Performed”</a>
+                                </p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8b0ce8a4-222a-4389-a407-ea86f28fdcc6" shape="rect"></a>1</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b3fe6658-3d48-4e6b-89d4-ef8913323c00" shape="rect"></a>MC</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8873f550-a7a2-4c70-a75a-51a2bd4c6433" shape="rect"></a>Shall be present unless the value of <a class="link" href="chapter_D.html#DCM_111065" shape="rect">(111065, DCM, "Summary of Analyses")</a> is <a class="link" href="chapter_D.html#DCM_111225" shape="rect">(111225, DCM, "Not Attempted")</a>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_20740e9d-758c-445f-abfe-16ed08afa241" shape="rect"></a>$AnalysisCode = D<a class="xref" href="sect_CID_6043.html" title="CID 6043 Mammography CAD Analysis Type" shape="rect">CID 6043 “Mammography CAD Analysis Type”</a>
+                                </p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <p>
+               <a id="para_6c9919e2-3e8f-4aaa-9c4d-8e86912e35c1" shape="rect"></a>
+                    <span class="bold">
+                  <strong>Content Item Descriptions</strong>
+               </span>
+                </p>
+            <div class="informaltable">
+               <table frame="box" rules="all">
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2034a369-47a8-4cfa-9dd0-229744d6262c" shape="rect"></a>Row 3</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_23d1441e-f0cc-4b13-b470-39ffc74c78c1" shape="rect"></a>The "Image Library" section of the Content Tree (<a class="xref" href="sect_MammographyCADSRIODTemplates.html#sect_TID_4000" title="TID 4000 Mammography CAD Document Root" shape="rect">TID 4000 “Mammography CAD Document Root”</a>, Row 3) shall include all Image SOP Instances from the Current Requested Procedure Evidence Sequence (0040,A375) Attribute of the <a href="../part03/sect_C.17.2.html" class="olink" shape="rect">SR Document General Module</a>. If a portion of another instance of a Mammography CAD SR IOD is duplicated in the "Overall Impression/ Recommendation" section of the Content Tree, the "Image Library" shall also include all Image Library Entries referenced from the duplicated portions of the Mammography CAD SR.</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b46703c8-0305-4e66-821b-d562f16a28f3" shape="rect"></a>Rows 6, 8</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_32d61336-2c29-442c-a1a0-34ff29cd3be8" shape="rect"></a>The "Detections Performed" and "Analyses Performed" sections of the Content Tree together shall reference all Image SOP Instances included in the Current Requested Procedure Evidence Sequence (0040,A375) Attribute of the <a href="../part03/sect_C.17.2.html" class="olink" shape="rect">SR Document General Module</a>.</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TID_3990.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_A.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TID_4001.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TID 3990 Two Dimensional Measurement Graph </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.16.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TID 4001 Mammography CAD Overall Impression/Recommendation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.16 2024c - Content Mapping Resource</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

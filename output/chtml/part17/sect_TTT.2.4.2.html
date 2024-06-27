@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TTT.2.4.2 Encoding Outline</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_TTT.2.4.html" title="TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance" />
+      <link rel="prev" href="sect_TTT.2.4.html" title="TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance" />
+      <link rel="next" href="sect_TTT.2.4.3.html" title="TTT.2.4.3 Encoding Details" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TTT.2.4.2 Encoding Outline <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_TTT.2.4.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TTT.2.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_TTT.html" shape="rect">X-Ray 3D Angiographic Image Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_TTT.2.html" shape="rect">Application Cases</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_TTT.2.4.html" shape="rect">Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance</a>
+         </span> &gt; <span class="breadcrumb-node">Encoding Outline</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_TTT.2.4.2" shape="rect"></a>TTT.2.4.2 Encoding Outline</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0a215070-ea47-4e3d-9f64-8984e4168243" shape="rect"></a>The rotational acquisitions can be encoded either as a single instance (e.g., "C") containing several rotations or as several instances (e.g., "C1", "C2", etc.) containing one rotation per instance. The rotational acquisitions can either be encoded as XA Image(s) with limited frame-specific Attributes or as Enhanced XA Image(s), with frame-specific Attributes encoded that inform the algorithms to reconstruct a volume.</p>
+         <p>
+            <a id="para_7034e61d-7cdd-4a19-b9d6-6cfa41b233b7" shape="rect"></a>The reconstructed volume data is encoded as a single X-Ray 3D Angiographic instance. The reconstructed region covers typically the full field of view of the projected matrix size.</p>
+         <p>
+            <a id="para_24e36362-79fe-4737-851e-68f69d6d223a" shape="rect"></a>All frames of the original XA Images or Enhanced XA Images are used to reconstruct the volume.</p>
+         <p>
+            <a id="para_825afb6d-b935-49bf-91e0-0abcff204be1" shape="rect"></a>The X-Ray 3D instance references the original acquisition instances and records Attributes of the projections describing the acquisition context.</p>
+         <p>
+            <a id="para_4559f0b6-8e9f-4454-a2f5-a562630f8bb8" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_TTT.2.4-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_TTT.2.4-1.svg" alt="Encoding of one 3D reconstruction from three rotational acquisitions in one instance" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure TTT.2.4-1. Encoding of one 3D reconstruction from three rotational acquisitions in one instance</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+         <p>
+            <a id="para_7edf0d63-e3de-4e59-a833-be3526fbf38b" shape="rect"></a>
+                        </p>
+         <div class="figure">
+            <a id="figure_TTT.2.4-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.17_TTT.2.4-2.svg" alt="Encoding of one 3D reconstruction from two rotational acquisitions in two instances" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure TTT.2.4-2. Encoding of one 3D reconstruction from two rotational acquisitions in two instances</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                    </p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TTT.2.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_TTT.2.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TTT.2.4.3 Encoding Details</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

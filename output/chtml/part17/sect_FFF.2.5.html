@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>FFF.2.5 Registration</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_FFF.2.html" title="FFF.2 Application Cases" />
+      <link rel="prev" href="sect_FFF.2.4.2.4.html" title="FFF.2.4.2.4 Examples" />
+      <link rel="next" href="chapter_GGG.html" title="GGG Unified Worklist and Procedure Step - UPS (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">FFF.2.5 Registration <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_FFF.2.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.4.2.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">FFF.2 Application Cases</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_GGG.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_FFF.html" shape="rect">Enhanced XA/XRF Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FFF.2.html" shape="rect">Application Cases</a>
+         </span> &gt; <span class="breadcrumb-node">Registration</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_FFF.2.5" shape="rect"></a>FFF.2.5 Registration</h3>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_FFF.2.5.1" shape="rect"></a>FFF.2.5.1 Tracking An Object of Interest On Multiple 2d Images</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_e59ca6c3-1ce6-4747-ace1-25aba6711fba" shape="rect"></a>This section provides information on the encoding of the acquisition geometry in a fixed reference system.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.5.1.1" shape="rect"></a>FFF.2.5.1.1 User Scenario</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_66b2e8be-e7fa-4b4c-b19a-59d297fadb07" shape="rect"></a>The operator identifies the position of an object of interest projected on the stored pixel data of an image A, and estimates the magnification of the conic projection by a calibration process.</p>
+               <p>
+                  <a id="para_3dfd5123-b690-4950-8c4d-c279ee0cf802" shape="rect"></a>The operator wants to know the position of the projection of such object of interest on a second image B acquired under different geometry, assuming that the patient does not move between image A and image B (i.e., the images share the same frame of reference).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.5.1.2" shape="rect"></a>FFF.2.5.1.2 Encoding Outline</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b36a1a07-962f-4539-b01d-37e22eda4f1d" shape="rect"></a>The XA SOP Class encodes the information in a patient-related coordinate system.</p>
+               <p>
+                  <a id="para_c859d80d-f9d4-4709-b08a-d3ccb2e6e7dd" shape="rect"></a>The Enhanced XA SOP Class additionally encodes the geometry of the acquisition system with respect to a fixed reference system defined by the manufacturer, so-called Isocenter reference system. Therefore, it allows encoding the absolute position of an object of interest and to track the projection of such object across the different images acquired under different geometry.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.5.1.3" shape="rect"></a>FFF.2.5.1.3 Encoding Details</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_d5bc84bf-1de6-4f18-a41e-451c949b4fc1" shape="rect"></a>This section provides detailed recommendations of the key Attributes to address this particular scenario.</p>
+               <div class="table">
+                  <a id="table_FFF.2.5-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table FFF.2.5-1. Enhanced X-Ray Angiographic Image IOD Modules</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1e28b369-f50e-42b9-afe0-bc09d38f41cc" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>IE</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4b3dea46-015f-4011-9873-1db72b37a8b0" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Module</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e96fcd80-5870-47c0-bbbd-bff61b6552e5" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>PS3.3 Reference</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8a318595-3dc6-4cbd-85e8-aeb157bf9cde" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Usage</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ddb65e24-8a58-4751-b27b-07d0baff7668" shape="rect"></a>Image</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b598e143-3478-4097-940d-4f13c2ee7348" shape="rect"></a>Image Pixel</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.7.6.3.html" class="olink" shape="rect">C.7.6.3</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ae085a48-c374-4d7c-b99c-82b6e0525d29" shape="rect"></a>Specifies the dimension of the pixel array of the frames.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0d5e610a-6a0a-4a4d-b119-92c001f28b41" shape="rect"></a>XA/XRF Acquisition</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.3.html" class="olink" shape="rect">C.8.19.3</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4b20bd9a-920c-4667-9ca3-ffa13f5c892a" shape="rect"></a>Describes some characteristics of the acquisition system that enables this scenario.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6b2948ce-e380-4083-a998-a6ffae306126" shape="rect"></a>X-Ray Detector</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.5.html" class="olink" shape="rect">C.8.19.5</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f4eec08e-f02e-432c-8b57-6487b9a2f57d" shape="rect"></a>Specifies the type and characteristics of the image detector.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="table">
+                  <a id="table_FFF.2.5-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table FFF.2.5-2. Enhanced XA Image Functional Group Macros</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5e3d9762-4595-4160-80b2-12a773853f50" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Functional Group Macro</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e3000f84-f802-4c06-a39f-0c04fbe67703" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>PS3.3 Reference</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_718467b3-c900-40cb-bca4-b243f225202e" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Usage</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8fef0e1e-16b6-4efe-b313-6744e1e11b66" shape="rect"></a>X-Ray Field of View</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.6.2.html" class="olink" shape="rect">C.8.19.6.2</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_732ce5eb-3815-4a3c-834f-e35d2fe6a2cf" shape="rect"></a>Specifies the dimension of the Field of View as well as the flip and rotation transformations.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_14270ec1-2625-4819-b047-77b06869c41d" shape="rect"></a>X-Ray Isocenter Reference System</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.6.13.html" class="olink" shape="rect">C.8.19.6.13</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b6dc64b1-5188-4f86-9fc1-8d683467ea7e" shape="rect"></a>Specifies the acquisition geometry in a fixed reference system.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4af6d091-ed8b-42df-b3f0-0ad606079f41" shape="rect"></a>X-Ray Geometry</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.6.14.html" class="olink" shape="rect">C.8.19.6.14</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b87dcba9-28fd-43d0-833d-f081b677e20d" shape="rect"></a>Specifies the distances of the conic projection.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bc791787-d958-4c0e-a33b-8ef61b960e63" shape="rect"></a>XA/XRF Frame Pixel Data Properties</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.6.4.html" class="olink" shape="rect">C.8.19.6.4</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1552b00f-73e8-449e-8b5e-03825e2ada3c" shape="rect"></a>Specifies the dimensions of the pixels at the image reception plane.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.1" shape="rect"></a>FFF.2.5.1.3.1 Image Pixel Module Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_e822b75b-22a3-49e1-b0fb-3e1412f92221" shape="rect"></a>The usage of this module is recommended to specify the number of rows and columns of the Pixel Data, as well as the aspect ratio.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.2" shape="rect"></a>FFF.2.5.1.3.2 XA/XRF Acquisition Module Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_97a9771d-93bc-4dad-8679-58e2fc82332e" shape="rect"></a>The usage of this module is recommended to give the necessary conditions to enable the calculations of this scenario.</p>
+                  <div class="table">
+                     <a id="table_FFF.2.5-3" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table FFF.2.5-3. XA/XRF Acquisition Module Recommendations</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_f8d46168-bd5c-4607-a6cc-d99df0270c6c" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_855c3456-2591-4db8-8bf4-7f720ec95f1b" shape="rect"></a>Tag</p>
+                                        </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_847f2746-6a41-47d3-813e-cb989e6dbd39" shape="rect"></a>Comment</p>
+                                        </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_38d140a4-3978-4db8-a5eb-b49d79c68b3d" shape="rect"></a>X-Ray Receptor Type</p>
+                                        </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_1f8c285f-9664-4576-b7df-debf21d1258f" shape="rect"></a>(0018,9420)</p>
+                                        </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_133d67d0-e17e-415b-ba0e-f96c60d40363" shape="rect"></a>DIGITAL_DETECTOR is used in this scenario.</p>
+                                        </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_ba86fb1e-9d1a-4b86-8824-fc023cd3a375" shape="rect"></a>Positioner Type</p>
+                                        </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_63725237-17d1-4f4a-a0c3-cd1a570bfe5f" shape="rect"></a>(0018,1508)</p>
+                                        </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_4f0c889e-fed5-42d4-853e-be21b26737e2" shape="rect"></a>CARM is used in this scenario.</p>
+                                        </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_86d76e2a-4823-4c26-b8b5-b0632a0cb2b8" shape="rect"></a>C-arm Positioner Tabletop Relationship</p>
+                                        </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_7d4f16b4-65a0-4285-bf2a-ee5c56758209" shape="rect"></a>(0018,9474)</p>
+                                        </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_247bff54-66d0-4ca3-b56d-dc334c159d69" shape="rect"></a>YES is necessary in this scenario.</p>
+                                        </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_56121358-3eee-4ddc-a756-15fdde2ec9cc" shape="rect"></a>In case of X-Ray Receptor Type (0018,9420) equals "IMG_INTENSIFIER", there are some limitations that prevent the calculations described on this scenario:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_dd23040d-b162-402f-b717-f587cfa58e4f" shape="rect"></a>The position of the projection of the isocenter on the intensifier active area is undefined;</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_0cdf4636-0f6a-4bae-98ab-13b512905161" shape="rect"></a>The Field of View Origin (0018,7030) cannot be related to the physical area of the receptor because the Intensifier TLHC is undefined.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_315745c8-f4b9-4095-a99f-a02df21c1ce5" shape="rect"></a>As a consequence, in case of image intensifier it is impossible to relate the position of the pixels of the stored area to the isocenter reference system.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.3" shape="rect"></a>FFF.2.5.1.3.3 X-Ray Detector Module Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_42514c5b-2703-4a37-a7b5-88a268d44118" shape="rect"></a>In case of X-Ray Receptor Type (0018,9420) equals "DIGITAL_DETECTOR" the usage of this module is recommended to specify the type and characteristics of the image detector.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.4" shape="rect"></a>FFF.2.5.1.3.4 X-Ray Field of View Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_38fbc4fd-cfe2-4a8c-a0db-e523799bbf30" shape="rect"></a>The usage of this macro is recommended to specify the characteristics of the field of view.</p>
+                  <p>
+                     <a id="para_e5f2e1ee-e2ef-4e1a-bb9b-962ff5e56ce7" shape="rect"></a>The field of view characteristics may change per-frame across the Multi-frame Image.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.5" shape="rect"></a>FFF.2.5.1.3.5 X-Ray Isocenter Reference System Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a9944682-a94e-4171-aeaf-25df3d1eeae6" shape="rect"></a>The usage of this macro is recommended to specify the fixed reference system of the acquisition geometry.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.6" shape="rect"></a>FFF.2.5.1.3.6 X-Ray Geometry Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_291ff7d0-7d7c-43eb-a174-5dd80fae2d8b" shape="rect"></a>The usage of this macro is recommended to specify the distances between the X-Ray source, isocenter and X-Ray detector.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.5.1.3.7" shape="rect"></a>FFF.2.5.1.3.7 XA/XRF Frame Pixel Data Properties Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_cfe18131-ce8c-4867-8e43-b2b0053817c9" shape="rect"></a>The usage of this macro is recommended to specify the dimensions of the pixels at the image reception plane.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.5.1.4" shape="rect"></a>FFF.2.5.1.4 Example</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_bafed1ad-aceb-425d-82cb-0656bf5bc1e8" shape="rect"></a>In this example, the operator identifies the position (i, j) of an object of interest projected on the stored pixel data of an image A, and estimates the magnification of the conic projection by a calibration process.</p>
+               <p>
+                  <a id="para_97477f47-81cb-4d45-9963-9ac4bdeedf20" shape="rect"></a>The operator wants to know the position of the projection of such object of interest on a second image B acquired under different geometry.</p>
+               <p>
+                  <a id="para_53458648-0f3b-4cc3-8ba1-09ac50b8b47f" shape="rect"></a>The Attributes that define the geometry of both images A and B are described in the following figure:</p>
+               <p>
+                  <a id="para_a4e763ff-375b-4222-b185-db8db9f42490" shape="rect"></a>
+                            </p>
+               <div class="figure">
+                  <a id="figure_FFF.2.5-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_FFF.2.5-1.svg" alt="Attributes of the example of tracking an object of interest on multiple 2D images" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure FFF.2.5-1. Attributes of the example of tracking an object of interest on multiple 2D images</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                        </p>
+               <p>
+                  <a id="para_3ea12d5d-3586-4a80-ae98-7ff44cff7383" shape="rect"></a>The following steps describe the process to calculate the position <span class="bold">
+                     <strong>(i, j)<sub>B</sub>
+                            </strong>
+                  </span> of the projection of the object of interest in the Pixel Data of the image B, assuming that <span class="bold">
+                     <strong>(i, j)<sub>A</sub>
+                            </strong>
+                  </span> is known and is the offset of the projection of the object of interest from the TLHC of the Pixel Data of the image A, measured in pixels of the Pixel Data matrix as a column offset "i" followed by a row offset "j". TLHC is defined as (0,0).</p>
+               <p>
+                  <a id="para_ad88e59b-bf9e-4510-9064-6a2350fa7045" shape="rect"></a>
+                            <span class="underline">Step 1</span>: Calculate the point (i, j)<sub>A</sub> in FOV coordinates of the image A.</p>
+               <p>
+                  <a id="para_d00c58af-3ece-4d50-8618-a276ddb429ec" shape="rect"></a>
+                            <span class="underline">Step 2</span>: Calculate the point (i, j)<sub>A</sub> in physical detector coordinates of the image A.</p>
+               <p>
+                  <a id="para_b6bc7f45-d74c-4b51-9961-7a8f6c4fb428" shape="rect"></a>
+                            <span class="underline">Step 3</span>: Calculate the point (P<sub>u</sub>, P<sub>v</sub>)<sub>A</sub> in positioner coordinates of the image A.</p>
+               <p>
+                  <a id="para_8442d61b-b6d7-443b-8706-75206d51e6c1" shape="rect"></a>
+                            <span class="underline">Step 4</span>: Calculate the point (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>A</sub> in positioner coordinates of the image A.</p>
+               <p>
+                  <a id="para_2c21de9a-9d02-44b9-a681-ba5be92ec327" shape="rect"></a>
+                            <span class="underline">Step 5</span>: Calculate the point (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>A</sub> in Isocenter coordinates of the image A.</p>
+               <p>
+                  <a id="para_2a79492b-0ff7-43b3-a653-4c0db74610ec" shape="rect"></a>
+                            <span class="underline">Step 6</span>: Calculate the point (P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>A</sub> in Table coordinates of the image A.</p>
+               <p>
+                  <a id="para_648148e8-cb8e-46a1-9548-d07561ad029f" shape="rect"></a>
+                            <span class="underline">Step 7</span>: Calculate the point (P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>B</sub> in Table coordinates in mm of the image B.</p>
+               <p>
+                  <a id="para_8ca3be21-6834-41d3-b60f-ab2ec9932ef3" shape="rect"></a>
+                            <span class="underline">Step 8</span>: Calculate the point (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>B</sub> in Isocenter coordinates in mm of the image B.</p>
+               <p>
+                  <a id="para_0521a656-ac7b-47dd-ba96-21a5cdb938da" shape="rect"></a>
+                            <span class="underline">Step 9</span>: Calculate the point (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>B</sub> in positioner coordinates of the image B.</p>
+               <p>
+                  <a id="para_303eccf4-6422-41cf-8d37-54c1ea3e443f" shape="rect"></a>
+                            <span class="underline">Step 10</span>: Calculate the point (P<sub>u</sub>, P<sub>v</sub>)<sub>B</sub> in positioner coordinates of the image B.</p>
+               <p>
+                  <a id="para_26632a6c-b37c-4cc0-a47b-0531b9651bbf" shape="rect"></a>
+                            <span class="underline">Step 11</span>: Calculate the point (i, j)<sub>B</sub> in physical detector coordinates of the image B.</p>
+               <p>
+                  <a id="para_d6ba11a2-ec54-47ba-a50b-10fc3233a52c" shape="rect"></a>
+                            <span class="underline">Step 12</span>: Calculate the point (i, j)<sub>B</sub> in FOV coordinates of the image B.</p>
+               <p>
+                  <a id="para_cb1f8239-54aa-4519-9fba-f45e16377aaa" shape="rect"></a>
+                            <span class="underline">Step 13</span>: Calculate the point (i, j)<sub>B</sub> in Pixel Data of the image B.</p>
+               <p>
+                  <a id="para_407f6789-047b-4afa-bcb4-169fa0101191" shape="rect"></a>In this example let's assume:</p>
+               <p>
+                  <a id="para_c22f0b7e-9de6-4eb2-bb26-bd3a5d8dbeb5" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>A</sub> = (310,122)</strong>
+                  </span> pixels</p>
+               <p>
+                  <a id="para_e225ae21-173a-40ce-8c0e-52f174ff2e3e" shape="rect"></a>
+                            <span class="bold">
+                     <strong>Magnification ratio = 1.3</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_5d9abeed-7213-4731-b06b-bc6593123369" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 1</span>
+                            </strong>
+                  </span>: <span class="bold">
+                     <strong>Image A: Point (i, j)<sub>A</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>in FOV coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_201eaddd-3b80-4ea5-b226-c5b897d6f4b3" shape="rect"></a>In this step, the FOV coordinates are calculated by taking into account the FOV rotation and Horizontal Flip applied to the FOV matrix when the Pixel Data were created:</p>
+               <p>
+                  <a id="para_387aa0cc-9477-408d-b21e-42228f98ca27" shape="rect"></a>
+                            <span class="bold">
+                     <strong>1.1: Horizontal Flip</strong>
+                  </span>: YES</p>
+               <p>
+                  <a id="para_298aa77e-aeb7-43e5-9b24-2224c30a3a1b" shape="rect"></a>new i = (columns -1) - i = 850 - 1 - 310 = 539</p>
+               <p>
+                  <a id="para_597004fd-e6cc-44f4-adab-b394755f2f8f" shape="rect"></a>new j = j = 122</p>
+               <p>
+                  <a id="para_3712293d-cdcc-4a76-be4e-ed96a63bf61b" shape="rect"></a>
+                            <span class="bold">
+                     <strong>1.2: Image Rotation</strong>
+                  </span>: 90 (clockwise)</p>
+               <p>
+                  <a id="para_c5078f0d-a5b0-499b-b51e-8739400544db" shape="rect"></a>new i = j = 122</p>
+               <p>
+                  <a id="para_ab3bcd84-ca49-4b74-acec-b0517eed82f1" shape="rect"></a>new j = (columns -1) - i = 850 - 1 - 539 = 310</p>
+               <p>
+                  <a id="para_79031302-8724-46de-92ef-ac9874ddcdf2" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>A</sub> = (122, 310)</strong>
+                  </span> in stored pixel data.</p>
+               <p>
+                  <a id="para_9a2ee364-d5c5-4cdb-b19a-d6db20a25f4d" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 2</span>: Image A: Point (i, j)<sub>A</sub> in physical detector coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_48037817-12fa-4a00-be21-9dd610d6fdf6" shape="rect"></a>In this step, the physical detector coordinates are calculated by taking into account the FOV origin and the ratio between Imager Pixel Spacing and Detector Element Spacing:</p>
+               <p>
+                  <a id="para_ecc96a7c-842f-434d-9cb3-80cd4bacd71f" shape="rect"></a>D<sub>i</sub> = Imager Pixel Spacing (column) = 0.2 mm</p>
+               <p>
+                  <a id="para_c44e3f06-00e8-4902-8ec9-aa786b1f1047" shape="rect"></a>D<sub>j</sub> = Imager Pixel Spacing (row) = 0.2 mm</p>
+               <p>
+                  <a id="para_ac159007-88f4-4818-b134-5e83209290c3" shape="rect"></a>D<sub>idet</sub> = Detector Element Spacing between two adjacent columns = 0.2 mm</p>
+               <p>
+                  <a id="para_dd762a70-8d98-4909-9db1-d4f75275142f" shape="rect"></a>D<sub>jdet</sub> = Detector Element Spacing between two adjacent rows = 0.2 mm</p>
+               <p>
+                  <a id="para_e6f7d9a9-0d8f-41cb-a950-943ff52532ba" shape="rect"></a>Zoom Factor (column) = D<sub>i</sub> / D<sub>idet</sub> = 1.0</p>
+               <p>
+                  <a id="para_a05d45f2-9686-43b2-abc5-6bcacfa49369" shape="rect"></a>Zoom Factor (row) = D<sub>j</sub> / D<sub>jdet</sub> = 1.0</p>
+               <p>
+                  <a id="para_4e9058a2-6e35-472e-8ad4-56fa04eddb9f" shape="rect"></a>FOV Origin (column) = FOV<sub>idet</sub> = 600.0</p>
+               <p>
+                  <a id="para_08ba15ee-8e3b-44c2-a141-ac44e678e978" shape="rect"></a>FOV Origin (row) = FOV<sub>jdet</sub> = 600.0</p>
+               <p>
+                  <a id="para_33708c54-244e-4d04-9010-4cb9ce47a58c" shape="rect"></a>new i = FOV<sub>idet</sub> + (i + (1 - D<sub>idet</sub> / D<sub>i</sub>) / 2) * D<sub>j</sub> / D<sub>jdet</sub> = 600 + 122 * 1.0 = 722</p>
+               <p>
+                  <a id="para_d05a7203-9ea3-46c3-a239-4a6b8d779454" shape="rect"></a>new j = FOV<sub>jdet</sub> + (j + (1 - D<sub>jdet</sub> / D<sub>j</sub>) / 2) * D<sub>i</sub> / D<sub>idet</sub> = 600 + 310 * 1.0 = 910</p>
+               <p>
+                  <a id="para_362faf72-8525-4a9e-8688-11b1b6afbbf3" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>A</sub> = (722, 910)</strong>
+                  </span> in detector elements.</p>
+               <p>
+                  <a id="para_f16c611e-1a22-43c9-978a-c167111663f3" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 3</span>: Image A: Point (</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>u</sub>,</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>v</sub>)<sub>A</sub> in positioner coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_d60cb1a9-f3f4-4fb2-a4d0-2f2febe4efd6" shape="rect"></a>In this step, the (P<sub>u</sub>, P<sub>v</sub>)<sub>A</sub> coordinates in mm are calculated from (i, j)<sub>A</sub> by taking into account the projection of the Isocenter in physical detector coordinates, and the Detector Element Spacing:</p>
+               <p>
+                  <a id="para_64cf6bc7-0256-4db4-a013-8e3f0b25c708" shape="rect"></a>ISO_P<sub>idet</sub> = Position of Isocenter Projection (column) = 1024.5</p>
+               <p>
+                  <a id="para_2a37566e-767d-4d96-9d7f-8df87118129c" shape="rect"></a>ISO_P<sub>jdet</sub> = Position of Isocenter Projection (row) = 1024.5</p>
+               <p>
+                  <a id="para_23b819e1-0b73-4eba-9ec3-abac636fd4a5" shape="rect"></a>D<sub>idet</sub> = Detector Element Spacing between two adjacent columns = 0.2 mm</p>
+               <p>
+                  <a id="para_9e72643d-b880-48a2-81fe-0359c538c73a" shape="rect"></a>D<sub>jdet</sub> = Detector Element Spacing between two adjacent rows = 0.2 mm</p>
+               <p>
+                  <a id="para_9ad25b4a-c22f-456a-9d27-30e02330ded4" shape="rect"></a>Pu = (i - ISO_P<sub>idet</sub>) * D<sub>idet</sub> = (722 - 1024.5) * 0.2 = -60.5 mm</p>
+               <p>
+                  <a id="para_1237f446-0c36-4e30-9463-f6abb5cccef0" shape="rect"></a>Pv = (ISO_P<sub>jdet</sub> - j) * D<sub>jdet</sub> = (1024.5 - 910) * 0.2 = 22.9 mm</p>
+               <p>
+                  <a id="para_63670bf7-a160-41af-a285-6f95fcf8b9d6" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>u</sub>,</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>v</sub>)<sub>A</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (-60.5, 22.9)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_6853ca09-3f72-47f8-a483-6d6535912cfa" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 4: Image A: Point (PXp, PYp, PZp)A in positioner coordinates</span>
+                            </strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_d64dd559-3b95-4a66-be1d-af60651bd1fb" shape="rect"></a>In this step, the positioner coordinates (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>A</sub> are calculated from (P<sub>u</sub>, P<sub>v</sub>)<sub>A</sub> by taking into account the magnification ratio, the Distance Source to Detector and the Distance Source to Isocenter:</p>
+               <p>
+                  <a id="para_6ab30002-390e-4dc8-b6b9-5b0b59aa4062" shape="rect"></a>SID = Distance Source to Detector = 1300 mm</p>
+               <p>
+                  <a id="para_5ed53db0-e1d5-47e9-b82c-1dcfa1f7541c" shape="rect"></a>ISO = Distance Source to Isocenter = 780 mm</p>
+               <p>
+                  <a id="para_7130b8e2-453b-4b91-890a-24674010b9e7" shape="rect"></a>Magnification ratio = SID / (ISO - P<span class="bold">
+                     <strong>
+                                <sub>Yp</sub>
+                            </strong>
+                  </span>) = 1.3</p>
+               <p>
+                  <a id="para_e924bc0f-d3ca-40fc-bdf9-5d2b44ba1258" shape="rect"></a>P<span class="bold">
+                     <strong>
+                                <sub>Yp</sub>
+                            </strong>
+                  </span> = ISO - SID / 1.3 = 780 - 1300/1.3 = -220 mm</p>
+               <p>
+                  <a id="para_19823051-fc4e-4249-b634-bf76d876f0c6" shape="rect"></a>P<span class="bold">
+                     <strong>
+                                <sub>Xp</sub>
+                            </strong>
+                  </span> = Pu / Magnification ratio = -60.5 / 1.3 = -46.54 mm</p>
+               <p>
+                  <a id="para_f9672f83-31f0-4b04-a211-50426774af83" shape="rect"></a>P<span class="bold">
+                     <strong>
+                                <sub>Zp</sub>
+                            </strong>
+                  </span> = Pv / Magnification ratio = 22.9 / 1.3 = 17.62 mm</p>
+               <p>
+                  <a id="para_93332a49-5607-4e47-841a-602bc0e029d7" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>A</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (-46.54, -220, 17.62)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_ceed43b4-2765-456b-9d89-9885d1d043c9" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 5</span>: Image A: Point</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>A</sub> in Isocenter coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_55409756-01cb-4186-ac99-d8f804f73b8b" shape="rect"></a>In this step, the isocenter coordinates (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>A</sub> are calculated from the positioner coordinates (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>A</sub> by taking into account the positioner angles of the image A in the Isocenter coordinate system:</p>
+               <p>
+                  <a id="para_693462ab-4abc-411b-80d1-93188f40b613" shape="rect"></a>Ap<sub>1</sub> = Positioner Isocenter Primary Angle = 60.0 deg</p>
+               <p>
+                  <a id="para_f0dbfff1-52ec-443a-bd85-332cd7498b41" shape="rect"></a>Ap<sub>2</sub> = Positioner Isocenter Secondary Angle = 20.0 deg</p>
+               <p>
+                  <a id="para_b9079124-975d-4eb3-94f1-02b21fc2e1a9" shape="rect"></a>Ap<sub>3</sub> = Positioner Isocenter Detector Rotation Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_4ce28e93-4f3b-45c0-afe0-94ec0837cd91" shape="rect"></a>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sup>T</sup>= (R<sub>2</sub> ·R<sub>1</sub>)<sup>T</sup>·(R<sub>3</sub>
+                            <sup>T</sup>·(P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sup>T</sup>)</p>
+               <p>
+                  <a id="para_91be05d9-dad0-4f6d-9227-d7380cd09a5f" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>A</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (150.55, -65.41, 91.80)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_9951e4ea-a739-41c9-bc4f-635e0ef136f0" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 6</span>: Image A: Point</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>(P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>A</sub> in Table coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_2a127c14-580b-49c4-9744-81da80eb1307" shape="rect"></a>In this step, the table coordinates (P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>A</sub> are calculated from the isocenter coordinates (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>A</sub> by taking into account the table position and angles of the image A in the Isocenter coordinate system:</p>
+               <p>
+                  <a id="para_05a0092c-27a5-4347-856b-f156a5367cc4" shape="rect"></a>Tx =Table X Position to Isocenter = 10.0 mm</p>
+               <p>
+                  <a id="para_10c62fac-4475-400c-a9d6-706fa279381c" shape="rect"></a>Ty =Table Y Position to Isocenter = 30.0 mm</p>
+               <p>
+                  <a id="para_52b25bdd-f0aa-4816-a42f-f7cdb0c83ce1" shape="rect"></a>Tz =Table Z Position to Isocenter = 100.0 mm</p>
+               <p>
+                  <a id="para_12381276-e2d0-407c-88c3-d87c977de105" shape="rect"></a>At<sub>1</sub> = Table Horizontal Rotation Angle = -10.0 deg</p>
+               <p>
+                  <a id="para_db2a7a40-1bb4-42f0-a619-107396cde639" shape="rect"></a>At<sub>2</sub> = Table Head Tilt Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_76bc653e-31c2-4b7c-a869-271efda17643" shape="rect"></a>At<sub>3</sub> = Table Cradle Tilt Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_9aa63812-d81e-4f15-8b18-fab33fc84ad8" shape="rect"></a>
+                            </p>
+               <div class="informalfigure">
+                  <div class="mediaobject">
+                     <img src="part17_fromword_files/image603.png" />
+                  </div>
+               </div>
+               <p>
+                        </p>
+               <p>
+                  <a id="para_b72fa0cb-4430-4123-b8cf-375fe9a888dc" shape="rect"></a>(P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sup>T</sup>= (R<sub>3</sub> · R<sub>2</sub> · R<sub>1</sub>) · ((P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sup>T</sup>- (T<sub>X</sub>, T<sub>Y</sub>, T<sub>Z</sub>)<sup>T</sup>)</p>
+               <p>
+                  <a id="para_1fc205e5-80a0-4439-897e-226b11f9e050" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>A</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (136.99, -95.41, -32.48)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_f9f92620-8ba3-4007-8c2f-f63db9bfed94" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 7</span>: Image B: Point</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>(P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>B</sub> in Table coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_36215149-4ead-4368-8338-3da0a24ac0ed" shape="rect"></a>In this step, the table has moved from image A to image B. The table coordinates of the object of interest are the same on image A and image B because it is assumed that the patient is fixed on the table.</p>
+               <p>
+                  <a id="para_b23f8837-92ba-4cc0-a9d3-5017ea509627" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>B</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (136.99, -95.41, -32.48)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_b24dd7d2-5f82-4dd0-8320-a4958fbaa1eb" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 8</span>: Image B: Point</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>B</sub> in Isocenter coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_67d632d9-ccc3-457a-a3fa-e236b491b3fc" shape="rect"></a>In this step, the isocenter coordinates (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>B</sub> are calculated from the table coordinates (P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sub>B</sub> by taking into account the table position and angles of the image B in the Isocenter coordinate system:</p>
+               <p>
+                  <a id="para_39f76e64-99de-437a-a956-13ca70f025d9" shape="rect"></a>Tx =Table X Position to Isocenter = 20.0 mm</p>
+               <p>
+                  <a id="para_e14a504c-c446-46e9-9b7e-496b98726dad" shape="rect"></a>Ty =Table Y Position to Isocenter = 100.0 mm</p>
+               <p>
+                  <a id="para_45bfe86a-23c0-4779-b4a2-e818fdb8c03f" shape="rect"></a>Tz =Table Z Position to Isocenter = 0.0 mm</p>
+               <p>
+                  <a id="para_ccb97c1c-1d10-4d5e-aa61-f4d9c9b31225" shape="rect"></a>At<sub>1</sub> = Table Horizontal Rotation Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_2ba53877-0eec-423d-b1c5-b1c4a1a35194" shape="rect"></a>At<sub>2</sub> = Table Head Tilt Angle = 10.0 deg</p>
+               <p>
+                  <a id="para_977d28b1-e944-4830-8a19-425aac7c5f9f" shape="rect"></a>At<sub>3</sub> = Table Cradle Tilt Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_07b6707b-a450-4501-95a2-2b84070ecbaa" shape="rect"></a>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sup>T</sup>= (R<sub>3</sub> · R<sub>2</sub> · R<sub>1</sub>)<sup>T</sup>· (P<sub>Xt</sub>, P<sub>Yt</sub>, P<sub>Zt</sub>)<sup>T</sup>+ (T<sub>X</sub>, T<sub>Y</sub>, T<sub>Z</sub>)<sup>T</sup>
+                        </p>
+               <p>
+                  <a id="para_08c58b48-88d8-433e-80cc-9135c0c4db6e" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>B</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>= (156.99, -12.11, -48.55)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_5e0d56fe-af19-4c57-95ed-1edf793fcdbd" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 9</span>: Image B: Point</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>(P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>B</sub> in positioner coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_590602f7-1939-4dd4-8f3a-cf7bf80bd790" shape="rect"></a>In this step, the positioner coordinates (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>B</sub> are calculated from the isocenter coordinates (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sub>B</sub> by taking into account the positioner angles of the image B in the Isocenter coordinate system:</p>
+               <p>
+                  <a id="para_78e0d669-bcbe-48f3-9c32-00292e3c0b92" shape="rect"></a>Ap<sub>1</sub> = Positioner Isocenter Primary Angle = -30.0 deg</p>
+               <p>
+                  <a id="para_b422ee30-2025-47c2-b651-7315b9708139" shape="rect"></a>Ap<sub>2</sub> = Positioner Isocenter Secondary Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_41ccddf3-aa06-454a-bc8b-2f6e9ef573fa" shape="rect"></a>Ap<sub>3</sub> = Positioner Isocenter Detector Rotation Angle = 0.0 deg</p>
+               <p>
+                  <a id="para_7690f1d1-96f8-47a1-9576-b4a7adef1abf" shape="rect"></a>(P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sup>T</sup>= R<sub>3</sub> · ((R<sub>2</sub> · R<sub>1</sub>) · (P<sub>X</sub>, P<sub>Y</sub>, P<sub>Z</sub>)<sup>T</sup>)</p>
+               <p>
+                  <a id="para_a75ef941-74da-4867-bbab-1d526c5b782f" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>B</sub> = (142.01, 68.00, -48.55)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_4a7d8604-fbe1-41c7-b32f-bd4be3c74029" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 10</span>: Image B: Point (</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>u</sub>,</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>v</sub>)<sub>B</sub> in positioner coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_c7670922-223d-4a2a-9e75-0b5cae08c3b7" shape="rect"></a>In this step, the (P<sub>u</sub>, P<sub>v</sub>)<sub>B</sub> coordinates in mm are calculated from the positioner coordinates (P<sub>Xp</sub>, P<sub>Yp</sub>, P<sub>Zp</sub>)<sub>B</sub> by taking into account the Distance Source to Detector and the Distance Source to Isocenter of the image B:</p>
+               <p>
+                  <a id="para_acd87fef-ee8c-42d8-ac0a-df26dc4461ee" shape="rect"></a>SID = Distance Source to Detector = 1000 mm</p>
+               <p>
+                  <a id="para_04e6d785-d9b5-4bd9-86ab-d23b5abeebc4" shape="rect"></a>ISO = Distance Source to Isocenter = 800 mm</p>
+               <p>
+                  <a id="para_9fb16943-57b8-4d43-8c89-6e356458beea" shape="rect"></a>Magnification ratio = SID / (ISO - P<span class="bold">
+                     <strong>
+                                <sub>Yp</sub>
+                            </strong>
+                  </span>) = 1200/(800-68) = 1.366</p>
+               <p>
+                  <a id="para_46844285-636c-48bd-bbb5-33b6e0f225e0" shape="rect"></a>Pu = P<span class="bold">
+                     <strong>
+                                <sub>Xp</sub>
+                            </strong>
+                  </span> * Magnification ratio = 142.01 * 1.64 = 194.00 mm</p>
+               <p>
+                  <a id="para_249f2978-ac20-4725-86f3-5ebeeba09a65" shape="rect"></a>Pv = P<span class="bold">
+                     <strong>
+                                <sub>Z</sub>
+                            </strong>
+                  </span> p * Magnification ratio = -48.55 * 1.64 = -66.33 mm</p>
+               <p>
+                  <a id="para_90d5e415-b6b6-4cc2-beef-0d8370a01b5d" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>u</sub>,</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>v</sub>)<sub>B</sub> = (194.00, -66.33)</strong>
+                  </span> in mm.</p>
+               <p>
+                  <a id="para_985b743d-6b60-454c-9879-464efe71ebce" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 11</span>: Image B: Point (i, j)<sub>B</sub> in physical detector coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_45ea2dc5-5e72-4a5c-86c5-5cb5d439aa13" shape="rect"></a>In this step, the physical detector coordinates <span class="bold">
+                     <strong>(i, j)<sub>B</sub>
+                            </strong>
+                  </span> are calculated from the positioner coordinates <span class="bold">
+                     <strong>(</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>u</sub>,</strong>
+                  </span>
+                            <span class="bold">
+                     <strong>P<sub>v</sub>)<sub>B</sub>
+                            </strong>
+                  </span> by taking into account the projection of the Isocenter in physical detector coordinates, and the Detector Element Spacing of the image B:</p>
+               <p>
+                  <a id="para_96afaa9a-07d4-4e86-8800-e0e74de37401" shape="rect"></a>ISO_P<sub>idet</sub> = Position of Isocenter Projection (column) = 1024.5</p>
+               <p>
+                  <a id="para_b3107adf-5bee-4407-bd55-8bdfa4f7e01d" shape="rect"></a>ISO_P<sub>jdet</sub> = Position of Isocenter Projection (row) = 1024.5</p>
+               <p>
+                  <a id="para_82860fa2-67e2-4b07-ba4e-dfee78d614f3" shape="rect"></a>D<sub>idet</sub> =Detector Element Spacing between two adjacent columns = 0.2</p>
+               <p>
+                  <a id="para_c8db7152-e83c-450a-857e-a43dc0928f38" shape="rect"></a>D<sub>jdet</sub> =Detector Element Spacing between two adjacent rows = 0.2</p>
+               <p>
+                  <a id="para_3208a587-d40b-4e5f-828f-c8862aaaa4e8" shape="rect"></a>i = ISO_P<sub>idet</sub> + Pu / D<sub>idet</sub> = 1024.5 + 194.00 / 0.2 = 1994.5</p>
+               <p>
+                  <a id="para_8c8a011f-e5d0-4377-9b25-31686492e675" shape="rect"></a>j = ISO_P<sub>idet</sub> - Pv / D<sub>idet</sub> = 1024.5 - (-66.33) / 0.2 = 1356.2</p>
+               <p>
+                  <a id="para_584d1b32-ad66-4f02-a85d-b79ff14737e2" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>B</sub> = (1994.5, 1356.2)</strong>
+                  </span> in detector elements.</p>
+               <p>
+                  <a id="para_76525e26-0d0f-4142-8b52-b38f051e82a8" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 12</span>
+                            </strong>
+                  </span>: <span class="bold">
+                     <strong>Image B: Point (i, j)<sub>B</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>in FOV coordinates</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_5a03edb8-b2e1-4c3c-b5c6-ef2aaa93ad09" shape="rect"></a>In this step, the FOV coordinates are calculated from the physical detector coordinates by taking into account the FOV origin and the ratio between Imager Pixel Spacing and Detector Element Spacing of the image B:</p>
+               <p>
+                  <a id="para_838bb588-ba26-4d9f-a448-fad839dac8fd" shape="rect"></a>D<sub>i</sub> = Imager Pixel Spacing (column) = 0.4 mm</p>
+               <p>
+                  <a id="para_5554c6f0-95e7-4cde-8ed3-0ed292fff4be" shape="rect"></a>D<sub>j</sub> = Imager Pixel Spacing (row) = 0.4 mm</p>
+               <p>
+                  <a id="para_d8c73618-2daa-4ecf-9c6b-61a230eb70ce" shape="rect"></a>D<sub>idet</sub> = Detector Element Spacing between two adjacent columns = 0.2 mm</p>
+               <p>
+                  <a id="para_62ca15c4-d527-400f-9c44-52911be9677d" shape="rect"></a>D<sub>jdet</sub> = Detector Element Spacing between two adjacent rows = 0.2 mm</p>
+               <p>
+                  <a id="para_3815e910-3937-4777-8d2a-9f41136cbbc8" shape="rect"></a>Zoom Factor (column) = D<sub>i</sub> / D<sub>idet</sub> = 2.0</p>
+               <p>
+                  <a id="para_659bcc26-e3b9-4d38-9017-f4525761da6b" shape="rect"></a>Zoom Factor (row) = D<sub>j</sub> / D<sub>jdet</sub> = 2.0</p>
+               <p>
+                  <a id="para_c2630622-e2b8-4330-aab6-ca116c8f8068" shape="rect"></a>FOV Origin (column) = FOV<sub>idet</sub> = 25.0</p>
+               <p>
+                  <a id="para_1d5c45f7-baa7-4e32-adff-6d6a31e5c3f4" shape="rect"></a>FOV Origin (row) = FOV<sub>jdet</sub> = 25.0</p>
+               <p>
+                  <a id="para_d4d4ee25-6f5e-4b89-b965-5cc1b2e4dd15" shape="rect"></a>new i = (i - FOV<sub>idet</sub>).D<sub>idet</sub> / D<sub>i</sub> - (1 - D<sub>idet</sub> / D<sub>i</sub>) / 2 = (1994.5 - 25.0) / 2.0 - 0.25 = 984.5</p>
+               <p>
+                  <a id="para_9512f3bb-0594-44ad-a242-4838d7f1d0d5" shape="rect"></a>new j = (j - FOV<sub>jdet</sub>).D<sub>jdet</sub> / D<sub>j</sub> - (1 - D<sub>jdet</sub> / D<sub>j</sub>) / 2 = (1356.2 - 25.0) / 2.0 - 0.25 = 665.35</p>
+               <p>
+                  <a id="para_b9434a14-14a9-4bd1-b8a9-9bd38d84a767" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>B</sub> = (984.50, 665.35)</strong>
+                  </span> in stored pixel data.</p>
+               <p>
+                  <a id="para_30e9b3d7-1fc9-4a8b-8741-4e807ef7d598" shape="rect"></a>
+                            <span class="bold">
+                     <strong>
+                                <span class="underline">Step 13</span>
+                            </strong>
+                  </span>: <span class="bold">
+                     <strong>Image B: Point (i, j)<sub>B</sub>
+                            </strong>
+                  </span>
+                            <span class="bold">
+                     <strong>in Pixel Data</strong>
+                  </span>
+                        </p>
+               <p>
+                  <a id="para_c911a84a-6592-41c7-8864-0c18abf876a0" shape="rect"></a>In this step, the position <span class="bold">
+                     <strong>(i, j)<sub>B</sub>
+                            </strong>
+                  </span> of the projection of the object of interest in the Pixel Data of the image B is calculated from the FOV coordinates by taking into account the FOV rotation and Horizontal Flip applied to the FOV matrix when the Pixel Data were created:</p>
+               <p>
+                  <a id="para_2e345c9f-94b4-4188-8109-748f2bd2c059" shape="rect"></a>
+                            <span class="bold">
+                     <strong>1.1: Horizontal Flip</strong>
+                  </span>: NO</p>
+               <p>
+                  <a id="para_41a24fce-4308-4829-81c3-98bb99622024" shape="rect"></a>new i = i = 984.50</p>
+               <p>
+                  <a id="para_e81ff972-f308-4be8-9dfb-bb7b8d88661a" shape="rect"></a>new j = j = 665.35</p>
+               <p>
+                  <a id="para_ad6df093-8290-4826-81c0-ed21dfcd6c4b" shape="rect"></a>
+                            <span class="bold">
+                     <strong>1.2: Image Rotation</strong>
+                  </span>: 180 (clockwise)</p>
+               <p>
+                  <a id="para_dc5c7942-3522-487c-b73f-7192b60c4682" shape="rect"></a>new i = (columns -1) - i = 1000 - 1 - 984.50 = 14.50</p>
+               <p>
+                  <a id="para_29e421f1-760d-414d-ac5d-6e877232092c" shape="rect"></a>new j = (rows -1) - j = 1000 - 1 - 665.35 = 333.65</p>
+               <p>
+                  <a id="para_ada3fd50-5c89-4f3e-b142-2efdb42cc6ff" shape="rect"></a>
+                            <span class="bold">
+                     <strong>(i, j)<sub>B</sub> = (14.50, 333.65)</strong>
+                  </span> in stored pixel data.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.4.2.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_FFF.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_GGG.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">FFF.2.4.2.4 Examples </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> GGG Unified Worklist and Procedure Step - UPS (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

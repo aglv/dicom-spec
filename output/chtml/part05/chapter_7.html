@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>7 The Data Set</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="PS3.5.html" title="PS3.5" />
+      <link rel="prev" href="sect_6.4.html" title="6.4 Value Multiplicity (VM) and Delimitation" />
+      <link rel="next" href="sect_7.2.html" title="7.2 Group Length" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">7 The Data Set <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/chapter_7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-node">The Data Set</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_7" shape="rect"></a>7 The Data Set</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_ea8eb165-4850-4ba2-9d1e-eca2cf8e2abf" shape="rect"></a>A Data Set represents an instance of a real world Information Object. A Data Set is constructed of Data Elements. Data Elements contain the encoded Values of Attributes of that object. The specific content and semantics of these Attributes are specified in Information Object Definitions (see <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>).</p>
+         <p>
+            <a id="para_12c99791-9251-422d-b48f-f4c5ebca3e26" shape="rect"></a>The construction, characteristics, and encoding of a Data Set and its Data Elements are discussed in this section.
+        Pixel Data and Overlays are Data Elements whose interpretation depends on other related Data Elements.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_7.1" shape="rect"></a>7.1 Data Elements</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_eb836fbc-c183-4185-9af8-05064f72fbc8" shape="rect"></a>A Data Element is uniquely identified by a Data Element Tag. The Data Elements in a Data Set shall be ordered by increasing Data Element Tag Number and shall occur at most once in a Data Set.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_79eb710b-9bb9-4c48-98af-051b67348fe5" shape="rect"></a>A Data Element Tag may occur again within Nested Data Sets (see <a class="xref" href="sect_7.5.html" title="7.5 Nesting of Data Sets" shape="rect">Section 7.5</a>).</p>
+            </div>
+            <p>
+               <a id="para_39ad776c-51d2-4d69-85a3-478e7ec9ff9f" shape="rect"></a>Two types of Data Elements are defined:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_31c35427-b24b-4c6a-be9d-1c6433598eba" shape="rect"></a>Standard Data Elements have an even Group Number that is not 0000, 0002, 0004, or 0006.</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <p>
+                           <a id="para_1e38a0eb-6d10-4c38-b17c-0a3894d08451" shape="rect"></a>Usage of these groups is reserved for DIMSE Commands (see <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>) and DICOM File Formats.</p>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_d9bbca8a-b390-4e2d-bde0-6cf5616fb379" shape="rect"></a>Private Data Elements have an odd Group Number that is not 0001, 0003, 0005, 0007, or FFFF. Private Data Elements are discussed further in <a class="xref" href="sect_7.8.html" title="7.8 Private Data Elements" shape="rect">Section 7.8</a>.</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_546552db-a324-4e32-8da6-ce9d7470ef25" shape="rect"></a>Although similar or related Data Elements often have the same Group Number; a Data Group does not convey any semantic meaning.</p>
+            </div>
+            <p>
+               <a id="para_aa33d759-566e-4a49-a670-c90fe88fbe5e" shape="rect"></a>A Data Element shall have one of three structures. Two of these structures contain the VR of the Data Element (Explicit VR) but differ in the way their lengths are expressed, while the other structure does not contain the VR (Implicit VR). All three structures contain the Data Element Tag, Value Length and Value for the Data Element. See <a class="xref" href="chapter_7.html#figure_7.1-1" title="Figure 7.1-1. DICOM Data Set and Data Element Structures" shape="rect">Figure 7.1-1</a>.</p>
+            <p>
+               <a id="para_21646f2d-5ba6-4efb-a21a-2bc7d88fcbf0" shape="rect"></a>Implicit and Explicit VR Data Elements shall not coexist in a Data Set and Data Sets nested within it (see <a class="xref" href="sect_7.5.html" title="7.5 Nesting of Data Sets" shape="rect">Section 7.5</a>). Whether a Data Set uses Explicit or Implicit VR, among other characteristics, is determined by the negotiated Transfer Syntax (see <a class="xref" href="chapter_10.html" title="10 Transfer Syntax" shape="rect">Section 10</a> and <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_fcd626c5-e688-4afd-b518-688b77abc447" shape="rect"></a>VRs are not contained in Data Elements when using DICOM Default Little Endian Transfer Syntax (Implicit VR Little Endian).</p>
+            </div>
+            <p>
+               <a id="para_a1411cf7-12a0-477d-92f0-b453ca6b10d2" shape="rect"></a>
+            </p>
+            <div class="figure">
+               <a id="figure_7.1-1" shape="rect"></a>
+               <div class="figure-contents">
+                  <div class="mediaobject">
+                     <img src="figures/PS3.5_7.1-1.svg" alt="DICOM Data Set and Data Element Structures" />
+                  </div>
+               </div>
+               <p class="title">
+                  <strong>Figure 7.1-1. DICOM Data Set and Data Element Structures</strong>
+               </p>
+            </div>
+            <p>
+               <br class="figure-break" clear="none" />
+            </p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.1" shape="rect"></a>7.1.1 Data Element Fields</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_4e420d46-5c25-4919-afe8-ded031408b13" shape="rect"></a>A Data Element is made up of fields. Three fields are common to all three Data Element structures; these are the Data Element Tag, Value Length, and Value Field. A fourth field, Value Representation, is only present in the two Explicit VR Data Element structures. The Data Element structures are defined in <a class="xref" href="chapter_7.html#sect_7.1.2" title="7.1.2 Data Element Structure with Explicit VR" shape="rect">Section 7.1.2</a> and <a class="xref" href="chapter_7.html#sect_7.1.3" title="7.1.3 Data Element Structure with Implicit VR" shape="rect">Section 7.1.3</a>. The definitions of the fields are:</p>
+               <div class="variablelist">
+                  <dl class="variablelist">
+                     <dt>
+                        <span class="term">Data Element Tag</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_9838b3be-a4eb-43d7-b95d-45f2bf0161c6" shape="rect"></a>An ordered pair of 16-bit unsigned integers representing the Group Number followed by Element Number.</p>
+                     </dd>
+                     <dt>
+                        <span class="term">Value Representation</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_8c6abdc8-2439-4aae-bdd0-98f7c35fd830" shape="rect"></a>Two single byte characters containing the VR of the Data Element. The VR for a given Data Element Tag shall be as defined by the Data Dictionary as specified in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>. The two byte VR shall be encoded using only upper case letters from the DICOM default character set.</p>
+                     </dd>
+                     <dt>
+                        <span class="term">Value Length</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_070f7f3a-eedc-45ef-97ef-3507969ef5c3" shape="rect"></a>Either:</p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: disc; ">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_e8f6838c-01b5-4892-9f81-ee1e42f120ea" shape="rect"></a>a 16 or 32-bit (dependent on VR and whether VR is explicit or implicit) unsigned integer containing the Explicit Length of the Value Field as the number of bytes (even) that make up the Value. It does not include the length of the Data Element Tag, Value Representation, and Value Length Fields.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_e46b4b7c-a78a-477f-be52-c0b23e9968b7" shape="rect"></a>a 32-bit Value Length Field set to Undefined Length (FFFFFFFFH). Undefined Lengths may be used for Data Elements having the Value Representation (VR) Sequence of Items (SQ) and Unknown (UN). For Data Elements with Value Representation OW or OB Undefined Length may be used depending on the negotiated Transfer Syntax (see <a class="xref" href="chapter_10.html" title="10 Transfer Syntax" shape="rect">Section 10</a> and <a class="xref" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" shape="rect">Annex A</a>).</p>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                           <h3 class="title">Note</h3>
+                           <div class="orderedlist">
+                              <ol class="orderedlist" type="1">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_424d0f69-a07d-45c9-8c46-62f818b9e9e0" shape="rect"></a>The decoder of a Data Set should support both Explicit and Undefined Lengths for VRs of SQ and UN and, when applicable, for VRs of OW and OB.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_101cc10c-2686-4e6e-b828-8fba1e557033" shape="rect"></a>The 32-bit Value Length Field limits the maximum size of large data Value Fields such as Pixel Data sent in a Native Format (encoded in Transfer Syntaxes that use only the unencapsulated form).</p>
+                                 </li>
+                              </ol>
+                           </div>
+                        </div>
+                     </dd>
+                     <dt>
+                        <span class="term">Value Field</span>
+                     </dt>
+                     <dd>
+                        <p>
+                           <a id="para_ee3c04c9-0da2-4b49-8ac4-94f5ec761041" shape="rect"></a>An even number of bytes containing the Value(s) of the Data Element.</p>
+                        <p>
+                           <a id="para_2f6d32ae-dafc-4f9f-8a49-05fa92ae0e6b" shape="rect"></a>The data type of Value(s) stored in this field is specified by the Data Element's VR. The VR for a given Data Element Tag can be determined using the Data Dictionary in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>, or using the VR Field if it is contained explicitly within the Data Element. The VR of Standard Data Elements shall agree with those specified in the Data Dictionary.</p>
+                        <p>
+                           <a id="para_45aeb63b-b6be-42be-9a2b-c4c7356f0cba" shape="rect"></a>The Value Multiplicity specifies how many Values with this VR can be placed in the Value Field. If the VM is greater than one, multiple Values shall be delimited within the Value Field as defined previously in <a class="xref" href="sect_6.4.html" title="6.4 Value Multiplicity (VM) and Delimitation" shape="rect">Section 6.4</a>. The VMs of Standard Data Elements are specified in the Data Dictionary in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a>.</p>
+                        <p>
+                           <a id="para_07f98681-73de-479d-84c3-649e9cf30682" shape="rect"></a>Value Fields with Undefined Length are delimited through the use of Sequence Delimitation Items and Item Delimitation Data Elements, which are described further in <a class="xref" href="sect_7.5.html" title="7.5 Nesting of Data Sets" shape="rect">Section 7.5</a>.</p>
+                     </dd>
+                  </dl>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.2" shape="rect"></a>7.1.2 Data Element Structure with Explicit VR</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_fdb2bf98-c448-4d0b-bea4-d41171c8b883" shape="rect"></a>When using the Explicit VR structures, the Data Element shall be constructed of four consecutive fields: Data Element Tag, VR, Value Length, and Value. Depending on the VR of the Data Element, the Data Element will be structured in one of two ways:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_1dadedad-a61e-4cf1-bafd-ab5efe1d2a85" shape="rect"></a>for VRs of AE, AS, AT, CS, DA, DS, DT, FL, FD, IS, LO, LT, PN, SH, SL, SS, ST, TM, UI, UL and US the Value Length Field is the 16-bit unsigned integer following the two byte VR Field (<a class="xref" href="chapter_7.html#table_7.1-2" title="Table 7.1-2. Data Element with Explicit VR of AE, AS, AT, CS, DA, DS, DT, FL, FD, IS, LO, LT, PN, SH, SL, SS, ST, TM, UI, UL and US" shape="rect">Table 7.1-2</a>). The value of the Value Length Field shall equal the length of the Value Field.</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_5feaf34b-29ce-486d-98f9-5fe7ef4ec0ee" shape="rect"></a>for all other VRs the 16 bits following the two byte VR Field are reserved for use by later versions of the DICOM Standard. These reserved bytes shall be set to 0000H and shall not be used or decoded (<a class="xref" href="chapter_7.html#table_7.1-1" title="Table 7.1-1. Data Element with Explicit VR other than as shown in Table 7.1-2" shape="rect">Table 7.1-1</a>). The Value Length Field is a 32-bit unsigned integer.</p>
+                        <div class="itemizedlist">
+                           <ul class="itemizedlist" style="list-style-type: circle; ">
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_142f8ee1-71eb-4c64-bd86-d45dc957e233" shape="rect"></a>for VRs of OB, OD, OF, OL, OV, OW, SQ and UN, if the Value Field has an Explicit Length, then the Value Length Field shall contain a value equal to the length (in bytes) of the Value Field, otherwise, the Value Field has an Undefined Length and a Sequence Delimitation Item marks the end of the Value Field.</p>
+                              </li>
+                              <li class="listitem">
+                                 <p>
+                                    <a id="para_3e043b97-0758-428e-86b4-0af722008d1f" shape="rect"></a>for all other VRs with a 32-bit Value Length Field, the Value Length Field shall contain a value equal to the length (in bytes) of the Value Field.</p>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                           <h3 class="title">Note</h3>
+                           <p>
+                              <a id="para_f27d1af5-7ecf-4e2a-9ce6-e2edd366e258" shape="rect"></a>VRs of SV, UC, UR, UV and UT may not have an Undefined Length, i.e., a Value Length of FFFFFFFFH.</p>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="table">
+                  <a id="table_7.1-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 7.1-1. Data Element with Explicit VR other than as shown in <a class="xref" href="chapter_7.html#table_7.1-2" title="Table 7.1-2. Data Element with Explicit VR of AE, AS, AT, CS, DA, DS, DT, FL, FD, IS, LO, LT, PN, SH, SL, SS, ST, TM, UI, UL and US" shape="rect">Table 7.1-2</a>
+                     </strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" colspan="2" rowspan="1">
+                                 <p>
+                                    <a id="para_5c5ad357-5ca0-426d-9865-f96cd7372cf8" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Tag</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" colspan="2" rowspan="1">
+                                 <p>
+                                    <a id="para_d07cc899-88c8-49a7-8826-465468330321" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>VR</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a8e75faf-8faa-458b-b436-4ed959a9c254" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value Length</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_83fa249e-cf05-499b-aff6-160757b11410" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ee90a7e5-f567-4a37-b171-b8fa3024d164" shape="rect"></a>Group Number</p>
+                                 <p>
+                                    <a id="para_5ad2a84f-232b-4637-9b80-af5bb5a5cac0" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ac26739c-eb74-4601-a0d3-f6f54868c75f" shape="rect"></a>Element Number</p>
+                                 <p>
+                                    <a id="para_c2f0141c-22ec-4b7e-ba67-df23b7f6391d" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5e67423f-26ad-4664-888a-d5a4cf4c53d9" shape="rect"></a>VR</p>
+                                 <p>
+                                    <a id="para_cdf30654-9bf2-4383-ac19-8bda04ba1eeb" shape="rect"></a>(2 single byte characters)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_354dbd6a-0245-4914-97b9-2225646113ce" shape="rect"></a>Reserved (2 bytes) set to a value of 0000H</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_e64594f9-8acb-4a2b-b9ea-782bf6e2b3b1" shape="rect"></a>32-bit unsigned integer</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a53b0e4b-5b68-4d5a-9591-200d8ae3abc9" shape="rect"></a>Even number of bytes containing the Data Element Value(s) encoded according to the VR and negotiated Transfer Syntax. Delimited with Sequence Delimitation Item if of Undefined Length.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3f18f8c4-7f1c-4ed1-b3fb-38e072260cd5" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9d6aa1cc-9694-420b-9d33-6ab3e44818b1" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ff0841f5-3906-482c-82db-d1981604d9f6" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_fb19a35a-25de-4cda-aedc-47e1dd1db4fc" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4027e039-1394-4231-9b52-06919761468e" shape="rect"></a>4 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_9900d97f-b57f-4b03-88a2-402c651764a9" shape="rect"></a>'Value Length' bytes if of Explicit Length</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="table">
+                  <a id="table_7.1-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 7.1-2. Data Element with Explicit VR of AE, AS, AT, CS, DA, DS, DT, FL, FD, IS, LO, LT, PN, SH, SL, SS, ST, TM, UI, UL and US</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" colspan="2" rowspan="1">
+                                 <p>
+                                    <a id="para_ad2d3b39-2ea8-4b24-8540-95e37e0fb21c" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Tag</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ee362013-806f-4d13-bfd8-0245210fef63" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>VR</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_ad36ffc0-f2c5-4637-8764-fe72622501b1" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value Length</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_1f93df22-8ea5-4568-930a-bcbd51e95e12" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_92250758-eabb-4b24-a764-028ac1bdc04b" shape="rect"></a>Group Number</p>
+                                 <p>
+                                    <a id="para_fa3f177a-5d75-4327-85c2-19cc4a3436b9" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_e8d7506f-3ac4-46b9-b2de-4d287319a15b" shape="rect"></a>Element Number</p>
+                                 <p>
+                                    <a id="para_a7f244ad-eb79-492a-a929-5bd1898d3fac" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_7a3eefaa-aca8-4111-97f3-36bd031a6561" shape="rect"></a>VR</p>
+                                 <p>
+                                    <a id="para_f882be30-4d27-4b95-8e01-8db7636fc250" shape="rect"></a>(2 single byte characters)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2cdaa98e-0fd7-4b66-9a6a-cda7067890f6" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_20dbff14-4c3b-45bc-b2d9-655e0b189a0b" shape="rect"></a>Even number of bytes containing the Data Element Value(s) encoded according to the VR and negotiated Transfer Syntax.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_6f4e3ee4-f1bb-4f3e-9d12-1d2122476787" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_34516a1e-4997-4e7e-8f9d-123e4798ddbe" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_d166e696-3f30-4f85-aad8-e23111049698" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a55777ef-7b09-4760-8668-c8ae69c1a25e" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_a9deb200-9a39-4e25-bae7-641aae45893a" shape="rect"></a>'Value Length' bytes</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_7.1.3" shape="rect"></a>7.1.3 Data Element Structure with Implicit VR</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_dca37176-cfbb-4db4-b775-e91bf1cbc092" shape="rect"></a>When using the Implicit VR structure the Data Element shall be constructed of three consecutive fields: Data Element Tag, Value Length, and Value (see <a class="xref" href="chapter_7.html#table_7.1-3" title="Table 7.1-3. Data Element with Implicit VR" shape="rect">Table 7.1-3</a>). If the Value Field has an Explicit Length then the Value Length Field shall contain a value equal to the length (in bytes) of the Value Field. Otherwise, the Value Field has an Undefined Length and a Sequence Delimitation Item marks the end of the Value Field.</p>
+               <div class="table">
+                  <a id="table_7.1-3" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table 7.1-3. Data Element with Implicit VR</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" colspan="2" rowspan="1">
+                                 <p>
+                                    <a id="para_1e802404-a190-4caf-a7ee-af43fc61e808" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Tag</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_4f5aaf90-1256-420f-b80a-da41c1346b32" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value Length</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3230556b-f39b-4df2-b967-d4d4867fee38" shape="rect"></a>
+                                    <span class="bold">
+                                       <strong>Value</strong>
+                                    </span>
+                                 </p>
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_c9b63d66-56bb-45b5-bfd3-a0f965c15ce6" shape="rect"></a>Group Number</p>
+                                 <p>
+                                    <a id="para_6e23de3e-46f5-4928-a429-82da4fa21406" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_215e3f0e-1c88-4ced-989e-c49f8370886e" shape="rect"></a>Element Number</p>
+                                 <p>
+                                    <a id="para_d831363a-e191-4506-bbd3-be4d81d7673a" shape="rect"></a>(16-bit unsigned integer)</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_5d3feef6-5555-4c1b-94f6-645b65ed637a" shape="rect"></a>32-bit unsigned integer</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_18623220-327e-480a-a07e-3ccc9e539e60" shape="rect"></a>Even number of bytes containing the Data Elements Value encoded according to the VR specified in <a href="../part06/PS3.6.html" class="olink" shape="rect">PS3.6</a> and the negotiated Transfer Syntax. Delimited with Sequence Delimitation Item if of Undefined Length.</p>
+                              </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_3f78782b-eb13-455b-89f3-79b711c74945" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_c64ef536-f0e4-4e87-9139-789d10e2259f" shape="rect"></a>2 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_05cb1e2f-034d-40e5-894b-2e0b85bef1fc" shape="rect"></a>4 bytes</p>
+                              </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                 <p>
+                                    <a id="para_2655d427-45f9-4d36-a815-8afc993ce98a" shape="rect"></a>'Value Length' bytes or Undefined Length</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_6.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">6.4 Value Multiplicity (VM) and Delimitation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 7.2 Group Length</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

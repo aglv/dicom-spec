@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>D.3.3.7 User Identity Negotiation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.7.html" title="PS3.7" />
+      <link rel="up" href="sect_D.3.3.html" title="D.3.3 DICOM Application Association Information" />
+      <link rel="prev" href="sect_D.3.3.6.html" title="D.3.3.6 Service-Object Pair (SOP) Class Common Extended Negotiation" />
+      <link rel="next" href="sect_D.3.3.7.2.html" title="D.3.3.7.2 User Identity Sub-Item Structure (A-ASSOCIATE-AC)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024c - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">D.3.3.7 User Identity Negotiation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part07/sect_D.3.3.7.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.3.3.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">D.3.3 DICOM Application Association Information</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.3.3.7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.7.html" shape="rect">PS3.7</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_D.html" shape="rect">Association Negotiation (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_D.3.html" shape="rect">Association Establishment</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_D.3.3.html" shape="rect">DICOM Application Association Information</a>
+         </span> &gt; <span class="breadcrumb-node">User Identity Negotiation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_D.3.3.7" shape="rect"></a>D.3.3.7 User Identity Negotiation</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_c76d31f1-77e6-442b-a30d-5d1dab8537a8" shape="rect"></a>The User Identity Negotiation is used to notify the association acceptor of the user identity of the association requestor. It may also request that the association acceptor respond with the server identity. This negotiation is optional. If this sub-item is not present in the A-ASSOCIATE request the A-ASSOCIATE response shall not contain a user identity response sub-item.</p>
+         <p>
+            <a id="para_f091ab35-d0f1-4f10-8a5b-c4c1338240d7" shape="rect"></a>The Association-requestor conveys in the A-ASSOCIATE request:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_df2b7b69-7b34-4e4a-a627-a88c6cd6f2dd" shape="rect"></a>the form of user identity being provided, either a username, username and passcode, a Kerberos service ticket, a SAML assertion, or a JSON Web Token (JWT).</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_b779f9d1-556e-4ba4-9978-e82730302c0b" shape="rect"></a>an indication whether a positive server response is requested.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_16475d05-c582-4e73-8195-556032c4b470" shape="rect"></a>The Association-acceptor does not provide an A-ASSOCIATE response unless a positive response is requested and user authentication succeeded. If a positive response was requested, the A-ASSOCIATE response shall contain a User Identity sub-item. If a Kerberos ticket is used the response shall include a Kerberos server ticket.</p>
+         <p>
+            <a id="para_08c20b0b-cbba-475d-ba82-63ff1ca56e88" shape="rect"></a>Since a system may ignore request sub-items, the positive response must be requested if the association requestor requires confirmation. If the association acceptor does not support user identification it will accept the association without making a positive response. The association requestor can then decide whether to proceed.</p>
+         <p>
+            <a id="para_f7d8429f-722e-4793-ac68-7d975c56b89a" shape="rect"></a>The association acceptor may utilize the User Identity information provided during the association negotiation to populate the user information fields in DICOM audit trail messages. The association acceptor may utilize the User Identity information provided during the association negotiation to perform authorization controls during the performance of other DIMSE transactions on the same association. The user identity information may also be used to modify the performance of DIMSE transactions for other purposes, such as workflow optimizations.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3d58d59a-44a3-4507-a671-ca2ede3f6f84" shape="rect"></a>User identity authorization controls may be simple "allow/disallow" rules, or they can be more complex scoping rules. For example, a query could be constrained to apply only to return information about patients that are associated with the identified user. The issues surrounding authorization controls can become very complex. The User Identity SOP conveys user identity to support uses such as authorization controls and audit controls. It does not specify their behavior.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_25be324b-a5b9-4a62-8a61-9cfa8186b8e2" shape="rect"></a>The option to include a passcode along with the user identity enables a variety of non-Kerberos secure interfaces. Sending passwords in the clear is insecure, but there are single use password systems such as RFC-2289 and the various smart tokens that do not require protection. The password might also be protected by TLS or other mechanisms.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e0a4881e-8cfa-43cb-81d8-c7ae30de7853" shape="rect"></a>For JSON Web Tokens (JWTs), RFC 7519 specifies minimal requirements for encryption, MAC and signature algorithms;
+          others may be supported as described in the DICOM Conformance Statement.
+          The encoded format in the Primary-field of the A-ASSOCIATE-RQ is the same as what might be included in an HTTP Authorization: Bearer header field
+          per RFC 6750 when accessing a Protected Resource on a Resource Server,
+          to facilitate bridging between <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18 “PS3.18”</a> and <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7 “PS3.7”</a> implementations.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_a34023c6-fe58-40d1-841e-6aabb30b3c74" shape="rect"></a>
+         </p>
+         <div class="figure">
+            <a id="figure_D.3-8" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.7_D.3-8.svg" alt="User Identity Negotiation (With Server Positive Response Requested)" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure D.3-8. User Identity Negotiation (With Server Positive Response Requested)</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_1a53230a-b3ff-45ac-90d3-522c056b4870" shape="rect"></a>
+         </p>
+         <div class="figure">
+            <a id="figure_D.3-9" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.7_D.3-9.svg" alt="User Identity Negotiation (Application Entity &quot;A&quot; Provides Username Identity)" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure D.3-9. User Identity Negotiation (Application Entity "A" Provides Username Identity)</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_D.3.3.7.1" shape="rect"></a>D.3.3.7.1 User Identity Sub-Item Structure (A-ASSOCIATE-RQ)</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_66fe0dcb-c842-46fe-8fe3-1a7920b6548e" shape="rect"></a>The User Identity Negotiation Sub-Item shall be made of a sequence of mandatory fixed and variable length fields. This Sub-Item is optional and if supported, only one User Identity Negotiation Sub-Item shall be present in the User Data Item of the A-ASSOCIATE-RQ. <a class="xref" href="sect_D.3.3.7.html#table_D.3-14" title="Table D.3-14. User Identity Negotiation Sub-Item Fields (A-ASSOCIATE-RQ)" shape="rect">Table D.3-14</a> shows the sequence of the mandatory fields.</p>
+            <div class="table">
+               <a id="table_D.3-14" shape="rect"></a>
+               <p class="title">
+                  <strong>Table D.3-14. User Identity Negotiation Sub-Item Fields (A-ASSOCIATE-RQ)</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cd79f7fd-4284-4048-926d-c8876620d437" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Item Bytes</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dde78d9e-b050-48c9-9d99-0668334be29b" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Field Name</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1b9b9811-e0d5-465f-9558-4e087b56f7fd" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Description of Field</strong>
+                                 </span>
+                              </p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c34b5580-f1d1-4ce5-908f-5da2ce06b197" shape="rect"></a>1</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4ce3acd5-0852-49cd-86fc-8e22972ad86f" shape="rect"></a>Item-type</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a847689b-6e45-4474-b302-b3de9826aeac" shape="rect"></a>58H</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_86b6e57a-e23a-47f1-88fe-ad6f90d7acc2" shape="rect"></a>2</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_134f44ba-23f1-435a-8050-27bc96df3787" shape="rect"></a>Reserved</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_07ab309a-475d-42b7-99be-7204d7933438" shape="rect"></a>This reserved field shall be sent with a value 00H but not tested to this value when received.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d61fe0fa-bfa7-4d45-8fd0-257ce1c5c649" shape="rect"></a>3-4</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f6e65b9d-9e24-4f20-b01d-f4f0038cc7b4" shape="rect"></a>Item-length</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_191afbc3-3722-4792-8075-146f2fe6dd0b" shape="rect"></a>This Item-length shall be the number of bytes from the first byte of the following field to the last byte of the last field sent. It shall be encoded as an unsigned binary number.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e38a92f3-ad2d-4bde-ae28-d65ec405ceb2" shape="rect"></a>5</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7046e441-c86c-4e31-917d-aa42236003ba" shape="rect"></a>User-Identity-Type</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_276328ba-b1b2-4841-b8d1-612735e34600" shape="rect"></a>Field value shall be in the range 1 to 5 with the following meanings:</p>
+                              <p>
+                                 <a id="para_4e42d526-3c88-415e-ab36-ace6943a17ee" shape="rect"></a>1 - Username as a string in UTF-8</p>
+                              <p>
+                                 <a id="para_3f5dda40-8c82-4a32-8b37-43ecd740a261" shape="rect"></a>2 - Username as a string in UTF-8 and passcode</p>
+                              <p>
+                                 <a id="para_7279eb99-7d15-4c8c-9493-9d33ce1e16f7" shape="rect"></a>3 - Kerberos Service ticket</p>
+                              <p>
+                                 <a id="para_28d78e48-430a-434e-bad4-0bc80493c981" shape="rect"></a>4 - SAML Assertion</p>
+                              <p>
+                                 <a id="para_c43bc73a-22b9-4a4f-848b-55ba68f10b10" shape="rect"></a>5 - JSON Web Token (JWT)</p>
+                              <p>
+                                 <a id="para_00a0a098-3fe2-457d-983a-86d07afa0b3e" shape="rect"></a>Other values are reserved for future standardization.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d6c2d595-167f-48c2-b53d-41b34d39b3f7" shape="rect"></a>6</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3ccb512b-cbe7-4ea0-8dc2-b576e82ad31a" shape="rect"></a>Positive-response-requested</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_284c25b8-3ac0-48f8-bfcf-3d52030e362c" shape="rect"></a>Field value:</p>
+                              <p>
+                                 <a id="para_1c377ddd-da50-4c39-8f9a-969c236a163c" shape="rect"></a>0 - no response requested</p>
+                              <p>
+                                 <a id="para_b355d9d8-0d0f-43f0-a3b7-63cfa0546593" shape="rect"></a>1 - positive response requested</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fa96cc4d-26f8-4b8d-bfa3-4b9759a7c2fb" shape="rect"></a>7-8</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ce309a27-26ee-4ad8-ab77-3b9e243ce887" shape="rect"></a>Primary-field-length</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eecfa7a3-81a1-4a24-8a40-6af305d32691" shape="rect"></a>The User-Identity-Length shall contain the length of the User-Identity value.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_493e2b34-3a25-4c05-8a76-596cd1c61a6a" shape="rect"></a>9-n</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_357a710b-ee5f-444d-90dd-c228ec8fb24b" shape="rect"></a>Primary-field</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c9e1766b-5a4c-4c9c-aa6a-da3d65f7a7c9" shape="rect"></a>This field shall convey the user identity, either the username as a series of characters, or the Kerberos Service ticket encoded in accordance with RFC-1510,
+          or the JWT encoded in accordance with RFC 7519 using base64url encoded parts.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c10f8178-8054-4be8-9409-ab736c53f734" shape="rect"></a>n+1-n+2</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b2935ebc-e298-48f2-ad41-3fee750a8f2d" shape="rect"></a>Secondary-field-length</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4a564ccc-99e9-45f7-bf48-c4ff9852112d" shape="rect"></a>This field shall be non-zero only if User-Identity-Type has the value 2. It shall contain the length of the secondary-field.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_97dec233-6693-4624-83f2-c7f727786604" shape="rect"></a>n+3-m</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a8f9d8b8-90f0-4082-9714-49b60458acfa" shape="rect"></a>Secondary-field</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_50df7480-a400-4fde-8e47-3a4a73366b26" shape="rect"></a>This field shall be present only if User-Identity-Type has the value 2. It shall contain the Passcode value.</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.3.3.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_D.3.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.3.3.7.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">D.3.3.6 Service-Object Pair (SOP) Class Common Extended Negotiation </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.7.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> D.3.3.7.2 User Identity Sub-Item Structure (A-ASSOCIATE-AC)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.7 2024c - Message Exchange</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.24.2.2 Content Sequence</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.24.2.html" title="C.24.2 Encapsulated Document Module" />
+      <link rel="prev" href="sect_C.24.2.html" title="C.24.2 Encapsulated Document Module" />
+      <link rel="next" href="sect_C.24.2.3.html" title="C.24.2.3 Security Considerations for Encapsulated Documents (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.24.2.2 Content Sequence <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.24.2.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.24.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.24.2 Encapsulated Document Module</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.24.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.24.html" shape="rect">Encapsulated Document Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.24.2.html" shape="rect">Encapsulated Document Module</a>
+         </span> &gt; <span class="breadcrumb-node">Content Sequence</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.24.2.2" shape="rect"></a>C.24.2.2 Content Sequence</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_b9acd29a-5007-476e-bba6-3fb85aef138c" shape="rect"></a>Content Sequence (0040,A730) encodes structured content relevant to the Encapsulated Document (0042,0011). This allows structured data in DICOM encoded form to accompany or describe some or all of the contents of the otherwise opaque encapsulated document, and enables receiving implementations to extract that data, e.g., to tabulate numeric measurements, provide them as merge fields for dictation, or store them in a database.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_784b5611-25cd-4ebc-8d31-9413fa2c043f" shape="rect"></a>Some encapsulated document formats may themselves have some structured content, e.g., the non-narrative part of an HL7 CDA object, or the XMP metadata of a PDF object. This mechanism allows a DICOM-aware system to extract data without needing to parse or understand what is encapsulated.</p>
+         </div>
+         <p>
+            <a id="para_63ac2d01-5934-48e3-85cb-00d0ff2df6da" shape="rect"></a>There is no expectation that all of the narrative or visually rendered content in the encapsulated document be replicated in a structured form in the Content Sequence (0040,A730), nor is it expected that all of the information in the Content Sequence (0040,A730) be present in the encapsulated document. E.g., the structured content might contain codes describing the encapsulated document, or the encapsulated document may contain observations that are not replicated in the structured content.</p>
+         <p>
+            <a id="para_24ee000d-28d4-41bc-b056-461be647d93c" shape="rect"></a>The use of the Content Sequence (0040,A730) follows the pattern established for Structured Reports, and each Item of the Sequence in the top level Data Set is a Content Item (see <a class="xref" href="sect_C.17.3.2.html" title="C.17.3.2 Content Item Attributes" shape="rect">Section C.17.3.2 “Content Item Attributes”</a>).</p>
+         <p>
+            <a id="para_74cdd00e-5440-41ad-bfac-8b521c74f619" shape="rect"></a>Each Item of the Sequence in the top level Data Set may, for instance, be a numeric measurement Content Item (see <a class="xref" href="sect_C.18.html#sect_C.18.1" title="C.18.1 Numeric Measurement Macro" shape="rect">Section C.18.1 “Numeric Measurement Macro”</a>). E.g.:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_e400a96f-8188-45e7-8a68-62d572c06f9b" shape="rect"></a>NUM (8821-1, LN, "Left Ventricular ED Volume") = 98 (mm3, UCUM, "mm3")</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_1b19ded8-799a-4d6d-a20d-2da76b50319e" shape="rect"></a>NUM (8808-8, LN, "Left Ventricular Ejection Fraction by Angiography") = 65 (%, UCUM, "Percent")</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_da464f3b-2732-4fd6-91f5-f0c6bc0823fa" shape="rect"></a>Alternatively, nested Content Items may be used in the manner of a typical Structured Report, and an appropriate Template from PS3.16 invoked (e.g., the TID 1500 Measurement Report Template), in which case the Concept Name Code Sequence (0040,A043) serves as Document Title and the name of the top level CONTAINER Content Item of the Structured Report, and such Content Items as measurements are nested within containers, may be related to regions of interest, given tracking identifiers, etc.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.24.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.24.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.24.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.24.2 Encapsulated Document Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.24.2.3 Security Considerations for Encapsulated Documents (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

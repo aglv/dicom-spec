@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>VVV Segmentation of Images of Groups of Animals (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="sect_UUU.3.2.html" title="UUU.3.2 Research Examples" />
+      <link rel="next" href="chapter_WWW.html" title="WWW Tractography Results (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">VVV Segmentation of Images of Groups of Animals (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_VVV.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_UUU.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_WWW.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Segmentation of Images of Groups of Animals (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_VVV" shape="rect"></a>VVV Segmentation of Images of Groups of Animals (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_27f7743c-6bf5-4461-9b01-136c9a3c6b17" shape="rect"></a>Imaging of small animals used for preclinical research may involve acquiring images of multiple animals simultaneously (i.e., more than one animal is present in the same image).</p>
+         <p>
+            <a id="para_830acaa4-e625-48b7-acd9-374e072d58f1" shape="rect"></a>This Annex describes methods of cross-referencing image and other composite SOP instances produced in the acquisition and segmentation process and how the provenance of each may be recorded.</p>
+         <p>
+            <a id="para_445920cc-2d8b-4155-a8c4-be12a023ea5b" shape="rect"></a>Only backward references are described, allowing for a sequential workflow with processing performed by successive devices, without modification of earlier instances.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_VVV.1" shape="rect"></a>VVV.1 Use Case</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_2c6fd034-f5c7-4ae9-a1c9-c6db7402b124" shape="rect"></a>The relevant Attributes are described in <a href="../part03/sect_C.7.6.html#sect_C.7.6.1.1.3" class="olink" shape="rect">Section C.7.6.1.1.3 “Derivation Description” in PS3.3</a> and <a href="../part03/sect_C.7.6.html#sect_C.7.6.1.1.4" class="olink" shape="rect">Section C.7.6.1.1.4 “Source Image Sequence” in PS3.3</a> of the General Image Module. The same principles apply if the General Image Module is not used (e.g., for Enhanced Multi-frame Images, in which the same Attributes are present, but nested in the appropriate Functional Group Macros).</p>
+            <p>
+               <a id="para_c479ea96-c074-44e5-b016-c476c25797b8" shape="rect"></a>For the purpose of illustration, three successive steps are assumed:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a82677f3-4a0a-46f0-b3f4-260f6be61ddf" shape="rect"></a>acquisition of an image of several animals</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2ab80584-2cf7-46bc-b246-492d315846fa" shape="rect"></a>processing of that image to detect (manually or automatically) the regions containing each animal, and storing the region as an appropriate composite instance</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_c609cb99-400a-4738-af53-5867139dd817" shape="rect"></a>creation of derived images for each animal using as input the acquired image and the stored regions for each animal</p>
+                  </li>
+               </ol>
+            </div>
+            <p>
+               <a id="para_18933157-b034-4611-b038-0e19e14fadfe" shape="rect"></a>Various DICOM composite objects could be used to encode the segmented region. If the form of the segmented region is a</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_67b25d08-6caf-4cf0-be01-f508c927e438" shape="rect"></a>rasterized (bitmap), then the Segmentation Storage SOP Class is appropriate</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <p>
+                           <a id="para_3cdf7c35-1c81-44a8-a41b-0b46c1555953" shape="rect"></a>A bitmap overlay in a Grayscale or Color Softcopy Presentation State Storage SOP Class could also be used, though there are no defined semantics for this unintended use of bitmap overlays.</p>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b6b730db-642b-44f5-97ad-0fae7aaedabe" shape="rect"></a>surface (mesh), then the Surface Storage SOP Class is appropriate</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_30f7539f-56c5-431a-9899-16365485ec93" shape="rect"></a>set of isocontours, then:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: circle; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_95f3347c-52b7-4038-9f1c-ad7274445936" shape="rect"></a>for 3D patient-relative coordinates, the RT Structure Set Storage SOP Class is appropriate</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_d0d3a9f6-d6cc-4684-adbe-c296dcf47eda" shape="rect"></a>for 2D or 3D coordinates (and geometric shapes), a Structured Report Storage SOP Class may be appropriate, if a template with the appropriate semantics (what the contours "mean") is defined</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_29c7b7a6-716e-456a-a061-37bd086b811d" shape="rect"></a>for 2D coordinates (and geometric shapes), a Grayscale or Color Softcopy Presentation State Storage SOP Class may be appropriate, though there are no defined semantics for recognizing what to do with which graphic objects</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_9c58aa18-9220-4467-a86e-5bd408799a32" shape="rect"></a>For illustrative purposes, the use of the Segmentation Storage SOP Class is assumed, and a consistent Frame of Reference is assumed.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_0b5654ef-26b5-48e7-addb-ad9f1b520d11" shape="rect"></a>If images from different modalities are acquired, on separate devices, but with the same physical arrangement of animals, a more complex workflow might involve the use of one segmentation derived from one modality applied to images from a different modality with a different Frame of Reference, in which case use of the Spatial Registration Storage SOP Class or Deformable Spatial Registration Storage as persistent object might be appropriate, and appropriate references to it included. The same might apply if registration were necessary between images acquired on the same device, but given that research small animals are normally anesthetized, this is usually not required.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_VVV.1.1" shape="rect"></a>VVV.1.1 Reference Attributes</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_VVV.1.1.1" shape="rect"></a>VVV.1.1.1 Acquired Images of Multiple Animals</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_db184abc-7dbf-4f93-b3db-52256e684104" shape="rect"></a>No references are present, since forward references are not used.</p>
+                  <p>
+                     <a id="para_491e9644-2f42-4601-b1ce-37c523f4b408" shape="rect"></a>The Frame of Reference UID is present for cross-sectional modalities.</p>
+                  <p>
+                     <a id="para_cf87b038-6f74-4f4e-bc54-cbdc72d77cba" shape="rect"></a>If the animals are not all aligned in the same direction, Patient Position (0018,5100) for each animal is present within Group of Patients Identification Sequence (0010,0027) and a nominal Patient Position (0018,5100) is present in the General Series Module, and the coordinate system dependent position and orientation Attributes of the Image Plane Module Attributes (or corresponding Functional Groups) are relative to the nominal Patient Position (0018,5100) present in the General Series Module.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_VVV.1.1.2" shape="rect"></a>VVV.1.1.2 Segmentation Instances</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_fdb5775c-bc17-4fa0-b17c-4de44f8974b2" shape="rect"></a>Segmentations are Enhanced Multi-frame Images, so the Derivation Image Functional Group (<a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.6" class="olink" shape="rect">Section C.7.6.16.2.6 in PS3.3</a>) is used.</p>
+                  <p>
+                     <a id="para_a9dc8bf3-5066-4ecc-8d19-acbe1b988e76" shape="rect"></a>As required by the Segmentation IOD (<a href="../part03/sect_A.51.5.html#sect_A.51.5.1" class="olink" shape="rect">Section A.51.5.1 in PS3.3</a>):</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_394d1e94-2f5c-4123-a3eb-423c855808f5" shape="rect"></a>the value of Purpose of Reference Sequence (0040,A170) within the Source Image Sequence (0008,2112) within Derivation Image Sequence (0008,9124) is <a href="../part16/chapter_D.html#DCM_121322" class="olink" shape="rect">(121322, DCM, "Source Image for Image Processing Operation")</a>
+                            </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_baa6299e-0890-4124-98cc-f2b355c6b628" shape="rect"></a>the value of Derivation Code Sequence (0008,9215) within Derivation Image Sequence (0008,9124) is <a href="../part16/chapter_D.html#DCM_113076" class="olink" shape="rect">(113076, DCM, "Segmentation")</a>
+                            </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8dee9b8f-fb42-4a8a-9b6d-2a3df4c6618d" shape="rect"></a>though not required, the value of Derivation Description (0008, 2111) may contain additional detail describing the image processing operation</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_84ff7528-c40b-4b01-b398-27cb6a128167" shape="rect"></a>The Frame of Reference UID is the same as that for the images from which the segmentation was derived.</p>
+                  <p>
+                     <a id="para_698b9ed6-0be8-4c3b-9d5d-491e35dbea2c" shape="rect"></a>There is no requirement that application of the Segmentation be restricted to the image referenced in the Derivation Image Functional Group Macro, which describes the images that the segmentation was derived from, not the images to which it is applicable (potentially all of the images in the same Frame of Reference).</p>
+                  <p>
+                     <a id="para_77861f06-1760-4315-ad1f-5e6032018101" shape="rect"></a>The Common Instance Reference Module is required to be present, which provides Study and Series Instance UIDs for all referenced instances.</p>
+                  <p>
+                     <a id="para_894d602c-334a-45ab-a2da-22ac5f2c791f" shape="rect"></a>A segmentation instance may contain multiple segments, thus multiple animals could be described in a single segmentation instance, or each animal could be described in one of multiple segments within a single segmentation instance. The manner in which each segment is numbered, labeled and categorized is thus important. Each segment may be described as follows:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_5d578fa5-e5ac-4064-884c-3d9e8c127c02" shape="rect"></a>Segment Number (0062,0004) from 1 to the number of animals (since the Attribute definition requires starting at 1, incrementing by 1)</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_26da1f1a-2392-4218-8c6e-2cec64a78e22" shape="rect"></a>Segment Label (0062,0005) using a human-readable label that appropriately identifies each animal in the context of the experiment, e.g., it may have the same value as the Patient ID (0010,0020) used for each separate animal.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_8807007c-eb21-4106-a14d-16b603c93950" shape="rect"></a>Segmented Property Category Code Sequence (0062,0003) value of <a class="link" href="http://snomed.info/id/309825002" target="_blank" shape="rect">(309825002, SCT, "Spatial and Relational Concept")</a>
+                            </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_0b1c3da8-30d9-40d8-b603-677087a59157" shape="rect"></a>Segmented Property Type Code Sequence (0062,000F) value of <a href="../part16/chapter_D.html#DCM_113132" class="olink" shape="rect">(113132, DCM, "Single subject selected from group")</a>
+                            </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_f87eae71-0d8f-4b58-b41a-a677bdb3ad87" shape="rect"></a>The properties of <a class="link" href="http://snomed.info/id/309825002" target="_blank" shape="rect">(309825002, SCT, "Spatial and Relational Concept")</a> and <a href="../part16/chapter_D.html#DCM_113132" class="olink" shape="rect">(113132, DCM, "Single subject selected from group")</a> are suggested instead of a more generic description, such as <a class="link" href="http://snomed.info/id/123037004" target="_blank" shape="rect">(123037004, SCT, "Anatomical Structure")</a> and <a class="link" href="http://snomed.info/id/38266002" target="_blank" shape="rect">(38266002, SCT, "Entire Body")</a>, since though the latter would be accurate, it would not convey the additional implication of selection of one from many. Further, in some cases, the entire body may not actually be imaged (e.g., just the head of multiple subjects may be imaged simultaneously for brain studies). </p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_VVV.1.1.3" shape="rect"></a>VVV.1.1.3 Derived Images of Single Animals</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a136e8b2-9942-43b6-9f94-4da6b97bc171" shape="rect"></a>It is recommended that the source image(s) be referenced using Source Image Sequence (0008,2112), either in the top level Data Set or within the Derivation Image Functional Group (<a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.6" class="olink" shape="rect">Section C.7.6.16.2.6 in PS3.3</a>) as appropriate for the IOD, with:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a5ad029e-362c-42df-8d76-1c6c2db50693" shape="rect"></a>the value of Purpose of Reference Sequence (0040,A170) within the Source Image Sequence (0008,2112) being <a href="../part16/chapter_D.html#DCM_113130" class="olink" shape="rect">(113130, DCM, "Predecessor containing group of imaging subjects")</a>
+                            </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_a8129e35-b575-4a9d-8493-b2455f21a7aa" shape="rect"></a>the value of Derivation Code Sequence (0008,9215) being <a href="../part16/chapter_D.html#DCM_113131" class="olink" shape="rect">(113131, DCM, "Extraction of individual subject from group")</a>
+                            </p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_f0dea5c7-c75f-478e-b4b7-1a1b0f0ac461" shape="rect"></a>the value of Derivation Description (0008,2111) containing additional detail describing the image processing operation</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_648f1ed2-3bc8-4d36-864f-bcc8052126e4" shape="rect"></a>It is recommended that the segmentation used be referenced using Referenced Image Sequence (0008,1140), either in the top level Data Set or within the Referenced Image Functional Group (<a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.5" class="olink" shape="rect">Section C.7.6.16.2.5 in PS3.3</a>) as appropriate for the IOD, with:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_19ad400d-f568-46f1-8056-15196bbb94b3" shape="rect"></a>the value of Purpose of Reference Sequence (0040,A170) within Referenced Image Sequence (0008,1140) being <a href="../part16/chapter_D.html#DCM_121321" class="olink" shape="rect">(121321, DCM, "Mask image for image processing operation")</a>
+                            </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_ae7d7017-d6e8-417e-8784-5bba68652e0f" shape="rect"></a>If instead of a segmentation (which is a form of image), a non-image object were used to encode the segmented regions, then use of Referenced Instance Sequence (0008,114A) instead of Referenced Image Sequence (0008,1140) would be appropriate.</p>
+                  </div>
+                  <p>
+                     <a id="para_374e1772-37b2-49cb-b005-1b60e457fede" shape="rect"></a>The Frame of Reference UID is the same as the source images and the segmentation.</p>
+                  <p>
+                     <a id="para_bf0ff2e4-9904-4cbd-9f91-640aa63cb816" shape="rect"></a>If all the animals are not aligned in the same direction (i.e., do not have the same value for Patient Position (0018,5100)), the coordinate system dependent position and orientation Attributes of the Image Plane Module Attributes (or corresponding Functional Groups) may have been recomputed. If the animals are aligned in different directions, and Patient Position (0018,5100) from within Group of Patients Identification Sequence (0010,0027) in the source images is compared against Patient Position (0018,5100) from the General Series Module in the source images, the difference may be used to recompute (rotate, flip and translate) new patient-relative vectors and offsets within the same Frame of Reference. The value in the Patient Position (0018,5100) from the General Series Module in the derived images are appropriate for the selected animal.</p>
+                  <p>
+                     <a id="para_54aad08f-8b91-4e45-b7de-b49af497617b" shape="rect"></a>It is recommended that the Common Instance Reference Module be present even if it is not required by the IOD, to provide Study and Series Instance UIDs for all referenced instances.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_VVV.1.2" shape="rect"></a>VVV.1.2 Propagation of Composite Context</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9c41c27d-908c-4b05-9c70-c3d0eea73b1c" shape="rect"></a>Propagation and replacement of the appropriate patient-level and study-level identifying and descriptive Attributes is also required.</p>
+               <p>
+                  <a id="para_bec30b4d-7fdc-499f-a228-32d2960315c6" shape="rect"></a>The issues related to the identification of the "patient" in such cases are addressed in <a href="../part03/sect_C.7.html#sect_C.7.1.4.1.1" class="olink" shape="rect">Section C.7.1.4.1.1 “Groups of Subjects” in PS3.3</a>.</p>
+               <p>
+                  <a id="para_2baf599d-d524-4d61-8ae2-7b5a92472c28" shape="rect"></a>New studies are required if the patient identifiers have changed.</p>
+               <p>
+                  <a id="para_b29c1656-fa4a-46ac-945f-3bb88ee97663" shape="rect"></a>New series are required for each of the derived (types) of objects, since they are created by different equipment and have different values for Modality.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_VVV.1.3" shape="rect"></a>VVV.1.3 Propagation of History</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_ea7444ed-09e3-4ccb-bcb0-d83734e3ec94" shape="rect"></a>The history of operations applied to a composite instance and its predecessors may be recorded in multiple items of Derivation Code Sequence (0008,9215). It is preferable, when creating a new derived object, to add to the end of the existing sequence of items, rather than to completely replace them. It is also common to add to the plain text that is contained in Derivation Description (0008, 2111), rather than replacing it (maximum length permitting).</p>
+               <p>
+                  <a id="para_f17f97f6-5a54-429a-b8df-25bd3b9ec33e" shape="rect"></a>The history of which devices (and human operators) have operated on a composite instance and its predecessors may be recorded in Contributing Equipment Sequence (0018,A001). Again, it is preferable that the existing sequence of items be extended rather than replaced, if possible.</p>
+               <p>
+                  <a id="para_66d55718-a1d9-4eb8-9cfe-e3ba4615ba70" shape="rect"></a>For both Derivation Code Sequence (0008,9215) and Contributing Equipment Sequence (0018,A001), if multiple predecessors are applicable (e.g., the source image and a segmentation mask), then the sequence of items of both predecessors may be merged.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_UUU.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_WWW.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">UUU.3.2 Research Examples </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> WWW Tractography Results (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

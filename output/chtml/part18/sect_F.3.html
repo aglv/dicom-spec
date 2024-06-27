@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>F.3 Transformation with other DICOM Formats</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="chapter_F.html" title="F DICOM JSON Model" />
+      <link rel="prev" href="sect_F.2.7.html" title="F.2.7 InlineBinary" />
+      <link rel="next" href="sect_F.4.html" title="F.4 DICOM JSON Model Example" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">F.3 Transformation with other DICOM Formats <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_F.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.2.7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">F DICOM JSON Model</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_F.html" shape="rect">DICOM JSON Model</a>
+         </span> &gt; <span class="breadcrumb-node">Transformation with other DICOM Formats</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_F.3" shape="rect"></a>F.3 Transformation with other DICOM Formats</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_F.3.1" shape="rect"></a>F.3.1 Native DICOM Model XML</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_9d163adc-9f0e-4211-979b-735f9ddb16e5" shape="rect"></a>The transformation between the Native DICOM Model XML and the DICOM JSON model cannot be done through the use of generic XML - JSON converters.</p>
+            <p>
+               <a id="para_40410d12-7b40-4e21-b2f0-6fa67470f62f" shape="rect"></a>The mapping between the two formats is as follows (see also <a class="xref" href="sect_F.3.html#table_F.3.1-1" title="Table F.3.1-1. XML to JSON Mapping" shape="rect">Table F.3.1-1</a>):</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_54e26682-bc7d-486c-8604-b1098604e466" shape="rect"></a>The XML "NativeDicomModel" element maps to the DICOM JSON Model Object</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_76654bb1-3d9e-44e1-8dcd-aecccedab17a" shape="rect"></a>Each "DicomAttribute" element maps to an attribute object within the DICOM JSON model object</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: circle; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1e17ff64-c906-4529-9219-08478883d61c" shape="rect"></a>The "tag" attribute maps to the JSON object name</p>
+                              <div class="itemizedlist">
+                                 <ul class="itemizedlist" style="list-style-type: square; ">
+                                    <li class="listitem">
+                                       <p>
+                                          <a id="para_a6dd9f6b-71ff-4f3d-ba1d-6da7b3c7d594" shape="rect"></a>The Native DICOM Model XML allows for duplicate Tag values and the DICOM JSON model does not. To resolve this, private attribute Tag values must be remapped according to the conflict avoidance rules specified in <a href="../part05/sect_7.8.html#sect_7.8.1" class="olink" shape="rect">Section 7.8.1 “Private Data Element Tags” in <span class="olinkdocname">PS3.5</span>
+                                          </a>.</p>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_9ded16a4-e371-4cc4-a188-9f60f251d4bf" shape="rect"></a>The "vr" attribute maps to the "vr" child string</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6878a07c-3a94-49fd-8b82-71d5ffbb13a6" shape="rect"></a>"Value" elements map to members of the "Value" child array</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: circle; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_20058b7f-2ec2-4951-9894-9b9f7ced2d01" shape="rect"></a>A "Value" element with the attribute "number=n" maps to "Value[n-1]"</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_39ef9cbd-d394-4bb9-9d63-18778daf938a" shape="rect"></a>Empty "Value" elements are represented by "null" entries in the "Value" array</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_421b68f8-015a-4c94-9ede-1d5aceb20017" shape="rect"></a>"PersonName" elements map to objects within the "Value" array. For a "PersonName" element with the attribute "number=n":</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: circle; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_97a463c8-8cc6-4d27-b946-65defcb611a1" shape="rect"></a>The "Alphabetic" element maps to "Value[<span class="bold">
+                                    <strong>
+                                        <span class="italic">n-1</span>
+                                    </strong>
+                                 </span>].Alphabetic"</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1446128d-147e-4935-9473-a8719a69e743" shape="rect"></a>The "Ideographic" element maps to "PersonName[<span class="bold">
+                                    <strong>
+                                        <span class="italic">n</span>
+                                    </strong>
+                                 </span>].Ideographic"</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_150fd3e8-e2c5-4a5d-bdd0-dd6903ea41e8" shape="rect"></a>The "Phonetic" element maps to "PersonName[<span class="bold">
+                                    <strong>
+                                        <span class="italic">n</span>
+                                    </strong>
+                                 </span>].Phonetic"</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_2feeca92-c3f8-4464-9907-3fe2eb469e69" shape="rect"></a>"Item" elements map to members of the "Value" child array</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: circle; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_245fbe88-c5e2-4583-beca-6e6543aaf25e" shape="rect"></a>An "Item" element with the attribute "number=n" maps to "Value[n-1]"</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_780120f4-ed7b-46e9-9dee-c2e0d6d16534" shape="rect"></a>Empty "Item" elements are represented by empty JSON property entries in the "Value" array</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ffe9b4df-72e7-4810-9d8d-06e2fc735c64" shape="rect"></a>The "uri" attribute of the "BulkData" element maps to the "BulkDataURI" string</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ce1b5afa-52ed-4cd0-8255-da858cbcb8c2" shape="rect"></a>The "InlineBinary" element maps to the "InlineBinary" string</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="table">
+               <a id="table_F.3.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table F.3.1-1. XML to JSON Mapping</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_dce3ee3b-b41a-47ef-b7d1-7bdd00e9e45b" shape="rect"></a>DICOM <a href="../part19/PS3.19.html" class="olink" shape="rect">PS3.19</a> XML</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2d233e51-ec71-40fe-aa85-51b600a1f808" shape="rect"></a>DICOM JSON Model</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c09b9a77-ebc3-4bb7-8e89-ce6ef19eff10" shape="rect"></a>
+                                    <code class="computeroutput">&lt;NativeDicomModel&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_d8f635ea-9181-453f-9d88-184e6f0539cb" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_3520cebd-ae02-4619-be23-04baf2ce808e" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_066d6460-77f7-464f-aa24-fd220e7767bb" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_9c62c2c7-755d-4e36-a2d1-d0ffb5590c55" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/NativeDicomModel&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_13377850-217c-4277-aef2-0b81c3965e46" shape="rect"></a>
+                                    <code class="computeroutput">{</code>
+                                </p>
+                                <p>
+                                 <a id="para_0618e475-0ffa-4cf0-a5f4-3f9532c516ce" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_6faa7ea9-15b7-49c7-a066-09b7cbc47612" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_cfaa1dc4-24f3-49ec-a6a0-16edce035edd" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_3055b159-4baa-4332-a5a7-5e80f549559a" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cd1a1b68-e6b5-48d4-ae65-f2d9806caec9" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute</code>
+                                </p>
+                                <p>
+                                 <a id="para_3748790c-55ef-4461-a473-210518704bf1" shape="rect"></a>
+                                    <code class="computeroutput">tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <code class="computeroutput">"ggggeeee"</code>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_05e6ad91-066d-40d8-a447-642b39eb01f3" shape="rect"></a>
+                                    <code class="computeroutput">vr=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"VR"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_b811e75a-e184-4b1c-a8e8-daf67c0abbad" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Value number="1"&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&lt;/Value&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_929ee841-0cf0-4621-b9c3-44b05fd9723c" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ee711f3a-11ed-48ae-929e-541ce31e412b" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_92036a43-c40d-476b-9516-825fe506f90e" shape="rect"></a>
+                                    <code class="computeroutput">"vr":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"VR"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">,</code>
+                                </p>
+                                <p>
+                                 <a id="para_e30e95f7-4f9f-40ee-b774-2f0a165cd8d8" shape="rect"></a>
+                                    <code class="computeroutput">"Value": [</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">]</code>
+                                </p>
+                                <p>
+                                 <a id="para_ead18534-ddbc-420e-8219-1a3ed596cec0" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_dd7fae12-7853-43bc-8d58-5580d5ebbdad" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_310a663e-b932-447a-b3da-6eaf23c7d0ec" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Value number="1"&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value1</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&lt;/Value&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_3118c2da-aea7-4341-802f-7c38f1eff6b3" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Value number="2"&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value2</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&lt;/Value&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_4f27e500-4ea8-45b2-91a4-cbc15efbccf5" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_ee841ca3-2aab-4574-b985-c05e22112ad1" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_909fb3b3-0e0b-4395-a33c-3d5cf5463a77" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_de207391-89e0-4068-8c43-d3a2f0495c47" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_a32ef198-a22a-42ca-b0e1-a32da04d61ab" shape="rect"></a>
+                                    <code class="computeroutput">"Value": [</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value1</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">,</code>
+                                </p>
+                                <p>
+                                 <a id="para_248074f0-aedb-4fb9-84b9-7da74ed038b9" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Value2</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">, …</code>
+                                </p>
+                                <p>
+                                 <a id="para_eba67d62-9ea5-49ab-ad99-52a7f3d8a578" shape="rect"></a>
+                                    <code class="computeroutput">]</code>
+                                </p>
+                                <p>
+                                 <a id="para_2f3fb36a-30ea-4722-a93e-62ee4899d33b" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ab098b65-7140-4bf3-803d-7e3ac6b59ed6" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_05a26661-2716-4898-a721-a8ad37489121" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_afa505c7-1e22-44fb-9772-bfa692321b93" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_756a5163-8f81-4447-b420-309f9ad83233" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_17bd56dd-dbdb-4b0c-99bb-5d818ba4b341" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2bc2aff2-7cf8-4577-8565-32a06d1200d8" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">vr="PN" … &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_90fe06b6-3f49-4f91-b340-8d2bee9c5dc3" shape="rect"></a>
+                                    <code class="computeroutput">&lt;PersonName number="1"&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_e7ff2313-522e-4c59-9e9b-a5583a631c79" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Alphabetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_e2b9c308-aab1-4216-b2f3-f4d8cbe45f9d" shape="rect"></a>
+                                    <code class="computeroutput">&lt;FamilyName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB1</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_c120739e-c7ec-4f7e-ae9b-ed3f8c139eff" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/FamilyName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_8756138b-6cb9-4248-a16f-894e141e1f63" shape="rect"></a>
+                                    <code class="computeroutput">&lt;GivenName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB2</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_f0921237-051c-417f-8894-608ec1bfc7a2" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/GivenName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_1feef5cb-2a99-49ed-ac8a-4791e6969284" shape="rect"></a>
+                                    <code class="computeroutput">&lt;MiddleName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB3</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_3d53af42-13ff-484b-acd3-05c1b650c6ca" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/MiddleName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_a64e8653-917b-49e4-86c6-0f82f6b25fd3" shape="rect"></a>
+                                    <code class="computeroutput">&lt;NamePrefix&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB4</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_d8df9a33-c6c7-49c4-8a5b-b867a8698d6a" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/NamePrefix&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_51fc7a81-ce13-46e9-8265-60c95f50412c" shape="rect"></a>
+                                    <code class="computeroutput">&lt;NameSuffix&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB5</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_98aeaff5-1418-4d9e-92b6-56b9ca27bfde" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/NameSuffix&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_d92b9eff-1a0e-47d3-8d8b-5f269a6af70d" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Alphabetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_972ff0e0-c767-45a0-9d43-e78911766342" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Ideographic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_c32b4a99-b376-4178-bd12-21d819668193" shape="rect"></a>
+                                    <code class="computeroutput">&lt;FamilyName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">ID1</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_7bc5417e-e2d6-4c3a-aefd-c5618a319edd" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/FamilyName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_368ebd68-b4b1-4ee9-8152-25d942589953" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_ca22fb60-c53a-4d2c-ad74-9915a9019180" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Ideographic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_fba6a4f8-a1e8-42c4-a9a1-b88b0cbc0273" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Phonetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_6b33f33e-3027-4dc8-b6cc-00650e27fd28" shape="rect"></a>
+                                    <code class="computeroutput">&lt;FamilyName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">PH1</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_7a73a8c4-a581-4304-964a-314c84e88ff6" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/FamilyName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_664ab11f-8f44-4325-84be-8720b0f9506d" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_161540dd-aae6-400b-bd98-a16828320446" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Phonetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_abee8118-bfa4-40fa-8f05-2363f510162f" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/PersonName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_c9c5a535-5dbf-400b-bbfc-696dbc4197ba" shape="rect"></a>
+                                    <code class="computeroutput">&lt;PersonName number="2"&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_dbe823bf-eb09-4fb5-b8d0-23c5f5ed7f8e" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Alphabetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_d965e554-1f0f-474c-b75b-f820ecbe19aa" shape="rect"></a>
+                                    <code class="computeroutput">&lt;FamilyName&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB6</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_bc543874-7025-4510-ab18-79266909ca63" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/FamilyName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_b48f8ec3-7cc9-4b9b-8af3-7d2ae9ae494c" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Alphabetic&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_b6f501fd-566e-4359-9d22-2cae195d09fe" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/PersonName&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_3721224d-2781-4b4a-8bf7-5bd21570af04" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_12d52cd3-63b9-4c72-9425-9f80efe3ca89" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_19b86ad2-1125-4853-adf4-ae1ff3fcdb66" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_ca69d7ba-28af-42d4-8705-a224c7346760" shape="rect"></a>
+                                    <code class="computeroutput">"vr": "PN",</code>
+                                </p>
+                                <p>
+                                 <a id="para_9d3f0461-e2b5-4676-a31d-14bf539dd629" shape="rect"></a>
+                                    <code class="computeroutput">"Value": [</code>
+                                </p>
+                                <p>
+                                 <a id="para_ce2fba65-7d0c-4a9b-bf1e-1902d2aa9c69" shape="rect"></a>
+                                    <code class="computeroutput">{</code>
+                                </p>
+                                <p>
+                                 <a id="para_e1d2a94e-3786-4acd-b7ed-498a704af9ef" shape="rect"></a>
+                                    <code class="computeroutput">"Alphabetic"</code>
+                                    <code class="computeroutput">:</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"SB1^SB2^SB3^SB4^SB5",</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_cfc85da6-75c4-4831-9aa7-cfc6cd5fc4a1" shape="rect"></a>
+                                    <code class="computeroutput">"Ideographic":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ID1^ID2^ID3^ID4^ID5"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">,</code>
+                                </p>
+                                <p>
+                                 <a id="para_0b748ece-331a-4f58-8f08-1531b4c6615c" shape="rect"></a>
+                                    <code class="computeroutput">"Phonetic":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"PH1^PH2^PH3^PH4^PH5"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_f2373c87-f537-42cd-a518-d613d1380031" shape="rect"></a>
+                                    <code class="computeroutput">},</code>
+                                </p>
+                                <p>
+                                 <a id="para_562452fc-7624-434c-9bbd-44a9f97c7a97" shape="rect"></a>
+                                    <code class="computeroutput">{</code>
+                                </p>
+                                <p>
+                                 <a id="para_3d658212-b799-452f-bb1f-df23bd44cf49" shape="rect"></a>
+                                    <code class="computeroutput">"Alphabetic":</code>
+                                </p>
+                                <p>
+                                 <a id="para_b9653638-7fef-403a-88e7-ad5f106bac4a" shape="rect"></a>
+                                    <code class="computeroutput">"</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">SB6</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">"</code>
+                                </p>
+                                <p>
+                                 <a id="para_60a9e620-a7a2-4ee5-ba86-9a8f56212559" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                                <p>
+                                 <a id="para_ae96f22b-ab6b-448c-982f-6b1f30c827ff" shape="rect"></a>
+                                    <code class="computeroutput">]</code>
+                                </p>
+                                <p>
+                                 <a id="para_9511f9ce-0ed0-4342-a0b8-051ea283e2dd" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9f691c94-713e-4985-904f-659f6165b5d1" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">vr="SQ" … &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_b09b0167-75c7-48b5-92d7-a28a61f5b7f2" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Item number="1"&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_3aaed46b-da82-4a1d-bf3a-e65278adce11" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_025845ef-0243-40d2-bdad-458bd2ff9e34" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_d12753ab-dc25-438a-9fda-cf385995b1bd" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_8f0f3f38-1ab5-4b7f-8b25-fb8c29d97612" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Item&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_c8fc972d-c10b-46b8-9b54-45e851862935" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Item number="2"&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_05c4fa47-955e-4d26-ba6f-7b22c8a6e8cd" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_600df7f3-c81d-455d-8c17-3cc241905274" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… /&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_8be05a25-9618-4beb-821d-14509abc7c26" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_db097264-643e-4520-a9e8-f44af311b28a" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Item&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_02069cca-649f-4d94-9e96-1b176ae9c9dc" shape="rect"></a>
+                                    <code class="computeroutput">&lt;Item number="3"&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_e921d70a-eecd-4fc6-8667-876f95ff9703" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/Item&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_6f74abe4-e5cb-466b-b30d-b96840d62a02" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_306b4e2f-47a7-458e-b28b-f8cc88235281" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_fd37e68f-5d16-40b8-a810-3d0b36b9c640" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_5ea6360e-4dab-4e9b-8a3b-40c389e33d3a" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_e3e99caf-2a8a-465d-a62b-30d7bc0d0b00" shape="rect"></a>
+                                    <code class="computeroutput">"vr": "SQ",</code>
+                                </p>
+                                <p>
+                                 <a id="para_41e88f9a-4a0f-402f-b6c5-fb41f6a86c7d" shape="rect"></a>
+                                    <code class="computeroutput">"Value":</code>
+                                </p>
+                                <p>
+                                 <a id="para_bdcf0fca-844d-4adb-8397-5999abbab774" shape="rect"></a>
+                                    <code class="computeroutput">[</code>
+                                </p>
+                                <p>
+                                 <a id="para_5ab5c02c-f3b8-43bb-9b5f-feb0cf5d1b65" shape="rect"></a>
+                                    <code class="computeroutput">{</code>
+                                </p>
+                                <p>
+                                 <a id="para_4b673077-9fb9-4edd-9acb-52e6e1fad576" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_93b4f9e0-bec6-4be6-bc97-549921fdafdd" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_cbfc347c-60d4-44aa-a033-b53e830a6d3b" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_05170a48-d882-4b6e-b901-5448951ef7f8" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                                <p>
+                                 <a id="para_96719fae-9888-4e66-8251-d5b112247aaa" shape="rect"></a>
+                                    <code class="computeroutput">{</code>
+                                </p>
+                                <p>
+                                 <a id="para_b8cdac4c-930f-4dda-9670-9d37ba2db94d" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee01"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_81f9aaf4-0917-40a7-9de0-7074636853aa" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggee02"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: { … },</code>
+                                </p>
+                                <p>
+                                 <a id="para_cfcf606f-806f-44f8-9865-4976d6124f09" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_cb1e7f06-ebd2-483f-b4b5-b7b32a08a6f3" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                                <p>
+                                 <a id="para_3fa97159-f8bd-483f-8c02-66cebf51a38f" shape="rect"></a>
+                                    <code class="computeroutput">{ }</code>
+                                </p>
+                                <p>
+                                 <a id="para_340bded5-30c8-412b-9fab-3185ce058f40" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_63f41bc5-e1b6-4289-81fc-90daae688c8f" shape="rect"></a>
+                                    <code class="computeroutput">]</code>
+                                </p>
+                                <p>
+                                 <a id="para_0c551910-063f-481a-9abc-5389ae5fbbcf" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c18f30d0-5947-47fd-9558-68bc4171e038" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_61194216-f9b4-493d-b4d4-212a6894ff70" shape="rect"></a>
+                                    <code class="computeroutput">&lt;BulkData uri=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"BulkDataURI"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_ddffe775-e5d5-445e-8498-806a80420853" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_996ee1fa-79b9-4142-b449-ef629f13bc0e" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_a4f40746-48f9-4175-b756-c7d4b778e7ce" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_44547360-aa3a-42d6-b0fc-3323ad7655bf" shape="rect"></a>
+                                    <code class="computeroutput">"BulkDataURI":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"BulkDataURI"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_a77385a1-5313-4148-b5f2-74732279a109" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_eaa6070e-1513-4b15-99bf-1409a4acbd40" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_37faa196-7937-4c53-9b3e-14b6adb32981" shape="rect"></a>
+                                    <code class="computeroutput">&lt;InlineBinary&gt;</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">Base64String</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">&lt;/InlineBinary&gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_f03c9b5a-ffb8-42e6-999b-29fa03e6ab66" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_0ac02812-d4aa-4422-b595-d455e9763168" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggeeee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_b5617322-4df2-4e39-b307-9642784b2ffa" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_b135ec4b-9d51-4311-b881-ce4242e337bd" shape="rect"></a>
+                                    <code class="computeroutput">"InlineBinary":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"Base64String"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                </p>
+                                <p>
+                                 <a id="para_429b4862-bea6-40ca-9c33-7ee9dfbf67e6" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d76759f7-0ffa-44b2-a891-9610ee32ee51" shape="rect"></a>
+                                    <code class="computeroutput">&lt;DicomAttribute tag=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"gggg00ee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">privateCreator=</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"PrivateCreator"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">… &gt;</code>
+                                </p>
+                                <p>
+                                 <a id="para_befb10d8-7350-4291-8777-c00f752b2859" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_09359532-8798-473f-925c-573e6bc8694e" shape="rect"></a>
+                                    <code class="computeroutput">&lt;/DicomAttribute&gt;</code>
+                                </p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_cfdfe42c-1d6f-4ff7-9071-5584e6e60c33" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"gggg00XX"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_a8b8bd9c-9158-4ad0-a989-a99e44e61757" shape="rect"></a>
+                                    <code class="computeroutput">"vr":</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"LO"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">,</code>
+                                </p>
+                                <p>
+                                 <a id="para_44adf411-9533-46bd-851b-9e7aca024e64" shape="rect"></a>
+                                    <code class="computeroutput">"Value": [</code>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"PrivateCreator"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">]</code>
+                                </p>
+                                <p>
+                                 <a id="para_3d82d581-3d24-4537-abde-2ab08607bdb6" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                                <p>
+                                 <a id="para_09c39441-cb33-408f-8627-6e157c17600d" shape="rect"></a>
+                                    <span class="bold">
+                                    <strong>
+                                        <span class="italic">
+                                            <code class="computeroutput">"ggggXXee"</code>
+                                        </span>
+                                    </strong>
+                                 </span>
+                                    <code class="computeroutput">: {</code>
+                                </p>
+                                <p>
+                                 <a id="para_a5b42fb5-417a-4654-b636-2405e7d23603" shape="rect"></a>
+                                    <code class="computeroutput">…</code>
+                                </p>
+                                <p>
+                                 <a id="para_70e968f0-3bfa-41c8-a54c-b5f647d4f01b" shape="rect"></a>
+                                    <code class="computeroutput">}</code>
+                                </p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.2.7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_F.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">F.2.7 InlineBinary </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> F.4 DICOM JSON Model Example</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

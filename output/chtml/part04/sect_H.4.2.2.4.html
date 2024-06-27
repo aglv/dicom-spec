@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>H.4.2.2.4 N-ACTION</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_H.4.2.2.html" title="H.4.2.2 DIMSE Service Group" />
+      <link rel="prev" href="sect_H.4.2.2.3.html" title="H.4.2.2.3 N-DELETE" />
+      <link rel="next" href="sect_H.4.2.3.html" title="H.4.2.3 SOP Class Definition and UID" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">H.4.2.2.4 N-ACTION <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_H.4.2.2.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_H.4.2.2.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">H.4.2.2 DIMSE Service Group</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_H.4.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_H.html" shape="rect">Print Management Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_H.4.html" shape="rect">Print Management SOP Class Definitions</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_H.4.2.html" shape="rect">Basic Film Box SOP Class</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_H.4.2.2.html" shape="rect">DIMSE Service Group</a>
+         </span> &gt; <span class="breadcrumb-node">N-ACTION</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h5 class="title">
+                     <a id="sect_H.4.2.2.4" shape="rect"></a>H.4.2.2.4 N-ACTION</h5>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f79fdbcd-e849-4924-824e-2c365d0bc6c4" shape="rect"></a>The N-ACTION is used to print one or more copies of the last created instance of the Film Box.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_H.4.2.2.4.1" shape="rect"></a>H.4.2.2.4.1 Attributes</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_a85c9c7c-487c-4757-8887-ca6a7523ea60" shape="rect"></a>The arguments of the N-ACTION are defined as shown in <a class="xref" href="sect_H.4.2.2.4.html#table_H.4-8" title="Table H.4-8. N-ACTION Arguments" shape="rect">Table H.4-8</a>.</p>
+            <p>
+               <a id="para_e8cfc1d7-af99-4a14-afee-67e5045e9313" shape="rect"></a>The Action Reply argument is encoded as a DICOM Data Set. The Data Set only contains the Attribute Referenced Print Job Sequence (2100,0500), which includes the Referenced SOP Class UID (0008,1150) and the Referenced SOP Instance UID (0008,1155).</p>
+            <p>
+               <a id="para_f5c983bb-8ee1-46b2-b4e7-7e9bd4f811fb" shape="rect"></a>If the SCP supports the Print Job SOP Class, the Action Reply argument is contained in the N-ACTION response. Otherwise, the Action Reply is not contained in the N-ACTION response.</p>
+            <div class="table">
+               <a id="table_H.4-8" shape="rect"></a>
+               <p class="title">
+                  <strong>Table H.4-8. N-ACTION Arguments</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_d5a1fbc9-32cd-407c-a945-e3cd9526c876" shape="rect"></a>Action Type Name</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_ee787606-4cd6-4e1d-9b81-90c03fad8470" shape="rect"></a>Action Type ID</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_34076952-9218-4598-8d2e-2020c280a52e" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_0b7aaf13-9834-4479-9541-bb99bf484d46" shape="rect"></a>Tag </p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_749a4194-318a-46e8-8f1b-d9420aef6628" shape="rect"></a>Usage SCU/SCP</p>
+                                        </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_b0bd7517-cd49-4768-b94c-6293d6de5732" shape="rect"></a>Print</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_91446989-92d9-441a-a64a-468c8882e8dd" shape="rect"></a>1</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_9c646a3c-ba17-44a0-be33-30e896d616c6" shape="rect"></a>Referenced Print Job Sequence</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_b401fa39-3298-4a28-80cd-4db7a99495af" shape="rect"></a>(2100,0500)</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_0f5f7aad-3825-471b-9bb1-abfc108a892a" shape="rect"></a>-/MC</p>
+                                            <p>
+                                 <a id="para_ec5d9129-1857-4882-b95c-1f460ed93eb8" shape="rect"></a>Required if Print Job SOP is supported</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_c1c5d965-05e0-4ae2-b54a-bad2656f3f57" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_7da39539-5ca4-402c-85d5-8057e5c76bfb" shape="rect"></a>(0008,1150)</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_a2138171-659e-4ed3-9abf-9269b7b5b621" shape="rect"></a>-/MC</p>
+                                            <p>
+                                 <a id="para_e599001b-41ab-4c0c-b3fa-8de6f8576189" shape="rect"></a>Required if Referenced Print Job Sequence (2100,0500) is present</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_fb174303-d22f-4853-8494-eb6b90011fc6" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_766be2b5-89c7-4ae2-85b2-7c2f4c5ba204" shape="rect"></a>(0008,1155)</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_716c679f-5940-41d6-b576-c802cd2a2300" shape="rect"></a>-/MC</p>
+                                            <p>
+                                 <a id="para_feb17b47-e1a1-4210-9074-2c2b65054594" shape="rect"></a>Required if Referenced Print Job Sequence (2100,0500) is present</p>
+                                        </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_H.4.2.2.4.2" shape="rect"></a>H.4.2.2.4.2 Status</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_a7486d19-4727-41e2-aca0-7ce4594b3384" shape="rect"></a>
+                                <a class="xref" href="sect_H.4.2.2.4.html#table_H.4-9" title="Table H.4-9. Status Values" shape="rect">Table H.4-9</a> defines the specific Status Code values that may be returned in a N-ACTION response. See <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for additional response Status Codes.</p>
+            <div class="table">
+               <a id="table_H.4-9" shape="rect"></a>
+               <p class="title">
+                  <strong>Table H.4-9. Status Values</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_9a8fab22-fec0-45fc-aa80-a4a494a0eaca" shape="rect"></a>Service Status</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_1ea3fe8d-52ef-4e5a-bd35-99bdfd6a1037" shape="rect"></a>Further Meaning</p>
+                                        </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_89c31fea-ad5c-42de-abfc-96ddba9b08a4" shape="rect"></a>Status Code</p>
+                                        </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_1fbe9232-c698-4fcd-bd0e-746bde0d2ea4" shape="rect"></a>Success</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_bf3aaad6-8587-4810-9110-33d76e2605f3" shape="rect"></a>Film accepted for printing; if supported, the Print Job SOP Instance is created</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_b8f8d90e-e28d-4994-98ce-0c31082743aa" shape="rect"></a>0000</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="4" colspan="1">
+                                            <p>
+                                 <a id="para_5e129891-d965-492d-9806-17d5b610ebe3" shape="rect"></a>Warning</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_ef6f0e60-a435-4393-947d-e3d7ae320846" shape="rect"></a>Film Box SOP Instance hierarchy does not contain Image Box SOP Instances (empty page)</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_7cefbcf0-0404-4ea2-8d01-0831b0b6a7f3" shape="rect"></a>B603</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f6767871-2923-45ea-95d8-5600ea31db65" shape="rect"></a>Image size is larger than image box size, the image has been demagnified.</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_6d8b1b5f-32af-46d0-ad45-d9e066679b4a" shape="rect"></a>B604</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_e5eabb4b-a1e8-47f2-b17d-650eb1b8b40a" shape="rect"></a>Image size is larger than the Image Box size. The Image has been cropped to fit.</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f590f17a-78c7-487b-87d4-fef1e253c3c2" shape="rect"></a>B609</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_4634d071-faef-4240-9010-12457a468838" shape="rect"></a>Image size or Combined Print Image size is larger than the Image Box size. Image or Combined Print Image has been decimated to fit.</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_57f80404-e2d0-47bf-8a77-b5bb29cc05f9" shape="rect"></a>B60A</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="3" colspan="1">
+                                            <p>
+                                 <a id="para_349e69e4-73f4-4e4c-88fb-3692c871dc3c" shape="rect"></a>Failure</p>
+                                        </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_dcdadd30-778b-49d3-8c2f-4598dfcb5e3a" shape="rect"></a>Failed: Unable to create Print Job SOP Instance; print queue is full</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_46cd05e1-3d3e-4026-bcc9-a3b268db862c" shape="rect"></a>C602</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_b5f3bb88-5a28-4093-9fa6-0c2a0a0208e1" shape="rect"></a>Failed: Image size is larger than image box size</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_5478bb04-adef-4851-9d25-c3dd45d91ef1" shape="rect"></a>C603</p>
+                                        </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_9d6215bd-2f8a-4f63-87b4-10c1fb14a8a8" shape="rect"></a>Failed: Combined Print Image size is larger than the Image Box size</p>
+                                        </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                 <a id="para_f18296b3-bfdd-4707-918d-3f9f2bac50b6" shape="rect"></a>C613</p>
+                                        </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_971ece2f-e2a1-46be-9420-da03273ea9a1" shape="rect"></a>Previous versions of the DICOM Standard defined the Status Code of C604. This code was specified for the case of an image position collision. Since image position collision is not a possible state, the code has been retired.</p>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h6 class="title">
+                        <a id="sect_H.4.2.2.4.3" shape="rect"></a>H.4.2.2.4.3 Behavior</h6>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_52ebd192-b745-45c2-a34b-7e4500115594" shape="rect"></a>The SCU uses the N-ACTION to request the SCP to print one or more copies of a single film of the film session. The SCU shall only specify the SOP Instance UID of the last created Basic Film Box SOP Instance in the N-ACTION request primitive.</p>
+            <p>
+               <a id="para_146d84c5-24ff-4206-a528-3f902529a98e" shape="rect"></a>The SCP shall make a copy of the "working" Basic Film Session SOP Instance and the "working" Basic Film Box SOP Instance hierarchy, which contains all the information to control the Print Process. Hence the SCU may further update the "working" SOP Instances without affecting the result of previous print requests. The execution of the Print Process is monitored by the Print Job SOP Class (if supported by the SCP) and the Printer SOP Class.</p>
+            <p>
+               <a id="para_dc3185e7-980f-4fae-8faa-7d273159c35e" shape="rect"></a>If the SCP supports the Print Job SOP Class then the SCP shall create a Print Job SOP Instance, which contains the copy of the "working" Basic Film Session SOP Instance hierarchy and shall return the Print Job SOP Class/Instance UID pair in the Attribute Referenced Print Job Sequence of the Action Reply argument.</p>
+            <p>
+               <a id="para_f8864087-f9ec-43af-b4ab-f3c143d67f09" shape="rect"></a>The SCP shall return the Status Code of the requested operation. The meaning of success, warning, and Failure Status Codes is defined in <a class="xref" href="sect_H.2.5.html" title="H.2.5 Status Code Categories" shape="rect">Section H.2.5</a>.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_H.4.2.2.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_H.4.2.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_H.4.2.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">H.4.2.2.3 N-DELETE </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> H.4.2.3 SOP Class Definition and UID</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.16 Common CT, MR, US and Photoacoustic Descriptions</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.html" title="C.8 Modality Specific Modules" />
+      <link rel="prev" href="sect_C.8.15.4.html" title="C.8.15.4 Enhanced Multi-energy CT Acquisition Module" />
+      <link rel="next" href="sect_C.8.16.2.html" title="C.8.16.2 Common CT/MR and Photoacoustic Image Description Macro" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.16 Common CT, MR, US and Photoacoustic Descriptions <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.16.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.15.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8 Modality Specific Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.16.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-node">Common CT, MR, US and Photoacoustic Descriptions</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_C.8.16" shape="rect"></a>C.8.16 Common CT, MR, US and Photoacoustic Descriptions</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4b1adb09-97ce-458d-b2c6-e026a4db4dd2" shape="rect"></a>This section contains descriptions of Macros and Attributes used in Modules and Functional Group Macros that are common to the Enhanced CT Image, Enhanced MR Images, MR Spectroscopy, Enhanced US Volume and Photoacoustic Image IODs.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_C.8.16.1" shape="rect"></a>C.8.16.1 Image Type and Frame Type</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_04a5b9d0-2629-459c-9185-3e0a5fb74f6d" shape="rect"></a>Image Type (0008,0008) and associated Attributes provide a high level description of a multi-frame SOP Instance. Image Type (0008,0008) contains the highest level summary of what is in the SOP Instance.</p>
+            <p>
+               <a id="para_cfc73922-2eba-4ca4-8967-d9640bcf472a" shape="rect"></a>Frame Type (0008,9007) mirrors the corresponding Image Type Attribute and applies to the frame level.</p>
+            <p>
+               <a id="para_384d88a9-6e77-436e-99fd-91c4c763f5d5" shape="rect"></a>If more than one value is used by the set of frames for a given Frame Type (0008,9007) Attribute value or associated Attribute value then the corresponding value of Image Type (0008,0008) or associated Attribute shall contain a value of MIXED. This indicates that a mixed set of values exists within the multi-frame SOP Instance.</p>
+            <p>
+               <a id="para_250622c5-63f1-4640-be83-79360345191b" shape="rect"></a>The value MIXED shall only be used in Image Type (0008,0008) when the corresponding values for the individual frames are not equal. When a value of an Attribute is equal for all frames, the same value shall be used for the corresponding value of Image Type (0008,0008). Values 2 and 3 of Image Type (0008,0008) are an exception to the rule for MIXED: Values 2 and 3 may never have the value of MIXED as described in <a class="xref" href="sect_C.8.16.html#sect_C.8.16.1.2" title="C.8.16.1.2 Patient Examination Characteristics" shape="rect">Section C.8.16.1.2</a> and <a class="xref" href="sect_C.8.16.html#sect_C.8.16.1.3" title="C.8.16.1.3 Image Flavor" shape="rect">Section C.8.16.1.3</a>.</p>
+            <p>
+               <a id="para_f19b1366-6b02-4b2a-bc64-94a481e7d62f" shape="rect"></a>Image Type (0008,0008) and Frame Type (0008,9007) shall consist of four values, except that a fifth value shall be present if Multi-energy CT Acquisition (0018,9361) has a value of YES.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.8.16.1.1" shape="rect"></a>C.8.16.1.1 Pixel Data Characteristics</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3d4ed2f4-2d44-4104-b47e-833d624cbc5d" shape="rect"></a>Value 1 of Image Type (0008,0008) and Frame Type (0008,9007) shall use one of the following Enumerated Values from <a class="xref" href="sect_C.8.16.html#table_C.8-127" title="Table C.8-127. Image Type and Frame Type Value 1" shape="rect">Table C.8-127</a>.</p>
+               <p>
+                  <a id="para_9f91870f-ff6e-4a43-9002-051aeda71d80" shape="rect"></a>Value 1 of Image Type (0008,0008) and Value 1 of Frame Type (0008,9007) shall not be zero length.</p>
+               <div class="table">
+                  <a id="table_C.8-127" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8-127. Image Type and Frame Type Value 1</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c8659a19-614a-48e8-a684-35695464689a" shape="rect"></a>Enumerated Value Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aff94901-3ee2-43c4-bdb9-4da9cb68e382" shape="rect"></a>Enumerated Value Description</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5218db36-eebc-4455-ac94-13f52118bffd" shape="rect"></a>ORIGINAL</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a4cf6930-cbdf-4a55-a31d-c32127655337" shape="rect"></a>An image or frame is original if its pixel data was directly reconstructed from the original data that is obtained from the sensors of the imaging equipment, Image Type (0008,0008) Value 4 is NONE, and Volume Based Calculation Technique (0008,9207) is NONE.</p>
+                                        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <div class="orderedlist">
+                                       <ol class="orderedlist" type="1">
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_74aefae0-633a-4767-8049-d991f867d440" shape="rect"></a>For MR, original data is data directly reconstructed from k-space data.</p>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_c84ff5f3-9285-45c1-af12-608dd0d95170" shape="rect"></a>For CT, original frames are those directly reconstructed from projection data.</p>
+                                          </li>
+                                       </ol>
+                                    </div>
+                                 </div>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_227ab021-7ad6-40e4-b365-9be3e6e01020" shape="rect"></a>DERIVED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_86d2f885-9efd-46e6-9e2f-c4372ccc8be6" shape="rect"></a>An image or frame is derived if its pixel data was calculated from original or other derived pixel data (i.e., it is not original).</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_30e06823-5c13-40ec-91cb-a6120208713e" shape="rect"></a>MIXED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_245b6bd5-4f66-4a48-b3fc-f3eb9bfade7b" shape="rect"></a>Used only as a value in Image Type (0008,0008) if frames within the SOP Instance contain different values for Value 1 in their Frame Type (0008,9007).</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.8.16.1.2" shape="rect"></a>C.8.16.1.2 Patient Examination Characteristics</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6f837805-bc2b-49fb-b028-19e128c6b0f7" shape="rect"></a>Value 2 for Image Type (0008,0008) and Frame Type (0008,9007) follows the standard definition and shall have the following Enumerated Value from <a class="xref" href="sect_C.8.16.html#table_C.8-128" title="Table C.8-128. Image Type and Frame Type Value 2" shape="rect">Table C.8-128</a>.</p>
+               <p>
+                  <a id="para_0bbc8327-4183-48bd-8ff0-3ecd7923e4a0" shape="rect"></a>Value 2 of Image Type (0008,0008) and Value 2 of Frame Type (0008,9007) shall not be zero length.</p>
+               <div class="table">
+                  <a id="table_C.8-128" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8-128. Image Type and Frame Type Value 2</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_725b8b4f-55c4-46a4-bc26-ec21bbdd3f7f" shape="rect"></a>Enumerated Value Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0616dc21-99c9-4cae-a361-1414ad385ce9" shape="rect"></a>Enumerated Value Description</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3b5f49b0-429f-4544-bb6f-50cd541a8ba5" shape="rect"></a>PRIMARY</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e1bab6d6-a8bc-4e4f-b304-e00ef98b4f00" shape="rect"></a>See <a class="xref" href="sect_C.7.6.html#sect_C.7.6.1.1.2" title="C.7.6.1.1.2 Image Type" shape="rect">Section C.7.6.1.1.2</a>
+                                        </p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.8.16.1.3" shape="rect"></a>C.8.16.1.3 Image Flavor</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_c3871e6c-8a9d-4736-be6b-184c5cf74e92" shape="rect"></a>Value 3 is an overall representation of the image type. This value may be a summary of several other Attributes or a duplication of one of the other Attributes to indicate the most important aspect of this image. Value 3 Image Flavor is to be used with Value 4 Derived Pixel Contrast to indicate the nature of the image set.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_7cee1a95-dba8-4ada-a8d4-08f728540df5" shape="rect"></a>For example Value 3 = DIFFUSION together with Value 4 = NONE indicates that the image set was originally collected for DIFFUSION.</p>
+                  <p>
+                     <a id="para_f9eec07c-6387-48cf-bbcc-3b7c9b197a43" shape="rect"></a>If Value 3 = DIFFUSION together with Value 4 = DIFFUSION this indicates that the object contains DIFFUSION weighted post processed images.</p>
+               </div>
+               <p>
+                  <a id="para_b713280d-c209-45bc-a077-d5ef7a570f0a" shape="rect"></a>Value 3 of Image Type (0008,0008) shall not be zero length.</p>
+               <p>
+                  <a id="para_7005a628-cc77-46c3-9242-438e8d561775" shape="rect"></a>Value 3 of Frame Type (0008,9007) may have the same value as found in Value 3 of Image Type (0008,0008), or may have a different value.</p>
+               <p>
+                  <a id="para_a62562aa-3161-454a-acd0-0b1d5757d8d6" shape="rect"></a>The Attribute value may not be MIXED as this value needs to be a summary of the primary purpose of the images, whether the frames have the same value or not.</p>
+               <p>
+                  <a id="para_6ac8d220-5fc7-499f-bcb4-4c17ee95d70f" shape="rect"></a>
+                            <a class="xref" href="sect_C.8.16.html#table_C.8-129" title="Table C.8-129. Image Type and Frame Type Value 3 Common" shape="rect">Table C.8-129</a> specifies the Defined Terms for Value 3 for Image Type (0008,0008) and Frame Type (0008,9007) that are common to CT and MR. Additional Defined Terms are defined in the modality-specific Module and Macro definitions.</p>
+               <div class="table">
+                  <a id="table_C.8-129" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8-129. Image Type and Frame Type Value 3 Common</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2cdb7295-3dab-4b96-a7d5-fd3499e3e2c5" shape="rect"></a>Defined Term Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7e783067-5866-4967-8159-4e56df5a9cfe" shape="rect"></a>Defined Term Description</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ebec463c-5684-4dd5-ad8c-b3dd620f9f30" shape="rect"></a>ANGIO</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e4b05133-3650-49bc-95f2-933590782340" shape="rect"></a>Collected for the purpose of angiography.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_761dab74-aa88-427e-85e3-2cf94b5d38e7" shape="rect"></a>CARDIAC</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cca5c220-9577-43b7-8288-8557972f7cdb" shape="rect"></a>Images of the heart.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ee4a190e-fad3-4468-af00-48bb0d7409ab" shape="rect"></a>CARDIAC_GATED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a2cfb2ba-6aa3-4051-80e0-666ec1f91431" shape="rect"></a>Cardiac gated images, other than of the heart.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_467aa490-de54-42b1-b047-32ed07fee6a7" shape="rect"></a>CARDRESP_GATED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f04437cb-e612-4f92-9823-590896aa6672" shape="rect"></a>Cardiac and respiratory gated images.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f7b589f6-ee85-4520-94af-0e1d0c719d88" shape="rect"></a>DYNAMIC</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a5390b7a-4823-4636-abf3-07d4f005cf96" shape="rect"></a>An image in which the same anatomical volume is imaged at multiple times in order to capture images of a non-cyclic, time varying event. For example, imaging of the uptake of a tracer or contrast in a specific organ over time.</p>
+                                        <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                    <h3 class="title">Note</h3>
+                                    <p>
+                                       <a id="para_5ded6ab9-4891-4781-85d4-506a4a18e4da" shape="rect"></a>This is different from gating techniques, in which the same anatomical volume is imaged during some portion of a cyclic event, e.g., inspiration or R-R Interval.</p>
+                                 </div>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9e10a0a6-daa9-43c1-a8d2-ed7c5e170873" shape="rect"></a>FLUOROSCOPY</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dcf11492-36da-4fa8-a400-457240e90d9c" shape="rect"></a>Real-time collection of single slices (e.g., CT or MR Fluoroscopy).</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4e1e5e06-6116-43cf-9189-f5fddb46a1fd" shape="rect"></a>LOCALIZER</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_adcb6a23-f96f-47dd-92c5-e6dbd57ca962" shape="rect"></a>Collected for the purpose of planning other images.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_18b5f3a3-9fa4-48a2-a1cd-3e02e1c4d14d" shape="rect"></a>MOTION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_59118480-3b6a-4239-8068-53b82941fb21" shape="rect"></a>Collected for looking at body motion.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8cf998e3-6e8c-4214-90f9-fa54a7291350" shape="rect"></a>PERFUSION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_045cdbea-179a-4db6-a3b9-21ab8fb21940" shape="rect"></a>Collected for the purposes of perfusion calculations.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_92768676-4650-4d23-86e2-ff7252ee13c3" shape="rect"></a>PRE_CONTRAST</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5eab094b-e810-490a-b5fd-e1fd1ac0f5a0" shape="rect"></a>Collected before contrast was administered.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_27042f2c-4929-424d-ae7e-3a4702b7151b" shape="rect"></a>POST_CONTRAST</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2cda1aa3-fd4c-4805-93c8-493fc852c88f" shape="rect"></a>Collected during or after contrast was administered.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_49e8dc8a-aaff-460c-aeef-da8fcf6b8b53" shape="rect"></a>RESP_GATED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d7349765-fad5-446e-af4d-f0b8545d068a" shape="rect"></a>Respiratory gated images.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ab445b03-c600-451a-ae7d-0268af1a2431" shape="rect"></a>REST</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2c4e3815-8d92-4a8a-8c90-3525952fb132" shape="rect"></a>Cardiac rest image set.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_509c3a89-b42e-483a-a8f7-757fcbf72050" shape="rect"></a>STATIC</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_28819104-36ed-452c-bf77-1ba82ba35caa" shape="rect"></a>A group of frames at varying spatial locations acquired at the same time.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6bc50dfa-5e09-4e06-a78f-e9a2a48a84bc" shape="rect"></a>STRESS</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_334ec5fc-251f-498c-a678-40a3b3a78f28" shape="rect"></a>Cardiac stress image set.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b027131a-374b-4771-8722-446a12dc51c5" shape="rect"></a>VOLUME</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0731acca-213f-4ea4-acb5-92c7fecc612b" shape="rect"></a>Set of frames that define a regularly sampled volume.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f99ed53c-4753-4f72-b575-24d01552a707" shape="rect"></a>NON_PARALLEL</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d0f9c5e4-01d9-4626-95f5-a8205f913c2c" shape="rect"></a>Set of frames that are not parallel.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d1d550fa-90a5-4eb7-a1c3-348487bd0db7" shape="rect"></a>PARALLEL</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_25e5cf0b-6d8f-4408-8b80-7da1920e5223" shape="rect"></a>Set of frames that are parallel but do not constitute a regularly sampled volume.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_67d8b18a-480c-42b0-b531-a41343483097" shape="rect"></a>WHOLE_BODY</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7756a524-e5ba-4052-8f8b-ab1842b09028" shape="rect"></a>A group of frames of the whole body; the frames may be acquired at various times (as distinct from STATIC).</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_C.8.16.1.4" shape="rect"></a>C.8.16.1.4 Derived Pixel Contrast</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1a55a586-ff1d-4fba-b44f-6b2afeec501e" shape="rect"></a>Value 4 shall be used to indicate derived pixel contrast - generally, contrast created by combining or processing images with the same geometry. Value 4 shall have a value of NONE when Value 1 is ORIGINAL.</p>
+               <p>
+                  <a id="para_2ea77090-78f7-4491-a986-42fc94a4fa0c" shape="rect"></a>Value 4 may have the value QUANTITY if the derived pixel contrast is described in the Quantity Definition Sequence (0040,9220) of the <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.11" title="C.7.6.16.2.11 Real World Value Mapping Macro" shape="rect">Real World Value Mapping Macro</a>.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_5548de62-db90-4c4a-b7e1-4dea05dd5c6a" shape="rect"></a>If more than one of the following derived types is applicable, then it is up to the generating application to specify the value that best characterizes the derived image.</p>
+               </div>
+               <p>
+                  <a id="para_a05c81d3-8c61-4f08-b087-0681d409848b" shape="rect"></a>Value 4 of Image Type (0008,0008) and Value 4 of Frame Type (0008,9007) shall not be zero length unless the SOP Class UID is "1.2.840.10008.5.1.4.1.1.2.2" or "1.2.840.10008.5.1.4.1.1.4.4" or "1.2.840.10008.5.1.4.1.1.128.1" (Legacy Converted).</p>
+               <p>
+                  <a id="para_776e6597-609e-433d-8280-ceb57dc535ef" shape="rect"></a>
+                            <a class="xref" href="sect_C.8.16.html#table_C.8-130" title="Table C.8-130. Image Type and Frame Type Value 4 Common" shape="rect">Table C.8-130</a> specifies the Defined Terms for Value 4 for Image Type (0008,0008) and Frame Type (0008,9007) that are common to CT and MR. Additional Defined Terms are defined in the modality-specific Module and Macro definitions.</p>
+               <div class="table">
+                  <a id="table_C.8-130" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8-130. Image Type and Frame Type Value 4 Common</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8404a98f-a54f-43ef-94ae-6497d214a3d0" shape="rect"></a>Defined Term Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7ea2a343-8324-4076-bee7-e0ba051d4bf2" shape="rect"></a>Defined Term Description</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_72a8f1a4-c7b5-4a80-a965-35fce1a34551" shape="rect"></a>ADDITION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6976bce3-1a6e-4761-b282-d4237fa2b682" shape="rect"></a>Created through Pixel by pixel addition operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_94e4e7b1-5e16-4773-b7e5-a3228ffb8efc" shape="rect"></a>DIVISION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b47ab3b3-d9f5-40af-adbc-bc3179187df0" shape="rect"></a>Created through Pixel by pixel division operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2f9c5c6a-6aa8-47fc-9b6e-82d9614b9bd3" shape="rect"></a>MASKED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a046a605-2c01-4d06-9485-809d1b8c3978" shape="rect"></a>Created through Pixel by pixel masking operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a4c7d88f-1469-4d93-b117-27f8443d9462" shape="rect"></a>MAXIMUM</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dd6d4a2b-29f5-40d5-99c6-4e7e2f01535b" shape="rect"></a>Created through Pixel by Pixel maximum operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cd31b017-387f-4b77-a4c1-2ba31aa15565" shape="rect"></a>MEAN</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bb7e68fc-9713-44c5-9172-56cd4a7f62ee" shape="rect"></a>Created through Pixel by pixel mean operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ea49e41b-a843-4d64-b9ed-35d8ffc6fe55" shape="rect"></a>MINIMUM</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9a540bbb-03ae-409c-9c3b-774da9856a6e" shape="rect"></a>Created through Pixel by Pixel minimum operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6e7c31d4-19cf-46b7-8419-aed798df1647" shape="rect"></a>MULTIPLICATION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4a29817a-973e-4bb6-90eb-e3ab9dd5f36b" shape="rect"></a>Created through Pixel by pixel multiplication operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0f4fb2bb-f154-4443-a3e6-c7d2d44977ba" shape="rect"></a>RESAMPLED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_879c9767-a4a9-4d86-8d3a-653b43daae10" shape="rect"></a>Pixels have been spatially re-sampled, e.g., MPR.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_edb1960b-6cb7-4751-adfd-9994c3867cb6" shape="rect"></a>STD_DEVIATION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5103a2c9-246c-4290-9a22-793dcfc35ea4" shape="rect"></a>Standard Deviation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0f5a0ffc-02e8-4e05-8891-0913d5256c27" shape="rect"></a>SUBTRACTION</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4ba41b27-bb10-4158-9b6a-96b9ab019f53" shape="rect"></a>Created through Pixel by pixel subtraction operation.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d886fd57-ae4c-4cf0-bf3d-e7b850e2f29c" shape="rect"></a>NONE</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_15434307-4be3-4126-867a-7bcc5fc41ab7" shape="rect"></a>Not a calculated image.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_832040cb-2e2b-47a9-92d0-6bc8109efa6b" shape="rect"></a>QUANTITY</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1c03ad8f-f474-4f32-9dd4-290d13da1bbe" shape="rect"></a>Derived pixel values are a quantity described by Quantity Definition Sequence (0040,9220) of the <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.11" title="C.7.6.16.2.11 Real World Value Mapping Macro" shape="rect">Real World Value Mapping Macro</a>.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_96f6d6e0-d321-449d-b4ff-d50132aa5acc" shape="rect"></a>MIXED</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cbd95bf5-bdf0-481c-8ad7-3a39cdc4ec43" shape="rect"></a>Used only as value in Image Type (0008,0008) if frames within the image SOP Instance contain different values for value 4 in their Frame Type (0008,9007) Attribute.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.15.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.16.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.15.4 Enhanced Multi-energy CT Acquisition Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.16.2 Common CT/MR and Photoacoustic Image Description Macro</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

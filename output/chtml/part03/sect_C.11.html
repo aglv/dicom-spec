@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.11 Look Up Tables and Presentation States</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="chapter_C.html" title="C Information Module Definitions (Normative)" />
+      <link rel="prev" href="sect_C.10.13.html" title="C.10.13 Waveform Filter Lookup Table Macro" />
+      <link rel="next" href="sect_C.11.2.html" title="C.11.2 VOI LUT Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.11 Look Up Tables and Presentation States <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.11.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.10.13.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C Information Module Definitions (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.11.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Look Up Tables and Presentation States</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_C.11" shape="rect"></a>C.11 Look Up Tables and Presentation States</h2>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_C.11.1" shape="rect"></a>C.11.1 Modality LUT Module</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_c00e357d-3ce7-48e9-8c6f-5a246dcb76f1" shape="rect"></a>
+                    <a class="xref" href="sect_C.11.html#table_C.11-1" title="Table C.11-1. Modality LUT Module Attributes" shape="rect">Table C.11-1</a> specifies the Attributes of the <a class="xref" href="sect_C.11.html#sect_C.11.1" title="C.11.1 Modality LUT Module" shape="rect">Modality LUT Module</a>, which describe the Modality LUT.</p>
+            <p>
+               <a id="para_554ef080-bbf2-4d2c-a4ee-0fb9cc4ef045" shape="rect"></a>Either a Modality LUT Sequence containing a single Item or Rescale Slope and Intercept values shall be present but not both.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_4c4895a6-3d50-4b99-8e1d-81dcd9bd5160" shape="rect"></a>This requirement for only a single transformation makes it possible to unambiguously define the input of succeeding stages of the grayscale pipeline such as the VOI LUT.</p>
+            </div>
+            <div class="table">
+               <a id="table_C.11-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.11-1. Modality LUT Module Attributes</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_518069ac-cfda-4c6f-abc6-6fcf18622094" shape="rect"></a>Attribute Name</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ae24af1e-e72f-4663-b3ab-a417d9b79392" shape="rect"></a>Tag</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_91e9ae78-0cd0-4227-8cbd-16df0a06b029" shape="rect"></a>Type</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_f227bbc3-2cf3-42d6-819b-6c1169771923" shape="rect"></a>Attribute Description</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" colspan="4" rowspan="1">
+                                <p>
+                                 <a id="para_2fbcaed4-91ea-4020-8a39-5c9eca6070bd" shape="rect"></a>
+                                    <span class="italic">Include <a class="xref" href="sect_C.11.html#table_C.11-1b" title="Table C.11-1b. Modality LUT Macro Attributes" shape="rect">Table C.11-1b “Modality LUT Macro Attributes”</a>
+                                    </span>
+                                </p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="table">
+               <a id="table_C.11-1b" shape="rect"></a>
+               <p class="title">
+                  <strong>Table C.11-1b. Modality LUT Macro Attributes</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_ce10de4e-35c3-4ef8-9a80-eb496dc9a17e" shape="rect"></a>Attribute Name</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_214fed6c-e5c0-4db4-871b-8e4f410583d8" shape="rect"></a>Tag</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_475eadae-54dc-4430-b5d3-4c2ab393d3a6" shape="rect"></a>Type</p>
+                            </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_7b3349c7-9a20-4736-86a4-1b462cc46e55" shape="rect"></a>Attribute Description</p>
+                            </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_8ed414d3-e3c3-449b-8407-6384126d0d32" shape="rect"></a>Modality LUT Sequence</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_2959ab74-fb8b-4756-afbe-e39c857ff892" shape="rect"></a>(0028,3000)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_97c941e4-2fbd-402a-a079-70a4dbb1a190" shape="rect"></a>1C</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1206a7ce-ca11-424c-93b2-3d83d0480ddd" shape="rect"></a>Defines a Sequence of Modality LUTs.</p>
+                                <p>
+                                 <a id="para_1c4549ae-1bf5-4cbb-9c6e-caf9747185fa" shape="rect"></a>Only a single Item shall be included in this Sequence.</p>
+                                <p>
+                                 <a id="para_0e6bec2a-6a54-4458-8212-260b9e66050e" shape="rect"></a>Shall not be present if Rescale Intercept (0028,1052) is present.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_36947fbd-05d9-4a6b-a253-278779b0c9a9" shape="rect"></a>&gt;LUT Descriptor</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_4e6508d8-65a0-4c40-b378-8b1f344ab8b8" shape="rect"></a>(0028,3002)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_77d52d11-617d-45d6-826e-2e0deb010a92" shape="rect"></a>1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9add5c68-71c1-4b1d-95df-891e8273c171" shape="rect"></a>Specifies the format of the LUT Data in this Sequence.</p>
+                                <p>
+                                 <a id="para_d3d4b660-a6e3-4d86-bc9f-ece859bd990c" shape="rect"></a>See <a class="xref" href="sect_C.11.html#sect_C.11.1.1" title="C.11.1.1 Modality LUT Module Attribute Descriptions" shape="rect">Section C.11.1.1</a> for further explanation.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d6e7037a-e5e8-47a6-84a0-a046cba3e18d" shape="rect"></a>&gt;LUT Explanation</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_933d0c7f-da02-464d-bbfc-d3c4c289fe71" shape="rect"></a>(0028,3003)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_a340633e-e702-4b19-8be1-c1f4f45c70bc" shape="rect"></a>3</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9a1dcf26-9d6d-4d70-816d-14472ec754f9" shape="rect"></a>Free form text explanation of the meaning of the LUT.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_c3322adb-c0d1-46fb-9d9d-b1163292c47e" shape="rect"></a>&gt;Modality LUT Type</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_55d873d1-46b8-42d0-88cb-7d620194f4fe" shape="rect"></a>(0028,3004)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_da518ce4-ed32-4bd2-a20a-004c590cc577" shape="rect"></a>1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_3921491d-92d2-496b-84da-9b9151bb373a" shape="rect"></a>Specifies the output values of this Modality LUT.</p>
+                                <p>
+                                 <a id="para_82514217-58e0-48f1-9b56-e76816105187" shape="rect"></a>See <a class="xref" href="sect_C.11.html#sect_C.11.1.1.2" title="C.11.1.1.2 Modality LUT and Rescale Type" shape="rect">Section C.11.1.1.2</a> for further explanation.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_1b2203b1-d01c-4c87-bdfc-1afe88ea8dec" shape="rect"></a>&gt;LUT Data</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9e9a20c8-925d-4485-89d3-3977aedfd0e9" shape="rect"></a>(0028,3006)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_230d40a6-3f5a-42e3-b3ba-43f0455e9701" shape="rect"></a>1</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_d2bb43a9-3fae-4b61-9b5e-352771311878" shape="rect"></a>LUT Data in this Sequence.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_41443e56-dcf3-4d8e-8008-6eaed66620cc" shape="rect"></a>Rescale Intercept</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_4d24a22a-6594-42c4-a1f5-bc8eae0e3b93" shape="rect"></a>(0028,1052)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_99c3a403-c243-419f-90f8-820a0ff96c5c" shape="rect"></a>1C</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_240803d9-d3bf-4395-a503-8eb2e35877e7" shape="rect"></a>The value b in relationship between stored values (SV) and the output units specified in Rescale Type (0028,1054).</p>
+                                <p>
+                                 <a id="para_e532f1ef-f8e2-4d84-9a6f-5aeb6383b265" shape="rect"></a>Output units = m*SV + b.</p>
+                                <p>
+                                 <a id="para_f8cd92c6-938e-4013-915b-f0eb2ef9688e" shape="rect"></a>Required if Modality LUT Sequence (0028,3000) is not present. Shall not be present otherwise.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_7da312c9-c52d-4e60-88b5-a3d2d63ae186" shape="rect"></a>Rescale Slope</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_007a281e-35b7-421a-9685-42d21f1e6d79" shape="rect"></a>(0028,1053)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_753183dd-e55f-4719-873e-e823fd7381e6" shape="rect"></a>1C</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_dd30cf8a-96e6-4985-b9f2-a23abe470d38" shape="rect"></a>m in the equation specified by Rescale Intercept (0028,1052).</p>
+                                <p>
+                                 <a id="para_3e91ba90-8fb3-40a0-93f6-a5d35f0d8aae" shape="rect"></a>Required if Rescale Intercept is present.</p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_e329047f-0eb8-4087-b8bd-41af203278d4" shape="rect"></a>Rescale Type</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_9bd6cb28-946c-4325-a14c-d19c6472ae27" shape="rect"></a>(0028,1054)</p>
+                            </td>
+                           <td align="center" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_82e73e0a-7f52-447b-a711-a1284d7ff1a9" shape="rect"></a>1C</p>
+                            </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                <p>
+                                 <a id="para_b6bbc70a-3023-4de5-949a-34168e1066f8" shape="rect"></a>Specifies the output units of Rescale Slope (0028,1053) and Rescale Intercept (0028,1052).</p>
+                                <p>
+                                 <a id="para_baf834c8-cf4e-407c-8a98-58d23bb6b705" shape="rect"></a>See <a class="xref" href="sect_C.11.html#sect_C.11.1.1.2" title="C.11.1.1.2 Modality LUT and Rescale Type" shape="rect">Section C.11.1.1.2</a> for further explanation.</p>
+                                <p>
+                                 <a id="para_0d51722a-ff7c-443f-9527-7a7dd82b65b3" shape="rect"></a>Required if Rescale Intercept is present.</p>
+                            </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.11.1.1" shape="rect"></a>C.11.1.1 Modality LUT Module Attribute Descriptions</h4>
+                     </div>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.11.1.1.1" shape="rect"></a>C.11.1.1.1 LUT Descriptor</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_7a9a86e6-2db1-44f8-8f9b-2783bcbd7ed6" shape="rect"></a>The three values of LUT Descriptor (0028,3002) describe the format of the LUT Data in the corresponding LUT Data (0028,3006) Attribute.</p>
+                  <p>
+                     <a id="para_3ea55b84-be64-47c1-8b38-ecc8a1650890" shape="rect"></a>The first value is the number of entries in the lookup table. When the number of table entries is equal to 2<sup>16</sup> then this value shall be 0.</p>
+                  <p>
+                     <a id="para_3649e207-06b9-461f-b4a7-4eeb4d7597d0" shape="rect"></a>The second value is the first stored pixel value mapped. The Value Representation of the second value (US or SS) is specified by Pixel Representation (0028,0103). This stored pixel value is mapped to the first entry in the LUT. All stored pixel values less than the first value mapped are also mapped to the first entry in the LUT Data. A stored pixel value one greater than the first value mapped is mapped to the second entry in the LUT Data. Subsequent stored pixel values are mapped to the subsequent entries in the LUT Data up to a stored pixel value equal to number of entries + first value mapped - 1 that is mapped to the last entry in the LUT Data. Stored pixel values greater than or equal to number of entries + first value mapped are also mapped to the last entry in the LUT Data.</p>
+                  <p>
+                     <a id="para_47487ead-ec70-47af-8a5c-a4610c5b33a2" shape="rect"></a>The third value specifies the number of bits for each entry in the LUT Data. It shall take the value 8 or 16. The LUT Data shall be stored in a format equivalent to 8 bits allocated when the number of bits for each entry is 8, and 16 bits allocated when the number of bits for each entry is 16, where in both cases the high bit is equal to bits allocated - 1.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_cf5bfcb3-fa89-47d2-8421-6d36f6534a06" shape="rect"></a>Some implementations have encoded 8 bit entries with 16 bits allocated, padding the high bits; this can be detected by comparing the number of entries specified in the LUT Descriptor with the actual value length of the LUT Data entry. The value length in bytes should equal the number of entries if bits allocated is 8, and be twice as long if bits allocated is 16.</p>
+                  </div>
+                  <p>
+                     <a id="para_37b311fd-fb0c-4314-a969-5e0c1873d27e" shape="rect"></a>The third value also conveys the range of LUT entry values. It shall take the value 8 or 16, corresponding with the LUT entry value range of 256 or 65536.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_91ad2e8e-0ae8-4071-b4ee-e98e4d326148" shape="rect"></a>Since LUT Descriptor (0028,3002) is multi-valued, in an Explicit VR Transfer Syntax, only one value representation (US or SS) may be specified, even though the first and third values are always by definition interpreted as unsigned. The explicit VR actually used is dictated by the VR needed to represent the second value, which will be consistent with Pixel Representation (0028,0103).</p>
+                  </div>
+                  <p>
+                     <a id="para_f02ee3d4-e1c9-4436-9b20-40240288e7c0" shape="rect"></a>The LUT Data contains the LUT entry values.</p>
+                  <p>
+                     <a id="para_bc3407a0-8c29-4326-a5d9-5ef99d4f61a5" shape="rect"></a>The output range of the <a class="xref" href="sect_C.11.html#sect_C.11.1" title="C.11.1 Modality LUT Module" shape="rect">Modality LUT Module</a> depends on whether or not Rescale Slope (0028,1053) and Rescale Intercept (0028,1052) or the Modality LUT Sequence (0028,3000) are used.</p>
+                  <p>
+                     <a id="para_bf56ad06-80bc-4b47-bb98-886822ebc1a5" shape="rect"></a>In the case where Rescale Slope and Rescale Intercept are used, the output ranges from (minimum pixel value*Rescale Slope+Rescale Intercept) to (maximum pixel value*Rescale Slope+Rescale Intercept), where the minimum and maximum pixel values are determined by Bits Stored and Pixel Representation.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_7649e901-bccb-4302-b575-cd50c76a336f" shape="rect"></a>This range may be signed even if Pixel Representation is unsigned.</p>
+                  </div>
+                  <p>
+                     <a id="para_91ce3a1f-2d3c-4895-849d-caf93c49cc07" shape="rect"></a>In the case where the Modality LUT Sequence is used, the output range is from 0 to 2<sup>n</sup>-1 where n is the third value of LUT Descriptor. This range is always unsigned.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.11.1.1.2" shape="rect"></a>C.11.1.1.2 Modality LUT and Rescale Type</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_9de9d1c8-f28e-4290-8187-30154aba90ae" shape="rect"></a>Specifies the units of the output of the Modality LUT or rescale operation.</p>
+                  <div class="variablelist">
+                     <p class="title">
+                        <strong>Defined Terms:</strong>
+                     </p>
+                     <dl class="variablelist compact">
+                        <dt>
+                           <span class="term">OD</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_1a1cac54-f138-4d04-aac1-0741f29f23db" shape="rect"></a>The number in the LUT represents thousands of optical density. That is, a value of 2140 represents an optical density of 2.140.</p>
+                        </dd>
+                        <dt>
+                           <span class="term">HU</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_ad67f38d-5673-4a52-a144-5fb5c9ab892b" shape="rect"></a>Hounsfield Units (CT)</p>
+                        </dd>
+                        <dt>
+                           <span class="term">US</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_8e65301e-b55f-4734-820e-7d13203a20bd" shape="rect"></a>Unspecified</p>
+                        </dd>
+                        <dt>
+                           <span class="term">MGML</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_8eb0cfbb-cadb-4d08-915b-1100646a1ffc" shape="rect"></a>mg/ml</p>
+                        </dd>
+                        <dt>
+                           <span class="term">Z_EFF</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_268febaf-7a94-4b0e-a9a0-8dc136404f81" shape="rect"></a>Effective Atomic Number (i.e., Effective-Z)</p>
+                        </dd>
+                        <dt>
+                           <span class="term">ED</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_0c6c1917-827c-4922-b049-ac385f407641" shape="rect"></a>Electron density in 1023 electrons/ml</p>
+                        </dd>
+                        <dt>
+                           <span class="term">EDW</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_aceee2df-172f-4c2d-8c6e-39b5a9415bb8" shape="rect"></a>Electron density normalized to water in units of N/Nw where N is number of electrons per unit volume, and Nw is number of electrons in the same unit of water at standard temperature and pressure.</p>
+                        </dd>
+                        <dt>
+                           <span class="term">HU_MOD</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_a84204b6-3952-4b0b-bcb7-9feb50dba724" shape="rect"></a>Modified Hounsfield Unit</p>
+                        </dd>
+                        <dt>
+                           <span class="term">PCT</span>
+                        </dt>
+                        <dd>
+                           <p>
+                              <a id="para_b58bdfb0-b25c-4495-bee2-f57cc361d349" shape="rect"></a>Percentage (%)</p>
+                        </dd>
+                     </dl>
+                  </div>
+                  <p>
+                     <a id="para_b48c2d71-f39a-45e8-adc6-12dc118ca852" shape="rect"></a>Other values are permitted, but are not defined by the DICOM Standard.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.11.1.1.2.1" shape="rect"></a>C.11.1.1.2.1 Recommended Rescale Type Assignments For Multi-energy CT Image</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_0037f874-6772-4204-b654-1b8baeaf0fa0" shape="rect"></a>Multi-energy CT Images can have multiple assignments of Rescale Types to Image Type Attributes. These are the recommended assignments for Rescale Type and Real World Value Mapping Attributes.</p>
+                  <div class="table">
+                     <a id="table_C.11.1.1.2.1-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table C.11.1.1.2.1-1. Recommended Rescale Type Assignments for Multi-energy CT Image</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8c1d96a5-7240-4df5-9f71-b11ff310ff06" shape="rect"></a>Multi-energy Image Family</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_50cd5e12-8455-4b0e-987a-e1c295e504b8" shape="rect"></a>Recmd. Rescale Type (0028,​1054)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e847d7ca-761e-433b-a979-9cd66dd937bb" shape="rect"></a>Image Type (0008,​0008)</p>
+                                        <p>
+                                       <a id="para_07c2b84f-7371-40c1-903b-895f7712889c" shape="rect"></a>See Note <a class="xref" href="sect_C.11.html#note_C.11.1.1.2.1_3" shape="rect">3</a>.</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_732e55ba-cf2f-440e-88e6-86c9c8d407f6" shape="rect"></a>Rescale Intercept (0028,​1052)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_76ac282e-a1d7-43fe-b266-1186a9aa707d" shape="rect"></a>Rescale Slope (0028,​1053)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea5783c4-2b39-4811-88c8-5d54a8ae096e" shape="rect"></a>Real World Value First Value Mapped (0040,​9216)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_23bdeb0e-863c-48ba-ab03-488e674f1158" shape="rect"></a>Real World Value Last Value Mapped (0040,​9211)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8186db26-ae47-44d2-9089-db9ad0378abe" shape="rect"></a>Real World Value Intercept (0040,​9224)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_44b01d11-6bce-4248-a7eb-fd3b5194bcf8" shape="rect"></a>Real World Value Slope (0040,​9225)</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_dfb01a90-09c4-49c5-ba0a-0b087b6b4bd5" shape="rect"></a>LUT Label (0040,​9210) in <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.11" title="C.7.6.16.2.11 Real World Value Mapping Macro" shape="rect">Real World Value Mapping Macro</a>
+                                        </p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d8dacc2c-d5e6-4ff5-a506-6bac0102d51b" shape="rect"></a>Measurement Units Code Sequence (0040,​08EA) in <a class="xref" href="sect_C.7.6.16.2.html#sect_C.7.6.16.2.11" title="C.7.6.16.2.11 Real World Value Mapping Macro" shape="rect">Real World Value Mapping Macro</a>
+                                        </p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" colspan="11" rowspan="1">
+                                        <p>
+                                       <a id="para_58bfbca5-7c72-40e2-bbc9-6e69f688e8f1" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Objective Image Family</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_450d929e-3da9-42bb-ae57-103ea784f4df" shape="rect"></a>Virtual Mono​energetic Image</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_a97fc063-2663-4a6b-b05b-17b2b1d4db7f" shape="rect"></a>HU</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_a6311dea-2c25-484f-a719-687145a5742b" shape="rect"></a>VMI</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9d396884-21d4-4cb7-9835-54bc3204f6ce" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a75306c0-d8f7-4aea-bf1e-2fdc746c958a" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4f661c38-9df0-45e5-bc48-bb8ae58f6720" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_be69d941-6747-47fc-b8f9-cf53f5b6965c" shape="rect"></a>4095</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ad3df70b-bcca-4a5b-875e-37719512788c" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_64b8f9db-c8d8-4635-9a82-f92a9f789543" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_63dd1380-1079-4dbd-ac35-bf2f55129482" shape="rect"></a>VMI</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_edb91d90-739c-4b5d-ae5a-1fac2a22a12f" shape="rect"></a>([hnsf'U], UCUM, "Hounsfield unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_20ad765a-37a9-4f50-8216-c056170283f8" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1bd04fa3-5a6a-4f91-8934-c62adf2c140e" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e66a6c89-5a6a-4e28-8d44-92140a9c79de" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a4daaabf-ae55-4af2-91ca-968ff4238365" shape="rect"></a>65535</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0fd64201-3851-4338-b4f8-a3efead31757" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d006077d-a22e-4c2c-aa7b-03141b704965" shape="rect"></a>1</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8fde6b61-a7a2-4cdb-8484-4c2610f54393" shape="rect"></a>Effective AN (Z) Image (see Note <a class="xref" href="sect_C.11.html#note_C.11.1.1.2.1_1" shape="rect">1</a>)</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_854a85a6-1d6a-4dbd-9ceb-edb580471678" shape="rect"></a>10^-2 Z_EFF</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_aa9c013e-2e7f-4368-bedc-d7d7f33a8760" shape="rect"></a>EFF_​ATOMIC_​NUM</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_91318a66-571d-4f09-a4f8-174983df6a48" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a262fe37-8ed2-4fe6-ab4d-9e5456bf2eb0" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8833945b-d403-40b3-b873-b5228afb1297" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bd6bb1fc-01dc-498c-adc3-a9a75038c2df" shape="rect"></a>4000</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ef1a51f8-b044-4c01-bd0c-d536d6596863" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4d6a20f3-bb18-4ff3-be58-454f3a91f243" shape="rect"></a>0.01</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d3b70b63-e5ea-4a6c-b8e3-4b979c97c01e" shape="rect"></a>EFF_​ATOMIC_​NUM</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cb5d8763-ae49-4cbf-bcae-aaecea787f94" shape="rect"></a>(129320, DCM, "Effective Atomic Number")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_57a51fca-4603-41f7-93a6-eb27b4cfbfa2" shape="rect"></a>Electron Density Image</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2d8d9187-e4c6-4482-b11f-ded2d02ea55d" shape="rect"></a>10^-2ED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5cf90518-9b97-4992-a707-cec640c226a9" shape="rect"></a>ELECTRON_​DENSITY</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_66a51792-e730-4936-a35b-4d3aae0a0698" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_49ca223e-1604-4a87-a7c9-6937971c2d30" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1e259128-6dfd-489a-8e86-3a0dc957a394" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1ef1117d-bcf2-4625-b77e-dc370c237ad5" shape="rect"></a>4000</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6530b4b2-18ba-4d91-a4b9-99689a7b639f" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1d371246-8f65-4152-92ac-4cfc3278e09b" shape="rect"></a>0.01</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0b874d3b-7978-4c84-bc0f-12779527614f" shape="rect"></a>ELECTRON_​DENSITY</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_83720103-e321-4095-b01c-826a704af1c9" shape="rect"></a>(10*23/ml, UCUM, "Electron Density")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ae60a66f-7819-4687-bfbc-3e406b9faad9" shape="rect"></a>10^-3EDW</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7a24822-642e-4fba-8884-9fda6061db24" shape="rect"></a>ELECTRON_​DENSITY</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56e3c2c1-64c5-4b73-b370-40039cd4c307" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_50ea77d4-145c-4dc7-b820-68afaf18d953" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ad004efb-2323-4c45-aad6-76a65d705a06" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_532e4386-e186-475d-82b7-86a7a8d79eca" shape="rect"></a>4000</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_97d3ce1b-45b6-45b9-a503-94b1f7bca93c" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_60af9cbe-d6cd-4314-8d9b-d376ff3d2513" shape="rect"></a>0.001</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a3365ab7-8a18-4577-9e5a-cb1a38ce24ea" shape="rect"></a>ELECTRON_​DENSITY</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6025fa50-42b6-4a0f-bb66-5140290286a7" shape="rect"></a>({ratio}, UCUM, "ratio")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="11" rowspan="1">
+                                        <p>
+                                       <a id="para_1c570979-3b35-4c11-bc15-537d12fb13b9" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Material Quantification Family</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="3" colspan="1">
+                                        <p>
+                                       <a id="para_6e23bb33-ca9d-47e1-aa0a-3d08e2aa574a" shape="rect"></a>Material-​Specific Image</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_82b6b6cd-52df-44e4-afcd-d0a90c745a28" shape="rect"></a>10^-2MGML</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a97c2ff4-e34c-4e09-b1ea-5dfb3bc349b9" shape="rect"></a>MAT_​SPECIFIC</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4381423c-7196-41eb-8436-7d75b0f09f3a" shape="rect"></a>(0) - (-10)</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_77608561-6161-46f6-ac61-e6f3173bfdae" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_90d7c2b8-68ae-456c-b16d-d34f24927a2f" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bd57da68-9a4d-43be-9a54-90e2f7aae1fc" shape="rect"></a>4000</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ad74ab2a-1da2-4741-b0a7-9872e216caad" shape="rect"></a>-3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8dceb3ef-17dd-4360-89c4-1b60e002bbd5" shape="rect"></a>0.01</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fc650f30-0faf-437f-9c1e-9f505e4a805a" shape="rect"></a>MAT_​SPECIFIC</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_11c211ba-3da9-4276-a4b5-59704e847ef8" shape="rect"></a>(mg/cm3, UCUM, "mg/cm^3")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_201cfdd9-7e91-4d05-b82a-42b8df422ecc" shape="rect"></a>HU</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_35a9495c-6c3e-42bd-996b-e8969e42a0c3" shape="rect"></a>MAT_​SPECIFIC</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_97159060-7a80-4567-b707-d090cacdc1b3" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_003ba926-daea-42d5-9a6b-dca07bc58fe0" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30362b1f-1f89-41db-9d02-ca7428632128" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_04067c8e-b1ab-449f-9b45-1b0078dcec56" shape="rect"></a>4095</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_084b6258-33f5-4cd3-99c1-53600f9b7f32" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_70d94433-9c97-43be-829a-9d0719ca132a" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_ffbcfbbc-b53a-4994-8531-4c120e655282" shape="rect"></a>MAT_​SPECIFIC</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_54d17516-62b0-4826-bdee-c5335fcc25a9" shape="rect"></a>([hnsf'U], UCUM, "Hounsfield unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d44d9769-8c01-49c5-b030-e733e7da18dd" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_5ea224ec-9b7e-40fb-9d4a-140338025a0e" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0bdb53e9-02c6-4187-a81f-651f1f5e5f16" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fb6d739c-96bf-47f4-8d45-d9f4f0e94e7d" shape="rect"></a>65535</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3680e760-56b4-4a84-9d95-a4ae23388b06" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c6305a35-5770-4c5a-8735-f549e48d0f5e" shape="rect"></a>1</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="4" colspan="1">
+                                        <p>
+                                       <a id="para_6af04a85-7f38-4053-9e55-5d01505dad6f" shape="rect"></a>Material-​Removed Image (see Note <a class="xref" href="sect_C.11.html#note_C.11.1.1.2.1_2" shape="rect">2</a>)</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_10c11bcb-4d8e-4a4a-86be-08cde64b0cff" shape="rect"></a>HU</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_1fb62c55-bb8b-4049-acb2-459bdf443430" shape="rect"></a>MAT_​REMOVED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bdf3fc34-8cd9-48cb-a207-8cd248be1e09" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8b29135d-1c75-4d10-9a1e-566e8e6aeffd" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c141f14a-ef2c-42f5-b0b8-9c4aefaff0be" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2a7001c8-cd87-4ac1-a23d-200a2554bf2a" shape="rect"></a>4095</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f2c7c6c7-f185-44fc-a926-65016ccc32a1" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0e0f833d-8365-4d05-b403-e27c7c41f205" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_722fb5d0-4221-47e4-bee6-ad0a03b75bc9" shape="rect"></a>MAT_​REMOVED</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_32502c17-28c5-4540-830f-5b1a73a688e5" shape="rect"></a>([hnsf'U], UCUM, "Hounsfield unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0d872430-1b1e-4c1d-a3d8-7f21de572aa0" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7f87ae5-7d98-449d-bc9e-7b861944e17d" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0265322f-c746-46c6-9667-c091c70b772e" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_54289071-69f8-4d9f-9ad2-01ce144974f2" shape="rect"></a>65535</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_07df27df-8250-4aa9-a872-cf3f51fc61c5" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f8b3d7d8-46f0-4900-bc3f-6edcd9e43054" shape="rect"></a>1</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_07d8bf96-fdad-4aff-ac1f-7936d5ea55fc" shape="rect"></a>HU_MOD</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_cbb4f8ab-9d24-4cd4-92a1-3993d4465dee" shape="rect"></a>MAT_​REMOVED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_354cbf60-dd0d-45b7-87fc-21aa61f801e0" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_56f313fd-0b6e-45c8-9b8f-492ed4f760ff" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_074709a2-7f60-43ad-83f4-7dd3ae41b089" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_68b06250-a207-47fb-8ff0-bf1fa0469294" shape="rect"></a>4095</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_932a2aa9-999b-40c3-b23b-3c6f9dd4b287" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7bd1288f-5da2-425e-921d-fdc1809998c9" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_e0069387-5897-48cc-958e-ee284b38240f" shape="rect"></a>MAT_​REMOVED</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_0cda5aa0-7cfc-439c-82a7-9a7523e6d341" shape="rect"></a>(129321, DCM, "Modified Hounsfield Unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4e36be2c-e463-433d-83c3-1d0a7bc26afd" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_53c03e5d-e729-4bd7-9880-bebf52cd96f8" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f4589121-b8f3-4f1c-943c-7dcb387cc21f" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_541315be-4b7b-4499-b4dc-b4951de936a5" shape="rect"></a>65535</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_927344ff-2438-45a0-bfc1-c240c87840b2" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_384bd71d-790f-4b5e-af9d-92052d69fb69" shape="rect"></a>1</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0f041823-80e9-4d7c-a19c-7f98f17d612e" shape="rect"></a>Fractional Map Image</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0eb8bbd6-99f6-4214-af77-109db8a81e28" shape="rect"></a>10^-1 PCT</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e4b3a481-ca5d-4d27-b6ad-b23cef019351" shape="rect"></a>MAT_​FRACTIONAL</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bba22519-6fb3-4957-a98d-180a4ef494e2" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7db2d4a3-60ac-4185-95e5-d1501f6f5c07" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3be0779e-345f-442a-9696-c3505f9e8025" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d5dde4ad-7e59-4bc3-9c42-08a95f2a608f" shape="rect"></a>1000</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b96bcd90-3147-436f-9123-e19420ace2f1" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fec69e04-903f-4724-8cd3-0fce86a50265" shape="rect"></a>0.1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_55684090-53c4-4f4e-9ea8-5116f736033e" shape="rect"></a>MAT_​FRACTIONAL</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_aaeb5d4e-eb94-41a3-bf70-e45d475524bf" shape="rect"></a>(%, UCUM, "Percent")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_59d8f42b-3e3c-48aa-acab-9a31f5af91d6" shape="rect"></a>Value-​based Map Image</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9c9e32fb-99cb-47a5-93d2-b06474151107" shape="rect"></a>US</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_87a26061-5893-4e2b-a664-119cb05e71bd" shape="rect"></a>MAT_​VALUE_​BASED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d385c504-5c20-4100-8764-f8f97e547b57" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ea29e265-1d36-4231-a725-2b3ada1ef71a" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8864baec-4bc7-4f75-a185-f86cf8ee120d" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9ba86f2d-7dcf-4f20-91ff-7eb4ced9300d" shape="rect"></a>100</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_dd75d0c2-afa8-47cd-bdad-6cf11fafa3f0" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_36c7543e-dd86-4c84-9861-3e56a9e97324" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fbae76ed-a5d0-4d28-a577-dce3fb64abfd" shape="rect"></a>MAT_​​VALUE_​BASED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3d85533d-9a75-4a17-af02-5353055f95fe" shape="rect"></a>([arb'U], UCUM, "arbitrary unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" colspan="11" rowspan="1">
+                                        <p>
+                                       <a id="para_3227b79f-50dc-4b36-9620-cd8f0ddf18bd" shape="rect"></a>
+                                            <span class="bold">
+                                          <strong>Material Visualization Family</strong>
+                                       </span>
+                                        </p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_2f97cbee-3253-4c83-b4a3-c5c39b894471" shape="rect"></a>Material-​Modified Image</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_f19dcd78-cf63-4e29-ad03-ce8e0d9617ac" shape="rect"></a>HU_MOD</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_b4c2a2b9-aa09-49e7-99f3-5620f5ffe1a3" shape="rect"></a>MAT_​MODIFIED</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_77d3fd90-5856-47a4-89d8-a105836dce45" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_de52da22-0487-4153-9c50-6c19f6eeb2b1" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8d42ddd0-dd8f-43cf-a047-304189fd9581" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_924f7826-ee2f-4f9f-a82b-d13549a905db" shape="rect"></a>4095</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_e9fc4ff2-2d8d-49a5-b3b2-c10787a1b218" shape="rect"></a>-1024</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1966778a-783a-4461-b354-5ce4e78cc3f5" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_c7c56c9d-eba0-4a08-952f-25e36a53aceb" shape="rect"></a>MAT_​MODIFIED</p>
+                                    </td>
+                                 <td align="left" rowspan="2" colspan="1">
+                                        <p>
+                                       <a id="para_8e1fedd6-7668-4d13-a99f-a775fd81edd0" shape="rect"></a>(129321, DCM, "Modified Hounsfield Unit")</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_0f2f4310-8ae1-4a02-9b14-5fdc75230527" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_db0fba64-8277-4d54-9d5a-99cbe1f1f0d7" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b220ec2e-e818-4a87-be6a-8df75c36d921" shape="rect"></a>0</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8db5791d-9cce-4fde-995f-e4069c49ba5d" shape="rect"></a>65535</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f9fc5b13-9cc1-49ab-a082-954eeefe26fa" shape="rect"></a>-8192</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_96c681e1-b941-4476-9d5a-401a77278771" shape="rect"></a>1</p>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <div class="orderedlist">
+                        <ol class="orderedlist" type="1">
+                           <li class="listitem">
+                              <p>
+                                 <a id="note_C.11.1.1.2.1_1" shape="rect"></a>
+                                 <a id="para_3c3cf9aa-ac87-4104-82d0-386763a3eee3" shape="rect"></a>This example assumes a scaling of 0.01 for the Effective Atomic Number which would be reasonable for images for which the effective atomic number was not greater than 40 for any pixels.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="note_C.11.1.1.2.1_2" shape="rect"></a>
+                                 <a id="para_c0d14b67-d69f-4f69-81c5-d169b4baf54b" shape="rect"></a>The real-world value mapped pixels in the image may have been adjusted to represent the attenuation as if the pixel was filled with the remaining materials to preserve the relationship between the HU value of the pixel and the materials contained (shown as HU in the first row), or they may have not been adjusted (shown as HU_MOD).</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="note_C.11.1.1.2.1_3" shape="rect"></a>
+                                 <a id="para_02be0656-b0bf-4a76-9bb4-bdb76cdfd1e6" shape="rect"></a>In the CT Image IOD, multi-energy types are encoded in the CT Image Module Image Type (0008,0008) Value 4. In the Enhanced CT Image IOD, multi-energy types are encoded in the Enhanced CT Image Module Image Type (0008,0008) Value 5 and/or the Frame Type (0008,9007) Value 5.</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_d074d1eb-a6db-45b3-a8be-e596220a9c89" shape="rect"></a>For HU- and HU_MOD-based table rows, recommended numeric values are provided for both 12-bit and 16-bit representations (as determined by the value of Bits Stored (0028,0101)). 16-bit representations are increasingly preferable to handle images with a large dynamic range of pixel values, such as low-dose lung scans which can result in HU values below -1000, MTF images with sharp kernels which can result in HU values below -4000, and images containing metals and other dense materials which can result in HU values like 15000 (for Titanium) and higher. The alternative of clipping such data to fit within a 12-bit range can disrupt subsequent image processing and analysis.</p>
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.10.13.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_C.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.11.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.10.13 Waveform Filter Lookup Table Macro </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.11.2 VOI LUT Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

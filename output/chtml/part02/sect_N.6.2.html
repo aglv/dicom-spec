@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>N.6.2 Configuration of DIMSE Services</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.2.html" title="PS3.2" />
+      <link rel="up" href="sect_N.6.html" title="N.6 Configuration" />
+      <link rel="prev" href="sect_N.6.html" title="N.6 Configuration" />
+      <link rel="next" href="sect_N.6.2.2.html" title="N.6.2.2 Modality Performed Procedure Step Service Configuration" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.2 2024c - Conformance</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">N.6.2 Configuration of DIMSE Services <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part02/sect_N.6.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_N.6.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">N.6 Configuration</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_N.6.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.2.html" shape="rect">PS3.2</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_N.html" shape="rect">DICOM Conformance Statement Template (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_N.6.html" shape="rect">Configuration</a>
+         </span> &gt; <span class="breadcrumb-node">Configuration of DIMSE Services</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_N.6.2" shape="rect"></a>N.6.2 Configuration of DIMSE Services</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_de9b6ed1-938e-4d55-a02e-cafe4efc69eb" shape="rect"></a>The tables in the following subsections show the configuration parameters required for DIMSE Services.</p>
+         <p>
+            <a id="para_96e7425c-4a3e-40e9-bffa-d14304e7c404" shape="rect"></a>In order to identify whether <span class="italic">&lt;product&gt;</span> is an SCP and/or an SCU, the following applies:</p>
+         <div class="itemizedlist">
+            <ul class="itemizedlist" style="list-style-type: disc; ">
+               <li class="listitem">
+                  <p>
+                     <a id="para_dbf516f1-ef2c-4a2f-bd53-be154c574b7b" shape="rect"></a>SCP: The (Secured) Local Called AET and Remote Calling AET parameters are present.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_63336ddd-94a9-40e6-bd4b-77fb3274dba0" shape="rect"></a>SCU: The (Secured) Local Calling AET and Remote Called AET parameters are present.</p>
+               </li>
+            </ul>
+         </div>
+         <p>
+            <a id="para_9962b56b-2886-4d70-91de-771f316bd4b6" shape="rect"></a>
+                    <span class="italic">[Use this table template in each supported DIMSE Service section, similar to the example tables provided and provide information as needed for the product implementation. "Local Configuration Parameters" describes parameters for the product described in this DCS, whereas "Remote Configuration Parameters" describes the information needed for this product to interface with a remote system.</span>
+                </p>
+         <p>
+            <a id="para_af32abfb-239c-4cf9-a079-3174936f5c1f" shape="rect"></a>Remove rows for any unsupported parameters. For example, if &lt;product&gt; is an SCU only, remove the rows for Called AE Title and Ports in the Local Configuration Parameters part of the table and the Calling AE Title row in the Remote Configuration Parameters part. If &lt;product&gt; is an SCP only, remove the Calling AE Title row in the Local Configuration Parameters part and remove the rows for the Called AE Title, Ports and Host from the Remote Configuration Parameters part.</p>
+         <p>
+            <a id="para_dc7b24a4-6106-4221-bb16-f94e67997a8d" shape="rect"></a>If your product implementation supports multiple AE Titles for the same service, list all of them in separate rows and describe their use in the "Comments" column.</p>
+         <div class="informaltable">
+            <table frame="box" rules="all">
+               <thead>
+                  <tr valign="top">
+                     <th align="center" colspan="4" rowspan="1">
+                                <p>
+                           <a id="para_4eb83cb0-4d6a-4117-8206-1c9bf162bf6c" shape="rect"></a>Local Configuration Parameters - <span class="italic">&lt;service name&gt;</span>
+                                </p>
+                            </th>
+                  </tr>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_61d9eb3a-9c95-4852-b528-391db5b1edf5" shape="rect"></a>Parameter</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_5bb80772-8487-4628-940b-59168999b3f2" shape="rect"></a>Configurable</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e8b3b6c3-9c91-43d2-9fde-192516d820a5" shape="rect"></a>Default Value</p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4a751cc5-d319-42e7-b597-d4aebd0ba21e" shape="rect"></a>Comments</p>
+                            </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_a58fcb40-5c5b-4057-84f6-97b38208ae78" shape="rect"></a>
+                                    <span class="italic">&lt;&lt;USER</span>
+                                </p>
+                                <p>
+                           <a id="para_05cf7f22-f547-49f8-b6f5-8f98746f00f4" shape="rect"></a>
+                                    <span class="italic">SERVICE</span>
+                                </p>
+                                <p>
+                           <a id="para_4de4f51f-6e5c-4168-b1d2-26573a832129" shape="rect"></a>
+                                    <span class="italic">FIXED&gt;&gt;</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_1bb18ab7-7377-44ad-a86e-fe83f7ff3d85" shape="rect"></a>
+                                    <span class="italic">[If there is no default, leave blank.]</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_7ad1380d-921c-4738-95af-f206bc08d5aa" shape="rect"></a>
+                                    <span class="italic">[Provide comments or Values/ranges if applicable.]</span>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_53f969b2-ae0a-4ccf-a35d-c6339d674fb1" shape="rect"></a>
+                                    <span class="italic">Calling AE Title (SCU)</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_43fa823b-6799-43b4-9a33-6ec6cc0d8d59" shape="rect"></a>
+                                    <span class="italic">Called AE Title (SCP)</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d0849626-5b6c-4586-951b-59636eea1d8c" shape="rect"></a>
+                                    <span class="italic">Port</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e3502f5d-bbc0-476a-9ceb-2f76e825e966" shape="rect"></a>
+                                    <span class="italic">TLS-Secured Port</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6f6ac6a1-1887-4e28-9159-4cf28bec0617" shape="rect"></a>
+                                    <span class="italic">&lt;Specific service parameter&gt;</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <th align="center" colspan="4" rowspan="1">
+                                <p>
+                           <a id="para_def15da5-36aa-4608-b7fc-2fff8ed31fe7" shape="rect"></a>
+                           <span class="bold">
+                              <strong>Remote Configuration Parameters - <span class="italic">&lt;service name&gt;</span>
+                              </strong>
+                           </span>
+                                </p>
+                            </th>
+                  </tr>
+                  <tr valign="top">
+                     <th align="center" colspan="4" rowspan="1">
+                                <p>
+                           <a id="para_c8215a4f-48c3-4ab5-8240-40737ccb879d" shape="rect"></a>
+                                    <span class="italic">[Either document the number of supported remote hosts, e.g &lt;Product&gt; supports configuration of up to &lt;X&gt; remote hosts, or state that there is no limitation other than the ones mandated by the operating system.]</span>
+                                </p>
+                            </th>
+                  </tr>
+                  <tr valign="top">
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_4d3e0572-ce66-40fd-bcaf-198755a03a44" shape="rect"></a>
+                           <span class="bold">
+                              <strong>Parameter</strong>
+                           </span>
+                        </p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b084ff93-93b9-46b4-8476-7dedb5aa1004" shape="rect"></a>
+                           <span class="bold">
+                              <strong>Configurable</strong>
+                           </span>
+                        </p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_81645331-c711-4d31-bd67-3e847330107d" shape="rect"></a>
+                           <span class="bold">
+                              <strong>Default Value</strong>
+                           </span>
+                        </p>
+                            </th>
+                     <th align="center" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_6565d95d-4456-437a-9923-9aa1907641c5" shape="rect"></a>
+                           <span class="bold">
+                              <strong>Comments</strong>
+                           </span>
+                        </p>
+                            </th>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_692f0d60-7d5b-43e2-9643-3d374e5d7370" shape="rect"></a>
+                                    <span class="italic">&lt;&lt;USER</span>
+                                </p>
+                                <p>
+                           <a id="para_db0a6e0e-47c0-480b-b95d-56165d4256a8" shape="rect"></a>
+                                    <span class="italic">SERVICE</span>
+                                </p>
+                                <p>
+                           <a id="para_c2e88958-d172-4cc5-9259-47b9725bc4af" shape="rect"></a>
+                                    <span class="italic">FIXED&gt;&gt;</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_b074e6bf-d2e8-4799-8543-28f47437a4c6" shape="rect"></a>
+                                    <span class="italic">[If there is no default, leave blank.]</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_605b0da1-7be1-49f5-9886-62f0861ea082" shape="rect"></a>
+                                    <span class="italic">[Provide comments or Values/ranges if applicable.]</span>
+                                </p>
+                            </td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_f20bcb75-8616-4138-8158-7daf1c56b4bc" shape="rect"></a>
+                                    <span class="italic">Calling AE Title (SCU)</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_e1b284e4-0f14-4b47-930c-94d85a31f59d" shape="rect"></a>
+                                    <span class="italic">Called AE Title (SCP)</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_643f29e2-6d73-4f0d-b717-15e0a0d9bbb2" shape="rect"></a>
+                                    <span class="italic">Port</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_0e2dd0ab-023e-4849-ab73-56974fd5fe26" shape="rect"></a>
+                                    <span class="italic">TLS-Secured Port</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_73fad253-baaa-4161-9faf-8a5b173d9d25" shape="rect"></a>
+                                    <span class="italic">Host</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+                  <tr valign="top">
+                     <td align="left" rowspan="1" colspan="1">
+                                <p>
+                           <a id="para_d2788cc6-9201-4ea5-9e55-2f19f9e44713" shape="rect"></a>
+                                    <span class="italic">&lt;Specific service parameters&gt;</span>
+                                </p>
+                            </td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                     <td align="left" rowspan="1" colspan="1"></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <p>
+            <a id="para_d0bfec8a-8435-47b6-b53a-34f5aa1c8e61" shape="rect"></a>
+                    <span class="italic">]</span>
+                </p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_N.6.2.1" shape="rect"></a>N.6.2.1 Basic Worklist Management Service Configuration</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_cc78c48e-2ce8-493f-b218-a2ac040bd0fc" shape="rect"></a>
+                        <a class="xref" href="sect_N.6.2.html#table_N.6-2" title="Table N.6-2. Worklist Service Parameters" shape="rect">Table N.6-2</a> lists Worklist Service configuration parameters:</p>
+            <div class="table">
+               <a id="table_N.6-2" shape="rect"></a>
+               <p class="title">
+                  <strong>Table N.6-2. Worklist Service Parameters</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <td align="center" colspan="4" rowspan="1">
+                                    <p>
+                                 <a id="para_371a7fc4-3985-4231-9b8d-8b8686c4f979" shape="rect"></a>Local Configuration Parameters - Worklist Service</p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_7b440f86-ca9e-4d64-ae7a-d87395304c06" shape="rect"></a>Parameter</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_fbd69cff-028d-4fdb-b4f1-d4926264f69e" shape="rect"></a>Configurable</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5427719f-c373-4f5f-a287-098ddad7bee3" shape="rect"></a>Default Value</p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ecae7100-eaf3-4f01-bda5-a09f3cf6ebfb" shape="rect"></a>Comments</p>
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a9a5cf8d-43f5-4221-b0b7-0d12da989d85" shape="rect"></a>
+                                        <span class="italic">[This example shows configuration for an MWL SCU, e.g., a modality.]</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ed991644-7b74-478a-8e3b-8eff5c5b77aa" shape="rect"></a>
+                                        <span class="italic">&lt;&lt;USER</span>
+                                    </p>
+                                    <p>
+                                 <a id="para_2247785e-89a2-492f-bcf3-3e2b793bb6ff" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                    <p>
+                                 <a id="para_5c2dcabe-d8a2-4b43-9faa-4be78125d1a4" shape="rect"></a>
+                                        <span class="italic">FIXED&gt;&gt;</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_1ce0ddd9-e8e5-4ed6-9630-34f141b05b05" shape="rect"></a>
+                                        <span class="italic">[If there is no default, leave blank.]</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2908ade2-7520-4ef7-929a-3cddb411a8a6" shape="rect"></a>
+                                        <span class="italic">[Provide comments or Values/ranges if applicable.]</span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_ed0db489-7650-4d7c-9c24-2c3409020b17" shape="rect"></a>
+                                        <span class="italic">Calling AE Title (SCU)</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_efbe2a6b-0866-4317-a5de-d4dec29b94ab" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_43eff6fb-adea-4d88-be80-e4a676e9035b" shape="rect"></a>
+                                        <span class="italic">WORKLIST_AE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_6b53a17b-afac-42b4-b8b7-85c9663dbcd2" shape="rect"></a>
+                                        <span class="italic">Default Modality type</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_9a74866e-b645-4ed1-8587-effbdf927762" shape="rect"></a>
+                                        <span class="italic">USER</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_02c6a207-7149-45e8-9319-67f282a81cc6" shape="rect"></a>
+                                        <span class="italic">CR</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_74477d40-1a66-4813-a2b7-9ff4380538df" shape="rect"></a>
+                                        <span class="italic">Used to query the MWL SCP. Possible choices are CR, DX, RF</span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5edbd158-97e5-4696-9a35-093eb106a4a4" shape="rect"></a>
+                                        <span class="italic">Default Scheduled Station AE Title</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_4e52b2a8-d383-4716-9e6e-4110043ee8cf" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_a42252b4-8b62-46ee-8881-041ba0b4eff2" shape="rect"></a>
+                                        <span class="italic">Used to query the remote MWL SCP</span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <th align="center" colspan="4" rowspan="1">
+                                    <p>
+                                 <a id="para_799017b7-2ac3-48f7-86ae-d70dcc463c95" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Remote Configuration Parameters - Worklist Service</strong>
+                                 </span>
+                              </p>
+                                </th>
+                        </tr>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_87d81428-5abb-41b4-bc26-3e637d7e30e0" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Parameter</strong>
+                                 </span>
+                              </p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c02e6fda-5e00-4585-a20b-755b9d301f6f" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Configurable</strong>
+                                 </span>
+                              </p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_c8017532-0893-48bd-9829-1f4c84997740" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Default Value</strong>
+                                 </span>
+                              </p>
+                                </th>
+                           <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f7f9c0b9-6e7f-453d-a6ca-98b6c090681a" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>Comments</strong>
+                                 </span>
+                              </p>
+                                </th>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f9995ee6-fe2d-41cc-a8a1-3149dd06dac4" shape="rect"></a>
+                                        <span class="italic">&lt;&lt;USER</span>
+                                    </p>
+                                    <p>
+                                 <a id="para_646637fa-c52a-4dc5-8395-b8eb96b7e883" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                    <p>
+                                 <a id="para_5a765322-3a52-4a23-b7ad-b192d0ec13bc" shape="rect"></a>
+                                        <span class="italic">FIXED&gt;&gt;</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_d6bde15f-cf22-4c0c-9d1d-ba2f9e5c955b" shape="rect"></a>
+                                        <span class="italic">[If there is no default, leave blank.]</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_b6c6ef19-8b0f-43e7-b266-0ccfec36fcfd" shape="rect"></a>
+                                        <span class="italic">[Provide comments or Values/ranges if applicable.]</span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_40c74028-b157-4218-81ea-456b5418aeb5" shape="rect"></a>
+                                        <span class="italic">Called AE Title (SCP)</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_2e9ce867-aeea-494d-b209-01139b547364" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_766dc14a-b779-425c-bb39-3210938863c7" shape="rect"></a>
+                                        <span class="italic">Can connect up to 3 RIS</span>
+                                    </p>
+                                </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_9589eadf-7ac4-43d6-a4f2-00b6cbb1f21f" shape="rect"></a>
+                                        <span class="italic">Port</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_5a885c17-c8ec-45fb-a596-a954f47fe3e2" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_67fe7955-2de9-43c9-8bd5-fadd966dcbe2" shape="rect"></a>
+                                        <span class="italic">104</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_729ab606-5bf4-4168-afd7-73cc06730f73" shape="rect"></a>
+                                        <span class="italic">TLS-Secured Port</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f5e953c5-7513-4a5a-8902-cb75eb28d78e" shape="rect"></a>
+                                        <span class="italic">FIXED</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_64fab1f1-192c-4f37-a629-65048cd6e00f" shape="rect"></a>
+                                        <span class="italic">2762</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_f7a4fdd1-2e0d-486c-b71d-525ecca553bb" shape="rect"></a>
+                                        <span class="italic">Host</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                 <a id="para_0ab6e6f4-ad96-4072-ad05-9bbf1b367113" shape="rect"></a>
+                                        <span class="italic">SERVICE</span>
+                                    </p>
+                                </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_N.6.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_N.6.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_N.6.2.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">N.6 Configuration </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.2.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> N.6.2.2 Modality Performed Procedure Step Service Configuration</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.2 2024c - Conformance</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>8.3 DataExchange Interface</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.19.html" title="PS3.19" />
+      <link rel="up" href="chapter_8.html" title="8 Interfaces" />
+      <link rel="prev" href="sect_8.2.5.html" title="8.2.5 notifyStatus(status : Status) : void" />
+      <link rel="next" href="sect_8.3.2.html" title="8.3.2 getData(objectUUIDs : ArrayOfUUID, acceptableTransferSyntaxUIDs : ArrayOfUID, includeBulkData : boolean) : ArrayOfObjectLocator" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024c - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">8.3 DataExchange Interface <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part19/sect_8.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">8 Interfaces</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.19.html" shape="rect">PS3.19</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_8.html" shape="rect">Interfaces</a>
+         </span> &gt; <span class="breadcrumb-node">DataExchange Interface</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_8.3" shape="rect"></a>8.3 DataExchange Interface</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_4fbe0669-2d94-4c98-97ce-9446d8db2ea5" shape="rect"></a>The interface used to exchange information about data being transferred between a source and a recipient is the same for both the Hosting System and the Hosted Application. Implementations of the Application interface shall also include the DataExchange interface. Implementations of the Host interface shall also include the DataExchange interface. In other words, the DataExchange interface is symmetric with respect to the Hosting System and Hosting Application.</p>
+         <p>
+            <a id="para_c39a09d8-58c0-460b-a806-916c59a95ee5" shape="rect"></a>The data being exchanged between the Hosting System and the Hosted Application can either be passed as files, or may be described in models that might be queried by the recipient.</p>
+         <p>
+            <a id="para_732174e0-c383-4267-acb7-dff148ceb323" shape="rect"></a>Recipients that can parse DICOM objects are able to request the file-based methods. The sequence diagram in <a class="xref" href="sect_8.3.html#figure_8.3-1" title="Figure 8.3-1. Example File-based Data Exchange Sequence" shape="rect">Figure 8.3-1</a> illustrates one potential exchange using the file-based methods.</p>
+         <p>
+            <a id="para_830caa13-856f-4b1f-bfc3-0db0d13ecbea" shape="rect"></a>
+        </p>
+         <div class="figure">
+            <a id="figure_8.3-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.19_8.3-1.svg" alt="Example File-based Data Exchange Sequence" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 8.3-1. Example File-based Data Exchange Sequence</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_68f71c15-928e-4eee-822b-0ce8b04aa5a7" shape="rect"></a>The advantage of using the model-based methods is that the recipient need not know how to parse the data formats, but instead can use commonly available tools for manipulating XML Infosets to extract data from the models.</p>
+         <p>
+            <a id="para_5f65a46d-24c7-43d1-8e56-c9689948add0" shape="rect"></a>The model-based interfaces can work with a variety of models. Particular models are identified by a UID. The models can either be an abstraction of the data, or can be a model of some native format. Models defined by the DICOM Standard are described in <a class="xref" href="chapter_A.html" title="A Data Exchange Models" shape="rect">Annex A</a>. Models are described as XML Infosets, even though the original data might never be actually represented in XML form. The source providing the data handles the mapping from the models back to the original data format.</p>
+         <p>
+            <a id="para_f971fe7b-4a34-4da6-b1ad-9f4e23dee73c" shape="rect"></a>Abstract models allow a recipient to work with data without regard to what its native form is. For example, data from a variety of image formats, such as DICOM, TIFF, JPEG, NIfTI, or Analyze, could be included in an abstract image model. The recipient can then work with the data even though the recipient has no knowledge of how the data was natively represented. Abstract models may have been derived from data referenced in multiple ObjectDescriptors (e.g., multiple CT slices combined into a single volume).</p>
+         <p>
+            <a id="para_1c2bb654-189d-4bfa-b19f-c8e22c537202" shape="rect"></a>Abstract models generally do not include the full richness of data that is available in native representations. For example, an abstract image model derived from DICOM data normally would include references to 'cooked' pixel data and its spatial organization, but might not include many of the modality-specific Attributes. To allow recipients to access such details the supplier of an abstract model can provide references to the ObjectDescriptors, in the form of UUIDs, from which that abstract model was derived. The recipient may gain access to any attribute of the original data formats through the source ObjectDescriptors.</p>
+         <p>
+            <a id="para_4b2d8c3c-dc8c-42c1-a796-7fb3ee21ca99" shape="rect"></a>The sequence diagram in <a class="xref" href="sect_8.3.html#figure_8.3-2" title="Figure 8.3-2. Example Model-based Data Exchange Sequence (continued on next page)" shape="rect">Figure 8.3-2</a> illustrates one potential exchange using the model-based methods. It also illustrates the Hosted Application returning partial outputs, one potential way a Hosted Application might use the getOutputLocation() method, and potential uses of the releaseModel() and releaseData() methods.</p>
+         <p>
+            <a id="para_861ece5c-5ee3-4cbc-bd36-3b6e95d60eda" shape="rect"></a>
+        </p>
+         <div class="figure">
+            <a id="figure_8.3-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.19_8.3-2.svg" alt="Example Model-based Data Exchange Sequence (continued on next page)" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 8.3-2. Example Model-based Data Exchange Sequence (continued on next page)</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_11427150-c512-4c87-b3bf-977c9208aaa1" shape="rect"></a>
+        </p>
+         <div class="figure">
+            <a id="figure_8.3-2b" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.19_8.3-2b.svg" alt="Example Model-based Data Exchange Sequence (continued from previous page)" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure 8.3-2b. Example Model-based Data Exchange Sequence (continued from previous page)</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+         </p>
+         <p>
+            <a id="para_1424be15-7ead-4c57-9bc0-d55fa015c861" shape="rect"></a>Hosting Systems shall support both the file-based and model-based interfaces, both as a data source as well as a data recipient.</p>
+         <p>
+            <a id="para_d3d5987c-9433-4304-9088-fcba70ed4c0c" shape="rect"></a>Hosted Applications shall support at least one of the file-based or model-based interfaces, as either a data source or as a data recipient, as needed by the Hosted Application. If a Hosted Application supports the model-based interfaces, it shall support at least one of the models defined in <a class="xref" href="chapter_A.html" title="A Data Exchange Models" shape="rect">Annex A</a>. Hosted Applications may choose to implement only those portions of those interfaces that the Hosted Application actually uses; however, all interface methods that a Hosting System may call must be available for the Hosting System to call, even if the Hosted Application does not do anything but return appropriately.</p>
+         <p>
+            <a id="para_19510a82-df27-4513-8158-1f7b622140c8" shape="rect"></a>The following sections describe the methods of the DataExchange interface.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_8.3.1" shape="rect"></a>8.3.1 notifyDataAvailable(data : AvailableData, lastData : boolean) : boolean</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_1cf64329-e554-4dce-a04c-57a12672719e" shape="rect"></a>The source of the data calls this method with descriptions of the available data that it can provide to the recipient. If the source of the data expects that additional data will become available, it shall pass FALSE in the lastData parameter. Otherwise, it shall pass TRUE in the lastData parameter, and shall not make any further calls to notifyDataAvailable until after it has transitioned through the IDLE state once more.</p>
+            <p>
+               <a id="para_7a8dee06-83b3-4c56-b628-cb4b280bd5a9" shape="rect"></a>The source of the data shall be able to provide the data in the form identified in the AvailableData structure.</p>
+            <p>
+               <a id="para_62a5c960-d797-4566-a25a-b2dcfa16c422" shape="rect"></a>A Hosting System uses this method to inform a Hosted Application of input data that the Hosted Application should work with. A Hosted Application uses this method to inform the Hosting System of outputs produced by the Hosted Application.</p>
+            <p>
+               <a id="para_46ea4396-3865-4162-bfe8-3c2e1cf1f587" shape="rect"></a>This method returns TRUE if the recipient of the data successfully received the AvailableData list. Otherwise this method returns FALSE.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_9a03a622-6ded-4530-81b7-4d7e35f7786a" shape="rect"></a>A Hosted Application that is recipient of this call, but that was unsuccessful in receiving the AvailableData list might report a reason for the failure in a notifyStatus method call.</p>
+            </div>
+            <p>
+               <a id="para_dfe3dd26-6c2f-428a-9df5-6c2a30255484" shape="rect"></a>The source of the data shall not include in AvailableData any references to data that were sent in a previous successful notifyDataAvailable call (i.e., one where the method call returned TRUE).</p>
+            <p>
+               <a id="para_9040a6a8-baa4-4b4f-8555-7aa1976743c8" shape="rect"></a>A Hosted Application shall not transition into the COMPLETED state if it has received or sent a notifyDataAvailable() call with a lastData indicator of FALSE.</p>
+            <p>
+               <a id="para_f74f7f01-b2ba-44ae-b76b-7bce892dc7b2" shape="rect"></a>The source of the data may call notifyDataAvailable() with an empty data list.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_bf6d6050-c306-4be9-9c04-039aa24e44f5" shape="rect"></a>Calling notifyDataAvailable() with an empty list is useful for setting the lastData indicator to TRUE.</p>
+            </div>
+            <p>
+               <a id="para_b7870d53-86fd-4069-9054-d71ea5590947" shape="rect"></a>This method shall only be called if the Hosted Application is at the INPROGRESS state.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.2.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_8.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.2.5 notifyStatus(status : Status) : void </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.19.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 8.3.2 getData(objectUUIDs : ArrayOfUUID, acceptableTransferSyntaxUIDs : ArrayOfUID, includeBulkData : boolean) : ArrayOfObjectLocator</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.19 2024c - Application Hosting</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

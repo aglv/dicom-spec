@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>FFF.2.3 Display</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_FFF.2.html" title="FFF.2 Application Cases" />
+      <link rel="prev" href="sect_FFF.2.2.html" title="FFF.2.2 Review" />
+      <link rel="next" href="sect_FFF.2.3.2.html" title="FFF.2.3.2 Mask Subtraction" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">FFF.2.3 Display <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_FFF.2.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">FFF.2 Application Cases</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FFF.2.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_FFF.html" shape="rect">Enhanced XA/XRF Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_FFF.2.html" shape="rect">Application Cases</a>
+         </span> &gt; <span class="breadcrumb-node">Display</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_FFF.2.3" shape="rect"></a>FFF.2.3 Display</h3>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_FFF.2.3.1" shape="rect"></a>FFF.2.3.1 Standard Pipeline With Enhanced XA</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_c8dfd30a-df16-4b95-8025-fc35df8d82fe" shape="rect"></a>This section provides information on the encoding of the density and geometry characteristics of the stored pixel data and the ways to display it.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.3.1.1" shape="rect"></a>FFF.2.3.1.1 User Scenario</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_1039ce46-0be9-4047-be22-a4cda1bd1941" shape="rect"></a>The image acquisition may be performed with a variety of settings on the detector image pre-processing component that modifies the way the gray levels are stored in the pixel data.</p>
+               <p>
+                  <a id="para_f123dd0f-e2dc-49e9-ab63-d19fdec2ea92" shape="rect"></a>In particular, it may impact the relationship between the X-Ray intensity and the gray level stored (e.g., non-linear function), as well as the geometry of the X-Ray beam (e.g., pincushion distortion).</p>
+               <p>
+                  <a id="para_3821af6d-f4d0-4859-8654-a62ba5b6bc12" shape="rect"></a>Based on the characteristics of the stored pixel data, the acquisition system determines automatically an optimal way to display the pixel data on a frame-by-frame basis, which is expected to be applied by the viewing applications.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.3.1.2" shape="rect"></a>FFF.2.3.1.2 Encoding Outline</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_3cc406ce-eb95-429f-b624-98af138c45a9" shape="rect"></a>The XA SOP Class encodes the VOI settings to be common to all the frames of the image. It also restricts the Photometric Interpretation (0028,0004) to MONOCHROME2.</p>
+               <p>
+                  <a id="para_0ec3622d-9de1-40f4-8e2d-8688dc46f6b0" shape="rect"></a>The Enhanced XA SOP Class encodes per-frame VOI settings. Additionally it allows the Photometric Interpretation (0028,0004) to be MONOCHROME1 in order to display low pixel values in white while using window width and window center VOI. Other characteristics and settings can be defined, such as:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_87673e60-3f2b-4d9c-afe0-ad657576a442" shape="rect"></a>Relationship between X-Ray intensity and the pixel value stored;</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_47b27c71-763e-4f12-b7dd-173ebeed5b52" shape="rect"></a>Edge Enhancement filter strength;</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_5781cbcf-2537-4fb9-86b2-837dc2f166b1" shape="rect"></a>Geometrical properties.</p>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.3.1.3" shape="rect"></a>FFF.2.3.1.3 Encoding Details</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_ff706b92-650e-40cd-83d3-6be72bdc27ee" shape="rect"></a>This section provides detailed recommendations of the key Attributes to address this particular scenario.</p>
+               <div class="table">
+                  <a id="table_FFF.2.3-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table FFF.2.3-1. Enhanced X-Ray Angiographic Image IOD Modules</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7eccbaeb-d8cd-40cb-ace3-75a0b868f235" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>IE</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_835e6861-b029-4c27-b50f-413fec334f41" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Module</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_da7c4d56-5e07-42cb-99e7-3f07f9634c2a" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>PS3.3 Reference</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2640ef9a-fecb-4602-a449-c7da672c1363" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Usage</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b19b203a-39d8-4d04-beb9-9bdeccd4f7ff" shape="rect"></a>Image</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c0420b81-abf0-41a3-9d64-54c41bb18532" shape="rect"></a>Enhanced XA/XRF Image</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.2.html" class="olink" shape="rect">C.8.19.2</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_887c9013-5ebc-41ff-8923-a56d94aa6565" shape="rect"></a>Specifies the sign of the slope of the VOI transformation to be applied during display.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f20384ca-686b-47d1-8357-0357e9a25354" shape="rect"></a>XA/XRF Multi-frame Presentation</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.7.html" class="olink" shape="rect">C.8.19.7</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_45512e6d-26d9-4e89-9a77-4a63512f010e" shape="rect"></a>Specifies the subtractive mode and the edge enhancement filter characteristics to be applied during display.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="table">
+                  <a id="table_FFF.2.3-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table FFF.2.3-2. Enhanced XA Image Functional Group Macros</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c87f68c7-b665-46e0-a394-27d9fd7a70f2" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Functional Group Macro</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dd28aa6a-c1ec-4019-bd28-57a6fee2a3ad" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>PS3.3 Reference</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9d948ffc-6e7f-4f1e-b628-bc7797a373fb" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Usage</strong>
+                                    </span>
+                                        </p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fbd58660-a9d5-430f-99d0-320d36123d1f" shape="rect"></a>Frame VOI LUT</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.10" class="olink" shape="rect">C.7.6.16.2.10</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8d962f5e-bff1-4f38-a4ab-7adf4f747a02" shape="rect"></a>Specifies the VOI transformation to be applied during display.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fed060c8-4eba-4a6f-a550-401074177b8a" shape="rect"></a>Pixel Intensity Relationship LUT</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.7.6.16.2.html#sect_C.7.6.16.2.13" class="olink" shape="rect">C.7.6.16.2.13</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_87045f49-cf96-42c0-a98e-3ca59ae1dc06" shape="rect"></a>Specifies the different LUTs to transform the stored pixel values to a given function of the X-Ray intensity.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8f28b483-65bf-43df-b9d8-f92cb9952e2b" shape="rect"></a>XA/XRF Frame Pixel Data Properties</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <a href="../part03/sect_C.8.19.6.4.html" class="olink" shape="rect">C.8.19.6.4</a>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a19e1b0c-d439-43d5-9d46-97a302c61882" shape="rect"></a>Specifies geometrical characteristics of the pixel data.</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.3.1.3.1" shape="rect"></a>FFF.2.3.1.3.1 Enhanced XA/XRF Image Module Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_8b5c9214-fab9-4cd5-89be-25ccad0a452f" shape="rect"></a>The usage of this module is recommended to specify the sign of the slope of the VOI transformation to be applied during display of the Multi-frame Image.</p>
+                  <div class="table">
+                     <a id="table_FFF.2.3-3" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table FFF.2.3-3. Enhanced XA/XRF Image Module Recommendations</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_3fa7400c-6779-4f56-adcf-10b3dd5c4c86" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_e15d861e-a20a-4bd9-b5ca-107e2bcacce2" shape="rect"></a>Tag</p>
+                                        </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_cc78c89a-c167-4a89-a45d-3c8fda5c147c" shape="rect"></a>Comment</p>
+                                        </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_bd4692df-cef9-4c34-a6d7-135277975fe4" shape="rect"></a>Photometric Interpretation</p>
+                                        </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_4f27409e-65e9-4561-9639-03631b9e709e" shape="rect"></a>(0028,0004)</p>
+                                        </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_b2369126-6f3e-4382-a2cd-f4585b47e196" shape="rect"></a>The value MONOCHROME1 indicates negative slope (i.e., minimum pixel value is intended to be displayed as white), and the value MONOCHROME2 indicates positive slope (i.e., minimum pixel value is intended to be displayed as black).</p>
+                                        </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_a8327193-e5fd-46f0-85b3-3fe5d7ceb52d" shape="rect"></a>Presentation LUT Shape</p>
+                                        </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_24aba587-2bf7-4166-8d05-a2142a3584fd" shape="rect"></a>(2050,0020)</p>
+                                        </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                       <a id="para_5741a14a-a89e-494b-becb-48ec661ea136" shape="rect"></a>The values IDENTITY and INVERSE are applicable.</p>
+                                        </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.3.1.3.2" shape="rect"></a>FFF.2.3.1.3.2 XA/XRF Multi-frame Presentation Module Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_4f7f150a-c8ef-49d1-921d-0e40c890af3d" shape="rect"></a>The usage of this module is recommended to specify some presentation settings:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_70645572-f775-4527-b861-8c93abfa8e10" shape="rect"></a>Whether the viewing mode is subtracted or not by using the Recommended Viewing Mode (0028,1090), and.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_12b693cb-e4d8-458c-8541-327373576826" shape="rect"></a>The recommended edge enhancement filter as a percentage of subjective sensitivity by using the Display Filter Percentage (0028,9411).</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>
+                     <a id="para_2c0b52be-c597-4a52-a3a3-3e653bf6c659" shape="rect"></a>The recommended filter percentage does not guaranty a full consistency of the image presentation across applications, rather gives an indication of the user sensitivity to such filtering to be applied consistently. To optimize the consistency of the filtering perception, the applications sharing the same images should be customized to calibrate the highest filtering (i.e., 100%) to similar perception by the users. Setting the application to the lowest filtering (i.e., 0%) means that no filter is applied at all.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.3.1.3.3" shape="rect"></a>FFF.2.3.1.3.3 Frame VOI LUT Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_a9dc527d-75a2-4415-af56-11d37e81e10a" shape="rect"></a>The usage of this macro is recommended to specify the windowing to be applied to the pixel data in native mode, i.e., non-subtracted.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.3.1.3.4" shape="rect"></a>FFF.2.3.1.3.4 Pixel Intensity Relationship LUT Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_bb1a9efc-b60c-48e6-86c2-f7c71b4b6d67" shape="rect"></a>The usage of this macro is recommended to enable the applications to get the values of the stored pixel data back to a linear relationship with the X-Ray intensity.</p>
+                  <p>
+                     <a id="para_ad3b4ba2-5e6a-4270-98e5-5e376633e526" shape="rect"></a>When the value of Pixel Intensity Relationship (0028,1040) equals LOG, a LUT to get back to linear relationship (TO_LINEAR) is present to allow applications to handle linear pixel data.</p>
+                  <p>
+                     <a id="para_9fdf699e-97fd-440c-b268-86542b596229" shape="rect"></a>Other LUTs can be added, for instance to transform to logarithmic relationship for subtraction (TO_LOG) in case the relationship of the stored pixel data is linear. Other LUTs with manufacturer-defined relationships are also allowed.</p>
+                  <p>
+                     <a id="para_7b8d2258-822d-4457-8035-c39c2db8fb98" shape="rect"></a>The LUTs of this macro are not used for the standard display pipeline.</p>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h6 class="title">
+                              <a id="sect_FFF.2.3.1.3.5" shape="rect"></a>FFF.2.3.1.3.5 XA/XRF Frame Pixel Data Properties Macro Recommendations</h6>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_32fe5dda-bd09-4760-8e83-4764d9a0f1a9" shape="rect"></a>The usage of this macro is recommended to specify some properties of the values of the stored pixel data with respect to the X-Ray intensity (i.e., gray level properties) and with respect to the geometry of the detector (i.e., pixel geometrical properties).</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_FFF.2.3.1.4" shape="rect"></a>FFF.2.3.1.4 Example</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_e1cc3e5a-41d3-4e1d-9c42-6d95f4b85ab3" shape="rect"></a>In this example, two different systems perform an X-Ray Acquisition of the coronary arteries injected with radio-opaque contrast agent.</p>
+               <p>
+                  <a id="para_071a0b9a-7a55-49d5-89f4-844f38800ec6" shape="rect"></a>The system A is equipped with a digital detector, and stores the pixel data with the lower level corresponding to the lower X-Ray intensity. Then the user creates two instances: one to display the injected vessels as black, and other to display the injected vessels as white.</p>
+               <p>
+                  <a id="para_7c919e27-d373-41df-ad28-2efead186624" shape="rect"></a>The system B is equipped with an image intensifier configured to store the pixel data with the lower level corresponding to the higher X-Ray intensity. Then the user creates two instances: one to display the injected vessels as black, and other to display the injected vessels as white.</p>
+               <p>
+                  <a id="para_3e7626d6-080d-468b-aaf1-ba71a4bf82f0" shape="rect"></a>The figure below illustrates, for the two systems, the gray levels of the injected vessels on both the stored pixel data and the displayed pixels, which depend on the value of the Attributes Pixel Intensity Relationship Sign (0028,1041), Photometric Interpretation (0028,0004), and Presentation LUT Shape (2050,0020).</p>
+               <p>
+                  <a id="para_f62e33f2-e6ea-48ae-bb40-630c584f7db6" shape="rect"></a>
+                            </p>
+               <div class="figure">
+                  <a id="figure_FFF.2.3-1" shape="rect"></a>
+                  <div class="figure-contents">
+                     <div class="mediaobject">
+                        <img src="figures/PS3.17_FFF.2.3-1.svg" alt="Example of usage of Photometric Interpretation" />
+                     </div>
+                  </div>
+                  <p class="title">
+                     <strong>Figure FFF.2.3-1. Example of usage of Photometric Interpretation</strong>
+                  </p>
+               </div>
+               <p>
+                  <br class="figure-break" clear="none" />
+                        </p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_FFF.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_FFF.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_FFF.2.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">FFF.2.2 Review </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> FFF.2.3.2 Mask Subtraction</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>9 URI Service</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="PS3.18.html" title="PS3.18" />
+      <link rel="prev" href="sect_8.11.html" title="8.11 Security and Privacy" />
+      <link rel="next" href="sect_9.2.html" title="9.2 Conformance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">9 URI Service <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/chapter_9.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.11.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-node">URI Service</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_9" shape="rect"></a>9 URI Service</h1>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_9.1" shape="rect"></a>9.1 Overview</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_8b25305e-32e2-4553-8984-539b0baaba4d" shape="rect"></a>The URI Service, also known as WADO-URI, enables a user agent to retrieve representations of Instances using HTTP.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_9.1.1" shape="rect"></a>9.1.1 Resource Descriptions</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_06ad9598-dc3a-40b0-83fc-6e096603fb54" shape="rect"></a>The URI Service does not define resources in the form of a Target Resource Path, such as {/resource}. The Target URI of each transaction is a reference to the Base URI ("/") and the Target Resource is identified using query parameter values. The resources for the URI Service are Instances of Composite Storage SOP Classes defined in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_9.1.2" shape="rect"></a>9.1.2 Common Query Parameters</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_627e7fc8-f516-453b-93c3-981062b63471" shape="rect"></a>The Query Parameters specified in this Section may be used with either the Retrieve DICOM Instance or Retrieve Rendered Instance transactions, and are applicable to all supported SOP Classes.</p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_9.1.2.1" shape="rect"></a>9.1.2.1 Mandatory Query Parameters</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_cdac5897-98c7-4fc6-8919-a09cec1f5216" shape="rect"></a>The origin server shall support Query Parameters as required in <a class="xref" href="chapter_9.html#table_9.1.2-1" title="Table 9.1.2-1. Mandatory Query Parameters" shape="rect">Table 9.1.2-1</a>.</p>
+                  <p>
+                     <a id="para_7d0a7e75-dfb1-4361-9291-2c002cda3e52" shape="rect"></a>The user agent shall supply in the request Query Parameters as required in <a class="xref" href="chapter_9.html#table_9.1.2-1" title="Table 9.1.2-1. Mandatory Query Parameters" shape="rect">Table 9.1.2-1</a>.</p>
+                  <p>
+                     <a id="para_2af459be-7bde-4500-8d33-1f241b91be06" shape="rect"></a>The Query Parameters may appear in any order.</p>
+                  <div class="table">
+                     <a id="table_9.1.2-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 9.1.2-1. Mandatory Query Parameters</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_9d6bb6e4-21e0-4372-9f07-4e6d31424c38" shape="rect"></a>Name</p>
+                                </th>
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_f89d43fc-86a7-45cc-b9c8-ae56d88316e2" shape="rect"></a>Values</p>
+                                </th>
+                                 <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                       <a id="para_7d396fbf-367e-49be-ba97-bdb6285b204c" shape="rect"></a>Usage</p>
+                                </th>
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_d5e887d9-7fc4-4ccd-9525-2e1f4b195da6" shape="rect"></a>Section</p>
+                                </th>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_c3b0b732-410f-44ac-b386-20cee976a5e6" shape="rect"></a>User Agent</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_9d3586bb-7d00-4a2c-9055-cef3290e1677" shape="rect"></a>Origin Server</p>
+                                </td>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_d1175ad1-46df-4be6-b2a4-32ad56a52714" shape="rect"></a>requestType</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_98577cb6-09c7-493c-90f9-67f2723dcbab" shape="rect"></a>"WADO"</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_7f3a5daa-1b39-4b1b-a158-ae5b2b1374d3" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_28eb70b1-9eff-4727-a1b0-6296dc292284" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_a5977a2e-0141-4917-8542-46ccbcac8415" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.1.1" title="9.1.2.1.1 Request Type" shape="rect">Section 9.1.2.1.1</a>
+                                    </p>
+                                </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_58ede087-f160-445c-a3f5-2832496517be" shape="rect"></a>studyUID</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_79f4ab11-b5c1-4849-a477-9da6c1c0b21e" shape="rect"></a>uid</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_3035b63e-8874-40c4-b14a-060037e3a5d5" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_ba3f9a68-8d48-4fcb-b2c4-3a2f57ee3497" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_a40c8edf-b461-4edf-9c81-e236eb4f301f" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.1.3" title="9.1.2.1.3 Series UID" shape="rect">Section 9.1.2.1.3</a>
+                                    </p>
+                                </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_53a95021-5a65-44e6-84f6-ead92751f23b" shape="rect"></a>seriesUID</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_64abe469-96c7-43ab-8320-ec5f1cd82418" shape="rect"></a>uid</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_d7f8f99c-6c14-4841-8bda-cc610cf0d36b" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_6042a3dd-72aa-4175-a1e6-a48ebaee5c43" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_f0e22fec-4450-4bb3-aadd-b25110e79013" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.1.3" title="9.1.2.1.3 Series UID" shape="rect">Section 9.1.2.1.3</a>
+                                    </p>
+                                </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_b4dcd844-2f70-4248-8286-789ba82fac5d" shape="rect"></a>objectUID</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_d69c7b03-2042-40e4-93df-ff2ea5921829" shape="rect"></a>uid</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_ee7ec383-a9c2-4996-a8cf-dcf619e6fe67" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_47636885-7e09-48a5-88fc-89b7971f9ed3" shape="rect"></a>M</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_4ee3c8e6-27fe-44c7-bfc9-d2a3feacf9ae" shape="rect"></a>
+                                        <a class="xref" href="chapter_9.html#sect_9.1.2.1.4" title="9.1.2.1.4 Instance UID" shape="rect">Section 9.1.2.1.4</a>
+                                    </p>
+                                </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_ecb080a2-fd07-4279-bcf0-9946c480aaa1" shape="rect"></a>See <a class="xref" href="sect_8.3.html" title="8.3 Query Parameters" shape="rect">Section 8.3</a>.</p>
+                  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                     <h3 class="title">Note</h3>
+                     <p>
+                        <a id="para_75c106ac-3a50-41ac-bcc0-af75f8eb4f31" shape="rect"></a>To identify a SOP Instance, only a SOP Instance UID is required, because any UID is globally unique. However, the Standard requires that the UIDs of the higher levels in the DICOM Information Model (i.e., Series and Study) are specified, in order to support the use of DICOM devices that support only the baseline hierarchical (rather than extended relational) Query/Retrieve model, which requires the Study Instance UID and Series Instance UID to be defined when retrieving an Instance, as defined in <a href="../part04/PS3.4.html" class="olink" shape="rect">PS3.4</a>.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.1.1" shape="rect"></a>9.1.2.1.1 Request Type</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">requestType = %s"requestType=" token</pre>
+                     <pre class="programlisting" xml:space="preserve">token       = "WADO"</pre>
+                     <p>
+                        <a id="para_141d3c0f-5ce2-4dd7-ac88-a2863195055a" shape="rect"></a>This parameter specifies that this is a URI service request. The parameter name shall be "requestType", and the value shall be "WADO".</p>
+                     <p>
+                        <a id="para_fcd631e7-8c4b-4064-8026-ab949519b2de" shape="rect"></a>If the value is other than "WADO", and the origin server does not support the value, the response shall be 400 (Bad Request), and may include a payload containing an appropriate error message.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.1.2" shape="rect"></a>9.1.2.1.2 Study UID</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">study = %s"studyUID=" uid</pre>
+                     <p>
+                        <a id="para_0f38df35-71f9-4bff-9a5b-88c981fc40ad" shape="rect"></a>The value of this parameter is a Study Instance UID.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.1.3" shape="rect"></a>9.1.2.1.3 Series UID</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">series = %s"seriesUID=" uid</pre>
+                     <p>
+                        <a id="para_4a8580e3-8cbe-49a2-afec-c6e1165bbfae" shape="rect"></a>The value of this parameter is a Series Instance UID.</p>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.1.4" shape="rect"></a>9.1.2.1.4 Instance UID</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">instance = %s"objectUID=" uid</pre>
+                     <p>
+                        <a id="para_97f64a68-3e6a-4237-8084-6557ecec46ea" shape="rect"></a>The value of this parameter is a SOP Instance UID.</p>
+                  </div>
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h4 class="title">
+                              <a id="sect_9.1.2.2" shape="rect"></a>9.1.2.2 Optional Query Parameters</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_2f9e4f1f-e562-4823-89cf-5548cabb78f9" shape="rect"></a>The parameters defined in this section are optional for all URI requests.</p>
+                  <div class="table">
+                     <a id="table_9.1.2-2" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table 9.1.2-2. Optional Query Parameters</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_059776bc-d5ef-42e9-a500-8d752e5a2153" shape="rect"></a>Key</p>
+                                </th>
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_d667877c-aab2-4315-9aa3-ba4e2f911b38" shape="rect"></a>Values</p>
+                                </th>
+                                 <th align="center" colspan="2" rowspan="1">
+                                    <p>
+                                       <a id="para_67852ee4-f539-496b-abd3-32c4b0a610e8" shape="rect"></a>Usage</p>
+                                </th>
+                                 <th align="center" rowspan="2" colspan="1">
+                                    <p>
+                                       <a id="para_14851220-da74-4a4e-acb0-9b8220b75e3f" shape="rect"></a>Section</p>
+                                </th>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_dfa6beeb-ee6d-4b8c-ab61-15a5c609e621" shape="rect"></a>User Agent</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_456e5f20-6af6-43c9-a828-41296aa71004" shape="rect"></a>Origin Server</p>
+                                </td>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_fe93412a-2b24-4a2b-b06a-81654c5092c9" shape="rect"></a>contentType</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_16352671-b7a2-4227-832c-2897c3da6ac3" shape="rect"></a>media-type</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_d12f4abc-2b75-412c-a9de-965bfe92a626" shape="rect"></a>O</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_c61fda83-a8b3-430b-834d-2619574bd646" shape="rect"></a>O</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_f542da09-9551-4af8-86fb-8af05600c6fd" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.html#sect_8.3.3.1" title="8.3.3.1 Accept Query Parameter" shape="rect">Section 8.3.3.1</a>
+                                    </p>
+                                </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_c29f8f40-9c8a-4304-91a2-d8232dcdc3e9" shape="rect"></a>charset</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_d6e79fcf-ea4e-4e57-a9f8-2fc8248cd72c" shape="rect"></a>token</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_649ba62d-9c9d-4c77-858d-dbf48efb965d" shape="rect"></a>O</p>
+                                </td>
+                                 <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_7c8826eb-0aec-4a0e-9bfc-0292e1c83b4c" shape="rect"></a>O</p>
+                                </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                                       <a id="para_ebd82d1d-d093-499d-add6-fd7487dbcb6a" shape="rect"></a>
+                                        <a class="xref" href="sect_8.3.3.2.html" title="8.3.3.2 Character Set Query Parameter" shape="rect">Section 8.3.3.2</a>
+                                    </p>
+                                </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+                  <p>
+                     <a id="para_60e7cf0a-3be5-4acf-b67c-9142d9691140" shape="rect"></a>See <a class="xref" href="sect_8.3.html" title="8.3 Query Parameters" shape="rect">Section 8.3</a>.</p>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.2.1" shape="rect"></a>9.1.2.2.1 Acceptable Media Types</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <p>
+                        <a id="para_2637a1f1-aed4-4e5c-9cb3-16092a40135c" shape="rect"></a>The Accept Query Parameter specifies the Acceptable Media Types for the response payload. See <a class="xref" href="sect_8.7.5.html" title="8.7.5 Acceptable Media Types" shape="rect">Section 8.7.5</a>. The case-sensitive name of the parameter is "contentType". Its syntax is:</p>
+                     <pre class="programlisting" xml:space="preserve">accept = %s"contentType=" dicom / 1#rendered-media-type</pre>
+                     <p>
+                        <a id="para_3290b6db-cd27-4f54-a393-2ad3f57e36f1" shape="rect"></a>The value of this parameter, if present, shall be either application/dicom, or one or more of the Rendered Media Types.</p>
+                     <p>
+                        <a id="para_7544c48e-4af8-42a7-add2-de964c1f0673" shape="rect"></a>The DICOM Media Type transfer-syntax and character set parameters are forbidden in the request. If either are present, the response shall be 400 (Bad Request), and may include a payload containing an appropriate error message.</p>
+                     <p>
+                        <a id="para_08e8a34b-162b-4a8e-8f67-fe8115296fa5" shape="rect"></a>See <a class="xref" href="sect_8.7.5.html" title="8.7.5 Acceptable Media Types" shape="rect">Section 8.7.5</a> for other errors related to this parameter.</p>
+                     <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                        <h3 class="title">Note</h3>
+                        <p>
+                           <a id="para_ef6afe9f-802c-459d-b551-9c6ada5cdbfb" shape="rect"></a>URI origin servers may support Transfer Syntax and charset Query Parameters. This is different from the approach used by the DICOM RESTful services, which uses transfer-syntax and charset media type parameters.</p>
+                     </div>
+                  </div>
+                  <div class="section">
+                     <div class="titlepage">
+                        <div>
+                           <div>
+                              <h5 class="title">
+                                 <a id="sect_9.1.2.2.2" shape="rect"></a>9.1.2.2.2 Acceptable Character Sets</h5>
+                           </div>
+                        </div>
+                     </div>
+                     <pre class="programlisting" xml:space="preserve">charset-qp = %s"charset=" 1#(charset [weight])</pre>
+                     <p>
+                        <a id="para_9a72f63a-fbe4-4e06-bdb9-80a168678fc0" shape="rect"></a>The value of this parameter is a comma-separated list of one or more character-set identifiers. See <a class="xref" href="sect_8.8.html#sect_8.8.1" title="8.8.1 Acceptable Character Sets" shape="rect">Section 8.8.1</a>.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title">
+                           <a id="sect_9.1.3" shape="rect"></a>9.1.3 Common Media Types</h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_ba0b6780-2a7a-4520-9b1f-ce8e442f8c08" shape="rect"></a>The origin server shall support the application/dicom media type as described in <a class="xref" href="sect_8.7.3.html#sect_8.7.3.1" title="8.7.3.1 Instance Media Types" shape="rect">Section 8.7.3.1</a> and Rendered Media Types as described in <a class="xref" href="sect_8.7.4.html" title="8.7.4 Rendered Media Types" shape="rect">Section 8.7.4</a>.</p>
+               <p>
+                  <a id="para_a525e9fb-ad36-46ca-8866-f117e46380d0" shape="rect"></a>Support for the Transfer Syntax and Character Set media type parameters is forbidden for URI Services.</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_8.11.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_9.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">8.11 Security and Privacy </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 9.2 Conformance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

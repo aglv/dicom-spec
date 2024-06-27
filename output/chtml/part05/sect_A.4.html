@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>A.4 Transfer Syntaxes For Encapsulation of Encoded Pixel Data</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.5.html" title="PS3.5" />
+      <link rel="up" href="chapter_A.html" title="A Transfer Syntax Specifications (Normative)" />
+      <link rel="prev" href="sect_A.3.html" title="A.3 DICOM Big Endian Transfer Syntax (Explicit VR)" />
+      <link rel="next" href="sect_A.4.2.html" title="A.4.2 RLE Image Compression" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">A.4 Transfer Syntaxes For Encapsulation of Encoded Pixel Data <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part05/sect_A.4.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.3.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">A Transfer Syntax Specifications (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.5.html" shape="rect">PS3.5</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_A.html" shape="rect">Transfer Syntax Specifications (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Transfer Syntaxes For Encapsulation of Encoded Pixel Data</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_A.4" shape="rect"></a>A.4 Transfer Syntaxes For Encapsulation of Encoded Pixel Data</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_637df8e8-3ec9-4054-accf-ac88bdd73f9d" shape="rect"></a>These Transfer Syntaxes apply to the encoding of the entire DICOM Data Set, even though the image Pixel Data (7FE0,0010) portion of the DICOM Data Set is the only portion that is encoded by an encapsulated format.
+        These Transfer Syntaxes shall only be used when Pixel Data (7FE0,0010) is present in the top level Data Set, and hence shall not be used when Float Pixel Data (7FE0,0008) or Double Float Pixel Data (7FE0,0009) are present.
+        This implies that when a DICOM Message is being encoded according to an encapsulation Transfer Syntax the following requirements shall be met:</p>
+         <div class="orderedlist">
+            <ol class="orderedlist" type="1">
+               <li class="listitem">
+                  <p>
+                     <a id="para_c3892865-4597-489d-8746-df46215fe7d8" shape="rect"></a>The Data Elements contained in the Data Set structure shall be encoded with Explicit VR (with a VR Field) as specified in <a class="xref" href="chapter_7.html#sect_7.1.2" title="7.1.2 Data Element Structure with Explicit VR" shape="rect">Section 7.1.2</a>.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_4ac11983-1da9-45a8-903a-e690df481c85" shape="rect"></a>The encoding of the overall Data Set structure (Data Element Tags, Value Length, etc.) shall be in Little Endian as specified in <a class="xref" href="sect_7.3.html" title="7.3 Little Endian Byte Ordering" shape="rect">Section 7.3</a>.</p>
+               </li>
+               <li class="listitem">
+                  <p>
+                     <a id="para_b5e2af39-f545-4a58-bd8a-faef00bfac1c" shape="rect"></a>The encoding of the Data Elements of the Data Set shall be as follows according to their Value Representations:</p>
+                  <div class="itemizedlist">
+                     <ul class="itemizedlist" style="list-style-type: disc; ">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2f69630f-745c-44ad-8013-d58d1e40abc4" shape="rect"></a>For all Value Representations defined in this Part of the DICOM Standard, except for the Value Representations OB and OW, the encoding shall be in Little Endian as specified in <a class="xref" href="sect_7.3.html" title="7.3 Little Endian Byte Ordering" shape="rect">Section 7.3</a>.</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_428d2f48-a706-43e0-bb3d-2bc775291d51" shape="rect"></a>For the Value Representations OB, OL, OV and OW, the encoding shall meet the following specification depending on the Data Element Tag:</p>
+                           <div class="itemizedlist">
+                              <ul class="itemizedlist" style="list-style-type: circle; ">
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_d11882a9-2d96-4239-8809-1d7343f9f6f6" shape="rect"></a>Pixel Data (7FE0,0010) may be encapsulated or native.</p>
+                                    <p>
+                                       <a id="para_6666f793-ab61-4d3f-8686-142a1fd52846" shape="rect"></a>It shall be encapsulated if present in the top-level Data Set (i.e., not nested within a Sequence Data Element).</p>
+                                    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                       <h3 class="title">Note</h3>
+                                       <p>
+                                          <a id="para_fe1716f0-299b-425e-b3e6-33276fe7e59b" shape="rect"></a>The distinction between defined Value Length (native) and undefined Value Length (encapsulated) is present so that the top level Data Set Pixel Data can be compressed (and hence encapsulated), but the Pixel Data within an Icon Image Sequence may or may not be compressed.</p>
+                                    </div>
+                                    <p>
+                                       <a id="para_0775e8a7-768d-4792-830a-d498233a93ef" shape="rect"></a>If native, it shall have a defined Value Length, and be encoded as follows:</p>
+                                    <div class="itemizedlist">
+                                       <ul class="itemizedlist" style="list-style-type: square; ">
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_05a68ce3-58b2-48ab-bdfd-2e4847e79583" shape="rect"></a>where Bits Allocated (0028,0100) has a Value greater than 8 shall have Value Representation OW and shall be encoded in Little Endian;</p>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_40485d51-39fb-4093-87fb-089c35eee6ed" shape="rect"></a>where Bits Allocated (0028,0100) has a Value less than or equal to 8 shall have the Value Representation OB or OW and shall be encoded in Little Endian.</p>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                       <h3 class="title">Note</h3>
+                                       <div class="orderedlist">
+                                          <ol class="orderedlist" type="a">
+                                             <li class="listitem">
+                                                <p>
+                                                   <a id="para_5ccae5c0-f6b7-40a9-8094-e645485c04ce" shape="rect"></a>The OL and OV Value Representations are not used for Pixel Data, even if it has a Bits Allocated (0028,0100) of 32 or 64, since OL and OV were added to the Standard after the encoding of Pixel Data had been established</p>
+                                             </li>
+                                             <li class="listitem">
+                                                <p>
+                                                   <a id="para_a1684f41-b0ab-48c9-aed1-50999a8181fd" shape="rect"></a>That is, as if the Transfer Syntax were Explicit VR Little Endian.</p>
+                                             </li>
+                                          </ol>
+                                       </div>
+                                    </div>
+                                    <p>
+                                       <a id="para_5755baf8-0054-4d4e-a46b-0d8c389d2cf5" shape="rect"></a>If encapsulated, it has the Value Representation OB and is an octet-stream resulting from one of the encoding processes. It contains the encoded pixel data stream fragmented into one or more Item(s). This Pixel Data Stream may represent a Single or Multi-frame Image. See <a class="xref" href="sect_A.4.html#table_A.4-1" title="Table A.4-1. Example for Elements of an Encoded Single-Frame Image Defined as a Sequence of Three Fragments Without Basic Offset Table Item Value" shape="rect">Table A.4-1</a> and <a class="xref" href="sect_A.4.html#table_A.4-2" title="Table A.4-2. Examples of Elements for an Encoded Two-Frame Image Defined as a Sequence of Three Fragments with Basic Table Item Values" shape="rect">Table A.4-2</a>.</p>
+                                    <div class="itemizedlist">
+                                       <ul class="itemizedlist" style="list-style-type: square; ">
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_97c429e3-6c06-424d-9bce-7c3148ba1324" shape="rect"></a>The Length of the Data Element (7FE0,0010) shall be set to the Value for Undefined Length (FFFFFFFFH).</p>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_665bb926-3c99-4450-84c8-a30b42b5ad98" shape="rect"></a>Each Data Stream Fragment encoded according to the specific encoding process shall be encapsulated as a DICOM Item with a specific Data Element Tag of Value (FFFE,E000). The Item Tag is followed by a 4 byte Value (Item) Length Field encoding the explicit number of bytes of the Item.</p>
+                                             <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                                <h3 class="title">Note</h3>
+                                                <p>
+                                                   <a id="para_f74b95b4-6980-45b2-94b7-a409737a5668" shape="rect"></a>Whether more than one fragment per frame is permitted or not is defined per Transfer Syntax.</p>
+                                             </div>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_24cbd6af-a8d0-4517-b73f-2fc42dae65ee" shape="rect"></a>All items containing an encoded fragment shall be made of an even number of bytes greater or equal to two. The last fragment of a frame may be padded, if necessary, to meet the sequence item format requirements of the DICOM Standard.</p>
+                                             <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                                <h3 class="title">Note</h3>
+                                                <div class="orderedlist">
+                                                   <ol class="orderedlist" type="1">
+                                                      <li class="listitem">
+                                                         <p>
+                                                            <a id="para_ae87ec68-d4d2-4819-8c38-1cf9cbe9c9c8" shape="rect"></a>Any necessary padding may be added in the JPEG or JPEG-LS compressed data stream as per ISO 10918-1 and ISO 14495-1 such that the End of Image (EOI) marker ends on an even byte boundary, or may be appended after the EOI marker, depending on the implementation.</p>
+                                                      </li>
+                                                      <li class="listitem">
+                                                         <p>
+                                                            <a id="para_38bee48b-cd28-447b-be96-241c669b2359" shape="rect"></a>ISO 10918-1 and ISO 14495-1 define the ability to add any number of padding bytes FFH before any marker (all of which also begin with FFH). It is strongly recommended that FFH padding bytes not be added before the Start of Image (SOI) marker.</p>
+                                                      </li>
+                                                   </ol>
+                                                </div>
+                                             </div>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_468b80cc-d9c5-4d78-83d6-867548ed4e61" shape="rect"></a>The first Item in the Sequence of Items before the encoded Pixel Data Stream shall be a Basic Offset Table item. The Basic Offset Table Item Value, however, is not required to be present:</p>
+                                             <div class="itemizedlist">
+                                                <ul class="itemizedlist" style="list-style-type: disc; ">
+                                                   <li class="listitem">
+                                                      <p>
+                                                         <a id="para_f97a5189-b573-4b93-bfd0-0f32e4b46a2e" shape="rect"></a>When the Item Value is not present, the Item Length shall be zero (00000000H) (see <a class="xref" href="sect_A.4.html#table_A.4-1" title="Table A.4-1. Example for Elements of an Encoded Single-Frame Image Defined as a Sequence of Three Fragments Without Basic Offset Table Item Value" shape="rect">Table A.4-1</a>).</p>
+                                                   </li>
+                                                   <li class="listitem">
+                                                      <p>
+                                                         <a id="para_ad21ce9b-a763-414a-8f87-752be151ef6b" shape="rect"></a>When the Item Value is present, the Basic Offset Table Item Value shall contain concatenated 32-bit unsigned integer values that are byte offsets to the first byte of the Item Tag of the first fragment for each frame in the Sequence of Items. These offsets are measured from the first byte of the first Item Tag following the Basic Offset Table item (see <a class="xref" href="sect_A.4.html#table_A.4-2" title="Table A.4-2. Examples of Elements for an Encoded Two-Frame Image Defined as a Sequence of Three Fragments with Basic Table Item Values" shape="rect">Table A.4-2</a>).</p>
+                                                      <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                                         <h3 class="title">Note</h3>
+                                                         <div class="orderedlist">
+                                                            <ol class="orderedlist" type="1">
+                                                               <li class="listitem">
+                                                                  <p>
+                                                                     <a id="para_b12823cc-c49d-4ca1-b7a2-301cfc093866" shape="rect"></a>For a Multi-Frame Image containing only one frame or a Single Frame Image, the Basic Offset Table Item Value may be present or not. If present it will contain a single 00000000H value.</p>
+                                                               </li>
+                                                               <li class="listitem">
+                                                                  <p>
+                                                                     <a id="para_98b02555-b62d-4cc3-b2e4-37b1d94e2733" shape="rect"></a>Decoders of encapsulated pixel data, whether Single Frame or Multi-Frame, need to accept both an empty Basic Offset Table (zero length) and a Basic Offset Table filled with 32 bit offset values.</p>
+                                                               </li>
+                                                               <li class="listitem">
+                                                                  <p>
+                                                                     <a id="para_c09259a9-9178-46b0-81d7-a6cf0811f3af" shape="rect"></a>A Basic Offset Table Item Value is not permitted (i.e., the Item Length of the first Item will be zero) if Extended Offset Table (7FE0,0001) is present.</p>
+                                                               </li>
+                                                            </ol>
+                                                         </div>
+                                                      </div>
+                                                   </li>
+                                                </ul>
+                                             </div>
+                                          </li>
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_07969f96-31db-4ac2-8aa0-80fa310f4a9a" shape="rect"></a>This Sequence of Items is terminated by a Sequence Delimiter Item with the Tag (FFFE,E0DD) and an Value (Item) Length Field of Value (00000000H) (i.e., no Value Field shall be present).</p>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_972ccef9-9624-4ca5-8a18-5d7c3574a7c5" shape="rect"></a>Overlay Data (60xx,3000)</p>
+                                    <div class="itemizedlist">
+                                       <ul class="itemizedlist" style="list-style-type: square; ">
+                                          <li class="listitem">
+                                             <p>
+                                                <a id="para_c0e24f7d-68e6-431d-b0e3-3b7bfdb4ab9d" shape="rect"></a>shall have the Value Representation OB or OW and shall be encoded in Little Endian.</p>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_f5bb03c7-9c95-4e62-bddd-1033306a42f8" shape="rect"></a>Waveform Data (5400,1010) has the Value Representation specified in its Explicit VR Field. The component points shall be encoded in Little Endian.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_372c01e1-1206-4f77-aad9-d83d0b78a779" shape="rect"></a>Red Palette Color Lookup Table Data (0028,1201), Green Palette Color Lookup Table Data (0028,1202), Blue Color Palette Lookup Table Data (0028,1203) and Alpha Palette Color Lookup Table Data (0028,1204) have the Value Representation OW and shall be encoded in Little Endian.</p>
+                                    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                       <h3 class="title">Note</h3>
+                                       <p>
+                                          <a id="para_10ce5dc8-65f4-4e8a-8c60-bb648bc77f6f" shape="rect"></a>Previous versions of the Standard either did not specify the encoding of Data Elements 0028,1201), (0028,1202), (0028,1203) in this Part, but specified a VR of US or SS in PS3.6-1993, or specified OW in this Part but a VR of US, SS or OW in PS3.6-1996. The actual encoding of the Values and their byte order would be identical in each case, though the explicitly encoded VR field would be different. However, an Explicit VR of US or SS cannot be used to encode a table of 2<sup>16</sup> entries, since the Value Length is restricted to 16 bits.</p>
+                                    </div>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_3913ddde-afa3-4304-bb64-6aef1446d65c" shape="rect"></a>Red Palette Color Lookup Table Descriptor (0028,1101), Green Palette Color Lookup Table Descriptor (0028,1102) and Blue Palette Color Lookup Table Descriptor (0028,1103) have the Value Representation SS or US (depending on rules specified in the IOD in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>), and shall be encoded in Little Endian. The first and third Values are always interpreted as unsigned, regardless of the Value Representation.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_b182ced2-1be0-4145-8e6f-8545834626ba" shape="rect"></a>Segmented Red Palette Color Lookup Table Data (0028,1221), Segmented Green Palette Color Lookup Table Data (0028,1222) and Segmented Blue Palette Color Lookup Table Data (0028,1223) have the Value Representation OW and shall be encoded in Little Endian.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_d4981850-0088-4025-9c7c-b76d3a73dcea" shape="rect"></a>LUT Data (0028,3006) has the Value Representation US or OW and shall be encoded in Little Endian.</p>
+                                    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                                       <h3 class="title">Note</h3>
+                                       <p>
+                                          <a id="para_2b23551a-d3e5-48c0-a6eb-d67d8defe64f" shape="rect"></a>Previous versions of the Standard did not specify the encoding of these Data Elements in this Part, but specified a VR of US or SS in PS3.6-1998. However, an Explicit VR of US or SS cannot be used to encode a table of 2<sup>16</sup> entries, since the Value Length is restricted to 16 bits. Hence a VR of OW has been added. Moreover this Data Element is always unsigned, therefore the VR of SS has been removed. The actual encoding of the Values and their byte order would be identical in each case, though the explicitly encoded VR field would be different.</p>
+                                    </div>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_ffe7b031-5aec-4244-9810-de6c4421ba2f" shape="rect"></a>LUT Descriptor (0028,3002) has the Value Representation SS or US (depending on rules specified in the IOD in <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a>), and shall be encoded in Little Endian. The first and third Values are always interpreted as unsigned, regardless of the Value Representation.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_391721fb-9b59-45ba-ab5e-08a67765d79a" shape="rect"></a>Blending Lookup Table Data (0028,1408) has the Value Representation OW and shall be encoded in Little Endian.</p>
+                                 </li>
+                                 <li class="listitem">
+                                    <p>
+                                       <a id="para_17cb1fef-118b-4963-86e6-f11568da99d7" shape="rect"></a>Track Point Index List (0066,0129) has the Value Representation OL and shall be encoded in Little Endian and is always interpreted as unsigned.</p>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+            </ol>
+         </div>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b4b1f63e-82e4-40b2-a375-f53dcd85f858" shape="rect"></a>For Data encoded with the Value Representation OB, the Data encoding is unaffected by byte ordering.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3a981bba-6fe4-437c-aa0f-8dae5173363b" shape="rect"></a>Encoding of Curve Data (50xx,3000) and Audio Sample Data (50xx,200C) was previously defined but has been retired. See <a class="link" href="http://medical.nema.org/MEDICAL/Dicom/2004/printed/04_05pu.pdf" target="_top" shape="rect">PS3.5-2004</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b67b16c4-c714-4aa1-a32f-00d92ff74e7b" shape="rect"></a>Vertex Point Index List (0066,0025), Edge Point Index List (0066,0024), Triangle Point Index
+              List (0066,0023) and Primitive Point Index List (0066,0029) were previously defined with a
+              Value Representation of OW and always interpreted as unsigned, but have been retired.
+              These have been replaced by corresponding OL Data Elements, which allow Values larger
+              than 65535 to index the full range of points that can be encoded in Point Coordinates Data
+              (0066,0016). See PS3.5-2015c.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="table">
+            <a id="table_A.4-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.4-1. Example for Elements of an Encoded Single-Frame Image Defined as a Sequence of Three Fragments Without Basic Offset Table Item Value</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b916d4cd-c6c2-4d1f-a528-6224c35a0d42" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Pixel Data Element Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_7d975697-0886-4a0a-8288-7d537842e25d" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Value Representation</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d36e587-22ba-4266-ac81-85b1fd40c651" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="5" rowspan="1">
+                           <p>
+                              <a id="para_7204734d-a60c-4629-bbca-319c3410f95e" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_a3e1d2e2-3437-4941-88b5-d7b1650f01f4" shape="rect"></a>(7FE0, 0010) with VR of OB</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_f16dec6c-b205-44a1-89e2-b5ed5f835d6e" shape="rect"></a>OB</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_71eb3f3d-c99d-48a6-95c1-c7b325f90811" shape="rect"></a>0000H Reserved</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_6411662c-227a-4108-94f7-bdd20d3b02ac" shape="rect"></a>FFFF FFFFH Undefined Length</p>
+                        </td>
+                        <th align="left" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_56a03105-b422-49e5-81bf-8df5b6f8fa66" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Basic Offset Table with NO Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_b4949fcf-9e25-4d07-ac69-14c74bcad1f2" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>First Fragment (Single Frame) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_087441d2-a488-40b4-a73b-9160a462049c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c83ff9b6-37e6-4ba6-bde0-6b5ec4c995dc" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_039962d8-1d6b-4ef1-b12e-816924080cee" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad78c975-816e-498b-99ca-9e1082cc1736" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_683b1d43-35c3-4650-899a-8e81829c628b" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4e38d1b8-0650-46ed-83b3-d0d1a0e32e06" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_30fe7c3e-3be1-44b8-8618-c99736a539f1" shape="rect"></a>0000 0000H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_df76fd3f-cb31-4f40-9679-8c9e8393a553" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2a5b6605-020c-4616-83f6-43cd4d34b57a" shape="rect"></a>0000 04C6H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3c05bdfc-0499-4ade-af0a-92d64a789078" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_04adbf59-43d0-4f94-b744-91621c0992a5" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92985889-27e9-4e67-81d7-ad4fd4583833" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f4dd36c1-1a58-447e-8f95-8ab1c14a2f02" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d52fe19-2fb3-4633-9a7f-0d5b1062ad6d" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_90e493f5-0fd2-4f89-bc64-cb620b064b9e" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_07022f46-24cc-4f90-8ecf-a2d08e3ecc13" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7552f0d9-4cb3-4eef-aec4-7e5e166f0cbd" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f4f6ade-032a-421a-8603-205489d5d4f9" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d4f1dcf7-6cc0-4fd2-adae-de198fe2198d" shape="rect"></a>04C6H bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="table">
+            <a id="table_A.4-1b" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.4-1b. Example for Elements of an Encoded Single-Frame Image Defined as a Sequence of Three Fragments Without Basic Offset Table Item Value (continued)</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="left" colspan="8" rowspan="1">
+                           <p>
+                              <a id="para_ee2ccb19-cff2-4e27-ab1d-d9745bab5ced" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Continued</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_54d0516d-2712-49ce-9ef4-351d986de925" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Second Fragment (Single Frame) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_4d5cec92-34db-4c68-9b99-b8f9cdf6a4ea" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Third Fragment (Single Frame) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_9c5b98af-54c8-4133-9588-b4cc3135050c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delimiter Item</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c42d78cd-ff2e-4e9c-8e9f-3b260222470a" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7f554256-da7b-47e1-9430-d1e842cd243a" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_060a9949-aacc-49c3-a56e-c2a46c58c830" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_855ef6ab-39b2-44ab-8ec3-fec18a2751d2" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8b6bd82e-486b-4c8a-ab38-c783b395feba" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_665b273f-165c-4667-b689-93707480c078" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ce5d9ae2-458a-4c08-966e-db75fcf2d361" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delim. Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4b1517d5-fbda-42d3-b2cb-f3451bb29f22" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8cb29a67-5cd3-495e-a52a-5a9581b80480" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_32a5a1de-1bfb-4210-b572-77e32e37fcd4" shape="rect"></a>0000 024AH</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1aa19c71-9102-42c8-b967-16dafbe33bed" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d41eede0-c434-46b3-9110-d839b442c3df" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f57c76a-a625-4d06-ab49-d6958b50d2e7" shape="rect"></a>0000 0628H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_efaa96fe-8c19-4227-99f4-3222c0117ab1" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_30bdeb8e-ff3f-4e3b-a8ac-858133907b2b" shape="rect"></a>(FFFE,E0DD)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_523e0f06-d9a0-4354-9be4-28912dc189c8" shape="rect"></a>0000 0000H</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7be2c199-f3a5-48ab-b3da-24183d34889e" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8ec3e5aa-b73e-40cf-ae31-2e1ee0b3add0" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3794eef4-0b79-439a-ae84-40ff25b79093" shape="rect"></a>024AH bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f03a64c4-003c-4440-b388-dc10de081b44" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92dccf54-2e68-439e-9d7c-cda40435928f" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_54cf2b2d-3492-45e2-9cd1-2dd2394fe9e5" shape="rect"></a>0628H bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8c6dcba8-95aa-47f7-ad35-19e33542287d" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c6eaa3bf-0424-40cb-953e-b6dc5cabcb2b" shape="rect"></a>4 bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="table">
+            <a id="table_A.4-2" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.4-2. Examples of Elements for an Encoded Two-Frame Image Defined as a Sequence of Three Fragments with Basic Table Item Values</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c54c808b-359f-4855-b184-2264909d9c87" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Pixel Data Element Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_0aaef2b0-a6a5-461d-833a-17768ffee597" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Value Representation</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acdcb1db-1dbf-445d-9802-3ccc586e18ad" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="6" rowspan="1">
+                           <p>
+                              <a id="para_e793274d-64c7-4369-99cb-805c3b980770" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_6c37e67d-86a1-4dec-a100-673fb09fe093" shape="rect"></a>(7FE0, 0010) with VR of OB</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_82a2e336-57b2-4d7b-9153-aa0615b30f93" shape="rect"></a>OB</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_9c9bc002-5f25-4582-9d4f-5144202c7162" shape="rect"></a>0000H Reserved</p>
+                        </td>
+                        <td align="left" rowspan="3" colspan="1">
+                           <p>
+                              <a id="para_23d99773-ccfb-4b59-be4e-c1097c7babcd" shape="rect"></a>FFFF FFFFH Undefined Length</p>
+                        </td>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_0fc6811c-ba79-42c0-acda-ebbbf108b576" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Basic Offset Table with Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_6057f99f-9063-4669-b379-4cdee43e0c44" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>First Fragment (Frame 1) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7ca5745c-4ccf-4a6d-9684-609ca4a5509f" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4df20b72-8786-46e5-832b-910c98ae15c7" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8442bf38-df8d-4622-a9a3-1220b376de0f" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d1351808-a6eb-4b3f-9240-af496370c6eb" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9ccaa0d9-fdbd-462a-8118-ae2ad1fd66ae" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_38ebb5d7-3a4d-4041-a2b0-1cec1d316c0e" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d6cc8755-4a94-4a48-9fe3-e4d23d0c211c" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c1692cbf-3159-4df9-a05b-fc33b0af50b1" shape="rect"></a>0000 0008H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a5a8b6c5-613e-42c1-b5b0-435e08c67db4" shape="rect"></a>0000 0000H 0000 0646H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_356bd571-7c4a-4b97-a5fd-1a4c6a4c7269" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e6ac3fcd-6b21-47e4-be8e-5120b3838c40" shape="rect"></a>0000 02C8H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8c8bb8c6-61b8-44b4-9cf8-a6c76dca1cc7" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a32d1401-e58b-44a4-981d-95b2a34afd2e" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3423fc69-520b-4c1c-a547-35acbafe5d35" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_37c07eb3-d8a5-453d-ade4-f588c52168c0" shape="rect"></a>2 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_47919f02-49f6-48de-a421-344dab689e69" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_36e2a063-7867-472f-9478-1b31f572fe9f" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_56d80a46-5e00-40a3-93e5-6a81e85789d2" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4e189864-d82f-4fe4-be70-de4d8db76f6e" shape="rect"></a>0008H bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_96c9cb43-7c87-4f3c-a5c2-ed201f5d5e55" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7440db0c-7978-4574-af18-74abc5c7ef24" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2d7cb1dd-04d4-43d8-81e2-3525bb6ff96f" shape="rect"></a>02C8H bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="table">
+            <a id="table_A.4-2b" shape="rect"></a>
+            <p class="title">
+               <strong>Table A.4-2b. Examples of Elements for an Encoded Two-Frame Image Defined as a Sequence of Three Fragments with Basic Table Item Values (continued)</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="left" colspan="8" rowspan="1">
+                           <p>
+                              <a id="para_1508d17d-f8eb-499a-b15d-3bfaced8828c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Data Element Continued</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_7cf01bcb-9a06-4af7-af92-f7c74b3ebb4d" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Second Fragment (Frame 1) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="3" rowspan="1">
+                           <p>
+                              <a id="para_a48ee7a8-c9de-4518-af09-a2aee2c19b04" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Third Fragment (Frame 2) of Pixel Data</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" colspan="2" rowspan="1">
+                           <p>
+                              <a id="para_009ffbb4-a828-430f-85ec-d4ba8fdab8e4" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delimiter Item</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_10223bb7-698b-4c1a-ac14-986bb7ed7910" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a9c24cec-9717-446b-89d5-7d3ebb720dc6" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_94c93e32-2270-4a24-995c-a814b24ea0d8" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a3582958-f850-45fa-a241-a2f3110dc8e1" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7f792e9f-f4de-4f45-9b12-94c56db1a9fd" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4742f543-9b73-4797-90be-fbdbdf3538f1" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d0594d2c-fb17-427b-8b3f-abc33ee1b58b" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Sequence Delimiter Tag</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3badc9eb-2dd6-49b3-af64-d3c1578a9ca1" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Item Length</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3a1c56e0-7554-4e12-8313-99a2dd67218c" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_21b84c24-1d74-4264-bf35-f37e0d90052a" shape="rect"></a>0000 036EH</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14816b49-d5e7-4e88-8f47-55e024c3c6b7" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a2156493-9dbd-425f-8415-0c355624be0f" shape="rect"></a>(FFFE, E000)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8b18b968-0cb5-4413-85ba-53c5d4e88cbb" shape="rect"></a>0000 0BC8H</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c2f46145-29ef-4d47-83ff-f1d1ed0dd3cb" shape="rect"></a>Compressed Fragment</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cbe9e0c9-4d2c-45e4-b9c3-88f75b9590c5" shape="rect"></a>(FFFE, E0DD)</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4fec14c1-3325-48f2-8e46-fd815e4914cc" shape="rect"></a>0000 0000H</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c5c6fd7e-f4d6-4a80-aab6-15a2b1ef51ee" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1cb0e42f-1799-4a91-a00d-99dcdae89338" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_80194a9a-267a-419a-a749-cfc9da1893cb" shape="rect"></a>036EH bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_83126233-fe2a-42c4-993d-294b305e2bb3" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_64077550-a2cd-4456-a90f-965a7bc1341c" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a2c75c9f-6e5c-418c-ba3f-491601369baf" shape="rect"></a>0BC8H bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_350dbf5b-0a48-4e21-9822-426684e0aeee" shape="rect"></a>4 bytes</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d384a1a9-55b9-4abf-b925-6a440b0c8d52" shape="rect"></a>4 bytes</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_A.4.1" shape="rect"></a>A.4.1 JPEG Image Compression</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_1d105a31-528c-40e5-9872-b0852ffb6548" shape="rect"></a>The International Standards Organization ISO/IEC JTC1 has developed an International Standard, ISO 10918-1 (JPEG Part 1) and an International Standard, ISO 10918-2 (JPEG Part 2), known as the JPEG Standard, for digital compression and coding of continuous-tone still images (see <a class="xref" href="chapter_F.html" title="F Encapsulated Images As Part of A DICOM Message (Informative)" shape="rect">Annex F</a> for further details).</p>
+            <p>
+               <a id="para_50e5756a-84bc-43b9-9def-60847d29e2f0" shape="rect"></a>A DICOM Transfer Syntax for JPEG Image Compression shall be identified by a UID, appropriate to its JPEG coding process, chosen from <a class="xref" href="sect_A.4.html#table_A.4-3" title="Table A.4-3. DICOM Transfer Syntax UIDs for JPEG" shape="rect">Table A.4-3</a>.</p>
+            <div class="table">
+               <a id="table_A.4-3" shape="rect"></a>
+               <p class="title">
+                  <strong>Table A.4-3. DICOM Transfer Syntax UIDs for JPEG</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5188fdac-1789-4071-a17a-c94e036d32ba" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>DICOM Transfer Syntax UID</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_95aa5711-434a-4737-8f7a-a0812680f119" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>JPEG coding process</strong>
+                                 </span>
+                              </p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_921ea54c-bc6f-4f80-9453-6e45bf7c2b9c" shape="rect"></a>
+                                 <span class="bold">
+                                    <strong>JPEG description</strong>
+                                 </span>
+                              </p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f016033d-c682-4251-954e-8b452161dbf5" shape="rect"></a>1.2.840.10008.1.2.4.50</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e6005b7f-9401-4ba3-889c-129e48bcf005" shape="rect"></a>1</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_374928a9-fade-4b53-8df7-fd2990976ce2" shape="rect"></a>baseline</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9318b17d-e725-48e2-b06f-0e95f8b7d828" shape="rect"></a>1.2.840.10008.1.2.4.51</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dc483a68-beff-47d0-a4fb-5d212a8b333b" shape="rect"></a>2(8-bit),4(12-bit)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a1e704de-93ff-4c09-9995-55f0fbd8e196" shape="rect"></a>extended</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_897bd126-b8eb-48ad-88ae-f24d4f09c6bc" shape="rect"></a>1.2.840.10008.1.2.4.57</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c7d8c844-9699-4362-a0bf-3cd68ae0e61f" shape="rect"></a>14</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4785a156-d763-4c91-acf6-0d580d5b4a2c" shape="rect"></a>lossless, non-hierarchical</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ce6bcb2e-1c04-4e51-bbdc-cf7140b26ee8" shape="rect"></a>1.2.840.10008.1.2.4.70</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_abec0a8d-2572-4bac-bebe-bd39a433a92f" shape="rect"></a>14</p>
+                              <p>
+                                 <a id="para_ee2659b1-d789-406b-849d-e78fc537ddee" shape="rect"></a>(Selection Value 1)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f8b8e3d3-f9f0-4843-8ca1-99520a5a0300" shape="rect"></a>lossless, non-hierarchical, first-order prediction</p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <div class="orderedlist">
+                  <ol class="orderedlist" type="1">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_00ab89fb-06d9-4835-a863-b3f35e1ae27c" shape="rect"></a>DICOM identifies, to increase the likelihood of successful association, three Transfer Syntaxes for Default JPEG Compression Image processes (see <a class="xref" href="sect_8.2.html#sect_8.2.1" title="8.2.1 JPEG Image Compression" shape="rect">Section 8.2.1</a> and <a class="xref" href="chapter_10.html" title="10 Transfer Syntax" shape="rect">Section 10</a>).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_38e67967-2754-41fe-9100-946f1a9b329b" shape="rect"></a>Different JPEG processes may use different SOF marker segments. E.g., the baseline JPEG process 1 used with the 1.2.840.10008.1.2.4.50 Transfer Syntax uses the SOF0 marker, whereas the extended process 2 used with the 1.2.840.10008.1.2.4.51 Transfer Syntax uses the SOF1 marker. Accordingly, even though both bit streams encode 8 bit images using DCT and Huffman coding, the bit streams are not identical. Further, the extended process 2 may (but is not required to) use more AC and DC tables (up to 4 of each, rather than 2, per ISO 10918-1 Section F.1.3).</p>
+                        <p>
+                           <a id="para_98c18195-612e-4698-bc65-bc370730e227" shape="rect"></a>It is not compliant to send bit streams with the SOF0 marker using the 1.2.840.10008.1.2.4.51 Transfer Syntax, but it is recommended that receivers of the 1.2.840.10008.1.2.4.51 Transfer Syntax be able to decode bit streams with the SOF0 marker (this asymmetry is consistent with ISO 10918-2 requirements; see <a class="xref" href="sect_A.4.html#sect_A.4.1" title="A.4.1 JPEG Image Compression" shape="rect">A.4.1</a>).</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_bb9bb8f3-c89e-4032-8eaa-6fa560460ff0" shape="rect"></a>It is recommended that lossy compressed 8 bit images be encoded with the 1.2.840.10008.1.2.4.50 Transfer Syntax rather than the 1.2.840.10008.1.2.4.51 Transfer Syntax, unless the additional features of the extended process are required. Support of the 1.2.840.10008.1.2.4.50 Transfer Syntax is required for 8 bit images anyway (as described in <a class="xref" href="sect_8.2.html#sect_8.2.1" title="8.2.1 JPEG Image Compression" shape="rect">8.2.1</a>) and to avoid confusion with the use of 12 bit images encoded with Process 4 in the 1.2.840.10008.1.2.4.51 Transfer Syntax (defined as a default for 12 bit images in <a class="xref" href="sect_10.3.html" title="10.3 Transfer Syntaxes for a DICOM Default of Lossy JPEG Compression" shape="rect">10.3</a>).</p>
+                     </li>
+                  </ol>
+               </div>
+            </div>
+            <p>
+               <a id="para_e5359a25-4c4f-47df-8c46-c54ba1882f10" shape="rect"></a>If the object allows multi-frame images in the pixel data field, then each frame shall be encoded separately. Each fragment shall contain encoded data from a single-frame image.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_dd8c4e91-11bf-428c-a004-f48d04eb8f60" shape="rect"></a>Though a fragment may not contain encoded data from more than one frame, the encoded data from one frame may span multiple fragments. See note in <a class="xref" href="sect_8.2.html" title="8.2 Native or Encapsulated Format Encoding" shape="rect">Section 8.2</a>.</p>
+            </div>
+            <p>
+               <a id="para_b4c579fd-5d9f-4c45-a18e-a7e377e6ee57" shape="rect"></a>For all images, including all frames of a multi-frame image, the JPEG Interchange Format shall be used (the table specification shall be included).</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_7e177ec0-1d10-4178-9781-10569107c160" shape="rect"></a>This refers to the <a class="xref" href="chapter_2.html#biblio_ISOIEC10918-1" title="JPEG Standard for digital compression and encoding of continuous-tone still images. Part 1 - Requirements and implementation guidelines" shape="rect">[<abbr class="abbrev">ISO/IEC 10918-1</abbr>]</a> "interchange format", not the <a class="xref" href="chapter_2.html#biblio_ISOIEC10918-5" title="JPEG Standard for digital compression and encoding of continuous-tone still images. Part 5 - JPEG File Interchange Format (JFIF)" shape="rect">[<abbr class="abbrev">ISO/IEC 10918-5</abbr>]</a> JPEG File Interchange Format (JFIF).</p>
+            </div>
+            <p>
+               <a id="para_822bfd5b-306d-43cf-95fe-9123126b697d" shape="rect"></a>If images with Photometric Interpretation (0028,0004) YBR_FULL_422 or YBR_PARTIAL_422, are encoded with JPEG coding Process 1 (non hierarchical with Huffman coding), identified by DICOM Transfer Syntax UID "1.2.840.10008.1.2.4.50" the minimum compressible unit is YYCBCR, where Y, CB, and CR are 8 by 8 blocks of pixel values. The data stream encodes two Y blocks followed by the corresponding CB and CR blocks.</p>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_A.3.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_A.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_A.4.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">A.3 DICOM Big Endian Transfer Syntax (Explicit VR) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.5.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> A.4.2 RLE Image Compression</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.5 2024c - Data Structures and Encoding</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

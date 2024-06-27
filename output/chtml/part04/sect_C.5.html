@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.5 Association Negotiation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="chapter_C.html" title="C Query/Retrieve Service Class (Normative)" />
+      <link rel="prev" href="sect_C.4.3.3.2.html" title="C.4.3.3.2 Extended Behavior of SCP" />
+      <link rel="next" href="sect_C.5.2.html" title="C.5.2 Association Negotiation for C-MOVE SOP Classes" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.5 Association Negotiation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_C.5.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.4.3.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C Query/Retrieve Service Class (Normative)</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Query/Retrieve Service Class (Normative)</a>
+         </span> &gt; <span class="breadcrumb-node">Association Negotiation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_C.5" shape="rect"></a>C.5 Association Negotiation</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_e00f9a43-5e19-41a3-b25c-8925c808d98e" shape="rect"></a>Association establishment is the first phase of any instance of communication between peer DICOM AEs. AEs supporting DICOM Query/Retrieve SOP Classes utilize Association establishment negotiation by defining the use of Application Association Information. See <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for an overview of Association negotiation.</p>
+         <p>
+            <a id="para_bbe2eb96-725d-4868-b8a7-4968c3839228" shape="rect"></a>SOP Classes of the Query/Retrieve Service Class, which include query services based on the C-FIND operation, may use SOP Class Extended Negotiation Sub-Item to negotiate options such as Relational-queries and Enhanced Multi-Frame Image Conversion.</p>
+         <p>
+            <a id="para_82e04dbf-13a6-4848-ae56-e6b1d7248cf5" shape="rect"></a>SOP Classes of the Query/Retrieve Service Class, which include retrieval services based on the C-MOVE and C-GET operations, may use the SOP Class Extended Negotiation Sub-Item to negotiate relational-retrieval and Enhanced Multi-Frame Image Conversion.</p>
+         <p>
+            <a id="para_18f43795-ed2a-4109-9b17-50780563e80d" shape="rect"></a>SOP Classes of the Query/Retrieve Service Class, which include retrieval services based on the C-GET operation, use the SCP/SCU Role Selection Sub-Item to identify the SOP Classes that may be used for retrieval.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title">
+                        <a id="sect_C.5.1" shape="rect"></a>C.5.1 Association Negotiation for C-FIND SOP Classes</h3>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_cf0d423d-5449-4ada-af53-139fa69aba76" shape="rect"></a>The following negotiation rules apply to DICOM SOP Classes and Specialized DICOM SOP Classes of the Query/Retrieve Service Class that include the C-FIND operation.</p>
+            <p>
+               <a id="para_0417a179-3a84-42e3-807a-e8b72d361d33" shape="rect"></a>The Association-requestor (query SCU role) shall convey in the A-ASSOCIATE request:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_681b636b-fed5-4c6b-ac41-59c017d9de0e" shape="rect"></a>one Abstract Syntax, in a Presentation Context, for each query based SOP Class supported</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_86bc0d9a-82e7-4ddb-98b6-64dfcfa73bbc" shape="rect"></a>optionally, one SOP Class Extended Negotiation Sub-Item, for each query based SOP Class</p>
+                  </li>
+               </ul>
+            </div>
+            <p>
+               <a id="para_cd293c74-de66-4d86-a19b-642c1672681e" shape="rect"></a>The Association-acceptor (query SCP role) of an A-ASSOCIATE request shall accept:</p>
+            <div class="itemizedlist">
+               <ul class="itemizedlist" style="list-style-type: disc; ">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_f7304975-ebe4-468c-8fcb-dcad6dd62ba1" shape="rect"></a>one Abstract Syntax, in a Presentation Context, for each query based SOP Class supported</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3caa3248-4a18-4d47-b77b-224079a7c8d1" shape="rect"></a>optionally, one SOP Class Extended Negotiation Sub-Item, for each query based SOP Class</p>
+                  </li>
+               </ul>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title">
+                           <a id="sect_C.5.1.1" shape="rect"></a>C.5.1.1 SOP Class Extended Negotiation</h4>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b5338418-84fc-44a9-bf45-c05b0cdfe442" shape="rect"></a>The SOP Class Extended Negotiation allows, at Association establishment, peer DICOM AEs to exchange application Association information defined by specific SOP Classes.
+                        This is achieved by defining the Service-class-application-information field.
+                        The Service-class-application-information field is used to define support for relational-queries, combined date time matching, fuzzy semantic matching of person names, timezone query adjustment, Enhanced Multi-Frame Image Conversion, Empty Value Matching, and Multiple Value Matching.</p>
+               <p>
+                  <a id="para_3fbac896-034e-41b2-964f-d1157dda32c8" shape="rect"></a>This negotiation is optional. If absent, the default conditions shall be:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_b204a92d-dd30-4073-b899-21768b47c0df" shape="rect"></a>no relational-query support</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_b207da64-614e-468f-a120-11552c031dc9" shape="rect"></a>separate (independent) Range Matching of date and time Attributes</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_7b80fea9-640c-4013-a7aa-e0f22cb7a32c" shape="rect"></a>literal matching of person names with case sensitivity unspecified</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_97806b7b-c957-47cd-9b71-2d066986bab2" shape="rect"></a>timezone query adjustment unspecified</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_c216c743-df4d-4c11-9f13-b243fe85bf5f" shape="rect"></a>no Enhanced Multi-Frame Image Conversion support</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_ab868977-8060-48d5-8243-9adf90bdc71a" shape="rect"></a>no Empty Value Matching</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_59c48164-0841-45c5-a838-d04532cfa6a5" shape="rect"></a>no Multiple Value Matching</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_f2d8fad6-c397-41db-86b8-cd18a8d200f5" shape="rect"></a>The Association-requestor, for each SOP Class, may use one SOP Class Extended Negotiation Sub-Item. The SOP Class is identified by the corresponding Abstract Syntax Name (as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>) followed by the Service-class-application-information field. This field defines one or more sub-fields:</p>
+               <div class="itemizedlist">
+                  <ul class="itemizedlist" style="list-style-type: disc; ">
+                     <li class="listitem">
+                        <p>
+                           <a id="para_f443a99e-f3e1-45bc-aff9-842a1f61c94c" shape="rect"></a>relational-query support by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_80f0c17c-9eec-4adc-9c41-3feb72f1c1ab" shape="rect"></a>combined date and time Range Matching by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_8181d6af-c385-48bd-8877-7b34ffeb30f6" shape="rect"></a>literal or fuzzy semantic matching of person names by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_ef7df4bb-968d-45d7-ad36-37d248bcc559" shape="rect"></a>timezone query adjustment by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_1fcb00a4-50e9-45ed-adda-5a01e282e41a" shape="rect"></a>Enhanced Multi-Frame Image Conversion support by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_9efe0278-1b50-4345-b46a-76263e8988b0" shape="rect"></a>Empty Value Matching support by the Association-requestor</p>
+                     </li>
+                     <li class="listitem">
+                        <p>
+                           <a id="para_941a456d-fad9-4547-91b1-eca2095afbcc" shape="rect"></a>Multiple Value Matching support by the Association-requestor</p>
+                     </li>
+                  </ul>
+               </div>
+               <p>
+                  <a id="para_166e70b5-c171-496b-85c1-200e026b24c7" shape="rect"></a>The Association-acceptor shall return a single byte field (single sub-field) if offered a single byte field (single sub-field) by the Association-requestor. The Association-acceptor may return either a single byte field (single sub-field) or a multiple byte field if offered a multiple byte field by the Association-requestor. A one byte response to a multiple byte request means that the missing sub-fields shall be treated as 0 values.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_0aec2d3b-235a-445e-8644-c781ad1f63af" shape="rect"></a>The restriction to return only a single byte field if that was all that was offered is because the original DICOM Standard only contained one byte and older systems may not be expecting more.</p>
+               </div>
+               <p>
+                  <a id="para_b225caba-d505-417e-a5e2-a5c6dfc52bee" shape="rect"></a>The Association-acceptor, for each sub-field of the SOP Class Extended Negotiation Sub-Item offered, either accepts the Association-requestor proposal by returning the same value (1) or turns down the proposal by returning the value (0).</p>
+               <p>
+                  <a id="para_6e09af65-0227-4cc2-b210-fe2ded3bb77f" shape="rect"></a>If the SOP Class Extended Negotiation Sub-Item is not returned by the Association-acceptor then relational-queries are not supported over the Association (default condition).</p>
+               <p>
+                  <a id="para_586d882f-fcd3-4fa8-8a60-6daa62f30852" shape="rect"></a>If the SOP Class Extended Negotiation Sub-Items do not exist in the A-ASSOCIATE indication they shall be omitted in the A-ASSOCIATE response.</p>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.5.1.1.1" shape="rect"></a>C.5.1.1.1 SOP Class Extended Negotiation Sub-Item Structure (A-ASSOCIATE-RQ)</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_923b8638-d6e7-477a-82ba-dabf2bd1c145" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item consists of a sequence of mandatory fields as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. <a class="xref" href="sect_C.5.html#table_C.5-1" title="Table C.5-1. SOP Class Extended Negotiation Sub-Item (Service-Class-Application-Information Field) - A-ASSOCIATE-RQ" shape="rect">Table C.5-1</a> defines the Service-class-application-information field for DICOM Query/Retrieve SOP Classes and Specialized DICOM Query/Retrieve SOP Classes that include the C-FIND operation.
+                            This field may be either one or more bytes in length (i.e., item bytes 2 through 7 are optional).</p>
+                  <div class="table">
+                     <a id="table_C.5-1" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table C.5-1. SOP Class Extended Negotiation Sub-Item (Service-Class-Application-Information Field) - A-ASSOCIATE-RQ</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ac113bc3-cc4e-493c-a1d0-ccf4d38343d7" shape="rect"></a>Item Bytes</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c61a8795-3695-4341-bf8a-32132ff136ce" shape="rect"></a>Field Name</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_14595477-4c5b-42bf-967d-a26dcaccbe62" shape="rect"></a>Description of Field</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_65fda516-4712-4691-95c2-80f1f15c191e" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c1847527-a519-4349-abc8-e811507283e0" shape="rect"></a>Relational-queries</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_30ea0d8e-6b79-48eb-ab1b-b6e3ccd930af" shape="rect"></a>This byte field defines relational-query support by the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_346307d1-e40a-4c11-9471-4338dc3f1e19" shape="rect"></a>0 - relational-queries not supported</p>
+                                        <p>
+                                       <a id="para_831a2a22-94e7-44fc-aba0-04d07c6e3530" shape="rect"></a>1 - relational-queries supported</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ac0516f1-8e97-4ade-bfcb-97eed3330aef" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_be1a9208-6503-4891-8af9-a9e659d790d7" shape="rect"></a>Date-time matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_600760c1-237b-4fbf-b4c1-7a4a8c0b00e4" shape="rect"></a>This byte field defines whether or not combined date and time Attribute Range Matching is requested by the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_dc42ec90-f649-4166-9973-ef185d76b3b8" shape="rect"></a>0 - combined matching not requested</p>
+                                        <p>
+                                       <a id="para_43b3ab13-a426-4bd4-97c0-73ed368c9fe8" shape="rect"></a>1 - combined matching requested</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_40040719-13a6-4961-b996-05cc07014205" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_8d17221e-3b66-4d7f-b0ed-d13b01f55648" shape="rect"></a>Fuzzy semantic matching of person names</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c37c4d84-a0d0-4141-8915-af9088289d60" shape="rect"></a>This byte field defines whether or not fuzzy semantic person name Attribute matching is requested by the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_3f66bcf7-65f6-450d-bb74-b9dab43deda1" shape="rect"></a>0 - fuzzy semantic matching not requested</p>
+                                        <p>
+                                       <a id="para_10ac4d0b-722b-4d9d-af7b-fe5bc6934d7d" shape="rect"></a>1 - fuzzy semantic matching requested</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_83b696c3-2b2c-4ea8-be70-7f9ff95819fb" shape="rect"></a>4</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2e97ea32-4c32-4671-91ae-21a3165a78f9" shape="rect"></a>Timezone query adjustment</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9b471eda-8269-42eb-9c3b-cdaa06740764" shape="rect"></a>This byte field defines whether or not the Attribute Timezone Offset From UTC (0008,0201) shall be used to adjust the query meaning for time and datetime fields in queries. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_8618dd10-aebd-4532-b1f5-0ba81f25bbbb" shape="rect"></a>0 - Timezone query adjustment not requested</p>
+                                        <p>
+                                       <a id="para_305ebffa-6c63-42cd-9d8c-eb286bb0757c" shape="rect"></a>1 - Timezone query adjustment requested</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_bedb333a-b49b-44f2-b3bd-654a84d0186a" shape="rect"></a>5</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6537bb4a-0e10-474d-b84f-dd6b22081901" shape="rect"></a>Enhanced Multi-Frame Image Conversion</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_fc035cc3-404d-47a0-9c10-48257631d3d6" shape="rect"></a>This byte field defines whether or not the Attribute Query/Retrieve View (0008,0053) shall be used to adjust the view returned in queries to consider conversion to or from Enhanced Multi-Frame Images. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_38e7d53d-cfef-446f-aa03-a52779c50e8d" shape="rect"></a>0 - Query/Retrieve View not supported</p>
+                                        <p>
+                                       <a id="para_1fcaa52d-37a9-49bb-bcff-6b27c028ee7f" shape="rect"></a>1 - Query/Retrieve View supported</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_6b285017-7baf-4645-b96c-2567cc621d44" shape="rect"></a>6</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_237058d6-bce1-4ebc-b6e7-3af146ad8456" shape="rect"></a>Empty Value Matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c5198ebb-bab8-46a9-884a-ac52825184b0" shape="rect"></a>This byte field defines whether or not Empty Value Matching support is requested by the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_e5f57778-ab03-4024-91c8-1f81a65e6ad0" shape="rect"></a>0 - Empty Value Matching not requested</p>
+                                        <p>
+                                       <a id="para_387d1627-e581-4b6e-a915-1844a242b6d8" shape="rect"></a>1 - Empty Value Matching requested</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_cdce495d-67dc-4d89-9d36-bd98d9cc8ea7" shape="rect"></a>7</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4ed5fd3f-176d-4d33-aa74-f96af784a674" shape="rect"></a>Multiple Value Matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7995a624-a434-420c-b5c5-65543abb21df" shape="rect"></a>This byte field defines whether or not Multiple Value Matching support is requested by the Association-requestor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_58332150-5974-4d9b-829c-f81711cc71bb" shape="rect"></a>0 - Multiple Value Matching not requested</p>
+                                        <p>
+                                       <a id="para_c0345ad0-b4d7-44fb-98dd-19a81f4dbce2" shape="rect"></a>1 - Multiple Value Matching requested</p>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+               </div>
+               <div class="section">
+                  <div class="titlepage">
+                     <div>
+                        <div>
+                           <h5 class="title">
+                              <a id="sect_C.5.1.1.2" shape="rect"></a>C.5.1.1.2 SOP Class Extended Negotiation Sub-Item Structure (A-ASSOCIATE-AC)</h5>
+                        </div>
+                     </div>
+                  </div>
+                  <p>
+                     <a id="para_605c2b2e-c146-4136-8b00-ef9521b3419b" shape="rect"></a>The SOP Class Extended Negotiation Sub-Item is made of a sequence of mandatory fields as defined by <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>. <a class="xref" href="sect_C.5.html#table_C.5-2" title="Table C.5-2. SOP Class Extended Negotiation Sub-Item (Service-Class-Application-Information Field) - A-ASSOCIATE-AC" shape="rect">Table C.5-2</a> defines the Service-class-application-information field for DICOM Query/Retrieve SOP Classes and Specialized DICOM Query/Retrieve SOP Classes that include the C-FIND operation.
+                            This field may be either one or more bytes in length (i.e., item bytes 2 through 7 are optional).</p>
+                  <div class="table">
+                     <a id="table_C.5-2" shape="rect"></a>
+                     <p class="title">
+                        <strong>Table C.5-2. SOP Class Extended Negotiation Sub-Item (Service-Class-Application-Information Field) - A-ASSOCIATE-AC</strong>
+                     </p>
+                     <div class="table-contents">
+                        <table frame="box" rules="all">
+                           <thead>
+                              <tr valign="top">
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ab30bf40-e4f7-4f86-98b7-57506655c6c2" shape="rect"></a>Item Bytes</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_3ba5bfed-6e22-42ee-828b-54938c45cf1e" shape="rect"></a>Field Name</p>
+                                    </th>
+                                 <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7c129b65-74c5-4f9b-9392-e61dd19fd90d" shape="rect"></a>Description of Field</p>
+                                    </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_c0918f39-9152-4d31-a9a7-b6ebda23448b" shape="rect"></a>1</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_62b7163c-6455-4fd6-8a24-73dab6cff373" shape="rect"></a>Relational-queries</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2e06b409-5336-4cbe-9d5e-4179cb59a236" shape="rect"></a>This byte field defines relational-query support for the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_7d6b34ca-fb28-42b2-b255-a71c68dfb12c" shape="rect"></a>0 - relational-queries not supported</p>
+                                        <p>
+                                       <a id="para_46d69ae0-87b8-4e0d-9b92-3443378abd43" shape="rect"></a>1 - relational-queries supported</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_52d5f934-9a31-41fa-ab44-8acc79cd7504" shape="rect"></a>2</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_4b6fdb09-73f8-4f30-b69a-efeb16f22497" shape="rect"></a>Date-time matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_b5ca11de-5318-42ac-b36f-8b2f51a5c664" shape="rect"></a>This byte field defines whether or not combined date and time Attribute Range Matching will be performed by the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_c5ef5f07-88fa-485d-a75e-697a85415f9a" shape="rect"></a>0 - combined matching not performed</p>
+                                        <p>
+                                       <a id="para_edcd1ee4-eced-4aed-917c-219d62147bae" shape="rect"></a>1 - combined matching performed</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d9c0c734-6d21-45c1-855f-43e69955ceea" shape="rect"></a>3</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_080d85c9-2a3d-46dc-8d6a-6f96c87ce479" shape="rect"></a>Fuzzy semantic matching of person names</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ab52af31-eef7-4a88-8b33-527c232332d7" shape="rect"></a>This byte field defines whether or not fuzzy semantic person name Attribute matching will be performed by the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_2b1eb7ad-d305-4b2e-9353-30fa03c0da1a" shape="rect"></a>0 - fuzzy semantic matching not performed</p>
+                                        <p>
+                                       <a id="para_09361b2c-0e5e-44e5-bd79-5546e46e6291" shape="rect"></a>1 - fuzzy semantic matching performed</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_dae0b176-b4e6-4db2-b831-af998a961772" shape="rect"></a>4</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_d7f58f0b-3be2-4c0f-8658-d7469e6575c5" shape="rect"></a>Timezone query adjustment</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_9be3ed98-aa1d-468d-8ce7-ea6f5b3ea392" shape="rect"></a>This byte field defines whether or not the Attribute Timezone Offset From UTC (0008,0201) shall be used to adjust the query meaning for time and datetime fields in queries. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_25772e37-0c84-4ea8-bf15-dc1b31191e4d" shape="rect"></a>0 - Timezone adjustment of queries not performed</p>
+                                        <p>
+                                       <a id="para_60fa6366-41f3-4dfa-be73-d1b3f73ba023" shape="rect"></a>1 - Timezone adjustment of queries performed</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_7d68a755-be29-4f23-ad2f-60d336080256" shape="rect"></a>5</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_2a65968f-b29e-43bd-bcb4-e43654e76b85" shape="rect"></a>Enhanced Multi-Frame Image Conversion</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_ba9534e4-bd56-4444-9af5-0faac461c692" shape="rect"></a>This byte field defines whether or not the Attribute Query/Retrieve View (0008,0053) shall be used to adjust the view returned in queries to consider conversion to or from Enhanced Multi-Frame Images. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_c0f179e1-1c27-4df7-b4fa-cc6cde752284" shape="rect"></a>0 - Query/Retrieve View not supported</p>
+                                        <p>
+                                       <a id="para_139655bc-e371-4b8e-8963-cf5f27b5a56e" shape="rect"></a>1 - Query/Retrieve View supported</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_1be316b6-73a5-40d5-8ac9-382730a506e2" shape="rect"></a>6</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_74f5808d-aac2-4c69-b7ff-a7376910e36e" shape="rect"></a>Empty Value Matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_a7395263-f559-4b95-b1b5-aed9195785c6" shape="rect"></a>This byte field defines Empty Value Matching support by the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_5833b50c-1629-4c48-ba95-bec39d2fb0b5" shape="rect"></a>0 - Empty Value Matching not supported</p>
+                                        <p>
+                                       <a id="para_e40c5a89-ae06-4266-aad0-f4b55e984c97" shape="rect"></a>1 - Empty Value Matching supported</p>
+                                    </td>
+                              </tr>
+                              <tr valign="top">
+                                 <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_50349f68-608c-4bf0-a513-9fc4c241e9df" shape="rect"></a>7</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_f713f54e-6cff-4bd0-8382-5f554dc33e75" shape="rect"></a>Multiple Value Matching</p>
+                                    </td>
+                                 <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                       <a id="para_502b34c7-6f31-478a-8d86-4c9e1c8144a5" shape="rect"></a>This byte field defines Multiple Value Matching support by the Association-acceptor. It shall be encoded as an unsigned binary integer and shall use one of the following values</p>
+                                        <p>
+                                       <a id="para_ffe0f640-8784-4015-acb4-eca3e8bc7461" shape="rect"></a>0 - Multiple Value Matching not supported</p>
+                                        <p>
+                                       <a id="para_ff1e5fe6-884b-4474-9df0-84eaa0ab30b1" shape="rect"></a>1 - Multiple Value Matching supported</p>
+                                    </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <br class="table-break" clear="none" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.4.3.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_C.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.5.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.4.3.3.2 Extended Behavior of SCP </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.5.2 Association Negotiation for C-MOVE SOP Classes</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

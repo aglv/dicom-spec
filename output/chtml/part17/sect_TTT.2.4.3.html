@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>TTT.2.4.3 Encoding Details</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_TTT.2.4.html" title="TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance" />
+      <link rel="prev" href="sect_TTT.2.4.2.html" title="TTT.2.4.2 Encoding Outline" />
+      <link rel="next" href="sect_TTT.2.4.3.2.html" title="TTT.2.4.3.2 X-Ray 3D Angiographic Image IOD" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">TTT.2.4.3 Encoding Details <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_TTT.2.4.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TTT.2.4.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">TTT.2.4 Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.4.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_TTT.html" shape="rect">X-Ray 3D Angiographic Image Encoding Examples (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_TTT.2.html" shape="rect">Application Cases</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_TTT.2.4.html" shape="rect">Case #4: Multiple Rotations, One Or More 2D Instances, One Reconstruction, One X-Ray 3D Instance</a>
+         </span> &gt; <span class="breadcrumb-node">Encoding Details</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_TTT.2.4.3" shape="rect"></a>TTT.2.4.3 Encoding Details</h4>
+               </div>
+            </div>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_TTT.2.4.3.1" shape="rect"></a>TTT.2.4.3.1 2D X-Ray Angiographic Image IOD</h5>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_89e8f5f6-2cf1-4a58-8d50-18388a52086f" shape="rect"></a>This scenario is based on the encoding of the different rotations in one or more 2D instance(s), which can be encoded either as X-Ray Angiography or Enhanced XA Images.</p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_TTT.2.4.3.1.1" shape="rect"></a>TTT.2.4.3.1.1 Frame of Reference Module Recommendations</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_8ba9badb-48f3-4f73-b637-156415b4ded7" shape="rect"></a>In the case of multiple source 2D Instances, the acquisition equipment assumes that the patient has not moved between the different rotations. This module encodes the same FoR UID in all the rotations, identifying a common spatial relationship between them, thus allowing the 3D reconstruction to use the projections of all the rotations to perform a single volume reconstruction.</p>
+               <p>
+                  <a id="para_39ea4291-1b97-48cf-84ff-de7b35ad9fd8" shape="rect"></a>If the source 2D Instances do not provide a value of FoR UID, it has to be created for the reconstructed volume.</p>
+               <div class="table">
+                  <a id="table_TTT.2.4-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table TTT.2.4-1. Frame of Reference Module Recommendations</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_83892fb2-6576-43c8-94cc-8210ae1412af" shape="rect"></a>Attribute Name</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4a309b5c-3f1a-42c6-a1cc-7ea677335b6e" shape="rect"></a>Tag</p>
+                                        </th>
+                              <th align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4947535f-2bf0-48e5-a725-5bf08a28303e" shape="rect"></a>Recommendation</p>
+                                        </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8a428fa8-de3e-4566-8093-12a57d188163" shape="rect"></a>Frame of Reference UID</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_47f04c46-b5b1-4cde-950e-25a3f7d81f67" shape="rect"></a>(0020,0052)</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8f84cdc3-ee41-46f9-bbb4-30742a0b9201" shape="rect"></a>All XA Images or Enhanced XA Images created from the rotational acquisitions share the same spatial relationship.</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4f866286-6194-4943-b919-8d2ad96ebf79" shape="rect"></a>Position Reference Indicator</p>
+                                        </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_4e165aef-e8f4-47ee-9369-43dbb061bd8e" shape="rect"></a>(0020,1040)</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_60a5a63d-41db-4eac-b9d7-c6b9f14e8982" shape="rect"></a>No recommendation to set a value, unless a system is capable to derive such information from the anatomy or has a mandatory user interface to enter such information.</p>
+                                        </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_9b0bd2f9-82df-49ff-9ffa-2daa63d5e7fc" shape="rect"></a>The case where all the source 2D Instances have the same FoR UID is the "lucky" case. If no FoR UID value is provided in the 2D Instances, or if the FoR UIDs are different, there should be an additional 2D registration step before performing the 3D reconstruction.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_TTT.2.4.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_TTT.2.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_TTT.2.4.3.2.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">TTT.2.4.2 Encoding Outline </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> TTT.2.4.3.2 X-Ray 3D Angiographic Image IOD</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

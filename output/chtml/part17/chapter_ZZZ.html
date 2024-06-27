@@ -1,0 +1,2028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>ZZZ Content Assessment (Informative)</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="PS3.17.html" title="PS3.17" />
+      <link rel="prev" href="chapter_YYY.html" title="YYY Preclinical Small Animal Imaging Acquisition Context (Informative)" />
+      <link rel="next" href="chapter_AAAA.html" title="AAAA Protocol Storage Examples and Concepts (Informative)" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">ZZZ Content Assessment (Informative) <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_ZZZ.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_YYY.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1"> </th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_AAAA.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-node">Content Assessment (Informative)</span>
+      </div>
+      <div class="chapter">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h1 class="title">
+                     <a id="chapter_ZZZ" shape="rect"></a>ZZZ Content Assessment (Informative)</h1>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_293b19db-748e-46fe-bd72-774346d6d57b" shape="rect"></a>The following use cases exemplify the use of Content Assessment Results IOD.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title" style="clear: both">
+                        <a id="sect_ZZZ.1" shape="rect"></a>ZZZ.1 RT Plan Treatment Assessment Use Case</h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_503da80f-8c92-4ed8-ac70-618afd58a216" shape="rect"></a>A RT Plan SOP Instance is sent from a Treatment Planning System (TPS) to a Quality Assurance (QA) Application and to the Treatment Management System (TMS). The TMS de-composes the content for internal storage. At the time of treatment the TMS re-composes the Instance and sends it to the operator console of the linear accelerator. However, during re-composition an error occurs and one jaw specification is omitted from the recomposed Instance and the Beam Dose in the Fraction Scheme Module is set to 0.0.</p>
+            <p>
+               <a id="para_bbb64ddc-9524-4240-a55b-9cfe17ceb861" shape="rect"></a>The operator console requests the QA Application to perform an assessment to compare the copy of the Instance received from the operator console with the copy of the Instance received earlier from the TPS. The QA Application retrieves the Instance from the operator console. The QA Application also performs an assessment by re-calculation of the dosimetric parameters in the assessed plan. Although the Beam Meterset in the assessed plan (from the operator console) is the same as the Beam Meterset in the comparison plan (from the TPS) , the Beam Meterset re-calculated by the QA Application is different due to the missing jaw. Further on it is detected, that all Beam Dose values have the value 0.0.</p>
+            <p>
+               <a id="para_cae28e40-feb1-4eae-bd13-9f7721aae3ab" shape="rect"></a>Beam Meterset for the current treatment device in this example is expressed in Monitor Units.</p>
+            <div class="table">
+               <a id="table_ZZZ.1-1" shape="rect"></a>
+               <p class="title">
+                  <strong>Table ZZZ.1-1. Content Assessment Results Module Example of a RT Plan Treatment Assessment</strong>
+               </p>
+               <div class="table-contents">
+                  <table frame="box" rules="all">
+                     <thead>
+                        <tr valign="top">
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5806e524-2ccd-4041-80ce-8ce84c804454" shape="rect"></a>Nesting</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_78625a96-42dc-4c4c-a5d2-5978f4ddd79b" shape="rect"></a>Attribute Name</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_985ec34e-f5ad-4809-8533-b76b3c6a44b3" shape="rect"></a>Tag</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e806542e-e18d-4a01-9f4c-c939b3b38db1" shape="rect"></a>VR</p>
+                           </th>
+                           <th align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_07ea0c8f-9620-443e-b03e-804f2b18c5d5" shape="rect"></a>Value</p>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1d904056-2a50-437c-88c3-cc0215e04b88" shape="rect"></a>Assessment Label</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_09de03f5-54ef-4fe9-b7cf-76a47a211722" shape="rect"></a>(0082,0023)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f431f18b-ead0-483f-b506-96a00a43bf94" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_16ee41a9-b85a-4c4c-97f9-83d127766774" shape="rect"></a>Pre-Treatment Assessment of Fraction 7</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_40922b38-68c9-4351-b8bb-65696642250f" shape="rect"></a>Assessment Type Code Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0c3122a0-b9e6-42ef-bf57-dbf6f620de83" shape="rect"></a>(0082,0021)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_874cc78a-778a-4b62-aa80-0e13116a570f" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_979e3f72-60cb-4df8-a618-17a8ce470c99" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_626d2081-665f-4fa3-83b3-d9bd58c7af7a" shape="rect"></a>&gt;Code Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c9f55d68-fe53-48ca-891a-3e054b8e777d" shape="rect"></a>(0008,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_53c28074-9aa2-4bb9-8842-605b9719aef2" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8e415825-4eb9-4094-8ea4-d79e8663c21b" shape="rect"></a>121373</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e6701d31-69cc-4779-b585-335df53a2d0f" shape="rect"></a>&gt;Coding Scheme Designator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c9e69d61-00d4-47cb-965e-4117d9fe7fa7" shape="rect"></a>(0008,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ca632f32-8f8a-4894-ba7f-65c9de0e9c0f" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_97938e89-aa1f-494e-ba4d-3dc5ae6af85f" shape="rect"></a>DCM</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5b8503f1-f2aa-40ac-9240-e34c3915ced2" shape="rect"></a>&gt;Code Meaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5b3d8702-89fd-427a-a24b-00efdee86f12" shape="rect"></a>(0008,0104)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_80b1a475-de55-41c2-a7df-d46de614d13f" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fb8c3c89-8610-48d0-b12f-388bfc2044e8" shape="rect"></a>RT Pre-Treatment Consistency Check</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a0937f5-a92d-4a0f-9000-0b39bc16228e" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4d61e70d-a91c-4191-94f5-bfea822ba82d" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ecede018-cb1c-439e-9f0b-0143a48ae098" shape="rect"></a>(Assessment Type Code Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_95ad370f-1d5c-428c-a5a7-5c4d0d63b22d" shape="rect"></a>Assessment Set ID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e309282f-8e00-4f95-a944-988e1bea6d91" shape="rect"></a>(0082,0016)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1e2898ff-d1eb-4ebc-8bab-71176934b6d4" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3aabffdc-f706-4c55-8e99-a1728957d648" shape="rect"></a>ID12345</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_22372c93-8d3c-40d0-8e78-1e8f087ea96b" shape="rect"></a>Assessment Requester Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a11428d9-3d39-494b-8f74-f778995b9499" shape="rect"></a>(0082,0017)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b54c6117-c815-42bb-ae51-0da241c4b03c" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fea8512b-c21b-414c-b68a-bbb61625872a" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a5872afe-a90f-475f-8e6f-135d38c04aca" shape="rect"></a>&gt;Observer Type</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c5c93f7c-c622-4c0d-bf23-df821ccce366" shape="rect"></a>(0040,A084)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9f924ed9-a633-4112-a530-9d5edad5e4df" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4a88e42b-f72c-45c3-aab5-160a8da993c4" shape="rect"></a>DEV</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c6d7f93e-bee0-4931-a43e-e9c2340c0ad9" shape="rect"></a>&gt;Station Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d30c9586-0fba-4b66-94a3-c72df6232bf1" shape="rect"></a>(0008,1010)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_94151b32-0dbf-412b-ad9f-b5cae6e13421" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_54f473af-6820-4bbb-ae09-35c18588071d" shape="rect"></a>CONSOLE 1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_37330ba2-e0c0-4997-846d-99f7a5f3e8df" shape="rect"></a>&gt;Device UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0c6c76d4-f47b-48a6-8742-28a33dd9dda1" shape="rect"></a>(0018,1002)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_99ef2ae8-27fa-4b50-b183-6e209f7b26c9" shape="rect"></a>UI</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_22215364-f09e-4855-aaa4-fa06fa9d8a5e" shape="rect"></a>1.2.3.4.5.6.7.8.9.10</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f468993b-add8-49b8-b919-ea01c0c21f60" shape="rect"></a>&gt;Manufacturer</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7bae84cf-276e-4b2c-9798-252810ac968a" shape="rect"></a>(0008,0070)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dc41f6d4-e45a-441e-b36a-f3d002d2e8af" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d0393c74-f8f4-4609-84b6-6a1936a7c9ad" shape="rect"></a>Fancy Linac Inc.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_90d58e84-ab44-423c-9b60-781bddcded2b" shape="rect"></a>&gt;Manufacturer's Model Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_89293912-ee0d-4b11-9341-827639e7cace" shape="rect"></a>(0008,1090)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a033957b-74b2-4df3-b324-5c8334d93d31" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f2df2aa6-4457-4ed8-848a-f18d8f1897e8" shape="rect"></a>Linear Accelerator Console</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a4168dd9-b530-4e11-8c10-326156eee542" shape="rect"></a>&gt;Institution Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3603b459-fb44-4431-9163-feff72867a1c" shape="rect"></a>(0008,0080)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_56705058-fa12-4282-9f81-e5abda26af00" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bd7192c0-48b1-4f86-a22a-b6ad764b7ace" shape="rect"></a>RT Clinic 1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ce785f99-feaa-42f2-8280-6f146af65ff2" shape="rect"></a>&gt;Institution Code Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_987dbfab-7cdc-4288-b23b-67bfd06bb949" shape="rect"></a>(0008,0082)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b5394a2c-5afa-4b5a-99f6-1d6a7bfd96b9" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_90bd0836-02ae-4950-8429-3168ed8ccdde" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d031c2c0-2dbd-40bf-9194-3034eb5bede6" shape="rect"></a>&gt;&gt;Code Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f1e6289f-d33b-484c-897d-216d703b20c6" shape="rect"></a>(0080,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c4aa7256-f1d8-43cc-85a6-89488db1eb09" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_697d8671-2b70-433b-8f90-c1b160f36667" shape="rect"></a>Clinic1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e76479f1-c5ec-4ed9-b91d-89e087ce8213" shape="rect"></a>&gt;&gt;Coding Scheme Designator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d91dd4a7-6eaa-474d-a946-4836097a4e3e" shape="rect"></a>(0008,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a99656ba-bbdf-45ba-90d9-6b41bdb79f33" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f1636d1b-7295-417c-81b1-94ba6056e4f0" shape="rect"></a>99MyCounty</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_344c069e-099e-4bef-9d8e-8c3c97f0e93c" shape="rect"></a>&gt;&gt;Code Meaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0e69260c-cb34-41ff-aecd-0c381655158e" shape="rect"></a>(0008,0104)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_de84e386-21a3-480f-a0cc-261fce96abf3" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_760a9687-4917-4067-91ae-270fd20976e5" shape="rect"></a>RT Clinic 1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_37612f5a-581b-4fd2-9233-78032edae288" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5b24a8d2-e8ca-48c4-94eb-6d1b08ac456d" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dfe51c40-08dd-47d5-aa47-d6f69364dd63" shape="rect"></a>(&gt;Institution Code Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_035123de-f3e3-46bb-9685-fac0775d5ff0" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ff3c5c2e-0826-4fb9-adba-cc3634f75be5" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6c80ad13-8955-40aa-a66c-b05ea7e4e8c2" shape="rect"></a>(Assessment Requester Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_63db8fcd-c624-4dfc-a767-a010aede3af2" shape="rect"></a>Assessed SOP Instance Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0124978a-73d9-4301-928a-9fc22a454a96" shape="rect"></a>(0082,0004)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_53d0c417-9583-45c4-833f-ae3a50c17816" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_418d87ec-ceea-488f-a06c-bed94af646d8" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6e7d37b5-3e7d-4277-b682-bcaca5698c84" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ac92295f-7548-41c4-8f9c-ae9b116f95de" shape="rect"></a>(0008,1150)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ed1fc0df-8065-4669-a0c8-5dfc82cbcdb7" shape="rect"></a>UI</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5bfb691b-bb65-4ab0-8998-9d16fdc1592c" shape="rect"></a>1.2.840.10008.5.1.4.1.1.481.5 (RT Plan Storage)</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f001d632-6196-4908-ae67-2a000f14c719" shape="rect"></a>&gt;Referenced SOP Instance UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c61f3b76-ba8c-4078-9fdb-31747c793a3a" shape="rect"></a>(0008,1155)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e9839a08-2019-4cd7-8316-020acc9c6e70" shape="rect"></a>UI</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_73aebed5-2d9e-4c70-8c6a-3b2976a16d14" shape="rect"></a>1.2.3.4.5.300</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_deb758e8-4f90-42aa-b6e7-b9949c99a19f" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f06c4c0b-2cc7-45dc-bc80-97743a24d357" shape="rect"></a>&gt;Referenced Comparison SOP Instance Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bc637612-39e3-4736-a7f3-293f6918bd38" shape="rect"></a>(0082,0005)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_acb4c2bd-bc0c-41c7-b6cd-4b17dbcdc988" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3f437c2b-5e12-4132-8dfa-5fdcabf721f9" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9c8330a4-ef7e-4f18-908c-8b9948007e28" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_31757dcd-655b-43f2-83d3-d59c4bd54d04" shape="rect"></a>(0008,1150)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ab2f81a9-662b-4dae-9541-90c074f0a497" shape="rect"></a>UI</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e60e70f4-8db4-4e35-b705-4fe6d4193b7c" shape="rect"></a>1.2.840.10008.5.1.4.1.1.481.5 (RT Plan Storage)</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a8e712a2-4e5c-4acc-ae6c-214839691936" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_af294915-eab2-4660-b71b-a783715fd069" shape="rect"></a>(0008,1155)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4e2f3d4e-573d-4244-8af5-fc149b9b2021" shape="rect"></a>UI</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fb9bd10d-9fe2-4f66-80c6-dec7f70df282" shape="rect"></a>1.2.3.4.5.300</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_31113650-13a3-4aaa-a858-c7d44eb7293d" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fc6b7d63-168e-45e6-86db-1b016180d973" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f7314748-8de9-4775-9106-7384608d6680" shape="rect"></a>(&gt;Referenced Comparison SOP Instance Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_74fe225b-2616-47fd-ac44-36660374f3ab" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_26f031a4-bd56-4aae-be22-4a6efaee304c" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e7b80907-1461-4b83-a0e7-202c3bab7242" shape="rect"></a>(Assessed SOP Instance Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9f40c8c3-6315-456c-bdb2-f877e0ee3396" shape="rect"></a>Assessment Summary</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a37eadd6-a252-4e46-a8fa-9ced5eedc36d" shape="rect"></a>(0082,0001)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fc237d4a-a972-407d-a4d3-3eac26c06bef" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_237441cf-cdbb-4258-95eb-06d89691c2aa" shape="rect"></a>FAILED</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_10502d74-615c-40c0-9607-ca0496708562" shape="rect"></a>Assessment Summary Description</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c84f97de-f66d-41d2-b26f-0aeb968ff913" shape="rect"></a>(0082,0003)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4efa78d4-7198-43b6-b09b-ba40c2edaf82" shape="rect"></a>UT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_81af7f2b-b62c-4e6b-a14a-cf019d484a21" shape="rect"></a>Plan Checker result: Failed!</p>
+                              <p>
+                                 <a id="para_1aa5843f-66fb-42d3-b2d2-e220924fb2e4" shape="rect"></a>The assessed RT Plan does not match the reference RT Plan it is compared to. One or more relevant Attributes are not equal. Monitor Unit values and Beam Doses have unreasonable values.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fc69e1dd-7038-478d-86fd-b6e81ce710d0" shape="rect"></a>Number of Assessment Observations</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1f626c00-9bde-4946-b5dc-9fd21f8484d3" shape="rect"></a>(0082,0006)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cf5b8f5b-0e26-4a6a-a5c7-f2a3b37b652c" shape="rect"></a>UL</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2a3be072-de80-42e8-b579-8c87d4ae4082" shape="rect"></a>3</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6f84d6dc-1bb8-4372-8cda-7eb94e10b394" shape="rect"></a>Assessment Observations Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c1c99dfc-8b7b-47dd-ae4c-acdfd83d80b5" shape="rect"></a>(0082,0007)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aaa5f322-fe3d-4d22-b126-60ecc02a51eb" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23a44ad7-131a-43e4-a7d9-3113827204a4" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_93f1acfc-74d5-49bc-a5bc-b3c81fc15329" shape="rect"></a>&gt;Observation Significance</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d420144f-f888-40d2-be4b-343e3c964268" shape="rect"></a>(0082,0008)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d446fd74-dbe9-422a-a27d-9a17dcd180cb" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_547422b5-6e71-4d70-9303-25a32e3d1ecd" shape="rect"></a>MAJOR</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a8d8605d-33b5-4eec-827c-a0c25d9d3284" shape="rect"></a>&gt;Observation Basis Code Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_90bdd442-ab5c-434d-baa6-8f2584b91704" shape="rect"></a>(0082,0022)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5cad3533-1041-4258-b6e9-0ae26edebddc" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6e417c33-62d8-4567-bc0a-95968be51e91" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_138c5bce-51f3-4e91-8664-34e4401a68ae" shape="rect"></a>&gt;&gt;Code Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_de74985f-252a-4baa-ad01-fca37281ee41" shape="rect"></a>(0008,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ba419767-7a7b-4df8-960c-e2cd00831596" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_843415e1-062f-4037-a9ac-4bae486ac987" shape="rect"></a>121375</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f815e9e5-d4ce-47ab-ad2b-cfdc28e8875a" shape="rect"></a>&gt;&gt;Coding Scheme Designator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6a8acec7-f0df-4d79-aeef-89e995dd9831" shape="rect"></a>(0008,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3dfe4d1e-5b5b-4c35-b36d-f1de10292d61" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_729a983a-4e28-49d0-9006-e6006cbb5cbb" shape="rect"></a>DCM</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c13e6627-0eb1-43e9-af82-38572d10dbda" shape="rect"></a>&gt;&gt;Code Meaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3b4977b1-49aa-45cf-a145-e59112f5da43" shape="rect"></a>(0008,0104)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_83c68305-b0db-4630-b4c1-0cf98def1316" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aaf19869-cac9-4d77-9046-33c97d501a35" shape="rect"></a>Assessment By Comparison</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e2b7b4c8-76d8-47f8-889f-0ff3af0a2a12" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fb26984e-75e6-42ee-a05f-c18bdc41aead" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_31327943-3f09-4c05-b944-9070b8f1d9ce" shape="rect"></a>(&gt;Assessment Basis Code Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f163db35-fff4-45b2-8d06-131c49f025f5" shape="rect"></a>&gt;Observation Description</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ff91c0b4-d2dc-4057-8c68-bef0affd0372" shape="rect"></a>(0082,000A)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2aca70dc-d752-4a64-be60-b87a6a8d1dbb" shape="rect"></a>UT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_53a3d18b-3a47-4693-8338-8652fa11ccfc" shape="rect"></a>Attribute value of Leaf/Jaw Positions is not equal.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_824ec20e-e76c-46ce-8922-f0901ea0ac8f" shape="rect"></a>&gt;Structured Constraint Observation Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d7876ba8-37e6-46f3-ab46-9aa7fc0618f4" shape="rect"></a>(0082,000C)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d96572d4-6187-4caf-bf29-44f01d38d495" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_72975b68-2fb6-4822-ae4d-9086f21a574e" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_625baf1d-b89c-4731-804d-ee44da48c225" shape="rect"></a>&gt;&gt;Selector Attribute Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_31cce7c3-ac54-45c2-9ff0-9c7a13e9f31c" shape="rect"></a>(0082,0018)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_193b5f4e-41ac-4f3c-89a7-dcb9688849a5" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_885567db-5fba-4406-a9d1-6fd2c94ea6ad" shape="rect"></a>Leaf/Jaw Positions</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d209ac36-9c90-4458-abc1-0247ae7a35fc" shape="rect"></a>&gt;&gt;Selector Attribute VR</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5db2bc92-6b39-4ea2-8171-a2b128d97536" shape="rect"></a>(0072,0050)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f9cd36a3-c088-4c7e-a364-948f045dd074" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23a498ed-a89b-4ccd-803d-cc86f7ab78ea" shape="rect"></a>DS</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6b80303d-6415-4c1a-a93f-42304ca3b790" shape="rect"></a>&gt;&gt;Selector Attribute</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0e2dd1f6-9898-4ebb-baca-bca812e17bab" shape="rect"></a>(0072,0026)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_416db37b-bf80-4c57-b45b-3a8368877cf3" shape="rect"></a>AT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4e23f64f-9bba-46f6-95a1-9f5e06b4fcd3" shape="rect"></a>300A011C</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_72f63f54-4f12-4220-9052-60bf02c859ea" shape="rect"></a>&gt;&gt;Selector Value Number</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_dba08d50-503f-4479-b8d4-764e81867376" shape="rect"></a>(0072,0028) )</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8b80a6e1-c32b-4b83-963e-3ab43dab72c3" shape="rect"></a>US</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f22e0871-b379-4fb3-b584-5753eed63dc9" shape="rect"></a>1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f74d113b-6f2a-433e-96f3-b30f4767e82f" shape="rect"></a>&gt;&gt;Selector Sequence Pointer</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_86a67b02-86f1-450c-9cf9-98a3242f403d" shape="rect"></a>(0072,0052)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f3787315-65b0-402e-bede-606c79004980" shape="rect"></a>AT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0b97870a-e9a2-4315-81b5-50b10818ba5d" shape="rect"></a>300A00B0\300A0111\300A011A</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_508ff764-eb36-40a1-9a4f-ef056aa62e4a" shape="rect"></a>&gt;&gt;Selector Sequence Pointer Items</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_96295fcc-6152-4836-898f-7cc0d69a210c" shape="rect"></a>(0074,1057)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2323b294-3840-451d-9375-817825b3b9f6" shape="rect"></a>IS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bdcdd165-e0a6-48bc-ac3d-b113ec3f1b02" shape="rect"></a>1\2\2</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ffc3f441-2ab3-4c7b-8daf-e056aee294ab" shape="rect"></a>&gt;&gt;Constraint Type</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_29e68334-c1d2-4dbe-b907-3fe9543eb4e9" shape="rect"></a>(0082,0032)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_41b707e8-be85-4939-8623-1cb26607017f" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ab9a6fa6-eb92-4c82-bb00-232ec5d22307" shape="rect"></a>EQUAL</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_da497297-2449-44ca-800f-4fa34c2c3548" shape="rect"></a>&gt;&gt;Constraint Violation Significance</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2cb59d0c-70e3-48c1-aae6-073d1705e32f" shape="rect"></a>(0082,0036)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a2fa5cc8-9be6-4e8f-b218-cad2fa706151" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0fb5c654-84bd-4e14-bc83-f2501695a8f8" shape="rect"></a>FAILURE</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d8e7b4c9-26fa-4168-8daa-2f8957e11d10" shape="rect"></a>&gt;&gt;Constraint Value Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_44378c3c-0161-481b-9851-f8d91761f996" shape="rect"></a>(0082,0034)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5404e2dd-085c-412a-9c7f-bd0dae4ce1f5" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_45e450d9-fb60-4e28-8b85-1aa35eff5aa6" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_86154246-7035-40d4-9daa-7b78262001bd" shape="rect"></a>&gt;&gt;&gt;Selector DS Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b98f3488-3edc-4e78-aaa1-4847da9c6e3d" shape="rect"></a>(0072,0072)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cf26e939-a64c-4607-805a-bb8ba63db7af" shape="rect"></a>DS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d664a16b-4425-4ef9-a5f6-9c04d60c2974" shape="rect"></a>-75.000\75.000</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1a481b2c-8001-47b8-bb03-7c696370c1fa" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f506566a-462b-47a1-84fc-e4c5ebf04d56" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_68b3b942-599c-4582-882a-985008c46ebf" shape="rect"></a>(&gt;&gt;Constraint Value Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d2dc6015-cdb3-45f8-8ba6-36f011ec1431" shape="rect"></a>&gt;&gt;Assessed Attribute Value Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9ec6d3d8-1a71-4b8c-aea8-d5a6f1806632" shape="rect"></a>(0082,0010)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_496c77cf-d4b3-4d01-8c85-7488fa86cc68" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_327fc438-22e6-40aa-a5fa-82fcff8a7357" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_28711c0c-0ba0-467f-b939-63842531e2fe" shape="rect"></a>&gt;&gt;&gt;Selector DS Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1b2b24bb-0693-47f4-bd33-df5a9e5965bb" shape="rect"></a>(0072,0072)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_63da66b9-bb05-481a-9420-3ccdbd7cb214" shape="rect"></a>DS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ae60ece3-38e3-4eb5-9d0d-d4c2abb222f8" shape="rect"></a>-75.000</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a6c07578-f20b-49c9-9ce1-9e4d0e2263c2" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_719f336e-51dd-4f06-96f8-5d48d3b10795" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_528720dd-fb4b-423b-8987-9efa909e48ba" shape="rect"></a>(&gt;&gt;Assessed Attribute Value Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ee1e28e0-2c12-4a7d-aadb-21a570296306" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_808cf3eb-3845-4d72-abb2-b1accbdf4561" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d5f7c129-e697-4c06-b24b-93bbfb93f8de" shape="rect"></a>(&gt;Constraint Observation Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e32ff189-f9b8-47aa-90f4-09db078c8e19" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2114d6db-6658-43e6-9ce6-58be8203eba8" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3681d006-4662-4630-8a31-afe5e5461ee3" shape="rect"></a>&gt;Observation Significance</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_33d0ddd5-c6f5-418c-8b81-495438838f43" shape="rect"></a>(0082,0008)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4553540f-30fb-420e-9e15-84999bcd0ce0" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e0a71779-29f6-4132-9b8a-ae11c907adbc" shape="rect"></a>MAJOR</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_44d9ffe0-a54e-43c4-925e-91e0f3f9c28e" shape="rect"></a>&gt;Observation Basis Code Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fd774e4c-e50d-4478-9e59-d703fa293201" shape="rect"></a>(0082,0022)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_73d77c6d-cbfc-4645-827e-c30bcef31207" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_feb89c2d-6f87-42b2-8b0e-242f85d47db7" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_17d07e48-334f-493c-804e-e84ef8a31655" shape="rect"></a>&gt;&gt;Code Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_080d63d1-81ae-44e5-9f2e-2e2eb99a4cba" shape="rect"></a>(0008,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1e66a014-8119-430e-975b-dab853048c5a" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f94e141d-abc2-4963-bd28-ad061622828f" shape="rect"></a>121376</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_97b43146-8baa-4a31-ade0-27d701916fb6" shape="rect"></a>&gt;&gt;Coding Scheme Designator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0a00b965-dcab-4426-b69a-84239f75af4d" shape="rect"></a>(0008,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d4b03803-5085-40d9-8055-16d4f3e3c6cc" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_be6e407e-ad4f-493f-9974-e7d1b0ae0975" shape="rect"></a>DCM</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a2aa2b89-1af3-49c8-8323-2421ebedf91e" shape="rect"></a>&gt;&gt;Code Meaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7f078e6a-8dfe-4d2f-bc05-a6a0d139d432" shape="rect"></a>(0008,0104)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_af078c95-1e9a-4a20-8f48-45e6815bb49a" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_83613d52-0ff7-4e1d-80ca-c683697279fe" shape="rect"></a>Assessment By Quality Rules</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_24fb939e-a2a4-4b1f-bc1c-bf16a3af9b21" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3e99b687-ff1b-40f5-a86e-cbaa6e28d3b4" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_51da232f-fdfc-45a8-9af4-c8650d8bdee0" shape="rect"></a>(&gt;Assessment Basis Code Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_34cccafd-3717-4792-9115-8b8a1a9ed57a" shape="rect"></a>&gt;Observation Description</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_4dc00c5a-985d-407e-9f9e-1b4c3a69ecd8" shape="rect"></a>(0082,000A)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_16fb04a1-a597-49fb-a811-b96aa4f9ec6f" shape="rect"></a>UT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a6a10237-232e-4520-8d2e-d9acccaa7211" shape="rect"></a>Monitor Units re-calculation failed. The re-calculation of the beam meterset resulted in a different value (76MU) than the value in the assessed RT Plan. This value is outside the tolerance of reasonable differences acceptable on re-calculation.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_35536d74-f9e5-4fd1-95ab-ed22c9e2c65c" shape="rect"></a>&gt;Structured Constraint Observation Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_40731ef3-65a2-486e-8341-8fa2ed442ff8" shape="rect"></a>(0082,000C)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0958c6bc-6d3d-46d9-b1d1-32bdf1028d72" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6530e822-5c70-44ed-b864-92a352957167" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d09504cd-85ec-4820-a972-13925a4311f0" shape="rect"></a>&gt;&gt;Selector Attribute Name</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cd940377-2d22-4ea6-92c9-8c2f3ddc958e" shape="rect"></a>(0082,0018)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_09890cbf-6584-4bda-9630-d2770e2cefbb" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c65403bd-a291-4cd2-b86e-537ac3adf6d0" shape="rect"></a>Beam Meterset</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_66bdf889-d43e-46a1-b4ba-99fd0b015359" shape="rect"></a>&gt;&gt;Selector Attribute VR</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_86c9674f-8ce9-4745-9c22-8b4138c72469" shape="rect"></a>(0072,0050)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_77497fd4-97b8-454c-96ef-99a4273fd0b8" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_aa69183b-dce2-41d3-abc4-35ec077cbfeb" shape="rect"></a>DS</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_750c9282-6bd6-47cd-a520-62750f16d353" shape="rect"></a>&gt;&gt;Selector Attribute</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b87a8121-d693-4d36-b9e7-280bc2ac882b" shape="rect"></a>(0072,0026)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1f5d96b2-2c14-46e2-8189-940092a05743" shape="rect"></a>AT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_23749eef-b2a4-4a91-9f03-c9590046153c" shape="rect"></a>300A0086</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_215daece-9cfe-49e0-9f57-c2336f263487" shape="rect"></a>&gt;&gt;Selector Value Number</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_228170d4-70a5-434f-8d4a-8c7d5466c04c" shape="rect"></a>(0072,0028) )</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e8845264-bda4-4620-b0ba-8ca57045d36b" shape="rect"></a>US</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c8f714bb-79d5-44bc-8709-ce17719310b6" shape="rect"></a>1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_53939ab7-fca7-4626-9a2e-1ca7f5437c63" shape="rect"></a>&gt;&gt;Selector Sequence Pointer</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_c49336cd-529a-4721-88a1-c919b8cab4f4" shape="rect"></a>(0072,0052)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_43579068-3570-4b97-bc25-5686fdc99757" shape="rect"></a>AT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0d0d0b16-59c1-42e6-b421-82ee7413e8dc" shape="rect"></a>300A0070\300C0004</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ac6f6b3e-fb3a-4f80-a8b3-3c5440ee0a9a" shape="rect"></a>&gt;&gt;Selector Sequence Pointer Items</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b787fdaa-257d-4cb3-a1db-4212601b4a66" shape="rect"></a>(0074,1057)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_75a59825-1780-4f0d-993b-dcd3f05b6a6e" shape="rect"></a>IS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ed58c1ac-6b55-449a-8d54-8030447ed860" shape="rect"></a>1\1</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d9d05922-dd87-42fc-a55a-2d6c45cdde14" shape="rect"></a>&gt;&gt;Constraint Type</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2d09de61-b6a9-4f23-a10f-af80e01403e3" shape="rect"></a>(0082,0032)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8c94989c-cfa9-4408-925b-da6d111f2338" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3b74513c-75c2-4c4c-a5e0-580d6c745fd7" shape="rect"></a>RANGE_INCL</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_afd94771-d47b-4357-bbef-0b0c96edcf4f" shape="rect"></a>&gt;&gt;Constraint Violation Significance</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ed72b0ad-67f9-44c1-af38-d7b3762e257a" shape="rect"></a>(0082,0036)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cbec1708-cec8-4421-9ef2-0bf1f4560c92" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d2e4965c-ea8b-4a7a-ba4f-93ce299f21fe" shape="rect"></a>FAILURE</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_471cf104-61e8-4adf-8ba7-f56da9ee6f50" shape="rect"></a>&gt;&gt;Constraint Value Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b30a9430-3479-4123-9baf-fdf08b1afd2d" shape="rect"></a>(0082,0034)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6dad7405-86c5-4274-8c99-47644fc29623" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fa2017cf-53f4-4562-9d5d-743e5534b6fc" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_81dedf70-9696-4122-9c05-53f52c35d143" shape="rect"></a>&gt;&gt;&gt;Selector DS Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6423a4df-0407-45a4-893a-5e607dfe5cc3" shape="rect"></a>(0072,0072)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_127cf3ca-8b0e-424f-833d-b1aed2af45ca" shape="rect"></a>DS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cfcb9f83-708e-41cc-b85d-386781e95115" shape="rect"></a>68</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ed2485fc-643a-4909-a602-f403cdc89a44" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_529972aa-d5c0-4f2e-b354-1539dc1f5fbc" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f570af04-f18b-47cb-bfe0-55d0220ad3c2" shape="rect"></a>&gt;&gt;&gt;Selector DS Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_7317d779-b476-4d3e-acb1-9bfab7d5b342" shape="rect"></a>(0072,0072)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a20c843f-78d0-4ad5-bb26-8c9a48c4cd5d" shape="rect"></a>DS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_28c10ba7-d4b5-4ac2-a2e5-ef16234fcbd0" shape="rect"></a>84</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_0304c599-1de1-4883-8473-9e01f9959d6f" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9976717c-d8d0-4ed4-87d8-9efa98b4cdc4" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_b12eaf7c-715c-45f0-bbe4-d96b9c8d6a14" shape="rect"></a>(&gt;&gt;Constraint Value Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_bb595798-fdd7-4fc9-8f13-156373e8f551" shape="rect"></a>&gt;&gt;Assessed Attribute Value Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_647e6026-316d-48ba-a6eb-cdbd48301b33" shape="rect"></a>(0082,0010)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1d947281-b029-40df-bb41-b2608215b407" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d70fb9d1-2c7d-4ca1-aaff-ff2967f62f4e" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_3436b109-c86e-4139-aa2e-d681ef9215e1" shape="rect"></a>&gt;&gt;&gt;Selector DS Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_9ee5a309-64ef-442d-af86-d448776befc3" shape="rect"></a>(0072,0072)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a19c4a3c-dc3f-40ce-bb41-0e16a709bf03" shape="rect"></a>DS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2f80e421-4bc3-4a3b-8c38-2bdaf6ddca62" shape="rect"></a>108</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f6e5a4c6-dbec-40f4-99f0-39f5052e4159" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8c98bf5e-0d0a-4179-84c0-2817b221d0d1" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ddaf5434-be5e-493c-8945-1c230bff2feb" shape="rect"></a>(&gt;&gt;Assessed Attribute Value Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5b0abbc1-905d-473b-ade8-3cb7ffaa665c" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ca8a5fea-6b5a-4c96-bb06-4a4ad3a796fa" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_234e745d-d88b-4cba-9be4-950fb1aae844" shape="rect"></a>(&gt;Constraint Observation Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13e3c985-9adf-482b-8e54-23dd69b0761a" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_33050fc7-7388-4b3c-be7c-0bbff5ebf09f" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ccb47094-c366-4f31-b4b4-92ceb1b35263" shape="rect"></a>&gt;Observation Significance</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_fef45249-c4fc-4dbf-9dfa-7d5856cd0ac8" shape="rect"></a>(0082,0008)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a3bd57c9-fc04-4fc7-b308-b045ddb6ca26" shape="rect"></a>CS</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ea69acbe-3254-418d-b6ee-452597238482" shape="rect"></a>MODERATE</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a3103178-5d21-47f9-aae7-a31e5c9768c7" shape="rect"></a>&gt;Observation Basis Code Sequence</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1fd2365b-31b7-4be0-a4f9-8473f1ffa097" shape="rect"></a>(0082,0022)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_cb2fed98-4782-49e9-a7e6-34a0a1d33f8d" shape="rect"></a>SQ</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_45416834-8518-4f1c-9acd-15b484384722" shape="rect"></a>%item</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_21088932-0d7f-459d-8ac0-72d839c1ae2c" shape="rect"></a>&gt;&gt;Code Value</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_a0f015cc-0f97-413f-a803-9dbfaaf2ec69" shape="rect"></a>(0008,0100)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_57375404-fd93-4d45-89a9-c38d43a1dd60" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_f02e97a7-7a8e-4bd5-b532-87ab39122688" shape="rect"></a>121376</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_52d83107-1fdf-494a-9aeb-2a8ff1ea3c67" shape="rect"></a>&gt;&gt;Coding Scheme Designator</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8178704c-77ae-496c-af84-e24cbc8385d7" shape="rect"></a>(0008,0102)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8454d102-f28f-4e75-b69a-82a1d2f5cab5" shape="rect"></a>SH</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_13ef9d64-cc70-4e34-96bd-47672593e274" shape="rect"></a>DCM</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_eb8ae5c0-7b80-48ca-9b65-6ddb2bf9428f" shape="rect"></a>&gt;&gt;Code Meaning</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_87252582-317d-4827-8372-023f47c30a65" shape="rect"></a>(0008,0104)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_5f77f1b6-bc73-4f48-a0e7-fc73271bab1f" shape="rect"></a>LO</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2bd65218-c003-425d-889d-b0e62cfd4101" shape="rect"></a>Assessment By Quality Rules</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2de2c9d4-3a1f-4037-bcad-5f15100bc676" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_d18cc0c8-bddf-4c9a-b8e2-763c6d0bc234" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_6444f2cf-861e-468a-8460-458eee599ab0" shape="rect"></a>(&gt;Observation Basis Code Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ab569f28-1aad-4bec-a127-36e50123788a" shape="rect"></a>&gt;Observation Description</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_11e74482-ec27-413c-bd24-bc7e30f9e1bd" shape="rect"></a>(0082,000A)</p>
+                           </td>
+                           <td align="center" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_ecfcc089-90de-4866-9e70-a0880c39954f" shape="rect"></a>UT</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_1af33a6e-eadd-4ff0-a739-cfb0fae67b0c" shape="rect"></a>The Beam Dose value of all Beams is zero, but Beam Meterset is non-zero.</p>
+                           </td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_8bae3237-8e81-4b9b-9249-cc9b3575417e" shape="rect"></a>%enditem</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                        <tr valign="top">
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_e51f4a57-02da-4d98-8c9a-194d8c084d51" shape="rect"></a>%endsq</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1">
+                              <p>
+                                 <a id="para_2cd7a349-afbb-4874-9514-f02475c99a21" shape="rect"></a>(Assessment Observations Sequence)</p>
+                           </td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                           <td align="left" rowspan="1" colspan="1"></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <br class="table-break" clear="none" />
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="chapter_YYY.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1"> </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="chapter_AAAA.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYY Preclinical Small Animal Imaging Acquisition Context (Informative) </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> AAAA Protocol Storage Examples and Concepts (Informative)</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

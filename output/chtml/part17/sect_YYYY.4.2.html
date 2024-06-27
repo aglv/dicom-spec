@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>YYYY.4.2 Inventory Creation Service</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_YYYY.4.html" title="YYYY.4 Related Services For Inventory SOP Instances" />
+      <link rel="prev" href="sect_YYYY.4.html" title="YYYY.4 Related Services For Inventory SOP Instances" />
+      <link rel="next" href="sect_YYYY.4.3.html" title="YYYY.4.3 Separability of Services" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">YYYY.4.2 Inventory Creation Service <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_YYYY.4.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.4.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">YYYY.4 Related Services For Inventory SOP Instances</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_YYYY.html" shape="rect">Inventories (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_YYYY.4.html" shape="rect">Related Services For Inventory SOP Instances</a>
+         </span> &gt; <span class="breadcrumb-node">Inventory Creation Service</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_YYYY.4.2" shape="rect"></a>YYYY.4.2 Inventory Creation Service</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_a392fff2-6df7-4f55-83b1-682823232917" shape="rect"></a>Creation of an inventory may be initiated by a transaction of the Inventory Creation SOP Class (see <a href="../part04/sect_KK.2.html" class="olink" shape="rect">Section KK.2 “Inventory Creation SOP Class” in PS3.4</a>). The initiation action for the Inventory specifies the requested Scope of Inventory and Inventory Level. Specific warnings and errors are defined for an SCP that cannot process the requested Scope of Inventory and Inventory Level (see <a href="../part04/sect_KK.2.2.3.html" class="olink" shape="rect">Section KK.2.2.3 “Service Class Provider Behavior” in PS3.4</a>).</p>
+         <p>
+            <a id="para_2d10f552-a864-4c5f-a5e0-7effbc63576a" shape="rect"></a>The Inventory Creation SOP Class is in many ways similar to the Repository Query SOP Class (see <a class="xref" href="sect_YYYY.2.html" title="YYYY.2 Repository Query" shape="rect">Section YYYY.2</a>). In both cases, the SCU requests a list of Studies, managed by the SCP, that match Key Attribute values. However, the Repository Query operates synchronously (i.e., the query and response occur on the same Association). The SCP is expected to respond within a typical transactional timeout period, and the SCU must interactively process responses and sequentially initiate queries to continue after partial completion responses (or errors).</p>
+         <p>
+            <a id="para_3173f7b4-8476-4483-bbf9-dfb39f401d51" shape="rect"></a>In contrast, the Inventory Creation SOP Class operates asynchronously, as production of an enterprise-scale inventory of billions of objects may take considerable time (potentially many days). As an asynchronous process, multiple approaches are available to the SCP to manage the resource demands for Inventory production across a longer time scale and with non-critical priority. The results are stored in information objects that can be accessed asynchronously at the convenience of the SCU.</p>
+         <p>
+            <a id="para_fc5f4f84-f803-4dd8-9943-bb85365a357b" shape="rect"></a>The mechanisms of the Inventory Creation SOP Class are similar to those of the Storage Commitment SOP Class (see <a class="xref" href="chapter_CC.html" title="CC Storage Commitment (Informative)" shape="rect">Chapter CC</a>). The SCU sends a request for the service to the SCP in an N-ACTION message, and the SCP asynchronously reports back status or completion using an N-EVENT-REPORT message.</p>
+         <p>
+            <a id="para_443a1f98-25ca-4160-beb8-ac280aa4ffb1" shape="rect"></a>The Inventory Creation SOP Class provides for regular reports on the status of inventory creation, at an interval specified by the SCU (see <a href="../part04/sect_KK.2.2.2.html" class="olink" shape="rect">Section KK.2.2.2 “Service Class User Behavior” in PS3.4</a>). This allows the SCU to ensure that the operation has not stalled. For example, such reporting might be desired for each 5% of process progress, and for an inventory that is expected to complete in one day, status reporting could be requested for 30-minute intervals. The SOP Class also allows the SCU to request a status report update at any time.</p>
+         <p>
+            <a id="para_6402d800-7fc6-4ad5-8ff1-30d1002e59ea" shape="rect"></a>The Inventory Creation SOP Class allows production of an inventory to be paused and resumed. A pause may occur when resources necessary for Inventory production (database processing cycles, disk storage space, etc.) become temporarily unavailable, or when resource usage has reached a pre-set limit. For example, a system that allows a research application to create an Inventory might limit the initial result to some maximum number of Studies, and then pause for confirmation before proceeding. It is expected that some human intervention may be required before resuming inventory production.</p>
+         <p>
+            <a id="para_bfefe584-9781-4996-ba87-7de30612ce22" shape="rect"></a>Note that the Inventory Creation SOP Class does not use the Inventory IOD (<a href="../part03/sect_A.88.html" class="olink" shape="rect">Section A.88 “Inventory IOD” in PS3.3</a>), but rather the Inventory Creation IOD (<a href="../part03/sect_B.30.html" class="olink" shape="rect">Section B.30 “Inventory Creation IOD” in PS3.3</a>), which consists of the controls and statuses for production of an Inventory. However, both the Inventory IOD and the Inventory Creation IOD use many of the same Attributes, including the Scope of Inventory Sequence (0008,0400).</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_YYYY.4.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_YYYY.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_YYYY.4.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">YYYY.4 Related Services For Inventory SOP Instances </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> YYYY.4.3 Separability of Services</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

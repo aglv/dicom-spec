@@ -1,0 +1,1488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>F.8.2 Operations</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_F.8.html" title="F.8 Modality Performed Procedure Step Retrieve SOP Class" />
+      <link rel="prev" href="sect_F.8.html" title="F.8 Modality Performed Procedure Step Retrieve SOP Class" />
+      <link rel="next" href="sect_F.8.3.html" title="F.8.3 Modality Performed Procedure Step Retrieve SOP Class UID" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">F.8.2 Operations <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_F.8.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.8.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">F.8 Modality Performed Procedure Step Retrieve SOP Class</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_F.html" shape="rect">Procedure Step SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_F.8.html" shape="rect">Modality Performed Procedure Step Retrieve SOP Class</a>
+         </span> &gt; <span class="breadcrumb-node">Operations</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_F.8.2" shape="rect"></a>F.8.2 Operations</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f69be20c-5155-4d6c-89de-4f8e0374b871" shape="rect"></a>The Application Entity that claims conformance to this SOP Class as an SCU shall be permitted to invoke the following operations and the Application Entity that claims conformance as an SCP shall be capable of providing the following operations.</p>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h4 class="title">
+                        <a id="sect_F.8.2.1" shape="rect"></a>F.8.2.1 Get Performed Procedure Step Information</h4>
+                  </div>
+               </div>
+            </div>
+            <p>
+               <a id="para_fe118724-fd58-4e59-b60e-0df6da2db1d5" shape="rect"></a>This operation allows an SCU to get information about a specific real-world Performed Procedure Step that is represented as a Modality Performed Procedure Step Retrieve SOP Instance by a Modality Performed Procedure Step Retrieve SCP. The operation is performed on a Modality Performed Procedure Step IOD. This operation shall be invoked through the DIMSE N-GET Service used in conjunction with the appropriate Modality Performed Procedure Step Retrieve SOP Instance.</p>
+            <p>
+               <a id="para_7c516c49-ac3e-4fee-a724-4bcaad121ec2" shape="rect"></a>The same SOP Instance UID is shared by all three Modality Performed Procedure Step SOP Classes. This means that the SOP Instance created and set using the services of the Modality Performed Procedure Step SOP Class can be retrieved using its SOP Instance UID within the service of the Modality Performed Procedure Step Retrieve SOP Class. Changes in its state can be notified by using its SOP Instance UID within the service of the Modality Performed Procedure Step Notification SOP Class. The SOP Class UID specified in the DIMSE N-GET request primitive shall be the UID of the Modality Performed Procedure Step Retrieve SOP Class.</p>
+            <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+               <h3 class="title">Note</h3>
+               <p>
+                  <a id="para_ac65fffa-6aac-424d-9c24-f982aaa119f5" shape="rect"></a>An Application Entity may support the SCU role of the Modality Performed Procedure Step Retrieve SOP Class in order to obtain information about Performed Procedure Steps created by other Application Entities.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_F.8.2.1.1" shape="rect"></a>F.8.2.1.1 Modality Performed Procedure Step Retrieve IOD Subset Specifications</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_b3f94ebf-8225-4ada-8320-4b32d1773175" shape="rect"></a>The Application Entity that claims conformance to this SOP Class as an SCU may choose to interpret the Attribute Values maintained by the SCP that the SCU receives via the operation of this SOP Class. The Application Entity that claims conformance as an SCP to this Modality Performed Procedure Step Retrieve SOP Class shall support the subset of the Modality Performed Procedure Step Retrieve Attributes specified in <a class="xref" href="sect_F.8.2.html#table_F.8.2-1" title="Table F.8.2-1. Modality Performed Procedure Step Retrieve SOP Class N-GET Attributes" shape="rect">Table F.8.2-1</a>.</p>
+               <div class="table">
+                  <a id="table_F.8.2-1" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table F.8.2-1. Modality Performed Procedure Step Retrieve SOP Class N-GET Attributes</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ff4f326c-4b5c-426f-bc86-17fb609296d1" shape="rect"></a>Attribute Name</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9668ed3d-6442-4bf5-95b1-a693aa439bc9" shape="rect"></a>Tag</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8a47739c-1a44-4a87-a0c4-f8828a4ba636" shape="rect"></a>Requirement Type (SCU/SCP)</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_08afcf1c-2bfd-4b59-bbd0-777caeba97c6" shape="rect"></a>Specific Character Set</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e046b25a-0192-4c2b-91f4-45460323f1d4" shape="rect"></a>(0008,0005)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d552913a-2e5d-463a-aa29-2d78ed8ca5bf" shape="rect"></a>3/1C</p>
+                                        <p>
+                                    <a id="para_32a3b429-cb2e-4c00-b4fa-fa54cf833ebd" shape="rect"></a>(Required if an extended or replacement character set is used)</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_0c36baee-4bd8-4afa-8ad7-4e2e46bd385f" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Performed Procedure Step Relationship</strong>
+                                    </span>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d6425836-7737-46fb-90d1-0ae2ecd7317a" shape="rect"></a>Scheduled Step Attributes Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b9f244cd-c185-4703-be59-d843db4f6e52" shape="rect"></a>(0040,0270)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_57ee4738-51c3-4cdb-be5e-ad4e3fc1d9df" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d546ebf3-0a6a-4158-ba7a-8b802caa8fb6" shape="rect"></a>&gt;Study Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_453dbec6-0e3f-4dd8-903a-33844e358a24" shape="rect"></a>(0020,000D)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_471a22e7-7642-46cc-83c8-9ec34d4cfea7" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_152a6759-474e-417e-9821-0b1d86fadb96" shape="rect"></a>&gt;Referenced Study Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0de7ae93-30dc-4861-9e33-a49a40064ef3" shape="rect"></a>(0008,1110)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ee41d409-a858-45d1-b7ed-0906894a7086" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aeed2194-92ae-4120-a364-ad7edfed7213" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_86eaa90b-39ee-4bb6-93f5-364aa736c3b7" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7ae75541-2336-452e-92ad-7913db914e8b" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_beb67c33-5484-4433-8b4d-dabedf92e364" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ed6c7ea6-47c2-470b-b513-fb69094bb3bc" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_47d959f2-d485-48a2-a6d9-7af5add5998b" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d4b7293c-3310-4af7-b1cd-14695a521a79" shape="rect"></a>&gt;Accession Number</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_52be22fc-6e03-4a17-9d47-e3fcd5e67f97" shape="rect"></a>(0008,0050)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_18d9c94f-1a93-4fc1-a150-52775a7941f6" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dd84e9f0-2829-43d7-915b-0709ad5ceb38" shape="rect"></a>&gt;Issuer of Accession Number Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_917bcee2-f1d5-4a82-9816-cffa360beff3" shape="rect"></a>(0008,0051)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e3b362ba-0c09-4913-8205-62634c1e21aa" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_67f1b844-34dc-4e2d-a92e-751e51c449d0" shape="rect"></a>&gt;&gt;Local Namespace Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_06944c80-6d69-4ed7-8519-a489dea3dc7a" shape="rect"></a>(0040,0031)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3b615fad-de87-40bf-b30c-f1f4c82771a5" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_afd7abcd-2e75-4891-b9a1-6a767c5f33e8" shape="rect"></a>&gt;&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4ea83ea1-a6aa-46ea-9cd4-984b611d5788" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_88e4ff68-e0f8-4dca-b569-e943586268bd" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_16d7310e-9214-46eb-959e-895e91685e77" shape="rect"></a>&gt;&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_892f9916-be3b-423f-934b-64dcf17a634f" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a432f8a2-bd98-4b74-aad3-2e2ee18fa5a6" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_39945408-eb93-4406-8bce-a719dcaf0e69" shape="rect"></a>&gt;Placer Order Number/Imaging Service Request</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_63e3385f-a419-4179-b1b8-b2a6f7cc177a" shape="rect"></a>(0040,2016)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0c610f9c-6a9e-4b25-af79-a0fbe53582fb" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e3572062-5c0a-44d7-b675-51172a65c884" shape="rect"></a>&gt;Order Placer Identifier Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_742d5eca-5b0c-478f-b9f8-7443e1d3cef6" shape="rect"></a>(0040,0026)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_52ad0657-49d4-43a9-ba90-c8fe7be86a58" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_089b12de-4d1e-446b-be44-369febb9407a" shape="rect"></a>&gt;&gt;Local Namespace Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4f187dda-baa4-4015-9e2b-c42731669f6c" shape="rect"></a>(0040,0031)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_51c39724-5446-4837-a6d1-d8e8f40d3b1d" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b8386af0-c13b-4869-ad40-2ec9e26834a4" shape="rect"></a>&gt;&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_141814e0-acf3-4ee5-a66f-42b0eb4839fe" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e93505cd-d6f7-4981-932a-abd0b5682760" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_700d4b7f-cd0a-46be-8604-cb9be9231063" shape="rect"></a>&gt;&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d170c7eb-57af-4ece-b28d-5ded2fed6b18" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e260859d-bd8f-4d15-aab7-f0625d743738" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_50d0e1ca-790c-45f9-99d3-76dd8495aeb6" shape="rect"></a>&gt;Filler Order Number/Imaging Service Request</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ecd366e0-b468-4ab3-9684-9f7355bad101" shape="rect"></a>(0040,2017)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_06b81259-87a3-4d78-a994-10db7741b1ff" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9df8ff76-67bb-4ca8-8793-12e99736d7c0" shape="rect"></a>&gt;Order Filler Identifier Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d1d55feb-5bc3-43ac-9d62-6c6dcac960bb" shape="rect"></a>(0040,0027)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_44809224-e2b6-4d57-9a2b-8143cbedce36" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f4e82bae-682e-4244-8539-81d924acf6ee" shape="rect"></a>&gt;&gt;Local Namespace Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_31767c0e-38bd-46e0-aea0-2bb534b1f04d" shape="rect"></a>(0040,0031)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f1cc5c4e-c8c1-4398-b02a-254a8a9a78a4" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9a5dd01a-95ce-48c6-a3bd-6d50685c4f66" shape="rect"></a>&gt;&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7ebc58fa-6376-436d-bc0f-1ee370c79fc4" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c7930dfa-fbce-457f-b4fd-f5d2bb23761c" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_07712bdd-5563-4e75-8684-b8ba5f767c1d" shape="rect"></a>&gt;&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5e4e7b01-6c02-42b0-a7de-e3e692303ca5" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bb0a6e85-c0d0-40f3-8848-5160a33dbdd5" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c59ee4a8-36b3-45c4-b9fe-42d6be3b7359" shape="rect"></a>&gt;Requested Procedure Code Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_35468a21-8311-4fa5-b7dd-9d009ebeed62" shape="rect"></a>(0032,1064)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_25c06462-d572-4b8d-9f10-c20b3f38ff8b" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_5594a868-c95d-4143-b3d5-b3b547a42713" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-3a" title="Table 8-3a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support" shape="rect">Table 8-3a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and no Matching Key Support”</a>
+                                    </span>
+                                 </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9efdc2e3-6b3f-44de-a75d-35dfc0ebbdf0" shape="rect"></a>&gt;Requested Procedure Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5b2e7a16-dfa4-4eb3-afbf-5e91fd12512c" shape="rect"></a>(0032,1060)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ccd212b4-53fc-4e8b-a568-2855a5027fbb" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cf18df80-cc42-448d-a52a-bfbf00c3a098" shape="rect"></a>&gt;Requested Procedure ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aba6a7ef-4fb1-435e-98d2-5a4688a6ff09" shape="rect"></a>(0040,1001)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9a8d95c4-5aab-48ce-b94d-da16b8960dd3" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dc24d68d-0582-4040-a345-cc6b4765b639" shape="rect"></a>&gt;Scheduled Procedure Step ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_97b51c92-2e54-4d3b-8694-248b3ed0a341" shape="rect"></a>(0040,0009)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_426eda96-04e1-42a3-9fb9-0ca5da2465aa" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e25d425d-17ca-453f-9e43-1fbe4113ddc6" shape="rect"></a>&gt;Scheduled Procedure Step Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ece732e1-c1de-4782-9c78-104d7bc96970" shape="rect"></a>(0040,0007)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fb6a1ff9-b597-431e-a7a4-d90e89b8c581" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4b3edd21-94bf-4fee-a5e6-feed4b7be53b" shape="rect"></a>&gt;Scheduled Protocol Code Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_13d49dd0-a9cf-4922-8da3-9ef50469ead0" shape="rect"></a>(0040,0008)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3e2b5b6f-7f61-493a-84a9-d292b2ef5376" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_c5f4d7cf-ef46-4caf-b758-270bae3317fa" shape="rect"></a>
+                                    <span class="italic">&gt;&gt;Include <a class="xref" href="chapter_8.html#table_8-5a" title="Table 8-5a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP" shape="rect">Table 8-5a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP”</a>
+                                    </span>
+                                 </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a28d507a-4639-439e-ad80-68cff5b82c95" shape="rect"></a>Patient's Name</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1ab72165-4eb2-405f-8b12-852fb2ff33a9" shape="rect"></a>(0010,0010)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_849f4a07-4ac7-4f14-b8ea-ca8e23d8b87a" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f1d44620-a4d8-4133-8c61-e66a120bd10b" shape="rect"></a>Patient ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7b03e95c-6ef6-4d08-9df1-d02229b9b0f5" shape="rect"></a>(0010,0020)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b830fed9-8ca9-47f7-b8c8-b92b73659029" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ea1cd2c4-cde5-4619-aa1b-aef5e21d4f1b" shape="rect"></a>Issuer of Patient ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3dafe1a4-f91e-4919-863d-6eac748a9a02" shape="rect"></a>(0010,0021)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8e128006-9db0-44c6-8f91-a2c96330614c" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b30cf37d-de50-4f6e-a65e-03f152f6c122" shape="rect"></a>Issuer of Patient ID Qualifiers Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_db024929-c4fa-4475-89e7-57900dd98df8" shape="rect"></a>(0010,0024)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8fb6beea-c5ca-4da9-b2c6-9d63242ebb1e" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_514dffd0-6e43-46bd-a779-416814843f72" shape="rect"></a>&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d7a1980b-8e07-4632-86fa-736ab0715463" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e97db8dd-9faa-4e67-a54c-aaf9f8a293dc" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aa4cf91a-0fb7-4df1-94f5-fbb9ac769a04" shape="rect"></a>&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d7d3c453-2cfc-407f-87c8-2394c4ff0561" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fb813497-67be-4e73-97dc-1cd5b076333d" shape="rect"></a>1C/1C</p>
+                                        <p>
+                                    <a id="para_ad063f19-b8e4-422b-852e-e5da8f7e420c" shape="rect"></a>Required if Universal Entity ID (0040,0032) is present.</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cf4b8845-7189-46e1-8e80-7ab75514690b" shape="rect"></a>
+                                            <span class="italic">&gt;All other Attributes of the Issuer of Patient ID Qualifiers Sequence</span>
+                                        </p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5e047273-2859-412a-8325-2f49874ffe4c" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5c60e73a-282c-46c7-ba98-8edfbb0308bb" shape="rect"></a>Patient's Birth Date</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ff85e2bd-54a6-4cc7-9c0b-114b55015e1e" shape="rect"></a>(0010,0030)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_17f61cfe-540b-4090-8d80-b39e73a51d59" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_376ba55e-6bef-4a0d-960e-34e20b5cdf63" shape="rect"></a>Patient's Sex</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ac16bd69-f1e3-4212-b689-e06894fb0490" shape="rect"></a>(0010,0040)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f4592de9-282c-417b-a33d-c3322dff0c4a" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f70f974a-d06f-42f8-95fc-1fe868ec60e6" shape="rect"></a>Referenced Patient Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_69fb73f5-a5c6-481f-a8a8-4efac2b3fc3d" shape="rect"></a>(0008,1120)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_192b660f-39f3-4048-af0b-c2b17fd6d2d0" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cba45cd1-ecc1-4dc9-834c-e3979fe91f34" shape="rect"></a>&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8e1e0836-01b9-4162-be76-3fc7f18e6b7d" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_630813c7-0e52-49dd-aaec-4bb435acfa78" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f2b3639d-56e2-4789-8d5f-fb1cd65953bf" shape="rect"></a>&gt;Referenced Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d777d386-c921-4bd4-8313-e31e1ef2b4cd" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e8cf8fb5-ec9f-48ef-862b-f443becb9d7a" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_90ba2ebc-3e18-494a-b8ae-15349011c7f9" shape="rect"></a>Admission ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f6b57eb8-9648-48e7-92c7-89688cc33ff0" shape="rect"></a>(0038,0010)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_691f1d11-6906-4dc6-8231-9d8d81b3c582" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b1114ff6-3312-4013-80a7-445723e0695d" shape="rect"></a>Issuer of Admission ID Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bc18de03-ff5c-4d7d-9c88-b62196bb8902" shape="rect"></a>(0038,0014)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_53fb2da6-ac16-412d-b473-662276d5a43a" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_474c638f-8f25-4b85-b4c6-5ff600daa9a4" shape="rect"></a>&gt;Local Namespace Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_83c2d554-31d9-4792-a806-ebc1c8f857df" shape="rect"></a>(0040,0031)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_06b0dfa9-e26a-4deb-ac96-cb894eb1133f" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d7833a2d-f0a7-4753-a81d-f7cbd4f2677d" shape="rect"></a>&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1db2959e-e166-4794-ba24-18788aae1293" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_944651a8-8b71-414e-8b8a-4da49c40fbb9" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1f939efd-c4b9-4c66-b7e4-5c3057cc0b88" shape="rect"></a>&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5b4415de-4006-4ef3-acd3-c5a495e5bdd8" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f97b0aad-2653-48e7-86d9-e5f168702302" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bfb0340f-0f83-4c70-992f-cc0894b732b9" shape="rect"></a>Service Episode ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_bf3a520f-270d-4269-9cbc-2b91252ec7df" shape="rect"></a>(0038,0060)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5c1bd6fd-62dc-4066-9b13-7ccf956749cd" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_db8fe6e3-53ec-4037-9e0e-87bbf1261e1d" shape="rect"></a>Issuer of Service Episode ID Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_7ad0a4b8-613d-4cc7-8f59-d2002b358eac" shape="rect"></a>(0038,0064)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8b14508c-cec2-4c3c-951a-6244b58aac80" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b20f4f30-9bcf-4130-9d38-e06993e2df55" shape="rect"></a>&gt;Local Namespace Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_00f15c71-360b-4376-9b1d-06ae5eb027a2" shape="rect"></a>(0040,0031)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_62c26645-0a89-43ac-a70e-664ec27c8e71" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2d2e2fdd-5788-46db-baac-cea6ada85d7d" shape="rect"></a>&gt;Universal Entity ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_de479329-2b42-4703-9710-659837669b7e" shape="rect"></a>(0040,0032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_11b28d93-d4be-45f9-8fa6-8ddf784fed01" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4762b135-9823-4ffb-bd54-06ad293c1e04" shape="rect"></a>&gt;Universal Entity ID Type</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ccafe09e-87b9-4381-beff-430a686eeea9" shape="rect"></a>(0040,0033)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e9934f55-3398-4d54-9c68-750672de34e7" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e2eb2690-849e-424b-8822-19d181cf2013" shape="rect"></a>Service Episode Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ee188934-bb15-4c19-aa44-e09f4e4d79a2" shape="rect"></a>(0038,0062)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1ae433b3-66c3-45e8-ad87-1d20f7b90ae6" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_8c8b3155-644e-4cd8-9ad8-b2c21c737f35" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Performed Procedure Step Information</strong>
+                                    </span>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_917afa0d-7af2-4c2c-9dbf-054195bf4086" shape="rect"></a>Performed Station AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e22e9428-822e-419b-b6fc-b99553699e8f" shape="rect"></a>(0040,0241)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f95032e1-d0e4-4779-a02e-c89fcdff0786" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5f9f5663-49d6-4b05-bb0f-84798ec96ae4" shape="rect"></a>Performed Station Name</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_84832b39-74d7-46eb-9cf1-d5a3bc3e9a7b" shape="rect"></a>(0040,0242)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4c368032-0413-49f3-ba6c-d374230a9283" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ef6068a6-260a-4240-bb28-e322e2ed0aa2" shape="rect"></a>Performed Location</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_caa36dff-ae3b-4630-9918-85e35cace778" shape="rect"></a>(0040,0243)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9c195211-b702-4955-83cb-2b2880a73c91" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4b7f5d8f-5f47-4806-853d-fb99a3c1eaa6" shape="rect"></a>Performed Procedure Step Start Date</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_357595db-bb58-4b15-846b-9de2ff4589ff" shape="rect"></a>(0040,0244)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cdf26774-7d46-4bc4-b36b-7b5558b1e95f" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2bd7ddd4-7a3d-4b63-8cc1-c6e399a62b47" shape="rect"></a>Performed Procedure Step Start Time</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ca56271f-8a80-4d0b-bea9-6e2b99162cb2" shape="rect"></a>(0040,0245)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_366639eb-4536-45b8-a84a-29d7a5521c48" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_02b05be0-6855-4c58-a350-579659ff2520" shape="rect"></a>Performed Procedure Step ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_465a73cb-1252-4539-b4a6-c2741dd02045" shape="rect"></a>(0040,0253)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4e042763-39c3-445f-8230-80554654e0a3" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_17199263-e84a-4a18-8fc8-26a3a93ad717" shape="rect"></a>Performed Procedure Step Status</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8f231c81-7b22-43ad-9daa-d947438ed569" shape="rect"></a>(0040,0252)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_534dc3a4-7c4b-407f-be7d-c2ce8cee2f2d" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e956f015-d10c-4834-986e-4193632c10a6" shape="rect"></a>Performed Procedure Step End Date</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_03fe12e9-415b-4c8c-88fd-901a023eddad" shape="rect"></a>(0040,0250)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d764edf1-dd74-4821-9870-42ad9782a1de" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_929df9af-caaf-4f60-a2ae-495fb0f590ec" shape="rect"></a>Performed Procedure Step End Time</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d2831d10-0493-4996-8bce-0fd9c448d82f" shape="rect"></a>(0040,0251)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c382f6e1-2883-4055-b648-76b4db5be890" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_18634a5c-2ff6-464d-b228-886d823aa639" shape="rect"></a>Performed Procedure Step Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_507bbea2-48cc-4e97-a8ef-4cadd6d2490e" shape="rect"></a>(0040,0254)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_40c93671-be9c-4974-8fed-b5d56c90c78c" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ab0a944f-28e6-4114-8313-ba556e01b99d" shape="rect"></a>Performed Procedure Type Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aec5f02d-3c1b-400e-b4cc-315523aaa3db" shape="rect"></a>(0040,0255)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2e49947a-bd45-4f78-a7eb-9030f388a5d7" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_91da3df0-0bb3-4bf2-945e-3b5858052a0d" shape="rect"></a>Procedure Code Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cedde8d4-7bfc-4166-bbbf-127701ca30b3" shape="rect"></a>(0008,1032)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a81143f3-eba3-4e93-ba42-72ab4f45b7d2" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_0f3b2334-f6ee-4b08-8bad-8875e9bc04f5" shape="rect"></a>
+                                    <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-5a" title="Table 8-5a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP" shape="rect">Table 8-5a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP”</a>
+                                    </span>
+                                 </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_13cb53d4-988a-4e5a-ac39-fedb52d692c3" shape="rect"></a>Comments on the Performed Procedure Step</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fe6bff89-fc2b-485f-a8b2-f434b365b2c1" shape="rect"></a>(0040,0280)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_fa9c8407-65a9-4d1b-a15b-86b3812156c1" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_95e82619-2fa7-48b6-97b0-cbd307d35a5f" shape="rect"></a>Performed Procedure Step Discontinuation Reason Code Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_5ac813c3-ed65-43cf-b866-f143ad93c8be" shape="rect"></a>(0040,0281)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_787d45b7-f0ea-4425-be52-4215c693f040" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_972b258c-1d40-4488-a62f-c82564d2c40e" shape="rect"></a>
+                                    <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-5a" title="Table 8-5a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP" shape="rect">Table 8-5a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP”</a>
+                                    </span>
+                                 </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_c7a7776b-9315-4efd-a576-54a91c41c2ee" shape="rect"></a>
+                                            <span class="bold">
+                                       <strong>Image Acquisition Results</strong>
+                                    </span>
+                                        </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_22fe7b39-1fed-4a43-9f6e-29ab7ff92def" shape="rect"></a>Performed Series Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f65b4a79-d9f6-4649-b8b1-8c848cccb26d" shape="rect"></a>(0040,0340)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_8b07bfdc-8c50-4bc8-9fa1-631dab3b800e" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6968c970-8a4b-487e-9f34-23ae77dd6d5a" shape="rect"></a>&gt;Performing Physician's Name</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b0768610-c0dc-48e5-b6da-b94c73a3cd2d" shape="rect"></a>(0008,1050)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_0c5ccc57-9f1f-451d-9a75-7a622f2a5dc6" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2292cf31-1a1f-4040-a7e9-ed218689a537" shape="rect"></a>&gt;Protocol Name</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d8dc9cc5-3ff2-465e-94f5-d6646db80f0c" shape="rect"></a>(0018,1030)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_049f000f-8cd8-4197-a804-3d184089a71c" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2ef15bf8-d94a-470d-830e-993f0b12bd3d" shape="rect"></a>&gt;Operators' Name</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_de70252b-76ca-4127-b5c3-5f79376e1e13" shape="rect"></a>(0008,1070)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_26a29760-4ca5-44a0-a9ee-af1504235c96" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ade0a87b-ad25-4ca8-9615-e7b8c37d284e" shape="rect"></a>&gt;Series Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_592756b5-65d8-4795-a29c-68f3fed469e1" shape="rect"></a>(0020,000E)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b4845767-1b86-46df-a1f0-a462ef52a690" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f46665ea-75ae-4009-905f-22521fd059c5" shape="rect"></a>&gt;Series Description</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_2138ae29-ea2f-46e6-a0f6-14927e9f1fe9" shape="rect"></a>(0008,103E)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_264acf94-c2aa-4d47-afc8-79d9d2ccfbc6" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9e6e0669-1c02-4acd-96e8-a2610ff53f5c" shape="rect"></a>&gt;Retrieve AE Title</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cfb36c0a-1e26-4a92-b0c7-6967ef866e2c" shape="rect"></a>(0008,0054)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_53cb8c29-96c2-4f0d-99d3-ec831036ddd4" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_44630c33-87b3-48f5-a8e9-c92396764369" shape="rect"></a>&gt;Referenced Image Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_340d179c-92bc-44ff-af8b-5dc674a17a8e" shape="rect"></a>(0008,1140)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_41d1170c-1587-4a4c-8f7e-f8978bd23672" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b8997e69-b27a-43b0-ba15-571a41a350fd" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_eb384d64-bdf7-4af7-8632-2967f22472f1" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ec72bf2f-5927-48e2-971f-d1dbd0fe0ddf" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6cf376e8-e6e0-4e0f-82ba-4a3c1ee4d1ca" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b3635dac-7943-481f-ad31-5e075b8a9f70" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_b22188fa-a7a7-4d8c-bb00-29315c236315" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_99884bd6-0ef5-4619-917e-4f7a3626b384" shape="rect"></a>&gt;Referenced Non-Image Composite SOP Instance Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_71d97b31-e6ec-426c-aff5-98c1d2cb624a" shape="rect"></a>(0040,0220)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_323a1414-4ef2-4d20-8121-479ff2936875" shape="rect"></a>-/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1b7e8ce6-0f7b-44fc-90a3-f30007f76cfb" shape="rect"></a>&gt;&gt;Referenced SOP Class UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_09c30d61-a04b-4874-8f90-4c55878fc7a9" shape="rect"></a>(0008,1150)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_c6321e0a-a668-4ea6-a9a2-43de9136d6dc" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ef96ee2a-7744-4553-98f1-3eaaaef211e2" shape="rect"></a>&gt;&gt;Referenced SOP Instance UID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_4a265a7f-d4e8-4a93-9571-6ff6c415643c" shape="rect"></a>(0008,1155)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9c82cf68-4f82-4531-b59f-f5188c268465" shape="rect"></a>-/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_27859d51-cbb9-4e52-8d69-649d12bab100" shape="rect"></a>
+                                            <span class="italic">&gt;All other Attributes of the Performed Series Sequence</span>
+                                        </p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_a759b22b-23ef-48fc-8d94-f3874c5c655f" shape="rect"></a>-/3</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_74ceab9b-5bfe-43a0-8a7c-caae7803de53" shape="rect"></a>Modality</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_39b5295e-e958-43a9-8331-3596755ead40" shape="rect"></a>(0008,0060)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_74936306-b6da-4d18-b8cb-0b7db23344b0" shape="rect"></a>3/1</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_aca58515-94d5-4d77-840b-542506e6379e" shape="rect"></a>Study ID</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_f2619270-407c-4314-91f1-3aaac9c596eb" shape="rect"></a>(0020,0010)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_478183ff-b5e4-4ade-a6fd-f6b6b288833c" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_1c0e4f22-5fe8-47c2-92bc-ecefee7b8a85" shape="rect"></a>Performed Protocol Code Sequence</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_ca271ce3-38e7-4815-9c79-819168b37cf8" shape="rect"></a>(0040,0260)</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_9b6113c1-a276-47ad-84bb-0ee0899f03c4" shape="rect"></a>3/2</p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" colspan="3" rowspan="1">
+                                        <p>
+                                    <a id="para_d4330bf0-94ea-4b9f-9450-1ea59d596d93" shape="rect"></a>
+                                    <span class="italic">&gt;Include <a class="xref" href="chapter_8.html#table_8-5a" title="Table 8-5a. Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP" shape="rect">Table 8-5a “Enhanced SCU/SCP Coded Entry Macro with no SCU Support and Optional Meaning for SCP”</a>
+                                    </span>
+                                 </p>
+                                    </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dff8bfd9-d4e3-419d-8046-c501999bbbd1" shape="rect"></a>
+                                            <span class="italic">All other Attributes of the <a href="../part03/sect_C.4.17.html" class="olink" shape="rect">Billing and Material Management Code Module</a>
+                                            </span>
+                                        </p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1"></td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_3062c894-f238-4ed3-93b0-0c4f65a32c13" shape="rect"></a>3/3</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <div class="orderedlist">
+                     <ol class="orderedlist" type="1">
+                        <li class="listitem">
+                           <p>
+                              <a id="para_25d44b0a-1db5-499b-8265-ca0d66934b19" shape="rect"></a>Attributes (0040,1006) Placer Order Number/Procedure and (0040,1007) Filler Order Number/Procedure were previously defined in DICOM. They are now retired (see PS3.3-1998).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_1c1b4abd-5a51-400a-9920-f07e15155c4e" shape="rect"></a>Attributes (0040,2006) and (0040,2007) were previously defined in DICOM. They are now retired (see PS3.3-1998).</p>
+                        </li>
+                        <li class="listitem">
+                           <p>
+                              <a id="para_2c49ac40-7dd2-45aa-a939-f9f2ef9c75a0" shape="rect"></a>The Radiation Dose Module was previously defined in DICOM. This is now retired (see PS3.3-2017c).</p>
+                        </li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_F.8.2.1.2" shape="rect"></a>F.8.2.1.2 Service Class User</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0b082fed-8000-4d91-96ab-a9ece33cf3a8" shape="rect"></a>The SCU uses the N-GET Service Element to request the SCP to get a Modality Performed Procedure Step Retrieve SOP Instance. The SCU shall specify in the N-GET request primitive the UID of the SOP Instance to be retrieved, which is a UID of a Modality Performed Procedure Step SOP Instance. The SCU shall be permitted to request that Attribute Values be returned for any Modality Performed Procedure Step Retrieve SOP Class Attribute specified in <a class="xref" href="sect_F.8.2.html#table_F.8.2-1" title="Table F.8.2-1. Modality Performed Procedure Step Retrieve SOP Class N-GET Attributes" shape="rect">Table F.8.2-1</a>. Additionally values may be requested for optional Modality Performed Procedure Step IOD Attributes.</p>
+               <p>
+                  <a id="para_3c393326-25d8-45f5-a6c8-0bf838eaec6e" shape="rect"></a>The SCU shall specify the list of Modality Performed Procedure Step Retrieve SOP Class Attributes for which values are to be returned. The encoding rules for Modality Performed Procedure Step Attributes are specified in the N-GET request primitive specification in <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a>.</p>
+               <p>
+                  <a id="para_f764dcad-c683-4400-a3b9-8929330dbca4" shape="rect"></a>In an N-GET operation, the values of Attributes that are defined within a Sequence of Items shall not be requested by an SCU.</p>
+               <p>
+                  <a id="para_2d3a051e-89d9-4ff5-b43e-74d168381eeb" shape="rect"></a>The SCU shall be capable of receiving all requested Attribute Values provided by the SCP in response to the N-GET indication primitive. The SCU may request Attribute Values for optional Attributes that are not maintained by the SCP. In such a case, the SCU shall function properly regardless of whether the SCP returns values for those Attributes or not. This Service Class Specification places no requirements on what the SCU shall do as a result of receiving this information.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_2bcd549a-0856-4cfe-9252-18e417e93fec" shape="rect"></a>In order to accurately interpret the character set used for the Attribute Values returned, it is recommended that the Attribute Value for the Specific Character Set (0008,0005) be requested in the N-GET request primitive.</p>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_F.8.2.1.3" shape="rect"></a>F.8.2.1.3 Service Class Provider</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_6cf69af6-3243-4e8a-a888-5ed1bd6d8cf4" shape="rect"></a>The N-GET operation allows the SCU to request from the SCP selected Attribute Values for a specific Modality Performed Procedure Step SOP Instance via a Modality Performed Procedure Step Retrieve SOP Instance. This operation shall be invoked through the use of the DIMSE N-GET Service used in conjunction with the appropriate Modality Performed Procedure Step Retrieve SOP Instance that equals the Modality Performed Procedure SOP Instance. The SCP shall retrieve the selected Attribute Values from the indicated Modality Performed Procedure Step SOP Instance.</p>
+               <p>
+                  <a id="para_e76ccb27-543f-47d7-bbb5-b48744d53fe7" shape="rect"></a>The SCP shall return, via the N-GET response primitive, the N-GET Response Status Code applicable to the associated request. A Failure status shall indicate that the SCP has not retrieved the SOP Instance. Contingent on the N-GET Response Status, the SCP shall return, via the N-GET response primitive, Attribute Values for all requested Attributes maintained by the SCP.</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h5 class="title">
+                           <a id="sect_F.8.2.1.4" shape="rect"></a>F.8.2.1.4 Status Codes</h5>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_0dd8186e-f179-4f89-9675-281efacd23ea" shape="rect"></a>
+                            <a class="xref" href="sect_F.8.2.html#table_F.8.2-2" title="Table F.8.2-2. N-GET Response Status Values" shape="rect">Table F.8.2-2</a> defines the specific Status Code values that might be returned in a N-GET response. See <a href="../part07/PS3.7.html" class="olink" shape="rect">PS3.7</a> for additional response Status Codes.</p>
+               <div class="table">
+                  <a id="table_F.8.2-2" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table F.8.2-2. N-GET Response Status Values</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_dfb99c18-86da-4f88-ba89-56d6e14ecfdf" shape="rect"></a>Service Status</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_04bef39b-fa6e-4514-b0db-650ba961175e" shape="rect"></a>Further Meaning</p>
+                                    </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_cb54dcb6-135e-4ec7-8e97-81041d524c58" shape="rect"></a>Status Code</p>
+                                    </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_d12b0dc3-6081-4553-93f0-e988a0f8b111" shape="rect"></a>Warning</p>
+                                    </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_6b7cb41d-e69f-471a-93a0-41a15ed57c2e" shape="rect"></a>Requested optional Attributes are not supported</p>
+                                    </td>
+                              <td align="center" rowspan="1" colspan="1">
+                                        <p>
+                                    <a id="para_e70cbc67-b72b-43f5-91aa-207ba594df28" shape="rect"></a>0001</p>
+                                    </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_F.8.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_F.8.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_F.8.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">F.8 Modality Performed Procedure Step Retrieve SOP Class </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> F.8.3 Modality Performed Procedure Step Retrieve SOP Class UID</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.8.4.8 NM Multi-frame Module</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.3.html" title="PS3.3" />
+      <link rel="up" href="sect_C.8.4.html" title="C.8.4 Nuclear Medicine Modules" />
+      <link rel="prev" href="sect_C.8.4.7.html" title="C.8.4.7 NM Image Pixel Module" />
+      <link rel="next" href="sect_C.8.4.9.html" title="C.8.4.9 NM Image Module" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.8.4.8 NM Multi-frame Module <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.8.4.8.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.4.7.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C.8.4 Nuclear Medicine Modules</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.4.9.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.3.html" shape="rect">PS3.3</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">Information Module Definitions (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.html" shape="rect">Modality Specific Modules</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_C.8.4.html" shape="rect">Nuclear Medicine Modules</a>
+         </span> &gt; <span class="breadcrumb-node">NM Multi-frame Module</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h4 class="title">
+                     <a id="sect_C.8.4.8" shape="rect"></a>C.8.4.8 NM Multi-frame Module</h4>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_7733bd43-7eb3-47c3-b667-b1fd716c58c6" shape="rect"></a>
+                        <a class="xref" href="sect_C.8.4.8.html#table_C.8-7" title="Table C.8-7. NM Multi-frame Module Attributes" shape="rect">Table C.8-7</a> specifies the Attributes of the NM Multi-frame Image. This Module is always included in a NM SOP Instance, even if there is only one frame in the image.</p>
+         <p>
+            <a id="para_dd223b82-657d-487a-8bd1-02959ef9f175" shape="rect"></a>A NM Image object is always a multi-dimensional multi-frame image. The order and organization of the frames within each image is defined by the Frame Increment Pointer (0028,0009). The Frame Increment Pointer (0028,0009) references one or more indexing vectors. An indexing vector is a 1 dimensional array with exactly one element for each frame in the image. The value of the nth element in the indexing vector represents the index for the nth frame, in that dimension. Indices are always numbered starting from 1.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_722760ef-c026-4100-b241-c46c6625b154" shape="rect"></a>The scheme for encoding a multi-dimensional array of frames into a single image object is as follows. First, the definition of the Data Element called the Frame Increment Pointer is changed so that it can be multi-valued (i.e., its VM is now 1-n). Each value of Frame Increment Pointer represents one of the dimensions of the array, with the last value representing the most rapidly changing index. Each value of Frame Increment Pointer is the Tag of a Data Element that is an indexing vector. An indexing vector is a 1 dimensional array with exactly one element for each frame in the image. The value of the n<sup>th</sup> element in the indexing vector represents the index for the n<sup>th</sup> frame, in that dimension. For example, suppose you are encoding a Dynamic image consisting of 2 phases (containing 5 and 2 frames, respectively), from each of two detectors, using one
+                            isotope, which gives a total of 14 frames in the image. For a Dynamic image, the Frame Increment Pointer is defined as:Frame Increment Pointer = Energy Window Vector (0054,0010) \ Detector Vector (0054,0020) \ Phase Vector (0054,0030) \ Time Slice Vector (0054,0100). Pixel Data (7FE0,0010) would contain the frames in the following order:</p>
+            <div class="informaltable">
+               <table frame="box" rules="all">
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_296ac01c-0f87-43d7-a127-26912ced30cb" shape="rect"></a>Frame</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_2ad07042-ba7e-4d8b-b434-ba038772a526" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_3cd75a17-ace5-4700-9662-62efa15f44b7" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_7c09e0b3-6abe-49ee-9067-5d46802b6439" shape="rect"></a>3</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_b3a463aa-fb87-40ac-9ee1-8c5ee8452277" shape="rect"></a>4</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_23e94919-49e8-4478-baae-0a2ae5a73c49" shape="rect"></a>5</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_0bf9d5e2-4375-42a2-ba07-46ac2867945a" shape="rect"></a>6</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_145e5b9d-62d0-4e5f-bfaf-98e897082472" shape="rect"></a>7</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_c602b56c-b5f9-4fcd-a06c-55fc8286bebc" shape="rect"></a>8</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e3e67290-f0d0-4e15-a74c-506003e7b8e6" shape="rect"></a>9</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_43e25857-bb95-4386-a587-f4947be27b8a" shape="rect"></a>10</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f475be80-e2ba-468f-a8bb-1ce59ed59ebe" shape="rect"></a>11</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_a974be71-2e45-4f9b-8b08-0dc6f74931f2" shape="rect"></a>12</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4815b55e-1984-47aa-b307-b9c174c9136d" shape="rect"></a>13</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_16ba1b78-1d23-4fa7-9610-670f83c9af08" shape="rect"></a>14</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9a8b9b5f-187f-495a-a9e5-23ba5aabaadf" shape="rect"></a>Energy Window #</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_036114ab-c0bb-4b31-bcfa-69de1a12ca0d" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e4150ee9-512d-4421-b6dc-c6d97753558a" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_aa9b1bae-b6a0-4546-a427-7e14a2cf2eb5" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1d988ec3-feb8-4aaa-befb-f3f4e05081f8" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_4b8923ed-63ab-45ae-b1d1-b7ea7a0a8e25" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_89f6e7c7-cd23-4ad3-bbd0-f29104b6c322" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1d690405-1258-40d6-a071-875dd2dfddb4" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_20b957d4-c830-428d-954d-04a7cdbeffac" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f28d288a-0a26-4607-96a5-f340ad222bb0" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_af23e85c-784d-4edc-9993-226a3b5a3e18" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_74f86466-5dea-4dc5-acb3-fdbf9b530777" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_56aead88-5cae-4b6c-af9c-89a2a6e6d608" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_45cf25ef-987f-4228-a800-653955f9b0ba" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e67af5e2-aa23-4c3e-baf1-3a004f16df5e" shape="rect"></a>1</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_970ca4a7-2183-406f-9e62-9d4ceb8e0976" shape="rect"></a>Detector #</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_fe5c47c5-027e-480a-9bfa-7dee1ecdf43f" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1d5e5671-8787-4876-af7e-7194e02d0bda" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_072a286a-d467-48ad-ad6a-f6bb44c78359" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_21c90f15-ee90-4559-9734-e5785e0b0c59" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_36e1a01f-0617-4fed-846a-1e3eda7a538e" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_431ab175-ec15-48f8-b085-4938bc42c3f5" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_eea939e4-3636-45b7-9de8-93c3387b32ed" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_baae3928-7da1-4841-8099-bd2e22148dfe" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_87aea668-82d3-46d0-adfc-a76a102608a2" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_8b999857-276c-46cb-967a-bac1b8ed9c54" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_9ee2573d-0775-4037-bbe9-9c119f9b05d3" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_39b83832-499f-4a9d-947c-d19426de857f" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_de984e8e-ded1-4b3a-8e5e-e1691cfed36f" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_691ac5e2-02eb-4fa4-8aa4-dbf192c8f693" shape="rect"></a>2</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_1967cc35-962c-4bd8-9557-3187f7408263" shape="rect"></a>Phase #</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_07042b21-0164-4f35-9190-8daf0bc28a6c" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_bc431c09-d8aa-45a3-a76c-68f1089c68a3" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_cb50c937-aef2-4fa0-84bd-7ddce9c01826" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_b2c211f6-5b9d-426b-bab3-f1961fffa036" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_3c12e33d-5469-441e-b66f-7e7a3ed57a0d" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_3ea19261-3de0-4e0b-8b91-e0e0d2abf398" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_288942d9-477b-45ba-bbfc-c16ab4632938" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6d01dc8b-c26d-4e45-806d-040f128d2942" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_7650ede1-149d-47dc-888f-c84f9503854b" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_500d6656-a4d4-440b-b223-9cba5291f984" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_844a8f33-5b9d-4fbc-b806-3e2d4352b436" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_66c84c1d-ba40-45aa-a30a-911295b5afc9" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_07ccbe7b-c832-4a8e-b485-f3f64dc1826d" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_369c2a4d-81c6-4135-a955-1da7979948e2" shape="rect"></a>2</p>
+                                    </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6c6cb88e-1464-49f7-b848-dcf8a545eef6" shape="rect"></a>Time Slice #</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_bf0f24bb-8dc8-471d-867d-03fbaed354e5" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_0eba1481-346c-44bc-b782-e66b68202f63" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_04f87644-bc7b-4ef7-954b-4ac9fc453983" shape="rect"></a>3</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_3fc4a61f-1915-41be-a16b-a5ee7ddea823" shape="rect"></a>4</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_00ed6fa4-33c0-44b5-ad42-2a00ec797320" shape="rect"></a>5</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_8beab42c-2cd6-4ac6-bc14-e0340777ddf5" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_e153d926-8b64-4ff7-9e35-1b206abe6a8f" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_6ca6c51b-3173-4147-b354-a6ab51ea181e" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_10dcfdb3-ecb2-4f07-8dec-c030eb7f6eb3" shape="rect"></a>2</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_06128872-0b6f-4b9b-8723-e79415869213" shape="rect"></a>3</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_42e55747-36fc-40e2-8870-b7a0065b2dcf" shape="rect"></a>4</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_7c037343-f97a-4175-951d-26332c5104e6" shape="rect"></a>5</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_030dbf98-aab6-4470-9eee-7677de918aac" shape="rect"></a>1</p>
+                                    </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                        <p>
+                              <a id="para_f754a798-c4bc-46ac-8f27-50eac05c5c6d" shape="rect"></a>2</p>
+                                    </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <p>
+               <a id="para_76fcf85f-f165-4362-b9a2-abde170b5757" shape="rect"></a>and the four vectors would be defined as:</p>
+            <p>
+               <a id="para_c17e8e87-4b58-4a9c-97c4-192a2ad246f9" shape="rect"></a>Energy Window Vector = 1,1,1,1,1,1,1,1,1,1,1,1,1,1</p>
+            <p>
+               <a id="para_5f7c91f7-3002-4478-ba15-b82fbe083d40" shape="rect"></a>Detector Vector = 1,1,1,1,1,1,1,2,2,2,2,2,2,2</p>
+            <p>
+               <a id="para_f19533f0-73fd-48b1-9738-b7cdea6e331a" shape="rect"></a>Phase Vector = 1,1,1,1,1,2,2,1,1,1,1,1,2,2</p>
+            <p>
+               <a id="para_fab59a7f-148c-4cbe-8e68-b2f614cd32fe" shape="rect"></a>Time Slice Vector = 1,2,3,4,5,1,2,1,2,3,4,5,1,2</p>
+            <p>
+               <a id="para_97cbe947-53a5-425f-8377-639bacddc662" shape="rect"></a>The receiver can tell the relationship of all the frames from these four vectors. For instance, looking at the 11<sup>th</sup> value in these four vectors tells you that the 11<sup>th</sup> frame in this multi-frame object is time slice 4 of phase 1 from detector 2 and isotope 1.</p>
+            <p>
+               <a id="para_d391d921-7294-48c0-b172-25f630333d46" shape="rect"></a>The Energy Window, Detector, Phase, Rotation, R-R Interval, and Time Slot Vectors have corresponding Sequence Attributes that contain exactly one Sequence Item for each of the index values in the vector. The Sequence Item contains a set of Attributes that are specific to that group of frames, but change from one group to the next. In the above example there would be a detector Sequence Attribute, an isotope Sequence Attribute and a phase Sequence Attribute (for dynamics, no frame Sequence Attribute is needed). The detector and phase Sequence Attributes would contain two Sequence Items (because there were 2 detectors and 2 phases).</p>
+         </div>
+         <div class="table">
+            <a id="table_C.8-7" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.8-7. NM Multi-frame Module Attributes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_de0a70a2-c510-4bf6-ac6f-37ab75360312" shape="rect"></a>Attribute Name</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_942a0e9f-767b-4817-9759-94fc20b514d8" shape="rect"></a>Tag</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7a063858-9cc0-44b7-8bc1-135df5a406f6" shape="rect"></a>Type</p>
+                                </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c7a3f95-f862-402e-9b34-218604f1c463" shape="rect"></a>Attribute Description</p>
+                                </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_56b543f7-b96b-4a52-be4b-72dff8c52120" shape="rect"></a>Frame Increment Pointer</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bc6dbd0c-59c0-4ed0-9c19-e11157415250" shape="rect"></a>(0028,0009)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_994bb0bc-3338-44b1-a940-c24b660cb18a" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0f22692b-b8ac-4b95-8814-5c05d69a6f1a" shape="rect"></a>Contains the Data Element Tags of one or more frame index vectors. See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.1" title="C.8.4.8.1.1 Frame Increment Pointer" shape="rect">Section C.8.4.8.1.1</a> for further specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3bec5f9f-cc3a-44f4-921a-a02002bb00f7" shape="rect"></a>Energy Window Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_c9b83766-8d0a-4436-a5e5-de444bdf5106" shape="rect"></a>(0054,0010)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3c11430c-a558-436d-a5ee-6dfce24b0c7e" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2d6e0c23-e77d-4e05-9a55-0fff9653c05e" shape="rect"></a>An array that contains the energy window number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Energy Window Vector (0054,0010). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.2" title="C.8.4.8.1.2 Number of Energy Windows and Energy Window Vector" shape="rect">Section C.8.4.8.1.2</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9306440e-9168-4a77-8abb-c14291928c7e" shape="rect"></a>Number of Energy Windows</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_52057473-c1e9-4b41-a136-d694b46bb476" shape="rect"></a>(0054,0011)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e1128305-d2c6-449b-902c-95ee5f8209de" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6c02da43-66ad-4461-a858-9df26de0dabf" shape="rect"></a>Number of energy window groupings. See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.2" title="C.8.4.8.1.2 Number of Energy Windows and Energy Window Vector" shape="rect">Section C.8.4.8.1.2</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fab0d5dc-3e81-4a71-b639-e5e1e35170e9" shape="rect"></a>Detector Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3fc0d090-2a8d-438c-a737-c66b9f83143e" shape="rect"></a>(0054,0020)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4d168938-6d6c-4fc8-b624-cbbe24e11c65" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_39da10dd-7acf-4928-b2cd-15a19d272cd6" shape="rect"></a>An array that contains the detector number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Detector Vector (0054,0020). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.3" title="C.8.4.8.1.3 Number of Detectors and Detector Vector" shape="rect">Section C.8.4.8.1.3</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bc061650-c691-40ba-975e-a989132c0df0" shape="rect"></a>Number of Detectors</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2cb98eb1-eb80-4292-aa84-8603a3210bc1" shape="rect"></a>(0054,0021)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_71e5e047-ab9e-4ebb-b5b8-634b53956f0b" shape="rect"></a>1</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_26ee243a-d5ee-4f72-9a01-5b6179e1c7e4" shape="rect"></a>Number of detectors. See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.3" title="C.8.4.8.1.3 Number of Detectors and Detector Vector" shape="rect">Section C.8.4.8.1.3</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_09c3b70e-4581-4be7-a0ea-6f4c466a1588" shape="rect"></a>Phase Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_699f1a07-6111-4842-a9cc-a3401924bda7" shape="rect"></a>(0054,0030)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_15fda8d8-5360-4012-ba3e-e88aca05d6fd" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9ff1680e-d45f-4d72-ab81-28b56b92088a" shape="rect"></a>An array that contains the phase number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Phase Vector (0054,0030). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.4" title="C.8.4.8.1.4 Number of Phases and Phase Vector" shape="rect">Section C.8.4.8.1.4</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0efe41f9-1ad1-4a68-8e59-ddf09a83f43b" shape="rect"></a>Number of Phases</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_71d05929-f69c-4e2b-aace-b3a3cd444303" shape="rect"></a>(0054,0031)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bb88d6cc-7a01-4381-85fb-d8df7b852073" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7e602f10-3f25-4705-930e-18eb625a5f6c" shape="rect"></a>Number of phases. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Phase Vector (0054,0030). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.4" title="C.8.4.8.1.4 Number of Phases and Phase Vector" shape="rect">Section C.8.4.8.1.4</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_0d8ab852-4287-4010-b522-7ba4965125cd" shape="rect"></a>Rotation Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f42c788a-ae7d-4549-9083-968e22f424af" shape="rect"></a>(0054,0050)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_95089859-64b0-414f-83af-823e0512ff3e" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_275ce348-85ce-4636-abc8-a2e96bdba517" shape="rect"></a>An array that contains the rotation number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Rotation Vector (0054,0050). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.5" title="C.8.4.8.1.5 Number of Rotations and Rotation Vector" shape="rect">Section C.8.4.8.1.5</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4fa56580-bf93-4670-be10-51ccaf19c5fe" shape="rect"></a>Number of Rotations</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f22eaece-37e5-40bb-a085-ab68654d4014" shape="rect"></a>(0054,0051)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_132113b2-1345-44d1-b7a0-c585e7e7faef" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_9d118614-537d-4542-a4b9-adaac6777c21" shape="rect"></a>Number of rotations. Required if Image Type (0008,0008), Value 3 is</p>
+                                    <p>
+                              <a id="para_f2651c00-0c5d-4d66-a272-84e7400b460c" shape="rect"></a>TOMO, GATED TOMO, RECON TOMO or RECON GATED TOMO.</p>
+                                    <p>
+                              <a id="para_7406761c-785a-4add-ba38-741b44b8e63a" shape="rect"></a>See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.5" title="C.8.4.8.1.5 Number of Rotations and Rotation Vector" shape="rect">Section C.8.4.8.1.5</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_30c32f39-fc63-4b51-a316-9662b9de8124" shape="rect"></a>R-R Interval Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3dc8143f-e5cc-40fa-962a-af3605f33f9a" shape="rect"></a>(0054,0060)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_583c766a-d206-4501-8b65-c5294a47e284" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fab8a571-75e6-4f67-907f-34a254ca520d" shape="rect"></a>An array that contains the R-R interval number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for R-R Interval Vector (0054,0060). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.6" title="C.8.4.8.1.6 Number of R-R Intervals and R-R Interval Vector" shape="rect">Section C.8.4.8.1.6</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_3de7ed83-e786-45bb-ae09-216399a09cd7" shape="rect"></a>Number of R-R Intervals</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2ff45c1e-0ff7-4b22-a059-7fba3599087f" shape="rect"></a>(0054,0061)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5381ce52-183f-4a37-b3e3-c32b942a3121" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e5398ed2-43c3-47b4-902f-0b8bd356b353" shape="rect"></a>Number of R-R intervals. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for R-R Interval Vector (0054,0060). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.6" title="C.8.4.8.1.6 Number of R-R Intervals and R-R Interval Vector" shape="rect">Section C.8.4.8.1.6</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_86df70ae-55c8-468d-9aa4-03ee03027627" shape="rect"></a>Time Slot Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2d725255-46ba-4e41-9e8c-2cdb3350372e" shape="rect"></a>(0054,0070)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4c425dd9-99ca-4bfb-a8e4-759e6ced2bf0" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_da4a835d-dc75-4df8-a7b2-afe834b8f23d" shape="rect"></a>An array that contains the time slot number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Time Slot Vector (0054,0070). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.7" title="C.8.4.8.1.7 Number of Time Slots and Time Slot Vector" shape="rect">Section C.8.4.8.1.7</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_57802c3e-9d68-4b82-8d7d-ade164135a3e" shape="rect"></a>Number of Time Slots</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_4f729a12-bf6f-4b4e-b5ce-7f374463ebf1" shape="rect"></a>(0054,0071)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_454e9b51-243d-4c5a-b124-8c47c756dc94" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_5c56088e-c464-4e26-a1da-5c4414848e78" shape="rect"></a>Number of time slots. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Time Slot Vector (0054,0070). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.7" title="C.8.4.8.1.7 Number of Time Slots and Time Slot Vector" shape="rect">Section C.8.4.8.1.7</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_7b35b20e-9e8f-4967-bb17-7d2e8529319a" shape="rect"></a>Slice Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_e684c6bf-4949-478c-8834-b0ae463f0b35" shape="rect"></a>(0054,0080)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_f83c9f7d-41a6-4df7-a24b-4314c8838cf2" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6a11306f-ea39-4bf0-bb15-b68d93d3e080" shape="rect"></a>An array that contains the spatial slice number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Slice Vector (0054,0080). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.8" title="C.8.4.8.1.8 Number of Slices and Slice Vector" shape="rect">Section C.8.4.8.1.8</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ebbe6f0d-7b22-4da3-b74e-fcf8e7394b5d" shape="rect"></a>Number of Slices</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_25a68909-8186-4deb-8a59-d8fbeded06fb" shape="rect"></a>(0054,0081)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_db2a8111-13e5-490f-a92f-98c94dfba146" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bbc510d7-077e-4d70-beb6-cfa19e540de7" shape="rect"></a>Number of slices. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Slice Vector (0054,0080). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.8" title="C.8.4.8.1.8 Number of Slices and Slice Vector" shape="rect">Section C.8.4.8.1.8</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_51a3de91-5e62-4e1f-a116-f5d9d1ea39b0" shape="rect"></a>Angular View Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_2736a11e-50d5-4e69-baa5-10b1f6afa9f3" shape="rect"></a>(0054,0090)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_fcae0ccb-5cf3-4268-b889-e0322dac786f" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_bdc4770d-0b9d-49d1-95a3-f458c9ed0206" shape="rect"></a>An array that contains the angular view number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Angular View Vector (0054,0090). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.9" title="C.8.4.8.1.9 Angular View Vector" shape="rect">Section C.8.4.8.1.9</a> for specialization.</p>
+                                </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_ea0945d9-86c9-4ee0-b9f4-4b526d9600ab" shape="rect"></a>Time Slice Vector</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_20b9410f-51f7-448e-9b35-780c6316462d" shape="rect"></a>(0054,0100)</p>
+                                </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_6f33d36b-0c2c-4332-a84e-a845c5dd4906" shape="rect"></a>1C</p>
+                                </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                    <p>
+                              <a id="para_b2854cbb-4815-4817-a683-2623430a3f22" shape="rect"></a>An array that contains the time slice number for each frame. Required if the value of Frame Increment Pointer (0028,0009) includes the Tag for Time Slice Vector (0054,0100). See <a class="xref" href="sect_C.8.4.8.html#sect_C.8.4.8.1.10" title="C.8.4.8.1.10 Time Slice Vector" shape="rect">Section C.8.4.8.1.10</a> for specialization.</p>
+                                </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_2fe58d7f-c9e6-4b9f-bada-b9678d68bd5d" shape="rect"></a>Per the rules in <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>, if an Attribute of Type 1C or 2C is not required, it shall not be included.</p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h5 class="title">
+                        <a id="sect_C.8.4.8.1" shape="rect"></a>C.8.4.8.1 NM Multi-frame Module Attribute Descriptions</h5>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.1" shape="rect"></a>C.8.4.8.1.1 Frame Increment Pointer</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_834a7017-831e-41a5-b7ee-0443222d8396" shape="rect"></a>By definition, NM Images are multi-dimensional Multi-frame Images. The value of Frame Increment Pointer (0028,0009) contains the Tag for one or more frame indexing vectors. This determines the number of dimensions of frame indices in the image, and the order in which these indices vary from one frame to the next, with the last Tag indicating the most rapidly changing index. The Enumerated Values for Frame Increment Pointer (0028,0009) are determined by Image Type (0008,0008) Value 3, as shown in <a class="xref" href="sect_C.8.4.8.html#table_C.8-8" title="Table C.8-8. Enumerated Values for Frame Increment Pointer" shape="rect">Table C.8-8</a>.</p>
+               <div class="table">
+                  <a id="table_C.8-8" shape="rect"></a>
+                  <p class="title">
+                     <strong>Table C.8-8. Enumerated Values for Frame Increment Pointer</strong>
+                  </p>
+                  <div class="table-contents">
+                     <table frame="box" rules="all">
+                        <thead>
+                           <tr valign="top">
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_19614288-ba3d-4560-9bc4-e3a81da46981" shape="rect"></a>Image Type (0008,0008) Value 3</p>
+                                        </th>
+                              <th align="center" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_8e99648b-e1a3-4dd4-952f-0aed3d9d4728" shape="rect"></a>Frame Increment Pointer (0028,0009)</p>
+                                        </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_cc8402d8-3ef1-4b10-bb19-26f1d2911aee" shape="rect"></a>STATIC or WHOLE BODY</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_a2d74bc7-4da0-484c-a821-751df8268cd8" shape="rect"></a>0054H 0010H \ 0054H 0020H Sequencing is by Energy Window Vector (0054,0010), Detector Vector (0054,0020).</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_cc4fe4d9-96bf-4814-8907-b68be5337f2c" shape="rect"></a>DYNAMIC</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_a3932aca-9346-41ce-93ed-8567579adfa7" shape="rect"></a>0054H 0010H \ 0054H 0020H \ 0054H 0030H \ 0054H 0100H Sequencing is by Energy Window Vector (0054,0010), Detector Vector (0054,0020), Phase Vector (0054,0030), Time Slice Vector (0054,0100)</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_83df4fcc-ee4d-4c40-b76e-5f280ab53424" shape="rect"></a>GATED</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_f7cfaa9d-7328-4cc0-bb96-d4cb0b542649" shape="rect"></a>0054H 0010H \ 0054H 0020H \ 0054H 0060H \ 0054H 0070H Sequencing is by Energy Window Vector (0054,0010), Detector Vector (0054,0020), R-R Interval Vector (0054,0060), Time Slot Vector (0054,0070)</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_c181e3c7-45d8-463c-8518-09907296b3fb" shape="rect"></a>TOMO</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d948299a-ccec-4c82-a060-3b0d8235e16c" shape="rect"></a>0054H 0010H \ 0054H 0020H \ 0054H 0050H \ 0054H 0090H Sequencing is by Energy Window Vector (0054,0010), Detector Vector (0054,0020), Rotation Vector (0054,0050), Angular View Vector (0054,0090)</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_d2ca6176-8da3-443d-afa1-601611da0b00" shape="rect"></a>GATED TOMO</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_3ce7eae5-731b-4429-83fb-c7541c789de2" shape="rect"></a>0054H 0010H \ 0054H 0020H \ 0054H 0050H \ 0054H 0060H \ 0054H 0070H \ 0054H 0090H</p>
+                                            <p>
+                                    <a id="para_bc81029f-45b9-4857-813b-2060f8442e6e" shape="rect"></a>Sequencing is by Energy Window Vector (0054,0010), Detector Vector (0054,0020), Rotation Vector (0054,0050), R-R Interval Vector (0054,0060), Time Slot Vector (0054,0070), Angular View Vector (0054,0090).</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_bcf2d7cf-a091-4b2a-83c6-21aecb928ffd" shape="rect"></a>RECON TOMO</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_b9e240d4-a151-49d0-b8bd-91c5c83df4cb" shape="rect"></a>0054H 0080H</p>
+                                            <p>
+                                    <a id="para_66a94e05-bd82-432a-a6d2-d560cda5424a" shape="rect"></a>Sequencing is by Slice Vector (0054,0080)</p>
+                                        </td>
+                           </tr>
+                           <tr valign="top">
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_952d331a-55b0-49d2-848a-f67b300543f6" shape="rect"></a>RECON GATED TOMO</p>
+                                        </td>
+                              <td align="left" rowspan="1" colspan="1">
+                                            <p>
+                                    <a id="para_5162f2d0-f8ce-40fa-bb6d-4db7df9c728f" shape="rect"></a>0054H 0060H \ 0054H 0070H \ 0054H 0080H</p>
+                                            <p>
+                                    <a id="para_1487c562-ec5d-46a0-8d2c-f18f4e73a12a" shape="rect"></a>Sequencing is by R-R Interval Vector (0054,0060), Time Slot Vector (0054,0070), Slice Vector (0054,0080)</p>
+                                        </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <br class="table-break" clear="none" />
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.2" shape="rect"></a>C.8.4.8.1.2 Number of Energy Windows and Energy Window Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_5427aa68-0527-4c8f-b3ff-4e3ea9334486" shape="rect"></a>Number of Energy Windows (0054,0011) is the number of distinct energy window groupings acquired in this image. See <a class="xref" href="sect_C.8.4.10.html#sect_C.8.4.10.1" title="C.8.4.10.1 NM Isotope Module Attribute Descriptions" shape="rect">Section C.8.4.10.1</a>. When Image Type (0008,0008), Value 3, is RECON TOMO or RECON GATED TOMO, then the Number of Energy Windows (0054,0011) shall be 1.</p>
+               <p>
+                  <a id="para_375d37dc-6f75-4873-a7be-483569bbd470" shape="rect"></a>Energy Window Vector (0054,0010) is an indexing vector. The value of the nth element of this vector is the energy window number for the nth frame in this image, and shall have a value from 1 to Number of Energy Windows (0054,0011).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.3" shape="rect"></a>C.8.4.8.1.3 Number of Detectors and Detector Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_a8ba50f9-838e-4ce1-b46c-9f1c83a0167c" shape="rect"></a>Number of Detectors (0054,0021) is the number of separate detectors that differentiate the frames in this image. When Image Type (0008,0008), Value 3, is RECON TOMO or RECON GATED TOMO, then the Number of Detectors (0054,0021) shall be 1.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_fceb0783-d4c9-4c2b-b2dd-28956078a0d6" shape="rect"></a>Number of Detectors (0054,0021) does not necessarily represent the actual number of detectors used during data acquisition.</p>
+               </div>
+               <p>
+                  <a id="para_a2c6fded-6ecb-441b-a80c-ab046daa338e" shape="rect"></a>Example 1: In a TOMO acquisition in which frames from 2 or more detectors are interleaved to form one continuous set of frames, then no distinction is made between frames on the basis of which detector created them. In this case, the Number of Detectors (0054,0021) would be 1.</p>
+               <p>
+                  <a id="para_d3247896-2fd3-4fa5-9f76-d42cc0f64290" shape="rect"></a>Example 2: In a WHOLE BODY acquisition in which a single detector acquires anterior and posterior views in two separate passes, the Number of Detectors (0054,0021) would be 2.</p>
+               <p>
+                  <a id="para_9ab3ee3d-8200-4d25-a51e-0e3507d3181d" shape="rect"></a>Detector Vector (0054,0020) is an indexing vector. The value of the nth element of this vector is the detector number of the nth frame in this image, and shall have a value from 1 to Number of Detectors (0054,0021).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.4" shape="rect"></a>C.8.4.8.1.4 Number of Phases and Phase Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9f804abb-a0e5-456d-8e31-28f6d94b7ec2" shape="rect"></a>Number of Phases (0054,0031) is the number of dynamic phases, independent of the number of Detectors and Isotopes. See <a class="xref" href="sect_C.8.4.14.html" title="C.8.4.14 NM Phase Module" shape="rect">Section C.8.4.14</a> for definition of a phase.</p>
+               <p>
+                  <a id="para_41c71c46-d6ca-4cc7-98ff-f317a21c1baf" shape="rect"></a>Phase Vector (0054,0030) is an indexing vector. The value of the nth element of this vector is the phase number of the nth frame in this image, and shall have a value from 1 to Number of Phases (0054,0031).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.5" shape="rect"></a>C.8.4.8.1.5 Number of Rotations and Rotation Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_c65d6041-fb87-43db-be0d-b7448d9c2337" shape="rect"></a>Number of Rotations (0054,0051) is the number of separate rotations. See <a class="xref" href="sect_C.8.4.12.html" title="C.8.4.12 NM Tomo Acquisition Module" shape="rect">Section C.8.4.12</a> for definition of a rotation. When Image Type (0008,0008), Value 3, is RECON TOMO, GATED TOMO or RECON GATED TOMO, then the Number of Rotations (0054,0051) shall be 1.</p>
+               <p>
+                  <a id="para_a32d956f-f0fe-4c9d-a85e-888a6d3c2d6c" shape="rect"></a>Rotation Vector (0054,0050) is an indexing vector. The value of the nth element of this vector is the rotation number of the nth frame in this image, and shall have a value from 1 to Number of Rotations (0054,0051).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.6" shape="rect"></a>C.8.4.8.1.6 Number of R-R Intervals and R-R Interval Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_a8027609-4aa5-4247-9f70-b09517029ba1" shape="rect"></a>Number of R-R Intervals (0054,0061) is the number of ranges of heartbeat durations collected. A gated acquisition may employ one R-R Interval to collect data from normal beats, a second R-R Interval to collect data from ectopic beats, and possibly others. Each R-R Interval accepts beats whose duration is greater than its Low R-R Value (0018,1081) and shorter than its High R-R Value (0018,1082). Beats that do not fall within these ranges may be accepted by another R-R Interval, or may be rejected.</p>
+               <p>
+                  <a id="para_40c7401f-d2d1-4d45-acc9-fc6058f99354" shape="rect"></a>The Number of R-R Intervals (0054,0061) is the total number of such ranges.</p>
+               <p>
+                  <a id="para_4e877e3d-7d51-40f1-9b64-6c48592c40b3" shape="rect"></a>R-R Interval Vector (0054,0060) is an indexing vector. The value of the nth element of this vector is the interval number of the nth frame in this image, and shall have a value from 1 to Number of R-R Intervals (0054,0061).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.7" shape="rect"></a>C.8.4.8.1.7 Number of Time Slots and Time Slot Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_925668e9-c1ed-4290-b0a1-8c47432c790e" shape="rect"></a>Number of Time Slots (0054,0071) is the number of frames into which each gating event is divided in a gated acquisition. For example, in a cardiac gated acquisition, data from a number of heartbeats are then combined by summing together the first frames from all beats into a summed first frame, all the second frames into a summed second frame, and so on. The result has the same number of frames as the Number of Time Slots in each beat.</p>
+               <p>
+                  <a id="para_f17a559d-0cc8-4168-89cf-4df0622cde69" shape="rect"></a>Time Slot Vector (0054,0070) is an indexing vector. The value of the nth element of this vector is the time slot number of the nth frame in this image, and shall have a value from 1 to Number of Time Slots (0054,0071).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.8" shape="rect"></a>C.8.4.8.1.8 Number of Slices and Slice Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_bc77561d-f915-4280-b4c7-76faf1aba85b" shape="rect"></a>Number of Slices (0054,0081) is the number of slices in each separate volume.</p>
+               <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+                  <h3 class="title">Note</h3>
+                  <p>
+                     <a id="para_cedce3c7-7aa0-4a71-9185-afebb99b10ab" shape="rect"></a>For images with Image Type (0008,0008), Value 3, equal to RECON GATED TOMO this implies that Number of Slices (0054,0081) is the same for all R-R Intervals and Time Slots.</p>
+               </div>
+               <p>
+                  <a id="para_39806886-e14d-4b97-84aa-a7d9ccb2c7ee" shape="rect"></a>Slice Vector (0054,0080) is an indexing vector. The value of the nth element of this vector is the slice number of the nth frame in this image, and shall have a value from 1 to Number of Slices (0054,0081).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.9" shape="rect"></a>C.8.4.8.1.9 Angular View Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_9f8fca74-3a8c-4532-9f46-6845cb2fdc9b" shape="rect"></a>Angular View Vector (0054,0090) is an indexing vector. The value of the nth element of this vector is the angular view number of the nth frame in this image. If Image Type (0008,0008), Value 3, is TOMO or GATED TOMO, then the value shall be from 1 to Number of Frames in Rotation (0054,0053).</p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h6 class="title">
+                           <a id="sect_C.8.4.8.1.10" shape="rect"></a>C.8.4.8.1.10 Time Slice Vector</h6>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a id="para_ed6fcbb4-3d1c-4f58-a086-817a31aed590" shape="rect"></a>Time Slice Vector (0054,0100) is an indexing vector. The value of the nth element of this vector is the time slice number of the nth frame in this image, and shall have a value from 1 to Number of Frames in Phase (0054,0033).</p>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.8.4.7.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_C.8.4.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.8.4.9.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.8.4.7 NM Image Pixel Module </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.3.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.8.4.9 NM Image Module</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.3 2024c - Information Object Definitions</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

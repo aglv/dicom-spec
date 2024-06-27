@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>C.3 Header Transformation</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.20.html" title="PS3.20" />
+      <link rel="up" href="chapter_C.html" title="C SR to CDA Imaging Report Transformation Guide" />
+      <link rel="prev" href="sect_C.2.html" title="C.2 Conventions" />
+      <link rel="next" href="sect_C.4.html" title="C.4 Body Transformation" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024c - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">C.3 Header Transformation <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part20/sect_C.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">C SR to CDA Imaging Report Transformation Guide</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.20.html" shape="rect">PS3.20</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_C.html" shape="rect">SR to CDA Imaging Report Transformation Guide</a>
+         </span> &gt; <span class="breadcrumb-node">Header Transformation</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both">
+                     <a id="sect_C.3" shape="rect"></a>C.3 Header Transformation</h2>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_b4d41170-df8a-43f5-b0e4-7c280802740b" shape="rect"></a>For transformation of the SR content into the CDA header, the target elements of the CDA instance are listed in <a class="xref" href="sect_C.3.html#table_C.3-1" title="Table C.3-1. CDA Header content from SR" shape="rect">Table C.3-1</a> by their Business Names, together with the recommended source in an SR instance. This allows the transforming application to "pull" the relevant information from the SR to populate the CDA header.</p>
+         <div class="table">
+            <a id="table_C.3-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table C.3-1. CDA Header content from SR</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3b39436c-e27b-4359-9330-b1b75a5811c8" shape="rect"></a>CDA Business Name</p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b01f1559-cc48-43bd-8762-0278cf5447ed" shape="rect"></a>DICOM SR</p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_08b0ee8c-e4ea-4e76-a658-6e24285d1118" shape="rect"></a>ImagingReport: DocType</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9bd220dd-23ac-40c2-a750-04d0d8b23731" shape="rect"></a>
+                              <span class="italic">Concept Name Code Sequence (0040,A043)</span> [of the root content item]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_54b93f5b-e553-4de2-b9e0-0323fc3cf69d" shape="rect"></a>ImagingReport: ContentTemplate</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ccf2ea56-b027-46ab-ba88-f6c7ce7d2030" shape="rect"></a>ImagingReport: DocumentID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5edbdadd-00d2-41b5-8154-8a3303e029ae" shape="rect"></a>ImagingReport: Title</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9aa030d8-221b-4941-ac3c-37f5a235ceac" shape="rect"></a>
+                              <span class="italic">
+                                 <a href="../part16/chapter_D.html#DCM_121050" class="olink" shape="rect">(121050, DCM, "Equivalent Meaning of Concept Name")</a> &gt; Concept Code Sequence (0040,A168) &gt; Code Meaning (0008,0104)</span> if present; otherwise
+                <span class="italic">Concept Name Code Sequence (0040,A043) &gt; Code Meaning (0008,0104)</span> [of the root content item].</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b2d643da-a27a-4482-8a8f-2b3c546379e3" shape="rect"></a>ImagingReport: CreationTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_72f73e5b-ae2e-4ca7-be09-e84302a5ea22" shape="rect"></a>
+                              <span class="italic">Content Date (0008,0023) + Content Time (0008,0033) + Timezone Offset From UTC (0008,0201)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acb6b308-f837-4bed-b537-ee09b2430b16" shape="rect"></a>ImagingReport: Confidentiality</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_00725f78-9da0-4114-873d-eb250207515b" shape="rect"></a>ImagingReport: LanguageCode</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_42c0a940-e48d-424b-8b0e-542316f1f368" shape="rect"></a>
+                              <span class="italic">
+                                 <a href="../part16/chapter_D.html#DCM_121049" class="olink" shape="rect">(121049, DCM, "Language of Content Item and Descendants")</a>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_075d30a6-4aed-4b65-84a0-ffced930dca7" shape="rect"></a>ImagingReport: SetId</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_67c03870-928f-4e93-a701-6c477b1f4274" shape="rect"></a>ImagingReport: VersionNumber</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f7257f62-cfaf-430a-b654-f1115744ff36" shape="rect"></a>ImagingReport: Patient:ID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8264788c-8c0f-45f9-9876-fd17cad9bf34" shape="rect"></a>
+                              <span class="italic">Patient ID (0010,0020)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f1f49b1c-58d2-4621-bb5c-eb3d681e68c2" shape="rect"></a>ImagingReport: Patient:IDIssuer</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_332c3abc-cb5c-4348-b9e8-66d420817963" shape="rect"></a>
+                              <span class="italic">Issuer of Patient ID Qualifiers Sequence (0010,0024) &gt; Universal Entity ID (0040,0032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4c274e67-7fda-492d-8767-98021601eb04" shape="rect"></a>ImagingReport: Patient:Addr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f1d801b9-4618-44f2-b2af-360a308325e0" shape="rect"></a>
+                              <span class="italic">Patient's Address (0010,1040)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b1c1f717-b4c6-44be-8ef8-0ab9d544531d" shape="rect"></a>ImagingReport: Patient:Tele</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_939e37e2-0b27-4b1e-9a43-5d8d53df8611" shape="rect"></a>
+                              <span class="italic">Patient's Telephone Numbers (0010,2154)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6e31bc9b-1d14-4dca-84e7-bc7b3e717a01" shape="rect"></a>ImagingReport: Patient:Name</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2252067c-2a4c-4d6b-a99a-3773e4d36ca8" shape="rect"></a>
+                              <span class="italic">Patient's Name (0010,0010)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0e5a5503-b921-4197-b2ea-d6fc0230f352" shape="rect"></a>ImagingReport: Patient:Gender</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8d8f3f6b-98b7-4f68-979e-0d0f132b4052" shape="rect"></a>
+                              <span class="italic">Patient's Sex (0010,0040)</span>
+                           </p>
+                           <p>
+                              <a id="para_beff3318-4cc4-40f6-a69f-30703830a84d" shape="rect"></a>[Map value "O" to nullFlavor UNK]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_95af8718-4098-4dc5-bb8a-95b9f358b6bf" shape="rect"></a>ImagingReport: Patient:BirthTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_368a8f64-e977-42b8-a5fa-a2bc560b5cfa" shape="rect"></a>
+                              <span class="italic">Patient's Birth Date (0010,0030) + Patient's Birth Time (0010,0032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7c683f3e-36e2-4f5d-a94d-0aa1bdb12aa3" shape="rect"></a>ImagingReport: Patient:ProviderOrgName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fd43e64e-c44e-4c89-a6df-af6f49570178" shape="rect"></a>
+                              <span class="italic">Issuer of Patient ID (0010,0021)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16d0e9c9-bd85-4db5-8cf4-278ca0d8ca8d" shape="rect"></a>ImagingReport: Patient:ProviderOrgTel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c57a69c1-2616-4668-9b36-436fb097093f" shape="rect"></a>ImagingReport: Patient:ProviderOrgAddr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5f1cd6d1-cdc8-4b24-83c9-88894b8b6cb4" shape="rect"></a>ImagingReport: SigningTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_643823f6-01eb-48f1-a267-4f3883a68218" shape="rect"></a>
+                              <span class="italic">Verifying Observer Sequence (0040,A073) &gt; Verification DateTime (0040,A030)</span>.</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_40c5ed3c-562e-46b5-a5f9-1f7e56a7a021" shape="rect"></a>ImagingReport: SignerID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_66a1ff24-c413-4609-9b2e-a5cbc59e8412" shape="rect"></a>
+                              <span class="italic">Verifying Observer Sequence (0040,A073) &gt; Verifying Observer Identification Code Sequence (0040,A088)</span> [code value as identifier]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2e39bd30-d2d1-4050-a7e7-757271d63046" shape="rect"></a>ImagingReport: SignerAddr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7b2dee90-1c74-4163-ba7e-ea4bb8655d90" shape="rect"></a>ImagingReport: SignerTel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bf8fc897-54f9-432e-afd9-7c712da1d3ed" shape="rect"></a>ImagingReport: SignerName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f31bf7e2-ab51-4373-b0a0-f66ffbeb8f67" shape="rect"></a>
+                              <span class="italic">Verifying Observer Sequence (0040,A073) &gt; Verifying Observer Name (0040,A075)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bd24a4ff-1602-45e6-a0c6-914cf1c087e2" shape="rect"></a>ImagingReport: SignatureBlock</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c0fe4e82-ad9c-45c8-87f3-cfb19c891ea3" shape="rect"></a>ImagingReport: Author:AuthoringTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6e3a06e0-ea8e-4624-93ae-1bc856ac92ad" shape="rect"></a>
+                              <span class="italic">Content Date (0008,0023) + Content Time (0008,0033) + Timezone Offset From UTC (0008,0201)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6d48d60d-ee32-4b80-b09b-081a652a8cfe" shape="rect"></a>ImagingReport: Author:ID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_85c7934d-24a1-4d4e-93e7-78d786b0c8bd" shape="rect"></a>
+                              <span class="italic">Author Observer Sequence (0040,A078) &gt; Person Identification Code Sequence (0040,1101)</span> [code value as identifier]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad059ce9-075e-435b-a239-a8ac5e52ea05" shape="rect"></a>ImagingReport: Author:Addr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ac54a168-7e8e-480b-a016-3e1908d02923" shape="rect"></a>ImagingReport: Author:Tel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a5485e6-b177-46b7-9b86-f9e55ed954de" shape="rect"></a>ImagingReport: Author:Name</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5b522eda-abc4-42f3-90cf-adff79898580" shape="rect"></a>
+                              <span class="italic">Author Observer Sequence (0040,A078) &gt; Person Name (0040,A123)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aac3497e-82d7-48f4-8b7a-c4993a9818c6" shape="rect"></a>ImagingReport: Recipient:Addr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_be12a739-3f66-47e2-80c7-5ec714919c70" shape="rect"></a>ImagingReport: Recipient:Tel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c67ffdf9-a5cd-4f09-82aa-4c389c88281d" shape="rect"></a>ImagingReport: Recipient:Name</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8c382913-3dec-4b64-b733-ef2e927fcbf6" shape="rect"></a>ImagingReport: Recipient:Org</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5d319e7a-d5fe-43e2-a6d7-a74f198db000" shape="rect"></a>ImagingReport: CustodianOrgID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_94b4b827-49c6-4415-b99e-d5cf4bfbd535" shape="rect"></a>
+                              <span class="italic">Custodial Organization Sequence (0040,A07C) &gt; Institution Code Sequence (0008,0082)</span> [code value as identifier]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f5e0a5a7-203e-4cd5-a41e-84d8aaffa03c" shape="rect"></a>ImagingReport: CustodianOrgName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_faf0a480-c204-4f80-9043-db4d8fa01bef" shape="rect"></a>
+                              <span class="italic">Custodial Organization Sequence (0040,A07C) &gt; Institution Name (0008,0080)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b4e3842-e81b-44da-8d28-a5c22cf26adc" shape="rect"></a>ImagingReport: CustodianOrgAddr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3b5d4de0-e77e-4b2c-aad2-087aacadc30b" shape="rect"></a>ImagingReport: CustodianOrgTel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2a1f410e-c637-4849-a053-3c5076ae9861" shape="rect"></a>ImagingReport: EncounterID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_332da269-74ad-4fb7-9d3e-0d99a95742e7" shape="rect"></a>
+                              <span class="italic">Admission Id (0038,0010)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8fccfab4-8657-4790-ab77-8cbf883ed129" shape="rect"></a>ImagingReport: EncounterIDIssuer</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1c1e1865-2de9-4679-8052-18b67b132fb8" shape="rect"></a>
+                              <span class="italic">Issuer of Admission ID Sequence (0038;0014) &gt; Universal Entity ID (0040,0032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_211d4673-d38a-4de6-9556-dc63707df037" shape="rect"></a>ImagingReport: EncounterTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0c022bae-07c4-4354-ad95-6f547f705b76" shape="rect"></a>ImagingReport: HealthcareFacilityName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c482d361-e589-4bf6-ac7c-0521d414cbe1" shape="rect"></a>ImagingReport: HealthcareFacilityAddress</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_665ae786-cb6e-496b-b88f-e112c722554e" shape="rect"></a>
+                              <span class="italic">Institution Address (0008,0081)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d80766b1-25d0-43eb-9871-cc82eea73e71" shape="rect"></a>ImagingReport:HealthcareProviderOrganizationName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_24ee37b1-6340-4115-8861-ec0dbe595302" shape="rect"></a>
+                              <span class="italic">Institution Name (0008,0080)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9aab2aae-c727-4a21-bc40-54a8c3cd9c4d" shape="rect"></a>ImagingReport:AttendingPhysicianName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ce8348c7-091f-4865-aaf8-481a82baa2b3" shape="rect"></a>
+                              <span class="italic">Physician(s) of Record (0008,1048)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d4bfe65-79e5-4988-8317-838c1d979f9a" shape="rect"></a>ImagingReport:OrderPlacerNumber</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_47e0b2b3-b931-45c8-9912-34c0b19b1892" shape="rect"></a>
+                              <span class="italic">Referenced Request Sequence (0040,A370) &gt; Placer Order Number/Imaging Service Request (0040,2016)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4fe406d0-5b56-4ca1-91ab-348105e95188" shape="rect"></a>ImagingReport:OrderAssigningAuthority</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5146a55f-6d56-4590-8409-8dee7d110c60" shape="rect"></a>
+                              <span class="italic">Referenced Request Sequence (0040,A370) &gt; Order Placer Identifier Sequence (0040,0026) &gt; Universal Entity ID (0040,0032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9fc3bafa-c3dc-4084-aea7-aa8252a94f71" shape="rect"></a>ImagingReport:AccessionNumber</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8016218d-0748-44ea-b5ea-0e9dfe70d1ea" shape="rect"></a>
+                              <span class="italic">Accession Number (0008,0050)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fe4219c1-312c-4a7e-af48-cdfc26ee6f2c" shape="rect"></a>ImagingReport:AccessionAssigningAuthority</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b66d6d2a-55bc-4946-a482-2cfcf417eb22" shape="rect"></a>
+                              <span class="italic">Issuer of Accession Number Sequence (0008,0051) &gt; Universal Entity ID (0040,0032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2394eb3e-475e-4c0a-8891-6fa09de50f70" shape="rect"></a>ImagingReport:OrderedProcedureCode</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a54a68ba-7f8e-4f86-9e57-5629a3d4daac" shape="rect"></a>
+                              <span class="italic">Referenced Request Sequence (0040,A370) &gt; Requested Procedure Code Sequence (0032,1064)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba8b5a68-9af8-47a9-b494-1fecfb78fe4e" shape="rect"></a>ImagingReport: OrderPriority</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e3c7e0cf-e04f-40b5-a38a-b784d8cd226e" shape="rect"></a>ImagingReport:Study:StudyUID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_36d196cd-5ad6-4f39-aa4f-17bceaf93f24" shape="rect"></a>
+                              <span class="italic">Study Instance UID (0020,000D)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8f4d6154-f34c-45bf-9b54-900ecc87c09a" shape="rect"></a>ImagingReport:Study:ProcedureCode</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_02e9f320-78f9-410c-b1c2-acf0fbd375c4" shape="rect"></a>
+                              <span class="italic">Procedure Code Sequence (0008,1032)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ee62c79-c907-4dc2-b8be-4f911a303f88" shape="rect"></a>ImagingReport:Study:Modality</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3f643b88-0c7f-4fb3-8427-a11e92231bbf" shape="rect"></a>
+                              <span class="italic">
+                                 <a href="../part16/chapter_D.html#DCM_122142" class="olink" shape="rect">(122142, DCM, "Acquisition Device Type")</a>
+                              </span> or
+                <span class="italic">
+                                 <a class="link" href="http://loinc.org/55111-9/" target="_blank" shape="rect">
+(55111-9, LN, "Current Procedure Descriptions")
+</a> &gt; <a href="../part16/chapter_D.html#DCM_122142" class="olink" shape="rect">(122142, DCM, "Acquisition Device Type")</a>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ac5609e9-5db9-4eb8-88e1-3fd864a8b839" shape="rect"></a>ImagingReport:Study:AnatomicRegionCode</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_af5f9910-799d-419f-bd7f-56b287a6431f" shape="rect"></a>
+                              <span class="italic">
+                                 <a href="../part16/chapter_D.html#DCM_123014" class="olink" shape="rect">(123014, DCM, "Target Region")</a>
+                              </span> or
+                <span class="italic">
+                                 <a class="link" href="http://loinc.org/55111-9/" target="_blank" shape="rect">
+(55111-9, LN, "Current Procedure Descriptions")
+</a> &gt; <a href="../part16/chapter_D.html#DCM_123014" class="olink" shape="rect">(123014, DCM, "Target Region")</a>
+                              </span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad5de2e4-fceb-413d-b5bf-b9247bd8a344" shape="rect"></a>ImagingReport:Study:StudyTime</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3d41c9b3-1fc6-447b-bc06-652f97b10d05" shape="rect"></a>
+                              <span class="italic">Study Date (0008,0020) + Study Time (0008,0030) + Timezone Offset From UTC (0008,0201)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_53eb0f7e-6074-42ec-a3e7-c80c8ed4a45c" shape="rect"></a>ImagingReport: Performer:Type</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_39d29b7c-359b-4b15-863c-5d62a17710eb" shape="rect"></a>ImagingReport: Performer:ID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6145f58d-780c-4e8e-b054-ee9b5256b0cb" shape="rect"></a>ImagingReport: Performer:Name</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1"></td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_876b21a1-93da-49c2-a656-90b2256a54e2" shape="rect"></a>ImagingReport: ReferrerAddr</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_74d4d498-6b22-4899-9fd8-3a2159610c0e" shape="rect"></a>
+                              <span class="italic">Referring Physician Identification Sequence (0008,0096) &gt; Person's Address (0040,1102)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa296209-7b7d-47e6-b155-2811dbc8a771" shape="rect"></a>ImagingReport: ReferrerTel</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b63208ee-39c9-4eb6-b0aa-3c00e62756bc" shape="rect"></a>
+                              <span class="italic">Referring Physician Identification Sequence (0008,0096) &gt; Person's Telephone Numbers (0040,1103)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c9759a60-29fa-4b0a-a4c1-0dc8c2a7f2c2" shape="rect"></a>ImagingReport: ReferrerName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_97a4fbd6-6001-4548-9b87-c72db8af1893" shape="rect"></a>
+                              <span class="italic">Referring Physician's Name (0008,0090)</span>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5d3c3161-9afa-4bb1-b798-960b9b8d170a" shape="rect"></a>ImagingReport: TranscriptionistID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a281e5ef-8c89-40ef-a55b-3f4d7c6aaed2" shape="rect"></a>
+                              <span class="italic">Participant Sequence (0040,A07A) &gt; Person Identification Code Sequence (0040,1101)</span> , [where Participation Type (0040,A080) equals "ENT" (Data Enterer); code value as identifier]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d264d01-52e5-4878-bf37-10799d1a8314" shape="rect"></a>ImagingReport: TranscriptionistName</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_beeab96f-fbb3-419c-995a-e313c9d2a578" shape="rect"></a>
+                              <span class="italic">Participant Sequence (0040,A07A) Person Name (0040,A123)</span> [where Participation Type (0040,A080) equals "ENT" (Data Enterer) ]</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dca1c1a2-f680-4df1-adf2-b1b36ee4b284" shape="rect"></a>ImagingReport: TransformedDocumentID</p>
+                        </td>
+                        <td align="left" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8d134da6-90d1-436a-96e3-15f5de379b6c" shape="rect"></a>
+                              <span class="italic">SOP Instance UID (0008,0018)</span>
+                           </p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_1bf1afce-6600-4e3c-b616-8ea308896ab2" shape="rect"></a>ImagingReport:Study:Modality and ImagingReport:Study:AnatomicRegionCode may be mapped from attributes in the root CONTAINER, if present there as in <a href="../part16/chapter_A.html#sect_TID_2000" class="olink" shape="rect">TID 2000</a>, or in the Current Procedure Descriptions section CONTAINER, if present there as in <a href="../part16/chapter_A.html#sect_TID_2006" class="olink" shape="rect">TID 2006</a>.</p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_C.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="chapter_C.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_C.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">C.2 Conventions </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.20.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> C.4 Body Transformation</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.20 2024c - Imaging Reports using HL7 Clinical Document Architecture</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>N.2.6 Advanced Blending Transformations</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.4.html" title="PS3.4" />
+      <link rel="up" href="sect_N.2.html" title="N.2 Pixel Transformation Sequence" />
+      <link rel="prev" href="sect_N.2.5.2.html" title="N.2.5.2 Edge Enhancement" />
+      <link rel="next" href="sect_N.3.html" title="N.3 Behavior of an SCP" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">N.2.6 Advanced Blending Transformations <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_N.2.6.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_N.2.5.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">N.2 Pixel Transformation Sequence</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_N.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.4.html" shape="rect">PS3.4</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_N.html" shape="rect">Softcopy Presentation State Storage SOP Classes (Normative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_N.2.html" shape="rect">Pixel Transformation Sequence</a>
+         </span> &gt; <span class="breadcrumb-node">Advanced Blending Transformations</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_N.2.6" shape="rect"></a>N.2.6 Advanced Blending Transformations</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_0b8b5ee6-83f5-407b-836d-2612a490aa54" shape="rect"></a>The advanced blending transformation model applies to multiple RGB color inputs, and uses foreground blending or equal blending.</p>
+         <p>
+            <a id="para_afc18214-5674-49fa-a09b-19bf99a033b6" shape="rect"></a>Several transformations in this model affect the input prior to its use in blending as depicted in <a class="xref" href="sect_N.2.6.html#figure_N.2.6-1" title="Figure N.2.6-1. Color and Threshold Application" shape="rect">Figure N.2.6-1</a>.</p>
+         <p>
+            <a id="para_551dc141-2aa8-47c3-96a1-4816b446d56b" shape="rect"></a>Grayscale inputs that have grayscale transformations (Modality LUT, VOI LUT) and palette color transformations (Palette Color LUT) specified in the Presentation State shall have those transformations applied, as specified in <a class="xref" href="sect_N.2.4.2.html" title="N.2.4.2 Superimposed Image Pixels" shape="rect">Section N.2.4.2</a>, to produce RGB values.</p>
+         <p>
+            <a id="para_26acfd62-9e52-4831-80b8-16b524d046e4" shape="rect"></a>Grayscale inputs that have no associated Palette Color LUT information specified in the Presentation State or in the reference Image Instance shall be converted to a full color image by setting R equals G equals B.</p>
+         <p>
+            <a id="para_5560bdc1-c53e-4a34-b558-672e185ff280" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_N.2.6-1" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.4_N.2.6-1.svg" alt="Color and Threshold Application" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure N.2.6-1. Color and Threshold Application</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <p>
+            <a id="para_06ba5515-747e-4522-9bf3-8f025548804f" shape="rect"></a>Padding pixels in an input are given an opacity value zero and shall be set to 0 for Red, Green, and Blue.</p>
+         <p>
+            <a id="para_7a9f8aa0-367b-4560-9e76-f50865029531" shape="rect"></a>The foreground method blends two inputs. The first input uses an opacity of Relative Opacity (0070,0403) and the second input uses an opacity of (1 - Relative Opacity (0070,0403) ).</p>
+         <p>
+            <a id="para_3d0ce242-34e9-436a-b34f-d935e2aa859d" shape="rect"></a>If both the inputs are padding values then the result is padding value.</p>
+         <p>
+            <a id="para_085385d7-d6ad-42b9-a959-827f9f1836f3" shape="rect"></a>If one of the values is padding value then the result is the non-padding value.</p>
+         <p>
+            <a id="para_2407be95-28b7-4983-aad9-3bb6932d88b9" shape="rect"></a>If both pixels have values then result is Relative Opacity * first value + (1 - Relative Opacity) * second value.</p>
+         <p>
+            <a id="para_6e9562ff-b3bb-4a33-b102-c04eff529d61" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_N.2.6-2" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.4_N.2.6-2.svg" alt="Foreground Blending" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure N.2.6-2. Foreground Blending</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+         <p>
+            <a id="para_6fede366-0355-478e-800e-f64353476cba" shape="rect"></a>The Equal blending mode blends two or more inputs where for each pixel location the opacity is calculated as 1.0 divided by the number of non-padding pixels. The result pixel blends all non-padding pixels using the calculated opacity.</p>
+         <p>
+            <a id="para_dd913709-9c4d-4d50-b774-e6845e39ee73" shape="rect"></a>If an input pixel value is the padding-value then the Relative Opacity for that input pixel is zero.</p>
+         <p>
+            <a id="para_87a2aba1-2726-466f-a3a3-0a494c8a5b05" shape="rect"></a>If an input pixel value is not the padding value then the Relative Opacity for that pixel is 1 / (number of input pixels that are non-padding pixels).</p>
+         <p>
+            <a id="para_bd04c033-36fe-46a4-8579-a74c30dae53e" shape="rect"></a>The result value is the sum for all input pixels of the input pixel value * Relative Opacity.</p>
+         <p>
+            <a id="para_e335de31-d4e6-46d5-98ea-2f2af913cb43" shape="rect"></a>If all the inputs pixels are padding values then the result is padding value.</p>
+         <p>
+            <a id="para_87030dcd-2616-47f6-92e7-9b98f91fcaf0" shape="rect"></a>
+                    </p>
+         <div class="figure">
+            <a id="figure_N.2.6-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.4_N.2.6-3.svg" alt="Equal Blending" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure N.2.6-3. Equal Blending</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+                </p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_N.2.5.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_N.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_N.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">N.2.5.2 Edge Enhancement </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.4.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> N.3 Behavior of an SCP</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.4 2024c - Service Class Specifications</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

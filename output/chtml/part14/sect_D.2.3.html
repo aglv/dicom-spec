@@ -1,0 +1,2562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>D.2.3 Implementation of the Grayscale Standard Display Function</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.14.html" title="PS3.14" />
+      <link rel="up" href="sect_D.2.html" title="D.2 Transparent Hardcopy Devices" />
+      <link rel="prev" href="sect_D.2.2.html" title="D.2.2 Application of the Grayscale Standard Display Function" />
+      <link rel="next" href="sect_D.2.4.html" title="D.2.4 Measures of Conformance" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.14 2024c - Grayscale Standard Display Function</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">D.2.3 Implementation of the Grayscale Standard Display Function <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part14/sect_D.2.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.2.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">D.2 Transparent Hardcopy Devices</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.2.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.14.html" shape="rect">PS3.14</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_D.html" shape="rect">Illustrations for Achieving Conformance with the Grayscale Standard Display Function (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_D.2.html" shape="rect">Transparent Hardcopy Devices</a>
+         </span> &gt; <span class="breadcrumb-node">Implementation of the Grayscale Standard Display Function</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_D.2.3" shape="rect"></a>D.2.3 Implementation of the Grayscale Standard Display Function</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_17afdad1-bb65-4262-95f2-6be8191f8857" shape="rect"></a>Carrying this example into the even more specific case of a printer with an 8-bit input leads to the following table, which defines the OD's to be generated for each of the 256 possible P-Values.</p>
+         <div class="table">
+            <a id="table_D.2-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table D.2-1. Optical Densities for Each P-Value for an 8-Bit Printer</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ee985dcc-2850-49a7-8857-8a19bb984b4c" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>P-Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b8e4d49f-be4a-44ca-a49d-0e2c7d25c52f" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Optical Density (OD)</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1"></th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_daa4af95-1c13-479a-b2f8-23e35bcce773" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>P-Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0dfa6b17-6a49-4347-91df-937e3428d78d" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Optical Density (OD)</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1"></th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_08ddaa3b-edc7-45ef-baa7-c3fc1277f5d2" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>P-Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8211df02-f8de-4718-a5fd-e4de262fb0c5" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Optical Density (OD)</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1"></th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b135fbf2-b07e-4e9d-9e13-8ba10a05412a" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>P-Value</strong>
+                              </span>
+                           </p>
+                        </th>
+                        <th align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_588104e1-8cb7-4d5f-9364-8f1d766fb0a8" shape="rect"></a>
+                              <span class="bold">
+                                 <strong>Optical Density (OD)</strong>
+                              </span>
+                           </p>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fea39f85-f450-4efc-8fee-b56ede8af9b4" shape="rect"></a>0</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92eba05c-a01c-4345-98d5-e5d17b51fd37" shape="rect"></a>3.000</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_89d79c6d-d4ef-4896-ba4c-70ad7e7947c5" shape="rect"></a>1</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bb3132cd-fbd9-4163-a84b-e12112c170b6" shape="rect"></a>2.936</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_29b5f7c9-3f6b-4f4c-b0f5-d843116229d1" shape="rect"></a>2</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9e3fe567-e5ab-4917-891e-67404cf4d2b0" shape="rect"></a>2.880</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3955a766-73b2-4ff1-a77c-75faeaec63c3" shape="rect"></a>3</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_60e8fdfe-a46d-449f-91e8-18a85fd103d1" shape="rect"></a>2.828</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_07d3635b-c47e-4790-b4d6-fcbe21d65627" shape="rect"></a>4</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a902fa9e-0486-4e23-984e-2dad4efddc61" shape="rect"></a>2.782</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3df3a1ef-d6d8-4677-86cc-fedfaa7be68d" shape="rect"></a>5</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2d9892bd-cd1d-4b89-bbe9-d04b0e85de71" shape="rect"></a>2.739</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14ed6105-79d1-4ad8-9d4f-7ae4d1ced502" shape="rect"></a>6</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f8549c2-8fb7-475c-b252-48a17c62259b" shape="rect"></a>2.700</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_42f00f3c-d750-4483-b344-416b43629645" shape="rect"></a>7</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_91b41b2d-189e-4f9c-9d45-b3f2f6cd89d7" shape="rect"></a>2.662</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ba3866d-f6dc-4f90-bc63-6884ca67aa8e" shape="rect"></a>8</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0ca010a2-89b7-47a7-8eda-4694ac353dc8" shape="rect"></a>2.628</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_578b1b38-3599-4ffc-be02-de17d08f8c3e" shape="rect"></a>9</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f285b2c7-14cf-4877-8c02-4afbd140b4ac" shape="rect"></a>2.595</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c31ba109-24c3-4da5-b9d6-1d9aa905451a" shape="rect"></a>10</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49ebde3a-6eb8-42e1-bbf9-0d7b1051422e" shape="rect"></a>2.564</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_530ce59a-7a72-43bf-8f3c-b794eda7fb63" shape="rect"></a>11</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a9d20881-f745-4bc3-8cdb-5884bd14c545" shape="rect"></a>2.534</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d9d16f0-235b-442d-bbb8-0bdf8578209f" shape="rect"></a>12</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e2219b7f-47b3-4ab3-ac75-7b49b2d7c0fe" shape="rect"></a>2.506</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a27a7c7a-8017-455e-be23-738829b4a39e" shape="rect"></a>13</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6b5f67ee-e26c-4ca0-82f0-83638b1dca8f" shape="rect"></a>2.479</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b814d40c-e4ad-4142-b605-64af81f93d7f" shape="rect"></a>14</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_41910e91-b0bf-417b-ab05-fc943d50939a" shape="rect"></a>2.454</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_91eef42c-e637-4c18-8427-3193b77d518c" shape="rect"></a>15</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_26736862-2c1b-4c49-b2f5-4d51a483f35f" shape="rect"></a>2.429</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d8872c36-b2ed-47d7-80c0-a6c0144b0ac6" shape="rect"></a>16</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_862091ae-fc3b-4d36-99a4-91360ba78407" shape="rect"></a>2.405</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dab395f1-5df7-4a50-bb1b-91d2577fc0b7" shape="rect"></a>17</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4005adb3-c7a8-4ec7-82a1-0c1d787dd8a5" shape="rect"></a>2.382</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ba4b64f6-3f94-4f90-a8be-a2eca2134a63" shape="rect"></a>18</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_afc1545d-ecc4-4575-80fc-f4b6424a73b4" shape="rect"></a>2.360</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_45a61d12-4bd5-4c82-b135-20d8ff34fdf1" shape="rect"></a>19</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b29ec6db-2ab7-41f8-90b0-8f8bbec93b6b" shape="rect"></a>2.338</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a782671-d1a2-4ef8-9f1c-0514e72e172f" shape="rect"></a>20</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f5092ea3-73f0-47f1-b13e-2d2f5a2320b4" shape="rect"></a>2.317</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a034a433-2bde-4f02-9084-92775da3910f" shape="rect"></a>21</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_03c5021b-d0d8-4299-b9a3-094d7cd61a79" shape="rect"></a>2.297</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ebf70e98-7784-452d-851c-ca5551abf555" shape="rect"></a>22</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c7c8d831-e607-4b7a-8228-97a061d48ceb" shape="rect"></a>2.277</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5761750a-9a92-4fe9-b967-c949af7d9f57" shape="rect"></a>23</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1b5538f0-9198-4815-a9bf-2cbd749b74c1" shape="rect"></a>2.258</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_19cfcc55-9fc8-43d4-bafd-46472ef1430c" shape="rect"></a>24</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_52f556e2-39dc-4a39-ac54-f94488ea633c" shape="rect"></a>2.239</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f997ff84-2cee-4490-b12c-28d64616a1e5" shape="rect"></a>25</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b80f1db-6a97-47d9-8931-584c57854d0e" shape="rect"></a>2.221</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_80cac72b-458a-479f-befa-7a68e6d050b3" shape="rect"></a>26</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7c2abf76-24a8-475e-8d0b-a5298d063b18" shape="rect"></a>2.203</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_eff9b24f-fb2f-49bd-8d0f-55d6f630289a" shape="rect"></a>27</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a6cc8ea2-5f30-4641-a417-9b523fbd876a" shape="rect"></a>2.185</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_655661a4-a432-4f70-93cc-2216246589b1" shape="rect"></a>28</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5b2a24d9-7446-4ce7-9f4b-857530dbab1d" shape="rect"></a>2.168</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_190ffe44-eae2-4666-9ca3-9e41b6e60ce2" shape="rect"></a>29</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e4bd6b9d-9357-40c3-9a04-5db2213d3121" shape="rect"></a>2.152</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_eac2efbb-f58e-4bba-a30d-db2777ebff44" shape="rect"></a>30</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68e3f823-11cb-4057-8352-a42fe6658662" shape="rect"></a>2.135</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f407a5bb-47b5-4dc7-bc14-d5c5fde6a338" shape="rect"></a>31</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b1783ada-ca83-4080-81d1-a0f1ccfc3ae9" shape="rect"></a>2.119</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c7541bb4-97c5-4c82-959e-ae1f689341c9" shape="rect"></a>32</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a0b5fb67-169c-4490-972c-7e86103ca1a2" shape="rect"></a>2.103</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9f02858-0ceb-4ce1-9560-f62aca2adecf" shape="rect"></a>33</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d7af33e6-270b-4d45-b121-d191b83b1459" shape="rect"></a>2.088</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f263b137-d200-48f5-b65d-ff16eaf916f9" shape="rect"></a>34</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bf12de90-849c-49a2-b736-1232b4a93593" shape="rect"></a>2.073</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5fd4c98d-c3ca-4641-9ed0-9b21466faa64" shape="rect"></a>35</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e552dcee-6b58-4376-8647-91a246095506" shape="rect"></a>2.058</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_98ce0410-2365-43e1-99ff-2ba52e11ac24" shape="rect"></a>36</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d72a7a61-b647-4449-a6da-60837a894119" shape="rect"></a>2.043</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_960c643b-ba34-4e94-85ee-7e334ef355cd" shape="rect"></a>37</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4f978b4d-11ea-45df-902e-db3a9f9026b2" shape="rect"></a>2.028</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70fec166-4ef2-40bb-9c5d-2d535c6c4924" shape="rect"></a>38</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c23b17bd-ade9-4893-99c6-efe2398c1649" shape="rect"></a>2.014</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_47aebad4-821f-4aff-9b05-a0a0e18edff0" shape="rect"></a>39</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_392aae6a-9f24-4c85-8a43-4b0b93e56a52" shape="rect"></a>2.000</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a1e555dd-2f9e-488b-9454-000474a927a3" shape="rect"></a>40</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e3dd1c51-ec3b-4c8c-8c38-c5a44c853650" shape="rect"></a>1.986</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bffb6a37-3c44-4c9f-b069-80c4d2bd343f" shape="rect"></a>41</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5063b475-9036-49d0-80dc-ce1c38297144" shape="rect"></a>1.973</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_48b7558b-cc77-47fe-99dd-89792de57223" shape="rect"></a>42</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9078dc6c-243e-4a1a-a7dc-a626ef384955" shape="rect"></a>1.959</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f6c95f7c-0ce3-45f2-a4b7-93c6722b3a39" shape="rect"></a>43</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_da3f9b42-5dc7-43d5-9e06-dc726b405fe4" shape="rect"></a>1.946</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_faf5b967-bf51-42d0-93c7-744a067f7de5" shape="rect"></a>44</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fe08e2eb-f58c-4f58-bde9-d07a7d8234cd" shape="rect"></a>1.933</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1a525b85-3a15-4ef1-92e1-38662a5c03da" shape="rect"></a>45</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8cafdc02-b310-4f84-b0ba-a00f60c1bb3b" shape="rect"></a>1.920</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bd0cc996-3a53-4e31-bd7d-3896ca46928d" shape="rect"></a>46</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a7ccde70-7ccf-49a2-b771-9f5f99419c6b" shape="rect"></a>1.907</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_dd4c4c0b-0a54-4a35-bc9d-08248c7699ae" shape="rect"></a>47</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_770c275f-a98a-4955-ae31-9ad21d9043b0" shape="rect"></a>1.894</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_48c84c4f-c20c-4ee8-b099-bdbbcb62874e" shape="rect"></a>48</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ad312cd9-59d0-4c6a-bd52-ffeb022fa262" shape="rect"></a>1.882</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_091db85f-f677-4566-a59a-8db91b6c1fbc" shape="rect"></a>49</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e61ff659-ef1c-47e4-b973-621ec81be269" shape="rect"></a>1.870</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9436583-f713-4c1e-a5d3-0ea31dd9e750" shape="rect"></a>50</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_047b8ea0-1639-4a53-a7f9-36f9e327d943" shape="rect"></a>1.857</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8d68bbe9-918e-4bfa-bcba-c8252508da71" shape="rect"></a>51</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_713a9371-fc9b-4861-aaf1-1a10083500f1" shape="rect"></a>1.845</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7fe6d16b-3a67-4bf6-904c-e5bd13651429" shape="rect"></a>52</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14da2aab-3788-4f3e-b913-3f7377abc6be" shape="rect"></a>1.833</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_114b60cb-e426-45b4-abcf-575d71399d19" shape="rect"></a>53</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_081f45ae-9590-4ac5-835b-76fc678022f8" shape="rect"></a>1.821</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92267d14-69f2-4bfd-a56b-50cfa6284472" shape="rect"></a>54</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_49291c1f-ad54-44aa-ada8-c40ad71c080d" shape="rect"></a>1.810</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_daf6a300-b8e7-45d5-8c2c-dd9d41940f1b" shape="rect"></a>55</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_51bc7f25-6eb6-4e2d-a6cb-2e0a431dd31d" shape="rect"></a>1.798</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92ca71ff-8194-40d7-affc-4137457372d4" shape="rect"></a>56</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4598b8b5-1045-4cb7-93aa-3052c8f446fe" shape="rect"></a>1.787</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_503f963a-8f30-49d5-bc68-c50c5b7ddee9" shape="rect"></a>57</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8809c4ae-24c7-4406-b6ec-ba726e4b3825" shape="rect"></a>1.775</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2765cc31-7f4e-4f1c-a5e4-c2fc6adf52ff" shape="rect"></a>58</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e8fcaae3-c88c-401c-9692-afabf3914c4c" shape="rect"></a>1.764</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e0ddf521-4426-469e-893b-46f4825158e0" shape="rect"></a>59</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2d43ca5e-c5c3-4e3c-a76c-ecce069862f6" shape="rect"></a>1.753</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4bd7ca59-8420-4c6d-94bc-3dacfa69521e" shape="rect"></a>60</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f2d144fb-2c8b-458d-b89e-1c42bd363242" shape="rect"></a>1.742</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_639e826d-94db-4080-b946-66cdb59f16ea" shape="rect"></a>61</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_929fdf5d-233f-4a83-8064-8f30c1ba17cd" shape="rect"></a>1.731</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ac1b7bb-b861-4f8e-9489-97c349e8c279" shape="rect"></a>62</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2132677d-3a46-44d0-bffd-d9d6ca4c4a77" shape="rect"></a>1.720</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bd9d3522-c56b-42cb-90ed-a383abff4e15" shape="rect"></a>63</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a4bc625b-ff84-4483-8ff8-841b8c67e7a6" shape="rect"></a>1.709</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b85c5996-157a-4d88-9e50-6c3145d2992e" shape="rect"></a>64</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e1446c94-bac3-432f-ae02-de77cb2c45b1" shape="rect"></a>1.698</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_95cfc6d5-d407-442d-aa1e-1a335a07d235" shape="rect"></a>65</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f64aea8a-516f-42bd-8712-42aa58417603" shape="rect"></a>1.688</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70fd35f8-04bb-4e29-a451-f989e4cd8413" shape="rect"></a>66</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_490ad342-f5cd-45b1-829d-46b7cd355687" shape="rect"></a>1.677</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4cfd0202-7fe3-42e9-9f86-753b533962c8" shape="rect"></a>67</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b913723c-22d0-47d7-875a-37252fbb9c67" shape="rect"></a>1.667</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_30db18a4-6c77-491e-a78d-6c71971522f2" shape="rect"></a>68</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_02ff5d46-efe2-4a3c-ae1e-55da5b504027" shape="rect"></a>1.656</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_97c83cfe-bdae-4835-9553-9fe8b23d4916" shape="rect"></a>69</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d8c4245-5caf-45fb-9eec-415e773b1c2c" shape="rect"></a>1.646</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_71b3f4b8-4e4c-4a1f-8e47-7aa3b96dff31" shape="rect"></a>70</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_30050b2c-4734-447c-abce-a97003cb04c0" shape="rect"></a>1.636</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_426a74d5-dbf3-4a27-8110-a592794dbb20" shape="rect"></a>71</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c0178a52-f0a1-454c-882c-c581efe0579b" shape="rect"></a>1.626</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_32f6a94a-2d92-4f0c-8955-877e87589de7" shape="rect"></a>72</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cc6694b2-f0b3-424b-a380-fad13ceb01fa" shape="rect"></a>1.616</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_57136ecc-77ae-4b01-b0ef-40166d196558" shape="rect"></a>73</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fd72b645-90c9-4908-a8ef-1ea823c2ff6e" shape="rect"></a>1.605</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a42457b-4b5d-4d42-8680-f4cb4d304d26" shape="rect"></a>74</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_195b072d-04c9-48b8-b7c8-ee40a5309a38" shape="rect"></a>1.595</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70a697a1-7451-4233-960b-0dd6aa985526" shape="rect"></a>75</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2a50a328-bc8f-4a48-b0ed-ad61e398cd90" shape="rect"></a>1.586</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e2a0bd21-22b4-4e68-86e4-985dfafc7c5f" shape="rect"></a>76</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70af7cdf-d9bd-4a39-9337-3e6fade7d45e" shape="rect"></a>1.576</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16a8d048-d3a3-438a-b496-ac30332c51a9" shape="rect"></a>77</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2061e935-f1f4-4c59-acac-2b2b38474c07" shape="rect"></a>1.566</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9774303a-e1c6-408a-b475-059549fbc076" shape="rect"></a>78</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_66a79235-4e7a-4c66-bdd9-f4c149639f86" shape="rect"></a>1.556</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d52f6f7-b976-4fc9-9ea5-6fe3c756bd6f" shape="rect"></a>79</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4b77cbb6-3fb0-471f-b0b7-f9b4ced63370" shape="rect"></a>1.547</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8aee5aed-fe44-4bf4-a6b2-da75f0be180d" shape="rect"></a>80</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2ba50d8e-61a9-4a7d-b553-bdb05379cd66" shape="rect"></a>1.537</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_469ba33e-83e8-40a5-a0e5-fe2851d48af4" shape="rect"></a>81</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa8e3f70-1578-472d-a8fa-0ab0c1a2ac8b" shape="rect"></a>1.527</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_809403db-4f51-4611-a7f6-d6d9bef6ff82" shape="rect"></a>82</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_27ff857c-c39f-4d5c-9728-59f486514e7c" shape="rect"></a>1.518</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_466c868f-bb5c-40ed-8873-5a14c4c84228" shape="rect"></a>83</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c6755140-b15b-4c89-9110-bec5b91f679a" shape="rect"></a>1.508</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6619b3b6-4ff0-47d0-9cc9-313b374dcd7e" shape="rect"></a>84</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_77957695-796d-45d2-ade8-55f5aac6a53f" shape="rect"></a>1.499</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_383b6535-4ed4-4e37-9984-afd97fca7d04" shape="rect"></a>85</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16940f63-98ec-41df-b155-da68ecebc2d7" shape="rect"></a>1.490</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3aca485c-1887-414b-bad1-f2de87571a3a" shape="rect"></a>86</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_09cc0195-086e-47f4-b7d1-12d2b786c3ac" shape="rect"></a>1.480</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_909f45ce-efff-47dc-a0d9-c02240e77056" shape="rect"></a>87</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fa15e55d-514b-469d-be02-548c2625847a" shape="rect"></a>1.471</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_291d7008-4b50-44b9-a00a-bba1759c744a" shape="rect"></a>88</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e62f8f28-9e91-44ed-802e-c2bca874063b" shape="rect"></a>1.462</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c69b69fb-ee97-49bd-aab5-333e1b944601" shape="rect"></a>89</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2b49344b-b5e8-4a06-b587-773e11e778b1" shape="rect"></a>1.453</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ab061976-25d0-45bd-bb5f-7507a0947f0f" shape="rect"></a>90</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2c54a53a-055d-406b-8c6f-0737a7a7304b" shape="rect"></a>1.444</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_645c5def-b2ed-430b-b6e7-7a2a4d8e51af" shape="rect"></a>91</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f3811cde-7579-4de1-916b-561de00f6610" shape="rect"></a>1.434</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_883eff6b-e1b3-40c5-8ced-e12297874c55" shape="rect"></a>92</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8922e0d9-e525-4171-bf42-1fdf36bce551" shape="rect"></a>1.425</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b22e75fd-8a5a-49f1-9978-20e50804ad57" shape="rect"></a>93</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f6e52722-fcf3-4963-ac19-ecf7d7ee93af" shape="rect"></a>1.416</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c42c15a8-251c-4a78-97d9-1f28e3e0ab58" shape="rect"></a>94</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d0b0f9de-6edf-4fdc-af4a-3cd50791d254" shape="rect"></a>1.407</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7654a275-bb1c-433e-ae8f-6e70aa3842eb" shape="rect"></a>95</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e3544ca3-e3ee-4484-a123-85b9fe742cf8" shape="rect"></a>1.398</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9ce45299-a288-4a6a-b93e-c3d490cce679" shape="rect"></a>96</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8dfbf978-1a22-4644-a6eb-03789518e595" shape="rect"></a>1.390</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4fe96507-ac71-408c-9b37-8d871f343286" shape="rect"></a>97</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_007f6e97-7974-4b5c-8ab9-28258fb5a04f" shape="rect"></a>1.381</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9056d73d-0801-4f41-8e59-7ed5543f2b53" shape="rect"></a>98</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_17699831-da41-41fa-ad45-9aabcd861108" shape="rect"></a>1.372</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_17df29b1-1bdb-42fc-a5c8-fdf133e1d999" shape="rect"></a>99</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_acfa3317-bb8d-4035-9c84-6a83fe30ced9" shape="rect"></a>1.363</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b20141dc-37bc-4af9-af1f-937216c0b31e" shape="rect"></a>100</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_db098da2-c7ec-4829-917c-abd6fb981e20" shape="rect"></a>1.354</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_368e3e54-5839-40b7-90a8-fa0762701564" shape="rect"></a>101</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3a39baf8-d522-479a-9c5a-b4266b45b0a2" shape="rect"></a>1.346</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_40a727d9-306a-4ff7-8e25-e9619ab95af3" shape="rect"></a>102</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2e7acbeb-e2a0-4134-ba2f-2b5da3fd1378" shape="rect"></a>1.337</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_461aaad4-cd26-4f6b-afb7-dc7fcaeac699" shape="rect"></a>103</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_37f457f7-e12d-4c06-a262-f0f27f6b6306" shape="rect"></a>1.328</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c5fc636d-6325-45b6-9034-9ab54c3b78c1" shape="rect"></a>104</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e80f586a-70d2-44a0-9447-d1aa4efcea77" shape="rect"></a>1.320</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_97fb07cc-7335-4bd1-8211-ab313dc9fac0" shape="rect"></a>105</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_88db34cb-cb30-45f8-bb76-a94352d453e0" shape="rect"></a>1.311</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b068bdfb-641d-4231-b4aa-ea6f90eaf1be" shape="rect"></a>106</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8591ff59-c9a8-460e-8da4-33ecd6791cb3" shape="rect"></a>1.303</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e42774e0-ac23-4208-aac6-ae946a26cf9b" shape="rect"></a>107</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cf23b8e3-8be2-40fb-8d95-5f7127809d93" shape="rect"></a>1.294</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_177b9359-e016-4ff5-a7e5-93649fd4c66d" shape="rect"></a>108</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_69bdc597-67d5-425e-b676-0398f17bd12c" shape="rect"></a>1.286</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1d7f0089-f651-43e8-94a8-6b8416827deb" shape="rect"></a>109</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_03568858-0fa8-4f91-b78e-0589097925ee" shape="rect"></a>1.277</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2b035b2c-6fe5-46e6-93bc-d6b1a5f0f9cc" shape="rect"></a>110</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_836a90a2-f275-4068-8991-639ae823f9a7" shape="rect"></a>1.269</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0e6dd9bd-738e-470c-8c96-18d4729f938d" shape="rect"></a>111</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b394b748-3bcb-4efd-a055-f322048b3605" shape="rect"></a>1.260</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4ccd3dd2-f3ab-4ef5-a337-01399004a543" shape="rect"></a>112</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0b68ca06-e1cb-4014-9170-a94dbe6a3f2b" shape="rect"></a>1.252</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b0c2d43c-5254-4967-833f-14beac3ba8e4" shape="rect"></a>113</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_52ec8b79-b498-4576-8efb-c2f86a6414c6" shape="rect"></a>1.244</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_23fe8af2-ab57-4847-b979-1483cbff5c42" shape="rect"></a>114</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_234cf782-4d85-4e7d-932b-1aebee136344" shape="rect"></a>1.235</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0b520eb6-6822-4a2d-8f7f-1b38300b34c3" shape="rect"></a>115</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cf37be06-d268-4597-ae6d-51a2fd6be565" shape="rect"></a>1.227</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4558a317-7a6b-41d5-b352-6524c6833e20" shape="rect"></a>116</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b0120c67-336b-4444-bcc4-e59c110669fa" shape="rect"></a>1.219</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_17f943f8-d10c-442a-b7bb-f86f0e8c4180" shape="rect"></a>117</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_791ac277-c082-4246-887c-2c35b483ddec" shape="rect"></a>1.211</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_881b4a60-981c-4f5c-b8c3-710e4f67c2ed" shape="rect"></a>118</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_915b5ab1-583a-40d8-93fa-72a63559c811" shape="rect"></a>1.202</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8fb3902a-df8c-4f4f-9cf4-bc3db485a6a1" shape="rect"></a>119</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fb1ce49b-c72e-48a0-a0c1-3fdcd6d7f86e" shape="rect"></a>1.194</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cff4e8e0-ba75-413b-b99e-9aef311903ea" shape="rect"></a>120</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cb0ca61c-e7e6-4e75-b9d5-5a1a63bcd4f7" shape="rect"></a>1.186</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fb391be4-ac2e-4ea7-a9fe-0d6bbfa03ed4" shape="rect"></a>121</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bac7a7b0-22a7-4acf-9818-09a421bc2471" shape="rect"></a>1.178</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1726dfae-c665-4a9e-915d-25ba06a2e23d" shape="rect"></a>122</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3cf13c18-5bec-413d-b943-e1e86838b6b1" shape="rect"></a>1.170</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_42ef45c8-1e96-4264-a77c-dc12cc9dc9f2" shape="rect"></a>123</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_164d25c8-a592-45a0-ab8b-4a9b0d01f1fd" shape="rect"></a>1.162</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8271b474-e07f-41fc-8d4e-f1e45dba8ce1" shape="rect"></a>124</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d47bf51c-5ffd-42f9-9808-e17a1e9736d2" shape="rect"></a>1.154</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_052a6cc7-6a77-4498-baa6-14d4faa5cb0c" shape="rect"></a>125</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3b8e0b21-64b2-4e91-83b7-93056c26fc87" shape="rect"></a>1.146</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_caf44137-e088-4b56-8d95-dc4c91d1a14b" shape="rect"></a>126</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_04b6fa3b-dca4-45b6-a3d3-faffdf3ffb5f" shape="rect"></a>1.138</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8e2acf7a-8c05-4904-90bb-770b7e9906a8" shape="rect"></a>127</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9f74b37f-8540-45bc-a231-0f96a5489dfb" shape="rect"></a>1.130</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0826a7f1-8b45-402f-9c52-9e0b95e9aac1" shape="rect"></a>128</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_58be0c1c-4ba5-4aa3-98e7-071a52d7eccb" shape="rect"></a>1.122</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9a4c050-5906-4821-b9f9-3572d2b9b4e7" shape="rect"></a>129</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f98cda21-e04d-4385-82fc-ff88cef10f56" shape="rect"></a>1.114</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_057bbcfa-1395-4720-bd54-8aafa9d307a0" shape="rect"></a>130</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_35e0059f-bc82-4628-acc7-8ae0a611e9b2" shape="rect"></a>1.106</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_68a2acb5-dcf6-409b-b93f-8e1493418d55" shape="rect"></a>131</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0a4708b2-c3d8-41cb-b6b1-0545a41e28c4" shape="rect"></a>1.098</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2ae222c1-b586-4f32-aae6-86f4573b158b" shape="rect"></a>132</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_287ae400-ef07-45c0-a595-1a308e5b27f9" shape="rect"></a>1.090</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a707ba01-a85a-4b36-991b-cf715cf6ab7a" shape="rect"></a>133</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6099bfae-773e-4e27-91b8-b132edb8a2fa" shape="rect"></a>1.082</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6cf72b18-607f-4be2-82fb-fd325153a819" shape="rect"></a>134</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8abead37-9833-44a0-9c1a-e2a2c8a3a033" shape="rect"></a>1.074</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_db4f840a-0a1b-4060-a0d2-35f5a6878724" shape="rect"></a>135</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0b0e070b-b5e0-41dc-a6c6-545a0bc2396b" shape="rect"></a>1.066</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_79be4403-699f-467c-affc-f0f8eaef40ad" shape="rect"></a>136</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_961a3907-ef8a-4050-8225-ba673fdb88c0" shape="rect"></a>1.058</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c2cfa249-b630-420b-a00f-e7ec1c0d297a" shape="rect"></a>137</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cff25395-c4ca-4460-9d80-b6267ad1eeae" shape="rect"></a>1.051</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8205a0c1-237f-457f-a638-cf26ea763e1a" shape="rect"></a>138</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_199bcc11-7f95-406a-b171-50026daf7507" shape="rect"></a>1.043</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c4069b00-3925-4d3f-8868-b74d0d985447" shape="rect"></a>139</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_07345249-b215-43c2-9905-5e7dc158728a" shape="rect"></a>1.035</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fce0e23b-6b48-40cf-b92a-5697f5e0e4fb" shape="rect"></a>140</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c97f304b-29b3-46cc-9c6b-ee8331e052b0" shape="rect"></a>1.027</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c706cbc2-390b-4e28-abac-5cfc81bdf98b" shape="rect"></a>141</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_04fb10a7-023e-44c3-aa98-0b3013eeb302" shape="rect"></a>1.020</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_063c24ae-5020-4352-8238-ccf2c5de7e0a" shape="rect"></a>142</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5382486d-c8d0-4f29-8fbe-0dba870000f0" shape="rect"></a>1.012</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1aa89722-5c31-4eaf-b0f4-355d6a1b91d0" shape="rect"></a>143</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ee7023ca-c088-46fa-9a51-9b26e7945bb2" shape="rect"></a>1.004</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bb0457b2-9aa6-4300-b1f0-b7225c42e293" shape="rect"></a>144</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_14255e7b-b036-4805-be6f-ab3493edd337" shape="rect"></a>0.996</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8502207c-993a-4de0-bf76-ac234c3b2fc4" shape="rect"></a>145</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0a87621b-49f6-4d6f-a8e0-5446d91b005a" shape="rect"></a>0.989</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f48b18ab-d0be-4bed-ba18-5ac7533da41b" shape="rect"></a>146</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4b51ec8d-5ea6-4cc5-943e-99bb77374f8e" shape="rect"></a>0.981</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a423fdd8-7c17-4b5b-830b-f2452df8de43" shape="rect"></a>147</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ebc51c84-1724-441a-b2e4-24a46d9b5a0f" shape="rect"></a>0.973</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9cf86583-c821-4f28-8932-0aa52246ce7b" shape="rect"></a>148</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3f54a1b2-5f96-4538-8a06-b0617366c586" shape="rect"></a>0.966</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ca8576dd-83e7-4ee4-8675-5fc4e0805b66" shape="rect"></a>149</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_69c12022-3736-4ccc-a2fe-ec1127313705" shape="rect"></a>0.958</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b92a493c-841a-4ade-afc8-186500d56bf0" shape="rect"></a>150</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cd432240-e4a6-4cb5-8bc7-e2f276062210" shape="rect"></a>0.951</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_796dd210-74cc-4131-bce5-68e2bcc29041" shape="rect"></a>151</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_37bd5a6c-9c28-4082-a459-9e755913cc3c" shape="rect"></a>0.943</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ca273708-e265-4d41-9426-d4032edcd6f4" shape="rect"></a>152</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f31ce5ef-5058-4170-b3b4-12374a7fa7c1" shape="rect"></a>0.935</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d8f6090-67e4-49ad-8f4f-0065987fd4ad" shape="rect"></a>153</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9275cfa0-d902-416f-a0be-4efe1ae77283" shape="rect"></a>0.928</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ea3399d-8ded-4816-bada-da1d084fab5b" shape="rect"></a>154</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_320d9fd0-f30a-40b3-981c-6999839dfc8e" shape="rect"></a>0.920</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cfb3a6cf-1cb3-4508-9951-3115cf5248d5" shape="rect"></a>155</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_071e7c16-b1f4-44d1-a393-ff940f2edd35" shape="rect"></a>0.913</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1b296071-e576-47d5-9e05-a4d288540d55" shape="rect"></a>156</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5dc0017d-d357-48d7-92b9-099d6769e15e" shape="rect"></a>0.905</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fd35fb8a-803b-4f40-9491-4e94b6fde168" shape="rect"></a>157</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5075c4d1-3904-46df-9e19-03507aeb0665" shape="rect"></a>0.898</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_87561748-7ed1-4d32-88d5-2a04aedb0b65" shape="rect"></a>158</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fec267cc-8cad-4a2e-87b6-cbcaa5e06c51" shape="rect"></a>0.890</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_683219b1-6009-4189-ae92-7852331950cf" shape="rect"></a>159</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_afd5a5ee-66a7-4b34-afb8-69155d823989" shape="rect"></a>0.883</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e15c459c-c6da-4e1d-a5b9-c857d8211542" shape="rect"></a>160</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6238499b-7f33-46e6-8935-d0fa321ba8da" shape="rect"></a>0.875</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1ec6e811-1a1c-4c28-80dc-2d6ed521faea" shape="rect"></a>161</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d84a47fa-7b9a-4020-8f9d-e151dae39370" shape="rect"></a>0.868</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c845ff9c-728c-48b2-9c2e-dcd15b5ec1d3" shape="rect"></a>162</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_513c4f04-166d-48a5-a30e-099347aefeef" shape="rect"></a>0.860</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_cfcb7903-ec43-4e1e-a138-dd22b6058af1" shape="rect"></a>163</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7431c6da-c966-451d-a83d-5c6e279cd7b4" shape="rect"></a>0.853</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7a80c936-f564-405d-a96e-debc5de13abb" shape="rect"></a>164</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_02d478e4-80b6-47e8-884a-db18d8ddd086" shape="rect"></a>0.845</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ddc97d63-50d9-4feb-8b0f-0b1922cc451e" shape="rect"></a>165</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_116ea01d-2dba-400d-9ce4-f6905130501b" shape="rect"></a>0.838</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_591ee140-d85f-415b-a417-621c267bbd50" shape="rect"></a>166</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f34aee4c-3f9d-4aaf-9ffc-286d1e7a0e7f" shape="rect"></a>0.831</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ed5c1244-48f7-4556-95a8-368ba2c68888" shape="rect"></a>167</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_74a13a02-cbae-4a82-af02-e955a70f3b3a" shape="rect"></a>0.823</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1c51b91d-51d4-4b8f-bc4f-dddf2e955532" shape="rect"></a>168</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c2aa1192-627b-4e7f-8ccb-26e376a9aadd" shape="rect"></a>0.816</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c20a7ce3-44c5-4181-a3b5-789e5614326d" shape="rect"></a>169</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_baf39213-6f4c-48c1-be14-ee375f99e56e" shape="rect"></a>0.808</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1042ed65-8bcc-42cd-9888-5df2e9b92142" shape="rect"></a>170</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_de594b21-6566-45d6-afd6-02c8d72bd5f9" shape="rect"></a>0.801</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_10ea27d1-aec5-40fa-a8d4-c2d7f0a49a95" shape="rect"></a>171</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d82592a7-9f3f-4e88-a84b-b2e70382198e" shape="rect"></a>0.794</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f9128fa0-c7bc-4392-93a0-77330860f8e6" shape="rect"></a>172</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_744212c2-8e21-4b88-a8da-017021a76918" shape="rect"></a>0.786</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a7a7651f-e086-43fc-9427-fb4e89b6cfae" shape="rect"></a>173</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bbc5954e-7f3e-4e37-81f1-71180c6ad978" shape="rect"></a>0.779</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f6cd310-802f-477b-a49e-c9c81a4716e6" shape="rect"></a>174</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7e94c777-d0cc-404f-81d3-249104cc6b59" shape="rect"></a>0.772</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f8147453-b0cf-4b82-9fcb-97ba8e7bf078" shape="rect"></a>175</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4ef15c76-71b4-47c5-8215-bd88e40c0d6e" shape="rect"></a>0.764</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a41513bc-e4e3-4bb8-be93-55061d6c2932" shape="rect"></a>176</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b47a751b-d951-46ca-94bd-8d723cbdc920" shape="rect"></a>0.757</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9efb13ce-fba8-4346-9528-b92bcc71e721" shape="rect"></a>177</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d4941590-4974-40f3-ab90-e6e33e408de2" shape="rect"></a>0.750</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4cc00a75-a6c7-4b7c-bd7b-de70f9b9c6c2" shape="rect"></a>178</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4214e19c-b042-4299-bb8d-4b594fab31a0" shape="rect"></a>0.742</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0d6ea82a-b6c7-4e29-819a-b043626fc1d8" shape="rect"></a>179</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ec8c767c-1424-4c2c-b11c-7e84a946f1ee" shape="rect"></a>0.735</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_65e97422-2aeb-465a-a85c-c26d8f860f31" shape="rect"></a>180</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3f47a206-31e0-42fe-98ce-76ee741aeb50" shape="rect"></a>0.728</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_032c96b8-d902-4a74-9284-c6a9a0f2bd67" shape="rect"></a>181</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_28246380-674e-4f38-a644-76f0a9c9ce41" shape="rect"></a>0.721</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_85cb9cc4-5926-47cd-a38d-ac239119bdb3" shape="rect"></a>182</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_849869a4-d42d-4d25-a969-a533f3a35594" shape="rect"></a>0.713</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5866b4db-00e2-441a-ba84-b1ec054e630d" shape="rect"></a>183</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fb5cc017-7d09-466a-a9b6-3cfbe511e939" shape="rect"></a>0.706</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_84171f7f-7c21-4385-99dc-863ef872774c" shape="rect"></a>184</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b78547e-7d10-44ba-80e8-abc001f12db4" shape="rect"></a>0.699</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_78534218-f3d4-4533-b798-45ac62463a87" shape="rect"></a>185</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0a44a104-acd4-4a4b-8d71-aabeedd163fb" shape="rect"></a>0.692</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e0ed9320-952a-4d06-8311-4da555b2a9bf" shape="rect"></a>186</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bcd3760d-77c7-4a77-97f9-f0ca7b180525" shape="rect"></a>0.684</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a7be349a-1f14-4f65-8f05-98be65741dd0" shape="rect"></a>187</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_258c63b9-a887-4c0a-a7fa-8fc609e57727" shape="rect"></a>0.677</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d5424e81-2e46-45dc-aaf5-5a0897b65958" shape="rect"></a>188</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_377acb74-3419-409c-a866-0ddfe0c2584d" shape="rect"></a>0.670</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7b60a879-4ced-42e9-811e-7fe9bd2a903a" shape="rect"></a>189</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_92368738-6fb3-4df1-bace-2db9cf7b3e68" shape="rect"></a>0.663</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_31d2b82b-f2f0-40cf-a2e7-602ad22da9da" shape="rect"></a>190</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_65e1d0e3-9ed0-4f28-9096-e43a16855b2c" shape="rect"></a>0.656</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aa4ccb41-c667-4be8-b20a-9655b6bf746b" shape="rect"></a>191</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d3335bc0-c418-4aca-b4a9-3bb11eb032a6" shape="rect"></a>0.648</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9fac939b-3d1e-464b-9797-55d3398c4b87" shape="rect"></a>192</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_87e243aa-9445-4edc-bf4c-e106ff455e3c" shape="rect"></a>0.641</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6b64e719-f7aa-4594-884d-bf47584a4ef8" shape="rect"></a>193</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9a690f21-29ad-462c-ae8a-d95cc66aebe7" shape="rect"></a>0.634</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9196cbeb-2d6b-4d74-ad16-48ca856ed001" shape="rect"></a>194</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1a9b5bdf-684b-4c31-af79-70a5038d3b33" shape="rect"></a>0.627</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4c897f98-3dcb-42bd-8022-d501ea231e52" shape="rect"></a>195</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_98de6f8c-9676-401b-80c7-7749d46b8078" shape="rect"></a>0.620</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bdca998d-e46a-46f2-a62d-38c9c6298790" shape="rect"></a>196</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_69cd2abf-98e2-49c4-90f3-8b1ace67a870" shape="rect"></a>0.613</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8033d354-b5fe-42ba-b663-a1a027149b39" shape="rect"></a>197</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_77bb0c52-30c9-4e4d-8ff4-00a5633b07ed" shape="rect"></a>0.606</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ad5baa9-b613-44f7-89c7-864b61dbedb6" shape="rect"></a>198</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a22cac29-f366-4ff3-9ede-8ae8c58964e9" shape="rect"></a>0.598</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1dce82d4-6c55-4df2-a435-ec28fac5b6c1" shape="rect"></a>199</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ebaeaec4-f45b-49a4-bf8b-e23701e088ef" shape="rect"></a>0.591</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bf40b9b3-5848-4f4a-a545-32e8919f5446" shape="rect"></a>200</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2f58708b-19af-476e-9e46-d92d198192cd" shape="rect"></a>0.584</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ca890a40-3087-4368-9e11-bedbc986e1f8" shape="rect"></a>201</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d5e763c0-9d1b-4d99-994a-16dd7a63dd90" shape="rect"></a>0.577</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3258b698-b355-4392-b429-e7ba7dce9303" shape="rect"></a>202</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f668412f-196e-4f8f-951b-a6c3dae34ebb" shape="rect"></a>0.570</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c3159e2a-4fb9-4c76-96ff-ba93d477cc41" shape="rect"></a>203</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1c301ec8-5cac-4d2d-8f1c-962080c97382" shape="rect"></a>0.563</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9dc07ca2-3777-4c3b-87b2-8d2bce15c441" shape="rect"></a>204</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70d34162-ba18-4cb3-b087-1f4c9be9b849" shape="rect"></a>0.556</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d8930fe-6e46-4110-bf02-86df3a94edca" shape="rect"></a>205</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ea09fa3b-8828-473d-b665-e9307daa27ca" shape="rect"></a>0.549</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_89bed2c3-0fad-4a88-a92b-21d973fe3bf5" shape="rect"></a>206</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6713454a-4031-4e75-bf44-9fa602ba9099" shape="rect"></a>0.542</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ecbd456e-ea10-44b1-94bc-98f8b9c1ed30" shape="rect"></a>207</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0b85dad1-2b95-4366-808a-40a6e977248a" shape="rect"></a>0.534</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4a80fb7a-262d-4dab-9231-fc26f925011b" shape="rect"></a>208</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7b41b6c4-3520-43e4-aa45-9c8a1693bcfc" shape="rect"></a>0.527</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7e36b4ad-7557-410c-9088-049cd806a5ca" shape="rect"></a>209</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_01c1b240-3bd0-4081-8f15-7e555aa1259e" shape="rect"></a>0.520</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9ea50e2e-7ead-409b-b677-a8e1a34d03db" shape="rect"></a>210</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3d569435-c32c-4185-a5dd-47c0a6aadbff" shape="rect"></a>0.513</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16dcdfda-169b-4fa5-8976-9cd025cd22f8" shape="rect"></a>211</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f1f6f3de-d424-4ced-95bb-450ccc6ebd06" shape="rect"></a>0.506</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f74d0961-74d6-4b5a-ab3b-c02cbad1e976" shape="rect"></a>212</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9d19a9bf-d465-4ffe-ba66-eed960ef031a" shape="rect"></a>0.499</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bcc7cc7d-bfc1-4345-953d-0708bdb8b8e2" shape="rect"></a>213</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_da18a521-31df-416c-8440-08257fa4e2be" shape="rect"></a>0.492</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b6dde813-57fa-4be1-8850-d9fe89841622" shape="rect"></a>214</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_aa13da24-2645-4419-a7ec-0022ca0add18" shape="rect"></a>0.485</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e7fd4d08-0d36-4c4d-8c65-c2a0d778b25a" shape="rect"></a>215</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2d64d993-8dd0-4405-92c2-aecb61a3f747" shape="rect"></a>0.478</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_917f8ac8-9e39-4224-a24e-bcfa14ef27ab" shape="rect"></a>216</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_01afd03d-81ed-4c33-bde0-bbcb9231d0a4" shape="rect"></a>0.471</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1808a2e7-3c92-4349-ba5c-8e13d49dfda5" shape="rect"></a>217</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_af98eb31-a832-4c4b-b7dd-e3ca14b5c73c" shape="rect"></a>0.464</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0a772108-af88-4db7-b6b4-77270ed893af" shape="rect"></a>218</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_33535f5a-79e5-4b74-9da6-146a9df59fd6" shape="rect"></a>0.457</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e6d2a79b-268f-48b5-877b-bff31ec7caed" shape="rect"></a>219</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f2a15a49-e6fa-49c7-a8a4-275d7fc0625a" shape="rect"></a>0.450</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d9b93726-e9cc-4f30-98e1-153cbfa9d1d5" shape="rect"></a>220</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_4b792c29-723d-492d-8c21-80f3e9b6ddf8" shape="rect"></a>0.443</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_26774e45-efeb-4834-bb4e-9344f4ad2200" shape="rect"></a>221</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_69d75323-9169-4e3c-8cb7-e614cadfc8f7" shape="rect"></a>0.436</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_16a254b9-7d3c-4473-8b08-2e172114f05b" shape="rect"></a>222</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_7635a845-9158-49ee-a879-a6d517703c19" shape="rect"></a>0.429</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_82652dbb-3d7e-4f39-9fcc-b731aa69fcfe" shape="rect"></a>223</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_085133b3-8351-456b-a8f4-e3c8c89b2047" shape="rect"></a>0.422</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b862bc5e-edfe-42d6-9d6d-721af440a4b7" shape="rect"></a>224</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_ab358446-bbca-46c3-a9f5-6ad96f965348" shape="rect"></a>0.415</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a1c39bcc-84a7-4709-b9e9-cddf449562bf" shape="rect"></a>225</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0f2301f5-cddc-4bd4-a81f-ef1406617dca" shape="rect"></a>0.408</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8aa1d808-2795-494d-9e3b-dc4d044bccb0" shape="rect"></a>226</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e0a88416-8f63-4a3a-96b9-1c516da16ace" shape="rect"></a>0.401</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fbd35451-8c79-4a73-b548-5bccad0e6315" shape="rect"></a>227</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_63570cae-9e54-40fd-8164-0d5a535f2405" shape="rect"></a>0.394</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_1518025a-2315-467b-9026-fadf318ef0a0" shape="rect"></a>228</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3ae40fc6-d2f7-489c-9636-ead99897ee4b" shape="rect"></a>0.387</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_955a0118-ec98-4827-b209-eb06cede3a33" shape="rect"></a>229</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9de892c1-39db-4f73-99b6-e7255b9945c1" shape="rect"></a>0.380</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bf3c2dc4-88f2-47ba-a8b1-452a1c75540b" shape="rect"></a>230</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d08bee1e-1945-4f37-b1cf-370a65a55c17" shape="rect"></a>0.373</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b5a4022-ea28-4456-a09d-3f207a241e2c" shape="rect"></a>231</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f945ba66-c366-46a0-8cd9-0c94b8372dad" shape="rect"></a>0.366</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_24bcea96-7a4e-4ecd-a02c-51fa6b4e4daf" shape="rect"></a>232</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bb955172-6c1c-422a-a0eb-24016a0d2ad2" shape="rect"></a>0.359</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a3a512db-864a-43e3-8ea4-debb1dcc36cd" shape="rect"></a>233</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b48c5483-ba11-4bd0-bf4a-ecb132573be9" shape="rect"></a>0.352</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f3405527-1fda-45dc-b433-cef11f71f034" shape="rect"></a>234</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6e580d7a-27c7-4a6b-9010-05c419b79fc5" shape="rect"></a>0.345</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_553176d4-87e2-40c7-8f53-d9ba3fdc92e4" shape="rect"></a>235</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2adcebe8-8706-4527-9321-55af9705f2b2" shape="rect"></a>0.338</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_a5b1024c-d28c-4857-8158-7604178d59e5" shape="rect"></a>236</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5b631dc2-c024-441c-a9f2-a17dcd39ee18" shape="rect"></a>0.331</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_3795a2b5-ba6e-4dbd-b29f-26ef3f52815c" shape="rect"></a>237</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_706a3a04-94d8-44e2-848d-21562454996b" shape="rect"></a>0.324</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_675752b7-9a37-4fa4-894c-0a87fe395bbd" shape="rect"></a>238</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_75b23088-3999-4b44-9cb0-6b11de3c236c" shape="rect"></a>0.317</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fc596e64-06df-4cd0-9549-46c6e5bb4f26" shape="rect"></a>239</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5313b704-e0e8-427e-be00-c1ac3e34b182" shape="rect"></a>0.311</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d74318a3-db6f-47b0-98b7-9a0242fa2013" shape="rect"></a>240</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9ef07f08-ecf9-4762-bf2b-17fd2c8da1ba" shape="rect"></a>0.304</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_70ebb7bd-e110-4203-9f14-bd69fba315e3" shape="rect"></a>241</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e020c24c-13f9-46b0-8e64-bca1495ce298" shape="rect"></a>0.297</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_106404f9-d29c-42ce-b78d-c8d9666f7d6a" shape="rect"></a>242</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_227e74cf-8958-4b3c-889e-1ef4690bd366" shape="rect"></a>0.290</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c6a66bc2-3973-44e6-b3cc-7f001e5f2d57" shape="rect"></a>243</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9c603a72-69f3-4f50-a785-7b4d344747ae" shape="rect"></a>0.283</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_d51527ef-a8e1-4c79-a341-2889ae6113fe" shape="rect"></a>244</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_59e323c0-a7d7-4fc8-be30-817aac7b621a" shape="rect"></a>0.276</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_db35ca0e-a8de-45d3-8c99-ed6664d6cd56" shape="rect"></a>245</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_96056c85-b0cb-4b9b-ae39-eab2c2f74600" shape="rect"></a>0.269</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_05009303-9048-48c2-accf-ec0efc70f348" shape="rect"></a>246</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_e8ddc3a5-142f-4d1e-8450-3a0a62c623e6" shape="rect"></a>0.262</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9bd1ab3a-745a-4970-904b-1f7879e09621" shape="rect"></a>247</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_b032f35f-9044-4212-8f7b-96ddf221764f" shape="rect"></a>0.255</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_6170b2a1-0184-42dc-987f-7b68d469e8a9" shape="rect"></a>248</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c5c6d8f3-35c7-446a-a529-69e29cc8c041" shape="rect"></a>0.248</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_53469688-4cbb-4412-9e42-952b4b8dc5fb" shape="rect"></a>249</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_8eff874f-a151-4e25-b881-a612b0979689" shape="rect"></a>0.241</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_bde886f4-396c-4251-8a64-268ef333b260" shape="rect"></a>250</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_0ed4fc37-7786-403b-acba-828e091d1ce1" shape="rect"></a>0.234</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9fb7993b-11ed-48d5-b893-8801e8c42268" shape="rect"></a>251</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fbd44989-5145-4e6b-9908-d084a69a02e2" shape="rect"></a>0.228</p>
+                        </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_9b2f9ff4-c4bd-4ae2-b0f8-d772fb6e412f" shape="rect"></a>252</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_2e86e84b-bb65-448e-86a0-f1029444f56a" shape="rect"></a>0.221</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_fea836c3-81b9-44b5-8c39-cee947513ce9" shape="rect"></a>253</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_74d72dd3-b13b-40bd-9bf0-e3ad96cb199b" shape="rect"></a>0.214</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_f1b9843a-403c-4c54-b2c2-090bdfc576de" shape="rect"></a>254</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_26574700-550e-41fd-b4e6-752cfbc254d7" shape="rect"></a>0.207</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1"></td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_5f27159c-12e7-4e11-9bf4-df83b3db635d" shape="rect"></a>255</p>
+                        </td>
+                        <td align="center" rowspan="1" colspan="1">
+                           <p>
+                              <a id="para_c9b0a109-5b46-4c39-a27c-59e288733ef1" shape="rect"></a>0.200</p>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <p>
+            <a id="para_217b3578-9881-4274-a840-e312b16b2ff4" shape="rect"></a>Plotting these values gives the curve of <a class="xref" href="sect_D.2.3.html#figure_D.2-3" title="Figure D.2-3. Plot of OD vs P-Value for an 8-Bit Printer" shape="rect">Figure D.2-3</a>.</p>
+         <p>
+            <a id="para_5e9de3e9-e43d-455a-bb72-3e377c249f67" shape="rect"></a>
+          </p>
+         <div class="figure">
+            <a id="figure_D.2-3" shape="rect"></a>
+            <div class="figure-contents">
+               <div class="mediaobject">
+                  <img src="figures/PS3.14_D.2-3.svg" alt="Plot of OD vs P-Value for an 8-Bit Printer" />
+               </div>
+            </div>
+            <p class="title">
+               <strong>Figure D.2-3. Plot of OD vs P-Value for an 8-Bit Printer</strong>
+            </p>
+         </div>
+         <p>
+            <br class="figure-break" clear="none" />
+        </p>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_D.2.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_D.2.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_D.2.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">D.2.2 Application of the Grayscale Standard Display Function </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.14.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> D.2.4 Measures of Conformance</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.14 2024c - Grayscale Standard Display Function</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

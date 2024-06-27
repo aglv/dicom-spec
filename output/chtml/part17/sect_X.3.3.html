@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>X.3.3 Image References</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.17.html" title="PS3.17" />
+      <link rel="up" href="sect_X.3.html" title="X.3 Transcribed Diagnostic Imaging CDA Instance Content" />
+      <link rel="prev" href="sect_X.3.2.html" title="X.3.2 Transcribed Text Content" />
+      <link rel="next" href="sect_X.3.4.html" title="X.3.4 Icons" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">X.3.3 Image References <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/sect_X.3.3.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_X.3.2.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">X.3 Transcribed Diagnostic Imaging CDA Instance Content</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_X.3.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.17.html" shape="rect">PS3.17</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_X.html" shape="rect">Dictation-based Reporting With Image References (Informative)</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_X.3.html" shape="rect">Transcribed Diagnostic Imaging CDA Instance Content</a>
+         </span> &gt; <span class="breadcrumb-node">Image References</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_X.3.3" shape="rect"></a>X.3.3 Image References</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_f7c5309b-933c-4663-8cc5-609b92f43940" shape="rect"></a>Images are referenced using hypertext links in the narrative text. These links in CDA are not considered part of the attested content.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_bfa41d38-252c-4a4c-a252-7f76be28f27f" shape="rect"></a>The primary use case for this Annex is the dictation/transcription reporting model. In the historical context of that model, the images (film sheets) are usually not considered part of the attested content of the report, although they are part of the complete exam record. I.e., the report is clinically complete without the images, and the referenced images are not formally part of the report. Therefore, this Annex discusses only the use of image references, not images embedded in the report.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_1f811f39-667f-4cd6-afb4-62b831ccee6e" shape="rect"></a>Being part of the attested content would require the images to be displayed every time the report is displayed - i.e., they are integral to understanding the report. If the images are attested, they must also be encapsulated with the CDA package. I.e., the CDA document itself is only one part of the interchanged package; the referenced images must also always be sent with the CDA document. If the images are for reference only and not attested, the Image Content Item may be transformed to a simple hypertext link; it is then the responsibility of CDA document receiver to follow or not follow the hyperlink. Moreover, as the industry moves toward ubiquitous network access to a distributed electronic healthcare record, there will be less need to prepackage the referenced images with the report.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_fc85745a-8bc0-4fe3-8deb-62b3c182b81b" shape="rect"></a>In the current use case, there will be one or more KO instances with image references. Each KO instance can be transformed to a Section in the CDA document with a Section.Title "Key Images", and a Section.Code of 121180 from the DICOM Controlled Terminology (see <a href="../part16/PS3.16.html" class="olink" shape="rect">PS3.16</a>). If the KO includes a TEXT Content Item, it can be transformed to &lt;paragraph&gt; data in that Section.Text of the CDA document. Each IMAGE Content Item can be transformed to a link item using the &lt;linkHtml&gt; markup.</p>
+         <p>
+            <a id="para_7140e837-789d-4756-8f37-43491b6a9fbc" shape="rect"></a>Within the &lt;linkHtml&gt; markup, the value of the href Attribute is the DICOM object reference as a Web Access to Persistent DICOM Objects (WADO) specified URI (see <a class="xref" href="sect_X.3.3.html#table_X.3-1" title="Table X.3-1. WADO Reference in an HL7 CDA &lt;linkHtml&gt;" shape="rect">Table X.3-1</a>).</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_91e4f64c-a445-4c6b-9b65-7d8a6d3f41e6" shape="rect"></a>When a DICOM object reference is included in an HL7 CDA document, it is presumed the recipient would not be a DICOM application; it would have access only to general Internet network protocols (and not the DICOM upper layer protocol), and would not be configured with the means to display a native DICOM image. Therefore, the recommended encoding of a DICOM Object Reference in the CDA narrative block &lt;linkHtml&gt; uses WADO for access by the HTTP/HTTPS network protocol (see <a href="../part18/PS3.18.html" class="olink" shape="rect">PS3.18</a>), using one of the formats broadly supported in Web browsers (image/jpeg or video/mpeg) as the requested content type.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_95570dd7-4be5-414f-afc0-ef5c893cd624" shape="rect"></a>In CDA Release 1, the markup tag for hyperlinks is &lt;link_html&gt; within the scope of a &lt;link&gt; tag.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <div class="table">
+            <a id="table_X.3-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table X.3-1. WADO Reference in an HL7 CDA &lt;linkHtml&gt;</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b5ffa6a2-7cc4-43cb-a704-60ee56f7a30f" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>WADO Component</strong>
+                              </span>
+                                </p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1826e4ea-50b0-4a96-a3ed-98d62bb08c75" shape="rect"></a>
+                                    <span class="bold">
+                                 <strong>Source</strong>
+                              </span>
+                                </p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_832c3236-9ee9-48d8-84a2-1b50eccedbe7" shape="rect"></a>
+                                    <span class="italic">&lt;scheme&gt;</span>:// <span class="italic">&lt;authority&gt;</span> / <span class="italic">&lt;path&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e8a15140-b9ae-41e4-bf8b-818b9d5a8dd2" shape="rect"></a>Configuration setting, used by the conversion process, identifying the WADO server</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_44a385ea-f322-45dc-8a14-d04131bad922" shape="rect"></a>?requestType=WADO</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_97d6b3e4-53c7-49fa-8f27-057cae613c2c" shape="rect"></a>Fixed</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_de6017e6-b5d6-429e-939d-01663b3e506f" shape="rect"></a>&amp;studyUID <span class="italic">=&lt;uid&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2d0be83d-7ac6-4004-801d-3bdbf4c618d1" shape="rect"></a>Study Instance UID for referenced image obtained from the Current Requested Procedure Evidence Sequence or the Pertinent Other Evidence Sequence in the KO Instance</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_48b9cd46-c163-437c-aca1-5d393cab763b" shape="rect"></a>&amp;seriesUID= <span class="italic">&lt;uid&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_2f3ee01b-06a1-4460-a2a5-6b87d9ebd9b0" shape="rect"></a>Series Instance UID for referenced image obtained from the Current Requested Procedure Evidence Sequence or the Pertinent Other Evidence Sequence in the KO Instance</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c8264f5c-6d73-4a2b-a154-8bb910e916a1" shape="rect"></a>&amp;objectUID= <span class="italic">&lt;uid&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1ac91be4-1bc7-45e5-90f0-6b5c281e4af9" shape="rect"></a>Referenced SOP Instance UID from IMAGE Content Item</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_5ea7d5ff-9c58-44a3-b1f1-80494b890fba" shape="rect"></a>&amp;frameNumber= <span class="italic">&lt;list&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_91493499-8d95-46c6-b842-d332c6d86ebb" shape="rect"></a>Referenced Frame Number from IMAGE Content Item (if present)</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_e87ae121-bd89-4380-9eb7-d5c7709b4cc1" shape="rect"></a>&amp;presentationUID= <span class="italic">&lt;uid&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_a184d13e-6e6c-44c1-b401-7d9497ebc434" shape="rect"></a>Referenced SOP Instance UID from Referenced SOP Sequence within IMAGE Content Item</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b4356478-3392-491d-b2b8-3aabd9d03ad7" shape="rect"></a>&amp;presentationSeriesUID= <span class="italic">&lt;uid&gt;</span>
+                                </p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_08096d7c-5d80-4921-b72e-6c7cff0e6378" shape="rect"></a>Series Instance UID for referenced presentation state obtained from the Current Requested Procedure Evidence Sequence or the Pertinent Other Evidence Sequence in the KO Instance</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8837390a-ad0c-4f5e-a827-3fd18eb23ae6" shape="rect"></a>&amp;contentType=video/mpeg</p>
+                            </td>
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_796fc6f7-9f28-4b0a-9e03-8e6d02822352" shape="rect"></a>Present if Referenced SOP Class UID from IMAGE Content Item is for a Multi-frame Image IOD</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_ec93fb19-ec2c-4a57-b86d-b1120d996413" shape="rect"></a>Literal strings are in normal typeface, while <span class="italic">&lt;italic typeface within angle brackets&gt;</span> indicates values to be copied from the identified source.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_e942eee6-4f29-45a8-a82f-9e3c6d8d7dc3" shape="rect"></a>The default contentType for single frame images is image/jpeg, which does not need to be specified as a WADO component. However, the default contentType for multiple frame images is application/dicom, which needs to be overridden with the specific request for video/mpeg.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_a1a88bf4-97ef-4969-a4e7-dff83bd323a9" shape="rect"></a>There is not yet a standard mechanism for minimizing the potential for staleness of the <span class="italic">&lt;scheme&gt;://&lt;authority&gt;/&lt;path&gt;component</span>.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_X.3.2.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_X.3.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_X.3.4.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">X.3.2 Transcribed Text Content </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.17.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> X.3.4 Icons</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.17 2024c - Explanatory Information</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>10.5.2 Behavior</title>
+      <link rel="stylesheet" type="text/css" href="dicom.css" />
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="PS3.18.html" title="PS3.18" />
+      <link rel="up" href="sect_10.5.html" title="10.5 Store Transaction" />
+      <link rel="prev" href="sect_10.5.html" title="10.5 Store Transaction" />
+      <link rel="next" href="sect_10.5.3.html" title="10.5.3 Response" />
+      <style type="text/css"><![CDATA[
+	p { font-size: 15px; }
+      ]]></style>
+   </head>
+   <body>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+      <div xmlns="" class="navheader">
+         <table width="100%" summary="Navigation header">
+            <tr>
+               <th colspan="3" align="center" rowspan="1">10.5.2 Behavior <a accesskey="current" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_10.5.2.html" shape="rect">(Current)</a>
+               </th>
+            </tr>
+            <tr>
+               <td width="20%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.5.html" shape="rect">Prev</a> </td>
+               <th width="60%" align="center" rowspan="1" colspan="1">10.5 Store Transaction</th>
+               <td width="20%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+         </table>
+         <hr />
+      </div>
+      <div xmlns="" xmlns:d="http://docbook.org/ns/docbook" class="breadcrumbs">
+         <span class="breadcrumb-link">
+            <a href="PS3.18.html" shape="rect">PS3.18</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="chapter_10.html" shape="rect">Studies Service and Resources</a>
+         </span> &gt; <span class="breadcrumb-link">
+            <a href="sect_10.5.html" shape="rect">Store Transaction</a>
+         </span> &gt; <span class="breadcrumb-node">Behavior</span>
+      </div>
+      <div class="section">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h3 class="title">
+                     <a id="sect_10.5.2" shape="rect"></a>10.5.2 Behavior</h3>
+               </div>
+            </div>
+         </div>
+         <p>
+            <a id="para_140f6f2f-8f50-4f52-b451-e98edfb97ae8" shape="rect"></a>The origin server stores Instances from the representations contained in the request payload.</p>
+         <p>
+            <a id="para_cb26d312-87a6-45d1-8995-dcd72d640535" shape="rect"></a>The stored Instance(s) shall fully conform to the IOD and encoding requirements of <a href="../part03/PS3.3.html" class="olink" shape="rect">PS3.3</a> and <a href="../part05/PS3.5.html" class="olink" shape="rect">PS3.5</a>, respectively.</p>
+         <p>
+            <a id="para_3ef77ded-908f-44c8-82bb-e13cbdfa1405" shape="rect"></a>This Transaction stores one or more new Instances, and adds them to new or existing Series and Studies.</p>
+         <p>
+            <a id="para_2077d80f-6cce-4964-98a9-a6ce48c3e8a7" shape="rect"></a>While creating resources from the representations, the origin server may coerce or replace the values of data elements. For example, Patient Name, Patient ID, and Accession Number might be coerced when importing media from an external institution, reconciling the Instances against a master patient index, or reconciling them against an imaging procedure order. The origin server may also fix incorrect values, such as Patient Name or Patient ID; for example, because an incorrect work list item was chosen, or an operator input error has occurred.</p>
+         <p>
+            <a id="para_890eaf2a-cbec-4816-8a6b-0371c1395843" shape="rect"></a>If any Attribute is coerced or corrected, the Original Attribute Sequence (0400,0561) shall be included in the DICOM Object that is stored and may be included in the Store Instances Response Module (see <a class="xref" href="chapter_I.html" title="I Store Instances Response Module" shape="rect">Annex I</a>) in the response.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <p>
+               <a id="para_ded2e695-3abe-4257-b9b0-39bb5cf70ac4" shape="rect"></a>For more information on populating the Original Attribute Sequence see <a href="../part03/sect_C.12.html#sect_C.12.1" class="olink" shape="rect">Section C.12.1 “SOP Common Module” in PS3.3</a>.</p>
+         </div>
+         <p>
+            <a id="para_5b38a067-cdaf-4fbb-9f8b-ef41ea448f02" shape="rect"></a>The origin server shall encapsulate or convert any compressed pixel data received as Bulkdata into an appropriate DICOM Transfer Syntax, as defined in <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a>.</p>
+         <p>
+            <a id="para_d7540d0a-ec71-4204-821d-2b89e2486151" shape="rect"></a>If the request message contains compressed Bulkdata with a Content Type that is one of the media types specified in <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a>, the request may omit the Image Pixel Description Macro Attributes and the origin server will derive them from the compressed octet stream. Some media types do not directly correspond to a DICOM Transfer Syntax and the origin server will transform the received bit stream into an uncompressed or lossless (reversibly) compressed Transfer Syntax.</p>
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_23361d67-fc91-44b4-9077-31a4cb9176c8" shape="rect"></a>This allows a user agent to use consumer media types to encode the pixel data even though it may not have:</p>
+                     <div class="itemizedlist">
+                        <ul class="itemizedlist" style="list-style-type: disc; ">
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_1941e1e8-c991-4db5-9caf-9ee05d482d11" shape="rect"></a>the pixel data in a form that directly corresponds to a lossless (reversible) DICOM Transfer Syntax, or</p>
+                           </li>
+                           <li class="listitem">
+                              <p>
+                                 <a id="para_070b9b09-c585-4016-8505-51efebec98eb" shape="rect"></a>an API to access the information required to populate the Image Pixel Description Macro.</p>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_16f0095c-c106-40cf-a66c-a2aea98bd2b3" shape="rect"></a>If the supplied compressed bit stream is in a lossless (reversible) format, the intent is to allow full fidelity retrieval of the decompressed pixels, not the format in which it happened to be submitted.</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+         <p>
+            <a id="para_3c2abff3-2856-4c81-adfb-8cb15889c8fb" shape="rect"></a>The origin server shall encapsulate or convert any compressed pixel data received as bulk data into an appropriate DICOM Transfer Syntax, as defined in <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a>.</p>
+         <p>
+            <a id="para_6f896b24-54bf-4b0b-b997-f652372e0691" shape="rect"></a>If the supplied compressed octet stream is in a lossy (irreversible) format, there will be a corresponding DICOM Transfer Syntax, and the origin server is not expected to recompress it causing further loss. <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a> contains a list of media types containing compressed pixel data from which an origin server shall be able to derive the Image Pixel Data Description Macro Attribute values.</p>
+         <p>
+            <a id="para_65c1a225-3581-4fa8-b58f-6650dd2ee9c1" shape="rect"></a>Requirements are specified in <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a> as follows:</p>
+         <div class="variablelist">
+            <dl class="variablelist">
+               <dt>
+                  <span class="term">Transform</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_98596bb4-fa05-4c32-9c03-f981bdc3107a" shape="rect"></a>No DICOM Transfer Syntax exists; shall be transformed by the origin server into an uncompressed or lossless compressed Transfer Syntax (the choice of which is at the discretion of the origin server).</p>
+               </dd>
+               <dt>
+                  <span class="term">Unchanged</span>
+               </dt>
+               <dd>
+                  <p>
+                     <a id="para_1f9393dc-7eeb-4c7e-b1e7-ccb1c84be68f" shape="rect"></a>Shall be encapsulated in the corresponding DICOM Transfer Syntax without further lossy compression.</p>
+               </dd>
+            </dl>
+         </div>
+         <div class="table">
+            <a id="table_10.5.2-1" shape="rect"></a>
+            <p class="title">
+               <strong>Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes</strong>
+            </p>
+            <div class="table-contents">
+               <table frame="box" rules="all">
+                  <thead>
+                     <tr valign="top">
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_0e89110b-a523-4c31-86e5-2a5945f26cfc" shape="rect"></a>Media Type</p>
+                            </th>
+                        <th align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_02dbd49f-eec3-4276-8757-6d85b21aa907" shape="rect"></a>Requirement</p>
+                            </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_6c95f72c-b404-4dda-97d0-7f103fdce9e3" shape="rect"></a>image/gif</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_22b9ad6b-aea4-487c-bb74-f83f38cf8eb4" shape="rect"></a>Transform</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f6774f58-8aaf-4ff3-a034-e28dda09ac6e" shape="rect"></a>Image/jp2</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_1d04a006-92c5-437b-853f-1c3e07c86f1d" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_95e748c8-356f-4d66-b838-f54eae66d168" shape="rect"></a>image/jpeg</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f2c64be1-a401-4b73-ac9d-779afeeadcd5" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_68ed375e-2fdd-400f-bcbc-f2ae69648d5a" shape="rect"></a>image/jpx</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_c17701a9-ee61-4643-981f-2edea70495c2" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cb4ff984-905d-4f8d-a9ad-8a429259a6b4" shape="rect"></a>image/png</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_8e0dee5b-e7ca-4273-a3be-ebdbb98c0938" shape="rect"></a>Transform</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_41960348-71ec-40c3-be39-0886e64b8ee7" shape="rect"></a>video/mp4</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_cf9086e5-452f-4de4-9de6-af326bfbc4dd" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_f2fba45f-4bea-4066-b1d5-145c50683194" shape="rect"></a>video/mpeg</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b14a5daf-f77d-4041-a88a-f7db09cbdb52" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                     <tr valign="top">
+                        <td align="left" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_b6c4ff08-3cf9-4e4b-a1ca-0a963f31aae5" shape="rect"></a>video/H265</p>
+                            </td>
+                        <td align="center" rowspan="1" colspan="1">
+                                <p>
+                              <a id="para_bccbdffb-7998-4f61-8cd9-eadc43d9ab60" shape="rect"></a>Unchanged</p>
+                            </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <br class="table-break" clear="none" />
+         <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+            <h3 class="title">Note</h3>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">
+                     <p>
+                        <a id="para_bffb3b63-bbd4-45cb-89dc-a10e7896aafe" shape="rect"></a>In the case of pixel data supplied as image/gif or image/png, the origin server may transform the color representation from indexed color to true color (RGB) as necessary to conform to any Photometric Interpretation constraints specified by the IOD (i.e., if PALETTE COLOR is not permitted) ; such a transformation is considered lossless.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3ef4fa6b-1da0-410b-8ca4-290ce378b07c" shape="rect"></a>If the number of bits per channel of an image/png file is not supported by the IOD, a lossless transformation cannot be performed.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_4ff1f2cc-d2fe-4a90-a7aa-62ef36f682f8" shape="rect"></a>An animated image/gif will be converted into a multi-frame image by transforming the frame deltas into fully decoded frames; image/png does not support animation, and Multiple-image Network Graphics (MNG) is not included in <a class="xref" href="sect_10.5.2.html#table_10.5.2-1" title="Table 10.5.2-1. Media Type Transformation to Transfer Syntaxes" shape="rect">Table 10.5.2-1</a>.</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_b8c5cccd-8b9e-4090-8825-b0b3cc036e80" shape="rect"></a>Any transparency information present in an image/gif or image/png file will be discarded, since DICOM does not support the concept of transparency. The actual pixel value used to replace transparent pixels (e.g., black or white) is at the discretion of the implementation, but if the value used does not appear elsewhere in the image, it may be useful to record it in Pixel Padding Value (0028,0120).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_6262c534-bb2f-4f40-bbe0-0bca75adec62" shape="rect"></a>If an alpha channel is supplied in an image/png file, the alpha channel will be discarded (i.e., considered to consist of all opaque values, consistent with the policy of discarding any transparency information).</p>
+                  </li>
+                  <li class="listitem">
+                     <p>
+                        <a id="para_3f86616f-f714-44af-a009-abf08e9080ca" shape="rect"></a>In the case of pixel data that contains a single channel in the absence of metadata describing the interpretation of the pixel values, the Photometric Interpretation may be assumed by the origin server to be MONOCHROME2 (zero is interpreted as black).</p>
+                  </li>
+               </ol>
+            </div>
+         </div>
+      </div>
+      <div class="navfooter">
+         <hr />
+         <table width="100%" summary="Navigation footer">
+            <tr>
+               <td width="40%" align="left" rowspan="1" colspan="1">
+                  <a accesskey="p" href="sect_10.5.html" shape="rect">Prev</a> </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="u" href="sect_10.5.html" shape="rect">Up</a>
+               </td>
+               <td width="40%" align="right" rowspan="1" colspan="1"> <a accesskey="n" href="sect_10.5.3.html" shape="rect">Next</a>
+               </td>
+            </tr>
+            <tr>
+               <td width="40%" align="left" valign="top" rowspan="1" colspan="1">10.5 Store Transaction </td>
+               <td width="20%" align="center" rowspan="1" colspan="1">
+                  <a accesskey="h" href="PS3.18.html" shape="rect">Home</a>
+               </td>
+               <td width="40%" align="right" valign="top" rowspan="1" colspan="1"> 10.5.3 Response</td>
+            </tr>
+         </table>
+      </div>
+      <table xmlns="" xmlns:d="http://docbook.org/ns/docbook" width="100%">
+         <tr>
+            <th colspan="1" align="center" rowspan="1">
+               <span class="documentreleaseinformation">DICOM PS3.18 2024c - Web Services</span>
+            </th>
+         </tr>
+      </table>
+   </body>
+</html>
